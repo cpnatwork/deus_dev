@@ -13,4 +13,69 @@
 	<packaging>jar</packaging>
 	<name>DEUS core puddle</name>
 
+
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--+++ DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	
+	<dependencies>
+	</dependencies>
+	
+	
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--+++ PLUGINS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<build>	
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<additionalProjectFacets>
+						<jst.java>6.0</jst.java>
+						<com.springsource.server.bundle>1.0</com.springsource.server.bundle>
+					</additionalProjectFacets>
+					<additionalBuildcommands>
+						<buildcommand>org.eclipse.wst.common.project.facet.core.builder</buildcommand>
+						<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+						<!--
+							since mvn eclipse:m2eclipse which should add m2eclipse support to
+							eclipse project ignores all other natures and builders, we just
+							use mvn eclipse:eclipse and add m2eclipse nature and builder
+							manually here
+						-->
+						<buildcommand>org.maven.ide.eclipse.maven2Builder</buildcommand>
+					</additionalBuildcommands>
+					<additionalProjectnatures>
+						<projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
+						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+						<projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
+						<projectnature>com.springsource.server.ide.facet.core.bundlenature</projectnature>
+					</additionalProjectnatures>
+				</configuration>
+			</plugin>
+
+
+			<!--
+				for packaging as an OSGi bundle, we use the maven-bundle-plugin. See
+				http://felix.apache.org/site/maven-bundle-plugin-bnd.html for more
+				info
+			-->
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<manifestLocation>META-INF</manifestLocation>
+					<instructions>
+						<Export-Package>
+						</Export-Package>
+						<Import-Package>*</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>

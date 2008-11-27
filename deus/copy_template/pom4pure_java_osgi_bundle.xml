@@ -4,7 +4,7 @@
 
 	<parent>
 		<groupId>promed.deus</groupId>
-		<artifactId>deus-core</artifactId>
+		<artifactId><!-- TODO: specify parent artifact--></artifactId>
 		<version>0.1</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
@@ -73,7 +73,7 @@
 					<manifestLocation>META-INF</manifestLocation>
 					<instructions>
 						<Export-Package>
-							<!-- TOOD: which packages should be exported?? -->
+							<!-- TODO: which packages should be exported?? -->
 						</Export-Package>
 						<Import-Package>*</Import-Package>
 					</instructions>

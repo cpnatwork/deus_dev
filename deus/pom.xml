@@ -69,12 +69,6 @@
 							<!--						<Include-Resource>src/main/resources</Include-Resource>-->
 						</instructions>
 					</configuration>
-				</plugin>
-
-				<!-- generate manifest automatically once the classes are processed -->
-				<plugin>
-					<groupId>org.apache.felix</groupId>
-					<artifactId>maven-bundle-plugin</artifactId>
 					<executions>
 						<execution>
 							<id>bundle-manifest</id>
