@@ -23,8 +23,9 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-eclipse-plugin</artifactId>
 					<configuration>
+						<wtpversion>1.5</wtpversion>
 						<additionalProjectFacets>
-							<com.springsource.server.bundle>1.0</com.springsource.server.bundle>
+<!--							<com.springsource.server.bundle>1.0</com.springsource.server.bundle>-->
 						</additionalProjectFacets>
 						<additionalBuildcommands>
 							<buildcommand>org.eclipse.wst.common.project.facet.core.builder</buildcommand>
@@ -41,7 +42,7 @@
 							<projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
 							<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
 							<projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
-							<projectnature>com.springsource.server.ide.facet.core.bundlenature</projectnature>
+<!--							<projectnature>com.springsource.server.ide.facet.core.bundlenature</projectnature>-->
 						</additionalProjectnatures>
 					</configuration>
 				</plugin>
