@@ -45,7 +45,27 @@
 					</classpathContainers>
 				</configuration>
 			</plugin>
+
+
 		</plugins>
 	</build>
+
+	<dependencyManagement>
+		<plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <manifestLocation>META-INF</manifestLocation>
+                    <instructions>
+                        <Export-Package></Export-Package>
+                        <Import-Package>*</Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+		<plugins>
+	</dependencyManagement>
+
 
 </project>
