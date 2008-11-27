@@ -13,7 +13,7 @@
 	<name>DEUS core</name>
 			
 	<modules>
-		<module>deus-core-puddle</module>
+		<module>puddle</module>
 	</modules>
 	
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->

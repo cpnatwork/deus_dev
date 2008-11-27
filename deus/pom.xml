@@ -13,7 +13,7 @@
 	<name>DEUS all</name>
 			
 	<modules>
-		<module>deus-core</module>
+		<module>core</module>
 	</modules>
 	
 </project>
