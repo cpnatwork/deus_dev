@@ -5,11 +5,16 @@
 	<parent>
 		<groupId>inf6.promed</groupId>
 		<artifactId>deus-prototype</artifactId>
-		<version>0.1</version>
+		<version>0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>deus-prototype-node</artifactId>
 	<packaging>pom</packaging>
 	<name>DEUS prototype node</name>
+
+	<modules>
+		<module>inner</module>
+		<module>root</module>
+	</modules>	
 
 </project>

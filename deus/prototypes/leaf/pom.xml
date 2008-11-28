@@ -5,12 +5,16 @@
 	<parent>
 		<groupId>inf6.promed</groupId>
 		<artifactId>deus-prototype</artifactId>
-		<version>0.1</version>
+		<version>0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>deus-prototype-leaf</artifactId>
 	<packaging>pom</packaging>
 	<name>DEUS prototype leaf</name>
+
+	<modules>
+		<module>osgi</module>
+	</modules>
 
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 <!--+++ DEPENDENCY MANAGEMENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
