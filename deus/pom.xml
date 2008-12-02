@@ -26,7 +26,11 @@
         <!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
         
 	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>2.5.6</version>
+		</dependency>
 	</dependencies>
 	
 	
