@@ -4,14 +4,14 @@
 
 	<parent>
 		<groupId>inf6.promed</groupId>
-		<artifactId>deus-prototype-node-inner</artifactId>
+		<artifactId>deus</artifactId>
 		<version>0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>deus-core</artifactId>
 	<packaging>pom</packaging>
 	<name>DEUS core</name>
-			
+	
 	<modules>
 		<module>puddle</module>
 	</modules>
@@ -21,6 +21,10 @@
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	
 	<dependencies>
+        <!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+        
+	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	
 	</dependencies>
 	
 
