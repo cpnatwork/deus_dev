@@ -78,6 +78,7 @@
 				<configuration>
 					<manifestLocation>META-INF</manifestLocation>
 					<instructions>
+						<_include>src/main/resources/META-INF/MANIFEST.MF</_include>
 						<Export-Package></Export-Package>
 						<Import-Package>*</Import-Package>
 					</instructions>
