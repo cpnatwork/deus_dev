@@ -76,7 +76,7 @@
 				<artifactId>maven-bundle-plugin</artifactId>
 				<extensions>true</extensions>
 				<configuration>
-					<manifestLocation>META-INF</manifestLocation>
+					<manifestLocation>target/META-INF</manifestLocation>
 					<instructions>
 						<_include>src/main/resources/META-INF/MANIFEST.MF</_include>
 						<Export-Package></Export-Package>
