@@ -18,6 +18,7 @@
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	
 	<dependencies>
+
         <!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
         
 	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
@@ -39,7 +40,12 @@
 				<configuration>
 					<instructions>
 						<Export-Package>inf6.promed.deus</Export-Package>
-						<Import-Package>*</Import-Package>
+						<!-- 
+						- org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor
+							requires PersistantAnnotationBeanPostProcessor which is in the given package.
+						
+						 -->
+						<Import-Package>*,org.springframework.orm.jpa.support</Import-Package>
 					</instructions>
 				</configuration>
 			</plugin>

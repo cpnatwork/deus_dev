@@ -12,6 +12,10 @@
 		<module>core</module>
 	</modules>
 	
+	<properties>
+		<spring.version>2.5.5</spring.version>
+	</properties>
+	
 	<scm>
 		<connection>scm:svn:https://svn.origo.ethz.ch/dacus</connection>
 		<developerConnection>scm:svn:https://svn.origo.ethz.ch/dacus</developerConnection>
@@ -29,7 +33,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>2.5.6</version>
+			<version>${spring.version}</version>
 		</dependency>
 	</dependencies>
 	
@@ -69,8 +73,8 @@
 						<projectnature>com.springsource.server.ide.facet.core.bundlenature</projectnature>
 					</additionalProjectnatures>
 					<classpathContainers>
-						<classpathContainer>com.springsource.server.ide.jdt.core.MANIFEST_CLASSPATH_CONTAINER</classpathContainer>
 						<classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+						<classpathContainer>com.springsource.server.ide.jdt.core.MANIFEST_CLASSPATH_CONTAINER</classpathContainer>
 					</classpathContainers>
 				</configuration>
 			</plugin>
@@ -88,6 +92,16 @@
 					</instructions>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			
 		</plugins>
 
 		<resources>
