@@ -15,12 +15,34 @@
 	<properties>
 		<spring.version>2.5.5</spring.version>
 	</properties>
+
+	
+	<developers>
+		<developer>
+			<id>cpn</id>
+			<name>Christoph Neumann</name>
+			<email>christoph.neumann@informatik.uni-erlangen.de</email>
+			<url>http://www6.informatik.uni-erlangen.de/people/cpn/</url>
+			<organization>Uni Erlangen - Informatik 6</organization>
+			<organizationUrl>http://www6.informatik.uni-erlangen.de/</organizationUrl>
+		</developer>
+		<developer>
+			<id>siflramp</id>
+			<name>Florian Rampp</name>
+			<email>Florian.Rampp@informatik.stud.uni-erlangen.de</email>
+		</developer>
+	</developers>
 	
 	<scm>
 		<connection>scm:svn:https://svn.origo.ethz.ch/dacus</connection>
 		<developerConnection>scm:svn:https://svn.origo.ethz.ch/dacus</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
+	
+	<issueManagement>
+		<system>Redmine</system>
+		<url>faui6p15.informatik.uni-erlangen.de:3000</url>
+	</issueManagement>
 	
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 <!--+++ DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
