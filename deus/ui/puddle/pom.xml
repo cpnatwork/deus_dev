@@ -74,6 +74,14 @@
 				<include>*.xml</include>
 			</includes>
 		</resource>
+		<resource>
+			<targetPath>MODULE-INF</targetPath>
+			<filtering>false</filtering>
+			<directory>${basedir}/src/main/web</directory>
+			<includes>
+				<include>**/*</include>
+			</includes>
+		</resource>
 	</resources>
 
 	</build>
