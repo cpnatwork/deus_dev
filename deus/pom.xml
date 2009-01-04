@@ -10,6 +10,7 @@
 			
 	<modules>
 		<module>core</module>
+		<module>ui</module>
 	</modules>
 	
 	<properties>
@@ -52,11 +53,55 @@
         <!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
         
 	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	    
+	    <!--+++ SPRING +++-->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+
+		<!--+++ JUNIT +++-->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.5</version>
+			<scope>test</scope>
+		</dependency>
+		
+		
+		<!--+++ LOGGING +++-->
+		<!-- Logback ist used as logging backend! -->
+<!--		<dependency>-->
+<!--			<groupId>ch.qos.logback</groupId>-->
+<!--			<artifactId>ch.qos.logback.classic-library</artifactId>-->
+<!--			<type>libd</type>-->
+<!--			<version>0.9.9</version>-->
+<!--		</dependency>-->
+		<!-- We use the slf4j api, against which logback is programmed -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>com.springsource.slf4j.api</artifactId>
+			<version>1.5.6</version>
+		</dependency>
+		<!-- for libraries using apache commons logging: make loggers use the slf4j api -->
+<!--		<dependency>-->
+<!--			<groupId>org.slf4j</groupId>-->
+<!--			<artifactId>com.springsource.slf4j.org.apache.commons.logging</artifactId>-->
+<!--			<version>1.5.6</version>-->
+<!--		</dependency>-->
+		<!-- for libraries using java.util.logging: make JUL loggers use the slf4j api -->
+<!--		<dependency>-->
+<!--			<groupId>org.slf4j</groupId>-->
+<!--			<artifactId>com.springsource.slf4j.juli</artifactId>-->
+<!--			<version>1.5.6</version>-->
+<!--		</dependency>-->
+		<!-- for libraries using log4j directly: make loggers use the slf4j api	-->
+<!--		<dependency>-->
+<!--			<groupId>org.slf4j</groupId>-->
+<!--			<artifactId>com.springsource.slf4j.org.apache.log4j</artifactId>-->
+<!--			<version>1.5.6</version>-->
+<!--		</dependency>-->
 	</dependencies>
 	
 	
@@ -141,6 +186,29 @@
 		</resources>
 
 	</build>
-	
+
+
+	<repositories>
+		<repository>
+			<id>com.springsource.repository.bundles.release</id>
+			<name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
+			<url>http://repository.springsource.com/maven/bundles/release</url>
+		</repository>
+		<repository>
+			<id>com.springsource.repository.bundles.external</id>
+			<name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+			<url>http://repository.springsource.com/maven/bundles/external</url>
+		</repository>
+		<repository>
+			<id>com.springsource.repository.libraries.release</id>
+			<name>SpringSource Enterprise Bundle Repository - SpringSource Library Releases</name>
+			<url>http://repository.springsource.com/maven/libraries/release</url>
+		</repository>
+		<repository>
+			<id>com.springsource.repository.libraries.external</id>
+			<name>SpringSource Enterprise Bundle Repository - External Library Releases</name>
+			<url>http://repository.springsource.com/maven/libraries/external</url>
+		</repository> 
+	</repositories>
 	
 </project>

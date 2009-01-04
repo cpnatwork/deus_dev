@@ -3,6 +3,8 @@ package inf6.promed.deus;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -35,7 +37,9 @@ public class TestClass {
 		System.out.println("HEEEEELLLOOO WORLD");
 
 		System.out.println(2);
-
+		
+		final Logger logger = LoggerFactory.getLogger(TestClass.class);
+ 		logger.info("test");
 	}
 
 	@PreDestroy
