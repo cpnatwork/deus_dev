@@ -40,7 +40,7 @@
 	<bean id="flowUrlMappings" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<value>
-				/connect=flowController
+				/connect.htm=flowController
         	</value>
 		</property>
 	</bean>
