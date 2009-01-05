@@ -1,0 +1,11 @@
+<div id="content">
+
+<h1>Home</h1>
+<p> Hier ist Home/Overview. Unterschied zu Index? Ich habs einfach mal gemacht, damit es zu den Karten passt. </p>
+<br>
+
+
+<p><a
+	href="http://java.sun.com/developer/technicalArticles/javaserverpages/code_convention/">Code
+Conventions for the JavaServer Pages Technology</a></p>
+</div>

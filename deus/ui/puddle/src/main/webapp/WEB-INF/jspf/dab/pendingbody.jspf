@@ -1,0 +1,10 @@
+<h1>pendingbody</h1>
+<p>Übersicht über alle gestellten und empfangenen Anfragen:</p>
+<ul>
+	<li> offered subscriptions (durch Dritten als CP initiiert), Buttons ACCEPT (acceptsubscr.jsp) + REJECT </li>
+	<li> requested subsriptions (durch Dritten als Subsr initiiert), Buttons CONFIRM (confirmsubscr.jsp) + REFUSE</li>
+	<li> accepted subscriptions (durch Dritten als CP), Button nicht nötig  </li>
+	<li> pending requests (als Subscr an Dritten), Button WITHDRAW </li>
+	<li> pending offers (als CP an Dritten), Button WITHDRAW</li>
+</ul>
+<p> Button zurück zu HOME </p>
