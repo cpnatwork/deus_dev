@@ -27,7 +27,7 @@ body {
 <%@ include file="/WEB-INF/jspf/_frame/header.jspf"%>
 <%@ include file="/WEB-INF/jspf/_frame/menuBar.jspf"%>
 
-<%@ include file="/WEB-INF/jspf/dab/pendingbody.jspf"%>
+<%@ include file="/WEB-INF/jspf/cp/personaldataviewbody.jspf"%>
 
 <%@ include file="/WEB-INF/jspf/_frame/footnote.jspf"%>
 <%@ include file="/WEB-INF/jspf/_frame/footer.jspf"%>
