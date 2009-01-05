@@ -16,7 +16,7 @@
 	<context:component-scan base-package="inf6.promed.deus" />
 
 	<webflow:flow-registry id="flowRegistry">
-		<webflow:flow-location id="connect" path="/WEB-INF/flows/connect/connect.xml" />
+		<webflow:flow-location path="/WEB-INF/flows/connect/connect.xml" />
 	</webflow:flow-registry>
 
 	<webflow:flow-executor id="flowExecutor" flow-registry="flowRegistry" />

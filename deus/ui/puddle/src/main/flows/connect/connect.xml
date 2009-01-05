@@ -4,8 +4,17 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
 	        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 	<view-state id="start">
-		<transition on="*" to="test" />
+		<transition on="choice2" to="endstate2" bind="false" />
+		<transition on="choice1" to="endstate1" bind="false" />
 	</view-state>
-	
-	<action-state id="test" />
+
+
+
+	<view-state id="endstate2" redirect="false" popup="false" />
+	<view-state id="endstate1" redirect="false" popup="false" />
+
+
+
+
+
 </flow>

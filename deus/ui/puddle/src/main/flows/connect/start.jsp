@@ -9,9 +9,10 @@
 <body>
 CHOICE FLOW
 
-<form action="" method="post"><input type="submit"
-	name="choice1n" value="choice1v"> <input type="submit"
-	name="choice2n" value="choice2v"></form>
+<form action="" method="post">
+	<input type="submit" name="_eventId_choice1" value="hier gehts zum DAB (start.jsp)">
+	<input type="submit" name="_eventId_choice2" value="Choice 2">
+</form>
 </body>
 </html>
 
