@@ -15,7 +15,6 @@
 	
 	<properties>
 		<spring.version>2.5.5</spring.version>
-		<springdmserver.location>${user.home}/springsource-dm-server-1.0.0.RELEASE</springdmserver.location>
 	</properties>
 
 	
