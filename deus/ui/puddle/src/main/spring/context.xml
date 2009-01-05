@@ -16,10 +16,25 @@
 	<context:component-scan base-package="inf6.promed.deus" />
 
 	<webflow:flow-registry id="flowRegistry">
-		<webflow:flow-location path="/WEB-INF/flows/booking/booking.xml" />
+		<webflow:flow-location path="/WEB-INF/flows/connect/*.xml" />
 	</webflow:flow-registry>
-	
-	<webflow:flow-executor id="flowExecutor" />
+<!--	-->
+<!--	<webflow:flow-executor id="flowExecutor" flow-registry="flowRegistry" />-->
+
+<!--	 Enables FlowHandler URL mapping -->
+<!--	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">-->
+<!--		<property name="flowExecutor" ref="flowExecutor" />-->
+<!--	</bean>-->
+
+
+	<!-- Maps request paths to flows in the flowRegistry; e.g. a path of
+		/hotels/booking looks for a flow with id "hotels/booking" -->
+<!--	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">-->
+<!--		<property name="flowRegistry" ref="flowRegistry" />-->
+<!--		<property name="order" value="0" />-->
+<!--	</bean>-->
+
+
 
 </beans>
 		

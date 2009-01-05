@@ -15,6 +15,7 @@
 	
 	<properties>
 		<spring.version>2.5.5</spring.version>
+		<springdmserver.location>${user.home}/springsource-dm-server-1.0.0.RELEASE</springdmserver.location>
 	</properties>
 
 	
@@ -59,6 +60,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!--+++ JUNIT +++-->
@@ -158,6 +160,28 @@
 						<Import-Package>*</Import-Package>
 					</instructions>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<outputDirectory>${springdmserver.location}/repository/bundles/usr</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<includeScope>compile</includeScope>
+							<includeTypes>jar</includeTypes>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>

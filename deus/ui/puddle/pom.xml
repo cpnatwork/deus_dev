@@ -23,7 +23,8 @@
 	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 		<dependency>
 			<groupId>org.springframework.webflow</groupId>
-			<artifactId>org.springframework.webflow</artifactId>
+			<artifactId>org.springframework.webflow-library</artifactId>
+			<type>libd</type>
 			<version>2.0.5.RELEASE</version>
 		</dependency>
 	</dependencies>
@@ -48,41 +49,41 @@
 							requires PersistantAnnotationBeanPostProcessor which is in the given package.
 						
 						 -->
-						<Import-Package>*,org.springframework.orm.jpa.support</Import-Package>
+						<Import-Package>*,org.springframework.orm.jpa.support,org.springframework.webflow</Import-Package>
 					</instructions>
 				</configuration>
 			</plugin>
 		</plugins>
 
-	<resources>
-		<resource>
-			<directory>${basedir}/src/main/resources</directory>
-		</resource>
-		<resource>
-			<targetPath>META-INF/spring</targetPath>
-			<filtering>false</filtering>
-			<directory>${basedir}/src/main/spring</directory>
-			<includes>
-				<include>*.xml</include>
-			</includes>
-		</resource>
-		<resource>
-			<targetPath>META-INF/flows</targetPath>
-			<filtering>false</filtering>
-			<directory>${basedir}/src/main/flows</directory>
-			<includes>
-				<include>*.xml</include>
-			</includes>
-		</resource>
-		<resource>
-			<targetPath>MODULE-INF</targetPath>
-			<filtering>false</filtering>
-			<directory>${basedir}/src/main/web</directory>
-			<includes>
-				<include>**/*</include>
-			</includes>
-		</resource>
-	</resources>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+			</resource>
+			<resource>
+				<targetPath>META-INF/spring</targetPath>
+				<filtering>false</filtering>
+				<directory>${basedir}/src/main/spring</directory>
+				<includes>
+					<include>*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<targetPath>META-INF/flows</targetPath>
+				<filtering>false</filtering>
+				<directory>${basedir}/src/main/flows</directory>
+				<includes>
+					<include>*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<targetPath>MODULE-INF</targetPath>
+				<filtering>false</filtering>
+				<directory>${basedir}/src/main/web</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+		</resources>
 
 	</build>
 	
