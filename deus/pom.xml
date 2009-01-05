@@ -113,6 +113,8 @@
 	
 	<build>
 	
+<!--+++ PLUGINS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	
 		<plugins>
 		
 			<plugin>
@@ -170,7 +172,7 @@
 						<goals>
 							<goal>copy-dependencies</goal>
 						</goals>
-						<phase>package</phase>
+						<phase>pre-integration-test</phase>
 						<configuration>
 <!--							<outputDirectory>${springdmserver.location}/repository/bundles/usr</outputDirectory>-->
 							<outputDirectory>${project.build.directory}/dependencies</outputDirectory>
@@ -192,8 +194,30 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+		
+		
+			<!-- copy artifact to app server on phase pre-integration-test -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>pre-integration-test</phase>
+						<configuration>
+							<tasks>
+								<copy file="${project.build.directory}/${project.build.finalName}.jar" todir="${springdmserver.location}/pickup"/>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			
 		</plugins>
+
+<!--+++ RESOURCES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
 		<resources>
 			<resource>
@@ -211,6 +235,7 @@
 
 	</build>
 
+<!--+++ REPOSITORIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
 	<repositories>
 		<repository>

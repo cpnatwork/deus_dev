@@ -15,7 +15,7 @@
 	<!-- for detection of annotations for managed components -->
 	<context:component-scan base-package="inf6.promed.deus" />
 
-	<webflow:flow-registry id="flowRegistry">
+	<webflow:flow-registry id="flowRegistry" flow-builder-services="flowBuilderServices">
 		<webflow:flow-location path="/WEB-INF/flows/connect/connect.xml" />
 	</webflow:flow-registry>
 
@@ -36,6 +36,14 @@
 		<property name="flowRegistry" ref="flowRegistry" />
 		<property name="order" value="0" />
 	</bean>
+
+
+	<webflow:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator" />
+		
+	<bean id="mvcViewFactoryCreator" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+		<property name="viewResolvers" ref="flowViewResolver" />
+	</bean>
+	
 
 </beans>
 		
