@@ -23,7 +23,15 @@ body {
 </style>
 </head>
 <body>
-<jsp:forward page="login.jsp" />
+
+<%@ include file="/WEB-INF/jspf/_frame/header.jspf"%>
+<%@ include file="/WEB-INF/jspf/_frame/menuBar.jspf"%>
+
+<%@ include file="/WEB-INF/jspf/indexbody.jspf"%>
+
+<%@ include file="/WEB-INF/jspf/_frame/footnote.jspf"%>
+<%@ include file="/WEB-INF/jspf/_frame/footer.jspf"%>
+
 </body>
 </html>
 
