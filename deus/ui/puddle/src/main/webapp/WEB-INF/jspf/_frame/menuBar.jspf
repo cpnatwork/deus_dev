@@ -5,13 +5,13 @@
 <div id="globalLinks" class="navbar">
 <h1>Navigation</h1>
 <ul>
-	<li><a class="noborder" href="/">Home</a></li>
+	<li><a class="noborder" href="/dacus/">Home</a></li>
 </ul>
 <h2 class="domaining">SubDirectories</h2>
 <ul>
-	<li><a class="noborder" href="/dab/viewdab.jsp">&rArr;
+	<li><a class="noborder" href="/dacus/dab/viewdab.jsp">&rArr;
 	Address Book</a></li>
-	<li><a href="/cp/personaldataview.jsp">&rArr; Concerned Person</a></li>
+	<li><a href="/dacus/cp/personaldataview.jsp">&rArr; Concerned Person</a></li>
 </ul>
 </div>
 <!-- End of navigation bar-->
