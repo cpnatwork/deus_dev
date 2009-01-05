@@ -3,8 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
 	        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
-	<action-state id="test" />
 	<view-state id="start">
 		<transition on="*" to="test" />
 	</view-state>
+	
+	<action-state id="test" />
 </flow>
