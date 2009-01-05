@@ -16,25 +16,38 @@
 	<context:component-scan base-package="inf6.promed.deus" />
 
 	<webflow:flow-registry id="flowRegistry">
-		<webflow:flow-location path="/WEB-INF/flows/connect/*.xml" />
+		<webflow:flow-location id="connect" path="/META-INF/flows/connect/connect.xml" />
 	</webflow:flow-registry>
-<!--	-->
-<!--	<webflow:flow-executor id="flowExecutor" flow-registry="flowRegistry" />-->
 
-<!--	 Enables FlowHandler URL mapping -->
+	<webflow:flow-executor id="flowExecutor" flow-registry="flowRegistry" />
+
+	<!-- Enables FlowHandler URL mapping -->
+	<!-- needed, if we would like to use flow handlers -->
 <!--	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">-->
 <!--		<property name="flowExecutor" ref="flowExecutor" />-->
 <!--	</bean>-->
 
 
 	<!-- Maps request paths to flows in the flowRegistry; e.g. a path of
-		/hotels/booking looks for a flow with id "hotels/booking" -->
+		/hotels/booking looks for a flow with id "hotels/booking" 
+		available since WebFlow 2.0.4
+		-->
 <!--	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">-->
 <!--		<property name="flowRegistry" ref="flowRegistry" />-->
 <!--		<property name="order" value="0" />-->
 <!--	</bean>-->
 
-
+	<bean id="flowUrlMappings" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>
+				/connect=flowController
+        	</value>
+		</property>
+	</bean>
+	
+	<bean id="flowController" class="org.springframework.webflow.mvc.servlet.FlowController">
+    	<property name="flowExecutor" ref="flowExecutor" />
+	</bean>
 
 </beans>
 		

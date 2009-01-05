@@ -1,3 +1,5 @@
 Manifest-Version: 1.0
 Import-Library: org.springframework.webflow;version="[2.0.3.RELEASE,2.0.3.RELEASE]"
+Import-Bundle: org.springframework.web.servlet;version="[2.5.5.A,2.5.5.A]"
 Module-Type: Web
+Web-ContextPath: dacus
