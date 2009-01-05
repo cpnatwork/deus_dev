@@ -1,0 +1,20 @@
+    <div id="navbarContainerHack">
+      <div id="navbarContainer">
+
+<!-- Begin of navigation bar -->
+<div id="globalLinks" class="navbar">
+<h1>Navigation</h1>
+<ul>
+	<li><a class="noborder" href=".">Home</a></li>
+</ul>
+<h2 class="domaining">SubDirectories</h2>
+<ul>
+	<li><a class="noborder" href="dab">&rArr;
+	Address Book</a></li>
+	<li><a href="cp">&rArr; Concerned Person</a></li>
+</ul>
+</div>
+<!-- End of navigation bar-->
+
+      </div>
+    </div>
