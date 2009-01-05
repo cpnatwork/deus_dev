@@ -1,2 +1,8 @@
 <h1>searchbody</h1>
-<p>Maske zum Suchen nach DACUS-Usern</p>
+<p>Maske zum Suchen nach DACUS-Usern, z.B.</p>
+<ul>
+	<li> OpenID </li>
+	<li> Name </li>
+	<li> Email </li>
+</ul>
+<p>Button SEARCH und Button zurück zu VIEWDAB</p>
