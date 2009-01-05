@@ -1,9 +1,4 @@
 <div id="content">
-<div id="breadCrumb"><!-- <a href="#">breadcrumb</a> / <a href="#">breadcrumb</a> / <a
-                href="#">breadcrumb</a> / --></div>
-<h1 id="pageName">Template Page</h1>
-<div class="feature"><img src="_image/notThere.jpg" alt=""
-	width="280" height="200" />
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec
 molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. Vestibulum
 condimentum facilisis nulla. In hac habitasse platea dictumst. Nulla
@@ -14,7 +9,7 @@ Aenean viverra. Class aptent taciti sociosqu ad litora torquent per
 conubia nostra, per inceptos hymenaeos. Aliquam lacus. Mauris magna
 eros, semper a, tempor et, rutrum et, tortor.</p>
 </div>
-<div class="story"><a
+<p><a
 	href="http://java.sun.com/developer/technicalArticles/javaserverpages/code_convention/">Code
-Conventions for the JavaServer Pages Technology</a></div>
+Conventions for the JavaServer Pages Technology</a></p>
 </div>

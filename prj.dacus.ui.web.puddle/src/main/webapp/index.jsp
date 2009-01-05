@@ -27,6 +27,7 @@ body {
 <%@ include file="/WEB-INF/jspf/_frame/header.jspf"%>
 <%@ include file="/WEB-INF/jspf/_frame/menuBar.jspf"%>
 
+<h1>Hallo Moritz</h1>
 <%@ include file="/WEB-INF/jspf/indexbody.jspf"%>
 
 <%@ include file="/WEB-INF/jspf/_frame/footnote.jspf"%>
