@@ -11,8 +11,8 @@
 <html>
 <head>
 <title>DACUS</title>
-<%@ include file="/WEB-INF/jspf/scriptInclude.jspf"%>
-<%@ include file="/WEB-INF/jspf/head.jspf"%>
+<%@ include file="/WEB-INF/jspf/_frame/scriptInclude.jspf"%>
+<%@ include file="/WEB-INF/jspf/_frame/head.jspf"%>
 <style type="text/css">
 /*<![CDATA[*/
 <!--
@@ -24,13 +24,13 @@ body {
 </head>
 <body>
 
-<%@ include file="/WEB-INF/jspf/header.jspf"%>
-<%@ include file="/WEB-INF/jspf/menuBar.jspf"%>
+<%@ include file="/WEB-INF/jspf/_frame/header.jspf"%>
+<%@ include file="/WEB-INF/jspf/_frame/menuBar.jspf"%>
 
-<%@ include file="indexbody.jspf"%>
+<%@ include file="/WEB-INF/jspf/indexbody.jspf"%>
 
-<%@ include file="/WEB-INF/jspf/footnote.jspf"%>
-<%@ include file="/WEB-INF/jspf/footer.jspf"%>
+<%@ include file="/WEB-INF/jspf/_frame/footnote.jspf"%>
+<%@ include file="/WEB-INF/jspf/_frame/footer.jspf"%>
 
 </body>
 </html>
