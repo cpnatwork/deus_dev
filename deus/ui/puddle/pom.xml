@@ -84,7 +84,7 @@
 			<resource>
 				<targetPath>MODULE-INF</targetPath>
 				<filtering>false</filtering>
-				<directory>${basedir}/src/main/web</directory>
+				<directory>${basedir}/src/main/webapp</directory>
 				<includes>
 					<include>**/*</include>
 				</includes>
