@@ -57,9 +57,9 @@
 	    <!--+++ SPRING +++-->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
+			<artifactId>org.springframework.context</artifactId>
 			<version>${spring.version}</version>
-<!--			<scope>provided</scope>-->
+			<scope>provided</scope>
 		</dependency>
 
 		<!--+++ JUNIT +++-->
@@ -172,12 +172,13 @@
 						</goals>
 						<phase>package</phase>
 						<configuration>
-							<outputDirectory>${springdmserver.location}/repository/bundles/usr</outputDirectory>
+<!--							<outputDirectory>${springdmserver.location}/repository/bundles/usr</outputDirectory>-->
+							<outputDirectory>${project.build.directory}/dependencies</outputDirectory>
 							<overWriteReleases>false</overWriteReleases>
 							<overWriteSnapshots>false</overWriteSnapshots>
 							<overWriteIfNewer>true</overWriteIfNewer>
 							<includeScope>compile</includeScope>
-							<includeTypes>jar</includeTypes>
+<!--							<includeTypes>jar</includeTypes>-->
 						</configuration>
 					</execution>
 				</executions>
