@@ -1,22 +1,11 @@
 <div id="content">
 
-<h1>Login</h1>
-<p>Hier kommt der Login hin</p>
-<br>
+<h1>DACUS</h1>
+<table>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<tr><td>Username:</td><td><input type="text" name="username" /></td></tr>
+<tr><td>Password:</td><td><input type="password" name="password" /></td></tr>
+<tr><td colspan=2><input type="submit" /></td></tr>
+</table>
 
-<br>
-
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec
-molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. Vestibulum
-condimentum facilisis nulla. In hac habitasse platea dictumst. Nulla
-nonummy. Cras quis libero. Cras venenatis. Aliquam posuere lobortis
-pede. Nullam fringilla urna id leo. Praesent aliquet pretium erat.
-Praesent non odio. Pellentesque a magna a mauris vulputate lacinia.
-Aenean viverra. Class aptent taciti sociosqu ad litora torquent per
-conubia nostra, per inceptos hymenaeos. Aliquam lacus. Mauris magna
-eros, semper a, tempor et, rutrum et, tortor.</p>
-
-<p><a
-	href="http://java.sun.com/developer/technicalArticles/javaserverpages/code_convention/">Code
-Conventions for the JavaServer Pages Technology</a></p>
 </div>
