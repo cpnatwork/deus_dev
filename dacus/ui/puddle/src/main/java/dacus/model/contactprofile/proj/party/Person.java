@@ -9,34 +9,160 @@ import dacus.model.contactprofile.proj.party.common.DatePlace;
 
 public class Person extends Party {
 
-	private PersonName name;
-	private String fullName;	
+	protected PersonName name;
+	protected String fullName;	
 	
-	private Gender gender;
+	protected Gender gender;
 	
-	private DatePlace birth;
-	private DatePlace death;
+	protected DatePlace birth;
+	protected DatePlace death;
 	
-	private Image photo;
+	protected Image photo;
 	
-	private String note;
+	protected String note;
 	// TODO: is it correct to use Clip here?
-	private Clip sound;
+	protected Clip sound;
 	
 
-	private List<Language> languages;
+	protected List<Language> languages;
 	
-	private List<Phone> phones;
-	private List<Email> emails;
-	private List<WebPresence> webPresences;
-	private List<ImAccount> imAccounts;
+	protected List<? extends Phone> phones;
+	protected List<? extends Email> emails;
+	protected List<? extends WebPresence> webPresences;
+	protected List<? extends ImAccount> imAccounts;
 	
-	private List<Address> addresses;
+	protected List<? extends Address> addresses;
 	
-	private List<Occupation> occupations;
+	protected List<? extends Occupation> occupations;
 	
-	private List<RelatedPerson> relatedPersons;
-	
-	
+	protected List<? extends RelatedPerson> relatedPersons;
+
+	public PersonName getName() {
+		return name;
+	}
+
+	public void setName(PersonName name) {
+		this.name = name;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public DatePlace getBirth() {
+		return birth;
+	}
+
+	public void setBirth(DatePlace birth) {
+		this.birth = birth;
+	}
+
+	public DatePlace getDeath() {
+		return death;
+	}
+
+	public void setDeath(DatePlace death) {
+		this.death = death;
+	}
+
+	public Image getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(Image photo) {
+		this.photo = photo;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public Clip getSound() {
+		return sound;
+	}
+
+	public void setSound(Clip sound) {
+		this.sound = sound;
+	}
+
+	public List<Language> getLanguages() {
+		return languages;
+	}
+
+	public void setLanguages(List<Language> languages) {
+		this.languages = languages;
+	}
+
+	public List<? extends Phone> getPhones() {
+		return phones;
+	}
+
+	public void setPhones(List<? extends Phone> phones) {
+		this.phones = phones;
+	}
+
+	public List<? extends Email> getEmails() {
+		return emails;
+	}
+
+	public void setEmails(List<Email> emails) {
+		this.emails = emails;
+	}
+
+	public List<? extends WebPresence> getWebPresences() {
+		return webPresences;
+	}
+
+	public void setWebPresences(List<WebPresence> webPresences) {
+		this.webPresences = webPresences;
+	}
+
+	public List<? extends ImAccount> getImAccounts() {
+		return imAccounts;
+	}
+
+	public void setImAccounts(List<ImAccount> imAccounts) {
+		this.imAccounts = imAccounts;
+	}
+
+	public List<? extends Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
+	}
+
+	public List<? extends Occupation> getOccupations() {
+		return occupations;
+	}
+
+	public void setOccupations(List<Occupation> occupations) {
+		this.occupations = occupations;
+	}
+
+	public List<? extends RelatedPerson> getRelatedPersons() {
+		return relatedPersons;
+	}
+
+	public void setRelatedPersons(List<RelatedPerson> relatedPersons) {
+		this.relatedPersons = relatedPersons;
+	}
 	
 }

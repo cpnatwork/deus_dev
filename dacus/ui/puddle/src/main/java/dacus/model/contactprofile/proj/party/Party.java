@@ -3,7 +3,7 @@ package dacus.model.contactprofile.proj.party;
 
 public abstract class Party {
 
-	private PartyId id;
+	protected PartyId id;
 
 
 	public PartyId getId() {

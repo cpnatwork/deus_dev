@@ -1,6 +1,6 @@
 package dacus.model.pub;
 
-import dacus.model.contactprofile.tech.party.PartyId;
+import dacus.model.contactprofile.proj.party.PartyId;
 
 public class SubscriberMetadata<T extends PartyId> {
 
