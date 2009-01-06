@@ -1,3 +1,4 @@
+<div id="content">
 <h1>searchbody</h1>
 <p>Maske zum Suchen nach DACUS-Usern, z.B.</p>
 <ul>
@@ -6,3 +7,4 @@
 	<li> Email </li>
 </ul>
 <p>Button SEARCH und Button zurück zu VIEWDAB</p>
+</div>

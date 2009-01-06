@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webflow-project-description>
+	<version>1</version>
+	<pluginVersion><![CDATA[2.2.1.v200811281800]]></pluginVersion>
+	<configs>
+		<config>
+			<file>src/main/flows/connect/connect.xml</file>
+			<name><![CDATA[connect]]></name>
+		</config>
+		<config>
+			<file>src/main/flows/testflow/testflow.xml</file>
+			<name><![CDATA[testflow]]></name>
+		</config>
+	</configs>
+</webflow-project-description>

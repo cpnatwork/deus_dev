@@ -1,3 +1,4 @@
+<div id="content">
 <h1>pendingbody</h1>
 <p>Übersicht über alle gestellten und empfangenen Anfragen:</p>
 <ul>
@@ -8,3 +9,4 @@
 	<li> pending offers (als CP an Dritten), Button WITHDRAW</li>
 </ul>
 <p> Button zurück zu HOME </p>
+</div>
