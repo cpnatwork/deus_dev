@@ -1,13 +1,12 @@
 package dacus.storage.party.address;
 
 import java.util.Locale;
-import java.util.UUID;
 
+import dacus.storage.common.WeakEntity;
 import dacus.storage.party.common.EntityTag;
 
-public abstract class Address {
+public abstract class Address extends WeakEntity {
 
-	private UUID id;
 	private EntityTag entityTag;
 
 	private Locale country;
@@ -19,16 +18,6 @@ public abstract class Address {
 	private String extension;
 
 	
-	public UUID getId() {
-		return id;
-	}
-
-
-	public void setId(UUID id) {
-		this.id = id;
-	}
-
-
 	public EntityTag getEntityTag() {
 		return entityTag;
 	}
@@ -87,6 +76,5 @@ public abstract class Address {
 	public void setExtension(String extension) {
 		this.extension = extension;
 	}
-
 
 }

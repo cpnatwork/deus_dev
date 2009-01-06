@@ -1,27 +1,16 @@
 package dacus.storage.party.web;
 
 import java.net.URL;
-import java.util.UUID;
 
+import dacus.storage.common.WeakEntity;
 import dacus.storage.party.common.EntityTag;
 
-public class WebPresence {
+public class WebPresence extends WeakEntity {
 
-	private UUID id;
 	private EntityTag entityTag;
 
 	private WebPresenceType type;
 	private URL url;
-
-
-	public UUID getId() {
-		return id;
-	}
-
-
-	public void setId(UUID id) {
-		this.id = id;
-	}
 
 
 	public EntityTag getEntityTag() {
@@ -52,4 +41,5 @@ public class WebPresence {
 	public void setUrl(URL url) {
 		this.url = url;
 	}
+
 }

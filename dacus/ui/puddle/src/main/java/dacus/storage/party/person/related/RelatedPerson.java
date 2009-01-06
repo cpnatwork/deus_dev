@@ -1,26 +1,15 @@
 package dacus.storage.party.person.related;
 
 import java.net.URL;
-import java.util.UUID;
 
-public class RelatedPerson {
+import dacus.storage.common.WeakEntity;
 
-	private UUID id;
+public class RelatedPerson extends WeakEntity {
 
 	// TODO: which type should id take?
 	private URL reference;
 
 	private RelatedPersonType type;
-
-	
-	public UUID getId() {
-		return id;
-	}
-
-
-	public void setId(UUID id) {
-		this.id = id;
-	}
 
 
 	public URL getReference() {

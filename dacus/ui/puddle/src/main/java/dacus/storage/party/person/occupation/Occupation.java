@@ -1,11 +1,10 @@
 package dacus.storage.party.person.occupation;
 
 import java.awt.Image;
-import java.util.UUID;
 
-public class Occupation {
+import dacus.storage.common.WeakEntity;
 
-	private UUID id;
+public class Occupation extends WeakEntity {
 
 	private String institution;
 	private String department;
@@ -16,16 +15,6 @@ public class Occupation {
 	private String office;
 
 	private Image logo;
-	
-
-	public UUID getId() {
-		return id;
-	}
-
-
-	public void setId(UUID id) {
-		this.id = id;
-	}
 
 
 	public String getInstitution() {

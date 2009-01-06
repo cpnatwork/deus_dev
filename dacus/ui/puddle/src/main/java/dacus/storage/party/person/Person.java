@@ -6,9 +6,9 @@ import java.util.List;
 import javax.sound.sampled.Clip;
 
 import dacus.storage.common.DatePlace;
-import dacus.storage.party.Email;
 import dacus.storage.party.Party;
 import dacus.storage.party.address.Address;
+import dacus.storage.party.email.Email;
 import dacus.storage.party.im.ImAccount;
 import dacus.storage.party.language.Language;
 import dacus.storage.party.person.occupation.Occupation;

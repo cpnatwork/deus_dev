@@ -1,32 +1,15 @@
-package dacus.storage.party;
+package dacus.storage.party.email;
 
-import java.util.UUID;
-
+import dacus.storage.common.WeakEntity;
 import dacus.storage.party.common.EntityTag;
 
-public class Email {
+public class Email extends WeakEntity {
 
-	private UUID id;
 	private EntityTag entityTag;
 
 	private String address;
 
 	private boolean sendHTML;
-
-
-	public Email() {
-		id = UUID.randomUUID();
-	}
-
-
-	public UUID getId() {
-		return id;
-	}
-
-
-	public void setId(UUID id) {
-		this.id = id;
-	}
 
 
 	public EntityTag getEntityTag() {

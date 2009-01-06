@@ -1,26 +1,14 @@
 package dacus.storage.party.im;
 
-import java.util.UUID;
-
+import dacus.storage.common.WeakEntity;
 import dacus.storage.party.common.EntityTag;
 
-public class ImAccount {
+public class ImAccount extends WeakEntity {
 
-	private UUID id;
 	private EntityTag entityTag;
 
 	private ImAccountType type;
 	private String account;
-
-
-	public UUID getId() {
-		return id;
-	}
-
-
-	public void setId(UUID id) {
-		this.id = id;
-	}
 
 
 	public EntityTag getEntityTag() {

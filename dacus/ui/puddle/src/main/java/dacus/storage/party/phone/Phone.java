@@ -1,12 +1,10 @@
 package dacus.storage.party.phone;
 
-import java.util.UUID;
-
+import dacus.storage.common.WeakEntity;
 import dacus.storage.party.common.EntityTag;
 
-public class Phone {
+public class Phone extends WeakEntity {
 
-	private UUID id;
 	private EntityTag entityTag;
 
 	// capabilities
@@ -17,16 +15,6 @@ public class Phone {
 	private PhoneType type;
 
 	private String number;
-
-
-	public UUID getId() {
-		return id;
-	}
-
-
-	public void setId(UUID id) {
-		this.id = id;
-	}
 
 
 	public EntityTag getEntityTag() {
@@ -87,4 +75,5 @@ public class Phone {
 	public void setNumber(String number) {
 		this.number = number;
 	}
+
 }
