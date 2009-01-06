@@ -1,7 +1,9 @@
 package dacus.model.pub;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class ListOfSubscribers extends ArrayList<SubscriberMetadata> {
+import dacus.model.contactprofile.proj.party.PartyId;
 
+
+public interface ListOfSubscribers<T extends PartyId> extends List<SubscriberMetadata<T>> {
 }
