@@ -1,11 +1,10 @@
-package dacus.storage.party.im;
+package dacus.storage.party;
 
 import java.util.UUID;
 
-public class ImAccount extends dacus.domain.party.im.ImAccount {
+public abstract class Address extends dacus.domain.party.Address {
 
 	private UUID id;
-
 
 	public UUID getId() {
 		return id;
@@ -34,7 +33,7 @@ public class ImAccount extends dacus.domain.party.im.ImAccount {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ImAccount other = (ImAccount) obj;
+		Address other = (Address) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

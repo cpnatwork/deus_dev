@@ -1,10 +1,11 @@
-package dacus.storage.party.address;
+package dacus.storage.party;
 
 import java.util.UUID;
 
-public abstract class Address extends dacus.domain.party.address.Address {
+public class Phone extends dacus.domain.party.Phone {
 
 	private UUID id;
+
 
 	public UUID getId() {
 		return id;
@@ -33,7 +34,7 @@ public abstract class Address extends dacus.domain.party.address.Address {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Address other = (Address) obj;
+		Phone other = (Phone) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

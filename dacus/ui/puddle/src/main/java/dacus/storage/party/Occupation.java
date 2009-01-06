@@ -1,11 +1,10 @@
-package dacus.storage.party.phone;
+package dacus.storage.party;
 
 import java.util.UUID;
 
-public class Phone extends dacus.domain.party.phone.Phone {
+public class Occupation extends dacus.domain.party.Occupation {
 
 	private UUID id;
-
 
 	public UUID getId() {
 		return id;
@@ -34,7 +33,7 @@ public class Phone extends dacus.domain.party.phone.Phone {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Phone other = (Phone) obj;
+		Occupation other = (Occupation) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

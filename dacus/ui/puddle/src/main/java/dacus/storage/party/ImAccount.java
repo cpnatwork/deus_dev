@@ -1,10 +1,11 @@
-package dacus.storage.party.person.related;
+package dacus.storage.party;
 
 import java.util.UUID;
 
-public class RelatedPerson extends dacus.domain.party.person.related.RelatedPerson {
+public class ImAccount extends dacus.domain.party.ImAccount {
 
 	private UUID id;
+
 
 	public UUID getId() {
 		return id;
@@ -33,7 +34,7 @@ public class RelatedPerson extends dacus.domain.party.person.related.RelatedPers
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		RelatedPerson other = (RelatedPerson) obj;
+		ImAccount other = (ImAccount) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

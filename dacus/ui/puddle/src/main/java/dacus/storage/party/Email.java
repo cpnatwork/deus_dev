@@ -1,8 +1,8 @@
-package dacus.storage.party.email;
+package dacus.storage.party;
 
 import java.util.UUID;
 
-public class Email extends dacus.domain.party.email.Email {
+public class Email extends dacus.domain.party.Email {
 
 	private UUID id;
 

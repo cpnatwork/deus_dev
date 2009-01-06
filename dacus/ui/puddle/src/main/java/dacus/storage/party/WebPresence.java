@@ -1,8 +1,8 @@
-package dacus.storage.party.web;
+package dacus.storage.party;
 
 import java.util.UUID;
 
-public class WebPresence extends dacus.domain.party.web.WebPresence {
+public class WebPresence extends dacus.domain.party.WebPresence {
 
 	private UUID id;
 

@@ -1,8 +1,8 @@
-package dacus.storage.party.person.occupation;
+package dacus.storage.party;
 
 import java.util.UUID;
 
-public class Occupation extends dacus.domain.party.person.occupation.Occupation {
+public class RelatedPerson extends dacus.domain.party.RelatedPerson {
 
 	private UUID id;
 
@@ -33,7 +33,7 @@ public class Occupation extends dacus.domain.party.person.occupation.Occupation 
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Occupation other = (Occupation) obj;
+		RelatedPerson other = (RelatedPerson) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

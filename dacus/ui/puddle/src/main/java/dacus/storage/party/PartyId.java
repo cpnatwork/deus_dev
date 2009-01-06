@@ -1,4 +1,4 @@
-package dacus.storage.party.id;
+package dacus.storage.party;
 
 public interface PartyId {
 	
