@@ -1,5 +1,7 @@
 package dacus.model.attention;
 
-public interface AttentionList {
+import java.util.List;
+
+public interface AttentionList extends List<AttentionElement> {
 
 }
