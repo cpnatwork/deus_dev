@@ -1,10 +1,10 @@
 <!-- Begin of head/meta information -->
 <meta name="author" content="DACUS team" />
-<link rel="home" title="DACUS" href="/" />
-<!-- <link rel=index title="Site&nbsp;index" href="/siteindex"> -->
+<link rel="home" title="DACUS" href="/dacus/" />
+<!-- <link rel=index title="Site&nbsp;index" href="/dacus/siteindex"> -->
 <!-- <link rel=search title="Search" href="http://www.google.de"> -->
-<!-- <link rel=copyright title="Copyright" href="/copyright"> -->
-<link rel="stylesheet" type="textcss" href="_css/default.css"
+<!-- <link rel=copyright title="Copyright" href="/dacus/copyright"> -->
+<link rel="stylesheet" type="text/css" href="/dacus/_css/default.css"
 	media="all" />
-<link rel="shortcut icon" href="favicon.ico" />
+<link rel="shortcut icon" href="/dacus/favicon.ico" />
 <!-- End of head/meta information -->

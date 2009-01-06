@@ -27,8 +27,10 @@ body {
 <%@ include file="/WEB-INF/jspf/_frame/header.jspf"%>
 <%@ include file="/WEB-INF/jspf/_frame/menuBar.jspf"%>
 
+<div id="content">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:out value="Hello JSTL! ... Hello Christoph!"/>
+</div>
 
 <%@ include file="/WEB-INF/jspf/_frame/footnote.jspf"%>
 <%@ include file="/WEB-INF/jspf/_frame/footer.jspf"%>

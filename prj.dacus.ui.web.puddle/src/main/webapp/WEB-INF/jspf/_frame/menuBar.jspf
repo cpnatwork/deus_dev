@@ -5,13 +5,13 @@
 <div id="globalLinks" class="navbar">
 <h1>Navigation</h1>
 <ul>
-	<li><a class="noborder" href="/prj.dacus.ui.web.puddle/">Home</a></li>
+	<li><a class="noborder" href="<%= application.getContextPath() %>/">Home</a></li>
 </ul>
 <h2 class="domaining">SubDirectories</h2>
 <ul>
-	<li><a class="noborder" href="/prj.dacus.ui.web.puddle/dab/viewdab.jsp">&rArr;
+	<li><a class="noborder" href="<%= application.getContextPath() %>/dab/viewdab.jsp">&rArr;
 	Address Book</a></li>
-	<li><a href="/prj.dacus.ui.web.puddle/cp">&rArr; Concerned Person</a></li>
+	<li><a href="<%= application.getContextPath() %>/cp">&rArr; Concerned Person</a></li>
 </ul>
 </div>
 <!-- End of navigation bar-->
