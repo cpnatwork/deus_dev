@@ -28,18 +28,21 @@ body {
 <%@ include file="/WEB-INF/jspf/_frame/menuBar.jspf"%>
 
 <div id="content">
-<ol>
-<li>\${request.contextPath}&nbsp;${request.contextPath}</li>
-<li>\${pageContext.request.contextPath}&nbsp;${pageContext.request.contextPath} [OK]</li>
-<li>\${application.contextPath}&nbsp;${application.contextPath}</li>
-<li>\${application.getContextPath}&nbsp;${application.getContextPath}</li>
-<li>\${request.contextPath}&nbsp;<a href="${request.contextPath}">link</a></li>
-<li>\${pageContext.request.contextPath}&nbsp;<a href="${pageContext.request.contextPath}">link</a> [OK]</li>
-<li>\${application.contextPath}&nbsp;<a href="${application.contextPath}">link</a></li>
-<li>\${application.getContextPath}&nbsp;<a href="${application.getContextPath}">link</a></li>
-<li>= request.getContextPath()&nbsp;<%= request.getContextPath() %> [OK]</li>
-<li>= request.getContextPath()&nbsp;<%= application.getContextPath() %> [OK]</li>
-</ol>
+<table>
+<tr><td>EL - tag text</td><td></td></tr>
+<tr><td>\${application.contextPath}</td><td>${application.contextPath}</td><td>NOK</td></tr>
+<tr><td>\${application.getContextPath}</td><td>${application.getContextPath}</td><td>NOK</td></tr>
+<tr><td>\${request.contextPath}</td><td>${request.contextPath}</td><td>NOK</td></tr>
+<tr><td>\${pageContext.request.contextPath}</td><td>${pageContext.request.contextPath}</td><td>OK</td></tr>
+<tr><td>EL - attribute text</td><td></td></tr>
+<tr><td>\${application.contextPath}</td><td><a href="${application.contextPath}">link</a></td><td>OK+/subpath+page</td></tr>
+<tr><td>\${application.getContextPath}</td><td><a href="${application.getContextPath}">link</a></td><td>OK+/subpath+page</td></tr>
+<tr><td>\${request.contextPath}</td><td><a href="${request.contextPath}">link</a></td><td>OK+/subpath+page</td></tr>
+<tr><td>\${pageContext.request.contextPath}</td><td><a href="${pageContext.request.contextPath}">link</a></td><td>OK, but non-relevant Exception Error in Eclipse</td></tr>
+<tr><td>Old School</td><td></td></tr>
+<tr><td>= application.getContextPath()</td><td><%= application.getContextPath() %></td><td>OK</td></tr>
+<tr><td>= request.getContextPath()</td><td><%= request.getContextPath() %></td><td>OK</td></tr>
+</table>
 </div>
 
 <%@ include file="/WEB-INF/jspf/_frame/footnote.jspf"%>
