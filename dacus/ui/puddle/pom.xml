@@ -4,11 +4,11 @@
 
 	<parent>
 		<groupId>inf6.promed</groupId>
-		<artifactId>deus-ui</artifactId>
+		<artifactId>dacus-ui</artifactId>
 		<version>0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>deus-ui-puddle</artifactId>
+	<artifactId>dacus-ui-puddle</artifactId>
 	<packaging>bundle</packaging>
 	<name>DEUS ui puddle</name>
 
@@ -53,7 +53,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Export-Package>inf6.promed.deus</Export-Package>
+						<Export-Package>inf6.promed.dacus</Export-Package>
 						<!-- 
 						- org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor
 							requires PersistantAnnotationBeanPostProcessor which is in the given package.

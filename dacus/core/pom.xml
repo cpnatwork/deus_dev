@@ -4,11 +4,11 @@
 
 	<parent>
 		<groupId>inf6.promed</groupId>
-		<artifactId>deus</artifactId>
+		<artifactId>dacus</artifactId>
 		<version>0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>deus-core</artifactId>
+	<artifactId>dacus-core</artifactId>
 	<packaging>pom</packaging>
 	<name>DEUS core</name>
 	

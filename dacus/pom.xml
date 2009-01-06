@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>inf6.promed</groupId>
-	<artifactId>deus</artifactId>
+	<artifactId>dacus</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>DEUS all</name>
