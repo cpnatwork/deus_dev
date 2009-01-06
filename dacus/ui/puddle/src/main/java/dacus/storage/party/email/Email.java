@@ -1,44 +1,45 @@
 package dacus.storage.party.email;
 
-import dacus.storage.common.WeakEntity;
-import dacus.storage.party.common.EntityTag;
+import java.util.UUID;
 
-public class Email extends WeakEntity {
+public class Email extends dacus.domain.party.email.Email {
 
-	private EntityTag entityTag;
+	private UUID id;
 
-	private String address;
-
-	private boolean sendHTML;
-
-
-	public EntityTag getEntityTag() {
-		return entityTag;
+	public UUID getId() {
+		return id;
 	}
 
 
-	public void setEntityTag(EntityTag entityTag) {
-		this.entityTag = entityTag;
+	public void setId(UUID id) {
+		this.id = id;
 	}
 
 
-	public String getAddress() {
-		return address;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-
-	public boolean isSendHTML() {
-		return sendHTML;
-	}
-
-
-	public void setSendHTML(boolean sendHTML) {
-		this.sendHTML = sendHTML;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Email other = (Email) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 }

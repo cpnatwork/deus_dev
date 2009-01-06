@@ -1,79 +1,46 @@
 package dacus.storage.party.phone;
 
-import dacus.storage.common.WeakEntity;
-import dacus.storage.party.common.EntityTag;
+import java.util.UUID;
 
-public class Phone extends WeakEntity {
+public class Phone extends dacus.domain.party.phone.Phone {
 
-	private EntityTag entityTag;
-
-	// capabilities
-	private boolean voice;
-	private boolean text;
-	private boolean video;
-
-	private PhoneType type;
-
-	private String number;
+	private UUID id;
 
 
-	public EntityTag getEntityTag() {
-		return entityTag;
+	public UUID getId() {
+		return id;
 	}
 
 
-	public void setEntityTag(EntityTag entityTag) {
-		this.entityTag = entityTag;
+	public void setId(UUID id) {
+		this.id = id;
 	}
 
 
-	public boolean isVoice() {
-		return voice;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
 
-	public void setVoice(boolean voice) {
-		this.voice = voice;
-	}
-
-
-	public boolean isText() {
-		return text;
-	}
-
-
-	public void setText(boolean text) {
-		this.text = text;
-	}
-
-
-	public boolean isVideo() {
-		return video;
-	}
-
-
-	public void setVideo(boolean video) {
-		this.video = video;
-	}
-
-
-	public PhoneType getType() {
-		return type;
-	}
-
-
-	public void setType(PhoneType type) {
-		this.type = type;
-	}
-
-
-	public String getNumber() {
-		return number;
-	}
-
-
-	public void setNumber(String number) {
-		this.number = number;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Phone other = (Phone) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 }

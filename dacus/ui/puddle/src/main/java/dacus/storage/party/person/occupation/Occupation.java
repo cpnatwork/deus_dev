@@ -1,79 +1,45 @@
 package dacus.storage.party.person.occupation;
 
-import java.awt.Image;
+import java.util.UUID;
 
-import dacus.storage.common.WeakEntity;
+public class Occupation extends dacus.domain.party.person.occupation.Occupation {
 
-public class Occupation extends WeakEntity {
+	private UUID id;
 
-	private String institution;
-	private String department;
-
-	private String title;
-	private String role;
-
-	private String office;
-
-	private Image logo;
-
-
-	public String getInstitution() {
-		return institution;
+	public UUID getId() {
+		return id;
 	}
 
 
-	public void setInstitution(String institution) {
-		this.institution = institution;
+	public void setId(UUID id) {
+		this.id = id;
 	}
 
 
-	public String getDepartment() {
-		return department;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
 
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-
-
-	public String getTitle() {
-		return title;
-	}
-
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-
-	public String getRole() {
-		return role;
-	}
-
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-
-	public String getOffice() {
-		return office;
-	}
-
-
-	public void setOffice(String office) {
-		this.office = office;
-	}
-
-
-	public Image getLogo() {
-		return logo;
-	}
-
-
-	public void setLogo(Image logo) {
-		this.logo = logo;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Occupation other = (Occupation) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 }
