@@ -1,4 +1,4 @@
-package dacus.storage.common;
+package dacus.domain.party.common;
 
 import java.util.Date;
 

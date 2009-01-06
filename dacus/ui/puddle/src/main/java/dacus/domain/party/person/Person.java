@@ -5,16 +5,16 @@ import java.util.List;
 
 import javax.sound.sampled.Clip;
 
-import dacus.storage.common.DatePlace;
-import dacus.storage.party.Party;
-import dacus.storage.party.address.Address;
-import dacus.storage.party.email.Email;
-import dacus.storage.party.im.ImAccount;
-import dacus.storage.party.language.Language;
-import dacus.storage.party.person.occupation.Occupation;
-import dacus.storage.party.person.related.RelatedPerson;
-import dacus.storage.party.phone.Phone;
-import dacus.storage.party.web.WebPresence;
+import dacus.domain.party.common.DatePlace;
+import dacus.domain.party.Party;
+import dacus.domain.party.address.Address;
+import dacus.domain.party.email.Email;
+import dacus.domain.party.im.ImAccount;
+import dacus.domain.party.language.Language;
+import dacus.domain.party.person.occupation.Occupation;
+import dacus.domain.party.person.related.RelatedPerson;
+import dacus.domain.party.phone.Phone;
+import dacus.domain.party.web.WebPresence;
 
 public class Person extends Party {
 

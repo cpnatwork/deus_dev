@@ -2,7 +2,7 @@ package dacus.domain.party.address;
 
 import java.util.Locale;
 
-import dacus.storage.party.common.EntityTag;
+import dacus.domain.party.common.EntityTag;
 
 public abstract class Address {
 

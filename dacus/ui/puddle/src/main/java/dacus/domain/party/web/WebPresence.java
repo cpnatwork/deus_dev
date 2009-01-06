@@ -2,7 +2,7 @@ package dacus.domain.party.web;
 
 import java.net.URL;
 
-import dacus.storage.party.common.EntityTag;
+import dacus.domain.party.common.EntityTag;
 
 public class WebPresence {
 

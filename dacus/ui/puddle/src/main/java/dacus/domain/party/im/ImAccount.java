@@ -1,6 +1,6 @@
 package dacus.domain.party.im;
 
-import dacus.storage.party.common.EntityTag;
+import dacus.domain.party.common.EntityTag;
 
 public class ImAccount {
 
