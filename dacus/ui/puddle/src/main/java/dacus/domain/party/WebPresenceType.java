@@ -1,4 +1,4 @@
-package dacus.domain.party.web;
+package dacus.domain.party;
 
 public enum WebPresenceType {
 

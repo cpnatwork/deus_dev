@@ -1,4 +1,4 @@
-package dacus.domain.party.person;
+package dacus.domain.party;
 
 public enum Gender {
 	

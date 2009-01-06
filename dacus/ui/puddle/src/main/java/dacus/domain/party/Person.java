@@ -1,4 +1,4 @@
-package dacus.domain.party.person;
+package dacus.domain.party;
 
 import java.awt.Image;
 import java.util.List;
@@ -6,15 +6,6 @@ import java.util.List;
 import javax.sound.sampled.Clip;
 
 import dacus.domain.party.common.DatePlace;
-import dacus.domain.party.Party;
-import dacus.domain.party.address.Address;
-import dacus.domain.party.email.Email;
-import dacus.domain.party.im.ImAccount;
-import dacus.domain.party.language.Language;
-import dacus.domain.party.person.occupation.Occupation;
-import dacus.domain.party.person.related.RelatedPerson;
-import dacus.domain.party.phone.Phone;
-import dacus.domain.party.web.WebPresence;
 
 public class Person extends Party {
 

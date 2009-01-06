@@ -1,4 +1,4 @@
-package dacus.domain.party.phone;
+package dacus.domain.party;
 
 import dacus.domain.party.common.EntityTag;
 

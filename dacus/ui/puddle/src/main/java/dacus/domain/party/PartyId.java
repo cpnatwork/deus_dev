@@ -1,4 +1,4 @@
-package dacus.domain.party.id;
+package dacus.domain.party;
 
 public interface PartyId {
 	

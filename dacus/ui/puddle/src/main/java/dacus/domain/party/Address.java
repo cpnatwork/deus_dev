@@ -1,4 +1,4 @@
-package dacus.domain.party.address;
+package dacus.domain.party;
 
 import java.util.Locale;
 

@@ -1,19 +1,17 @@
-package dacus.domain.party.id;
+package dacus.domain.party;
 
-import java.net.URL;
+public class XmppPartyId implements PartyId {
 
-public class OpenIdPartyId implements PartyId {
-
-	private URL server;
+	private String server;
 	private String username;
 
 
-	public URL getServer() {
+	public String getServer() {
 		return server;
 	}
 
 
-	public void setServer(URL server) {
+	public void setServer(String server) {
 		this.server = server;
 	}
 
@@ -47,7 +45,7 @@ public class OpenIdPartyId implements PartyId {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		OpenIdPartyId other = (OpenIdPartyId) obj;
+		XmppPartyId other = (XmppPartyId) obj;
 		if (server == null) {
 			if (other.server != null)
 				return false;
@@ -60,5 +58,6 @@ public class OpenIdPartyId implements PartyId {
 			return false;
 		return true;
 	}
-	
+
+
 }

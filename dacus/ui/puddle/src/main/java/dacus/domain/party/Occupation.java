@@ -1,4 +1,4 @@
-package dacus.domain.party.person.occupation;
+package dacus.domain.party;
 
 import java.awt.Image;
 

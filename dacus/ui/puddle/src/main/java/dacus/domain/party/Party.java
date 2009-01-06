@@ -1,6 +1,5 @@
 package dacus.domain.party;
 
-import dacus.domain.party.id.PartyId;
 
 public abstract class Party {
 

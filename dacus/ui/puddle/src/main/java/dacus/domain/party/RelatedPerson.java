@@ -1,4 +1,4 @@
-package dacus.domain.party.person.related;
+package dacus.domain.party;
 
 import java.net.URL;
 

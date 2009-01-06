@@ -1,4 +1,4 @@
-package dacus.domain.party.im;
+package dacus.domain.party;
 
 public enum ImAccountType {
 

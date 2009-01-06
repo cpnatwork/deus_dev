@@ -1,4 +1,4 @@
-package dacus.domain.party.email;
+package dacus.domain.party;
 
 import dacus.domain.party.common.EntityTag;
 

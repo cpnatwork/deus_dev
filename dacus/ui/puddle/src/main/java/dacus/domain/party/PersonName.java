@@ -1,4 +1,4 @@
-package dacus.domain.party.person;
+package dacus.domain.party;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package dacus.domain.party.language;
+package dacus.domain.party;
 
 public class Language {
 
