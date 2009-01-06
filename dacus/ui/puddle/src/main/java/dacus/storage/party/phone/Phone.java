@@ -19,11 +19,6 @@ public class Phone {
 	private String number;
 
 
-	public Phone() {
-		id = UUID.randomUUID();
-	}
-
-
 	public UUID getId() {
 		return id;
 	}

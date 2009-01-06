@@ -17,10 +17,6 @@ public class Occupation {
 
 	private Image logo;
 	
-	public Occupation() {
-		id = UUID.randomUUID();
-	}
-
 
 	public UUID getId() {
 		return id;

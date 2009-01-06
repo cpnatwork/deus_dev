@@ -14,11 +14,6 @@ public class WebPresence {
 	private URL url;
 
 
-	public WebPresence() {
-		id = UUID.randomUUID();
-	}
-
-
 	public UUID getId() {
 		return id;
 	}

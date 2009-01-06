@@ -18,12 +18,7 @@ public abstract class Address {
 
 	private String extension;
 
-
-	public Address() {
-		id = UUID.randomUUID();
-	}
-
-
+	
 	public UUID getId() {
 		return id;
 	}

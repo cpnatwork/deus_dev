@@ -12,10 +12,6 @@ public class RelatedPerson {
 
 	private RelatedPersonType type;
 
-	public RelatedPerson() {
-		id = UUID.randomUUID();
-	}
-	
 	
 	public UUID getId() {
 		return id;

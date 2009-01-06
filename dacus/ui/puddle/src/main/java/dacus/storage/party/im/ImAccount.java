@@ -12,9 +12,6 @@ public class ImAccount {
 	private ImAccountType type;
 	private String account;
 
-	public ImAccount() {
-		id = UUID.randomUUID();
-	}
 
 	public UUID getId() {
 		return id;
