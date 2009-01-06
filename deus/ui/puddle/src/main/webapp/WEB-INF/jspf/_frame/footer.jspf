@@ -3,12 +3,12 @@
 <div id="footer">
 <div style="float: left;"><a
 	href="http://www.gnu.org/copyleft/fdl.html"> <img id="fdl"
-	src="/dacus/_img/gnu-fdl.png" alt="GNU FDL Logo" width="88" height="31" />
+	src="<%= application.getContextPath() %>/_img/gnu-fdl.png" alt="GNU FDL Logo" width="88" height="31" />
 </a></div>
 <div style="float: right;"><!-- http://validator.w3.org/check? uri=http%3A%2F%2Fwww.8ung.at%2Fchr15t0ph%2FpublicationList.html -->
-<img alt="XHTML Logo" src="/dacus/_img/valid-xhtml-1.0.gif" height="15"
+<img alt="XHTML Logo" src="<%= application.getContextPath() %>/_img/valid-xhtml-1.0.gif" height="15"
 	width="80" /> <br />
-<img alt="CSS Logo" src="/dacus/_img/valid-css.gif" height="15" width="80" />
+<img alt="CSS Logo" src="<%= application.getContextPath() %>/_img/valid-css.gif" height="15" width="80" />
 </div>
 <div>Copyright &copy;2009 <br/>
 <script type="text/javascript">
