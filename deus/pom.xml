@@ -209,8 +209,19 @@
 					<execution>
 						<phase>pre-integration-test</phase>
 						<configuration>
+		
 							<tasks>
-								<copy file="${project.build.directory}/${project.build.finalName}.jar" todir="${springdmserver.location}/pickup"/>
+								<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>#
+								<!-- copy the artifact only, if it is of 'bundle' packaging -->
+								<if>
+									<equals arg1="${project.packaging}" arg2="bundle" />
+									<then>
+										<copy file="${project.build.directory}/${project.build.finalName}.jar" todir="${springdmserver.location}/pickup"/>
+									</then>
+									<else>
+										<echo message="this Maven project is not deployed to app server, since it is not of packaging 'bundle' but '${project.packaging}'"/>
+									</else>
+								</if>
 							</tasks>
 						</configuration>
 						<goals>
@@ -218,6 +229,13 @@
 						</goals>
 					</execution>
 				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>ant-contrib</groupId>
+						<artifactId>ant-contrib</artifactId>
+						<version>20020829</version>
+					</dependency>
+				</dependencies>				
 			</plugin>
 			
 		</plugins>
