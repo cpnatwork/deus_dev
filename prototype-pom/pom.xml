@@ -3,15 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>inf6.promed</groupId>
-	<artifactId>deus</artifactId>
+	<artifactId>prototype-pom</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>DEUS all</name>
-			
-	<modules>
-		<module>core</module>
-	</modules>
+	<name>DEUS/DACUS prototype pom</name>
 	
+
 	<properties>
 		<spring.version>2.5.6</spring.version>
 	</properties>
