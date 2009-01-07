@@ -5,8 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-import dacus.model.contactprofile.tech.party.Party;
 import dacus.model.sub.DistributedAddressBook;
+import deus.model.contactprofile.proj.party.Party;
 
 // FIXME: implement proxy as gateway to DAB
 public class DistributedAddressBookProxy implements DistributedAddressBook {

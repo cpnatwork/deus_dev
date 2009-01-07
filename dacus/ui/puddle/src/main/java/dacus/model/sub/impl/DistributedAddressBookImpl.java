@@ -2,8 +2,8 @@ package dacus.model.sub.impl;
 
 import java.util.ArrayList;
 
-import dacus.model.contactprofile.tech.party.Party;
 import dacus.model.sub.DistributedAddressBook;
+import deus.model.contactprofile.proj.party.Party;
 
 public class DistributedAddressBookImpl extends ArrayList<Party> implements DistributedAddressBook {
 
