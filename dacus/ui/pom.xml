@@ -10,7 +10,7 @@
 
 	<artifactId>dacus-ui</artifactId>
 	<packaging>pom</packaging>
-	<name>DEUS ui</name>
+	<name>DACUS ui</name>
 	
 	<modules>
 		<module>puddle</module>

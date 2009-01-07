@@ -10,7 +10,7 @@
 
 	<artifactId>dacus-core</artifactId>
 	<packaging>pom</packaging>
-	<name>DEUS core</name>
+	<name>DACUS core</name>
 	
 	<modules>
 		<module>puddle</module>
