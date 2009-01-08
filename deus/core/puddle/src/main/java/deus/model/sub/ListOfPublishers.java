@@ -2,8 +2,8 @@ package deus.model.sub;
 
 import java.util.List;
 
-import deus.model.contactprofile.proj.party.PartyId;
+import deus.model.dossier.proj.party.PartyId;
 
-public interface ListOfPublishers<T extends PartyId> extends List<PublisherMetadata<T>> {
+public interface ListOfPublishers<Id extends PartyId> extends List<PublisherMetadata<Id>> {
 
 }

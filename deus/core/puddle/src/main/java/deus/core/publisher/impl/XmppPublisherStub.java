@@ -1,26 +1,26 @@
 package deus.core.publisher.impl;
 
-import deus.model.contactprofile.proj.party.PartyId;
+import deus.model.dossier.proj.party.PartyId;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 
-public class XmppPublisherStub<T extends PartyId> extends AbstractPublisherStub<T> {
+public class XmppPublisherStub<Id extends PartyId> extends AbstractPublisherStub<Id> {
 
-	public XmppPublisherStub(PublisherMetadata<T> publisherMetadata) {
+	public XmppPublisherStub(PublisherMetadata<Id> publisherMetadata) {
 		super(publisherMetadata);
 		// TODO Auto-generated constructor stub
 	}
 
 
 	@Override
-	public void addObserver(SubscriberMetadata<T> subscriber) {
+	public void addObserver(SubscriberMetadata<Id> subscriber) {
 		// TODO Auto-generated method stub
 
 	}
 
 
 	@Override
-	public void deleteObserver(SubscriberMetadata<T> o) {
+	public void deleteObserver(SubscriberMetadata<Id> o) {
 		// TODO Auto-generated method stub
 		
 	}

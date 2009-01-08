@@ -1,10 +1,10 @@
 package deus.core.publisher;
 
-import deus.model.contactprofile.proj.party.PartyId;
+import deus.model.dossier.proj.party.PartyId;
 import deus.model.sub.PublisherMetadata;
 
 
-public interface Publisher<T extends PartyId> extends PublisherStub<T> {
+public interface Publisher<Id extends PartyId> extends PublisherStub<Id> {
 
 	/**
 	 * If this object has changed, as indicated by the
@@ -56,6 +56,6 @@ public interface Publisher<T extends PartyId> extends PublisherStub<T> {
 	public abstract int countObservers();
 
 
-	public abstract PublisherMetadata<T> getPublisherMetadata();
+	public abstract PublisherMetadata<Id> getPublisherMetadata();
 
 }

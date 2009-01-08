@@ -1,11 +1,11 @@
 package deus.core.publisher;
 
-import deus.model.contactprofile.proj.party.PartyId;
+import deus.model.dossier.proj.party.PartyId;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 
 
-public interface PublisherStub<T extends PartyId> {
+public interface PublisherStub<Id extends PartyId> {
 
 
 	/**
@@ -17,7 +17,7 @@ public interface PublisherStub<T extends PartyId> {
 	 * @param   o   an observer to be added.
 	 * @throws NullPointerException   if the parameter o is null.
 	 */
-	public abstract void addObserver(SubscriberMetadata<T> o);
+	public abstract void addObserver(SubscriberMetadata<Id> o);
 
 
 	/**
@@ -25,9 +25,9 @@ public interface PublisherStub<T extends PartyId> {
 	 * Passing <CODE>null</CODE> to this method will have no effect.
 	 * @param   o   the observer to be deleted.
 	 */
-	public abstract void deleteObserver(SubscriberMetadata<T> o);
+	public abstract void deleteObserver(SubscriberMetadata<Id> o);
 	
 	
-	public PublisherMetadata<T> getPublisherMetadata();
+	public PublisherMetadata<Id> getPublisherMetadata();
 
 }

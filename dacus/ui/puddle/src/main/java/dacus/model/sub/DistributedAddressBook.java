@@ -1,9 +1,10 @@
 package dacus.model.sub;
 
-import java.util.List;
+import deus.model.dossier.proj.party.Party;
+import deus.model.dossier.proj.party.PartyId;
+import deus.model.sub.DistributedInformationFolder;
 
-import deus.model.contactprofile.proj.party.Party;
 
-public interface DistributedAddressBook extends List<Party> {
+public class DistributedAddressBook<Id extends PartyId> extends DistributedInformationFolder<Id, Party> {
 
 }

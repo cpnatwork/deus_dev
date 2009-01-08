@@ -1,23 +1,23 @@
 package deus.core.publisher.impl;
 
 import deus.core.publisher.PublisherStub;
-import deus.model.contactprofile.proj.party.PartyId;
+import deus.model.dossier.proj.party.PartyId;
 import deus.model.sub.PublisherMetadata;
 
 
-public abstract class AbstractPublisherStub<T extends PartyId> implements
-		PublisherStub<T> {
+public abstract class AbstractPublisherStub<Id extends PartyId> implements
+		PublisherStub<Id> {
 
-	private PublisherMetadata<T> publisherMetadata;
+	private PublisherMetadata<Id> publisherMetadata;
 
 
-	public AbstractPublisherStub(PublisherMetadata<T> publisherMetadata) {
+	public AbstractPublisherStub(PublisherMetadata<Id> publisherMetadata) {
 		this.publisherMetadata = publisherMetadata;
 	}
 
 
 	@Override
-	public PublisherMetadata<T> getPublisherMetadata() {
+	public PublisherMetadata<Id> getPublisherMetadata() {
 		return publisherMetadata;
 	}
 

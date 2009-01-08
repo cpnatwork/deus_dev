@@ -1,20 +1,20 @@
 package deus.model.attention;
 
-import deus.model.contactprofile.proj.party.PartyId;
+import deus.model.dossier.proj.party.PartyId;
 import deus.model.sub.PublisherMetadata;
 
-public class PublisherOffer<T extends PartyId> extends DecisionToMake {
+public class PublisherOffer<Id extends PartyId> extends DecisionToMake {
 
-	private final PublisherMetadata<T> publisher;
+	private final PublisherMetadata<Id> publisher;
 	private boolean confirmed;
 
 
-	public PublisherOffer(PublisherMetadata<T> publisher) {
+	public PublisherOffer(PublisherMetadata<Id> publisher) {
 		this.publisher = publisher;
 	}
 
 
-	public PublisherMetadata<T> getPublisher() {
+	public PublisherMetadata<Id> getPublisher() {
 		return publisher;
 	}
 

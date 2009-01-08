@@ -2,9 +2,9 @@ package deus.model.pub;
 
 import java.util.List;
 
-import deus.model.contactprofile.proj.party.PartyId;
+import deus.model.dossier.proj.party.PartyId;
 
 
-public interface ListOfSubscribers<T extends PartyId> extends List<SubscriberMetadata<T>> {
+public interface ListOfSubscribers<Id extends PartyId> extends List<SubscriberMetadata<Id>> {
 	
 }

@@ -1,18 +1,18 @@
 package deus.model.attention;
 
-import deus.model.contactprofile.proj.party.PartyId;
+import deus.model.dossier.proj.party.PartyId;
 import deus.model.pub.SubscriberMetadata;
 
-public class SubscriberRequest<T extends PartyId> extends DecisionToMake {
+public class SubscriberRequest<Id extends PartyId> extends DecisionToMake {
 
-	private final SubscriberMetadata<T> subscriber;
+	private final SubscriberMetadata<Id> subscriber;
 	private boolean accepted;
 	
-	public SubscriberRequest(SubscriberMetadata<T> subscriber) {
+	public SubscriberRequest(SubscriberMetadata<Id> subscriber) {
 		this.subscriber = subscriber;
 	}
 
-	public SubscriberMetadata<T> getSubscriber() {
+	public SubscriberMetadata<Id> getSubscriber() {
 		return subscriber;
 	}
 

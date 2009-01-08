@@ -1,9 +1,9 @@
 package deus.model.sub;
 
-import deus.model.contactprofile.proj.party.PartyId;
+import deus.model.dossier.proj.party.PartyId;
 import deus.model.user.UserMetadata;
 
-public class PublisherMetadata<T extends PartyId> extends UserMetadata<T> {
+public class PublisherMetadata<Id extends PartyId> extends UserMetadata<Id> {
 
 
 }

@@ -1,19 +1,19 @@
 package deus.model.user;
 
-import deus.model.contactprofile.proj.party.PartyId;
+import deus.model.dossier.proj.party.PartyId;
 
-public class UserMetadata<T extends PartyId> {
+public class UserMetadata<Id extends PartyId> {
 
-	private T userId;
+	private Id userId;
 	private String userFullName;
 
 
-	public T getUserId() {
+	public Id getUserId() {
 		return userId;
 	}
 
 
-	public void setUserId(T userId) {
+	public void setUserId(Id userId) {
 		this.userId = userId;
 	}
 

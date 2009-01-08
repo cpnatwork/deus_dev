@@ -3,27 +3,27 @@ package deus.core.publisher.impl;
 import deus.core.publisher.Publisher;
 import deus.core.subscriber.SubscriberStub;
 import deus.core.subscriber.SubscriberStubFactory;
-import deus.model.contactprofile.proj.party.PartyId;
+import deus.model.dossier.proj.party.PartyId;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.pub.impl.ThreadSafeListOfSubscribers;
 import deus.model.sub.PublisherMetadata;
 
-public class PublisherImpl<T extends PartyId> implements Publisher<T> {
+public class PublisherImpl<Id extends PartyId> implements Publisher<Id> {
 
-	private final PublisherMetadata<T> publisherMetadata;
-	private final ListOfSubscribers<T> observers;
+	private final PublisherMetadata<Id> publisherMetadata;
+	private final ListOfSubscribers<Id> observers;
 
 	private SubscriberStubFactory subscriberStubFactory;
 
-	public PublisherImpl(PublisherMetadata<T> publisherMetadata) {
+	public PublisherImpl(PublisherMetadata<Id> publisherMetadata) {
 		super();
 		this.publisherMetadata = publisherMetadata;
-		this.observers = new ThreadSafeListOfSubscribers<T>();
+		this.observers = new ThreadSafeListOfSubscribers<Id>();
 	}
 
 
-	public synchronized void addObserver(SubscriberMetadata<T> o) {
+	public synchronized void addObserver(SubscriberMetadata<Id> o) {
 		if (o == null)
 			throw new NullPointerException();
 		if (!observers.contains(o)) {
@@ -32,7 +32,7 @@ public class PublisherImpl<T extends PartyId> implements Publisher<T> {
 	}
 
 
-	public synchronized void deleteObserver(SubscriberMetadata<T> o) {
+	public synchronized void deleteObserver(SubscriberMetadata<Id> o) {
 		observers.remove(o);
 	}
 
@@ -65,10 +65,10 @@ public class PublisherImpl<T extends PartyId> implements Publisher<T> {
 		}
 
 		for (int i = arrLocal.length - 1; i >= 0; i--) {
-			SubscriberMetadata<T> subscriberMetadata = (SubscriberMetadata<T>) arrLocal[i];
-			SubscriberStub<T> subscriber = subscriberStubFactory.createSubscriberStub(subscriberMetadata, publisherMetadata);
+			SubscriberMetadata<Id> subscriberMetadata = (SubscriberMetadata<Id>) arrLocal[i];
+			SubscriberStub<Id> subscriber = subscriberStubFactory.createSubscriberStub(subscriberMetadata, publisherMetadata);
 			// TODO: remove this
-			//SubscriberStub<T> subscriber = new LocalSubscriberStub<T>(subscriberMetadata);
+			//SubscriberStub<Id> subscriber = new LocalSubscriberStub<Id>(subscriberMetadata);
 			subscriber.update(this, change);
 		}
 	}
@@ -85,7 +85,7 @@ public class PublisherImpl<T extends PartyId> implements Publisher<T> {
 
 
 	@Override
-	public PublisherMetadata<T> getPublisherMetadata() {
+	public PublisherMetadata<Id> getPublisherMetadata() {
 		return publisherMetadata;
 	}
 
