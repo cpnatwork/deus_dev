@@ -1,4 +1,4 @@
-package nsi.xmpp.subscriber.impl;
+package deus.nsi.xmpp.subscriber.impl;
 
 import deus.core.publisher.PublisherStub;
 import deus.core.subscriber.impl.AbstractSubscriberStub;

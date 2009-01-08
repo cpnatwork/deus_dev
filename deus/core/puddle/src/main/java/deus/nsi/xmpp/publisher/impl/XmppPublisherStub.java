@@ -1,4 +1,4 @@
-package nsi.xmpp.publisher.impl;
+package deus.nsi.xmpp.publisher.impl;
 
 import deus.core.publisher.impl.AbstractPublisherStub;
 import deus.model.pub.SubscriberMetadata;
