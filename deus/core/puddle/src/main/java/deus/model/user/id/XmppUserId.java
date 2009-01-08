@@ -1,7 +1,7 @@
 package deus.model.user.id;
 
 
-public class XmppPartyId implements UserId {
+public class XmppUserId implements UserId {
 
 	private String server;
 	private String username;
@@ -51,7 +51,7 @@ public class XmppPartyId implements UserId {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		XmppPartyId other = (XmppPartyId) obj;
+		XmppUserId other = (XmppUserId) obj;
 		if (server == null) {
 			if (other.server != null)
 				return false;

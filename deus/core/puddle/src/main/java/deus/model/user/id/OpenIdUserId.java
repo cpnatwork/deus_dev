@@ -3,7 +3,7 @@ package deus.model.user.id;
 import java.net.URL;
 
 
-public class OpenIdPartyId implements UserId {
+public class OpenIdUserId implements UserId {
 
 	private URL server;
 	private String username;
@@ -55,7 +55,7 @@ public class OpenIdPartyId implements UserId {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		OpenIdPartyId other = (OpenIdPartyId) obj;
+		OpenIdUserId other = (OpenIdUserId) obj;
 		if (server == null) {
 			if (other.server != null)
 				return false;
