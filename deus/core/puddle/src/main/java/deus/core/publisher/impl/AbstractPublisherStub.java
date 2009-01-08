@@ -1,11 +1,11 @@
 package deus.core.publisher.impl;
 
 import deus.core.publisher.PublisherStub;
-import deus.model.dossier.proj.party.PartyId;
 import deus.model.sub.PublisherMetadata;
+import deus.model.user.id.UserId;
 
 
-public abstract class AbstractPublisherStub<Id extends PartyId> implements
+public abstract class AbstractPublisherStub<Id extends UserId> implements
 		PublisherStub<Id> {
 
 	private PublisherMetadata<Id> publisherMetadata;

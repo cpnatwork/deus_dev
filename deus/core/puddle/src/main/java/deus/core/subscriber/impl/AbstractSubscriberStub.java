@@ -2,10 +2,10 @@ package deus.core.subscriber.impl;
 
 
 import deus.core.subscriber.SubscriberStub;
-import deus.model.dossier.proj.party.PartyId;
 import deus.model.pub.SubscriberMetadata;
+import deus.model.user.id.UserId;
 
-public abstract class AbstractSubscriberStub<Id extends PartyId> implements SubscriberStub<Id> {
+public abstract class AbstractSubscriberStub<Id extends UserId> implements SubscriberStub<Id> {
 
 	protected final SubscriberMetadata<Id> subscriberMetadata;
 

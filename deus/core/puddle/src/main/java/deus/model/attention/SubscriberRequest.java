@@ -1,9 +1,9 @@
 package deus.model.attention;
 
-import deus.model.dossier.proj.party.PartyId;
 import deus.model.pub.SubscriberMetadata;
+import deus.model.user.id.UserId;
 
-public class SubscriberRequest<Id extends PartyId> extends DecisionToMake {
+public class SubscriberRequest<Id extends UserId> extends DecisionToMake {
 
 	private final SubscriberMetadata<Id> subscriber;
 	private boolean accepted;

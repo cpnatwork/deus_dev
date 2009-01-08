@@ -1,17 +1,19 @@
 package deus.model.dossier.proj.party;
 
+import deus.model.user.id.UserId;
+
 
 public abstract class Party {
 
-	protected PartyId id;
+	protected UserId id;
 
 
-	public PartyId getId() {
+	public UserId getId() {
 		return id;
 	}
 
 
-	public void setId(PartyId id) {
+	public void setId(UserId id) {
 		this.id = id;
 	}
 

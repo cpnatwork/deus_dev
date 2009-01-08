@@ -1,9 +1,9 @@
 package deus.model.dossier;
 
-import deus.model.dossier.proj.party.PartyId;
 import deus.model.user.UserMetadata;
+import deus.model.user.id.UserId;
 
-abstract class InformationFile<Id extends PartyId> {
+abstract class InformationFile<Id extends UserId> {
 
 	private UserMetadata<Id> userMetadata;
 	

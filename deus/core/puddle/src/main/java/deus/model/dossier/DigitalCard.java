@@ -1,9 +1,9 @@
 package deus.model.dossier;
 
-import deus.model.dossier.proj.party.PartyId;
 import deus.model.user.UserMetadata;
+import deus.model.user.id.UserId;
 
-public abstract class DigitalCard<Id extends PartyId> {
+public abstract class DigitalCard<Id extends UserId> {
 
 	private UserMetadata<Id> lod;
 	private UserMetadata<Id> cp;

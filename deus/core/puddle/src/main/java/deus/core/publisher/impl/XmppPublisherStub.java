@@ -1,10 +1,10 @@
 package deus.core.publisher.impl;
 
-import deus.model.dossier.proj.party.PartyId;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
+import deus.model.user.id.UserId;
 
-public class XmppPublisherStub<Id extends PartyId> extends AbstractPublisherStub<Id> {
+public class XmppPublisherStub<Id extends UserId> extends AbstractPublisherStub<Id> {
 
 	public XmppPublisherStub(PublisherMetadata<Id> publisherMetadata) {
 		super(publisherMetadata);

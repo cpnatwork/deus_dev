@@ -1,8 +1,9 @@
 package deus.model.user;
 
-import deus.model.dossier.proj.party.PartyId;
+import deus.model.user.id.UserId;
 
-public class UserMetadata<Id extends PartyId> {
+
+public class UserMetadata<Id extends UserId> {
 
 	private Id userId;
 	private String userFullName;

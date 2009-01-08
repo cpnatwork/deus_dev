@@ -1,11 +1,11 @@
 package deus.core.publisher;
 
-import deus.model.dossier.proj.party.PartyId;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
+import deus.model.user.id.UserId;
 
 
-public interface PublisherStub<Id extends PartyId> {
+public interface PublisherStub<Id extends UserId> {
 
 
 	/**

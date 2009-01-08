@@ -1,8 +1,8 @@
 package deus.model.dossier;
 
-import deus.model.dossier.proj.party.PartyId;
+import deus.model.user.id.UserId;
 
-abstract class ContainerCard<T, Id extends PartyId> extends DigitalCard<Id> {
+abstract class ContainerCard<T, Id extends UserId> extends DigitalCard<Id> {
 
 	private T root;
 

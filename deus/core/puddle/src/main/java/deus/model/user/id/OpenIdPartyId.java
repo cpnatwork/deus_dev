@@ -1,17 +1,20 @@
-package deus.model.dossier.proj.party;
+package deus.model.user.id;
 
-public class XmppPartyId implements PartyId {
+import java.net.URL;
 
-	private String server;
+
+public class OpenIdPartyId implements UserId {
+
+	private URL server;
 	private String username;
 
 
-	public String getServer() {
+	public URL getServer() {
 		return server;
 	}
 
 
-	public void setServer(String server) {
+	public void setServer(URL server) {
 		this.server = server;
 	}
 
@@ -25,6 +28,13 @@ public class XmppPartyId implements PartyId {
 		this.username = username;
 	}
 
+
+
+	@Override
+	public UserIdType getType() {
+		return UserIdType.openid;
+	}
+	
 
 	@Override
 	public int hashCode() {
@@ -45,7 +55,7 @@ public class XmppPartyId implements PartyId {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		XmppPartyId other = (XmppPartyId) obj;
+		OpenIdPartyId other = (OpenIdPartyId) obj;
 		if (server == null) {
 			if (other.server != null)
 				return false;
@@ -58,6 +68,5 @@ public class XmppPartyId implements PartyId {
 			return false;
 		return true;
 	}
-
-
+	
 }

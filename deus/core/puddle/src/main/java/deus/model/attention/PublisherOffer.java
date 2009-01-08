@@ -1,9 +1,9 @@
 package deus.model.attention;
 
-import deus.model.dossier.proj.party.PartyId;
 import deus.model.sub.PublisherMetadata;
+import deus.model.user.id.UserId;
 
-public class PublisherOffer<Id extends PartyId> extends DecisionToMake {
+public class PublisherOffer<Id extends UserId> extends DecisionToMake {
 
 	private final PublisherMetadata<Id> publisher;
 	private boolean confirmed;

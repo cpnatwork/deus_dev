@@ -2,8 +2,8 @@ package dacus.model.dossier;
 
 import deus.model.dossier.ForeignInformationFile;
 import deus.model.dossier.proj.party.Party;
-import deus.model.dossier.proj.party.PartyId;
+import deus.model.user.id.UserId;
 
-public class ForeignPartyFile<Id extends PartyId> extends ForeignInformationFile<Id, Party> {
+public class ForeignPartyFile<Id extends UserId> extends ForeignInformationFile<Id, Party> {
 
 }

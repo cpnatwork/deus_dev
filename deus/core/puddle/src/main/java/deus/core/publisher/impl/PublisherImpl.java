@@ -3,13 +3,13 @@ package deus.core.publisher.impl;
 import deus.core.publisher.Publisher;
 import deus.core.subscriber.SubscriberStub;
 import deus.core.subscriber.SubscriberStubFactory;
-import deus.model.dossier.proj.party.PartyId;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.pub.impl.ThreadSafeListOfSubscribers;
 import deus.model.sub.PublisherMetadata;
+import deus.model.user.id.UserId;
 
-public class PublisherImpl<Id extends PartyId> implements Publisher<Id> {
+public class PublisherImpl<Id extends UserId> implements Publisher<Id> {
 
 	private final PublisherMetadata<Id> publisherMetadata;
 	private final ListOfSubscribers<Id> observers;
