@@ -1,10 +1,10 @@
 package dacus.core.subscriber.impl;
 
+import dacus.model.user.id.LocalUserId;
 import deus.core.subscriber.SubscriberStub;
 import deus.core.subscriber.SubscriberStubFactory;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
-import deus.model.user.id.UserId;
 import deus.model.user.id.UserIdType;
 
 /**
@@ -17,7 +17,7 @@ import deus.model.user.id.UserIdType;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-public class LocalSubscriberStubFactory implements SubscriberStubFactory {
+public class LocalSubscriberStubFactory implements SubscriberStubFactory<LocalUserId> {
 
 	@Override
 	public boolean canHandle(UserIdType userIdType) {
@@ -26,9 +26,9 @@ public class LocalSubscriberStubFactory implements SubscriberStubFactory {
 
 
 	@Override
-	public <Id extends UserId> SubscriberStub<Id> createSubscriberStub(SubscriberMetadata<Id> subscriberMetadata,
-			PublisherMetadata<Id> publisherMetadata) {
-		return new LocalSubscriberStub<Id>(subscriberMetadata);
+	public  SubscriberStub<LocalUserId> createSubscriberStub(SubscriberMetadata<LocalUserId> subscriberMetadata,
+			PublisherMetadata<LocalUserId> publisherMetadata) {
+		return new LocalSubscriberStub<LocalUserId>(subscriberMetadata);
 	}
 
 }
