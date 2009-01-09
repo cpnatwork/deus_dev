@@ -10,27 +10,26 @@ import org.jivesoftware.smack.packet.Presence.Type;
 import deus.core.publisher.Publisher;
 import deus.model.user.id.UserIdType;
 import deus.model.user.id.XmppUserId;
+import deus.nsi.xmpp.common.LocalXmppServer;
 
 public class XmppPublisherSkeleton {
 
+	private final LocalXmppServer localXmppServer;
+	
 	private final Publisher<XmppUserId> publisher;
 
-
 	public XmppPublisherSkeleton(Publisher<XmppUserId> publisher) {
+		// TODO: think about this assert
 		assert (publisher.getPublisherMetadata().getUserId().getType().equals(UserIdType.xmpp));
 		this.publisher = publisher;
+		this.localXmppServer = new LocalXmppServer();
 	}
 
-
 	public void connect() {
-		XmppUserId publisherJid = publisher.getPublisherMetadata().getUserId();
-
-		XMPPConnection connection = new XMPPConnection(publisherJid.getServer());
-		connection.connect();
-		// FIXME: what to do with password??
-		connection.login(publisherJid.getUsername(), "password");
+		// connect to local XMPP account of the publisher
+		XMPPConnection localConnection = localXmppServer.login(publisher.getPublisherMetadata().getUserId());
 		
-		connection.addPacketListener(new PacketListener() {
+		localConnection.addPacketListener(new PacketListener() {
 
 			@Override
 			public void processPacket(Packet packet) {

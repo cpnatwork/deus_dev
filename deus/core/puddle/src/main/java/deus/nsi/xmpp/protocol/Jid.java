@@ -6,6 +6,4 @@ public interface Jid {
 	
 	public String getUsername();
 	
-	public String getJidString();
-	
 }

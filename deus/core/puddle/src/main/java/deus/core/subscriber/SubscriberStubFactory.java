@@ -5,9 +5,9 @@ import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserIdType;
 
-public interface SubscriberStubFactory {
+public interface SubscriberStubFactory<Id extends UserId> {
 
-	public <Id extends UserId> SubscriberStub<Id> createSubscriberStub(SubscriberMetadata<Id> subscriberMetadata,
+	public  SubscriberStub<Id> createSubscriberStub(SubscriberMetadata<Id> subscriberMetadata,
 			PublisherMetadata<Id> publisherMetadata);
 
 	public boolean canHandle(UserIdType userIdType);

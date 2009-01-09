@@ -1,8 +1,8 @@
 package deus.core.subscriber.impl;
 
-import deus.core.publisher.PublisherStub;
 import deus.core.subscriber.Subscriber;
 import deus.model.pub.SubscriberMetadata;
+import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserId;
 
 public class SubscriberImpl<Id extends UserId> implements Subscriber<Id> {
@@ -17,7 +17,7 @@ public class SubscriberImpl<Id extends UserId> implements Subscriber<Id> {
 
 
 	@Override
-	public void update(PublisherStub<Id> publisher, Object change) {
+	public void update(PublisherMetadata<Id> publisherMetadata, Object change) {
 		// FIXME: how to do object change
 	}
 

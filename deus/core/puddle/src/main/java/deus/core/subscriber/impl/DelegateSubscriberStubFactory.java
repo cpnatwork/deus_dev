@@ -24,19 +24,19 @@ import deus.model.user.id.UserIdType;
  * and the created <code>SubscriberStub</code> is returned.
  */
 // TODO: where to put this class? it needs knowledge of LocalSubscriberStub, XmppSubscriberStub, ...
-public class DelegateSubscriberStubFactory implements SubscriberStubFactory {
+public class DelegateSubscriberStubFactory<Id extends UserId> implements SubscriberStubFactory<Id> {
 
-	private List<SubscriberStubFactory> subfactories;
+	private List<SubscriberStubFactory<Id>> subfactories;
 	
 	@Override
-	public <Id extends UserId> SubscriberStub<Id> createSubscriberStub(
+	public  SubscriberStub<Id> createSubscriberStub(
 			SubscriberMetadata<Id> subscriberMetadata,
 			PublisherMetadata<Id> publisherMetadata) {
 				// TODO: think about this: if there is a possibility to detect, that according to subscriberMetadata
 		// and publisherMetadata, both accounts are on the same server, then return a SubscriberStub, which handles all
 		// kinds of userIds, but only if their corresponding accounts are on the same server!		
 		
-		for(SubscriberStubFactory subfactory : subfactories)
+		for(SubscriberStubFactory<Id> subfactory : subfactories)
 			if(subfactory.canHandle(subscriberMetadata.getUserId().getType()))
 				subfactory.createSubscriberStub(subscriberMetadata, publisherMetadata);
 		throw new RuntimeException("cannot create a SubscriberStubFactory for UserTypeId " +
@@ -52,13 +52,13 @@ public class DelegateSubscriberStubFactory implements SubscriberStubFactory {
 	 *            the list of subfactories being used to delegate the create
 	 *            request
 	 */
-	public void setSubfactories(List<SubscriberStubFactory> subfactories) {
+	public void setSubfactories(List<SubscriberStubFactory<Id>> subfactories) {
 		this.subfactories = subfactories;
 	}
 
 	@Override
 	public boolean canHandle(UserIdType userIdType) {
-		for(SubscriberStubFactory subfactory : subfactories)
+		for(SubscriberStubFactory<Id> subfactory : subfactories)
 			if(subfactory.canHandle(userIdType))
 				return true;
 		return false;

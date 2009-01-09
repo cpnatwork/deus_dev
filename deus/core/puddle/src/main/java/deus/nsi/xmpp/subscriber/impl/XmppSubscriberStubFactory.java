@@ -4,8 +4,8 @@ import deus.core.subscriber.SubscriberStub;
 import deus.core.subscriber.SubscriberStubFactory;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
-import deus.model.user.id.UserId;
 import deus.model.user.id.UserIdType;
+import deus.model.user.id.XmppUserId;
 
 /**
  * <code>SubscriberStubFactory</code> which creates
@@ -17,7 +17,7 @@ import deus.model.user.id.UserIdType;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-public class XmppSubscriberStubFactory implements SubscriberStubFactory {
+public class XmppSubscriberStubFactory implements SubscriberStubFactory<XmppUserId> {
 
 	@Override
 	public boolean canHandle(UserIdType userIdType) {
@@ -26,9 +26,9 @@ public class XmppSubscriberStubFactory implements SubscriberStubFactory {
 
 
 	@Override
-	public <Id extends UserId> SubscriberStub<Id> createSubscriberStub(SubscriberMetadata<Id> subscriberMetadata,
-			PublisherMetadata<Id> publisherMetadata) {
-		return new XmppSubscriberStub<Id>(subscriberMetadata);
+	public SubscriberStub<XmppUserId> createSubscriberStub(SubscriberMetadata<XmppUserId> subscriberMetadata,
+			PublisherMetadata<XmppUserId> publisherMetadata) {
+		return new XmppSubscriberStub(subscriberMetadata);
 	}
-
+	
 }

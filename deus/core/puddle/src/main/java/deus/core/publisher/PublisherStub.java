@@ -4,7 +4,14 @@ import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserId;
 
-
+/**
+ * Classes implementing this interface <b>reside on the subscriber side<b> and
+ * <b>talk to the remote publisher</b>.
+ * 
+ * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
+ * 
+ * @param <Id>
+ */
 public interface PublisherStub<Id extends UserId> {
 
 
@@ -14,8 +21,7 @@ public interface PublisherStub<Id extends UserId> {
 	 * The order in which notifications will be delivered to multiple
 	 * observers is not specified. See the class comment.
 	 *
-	 * @param   o   an observer to be added.
-	 * @throws NullPointerException   if the parameter o is null.
+	 * @param   subscriberMetadata   an observer to be added.
 	 */
 	public abstract void addObserver(SubscriberMetadata<Id> subscriberMetadata);
 
@@ -23,11 +29,16 @@ public interface PublisherStub<Id extends UserId> {
 	/**
 	 * Deletes an observer from the set of observers of this object.
 	 * Passing <CODE>null</CODE> to this method will have no effect.
-	 * @param   o   the observer to be deleted.
+	 * @param   subscriberMetadata   the observer to be deleted.
 	 */
 	public abstract void deleteObserver(SubscriberMetadata<Id> subscriberMetadata);
 	
 	
+	/**
+	 * Returns the metadata of the publisher, to which this stub connects
+	 * to communicate.
+	 * @return	metadata of the publisher, to which is talked
+	 */
 	public PublisherMetadata<Id> getPublisherMetadata();
 
 }

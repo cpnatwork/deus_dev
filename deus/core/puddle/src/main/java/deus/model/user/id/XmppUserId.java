@@ -33,12 +33,12 @@ public class XmppUserId implements UserId, Jid {
 	public UserIdType getType() {
 		return UserIdType.xmpp;
 	}
-	
-	@Override
-	public String getJidString() {
-		return getUsername() + "@" + getServer();
-	}
 
+
+	@Override
+	public String toString() {
+		return username + "@" + server;
+	}
 
 
 	@Override

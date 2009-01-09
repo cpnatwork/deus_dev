@@ -8,41 +8,39 @@ import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserIdType;
 import deus.model.user.id.XmppUserId;
+import deus.nsi.xmpp.common.LocalXmppServer;
 
 public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 
+	private final LocalXmppServer localXmppServer;
+	
 	public XmppPublisherStub(PublisherMetadata<XmppUserId> publisherMetadata) {
 		super(publisherMetadata);
+		// TODO: think about this assert
 		assert(publisherMetadata.getUserId().getType().equals(UserIdType.xmpp));
-	}
-
-	private XMPPConnection connectToSubscriberServer(XmppUserId subscriberJid) {
-		XMPPConnection connection = new XMPPConnection(subscriberJid.getServer());
-		connection.connect();
-		// FIXME: what to do with password?
-		connection.login(subscriberJid.getUsername(), "password");
+		this.localXmppServer = new LocalXmppServer();
 	}
 	
-
 	@Override
 	public void addObserver(SubscriberMetadata<XmppUserId> subscriberMetadata) {
-		XMPPConnection connection = connectToSubscriberServer(subscriberMetadata.getUserId());
+		// connect to local XMPP account of the subscriber
+		XMPPConnection localConnection = localXmppServer.login(subscriberMetadata.getUserId());
 
-		Roster roster = connection.getRoster();
+		Roster roster = localConnection.getRoster();
 		
-		XmppUserId publisherJid = (XmppUserId)getPublisherMetadata().getUserId();
-		roster.createEntry(publisherJid.getJidString(), getPublisherMetadata().getFullName(), null);		
+		XmppUserId publisherJid = getPublisherMetadata().getUserId();
+		roster.createEntry(publisherJid.toString(), getPublisherMetadata().getFullName(), null);
 	}
 
 
 	@Override
 	public void deleteObserver(SubscriberMetadata<XmppUserId> subscriberMetadata) {
-		XMPPConnection connection = connectToSubscriberServer(subscriberMetadata.getUserId());
+		XMPPConnection localConnection = localXmppServer.login(subscriberMetadata.getUserId());
 
-		Roster roster = connection.getRoster();
+		Roster roster = localConnection.getRoster();
 		
-		XmppUserId publisherJid = (XmppUserId)getPublisherMetadata().getUserId();
-		roster.removeEntry(roster.getEntry(publisherJid.getJidString()));
+		XmppUserId publisherJid = getPublisherMetadata().getUserId();
+		roster.removeEntry(roster.getEntry(publisherJid.toString()));
 	}
 
 

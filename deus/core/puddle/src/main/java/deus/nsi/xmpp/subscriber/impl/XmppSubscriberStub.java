@@ -3,34 +3,32 @@ package deus.nsi.xmpp.subscriber.impl;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.packet.IQ;
 
-import deus.core.publisher.PublisherStub;
 import deus.core.subscriber.impl.AbstractSubscriberStub;
 import deus.model.pub.SubscriberMetadata;
-import deus.model.user.id.UserId;
+import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserIdType;
 import deus.model.user.id.XmppUserId;
+import deus.nsi.xmpp.common.LocalXmppServer;
 
-public class XmppSubscriberStub<Id extends UserId> extends AbstractSubscriberStub<Id> {
+public class XmppSubscriberStub extends AbstractSubscriberStub<XmppUserId> {
+	
+	private final LocalXmppServer localXmppServer;
 
-	public XmppSubscriberStub(SubscriberMetadata<Id> subscriberMetadata) {
+	public XmppSubscriberStub(SubscriberMetadata<XmppUserId> subscriberMetadata) {
 		super(subscriberMetadata);
 		assert(subscriberMetadata.getUserId().getType().equals(UserIdType.xmpp));
+		this.localXmppServer = new LocalXmppServer();
 	}
 
 
 	@Override
-	public void update(PublisherStub<Id> publisher, Object change) {
-		XmppUserId publisherJid = (XmppUserId)publisher.getPublisherMetadata().getUserId();
-		XmppUserId subscriberJid = (XmppUserId)subscriberMetadata.getUserId();
-		
-		XMPPConnection connection = new XMPPConnection(publisherJid.getServer());
-		connection.connect();
-		// FIXME: what to do with password?
-		connection.login(publisherJid.getUsername(), "password");
+	public void update(PublisherMetadata<XmppUserId> publisher, Object change) {
+		// connect to local XMPP account of the subscriber
+		XMPPConnection localConnection = localXmppServer.login(subscriberMetadata.getUserId());
 		
 		IQ changeIq = new FIFChange(change);
 		
-		connection.sendPacket(changeIq);
+		localConnection.sendPacket(changeIq);
 	}
 
 }

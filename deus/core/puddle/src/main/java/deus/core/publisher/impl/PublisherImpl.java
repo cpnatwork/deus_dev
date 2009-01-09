@@ -14,7 +14,7 @@ public class PublisherImpl<Id extends UserId> implements Publisher<Id> {
 	private final PublisherMetadata<Id> publisherMetadata;
 	private final ListOfSubscribers<Id> observers;
 
-	private SubscriberStubFactory subscriberStubFactory;
+	private SubscriberStubFactory<Id> subscriberStubFactory;
 
 	public PublisherImpl(PublisherMetadata<Id> publisherMetadata) {
 		super();
@@ -69,7 +69,7 @@ public class PublisherImpl<Id extends UserId> implements Publisher<Id> {
 			SubscriberStub<Id> subscriber = subscriberStubFactory.createSubscriberStub(subscriberMetadata, publisherMetadata);
 			// TODO: remove this
 			//SubscriberStub<Id> subscriber = new LocalSubscriberStub<Id>(subscriberMetadata);
-			subscriber.update(this, change);
+			subscriber.update(getPublisherMetadata(), change);
 		}
 	}
 
@@ -90,7 +90,7 @@ public class PublisherImpl<Id extends UserId> implements Publisher<Id> {
 	}
 
 
-	public void setSubscriberStubFactory(SubscriberStubFactory subscriberStubFactory) {
+	public void setSubscriberStubFactory(SubscriberStubFactory<Id> subscriberStubFactory) {
 		this.subscriberStubFactory = subscriberStubFactory;
 	}
 	
