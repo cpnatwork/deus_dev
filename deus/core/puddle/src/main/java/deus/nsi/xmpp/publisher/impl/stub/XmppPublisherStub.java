@@ -1,4 +1,4 @@
-package deus.nsi.xmpp.publisher.impl;
+package deus.nsi.xmpp.publisher.impl.stub;
 
 import org.jivesoftware.smack.Roster;
 import org.jivesoftware.smack.XMPPConnection;

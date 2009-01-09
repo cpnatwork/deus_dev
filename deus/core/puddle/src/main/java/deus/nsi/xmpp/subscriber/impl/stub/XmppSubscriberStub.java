@@ -1,4 +1,4 @@
-package deus.nsi.xmpp.subscriber.impl;
+package deus.nsi.xmpp.subscriber.impl.stub;
 
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.packet.IQ;
@@ -9,6 +9,7 @@ import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserIdType;
 import deus.model.user.id.XmppUserId;
 import deus.nsi.xmpp.common.LocalXmppServer;
+import deus.nsi.xmpp.subscriber.impl.FIFChange;
 
 public class XmppSubscriberStub extends AbstractSubscriberStub<XmppUserId> {
 	
