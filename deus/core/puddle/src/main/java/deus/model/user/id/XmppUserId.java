@@ -1,7 +1,9 @@
 package deus.model.user.id;
 
+import deus.nsi.xmpp.protocol.Jid;
 
-public class XmppUserId implements UserId {
+
+public class XmppUserId implements UserId, Jid {
 
 	private String server;
 	private String username;
@@ -31,6 +33,12 @@ public class XmppUserId implements UserId {
 	public UserIdType getType() {
 		return UserIdType.xmpp;
 	}
+	
+	@Override
+	public String getJidString() {
+		return getUsername() + "@" + getServer();
+	}
+
 
 
 	@Override
@@ -64,6 +72,5 @@ public class XmppUserId implements UserId {
 			return false;
 		return true;
 	}
-
 
 }

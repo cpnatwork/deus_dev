@@ -17,7 +17,7 @@ public interface PublisherStub<Id extends UserId> {
 	 * @param   o   an observer to be added.
 	 * @throws NullPointerException   if the parameter o is null.
 	 */
-	public abstract void addObserver(SubscriberMetadata<Id> o);
+	public abstract void addObserver(SubscriberMetadata<Id> subscriberMetadata);
 
 
 	/**
@@ -25,7 +25,7 @@ public interface PublisherStub<Id extends UserId> {
 	 * Passing <CODE>null</CODE> to this method will have no effect.
 	 * @param   o   the observer to be deleted.
 	 */
-	public abstract void deleteObserver(SubscriberMetadata<Id> o);
+	public abstract void deleteObserver(SubscriberMetadata<Id> subscriberMetadata);
 	
 	
 	public PublisherMetadata<Id> getPublisherMetadata();
