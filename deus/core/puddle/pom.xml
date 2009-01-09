@@ -18,11 +18,14 @@
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	
 	<dependencies>
-
         <!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-        
+                
 	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-	
+		<dependency>
+			<groupId>jivesoftware</groupId>
+			<artifactId>smackx</artifactId>
+			<version>3.1.0</version>
+		</dependency>
 	</dependencies>
 	
 	
