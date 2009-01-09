@@ -5,16 +5,17 @@ import deus.nsi.xmpp.protocol.Jid;
 
 public class XmppUserId implements UserId, Jid {
 
-	private String server;
 	private String username;
+	private String server;
 
 
-	public String getServer() {
-		return server;
+	public XmppUserId() {
 	}
 
 
-	public void setServer(String server) {
+	public XmppUserId(String username, String server) {
+		super();
+		this.username = username;
 		this.server = server;
 	}
 
@@ -26,6 +27,16 @@ public class XmppUserId implements UserId, Jid {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+
+	public String getServer() {
+		return server;
+	}
+
+
+	public void setServer(String server) {
+		this.server = server;
 	}
 
 
@@ -63,12 +74,14 @@ public class XmppUserId implements UserId, Jid {
 		if (server == null) {
 			if (other.server != null)
 				return false;
-		} else if (!server.equals(other.server))
+		}
+		else if (!server.equals(other.server))
 			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;
-		} else if (!username.equals(other.username))
+		}
+		else if (!username.equals(other.username))
 			return false;
 		return true;
 	}

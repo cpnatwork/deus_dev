@@ -1,6 +1,6 @@
 package deus.nsi.xmpp.publisher.impl.skeleton;
 
-import deus.model.user.UserMetadata;
+import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.XmppUserId;
 import deus.nsi.xmpp.common.DelegateToPacketListenerSkeleton;
 
@@ -11,8 +11,8 @@ import deus.nsi.xmpp.common.DelegateToPacketListenerSkeleton;
  */
 public class XmppPublisherSkeleton extends DelegateToPacketListenerSkeleton {
 
-	public XmppPublisherSkeleton(UserMetadata<XmppUserId> userMetadata) {
-		super(userMetadata);
+	public XmppPublisherSkeleton(PublisherMetadata<XmppUserId> publisherMetadata) {
+		super(publisherMetadata);
 	}
 
 		

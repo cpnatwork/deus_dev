@@ -2,6 +2,7 @@ package deus.nsi.xmpp.publisher.impl.stub;
 
 import org.jivesoftware.smack.Roster;
 import org.jivesoftware.smack.XMPPConnection;
+import org.jivesoftware.smack.XMPPException;
 
 import deus.core.publisher.impl.AbstractPublisherStub;
 import deus.model.pub.SubscriberMetadata;
@@ -29,7 +30,14 @@ public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 		Roster roster = localConnection.getRoster();
 		
 		XmppUserId publisherJid = getPublisherMetadata().getUserId();
-		roster.createEntry(publisherJid.toString(), getPublisherMetadata().getFullName(), null);
+		
+		try {
+			roster.createEntry(publisherJid.toString(), getPublisherMetadata().getFullName(), null);
+		}
+		catch (XMPPException e) {
+			// TODO: think about exception
+			throw new RuntimeException(e);
+		}
 	}
 
 
@@ -40,7 +48,14 @@ public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 		Roster roster = localConnection.getRoster();
 		
 		XmppUserId publisherJid = getPublisherMetadata().getUserId();
-		roster.removeEntry(roster.getEntry(publisherJid.toString()));
+		
+		try {
+			roster.removeEntry(roster.getEntry(publisherJid.toString()));
+		}
+		catch (XMPPException e) {
+			// TODO: think about exception
+			throw new RuntimeException(e);
+		}
 	}
 
 

@@ -19,12 +19,14 @@ public class SubscribePacketListener extends PublisherPacketListener {
 
 	@Override
 	public void processPacket(Packet packet) {
+		System.out.println(packet);
 		Presence presence = (Presence) packet;
 		SubscriberMetadata<XmppUserId> subscriberMetadata = new SubscriberMetadata<XmppUserId>();
 		parseFromUserMetadata(presence, subscriberMetadata);
 
 		// TODO: add subscribe request to attention list
-		//publisher.addObserver(subscriberMetadata);
+		publisher.addObserver(subscriberMetadata);
+		// TODO: send an answer back after adding
 	}
 
 	@Override

@@ -38,7 +38,7 @@ public class LocalXmppServer {
 
 		try {
 			// FIXME: what to do with password?
-			connection.login(xmppUserId.getUsername(), "password");
+			connection.login(xmppUserId.getUsername(), "test");
 		}
 		catch (XMPPException e) {
 			// if the the user cannot be logged in his local XMPP server, something fatal went wrong!
