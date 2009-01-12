@@ -4,30 +4,30 @@ import org.jivesoftware.smack.ConnectionConfiguration.SecurityMode;
 
 public class LocalXmppServerConnectionConfiguration {
 
-	private boolean enableCompression;
+	private boolean compression;
 
-	private boolean enableSaslAuthentication;
+	private boolean saslAuthentication;
 
 	private SecurityMode securityMode;
 
 
-	public boolean isEnableCompression() {
-		return enableCompression;
+	public boolean isCompression() {
+		return compression;
 	}
 
 
-	public void setEnableCompression(boolean enableCompression) {
-		this.enableCompression = enableCompression;
+	public void setCompression(boolean compression) {
+		this.compression = compression;
 	}
 
 
-	public boolean isEnableSaslAuthentication() {
-		return enableSaslAuthentication;
+	public boolean isSaslAuthentication() {
+		return saslAuthentication;
 	}
 
 
-	public void setEnableSaslAuthentication(boolean enableSaslAuthentication) {
-		this.enableSaslAuthentication = enableSaslAuthentication;
+	public void setSaslAuthentication(boolean saslAuthentication) {
+		this.saslAuthentication = saslAuthentication;
 	}
 
 

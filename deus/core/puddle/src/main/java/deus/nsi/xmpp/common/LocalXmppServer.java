@@ -1,5 +1,6 @@
 package deus.nsi.xmpp.common;
 
+import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.ConnectionConfiguration.SecurityMode;
@@ -14,8 +15,8 @@ public class LocalXmppServer {
 	public LocalXmppServer() {
 		configuration = new LocalXmppServerConnectionConfiguration();
 		// TODO: make default configuration configurable
-		configuration.setEnableCompression(false);
-		configuration.setEnableSaslAuthentication(false);
+		configuration.setCompression(false);
+		configuration.setSaslAuthentication(false);
 		configuration.setSecurityMode(SecurityMode.disabled);
 	}
 
@@ -27,7 +28,12 @@ public class LocalXmppServer {
 
 	public XMPPConnection login(XmppUserId xmppUserId) {
 		// connect to the XMPP account of the subscriber.
-		XMPPConnection connection = new XMPPConnection(xmppUserId.getServer());
+		ConnectionConfiguration connectionConfiguration = new ConnectionConfiguration(xmppUserId.getServer());
+		connectionConfiguration.setCompressionEnabled(configuration.isCompression());
+		connectionConfiguration.setSASLAuthenticationEnabled(configuration.isSaslAuthentication());
+		connectionConfiguration.setSecurityMode(configuration.getSecurityMode());
+		
+		XMPPConnection connection = new XMPPConnection(connectionConfiguration);
 		try {
 			connection.connect();
 		}
