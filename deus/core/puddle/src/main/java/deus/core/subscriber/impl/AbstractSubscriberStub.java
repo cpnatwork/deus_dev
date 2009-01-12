@@ -7,11 +7,10 @@ import deus.model.user.id.UserId;
 
 public abstract class AbstractSubscriberStub<Id extends UserId> implements SubscriberStub<Id> {
 
-	protected final SubscriberMetadata<Id> subscriberMetadata;
+	private final SubscriberMetadata<Id> subscriberMetadata;
 
 
 	public AbstractSubscriberStub(SubscriberMetadata<Id> subscriberMetadata) {
-		super();
 		this.subscriberMetadata = subscriberMetadata;
 	}
 

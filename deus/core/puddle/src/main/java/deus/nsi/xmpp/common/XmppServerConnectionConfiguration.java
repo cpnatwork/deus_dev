@@ -2,7 +2,7 @@ package deus.nsi.xmpp.common;
 
 import org.jivesoftware.smack.ConnectionConfiguration.SecurityMode;
 
-public class LocalXmppServerConnectionConfiguration {
+public class XmppServerConnectionConfiguration {
 
 	private boolean compression;
 

@@ -3,36 +3,34 @@ package deus.nsi.xmpp.common;
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
-import org.jivesoftware.smack.ConnectionConfiguration.SecurityMode;
 
+import deus.model.user.UserMetadata;
 import deus.model.user.id.XmppUserId;
 
-public class LocalXmppServer {
 
-	private final XmppServerConnectionConfiguration configuration;
+/**
+ * Creates connections to XMPP accounts by using the <code>login</code> method.
+ * A configuration for the connection to the server can be set.
+ * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
+ *
+ */
+public class XmppServer {
 
-
-	public LocalXmppServer() {
-		configuration = new XmppServerConnectionConfiguration();
-		// TODO: make default configuration configurable
-		configuration.setCompression(false);
-		configuration.setSaslAuthentication(false);
-		configuration.setSecurityMode(SecurityMode.disabled);
-	}
-
-
-	public LocalXmppServer(XmppServerConnectionConfiguration configuration) {
-		this.configuration = configuration;
-	}
+	private XmppServerConnectionConfiguration configuration;
+	
+	/// property name of XMPP property 'fullName'
+	private String xmppPropertyNameFromFullName;
 
 
-	public XMPPConnection login(XmppUserId xmppUserId) {
+	public XmppAccount login(UserMetadata<XmppUserId> userMetadata) {
+		XmppUserId xmppUserId = userMetadata.getUserId();
+
 		// connect to the XMPP account of the subscriber.
 		ConnectionConfiguration connectionConfiguration = new ConnectionConfiguration(xmppUserId.getServer());
 		connectionConfiguration.setCompressionEnabled(configuration.isCompression());
 		connectionConfiguration.setSASLAuthenticationEnabled(configuration.isSaslAuthentication());
 		connectionConfiguration.setSecurityMode(configuration.getSecurityMode());
-		
+
 		XMPPConnection connection = new XMPPConnection(connectionConfiguration);
 		try {
 			connection.connect();
@@ -51,6 +49,18 @@ public class LocalXmppServer {
 			throw new RuntimeException("the XMPP user " + xmppUserId + " cannot be logged in his local XMPP server", e);
 		}
 
-		return connection;
+		return new XmppAccount(connection, userMetadata);
 	}
+
+
+	public void setXmppPropertyNameFromFullName(String xmppPropertyNameFromFullName) {
+		this.xmppPropertyNameFromFullName = xmppPropertyNameFromFullName;
+		// TODO: how to pass this to XmppAccount ?
+	}
+
+
+	public void setXmppServerConnectionConfiguration(XmppServerConnectionConfiguration configuration) {
+		this.configuration = configuration;
+	}
+
 }

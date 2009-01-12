@@ -10,6 +10,7 @@ public interface SubscriberStub<Id extends UserId> {
 	// TODO: think about Object change
 	public void update(PublisherMetadata<Id> publisherMetadata, Object change);
 
+	@Deprecated
 	public SubscriberMetadata<Id> getSubscriberMetadata();
 
 }

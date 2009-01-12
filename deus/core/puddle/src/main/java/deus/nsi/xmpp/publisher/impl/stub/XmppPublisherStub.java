@@ -1,7 +1,6 @@
 package deus.nsi.xmpp.publisher.impl.stub;
 
 import org.jivesoftware.smack.Roster;
-import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 
 import deus.core.publisher.impl.AbstractPublisherStub;
@@ -9,29 +8,31 @@ import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserIdType;
 import deus.model.user.id.XmppUserId;
-import deus.nsi.xmpp.common.LocalXmppServer;
+import deus.nsi.xmpp.common.XmppAccount;
+import deus.nsi.xmpp.common.XmppServer;
 
 public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 
-	private final LocalXmppServer localXmppServer;
-	
+	private XmppServer xmppServer;
+
+
 	public XmppPublisherStub(PublisherMetadata<XmppUserId> publisherMetadata) {
 		super(publisherMetadata);
 		// TODO: think about this assert
-		assert(publisherMetadata.getUserId().getType().equals(UserIdType.xmpp));
-		// TODO: inject this
-		this.localXmppServer = new LocalXmppServer();
+		assert (publisherMetadata.getUserId().getType().equals(UserIdType.xmpp));
 	}
-	
+
+
 	@Override
 	public void addObserver(SubscriberMetadata<XmppUserId> subscriberMetadata) {
 		// connect to local XMPP account of the subscriber
-		XMPPConnection localConnection = localXmppServer.login(subscriberMetadata.getUserId());
+		// TODO: pass xmppAccount in constructor
+		XmppAccount xmppAccount = xmppServer.login(subscriberMetadata);
 
-		Roster roster = localConnection.getRoster();
-		
+		Roster roster = xmppAccount.getRoster();
+
 		XmppUserId publisherJid = getPublisherMetadata().getUserId();
-		
+
 		try {
 			roster.createEntry(publisherJid.toString(), getPublisherMetadata().getFullName(), null);
 		}
@@ -44,12 +45,13 @@ public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 
 	@Override
 	public void deleteObserver(SubscriberMetadata<XmppUserId> subscriberMetadata) {
-		XMPPConnection localConnection = localXmppServer.login(subscriberMetadata.getUserId());
+		// TODO: pass xmppAccount in constructor
+		XmppAccount xmppAccount = xmppServer.login(subscriberMetadata);
 
-		Roster roster = localConnection.getRoster();
-		
+		Roster roster = xmppAccount.getRoster();
+
 		XmppUserId publisherJid = getPublisherMetadata().getUserId();
-		
+
 		try {
 			roster.removeEntry(roster.getEntry(publisherJid.toString()));
 		}
@@ -60,4 +62,7 @@ public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 	}
 
 
+	public void setXmppServer(XmppServer xmppServer) {
+		this.xmppServer = xmppServer;
+	}
 }

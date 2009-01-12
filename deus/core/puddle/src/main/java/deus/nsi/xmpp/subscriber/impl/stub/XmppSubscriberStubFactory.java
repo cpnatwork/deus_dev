@@ -6,6 +6,7 @@ import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserIdType;
 import deus.model.user.id.XmppUserId;
+import deus.nsi.xmpp.common.LocalXmppServer;
 
 /**
  * <code>SubscriberStubFactory</code> which creates
@@ -19,6 +20,8 @@ import deus.model.user.id.XmppUserId;
  */
 public class XmppSubscriberStubFactory implements SubscriberStubFactory<XmppUserId> {
 
+	private LocalXmppServer localXmppServer;
+	
 	@Override
 	public boolean canHandle(UserIdType userIdType) {
 		return userIdType.equals(UserIdType.xmpp);
@@ -29,6 +32,14 @@ public class XmppSubscriberStubFactory implements SubscriberStubFactory<XmppUser
 	public SubscriberStub<XmppUserId> createSubscriberStub(SubscriberMetadata<XmppUserId> subscriberMetadata,
 			PublisherMetadata<XmppUserId> publisherMetadata) {
 		return new XmppSubscriberStub(subscriberMetadata);
+	}
+
+	/**
+	 * Sets the LocalXmppServer class for injecting it into XmppSubscriberStub when it is created.
+	 * @param localXmppServer	the instance of localXmppServer
+	 */
+	public void setLocalXmppServer(LocalXmppServer localXmppServer) {
+		this.localXmppServer = localXmppServer;
 	}
 	
 }
