@@ -9,26 +9,23 @@ import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserIdType;
 import deus.model.user.id.XmppUserId;
 import deus.nsi.xmpp.common.XmppAccount;
-import deus.nsi.xmpp.common.XmppServer;
 
 public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 
-	private XmppServer xmppServer;
+	private final XmppAccount xmppAccount;
 
 
-	public XmppPublisherStub(PublisherMetadata<XmppUserId> publisherMetadata) {
+	public XmppPublisherStub(PublisherMetadata<XmppUserId> publisherMetadata, XmppAccount xmppAccount) {
 		super(publisherMetadata);
 		// TODO: think about this assert
 		assert (publisherMetadata.getUserId().getType().equals(UserIdType.xmpp));
+		
+		this.xmppAccount = xmppAccount;
 	}
 
 
 	@Override
 	public void addObserver(SubscriberMetadata<XmppUserId> subscriberMetadata) {
-		// connect to local XMPP account of the subscriber
-		// TODO: pass xmppAccount in constructor
-		XmppAccount xmppAccount = xmppServer.login(subscriberMetadata);
-
 		Roster roster = xmppAccount.getRoster();
 
 		XmppUserId publisherJid = getPublisherMetadata().getUserId();
@@ -45,9 +42,6 @@ public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 
 	@Override
 	public void deleteObserver(SubscriberMetadata<XmppUserId> subscriberMetadata) {
-		// TODO: pass xmppAccount in constructor
-		XmppAccount xmppAccount = xmppServer.login(subscriberMetadata);
-
 		Roster roster = xmppAccount.getRoster();
 
 		XmppUserId publisherJid = getPublisherMetadata().getUserId();
@@ -61,8 +55,4 @@ public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 		}
 	}
 
-
-	public void setXmppServer(XmppServer xmppServer) {
-		this.xmppServer = xmppServer;
-	}
 }

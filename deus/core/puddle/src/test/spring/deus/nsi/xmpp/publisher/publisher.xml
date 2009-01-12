@@ -6,11 +6,16 @@
 	
 	<bean id="publisherStub" class="deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub">
 		<constructor-arg ref="publisherMetadata" />
+		<constructor-arg ref="publisherXmppAccount"/>
 		<qualifier value="stub"/>
 	</bean>
 	
+	<bean id="publisherXmppAccount" factory-bean="xmppServer" factory-method="login">
+		<constructor-arg ref="publisherMetadata" />		
+	</bean>
+	
 	<bean id="publisherSkeleton" class="deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton">
-		<constructor-arg ref="publisherMetadata" />
+		<constructor-arg ref="publisherXmppAccount" />
 		<property name="packetListeners">
 			<list>
 				<ref local="subscribePacketListener"/>

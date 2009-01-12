@@ -8,35 +8,24 @@ import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserIdType;
 import deus.model.user.id.XmppUserId;
 import deus.nsi.xmpp.common.XmppAccount;
-import deus.nsi.xmpp.common.XmppServer;
 import deus.nsi.xmpp.subscriber.impl.FIFChange;
 
 public class XmppSubscriberStub extends AbstractSubscriberStub<XmppUserId> {
 
-	private XmppServer xmppServer;
+	private final XmppAccount publisherXmppAccount;
 
 
-	public XmppSubscriberStub(SubscriberMetadata<XmppUserId> subscriberMetadata) {
+	public XmppSubscriberStub(SubscriberMetadata<XmppUserId> subscriberMetadata, XmppAccount publisherXmppAccount) {
 		super(subscriberMetadata);
 		assert (subscriberMetadata.getUserId().getType().equals(UserIdType.xmpp));
+		this.publisherXmppAccount = publisherXmppAccount;
 	}
 
 
 	@Override
 	public void update(PublisherMetadata<XmppUserId> publisher, Object change) {
-		// connect to local XMPP account of the subscriber
-		// TODO: pass xmppAccount in constructor
-		XmppAccount xmppAccount = xmppServer.login(getSubscriberMetadata());
-
 		IQ changeIq = new FIFChange(change);
-		xmppAccount.sendPacket(changeIq, publisher.getUserId());
-		// TODO: logout again here?
-		xmppAccount.logout();
-	}
-
-
-	public void setXmppServer(XmppServer xmppServer) {
-		this.xmppServer = xmppServer;
+		publisherXmppAccount.sendPacket(changeIq, getSubscriberMetadata().getUserId());
 	}
 
 }

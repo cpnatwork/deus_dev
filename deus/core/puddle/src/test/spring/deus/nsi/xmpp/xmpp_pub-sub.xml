@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
@@ -13,7 +12,7 @@
 		</property>
 		<property name="fullName" value="Florian Rampp" />
 	</bean>
-	
+
 	<bean id="subscriberMetadata" class="deus.model.pub.SubscriberMetadata">
 		<property name="userId">
 			<bean class="deus.model.user.id.XmppUserId">
@@ -24,5 +23,15 @@
 		<property name="fullName" value="Christoph Neumann" />
 	</bean>
 
+	<bean id="xmppServer" class="deus.nsi.xmpp.common.XmppServer">
+		<property name="xmppServerConnectionConfiguration" ref="xmppServerConnectionConfiguration" />
+		<property name="xmppPropertyNameFromFullName" value="fullName" />
+	</bean>
 
+	<bean id="xmppServerConnectionConfiguration" class="deus.nsi.xmpp.common.XmppServerConnectionConfiguration">
+		<property name="compression" value="false" />
+		<property name="saslAuthentication" value="false" />
+		<property name="securityMode" value="disabled" />
+	</bean>
+	
 </beans>

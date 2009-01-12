@@ -6,6 +6,7 @@ import org.jivesoftware.smack.packet.Packet;
 
 import deus.model.user.UserMetadata;
 import deus.model.user.id.XmppUserId;
+import deus.nsi.xmpp.common.packetfilter.FilteredPacketListener;
 
 public class XmppAccount {
 	
@@ -33,9 +34,18 @@ public class XmppAccount {
 		packet.setProperty("fullName", userMetadata.getFullName());
 		connection.sendPacket(packet);
 	}
+	
+	public boolean isLoggedIn() {
+		return connection.isAuthenticated();
+	}
 
+	// TODO: think about logout method, should it be externalized into XmppServer??
 	public void logout() {
 		connection.disconnect();
+	}
+
+	public void addPacketListener(FilteredPacketListener filteredPacketListener) {
+		connection.addPacketListener(filteredPacketListener, filteredPacketListener.getFilter());
 	}
 	
 }

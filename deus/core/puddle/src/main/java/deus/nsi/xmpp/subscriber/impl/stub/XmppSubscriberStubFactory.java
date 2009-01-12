@@ -6,7 +6,8 @@ import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserIdType;
 import deus.model.user.id.XmppUserId;
-import deus.nsi.xmpp.common.LocalXmppServer;
+import deus.nsi.xmpp.common.XmppAccount;
+import deus.nsi.xmpp.common.XmppServer;
 
 /**
  * <code>SubscriberStubFactory</code> which creates
@@ -20,7 +21,7 @@ import deus.nsi.xmpp.common.LocalXmppServer;
  */
 public class XmppSubscriberStubFactory implements SubscriberStubFactory<XmppUserId> {
 
-	private LocalXmppServer localXmppServer;
+	private XmppServer xmppServer;
 	
 	@Override
 	public boolean canHandle(UserIdType userIdType) {
@@ -31,15 +32,15 @@ public class XmppSubscriberStubFactory implements SubscriberStubFactory<XmppUser
 	@Override
 	public SubscriberStub<XmppUserId> createSubscriberStub(SubscriberMetadata<XmppUserId> subscriberMetadata,
 			PublisherMetadata<XmppUserId> publisherMetadata) {
-		return new XmppSubscriberStub(subscriberMetadata);
+		XmppAccount publisherAccount = xmppServer.login(publisherMetadata);
+		return new XmppSubscriberStub(subscriberMetadata, publisherAccount);
 	}
 
 	/**
-	 * Sets the LocalXmppServer class for injecting it into XmppSubscriberStub when it is created.
-	 * @param localXmppServer	the instance of localXmppServer
+	 * Sets the LocalXmppServer class for creating XmppAccount objects per user.
 	 */
-	public void setLocalXmppServer(LocalXmppServer localXmppServer) {
-		this.localXmppServer = localXmppServer;
+	public void setXmppServer(XmppServer xmppServer) {
+		this.xmppServer = xmppServer;
 	}
 	
 }

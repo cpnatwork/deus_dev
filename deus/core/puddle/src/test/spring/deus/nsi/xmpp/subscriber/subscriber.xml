@@ -12,7 +12,9 @@
 		</property>
 	</bean>
 	
-	<bean id="xmppSubscriberStubFactory" class="deus.nsi.xmpp.subscriber.impl.XmppSubscriberStubFactory" />
+	<bean id="xmppSubscriberStubFactory" class="deus.nsi.xmpp.subscriber.impl.stub.XmppSubscriberStubFactory">
+		<property name="xmppServer" ref="xmppServer" />
+	</bean>
 
 	
 	<bean id="subscriber" class="deus.core.subscriber.impl.SubscriberImpl">

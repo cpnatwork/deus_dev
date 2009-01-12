@@ -51,7 +51,7 @@ public class XmppServer {
 
 		return new XmppAccount(connection, userMetadata);
 	}
-
+	
 
 	public void setXmppPropertyNameFromFullName(String xmppPropertyNameFromFullName) {
 		this.xmppPropertyNameFromFullName = xmppPropertyNameFromFullName;

@@ -67,8 +67,6 @@ public class PublisherImpl<Id extends UserId> implements Publisher<Id> {
 		for (int i = arrLocal.length - 1; i >= 0; i--) {
 			SubscriberMetadata<Id> subscriberMetadata = (SubscriberMetadata<Id>) arrLocal[i];
 			SubscriberStub<Id> subscriber = subscriberStubFactory.createSubscriberStub(subscriberMetadata, publisherMetadata);
-			// TODO: remove this
-			//SubscriberStub<Id> subscriber = new LocalSubscriberStub<Id>(subscriberMetadata);
 			subscriber.update(getPublisherMetadata(), change);
 		}
 	}
