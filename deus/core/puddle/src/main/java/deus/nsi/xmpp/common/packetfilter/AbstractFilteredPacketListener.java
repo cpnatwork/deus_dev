@@ -8,13 +8,13 @@ import deus.model.user.id.XmppUserId;
 
 public abstract class AbstractFilteredPacketListener implements FilteredPacketListener {
 
-	// TODO: externalize property name
-	private final static String XMPP_PROPERTY_FULLNAME = "fullName";
+	private String xmppPropertyFullName = null;
 
 
 	/**
-	 * Returns a UserMetadata object which is filled by parsing the package 'from' element
-	 * and the package property 'fullName'.
+	 * Returns a UserMetadata object which is filled by parsing the package 'from' element and the package property
+	 * 'fullName'.
+	 * 
 	 * @param packet
 	 * @param userMetadata
 	 * @return
@@ -30,12 +30,16 @@ public abstract class AbstractFilteredPacketListener implements FilteredPacketLi
 
 		userMetadata.setUserId(subscriberJid);
 
-		String fullName = packet.getProperty(XMPP_PROPERTY_FULLNAME).toString();
+		String fullName = packet.getProperty(xmppPropertyFullName).toString();
 		if (fullName == null)
-			throw new RuntimeException("property '" + XMPP_PROPERTY_FULLNAME + "' is null at this presence packet: "
+			throw new RuntimeException("property '" + xmppPropertyFullName + "' is null at this presence packet: "
 					+ packet);
 		userMetadata.setFullName(fullName);
 	}
 
-	
+
+	public void setXmppPropertyFullName(String xmppPropertyFullName) {
+		this.xmppPropertyFullName = xmppPropertyFullName;
+	}
+
 }

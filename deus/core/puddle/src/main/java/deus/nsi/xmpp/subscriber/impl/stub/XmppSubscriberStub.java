@@ -12,12 +12,15 @@ import deus.nsi.xmpp.common.LocalXmppServer;
 import deus.nsi.xmpp.subscriber.impl.FIFChange;
 
 public class XmppSubscriberStub extends AbstractSubscriberStub<XmppUserId> {
+
+	private String xmppPropertyFullName;
 	
 	private final LocalXmppServer localXmppServer;
 
 	public XmppSubscriberStub(SubscriberMetadata<XmppUserId> subscriberMetadata) {
 		super(subscriberMetadata);
 		assert(subscriberMetadata.getUserId().getType().equals(UserIdType.xmpp));
+		// TODO: inject this
 		this.localXmppServer = new LocalXmppServer();
 	}
 
@@ -28,8 +31,13 @@ public class XmppSubscriberStub extends AbstractSubscriberStub<XmppUserId> {
 		XMPPConnection localConnection = localXmppServer.login(subscriberMetadata.getUserId());
 		
 		IQ changeIq = new FIFChange(change);
-		
+		changeIq.setProperty(xmppPropertyFullName, publisher.getFullName());
 		localConnection.sendPacket(changeIq);
 	}
 
+
+	public void setXmppPropertyFullName(String xmppPropertyFullName) {
+		this.xmppPropertyFullName = xmppPropertyFullName;
+	}
+	
 }

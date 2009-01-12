@@ -19,6 +19,7 @@ public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 		super(publisherMetadata);
 		// TODO: think about this assert
 		assert(publisherMetadata.getUserId().getType().equals(UserIdType.xmpp));
+		// TODO: inject this
 		this.localXmppServer = new LocalXmppServer();
 	}
 	
