@@ -2,6 +2,7 @@ package deus.nsi.xmpp.common.packetfilter;
 
 import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.util.StringUtils;
+import org.springframework.beans.factory.annotation.Required;
 
 import deus.model.user.UserMetadata;
 import deus.model.user.id.XmppUserId;
@@ -37,8 +38,7 @@ public abstract class AbstractFilteredPacketListener implements FilteredPacketLi
 		userMetadata.setFullName(fullName.toString());
 	}
 
-
-	// TODO: get xmppPropertyFullName from class XmppNetwork
+	@Required
 	public void setXmppPropertyFullName(String xmppPropertyFullName) {
 		this.xmppPropertyFullName = xmppPropertyFullName;
 	}

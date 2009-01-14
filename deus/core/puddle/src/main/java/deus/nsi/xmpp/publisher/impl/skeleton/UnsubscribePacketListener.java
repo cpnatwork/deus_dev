@@ -10,6 +10,7 @@ import org.jivesoftware.smack.packet.Presence.Type;
 import deus.core.publisher.Publisher;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.user.id.XmppUserId;
+import deus.nsi.xmpp.util.PacketPrinter;
 
 public class UnsubscribePacketListener extends PublisherPacketListener {
 
@@ -20,12 +21,16 @@ public class UnsubscribePacketListener extends PublisherPacketListener {
 
 	@Override
 	public void processPacket(Packet packet) {
+		PacketPrinter printer = new PacketPrinter();
+		System.out.println("UnsubscribePacketListener: processing packet:");
+		System.out.println(printer.printPacket(packet));
+		
 		Presence presence = (Presence) packet;
 		SubscriberMetadata<XmppUserId> subscriberMetadata = new SubscriberMetadata<XmppUserId>();
 		parseFromUserMetadata(presence, subscriberMetadata);
 
 		// TODO: unsubscribe user and put notice to attention list
-		//publisher.deleteObserver(subscriberMetadata);
+		publisher.deleteObserver(subscriberMetadata);
 	}
 
 

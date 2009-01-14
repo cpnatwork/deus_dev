@@ -20,7 +20,7 @@ public class PacketPrinter {
 		sb.append("properties:" + newLine);
 		Collection<String> propertyNames = packet.getPropertyNames();
 		for (String propertyName : propertyNames)
-			sb.append("  " + propertyName + ": " + packet.getProperty(propertyName));
+			sb.append("  " + propertyName + ": " + packet.getProperty(propertyName) + newLine);
 
 
 		if (packet instanceof Presence)

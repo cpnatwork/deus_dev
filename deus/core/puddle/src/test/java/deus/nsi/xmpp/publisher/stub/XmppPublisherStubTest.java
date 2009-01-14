@@ -41,21 +41,26 @@ public class XmppPublisherStubTest {
 
 	@Before
 	public void setUp() {
-		
-	}
-
-	@Test
-	public void testAddObserver() {
-		assertEquals(0, publisher.countObservers());
 		publisherSkeleton.connect();
+	}
+
+	@Test
+	public void testAddObserver() throws InterruptedException {
+		assertEquals(0, publisher.countObservers());
 		publisherStub.addObserver(subscriberMetadata);
-//		assertEquals(1, publisher.countObservers());
+		// we have to wait for the answer to arrive from the XMPP server
+		Thread.sleep(1000);
+		assertEquals(1, publisher.countObservers());
 	}
 
 
 	@Test
-	public void testDeleteObserver() {
-		// publisherStub.deleteObserver(subscriberMetadata);
+	public void testDeleteObserver() throws InterruptedException {
+		assertEquals(1, publisher.countObservers());
+		publisherStub.deleteObserver(subscriberMetadata);
+		// we have to wait for the answer to arrive from the XMPP server
+		Thread.sleep(1000);
+		assertEquals(0, publisher.countObservers());
 	}
 
 

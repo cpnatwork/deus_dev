@@ -18,22 +18,23 @@ public class SubscribePacketListener extends PublisherPacketListener {
 		super(publisher);
 	}
 
+
 	@Override
 	public void processPacket(Packet packet) {
-
-		Presence presence = (Presence) packet;
 		PacketPrinter printer = new PacketPrinter();
 		System.out.println("SubscribePacketListener: processing packet:");
 		System.out.println(printer.printPacket(packet));
+		
+		Presence presence = (Presence) packet;
+	
 		SubscriberMetadata<XmppUserId> subscriberMetadata = new SubscriberMetadata<XmppUserId>();
 		parseFromUserMetadata(presence, subscriberMetadata);
 
 		// TODO: add subscribe request to attention list
 		publisher.addObserver(subscriberMetadata);
 		// TODO: send an answer back after adding
-		
-		throw new RuntimeException("test");
 	}
+
 
 	@Override
 	public PacketFilter getFilter() {
@@ -45,7 +46,7 @@ public class SubscribePacketListener extends PublisherPacketListener {
 				Presence presence = (Presence) packet;
 				return presence.getType().equals(Type.subscribe);
 			}
-			
+
 		};
 		PacketFilter andPacketFilter = new AndFilter(typeFilter, unsubscribeFilter);
 		return andPacketFilter;

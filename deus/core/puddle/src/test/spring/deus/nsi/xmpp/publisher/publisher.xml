@@ -15,17 +15,19 @@
 		<property name="packetListeners">
 			<list>
 				<ref local="subscribePacketListener"/>
-<!--				<ref local="unsubscribePacketListener"/>-->
+				<ref local="unsubscribePacketListener"/>
 			</list>
 		</property>
 	</bean>
 	
 	<bean id="subscribePacketListener" class="deus.nsi.xmpp.publisher.impl.skeleton.SubscribePacketListener">
 		<constructor-arg ref="publisher"/>
+		<property name="xmppPropertyFullName" value="${xmpp.property.fullName}"/>
 	</bean>
 	
 	<bean id="unsubscribePacketListener" class="deus.nsi.xmpp.publisher.impl.skeleton.UnsubscribePacketListener">
 		<constructor-arg ref="publisher"/>
+		<property name="xmppPropertyFullName" value="${xmpp.property.fullName}"/>
 	</bean>
 	
 	<bean id="publisher" class="deus.core.publisher.impl.PublisherImpl">

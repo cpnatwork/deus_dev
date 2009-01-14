@@ -3,23 +3,25 @@ package deus.nsi.xmpp.common;
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
+import org.springframework.beans.factory.annotation.Required;
 
 import deus.model.user.UserMetadata;
 import deus.model.user.id.XmppUserId;
 
 
 /**
- * Creates connections to XMPP accounts by using the <code>login</code> method.
- * A configuration for the connection to the server can be set.
+ * Creates connections to XMPP accounts by using the <code>login</code> method. A configuration for the connection to
+ * the server can be set.
+ * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
- *
+ * 
  */
 public class XmppNetwork {
 
 	private XmppServerConnectionConfiguration configuration;
-	
-	/// property name of XMPP property 'fullName'
-	private String xmppPropertyNameFromFullName;
+
+	// / property name of XMPP property 'fullName'
+	private String xmppPropertyFullName;
 
 
 	public XmppAccount login(UserMetadata<XmppUserId> userMetadata) {
@@ -49,16 +51,18 @@ public class XmppNetwork {
 			throw new RuntimeException("the XMPP user " + xmppUserId + " cannot be logged in his local XMPP server", e);
 		}
 
-		return new XmppAccount(connection, userMetadata);
+		XmppAccount xmppAccount = new XmppAccount(connection, userMetadata);
+		xmppAccount.setXmppPropertyFullName(xmppPropertyFullName);
+		return xmppAccount;
 	}
-	
 
+
+	@Required
 	public void setXmppPropertyNameFromFullName(String xmppPropertyNameFromFullName) {
-		this.xmppPropertyNameFromFullName = xmppPropertyNameFromFullName;
-		// TODO: how to pass this to XmppAccount ?
+		this.xmppPropertyFullName = xmppPropertyNameFromFullName;
 	}
 
-
+	@Required
 	public void setXmppServerConnectionConfiguration(XmppServerConnectionConfiguration configuration) {
 		this.configuration = configuration;
 	}

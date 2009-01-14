@@ -1,25 +1,21 @@
-/**
- * 
- */
 package deus.nsi.xmpp.common;
 
-import org.jivesoftware.smack.PacketListener;
+import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.packet.Packet;
 
+public class ExceptionCatchingPacketFilter implements PacketFilter {
 
-class ExceptionCatchingPacketListener implements PacketListener {
+	private final PacketFilter packetFilterDelegate;
 	
-	private final PacketListener packetListenerDelegate;
-
-	public ExceptionCatchingPacketListener(PacketListener packetListener) {
-		this.packetListenerDelegate = packetListener;
+	public ExceptionCatchingPacketFilter(PacketFilter filter) {
+		this.packetFilterDelegate = filter;
 	}
 
 	@Override
-	public void processPacket(Packet packet) {
+	public boolean accept(Packet packet) {
 		try {
-			// delegate to packetListenerDelegate
-			packetListenerDelegate.processPacket(packet);
+			// delegate to packetFilterDelegate
+			return packetFilterDelegate.accept(packet);
 		}
 		catch(Throwable t) {
 			// since the smack library eats all exceptions thrown in processPacket(Packet) silently
@@ -32,7 +28,5 @@ class ExceptionCatchingPacketListener implements PacketListener {
 			throw new RuntimeException(t);
 		}
 	}
-	
-	
-	
+
 }

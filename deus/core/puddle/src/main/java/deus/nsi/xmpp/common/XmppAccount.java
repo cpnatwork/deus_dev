@@ -12,6 +12,7 @@ public class XmppAccount {
 
 	private final XMPPConnection connection;
 	private final UserMetadata<XmppUserId> userMetadata;
+	private String xmppPropertyFullName;
 
 
 	public XmppAccount(XMPPConnection connection, UserMetadata<XmppUserId> userMetadata) {
@@ -35,8 +36,7 @@ public class XmppAccount {
 					+ userMetadata.getUserId());
 		packet.setTo(receiver.toString());
 		packet.setFrom(userMetadata.toString());
-		// TODO: get xmppPropertyFullName from class XmppNetwork
-		packet.setProperty("fullName", userMetadata.getFullName());
+		packet.setProperty(xmppPropertyFullName, userMetadata.getFullName());
 		connection.sendPacket(packet);
 	}
 
@@ -53,8 +53,16 @@ public class XmppAccount {
 
 
 	public void addPacketListener(FilteredPacketListener filteredPacketListener) {
-		connection.addPacketListener(new ExceptionCatchingPacketListener(filteredPacketListener),
-				filteredPacketListener.getFilter());
+		// wrapping PacketListener and PacketFilter into exception catching ones
+		connection.addPacketListener(
+				new ExceptionCatchingPacketListener(filteredPacketListener),
+				new ExceptionCatchingPacketFilter(filteredPacketListener.getFilter()));
+	}
+	
+	
+	// TODO: think, if this is a good idea...
+	public void setXmppPropertyFullName(String xmppPropertyFullName) {
+		this.xmppPropertyFullName = xmppPropertyFullName;
 	}
 
 }
