@@ -23,7 +23,17 @@
 		<property name="fullName" value="Christoph Neumann" />
 	</bean>
 
-	<bean id="xmppServer" class="deus.nsi.xmpp.common.XmppServer">
+
+	<bean id="publisherXmppAccount" factory-bean="xmppNetwork" factory-method="login">
+		<constructor-arg ref="publisherMetadata" />
+	</bean>
+
+	<bean id="subscriberXmppAccount" factory-bean="xmppNetwork" factory-method="login">
+		<constructor-arg ref="subscriberMetadata" />
+	</bean>
+
+
+	<bean id="xmppNetwork" class="deus.nsi.xmpp.common.XmppNetwork">
 		<property name="xmppServerConnectionConfiguration" ref="xmppServerConnectionConfiguration" />
 		<property name="xmppPropertyNameFromFullName" value="fullName" />
 	</bean>
@@ -33,5 +43,4 @@
 		<property name="saslAuthentication" value="false" />
 		<property name="securityMode" value="disabled" />
 	</bean>
-	
 </beans>

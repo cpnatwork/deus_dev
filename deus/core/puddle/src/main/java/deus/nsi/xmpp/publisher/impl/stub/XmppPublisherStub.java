@@ -12,21 +12,21 @@ import deus.nsi.xmpp.common.XmppAccount;
 
 public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 
-	private final XmppAccount xmppAccount;
+	private final XmppAccount subscriberXmppAccount;
 
 
-	public XmppPublisherStub(PublisherMetadata<XmppUserId> publisherMetadata, XmppAccount xmppAccount) {
+	public XmppPublisherStub(PublisherMetadata<XmppUserId> publisherMetadata, XmppAccount subscriberXmppAccount) {
 		super(publisherMetadata);
 		// TODO: think about this assert
 		assert (publisherMetadata.getUserId().getType().equals(UserIdType.xmpp));
 		
-		this.xmppAccount = xmppAccount;
+		this.subscriberXmppAccount = subscriberXmppAccount;
 	}
 
 
 	@Override
 	public void addObserver(SubscriberMetadata<XmppUserId> subscriberMetadata) {
-		Roster roster = xmppAccount.getRoster();
+		Roster roster = subscriberXmppAccount.getRoster();
 
 		XmppUserId publisherJid = getPublisherMetadata().getUserId();
 
@@ -42,7 +42,7 @@ public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 
 	@Override
 	public void deleteObserver(SubscriberMetadata<XmppUserId> subscriberMetadata) {
-		Roster roster = xmppAccount.getRoster();
+		Roster roster = subscriberXmppAccount.getRoster();
 
 		XmppUserId publisherJid = getPublisherMetadata().getUserId();
 

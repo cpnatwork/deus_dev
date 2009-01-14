@@ -30,14 +30,15 @@ public abstract class AbstractFilteredPacketListener implements FilteredPacketLi
 
 		userMetadata.setUserId(subscriberJid);
 
-		String fullName = packet.getProperty(xmppPropertyFullName).toString();
+		Object fullName = packet.getProperty(xmppPropertyFullName);
 		if (fullName == null)
 			throw new RuntimeException("property '" + xmppPropertyFullName + "' is null at this presence packet: "
 					+ packet);
-		userMetadata.setFullName(fullName);
+		userMetadata.setFullName(fullName.toString());
 	}
 
 
+	// TODO: get xmppPropertyFullName from class XmppNetwork
 	public void setXmppPropertyFullName(String xmppPropertyFullName) {
 		this.xmppPropertyFullName = xmppPropertyFullName;
 	}

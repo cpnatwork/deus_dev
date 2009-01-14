@@ -7,7 +7,7 @@ import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserIdType;
 import deus.model.user.id.XmppUserId;
 import deus.nsi.xmpp.common.XmppAccount;
-import deus.nsi.xmpp.common.XmppServer;
+import deus.nsi.xmpp.common.XmppNetwork;
 
 /**
  * <code>SubscriberStubFactory</code> which creates
@@ -21,7 +21,7 @@ import deus.nsi.xmpp.common.XmppServer;
  */
 public class XmppSubscriberStubFactory implements SubscriberStubFactory<XmppUserId> {
 
-	private XmppServer xmppServer;
+	private XmppNetwork xmppNetwork;
 	
 	@Override
 	public boolean canHandle(UserIdType userIdType) {
@@ -32,15 +32,15 @@ public class XmppSubscriberStubFactory implements SubscriberStubFactory<XmppUser
 	@Override
 	public SubscriberStub<XmppUserId> createSubscriberStub(SubscriberMetadata<XmppUserId> subscriberMetadata,
 			PublisherMetadata<XmppUserId> publisherMetadata) {
-		XmppAccount publisherAccount = xmppServer.login(publisherMetadata);
+		XmppAccount publisherAccount = xmppNetwork.login(publisherMetadata);
 		return new XmppSubscriberStub(subscriberMetadata, publisherAccount);
 	}
 
 	/**
 	 * Sets the LocalXmppServer class for creating XmppAccount objects per user.
 	 */
-	public void setXmppServer(XmppServer xmppServer) {
-		this.xmppServer = xmppServer;
+	public void setXmppNetwork(XmppNetwork xmppNetwork) {
+		this.xmppNetwork = xmppNetwork;
 	}
 	
 }

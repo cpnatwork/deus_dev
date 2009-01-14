@@ -12,6 +12,7 @@ public class DelegateToPacketListenerSkeleton {
 	private final XmppAccount userXmppAccount;
 	private List<FilteredPacketListener> filteredPacketListeners;
 
+
 	public DelegateToPacketListenerSkeleton(XmppAccount userXmppAccount) {
 		this.userXmppAccount = userXmppAccount;
 	}
@@ -20,6 +21,7 @@ public class DelegateToPacketListenerSkeleton {
 	public void setPacketListeners(List<FilteredPacketListener> filteredPacketListeners) {
 		this.filteredPacketListeners = filteredPacketListeners;
 	}
+
 
 	public void connect() {
 		// TODO: remove again and think about a better place for this

@@ -10,6 +10,7 @@ import org.jivesoftware.smack.packet.Presence.Type;
 import deus.core.publisher.Publisher;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.user.id.XmppUserId;
+import deus.nsi.xmpp.util.PacketPrinter;
 
 public class SubscribePacketListener extends PublisherPacketListener {
 
@@ -19,14 +20,19 @@ public class SubscribePacketListener extends PublisherPacketListener {
 
 	@Override
 	public void processPacket(Packet packet) {
-		System.out.println(packet);
+
 		Presence presence = (Presence) packet;
+		PacketPrinter printer = new PacketPrinter();
+		System.out.println("SubscribePacketListener: processing packet:");
+		System.out.println(printer.printPacket(packet));
 		SubscriberMetadata<XmppUserId> subscriberMetadata = new SubscriberMetadata<XmppUserId>();
 		parseFromUserMetadata(presence, subscriberMetadata);
 
 		// TODO: add subscribe request to attention list
 		publisher.addObserver(subscriberMetadata);
 		// TODO: send an answer back after adding
+		
+		throw new RuntimeException("test");
 	}
 
 	@Override

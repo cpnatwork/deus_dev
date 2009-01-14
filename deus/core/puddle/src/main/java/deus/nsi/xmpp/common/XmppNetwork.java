@@ -14,7 +14,7 @@ import deus.model.user.id.XmppUserId;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  *
  */
-public class XmppServer {
+public class XmppNetwork {
 
 	private XmppServerConnectionConfiguration configuration;
 	

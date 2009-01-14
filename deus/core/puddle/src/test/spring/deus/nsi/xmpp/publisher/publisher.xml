@@ -6,12 +6,8 @@
 	
 	<bean id="publisherStub" class="deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub">
 		<constructor-arg ref="publisherMetadata" />
-		<constructor-arg ref="publisherXmppAccount"/>
+		<constructor-arg ref="subscriberXmppAccount"/>
 		<qualifier value="stub"/>
-	</bean>
-	
-	<bean id="publisherXmppAccount" factory-bean="xmppServer" factory-method="login">
-		<constructor-arg ref="publisherMetadata" />		
 	</bean>
 	
 	<bean id="publisherSkeleton" class="deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton">

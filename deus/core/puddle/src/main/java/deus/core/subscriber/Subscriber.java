@@ -1,11 +1,17 @@
 package deus.core.subscriber;
 
 import deus.model.pub.SubscriberMetadata;
+import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserId;
 
 
-public interface Subscriber<Id extends UserId> extends SubscriberStub<Id> {
+public interface Subscriber<Id extends UserId> {
 
-	public abstract SubscriberMetadata<Id> getSubscriberMetadata();
+
+	// TODO: think about Object change
+	public void update(PublisherMetadata<Id> publisherMetadata, Object change);
+
+
+	public SubscriberMetadata<Id> getSubscriberMetadata();
 
 }
