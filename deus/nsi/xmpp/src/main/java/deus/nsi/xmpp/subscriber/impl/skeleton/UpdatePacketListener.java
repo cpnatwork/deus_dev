@@ -27,8 +27,8 @@ public class UpdatePacketListener extends SubscriberPacketListener {
 		// TODO: do XML to object binding
 		// change = xmltoobjectbind(xml);
 		
-		PublisherMetadata<XmppUserId> publisherMetadata = null;
-		// TODO: extract PublisherMetadata
+		PublisherMetadata<XmppUserId> publisherMetadata = new PublisherMetadata<XmppUserId>();
+		parseFromUserMetadata(packet, publisherMetadata);
 		
 		subscriber.update(publisherMetadata, change);
 	}
