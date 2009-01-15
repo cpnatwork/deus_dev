@@ -27,6 +27,7 @@ public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 
 	@Override
 	public void addObserver(SubscriberMetadata<XmppUserId> subscriberMetadata) {
+		// TODO: implement this method properly
 		//Roster roster = subscriberXmppAccount.getRoster();
 
 		XmppUserId publisherJid = getPublisherMetadata().getUserId();
@@ -40,6 +41,7 @@ public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 
 	@Override
 	public void deleteObserver(SubscriberMetadata<XmppUserId> subscriberMetadata) {
+		// TODO: implement this method properly
 		//Roster roster = subscriberXmppAccount.getRoster();
 
 		XmppUserId publisherJid = getPublisherMetadata().getUserId();
