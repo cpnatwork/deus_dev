@@ -3,7 +3,7 @@ package deus.model.depository.generic.impl;
 import java.util.Map;
 
 import deus.model.depository.generic.DistributedInformationFolder;
-import deus.model.dossier.ForeignInformationFile;
+import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.user.id.UserId;
 
 public abstract class DistributedInformationFolderImpl<Id extends UserId, ContentType> implements

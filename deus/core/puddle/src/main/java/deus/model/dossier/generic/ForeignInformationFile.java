@@ -1,4 +1,4 @@
-package deus.model.dossier;
+package deus.model.dossier.generic;
 
 import java.util.List;
 
