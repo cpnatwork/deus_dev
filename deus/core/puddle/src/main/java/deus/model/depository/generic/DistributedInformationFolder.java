@@ -1,4 +1,4 @@
-package deus.model.depository;
+package deus.model.depository.generic;
 
 import deus.model.dossier.ForeignInformationFile;
 import deus.model.user.id.UserId;

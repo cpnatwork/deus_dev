@@ -1,8 +1,8 @@
-package deus.model.depository.impl;
+package deus.model.depository.generic.impl;
 
 import java.util.Map;
 
-import deus.model.depository.DistributedInformationFolder;
+import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.ForeignInformationFile;
 import deus.model.user.id.UserId;
 

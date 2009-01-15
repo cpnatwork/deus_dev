@@ -1,7 +1,7 @@
 package deus.model.depository.deus.impl;
 
 import deus.model.depository.deus.DistributedPatientFolder;
-import deus.model.depository.impl.DistributedInformationFolderImpl;
+import deus.model.depository.generic.impl.DistributedInformationFolderImpl;
 import deus.model.dossier.deus.ForeignPatientFile;
 import deus.model.user.id.UserId;
 
