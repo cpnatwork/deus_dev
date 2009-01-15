@@ -37,7 +37,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Export-Package></Export-Package>
+						<Export-Package>deus.model.*,deus.core.*</Export-Package>
 						<Private-Package>deus.*</Private-Package>
 						<!-- 
 						- org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor
