@@ -1,6 +1,6 @@
 package dacus.model.dossier;
 
-import deus.model.dossier.PersonalInformationFile;
+import deus.model.dossier.generic.PersonalInformationFile;
 import deus.model.dossier.proj.party.Party;
 import deus.model.user.id.UserId;
 
