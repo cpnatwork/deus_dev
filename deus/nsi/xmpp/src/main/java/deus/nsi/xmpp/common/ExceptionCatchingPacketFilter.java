@@ -3,7 +3,7 @@ package deus.nsi.xmpp.common;
 import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.packet.Packet;
 
-public class ExceptionCatchingPacketFilter implements PacketFilter {
+class ExceptionCatchingPacketFilter implements PacketFilter {
 
 	private final PacketFilter packetFilterDelegate;
 	
