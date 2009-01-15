@@ -176,6 +176,15 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
+				<configuration>
+<!--				<outputDirectory>${springdmserver.location}/repository/bundles/usr</outputDirectory>-->
+					<outputDirectory>${project.build.directory}/dependencies</outputDirectory>
+					<overWriteReleases>false</overWriteReleases>
+					<overWriteSnapshots>false</overWriteSnapshots>
+					<overWriteIfNewer>true</overWriteIfNewer>
+					<includeScope>runtime</includeScope>
+<!--				<includeTypes>jar</includeTypes>-->
+				</configuration>
 				<executions>
 					<execution>
 						<id>copy-dependencies</id>
@@ -183,15 +192,6 @@
 							<goal>copy-dependencies</goal>
 						</goals>
 						<phase>pre-integration-test</phase>
-						<configuration>
-<!--							<outputDirectory>${springdmserver.location}/repository/bundles/usr</outputDirectory>-->
-							<outputDirectory>${project.build.directory}/dependencies</outputDirectory>
-							<overWriteReleases>false</overWriteReleases>
-							<overWriteSnapshots>false</overWriteSnapshots>
-							<overWriteIfNewer>true</overWriteIfNewer>
-							<includeScope>runtime</includeScope>
-<!--							<includeTypes>jar</includeTypes>-->
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
