@@ -20,23 +20,6 @@ public class SubscribePacketListener extends PublisherPacketListener {
 
 
 	@Override
-	public void processPacket(Packet packet) {
-		PacketPrinter printer = new PacketPrinter();
-		System.out.println("SubscribePacketListener: processing packet:");
-		System.out.println(printer.printPacket(packet));
-		
-		Presence presence = (Presence) packet;
-	
-		SubscriberMetadata<XmppUserId> subscriberMetadata = new SubscriberMetadata<XmppUserId>();
-		parseFromUserMetadata(presence, subscriberMetadata);
-
-		// TODO: add subscribe request to attention list
-		publisher.addObserver(subscriberMetadata);
-		// TODO: send an answer back after adding
-	}
-
-
-	@Override
 	public PacketFilter getFilter() {
 		PacketTypeFilter typeFilter = new PacketTypeFilter(Presence.class);
 		PacketFilter unsubscribeFilter = new PacketFilter() {
@@ -50,6 +33,23 @@ public class SubscribePacketListener extends PublisherPacketListener {
 		};
 		PacketFilter andPacketFilter = new AndFilter(typeFilter, unsubscribeFilter);
 		return andPacketFilter;
+	}
+
+
+	@Override
+	public void processPacket(Packet packet) {
+		PacketPrinter printer = new PacketPrinter();
+		System.out.println("SubscribePacketListener: processing packet:");
+		System.out.println(printer.printPacket(packet));
+
+		Presence presence = (Presence) packet;
+
+		SubscriberMetadata<XmppUserId> subscriberMetadata = new SubscriberMetadata<XmppUserId>();
+		parseFromUserMetadata(presence, subscriberMetadata);
+
+		// TODO: add subscribe request to attention list
+		publisher.addObserver(subscriberMetadata);
+		// TODO: send an answer back after adding
 	}
 
 }

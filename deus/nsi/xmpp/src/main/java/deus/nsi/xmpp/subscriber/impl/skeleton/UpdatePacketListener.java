@@ -16,26 +16,28 @@ public class UpdatePacketListener extends SubscriberPacketListener {
 		super(subscriber);
 	}
 
-	@Override
-	public void processPacket(Packet packet) {
-		IQ iq = (IQ)packet;
-		// TODO: do checks
-		FIFChange fifChange = (FIFChange)iq;
-		String xml = fifChange.getChildElementXML();
-		
-		Object change = null;
-		// TODO: do XML to object binding
-		// change = xmltoobjectbind(xml);
-		
-		PublisherMetadata<XmppUserId> publisherMetadata = new PublisherMetadata<XmppUserId>();
-		parseFromUserMetadata(packet, publisherMetadata);
-		
-		subscriber.update(publisherMetadata, change);
-	}
 
 	@Override
 	public PacketFilter getFilter() {
 		return new PacketTypeFilter(IQ.class);
 	}
-	
+
+
+	@Override
+	protected void processPacket(Packet packet) {
+		IQ iq = (IQ) packet;
+		// TODO: do checks
+		FIFChange fifChange = (FIFChange) iq;
+		String xml = fifChange.getChildElementXML();
+
+		Object change = null;
+		// TODO: do XML to object binding
+		// change = xmltoobjectbind(xml);
+
+		PublisherMetadata<XmppUserId> publisherMetadata = new PublisherMetadata<XmppUserId>();
+		parseFromUserMetadata(packet, publisherMetadata);
+
+		subscriber.update(publisherMetadata, change);
+	}
+
 }

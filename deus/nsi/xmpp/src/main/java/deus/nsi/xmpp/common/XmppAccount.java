@@ -55,7 +55,7 @@ public class XmppAccount {
 	public void addPacketListener(FilteredPacketListener filteredPacketListener) {
 		// wrapping PacketListener and PacketFilter into exception catching ones
 		connection.addPacketListener(
-				new ExceptionCatchingPacketListener(filteredPacketListener),
+				new ExceptionCatchingPacketListener(filteredPacketListener.getPacketListener()),
 				new ExceptionCatchingPacketFilter(filteredPacketListener.getFilter()));
 	}
 	

@@ -20,21 +20,6 @@ public class UnsubscribePacketListener extends PublisherPacketListener {
 
 
 	@Override
-	public void processPacket(Packet packet) {
-		PacketPrinter printer = new PacketPrinter();
-		System.out.println("UnsubscribePacketListener: processing packet:");
-		System.out.println(printer.printPacket(packet));
-		
-		Presence presence = (Presence) packet;
-		SubscriberMetadata<XmppUserId> subscriberMetadata = new SubscriberMetadata<XmppUserId>();
-		parseFromUserMetadata(presence, subscriberMetadata);
-
-		// TODO: unsubscribe user and put notice to attention list
-		publisher.deleteObserver(subscriberMetadata);
-	}
-
-
-	@Override
 	public PacketFilter getFilter() {
 		PacketTypeFilter typeFilter = new PacketTypeFilter(Presence.class);
 		PacketFilter unsubscribeFilter = new PacketFilter() {
@@ -44,11 +29,26 @@ public class UnsubscribePacketListener extends PublisherPacketListener {
 				Presence presence = (Presence) packet;
 				return presence.getType().equals(Type.unsubscribe);
 			}
-			
+
 		};
 		PacketFilter andPacketFilter = new AndFilter(typeFilter, unsubscribeFilter);
 		return andPacketFilter;
 	}
 
-	
+
+	@Override
+	public void processPacket(Packet packet) {
+		PacketPrinter printer = new PacketPrinter();
+		System.out.println("UnsubscribePacketListener: processing packet:");
+		System.out.println(printer.printPacket(packet));
+
+		Presence presence = (Presence) packet;
+		SubscriberMetadata<XmppUserId> subscriberMetadata = new SubscriberMetadata<XmppUserId>();
+		parseFromUserMetadata(presence, subscriberMetadata);
+
+		// TODO: unsubscribe user and put notice to attention list
+		publisher.deleteObserver(subscriberMetadata);
+	}
+
+
 }

@@ -8,6 +8,5 @@ public class XmppSubscriberSkeleton extends DelegateToPacketListenerSkeleton {
 	public XmppSubscriberSkeleton(XmppAccount subscriberXmppAccount) {
 		super(subscriberXmppAccount);
 	}
-
 	
 }
