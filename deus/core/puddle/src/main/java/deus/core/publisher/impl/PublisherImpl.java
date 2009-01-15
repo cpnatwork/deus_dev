@@ -12,28 +12,28 @@ import deus.model.user.id.UserId;
 public class PublisherImpl<Id extends UserId> implements Publisher<Id> {
 
 	private final PublisherMetadata<Id> publisherMetadata;
-	private final ListOfSubscribers<Id> observers;
+	private final ListOfSubscribers<Id> listOfSubscribers;
 
 	private SubscriberStubFactory<Id> subscriberStubFactory;
 
 	public PublisherImpl(PublisherMetadata<Id> publisherMetadata) {
 		super();
 		this.publisherMetadata = publisherMetadata;
-		this.observers = new ThreadSafeListOfSubscribers<Id>();
+		this.listOfSubscribers = new ThreadSafeListOfSubscribers<Id>();
 	}
 
 
 	public synchronized void addObserver(SubscriberMetadata<Id> o) {
 		if (o == null)
 			throw new NullPointerException();
-		if (!observers.contains(o)) {
-			observers.add(o);
+		if (!listOfSubscribers.contains(o)) {
+			listOfSubscribers.add(o);
 		}
 	}
 
 
 	public synchronized void deleteObserver(SubscriberMetadata<Id> o) {
-		observers.remove(o);
+		listOfSubscribers.remove(o);
 	}
 
 
@@ -61,7 +61,7 @@ public class PublisherImpl<Id extends UserId> implements Publisher<Id> {
 			 * progress 2) a recently unregistered Observer will be wrongly
 			 * notified when it doesn't care
 			 */
-			arrLocal = observers.toArray();
+			arrLocal = listOfSubscribers.toArray();
 		}
 
 		for (int i = arrLocal.length - 1; i >= 0; i--) {
@@ -74,15 +74,22 @@ public class PublisherImpl<Id extends UserId> implements Publisher<Id> {
 
 
 	public synchronized void deleteObservers() {
-		observers.clear();
+		listOfSubscribers.clear();
 	}
 
 
 	public synchronized int countObservers() {
-		return observers.size();
+		return listOfSubscribers.size();
 	}
 
 
+
+	@Override
+	public ListOfSubscribers<Id> getListOfSubscribers() {
+		return listOfSubscribers;
+	}
+	
+	
 	@Override
 	public PublisherMetadata<Id> getPublisherMetadata() {
 		return publisherMetadata;

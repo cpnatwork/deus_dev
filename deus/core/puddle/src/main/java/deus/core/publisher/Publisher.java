@@ -1,5 +1,6 @@
 package deus.core.publisher;
 
+import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserId;
@@ -43,6 +44,7 @@ public interface Publisher<Id extends UserId> {
 	 * @see     java.util.Observable#hasChanged()
 	 * @see     java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
+	// TODO: think about whether to delete this method
 	public abstract void notifyObservers();
 
 
@@ -77,6 +79,8 @@ public interface Publisher<Id extends UserId> {
 	public abstract int countObservers();
 
 
+	public ListOfSubscribers<Id> getListOfSubscribers();
+	
 	public abstract PublisherMetadata<Id> getPublisherMetadata();
 
 }
