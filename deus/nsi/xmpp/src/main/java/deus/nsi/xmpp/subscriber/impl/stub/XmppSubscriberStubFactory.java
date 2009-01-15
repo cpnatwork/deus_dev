@@ -32,7 +32,9 @@ public class XmppSubscriberStubFactory implements SubscriberStubFactory<XmppUser
 	@Override
 	public SubscriberStub<XmppUserId> createSubscriberStub(SubscriberMetadata<XmppUserId> subscriberMetadata,
 			PublisherMetadata<XmppUserId> publisherMetadata) {
-		XmppAccount publisherAccount = xmppNetwork.login(publisherMetadata);
+		// TODO: login here??
+		// FIXME: what to do with password here?
+		XmppAccount publisherAccount = xmppNetwork.login(publisherMetadata, "test");
 		return new XmppSubscriberStub(subscriberMetadata, publisherAccount);
 	}
 

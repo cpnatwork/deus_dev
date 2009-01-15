@@ -24,7 +24,7 @@ public class XmppNetwork {
 	private String xmppPropertyFullName;
 
 
-	public XmppAccount login(UserMetadata<XmppUserId> userMetadata) {
+	public XmppAccount login(UserMetadata<XmppUserId> userMetadata, String password) {
 		XmppUserId xmppUserId = userMetadata.getUserId();
 
 		// connect to the XMPP account of the subscriber.
@@ -43,8 +43,7 @@ public class XmppNetwork {
 		}
 
 		try {
-			// FIXME: what to do with password?
-			connection.login(xmppUserId.getUsername(), "test");
+			connection.login(xmppUserId.getUsername(), password);
 		}
 		catch (XMPPException e) {
 			// if the the user cannot be logged in his local XMPP server, something fatal went wrong!
