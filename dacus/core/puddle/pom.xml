@@ -39,7 +39,9 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Export-Package>inf6.promed.dacus</Export-Package>
+						<Export-Package></Export-Package>
+						<Private-Package>dacus.*</Private-Package>
+
 						<!-- 
 						- org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor
 							requires PersistantAnnotationBeanPostProcessor which is in the given package.

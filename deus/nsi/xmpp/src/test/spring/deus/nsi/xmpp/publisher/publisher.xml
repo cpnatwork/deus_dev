@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+	<bean id="publisherStub" class="deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub">
+		<constructor-arg ref="publisherMetadata" />
+		<constructor-arg ref="subscriberXmppAccount"/>
+		<qualifier value="stub"/>
+	</bean>
+	
+	<bean id="publisherSkeleton" class="deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton">
+		<constructor-arg ref="publisherXmppAccount" />
+		<property name="packetListeners">
+			<list>
+				<ref local="subscribePacketListener"/>
+				<ref local="unsubscribePacketListener"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="subscribePacketListener" class="deus.nsi.xmpp.publisher.impl.skeleton.SubscribePacketListener">
+		<constructor-arg ref="publisher"/>
+		<property name="xmppPropertyFullName" value="${xmpp.property.fullName}"/>
+	</bean>
+	
+	<bean id="unsubscribePacketListener" class="deus.nsi.xmpp.publisher.impl.skeleton.UnsubscribePacketListener">
+		<constructor-arg ref="publisher"/>
+		<property name="xmppPropertyFullName" value="${xmpp.property.fullName}"/>
+	</bean>
+	
+	<bean id="publisher" class="deus.core.publisher.impl.PublisherImpl">
+		<constructor-arg ref="publisherMetadata" />
+		<property name="subscriberStubFactory" ref="subscriberStubFactory" />
+	</bean>
+	
+
+</beans>

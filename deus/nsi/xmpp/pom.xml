@@ -4,13 +4,13 @@
 
 	<parent>
 		<groupId>inf6.promed</groupId>
-		<artifactId>dacus-ui</artifactId>
+		<artifactId>deus-nsi</artifactId>
 		<version>0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>dacus-ui-puddle</artifactId>
+	<artifactId>deus-nsi-xmpp</artifactId>
 	<packaging>bundle</packaging>
-	<name>DACUS ui puddle</name>
+	<name>DEUS nsi xmpp</name>
 
 
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
@@ -19,23 +19,22 @@
 	
 	<dependencies>
         <!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-        
-		<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 		<dependency>
-			<groupId>org.springframework.webflow</groupId>
-			<artifactId>org.springframework.webflow-library</artifactId>
-			<type>libd</type>
-			<version>2.0.5.RELEASE</version>
+			<groupId>inf6.promed</groupId>
+			<artifactId>deus-core-puddle</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+                
+	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+		<dependency>
+			<groupId>jivesoftware</groupId>
+			<artifactId>smack</artifactId>
+			<version>3.1.0</version>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>com.springsource.javax.servlet.jsp.jstl</artifactId>
-			<version>1.1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.taglibs</groupId>
-			<artifactId>com.springsource.org.apache.taglibs.standard</artifactId>
-			<version>1.1.2</version>
+			<groupId>jivesoftware</groupId>
+			<artifactId>smackx-debug</artifactId>
+			<version>3.1.0</version>
 		</dependency>
 	</dependencies>
 	
@@ -54,7 +53,8 @@
 				<configuration>
 					<instructions>
 						<Export-Package></Export-Package>
-						<Private-Package>dacus.*</Private-Package>
+						<Private-Package>deus.nsi.xmpp.*</Private-Package>
+
 						<!-- 
 						- org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor
 							requires PersistantAnnotationBeanPostProcessor which is in the given package.
@@ -65,36 +65,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-
-		<resources>
-			<resource>
-				<directory>${basedir}/src/main/resources</directory>
-			</resource>
-			<resource>
-				<targetPath>META-INF/spring</targetPath>
-				<filtering>false</filtering>
-				<directory>${basedir}/src/main/spring</directory>
-				<includes>
-					<include>**/*.xml</include>
-				</includes>
-			</resource>
-			<resource>
-				<targetPath>MODULE-INF/WEB-INF/flows</targetPath>
-				<filtering>false</filtering>
-				<directory>${basedir}/src/main/flows</directory>
-				<includes>
-					<include>**/*</include>
-				</includes>
-			</resource>
-			<resource>
-				<targetPath>MODULE-INF</targetPath>
-				<filtering>false</filtering>
-				<directory>${basedir}/src/main/webapp</directory>
-				<includes>
-					<include>**/*</include>
-				</includes>
-			</resource>
-		</resources>
 
 	</build>
 	
