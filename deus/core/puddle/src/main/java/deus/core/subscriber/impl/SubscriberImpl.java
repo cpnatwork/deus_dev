@@ -5,10 +5,10 @@ import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserId;
 
-public class SubscriberImpl<Id extends UserId> implements Subscriber<Id> {
+// TODO: add DIF
+public class SubscriberImpl<Id extends UserId, DifContentType> implements Subscriber<Id, DifContentType> {
 
 	private final SubscriberMetadata<Id> subscriberMetadata;
-
 
 	public SubscriberImpl(SubscriberMetadata<Id> subscriberMetadata) {
 		super();
