@@ -24,7 +24,7 @@ public class XmppNetwork {
 	private String xmppPropertyFullName;
 
 
-	public XmppAccount login(UserMetadata<XmppUserId> userMetadata, String password) {
+	public XmppConversation login(UserMetadata<XmppUserId> userMetadata, String password) {
 		XmppUserId xmppUserId = userMetadata.getUserId();
 
 		// connect to the XMPP account of the subscriber.
@@ -50,9 +50,9 @@ public class XmppNetwork {
 			throw new RuntimeException("the XMPP user " + xmppUserId + " cannot be logged in his local XMPP server", e);
 		}
 
-		XmppAccount xmppAccount = new XmppAccount(connection, userMetadata);
-		xmppAccount.setXmppPropertyFullName(xmppPropertyFullName);
-		return xmppAccount;
+		XmppConversation xmppConversation = new XmppConversation(connection, userMetadata);
+		xmppConversation.setXmppPropertyFullName(xmppPropertyFullName);
+		return xmppConversation;
 	}
 
 

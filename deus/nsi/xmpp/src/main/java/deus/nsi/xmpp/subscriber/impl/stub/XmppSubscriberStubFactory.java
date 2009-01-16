@@ -6,7 +6,7 @@ import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserIdType;
 import deus.model.user.id.XmppUserId;
-import deus.nsi.xmpp.common.XmppAccount;
+import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.common.XmppNetwork;
 
 /**
@@ -34,12 +34,12 @@ public class XmppSubscriberStubFactory implements SubscriberStubFactory<XmppUser
 			PublisherMetadata<XmppUserId> publisherMetadata) {
 		// TODO: login here??
 		// FIXME: what to do with password here?
-		XmppAccount publisherAccount = xmppNetwork.login(publisherMetadata, "test");
+		XmppConversation publisherAccount = xmppNetwork.login(publisherMetadata, "test");
 		return new XmppSubscriberStub(subscriberMetadata, publisherAccount);
 	}
 
 	/**
-	 * Sets the LocalXmppServer class for creating XmppAccount objects per user.
+	 * Sets the LocalXmppServer class for creating XmppConversation objects per user.
 	 */
 	public void setXmppNetwork(XmppNetwork xmppNetwork) {
 		this.xmppNetwork = xmppNetwork;

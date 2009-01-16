@@ -9,12 +9,12 @@ import deus.nsi.xmpp.common.packetfilter.FilteredPacketListener;
 
 public class DelegateToPacketListenerSkeleton {
 
-	private final XmppAccount userXmppAccount;
+	private final XmppConversation userXmppConversation;
 	private List<FilteredPacketListener> filteredPacketListeners;
 
 
-	public DelegateToPacketListenerSkeleton(XmppAccount userXmppAccount) {
-		this.userXmppAccount = userXmppAccount;
+	public DelegateToPacketListenerSkeleton(XmppConversation userXmppConversation) {
+		this.userXmppConversation = userXmppConversation;
 	}
 
 
@@ -25,10 +25,10 @@ public class DelegateToPacketListenerSkeleton {
 
 	public void connect() {
 		// TODO: remove again and think about a better place for this
-		userXmppAccount.getRoster().setSubscriptionMode(SubscriptionMode.manual);
+		userXmppConversation.getRoster().setSubscriptionMode(SubscriptionMode.manual);
 
 		for (FilteredPacketListener filteredPacketListener : filteredPacketListeners)
-			userXmppAccount.addPacketListener(filteredPacketListener);
+			userXmppConversation.addPacketListener(filteredPacketListener);
 	}
 
 }

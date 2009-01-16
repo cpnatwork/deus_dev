@@ -38,9 +38,11 @@ public class XmppPublisherStubTest {
 
 	@Autowired
 	private SubscriberMetadata<XmppUserId> subscriberMetadata;
+	
 
 	@Before
 	public void setUp() {
+		
 		publisherSkeleton.connect();
 	}
 

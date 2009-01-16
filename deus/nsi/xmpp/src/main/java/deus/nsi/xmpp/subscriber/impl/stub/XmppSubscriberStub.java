@@ -7,25 +7,25 @@ import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserIdType;
 import deus.model.user.id.XmppUserId;
-import deus.nsi.xmpp.common.XmppAccount;
+import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.subscriber.impl.FIFChange;
 
 public class XmppSubscriberStub extends AbstractSubscriberStub<XmppUserId> {
 
-	private final XmppAccount publisherXmppAccount;
+	private final XmppConversation publisherXmppConversation;
 
 
-	public XmppSubscriberStub(SubscriberMetadata<XmppUserId> subscriberMetadata, XmppAccount publisherXmppAccount) {
+	public XmppSubscriberStub(SubscriberMetadata<XmppUserId> subscriberMetadata, XmppConversation publisherXmppConversation) {
 		super(subscriberMetadata);
 		assert (subscriberMetadata.getUserId().getType().equals(UserIdType.xmpp));
-		this.publisherXmppAccount = publisherXmppAccount;
+		this.publisherXmppConversation = publisherXmppConversation;
 	}
 
 
 	@Override
 	public void update(PublisherMetadata<XmppUserId> publisher, Object change) {
 		IQ changeIq = new FIFChange(change);
-		publisherXmppAccount.sendPacket(changeIq, getSubscriberMetadata().getUserId());
+		publisherXmppConversation.sendPacket(changeIq, getSubscriberMetadata().getUserId());
 	}
 
 }

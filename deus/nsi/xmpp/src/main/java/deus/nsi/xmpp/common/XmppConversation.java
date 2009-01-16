@@ -8,14 +8,14 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.XmppUserId;
 import deus.nsi.xmpp.common.packetfilter.FilteredPacketListener;
 
-public class XmppAccount {
+public class XmppConversation {
 
 	private final XMPPConnection connection;
 	private final UserMetadata<XmppUserId> userMetadata;
 	private String xmppPropertyFullName;
 
 
-	public XmppAccount(XMPPConnection connection, UserMetadata<XmppUserId> userMetadata) {
+	public XmppConversation(XMPPConnection connection, UserMetadata<XmppUserId> userMetadata) {
 		this.connection = connection;
 		this.userMetadata = userMetadata;
 	}

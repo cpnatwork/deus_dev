@@ -1,7 +1,7 @@
 package deus.nsi.xmpp.publisher.impl.skeleton;
 
 import deus.nsi.xmpp.common.DelegateToPacketListenerSkeleton;
-import deus.nsi.xmpp.common.XmppAccount;
+import deus.nsi.xmpp.common.XmppConversation;
 
 /**
  * 
@@ -10,8 +10,8 @@ import deus.nsi.xmpp.common.XmppAccount;
  */
 public class XmppPublisherSkeleton extends DelegateToPacketListenerSkeleton {
 
-	public XmppPublisherSkeleton(XmppAccount publisherXmppAccount) {
-		super(publisherXmppAccount);
+	public XmppPublisherSkeleton(XmppConversation publisherXmppConversation) {
+		super(publisherXmppConversation);
 	}
 
 		
