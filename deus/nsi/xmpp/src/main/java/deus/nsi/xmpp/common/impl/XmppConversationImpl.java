@@ -13,6 +13,7 @@ import org.jivesoftware.smack.packet.Packet;
 
 import deus.model.user.UserMetadata;
 import deus.model.user.id.XmppUserId;
+import deus.nsi.xmpp.common.XmppConfiguration;
 import deus.nsi.xmpp.common.XmppConversation;
 
 // TODO: think about synchonrization issues (e.g. with adding/removing of packet listeners)
@@ -21,10 +22,10 @@ public class XmppConversationImpl implements XmppConversation {
 	private final XMPPConnection connection;
 	private final UserMetadata<XmppUserId> userMetadata;
 	private final String password;
+	
+	private XmppConfiguration xmppConfiguration;
 
 	private final Map<PacketListener, ExceptionCatchingPacketListener> addedPacketListeners;
-	
-	private String xmppPropertyFullName;
 
 
 	public XmppConversationImpl(XMPPConnection connection, UserMetadata<XmppUserId> userMetadata, String password) {
@@ -128,7 +129,7 @@ public class XmppConversationImpl implements XmppConversation {
 		
 		packet.setTo(receiver.toString());
 		packet.setFrom(userMetadata.toString());
-		packet.setProperty(xmppPropertyFullName, userMetadata.getFullName());
+		packet.setProperty(xmppConfiguration.getXmppPropertyFullName(), userMetadata.getFullName());
 		connection.sendPacket(packet);
 	}
 
@@ -163,9 +164,8 @@ public class XmppConversationImpl implements XmppConversation {
 	}
 
 
-	// TODO: think, if this is a good idea...
-	public void setXmppPropertyFullName(String xmppPropertyFullName) {
-		this.xmppPropertyFullName = xmppPropertyFullName;
+	public void setXmppConfiguration(XmppConfiguration xmppConfiguration) {
+		this.xmppConfiguration = xmppConfiguration;
 	}
 
 }

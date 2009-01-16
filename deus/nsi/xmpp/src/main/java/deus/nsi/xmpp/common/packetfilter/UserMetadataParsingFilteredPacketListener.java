@@ -6,14 +6,16 @@ import org.springframework.beans.factory.annotation.Required;
 
 import deus.model.user.UserMetadata;
 import deus.model.user.id.XmppUserId;
+import deus.nsi.xmpp.common.XmppConfiguration;
 
 public abstract class UserMetadataParsingFilteredPacketListener extends AbstractFilteredPacketListener {
 
-	private String xmppPropertyFullName = null;
+	private XmppConfiguration xmppConfiguration;
+
 
 	/**
-	 * Returns a UserMetadata object which is filled by parsing the package 'from' element and the package property
-	 * with the name, that is set by the method <code>setXmppPropertyFullName</code>.
+	 * Returns a UserMetadata object which is filled by parsing the package 'from' element and the package property with
+	 * the name, that is set by the method <code>setXmppPropertyFullName</code>.
 	 * 
 	 * @param packet
 	 *            the packet, from which to parse the 'from' data
@@ -27,24 +29,25 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 		String from = packet.getFrom();
 		if (from == null)
 			throw new RuntimeException("'from' field is null at this presence packet: " + packet);
-	
+
 		XmppUserId subscriberJid = new XmppUserId();
 		subscriberJid.setServer(StringUtils.parseServer(from));
 		subscriberJid.setUsername(StringUtils.parseName(from));
-	
+
 		userMetadata.setUserId(subscriberJid);
-	
-		Object fullName = packet.getProperty(xmppPropertyFullName);
+
+		Object fullName = packet.getProperty(xmppConfiguration.getXmppPropertyFullName());
 		if (fullName == null)
-			throw new RuntimeException("property '" + xmppPropertyFullName + "' is null at this presence packet: "
-					+ packet);
+			throw new RuntimeException("property '" + xmppConfiguration.getXmppPropertyFullName()
+					+ "' is null at this presence packet: " + packet);
 		userMetadata.setFullName(fullName.toString());
 	}
 
-	@Required
-	public void setXmppPropertyFullName(String xmppPropertyFullName) {
-		this.xmppPropertyFullName = xmppPropertyFullName;
-	}
 
+	// TODO: think about doing this with spring DI into domain objects
+	@Required
+	public void setXmppConfiguration(XmppConfiguration xmppConfiguration) {
+		this.xmppConfiguration = xmppConfiguration;
+	}
 
 }

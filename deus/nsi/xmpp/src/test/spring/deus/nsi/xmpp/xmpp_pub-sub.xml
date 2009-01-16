@@ -43,8 +43,14 @@
 
 	<bean id="xmppNetwork" class="deus.nsi.xmpp.common.XmppNetwork">
 		<property name="xmppServerConnectionConfiguration" ref="xmppServerConnectionConfiguration" />
-		<property name="xmppPropertyNameFromFullName" value="${xmpp.property.fullName}" />
+		<property name="xmppConfiguration" ref="xmppConfiguration" />
 	</bean>
+	
+	
+	<bean id="xmppConfiguration" class="deus.nsi.xmpp.common.impl.XmppConfigurationImpl">
+		<property name="xmppPropertyFullName" value="fullName"/>
+	</bean>
+	
 
 	<bean id="xmppServerConnectionConfiguration" class="deus.nsi.xmpp.common.XmppServerConnectionConfiguration">
 		<property name="compression" value="false" />
@@ -58,7 +64,6 @@
 
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="properties">
-			<value>xmpp.property.fullName=fullName</value>
 		</property>
 	</bean>
 </beans>

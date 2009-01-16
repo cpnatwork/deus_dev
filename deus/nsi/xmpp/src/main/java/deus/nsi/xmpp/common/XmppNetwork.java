@@ -21,7 +21,7 @@ public class XmppNetwork {
 	private XmppServerConnectionConfiguration configuration;
 
 	// / property name of XMPP property 'fullName'
-	private String xmppPropertyFullName;
+	private XmppConfiguration xmppConfiguration;
 
 
 	public XmppConversation login(UserMetadata<XmppUserId> userMetadata, String password) {
@@ -34,21 +34,26 @@ public class XmppNetwork {
 		connectionConfiguration.setSecurityMode(configuration.getSecurityMode());
 
 		XMPPConnection connection = new XMPPConnection(connectionConfiguration);
-		
+
 		XmppConversationImpl xmppConversation = new XmppConversationImpl(connection, userMetadata, password);
-		xmppConversation.setXmppPropertyFullName(xmppPropertyFullName);
+		// TODO: think about doing this with spring:
+		// http://static.springframework.org/spring/docs/2.5.x/reference/aop.html#aop-atconfigurable
+		// http://blog.springsource.com/2008/01/23/new-improvements-in-domain-object-dependnecy-injection-feature/
+		xmppConversation.setXmppConfiguration(xmppConfiguration);
 		return xmppConversation;
 	}
 
 
 	@Required
-	public void setXmppPropertyNameFromFullName(String xmppPropertyNameFromFullName) {
-		this.xmppPropertyFullName = xmppPropertyNameFromFullName;
+	public void setXmppConfiguration(XmppConfiguration xmppConfiguration) {
+		this.xmppConfiguration = xmppConfiguration;
 	}
+
 
 	@Required
 	public void setXmppServerConnectionConfiguration(XmppServerConnectionConfiguration configuration) {
 		this.configuration = configuration;
 	}
+
 
 }
