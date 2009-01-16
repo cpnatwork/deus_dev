@@ -1,8 +1,5 @@
 package deus.nsi.xmpp.common.impl;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.Roster;
 import org.jivesoftware.smack.RosterEntry;
@@ -25,7 +22,7 @@ public class XmppConversationImpl implements XmppConversation {
 	
 	private XmppConfiguration xmppConfiguration;
 
-	private final Map<PacketListener, ExceptionCatchingPacketListener> addedPacketListeners;
+	private PacketListenerManager packetListenerManager;
 
 
 	public XmppConversationImpl(XMPPConnection connection, UserMetadata<XmppUserId> userMetadata, String password) {
@@ -33,7 +30,7 @@ public class XmppConversationImpl implements XmppConversation {
 		this.userMetadata = userMetadata;
 		this.password = password;
 		
-		this.addedPacketListeners = new HashMap<PacketListener, ExceptionCatchingPacketListener>();
+		this.packetListenerManager = new PacketListenerManager(connection);
 	}
 
 
@@ -144,16 +141,7 @@ public class XmppConversationImpl implements XmppConversation {
 	public void addPacketListener(PacketListener packetListener, PacketFilter packetFilter) {
 		assertIsStarted();
 		
-		if(packetListener == null)
-			throw new IllegalArgumentException("PacketListener is null!");
-		
-		ExceptionCatchingPacketListener ecpl = new ExceptionCatchingPacketListener(packetListener);
-		
-		addedPacketListeners.put(packetListener, ecpl);
-		
-		// wrapping PacketListener and PacketFilter into exception catching ones
-		connection.addPacketListener(ecpl,
-				new ExceptionCatchingPacketFilter(packetFilter));
+		packetListenerManager.addPacketListener(packetListener, packetFilter);
 	}
 
 
@@ -161,12 +149,10 @@ public class XmppConversationImpl implements XmppConversation {
 	public void removePacketListener(PacketListener packetListener) {
 		assertIsStarted();
 		
-		ExceptionCatchingPacketListener ecpl = addedPacketListeners.remove(packetListener);
-		if(ecpl == null)
-			throw new IllegalArgumentException("Can't remove PacketListener " + packetListener + ", it was not added!");
-		connection.removePacketListener(ecpl);
+		packetListenerManager.removePacketListener(packetListener);
 	}
 
+	
 
 	public void setXmppConfiguration(XmppConfiguration xmppConfiguration) {
 		this.xmppConfiguration = xmppConfiguration;
