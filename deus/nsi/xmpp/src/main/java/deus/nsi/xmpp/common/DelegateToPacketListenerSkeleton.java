@@ -1,8 +1,12 @@
 package deus.nsi.xmpp.common;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.Roster.SubscriptionMode;
+import org.jivesoftware.smack.filter.PacketFilter;
 
 import deus.nsi.xmpp.common.packetfilter.FilteredPacketListener;
 
@@ -10,7 +14,7 @@ import deus.nsi.xmpp.common.packetfilter.FilteredPacketListener;
 public abstract class DelegateToPacketListenerSkeleton {
 
 	private final XmppConversation userXmppConversation;
-	private List<FilteredPacketListener> filteredPacketListeners;
+	private Map<PacketListener, PacketFilter> packetListeners;
 
 
 	public DelegateToPacketListenerSkeleton(XmppConversation userXmppConversation) {
@@ -19,7 +23,9 @@ public abstract class DelegateToPacketListenerSkeleton {
 
 
 	public void setPacketListeners(List<FilteredPacketListener> filteredPacketListeners) {
-		this.filteredPacketListeners = filteredPacketListeners;
+		packetListeners = new HashMap<PacketListener, PacketFilter>();
+		for (FilteredPacketListener filteredPacketListener : filteredPacketListeners)
+			packetListeners.put(filteredPacketListener.getPacketListener(), filteredPacketListener.getFilter());
 	}
 
 
@@ -28,15 +34,14 @@ public abstract class DelegateToPacketListenerSkeleton {
 		// TODO: remove again and think about a better place for this
 		userXmppConversation.getRoster().setSubscriptionMode(SubscriptionMode.manual);
 
-		for (FilteredPacketListener filteredPacketListener : filteredPacketListeners)
-			userXmppConversation.addPacketListener(
-					filteredPacketListener.getPacketListener(),
-					filteredPacketListener.getFilter());
+		for (Map.Entry<PacketListener, PacketFilter> packetListenerEntry : packetListeners.entrySet())
+			userXmppConversation.addPacketListener(packetListenerEntry.getKey(), packetListenerEntry.getValue());
 	}
+
 
 	// TODO: think about this signature: detach()
 	public void disconnect() {
-		for (FilteredPacketListener filteredPacketListener : filteredPacketListeners)
-			userXmppConversation.removePacketListener(filteredPacketListener.getPacketListener());
+		for (Map.Entry<PacketListener, PacketFilter> packetListenerEntry : packetListeners.entrySet())
+			userXmppConversation.removePacketListener(packetListenerEntry.getKey());
 	}
 }

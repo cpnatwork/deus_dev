@@ -70,15 +70,6 @@ public class XmppPublisherStubTest {
 		subscriberXmppConversation.end();
 	}
 
-	@Test
-	public void testClearRoster() throws InterruptedException {
-		assertEquals(0, publisher.countObservers());
-		publisherStub.addObserver(subscriberMetadata);
-		publisherXmppConversation.clearRoster();
-		// we have to wait for the answer to arrive from the XMPP server
-		Thread.sleep(1000);
-		assertEquals(0, publisherXmppConversation.getRoster().getEntries().size());
-	}
 	
 
 	@Test

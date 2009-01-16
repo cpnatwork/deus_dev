@@ -144,6 +144,9 @@ public class XmppConversationImpl implements XmppConversation {
 	public void addPacketListener(PacketListener packetListener, PacketFilter packetFilter) {
 		assertIsStarted();
 		
+		if(packetListener == null)
+			throw new IllegalArgumentException("PacketListener is null!");
+		
 		ExceptionCatchingPacketListener ecpl = new ExceptionCatchingPacketListener(packetListener);
 		
 		addedPacketListeners.put(packetListener, ecpl);
@@ -159,7 +162,8 @@ public class XmppConversationImpl implements XmppConversation {
 		assertIsStarted();
 		
 		ExceptionCatchingPacketListener ecpl = addedPacketListeners.remove(packetListener);
-		
+		if(ecpl == null)
+			throw new IllegalArgumentException("Can't remove PacketListener " + packetListener + ", it was not added!");
 		connection.removePacketListener(ecpl);
 	}
 

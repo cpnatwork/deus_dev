@@ -57,13 +57,16 @@
 		<property name="saslAuthentication" value="false" />
 		<property name="securityMode" value="disabled" />
 	</bean>
+	
+	<bean id="userMetadataParsingFilteredPacketListener" abstract="true">
+		<property name="xmppConfiguration" ref="xmppConfiguration" />
+	</bean>
 
 
 	<!-- for @Required annotations -->
 	<context:annotation-config />
 
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="properties">
-		</property>
+
 	</bean>
 </beans>
