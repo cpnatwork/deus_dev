@@ -2,7 +2,6 @@ package deus.nsi.xmpp.common;
 
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.XMPPConnection;
-import org.jivesoftware.smack.XMPPException;
 import org.springframework.beans.factory.annotation.Required;
 
 import deus.model.user.UserMetadata;
@@ -35,23 +34,8 @@ public class XmppNetwork {
 		connectionConfiguration.setSecurityMode(configuration.getSecurityMode());
 
 		XMPPConnection connection = new XMPPConnection(connectionConfiguration);
-		try {
-			connection.connect();
-		}
-		catch (XMPPException e) {
-			// if the subscriber XMPP server is not available, something fatal went wrong!
-			throw new RuntimeException("the local XMPP server of the user " + xmppUserId + " is not available", e);
-		}
-
-		try {
-			connection.login(xmppUserId.getUsername(), password);
-		}
-		catch (XMPPException e) {
-			// if the the user cannot be logged in his local XMPP server, something fatal went wrong!
-			throw new RuntimeException("the XMPP user " + xmppUserId + " cannot be logged in his local XMPP server", e);
-		}
-
-		XmppConversationImpl xmppConversation = new XmppConversationImpl(connection, userMetadata);
+		
+		XmppConversationImpl xmppConversation = new XmppConversationImpl(connection, userMetadata, password);
 		xmppConversation.setXmppPropertyFullName(xmppPropertyFullName);
 		return xmppConversation;
 	}

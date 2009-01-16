@@ -10,21 +10,21 @@
 	<bean id="publisherMetadata" class="deus.model.sub.PublisherMetadata">
 		<property name="userId">
 			<bean class="deus.model.user.id.XmppUserId">
-				<property name="username" value="siflramp" />
+				<property name="username" value="alice" />
 				<property name="server" value="faui6p15" />
 			</bean>
 		</property>
-		<property name="fullName" value="Florian Rampp" />
+		<property name="fullName" value="Alice" />
 	</bean>
 
 	<bean id="subscriberMetadata" class="deus.model.pub.SubscriberMetadata">
 		<property name="userId">
 			<bean class="deus.model.user.id.XmppUserId">
-				<property name="username" value="cpn" />
+				<property name="username" value="bob" />
 				<property name="server" value="faui6p15" />
 			</bean>
 		</property>
-		<property name="fullName" value="Christoph Neumann" />
+		<property name="fullName" value="Bob" />
 	</bean>
 
 

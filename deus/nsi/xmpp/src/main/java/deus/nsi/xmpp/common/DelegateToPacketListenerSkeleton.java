@@ -28,7 +28,14 @@ public class DelegateToPacketListenerSkeleton {
 		userXmppConversation.getRoster().setSubscriptionMode(SubscriptionMode.manual);
 
 		for (FilteredPacketListener filteredPacketListener : filteredPacketListeners)
-			userXmppConversation.addPacketListener(filteredPacketListener);
+			userXmppConversation.addPacketListener(
+					filteredPacketListener.getPacketListener(),
+					filteredPacketListener.getFilter());
 	}
 
+
+	public void disconnect() {
+		for (FilteredPacketListener filteredPacketListener : filteredPacketListeners)
+			userXmppConversation.removePacketListener(filteredPacketListener.getPacketListener());
+	}
 }

@@ -34,5 +34,4 @@
 		<property name="subscriberStubFactory" ref="subscriberStubFactory" />
 	</bean>
 	
-
 </beans>
