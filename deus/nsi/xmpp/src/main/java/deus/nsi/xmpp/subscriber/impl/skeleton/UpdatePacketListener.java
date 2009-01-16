@@ -10,9 +10,9 @@ import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.XmppUserId;
 import deus.nsi.xmpp.subscriber.impl.FIFChange;
 
-public class UpdatePacketListener extends SubscriberPacketListener {
+public class UpdatePacketListener<DifContentType> extends SubscriberPacketListener<DifContentType> {
 
-	public UpdatePacketListener(Subscriber<XmppUserId> subscriber) {
+	public UpdatePacketListener(Subscriber<XmppUserId, DifContentType> subscriber) {
 		super(subscriber);
 	}
 

@@ -7,7 +7,7 @@ import org.jivesoftware.smack.Roster.SubscriptionMode;
 import deus.nsi.xmpp.common.packetfilter.FilteredPacketListener;
 
 
-public class DelegateToPacketListenerSkeleton {
+public abstract class DelegateToPacketListenerSkeleton {
 
 	private final XmppConversation userXmppConversation;
 	private List<FilteredPacketListener> filteredPacketListeners;
@@ -23,6 +23,7 @@ public class DelegateToPacketListenerSkeleton {
 	}
 
 
+	// TODO: think about this signature: attach(XmppConversation)
 	public void connect() {
 		// TODO: remove again and think about a better place for this
 		userXmppConversation.getRoster().setSubscriptionMode(SubscriptionMode.manual);
@@ -33,7 +34,7 @@ public class DelegateToPacketListenerSkeleton {
 					filteredPacketListener.getFilter());
 	}
 
-
+	// TODO: think about this signature: detach()
 	public void disconnect() {
 		for (FilteredPacketListener filteredPacketListener : filteredPacketListeners)
 			userXmppConversation.removePacketListener(filteredPacketListener.getPacketListener());
