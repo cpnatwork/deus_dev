@@ -35,6 +35,16 @@ public class PublisherImpl<Id extends UserId> implements Publisher<Id> {
 	public synchronized void deleteObserver(SubscriberMetadata<Id> o) {
 		listOfSubscribers.remove(o);
 	}
+	
+
+	public synchronized void deleteObservers() {
+		listOfSubscribers.clear();
+	}
+
+
+	public synchronized int countObservers() {
+		return listOfSubscribers.size();
+	}
 
 
 	public void notifyObservers() {
@@ -71,17 +81,6 @@ public class PublisherImpl<Id extends UserId> implements Publisher<Id> {
 			subscriber.update(getPublisherMetadata(), change);
 		}
 	}
-
-
-	public synchronized void deleteObservers() {
-		listOfSubscribers.clear();
-	}
-
-
-	public synchronized int countObservers() {
-		return listOfSubscribers.size();
-	}
-
 
 
 	@Override

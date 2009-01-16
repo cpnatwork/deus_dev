@@ -5,14 +5,14 @@ import org.jivesoftware.smack.filter.PacketTypeFilter;
 import org.jivesoftware.smack.packet.IQ;
 import org.jivesoftware.smack.packet.Packet;
 
-import deus.core.subscriber.Subscriber;
+import deus.core.subscriber.RemoteCalledSubscriber;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.XmppUserId;
 import deus.nsi.xmpp.subscriber.impl.FIFChange;
 
 public class UpdatePacketListener<DifContentType> extends SubscriberPacketListener<DifContentType> {
 
-	public UpdatePacketListener(Subscriber<XmppUserId, DifContentType> subscriber) {
+	public UpdatePacketListener(RemoteCalledSubscriber<XmppUserId> subscriber) {
 		super(subscriber);
 	}
 

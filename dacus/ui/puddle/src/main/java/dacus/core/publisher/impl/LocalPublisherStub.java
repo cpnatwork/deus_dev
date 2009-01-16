@@ -1,6 +1,6 @@
 package dacus.core.publisher.impl;
 
-import deus.core.publisher.Publisher;
+import deus.core.publisher.RemoteCalledPublisher;
 import deus.core.publisher.impl.AbstractPublisherStub;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
@@ -9,7 +9,7 @@ import deus.model.user.id.UserIdType;
 
 public class LocalPublisherStub<Id extends UserId> extends AbstractPublisherStub<Id> {
 
-	private Publisher<Id> publisher;
+	private RemoteCalledPublisher<Id> publisher;
 
 
 	public LocalPublisherStub(PublisherMetadata<Id> publisherMetadata) {

@@ -7,14 +7,14 @@ import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.packet.Presence.Type;
 
-import deus.core.publisher.Publisher;
+import deus.core.publisher.RemoteCalledPublisher;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.user.id.XmppUserId;
 import deus.nsi.xmpp.util.PacketPrinter;
 
 public class SubscribePacketListener extends PublisherPacketListener {
 
-	public SubscribePacketListener(Publisher<XmppUserId> publisher) {
+	public SubscribePacketListener(RemoteCalledPublisher<XmppUserId> publisher) {
 		super(publisher);
 	}
 

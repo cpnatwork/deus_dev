@@ -1,5 +1,6 @@
 package dacus.core.subscriber.impl;
 
+import deus.core.subscriber.RemoteCalledSubscriber;
 import deus.core.subscriber.Subscriber;
 import deus.core.subscriber.impl.AbstractSubscriberStub;
 import deus.core.subscriber.impl.SubscriberImpl;
@@ -13,7 +14,7 @@ import deus.model.user.id.UserIdType;
 // otherwise, PublisherImpl is also a PublisherStub, which is confusing!
 public class LocalSubscriberStub<Id extends UserId> extends AbstractSubscriberStub<Id> {
 
-	private Subscriber<Id> subscriber;
+	private RemoteCalledSubscriber<Id> subscriber;
 
 
 	public LocalSubscriberStub(SubscriberMetadata<Id> subscriberMetadata) {
