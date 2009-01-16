@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Required;
 
 import deus.model.user.UserMetadata;
 import deus.model.user.id.XmppUserId;
+import deus.nsi.xmpp.common.impl.XmppConversationImpl;
 
 
 /**
@@ -50,7 +51,7 @@ public class XmppNetwork {
 			throw new RuntimeException("the XMPP user " + xmppUserId + " cannot be logged in his local XMPP server", e);
 		}
 
-		XmppConversation xmppConversation = new XmppConversation(connection, userMetadata);
+		XmppConversationImpl xmppConversation = new XmppConversationImpl(connection, userMetadata);
 		xmppConversation.setXmppPropertyFullName(xmppPropertyFullName);
 		return xmppConversation;
 	}

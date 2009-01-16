@@ -31,11 +31,13 @@
 	<bean id="publisherXmppConversation" factory-bean="xmppNetwork" factory-method="login">
 		<constructor-arg ref="publisherMetadata" />
 		<constructor-arg value="test" />
+		<qualifier value="publisher"/>
 	</bean>
 
 	<bean id="subscriberXmppConversation" factory-bean="xmppNetwork" factory-method="login">
 		<constructor-arg ref="subscriberMetadata" />
 		<constructor-arg value="test" />
+		<qualifier value="subscriber"/>
 	</bean>
 
 

@@ -3,11 +3,15 @@ package deus.nsi.xmpp.publisher.stub;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -16,6 +20,7 @@ import deus.core.publisher.PublisherStub;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.XmppUserId;
+import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,9 +33,8 @@ public class XmppPublisherStubTest {
 
 	@Autowired
 	private XmppPublisherSkeleton publisherSkeleton;
-	
+
 	@Autowired
-	@Qualifier("stub")
 	private PublisherStub<XmppUserId> publisherStub;
 
 	@Autowired
@@ -38,17 +42,45 @@ public class XmppPublisherStubTest {
 
 	@Autowired
 	private SubscriberMetadata<XmppUserId> subscriberMetadata;
-	
+
+	@Autowired
+	@Qualifier("publisher")
+	private XmppConversation publisherXmppConversation;
+
+	@Autowired
+	@Qualifier("subscriber")
+	private XmppConversation subscriberXmppConversation;
+
 
 	@Before
 	public void setUp() {
-		
+		publisherXmppConversation.clearRoster();
+		subscriberXmppConversation.clearRoster();
 		publisherSkeleton.connect();
 	}
 
+
+	@After
+	public void tearDown() {
+		publisherXmppConversation.clearRoster();
+		subscriberXmppConversation.clearRoster();
+	}
+
 	@Test
-	public void testAddObserver() throws InterruptedException {
+	@DirtiesContext
+	public void testClearRoster() throws InterruptedException {
 		assertEquals(0, publisher.countObservers());
+		publisherStub.addObserver(subscriberMetadata);
+		publisherXmppConversation.clearRoster();
+		// we have to wait for the answer to arrive from the XMPP server
+		Thread.sleep(1000);
+		assertEquals(0, publisherXmppConversation.getRoster().getEntries().size());
+	}
+	
+
+	@Test
+	@DirtiesContext
+	public void testAddObserver() throws InterruptedException {
 		publisherStub.addObserver(subscriberMetadata);
 		// we have to wait for the answer to arrive from the XMPP server
 		Thread.sleep(1000);
@@ -57,8 +89,9 @@ public class XmppPublisherStubTest {
 
 
 	@Test
+	@DirtiesContext
 	public void testDeleteObserver() throws InterruptedException {
-		assertEquals(1, publisher.countObservers());
+		publisherStub.addObserver(subscriberMetadata);
 		publisherStub.deleteObserver(subscriberMetadata);
 		// we have to wait for the answer to arrive from the XMPP server
 		Thread.sleep(1000);
