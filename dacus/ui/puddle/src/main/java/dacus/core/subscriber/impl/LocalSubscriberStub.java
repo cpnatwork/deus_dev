@@ -20,7 +20,8 @@ public class LocalSubscriberStub<Id extends UserId> extends AbstractSubscriberSt
 	public LocalSubscriberStub(SubscriberMetadata<Id> subscriberMetadata) {
 		super(subscriberMetadata);
 		assert (subscriberMetadata.getUserId().getType().equals(UserIdType.local));
-		subscriber = new SubscriberImpl<Id>(subscriberMetadata);
+		// TODO: how to get subscriber
+		//subscriber = new SubscriberImpl<Id>(subscriberMetadata);
 	}
 
 
