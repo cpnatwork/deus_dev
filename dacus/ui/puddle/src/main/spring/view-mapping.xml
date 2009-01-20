@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="flowViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<property name="prefix" value="/" /> <!-- WEB-INF/jsp/" /> -->
+		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
 	</bean>

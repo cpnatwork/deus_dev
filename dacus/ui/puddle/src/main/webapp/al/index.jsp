@@ -10,7 +10,7 @@
 
 <html>
 <head>
-<title>DACUS</title>
+<title>DACUS Attention List</title>
 <%@ include file="/WEB-INF/jspf/_frame/scriptInclude.jspf"%>
 <%@ include file="/WEB-INF/jspf/_frame/head.jspf"%>
 <style type="text/css">
@@ -23,7 +23,8 @@ body {
 </style>
 </head>
 <body>
-<jsp:forward page="home.jsp" />
+<!-- The *flow.htm are to be addressed WITHOUT subdirectories! -->
+<jsp:forward page="/barkerflow.htm" />
 </body>
 </html>
 
