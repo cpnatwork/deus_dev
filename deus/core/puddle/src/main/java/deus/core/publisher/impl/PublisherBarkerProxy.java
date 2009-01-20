@@ -9,12 +9,12 @@ import deus.model.attention.SubscriptionCanceledNotice;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.user.id.UserId;
 
-public class BarkSubscriptionRequestPublisherProxy<Id extends UserId> implements RemoteCalledPublisher<Id> {
+public class PublisherBarkerProxy<Id extends UserId> implements RemoteCalledPublisher<Id> {
 
 	private final RemoteCalledPublisher<Id> proxiedPublisher;
 	private final Barker barker;
 	
-	public BarkSubscriptionRequestPublisherProxy(RemoteCalledPublisher<Id> proxiedPublisher, Barker barker) {
+	public PublisherBarkerProxy(RemoteCalledPublisher<Id> proxiedPublisher, Barker barker) {
 		this.proxiedPublisher = proxiedPublisher;
 		this.barker = barker;
 	}
@@ -32,6 +32,5 @@ public class BarkSubscriptionRequestPublisherProxy<Id extends UserId> implements
 		Notice notice = new SubscriptionCanceledNotice<Id>(subscriberMetadata);
 		barker.addAttentionElement(notice);
 	}
-
 
 }
