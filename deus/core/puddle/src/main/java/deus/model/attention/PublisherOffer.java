@@ -5,16 +5,16 @@ import deus.model.user.id.UserId;
 
 public class PublisherOffer<Id extends UserId> extends ConnectionDecisionToMake {
 
-	private final PublisherMetadata<Id> publisher;
+	private final PublisherMetadata<Id> publisherMetadata;
 
 
-	public PublisherOffer(PublisherMetadata<Id> publisher) {
-		this.publisher = publisher;
+	public PublisherOffer(PublisherMetadata<Id> publisherMetadata) {
+		this.publisherMetadata = publisherMetadata;
 	}
 
 
 	public PublisherMetadata<Id> getPublisher() {
-		return publisher;
+		return publisherMetadata;
 	}
 
 }

@@ -3,7 +3,7 @@ package deus.model.attention;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.user.id.UserId;
 
-public class SubscriptionCanceledNotice<Id extends UserId> extends Notice {
+public class SubscriptionCanceledNotice<Id extends UserId> extends ConnectionNotice {
 
 	private final SubscriberMetadata<Id> subscriberMetadata;
 	

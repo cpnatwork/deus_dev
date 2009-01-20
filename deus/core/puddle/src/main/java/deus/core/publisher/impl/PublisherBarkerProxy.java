@@ -2,7 +2,7 @@ package deus.core.publisher.impl;
 
 import deus.core.barker.Barker;
 import deus.core.publisher.RemoteCalledPublisher;
-import deus.model.attention.DecisionToMake;
+import deus.model.attention.BinaryDecisionToMake;
 import deus.model.attention.Notice;
 import deus.model.attention.SubscriberRequest;
 import deus.model.attention.SubscriptionCanceledNotice;
@@ -21,7 +21,7 @@ public class PublisherBarkerProxy<Id extends UserId> implements RemoteCalledPubl
 
 	@Override
 	public void addObserver(SubscriberMetadata<Id> subscriberMetadata) {
-		DecisionToMake decision = new SubscriberRequest<Id>(subscriberMetadata);
+		BinaryDecisionToMake decision = new SubscriberRequest<Id>(subscriberMetadata);
 		barker.addAttentionElement(decision);
 	}
 

@@ -14,8 +14,8 @@ public class PublisherImpl<Id extends UserId> extends RemoteCalledPublisherImpl<
 
 	private SubscriberStubFactory<Id> subscriberStubFactory;
 
-	public PublisherImpl(PublisherMetadata<Id> publisherMetadata) {
-		super();
+	public PublisherImpl(ListOfSubscribers<Id> listOfSubscribers, PublisherMetadata<Id> publisherMetadata) {
+		super(listOfSubscribers);
 		this.publisherMetadata = publisherMetadata;
 	}
 

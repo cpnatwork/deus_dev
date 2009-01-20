@@ -5,14 +5,14 @@ import deus.model.user.id.UserId;
 
 public class SubscriberRequest<Id extends UserId> extends ConnectionDecisionToMake {
 
-	private final SubscriberMetadata<Id> subscriber;
+	private final SubscriberMetadata<Id> subscriberMetadata;
 	
-	public SubscriberRequest(SubscriberMetadata<Id> subscriber) {
-		this.subscriber = subscriber;
+	public SubscriberRequest(SubscriberMetadata<Id> subscriberMetadata) {
+		this.subscriberMetadata = subscriberMetadata;
 	}
 
 	public SubscriberMetadata<Id> getSubscriber() {
-		return subscriber;
+		return subscriberMetadata;
 	}
 
 		

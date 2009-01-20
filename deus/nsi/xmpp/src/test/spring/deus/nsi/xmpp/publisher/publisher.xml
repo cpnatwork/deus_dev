@@ -26,7 +26,10 @@
 		<constructor-arg ref="publisher" />
 	</bean>
 
+	<bean id="listOfSubscribers" class="deus.model.pub.impl.ThreadSafeListOfSubscribers" />
+
 	<bean id="publisher" class="deus.core.publisher.impl.PublisherImpl">
+		<constructor-arg ref="listOfSubscribers"/>
 		<constructor-arg ref="publisherMetadata" />
 		<property name="subscriberStubFactory" ref="subscriberStubFactory" />
 	</bean>
