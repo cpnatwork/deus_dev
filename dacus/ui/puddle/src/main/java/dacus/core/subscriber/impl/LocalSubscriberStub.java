@@ -14,7 +14,7 @@ import deus.model.user.id.UserIdType;
 // otherwise, PublisherImpl is also a PublisherStub, which is confusing!
 public class LocalSubscriberStub<Id extends UserId> extends AbstractSubscriberStub<Id> {
 
-	private RemoteCalledSubscriber<Id> subscriber;
+	//private RemoteCalledSubscriber<Id> subscriber;
 
 
 	public LocalSubscriberStub(SubscriberMetadata<Id> subscriberMetadata) {
@@ -27,7 +27,7 @@ public class LocalSubscriberStub<Id extends UserId> extends AbstractSubscriberSt
 
 	@Override
 	public void update(PublisherMetadata<Id> publisherMetadata, Object change) {
-		subscriber.update(publisherMetadata, change);
+		//subscriber.update(publisherMetadata, change);
 	}
 
 

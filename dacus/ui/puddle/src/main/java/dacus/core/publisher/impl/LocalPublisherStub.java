@@ -21,7 +21,7 @@ public class LocalPublisherStub<Id extends UserId> extends AbstractPublisherStub
 	public void addObserver(SubscriberMetadata<Id> subscriberMetadata) {
 		// TODO: how to get publisher?
 		//RemoteCalledPublisher<Id> publisher = new RemoteCalledPublisherImpl<Id>(getPublisherMetadata());
-		RemoteCalledPublisher publisher = new PublisherImpl<Id>(getPublisherMetadata());
+		RemoteCalledPublisher publisher = null;
 		publisher.addObserver(subscriberMetadata);
 	}
 
@@ -30,7 +30,7 @@ public class LocalPublisherStub<Id extends UserId> extends AbstractPublisherStub
 	public void deleteObserver(SubscriberMetadata<Id> subscriberMetadata) {
 		// TODO: how to get publisher?
 		//RemoteCalledPublisher<Id> publisher = new RemoteCalledPublisherImpl<Id>(getPublisherMetadata());
-		RemoteCalledPublisher publisher = new PublisherImpl<Id>(getPublisherMetadata());
+		RemoteCalledPublisher publisher = null;
 		publisher.deleteObserver(subscriberMetadata);
 	}
 
