@@ -38,7 +38,7 @@
 	</bean>
 
 
-	<webflow:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator" />
+<!--	<webflow:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator" />-->
 		
 	<bean id="mvcViewFactoryCreator" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
 		<property name="viewResolvers" ref="flowViewResolver" />
