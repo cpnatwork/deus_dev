@@ -5,37 +5,20 @@ import deus.core.subscriber.SubscriberStub;
 import deus.core.subscriber.SubscriberStubFactory;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.SubscriberMetadata;
-import deus.model.pub.impl.ThreadSafeListOfSubscribers;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserId;
 
-public class PublisherImpl<Id extends UserId> implements Publisher<Id> {
+public class PublisherImpl<Id extends UserId> extends RemoteCalledPublisherImpl<Id> implements Publisher<Id> {
 
 	private final PublisherMetadata<Id> publisherMetadata;
-	private final ListOfSubscribers<Id> listOfSubscribers;
 
 	private SubscriberStubFactory<Id> subscriberStubFactory;
 
 	public PublisherImpl(PublisherMetadata<Id> publisherMetadata) {
 		super();
 		this.publisherMetadata = publisherMetadata;
-		this.listOfSubscribers = new ThreadSafeListOfSubscribers<Id>();
 	}
 
-
-	public synchronized void addObserver(SubscriberMetadata<Id> o) {
-		if (o == null)
-			throw new NullPointerException();
-		if (!listOfSubscribers.contains(o)) {
-			listOfSubscribers.add(o);
-		}
-	}
-
-
-	public synchronized void deleteObserver(SubscriberMetadata<Id> o) {
-		listOfSubscribers.remove(o);
-	}
-	
 
 	public synchronized void deleteObservers() {
 		listOfSubscribers.clear();

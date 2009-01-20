@@ -11,6 +11,12 @@ public class Barker {
 		attentionList.add(attentionElement);
 	}
 	
+	
+	// CPN: really return this list (it can be changed!)? 
+	public AttentionList getAttentionList() {
+		return attentionList;
+	}
+	
 	// TODO: operations
 	
 }
