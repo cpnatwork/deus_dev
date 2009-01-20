@@ -3,10 +3,9 @@ package deus.model.attention;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserId;
 
-public class PublisherOffer<Id extends UserId> extends DecisionToMake {
+public class PublisherOffer<Id extends UserId> extends ConnectionDecisionToMake {
 
 	private final PublisherMetadata<Id> publisher;
-	private boolean confirmed;
 
 
 	public PublisherOffer(PublisherMetadata<Id> publisher) {
@@ -16,16 +15,6 @@ public class PublisherOffer<Id extends UserId> extends DecisionToMake {
 
 	public PublisherMetadata<Id> getPublisher() {
 		return publisher;
-	}
-
-
-	public boolean isConfirmed() {
-		return confirmed;
-	}
-
-
-	public void setConfirmed(boolean confirmed) {
-		this.confirmed = confirmed;
 	}
 
 }
