@@ -4,29 +4,29 @@ public abstract class BinaryDecisionToMake extends AttentionElement {
 
 	private Boolean decision = null;
 	
-	public void setDecisionPositive() {
+	public final void setDecisionPositive() {
 		decision = true;
 	}
 	
-	public void setDecisionNegative() {
+	public final void setDecisionNegative() {
 		decision = false;
 	}
 	
-	public boolean isProcessed() {
+	public final boolean isProcessed() {
 		return decision != null;
 	}
 	
-	private void assertIsProcessed() {
+	private final void assertIsProcessed() {
 		if(!isProcessed())
 			throw new IllegalStateException("decision is not processed yet!");
 	}
 
-	public boolean isDecisionPositive() {
+	public final boolean isDecisionPositive() {
 		assertIsProcessed();
 		return decision == true;
 	}
 
-	public boolean isDecisionNegative() {
+	public final boolean isDecisionNegative() {
 		assertIsProcessed();
 		return decision == false;
 	}
