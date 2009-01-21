@@ -2,6 +2,8 @@ package deus.nsi.xmpp.bootstrap;
 
 import java.util.List;
 
+import deus.core.publisher.PublisherStub;
+import deus.core.subscriber.SubscriberStub;
 import deus.model.user.id.UserIdType;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.common.XmppSkeleton;
@@ -48,4 +50,6 @@ public class XmppRemotingState implements RemotingState {
 		connectedXmppSkeletons.clear();
 	}
 
+
+	
 }

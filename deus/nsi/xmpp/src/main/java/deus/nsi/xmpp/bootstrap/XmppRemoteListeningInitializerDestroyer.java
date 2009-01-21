@@ -3,6 +3,7 @@ package deus.nsi.xmpp.bootstrap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import deus.core.User;
 import deus.model.user.id.UserIdType;
@@ -13,6 +14,7 @@ import deus.remoting.initializerdestroyer.RemoteListeningInitializerDestroyer;
 import deus.remoting.initializerdestroyer.RemotingState;
 import deus.remoting.initializerdestroyer.RemotingStateRegistry;
 
+@Component
 public class XmppRemoteListeningInitializerDestroyer implements RemoteListeningInitializerDestroyer {
 
 	@Autowired

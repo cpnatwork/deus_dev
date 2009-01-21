@@ -1,6 +1,7 @@
 package deus.nsi.xmpp.bootstrap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import deus.core.User;
 import deus.model.user.id.UserIdType;
@@ -10,6 +11,7 @@ import deus.remoting.initializerdestroyer.RemotingInitializerDestroyer;
 import deus.remoting.initializerdestroyer.RemotingState;
 import deus.remoting.initializerdestroyer.RemotingStateRegistry;
 
+@Component
 public class XmppRemotingInitializerDestroyer implements RemotingInitializerDestroyer {
 
 	@Autowired
@@ -27,6 +29,10 @@ public class XmppRemotingInitializerDestroyer implements RemotingInitializerDest
 		
 		XmppConversation xmppConversation = xmppNetwork.login(user.getUserMetadata(), "test");
 
+		// TODO: add packetListeners (skeletons here!)
+		
+		xmppConversation.start();
+		
 		RemotingState userRemotingState = new XmppRemotingState(xmppConversation);
 
 		remotingStateRegistry.addRemotingState(user, userRemotingState);
