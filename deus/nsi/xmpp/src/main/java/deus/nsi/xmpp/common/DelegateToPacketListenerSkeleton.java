@@ -8,7 +8,7 @@ import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.Roster.SubscriptionMode;
 import org.jivesoftware.smack.filter.PacketFilter;
 
-import deus.nsi.xmpp.common.packetfilter.FilteredPacketListener;
+import deus.nsi.xmpp.common.packetlistener.FilteredPacketListener;
 
 
 public abstract class DelegateToPacketListenerSkeleton {

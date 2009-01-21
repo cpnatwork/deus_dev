@@ -1,8 +1,8 @@
-package deus.nsi.xmpp.subscriber.impl.skeleton;
+package deus.nsi.xmpp.subscriber.impl.skeleton.packetlistener;
 
 import deus.core.subscriber.RemoteCalledSubscriber;
 import deus.model.user.id.XmppUserId;
-import deus.nsi.xmpp.common.packetfilter.UserMetadataParsingFilteredPacketListener;
+import deus.nsi.xmpp.common.packetlistener.UserMetadataParsingFilteredPacketListener;
 
 
 abstract class SubscriberPacketListener<DifContentType> extends UserMetadataParsingFilteredPacketListener {

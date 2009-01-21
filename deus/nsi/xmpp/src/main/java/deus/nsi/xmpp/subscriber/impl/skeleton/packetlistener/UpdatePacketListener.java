@@ -1,4 +1,4 @@
-package deus.nsi.xmpp.subscriber.impl.skeleton;
+package deus.nsi.xmpp.subscriber.impl.skeleton.packetlistener;
 
 import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.filter.PacketTypeFilter;

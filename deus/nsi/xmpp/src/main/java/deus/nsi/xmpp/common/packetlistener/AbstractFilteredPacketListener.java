@@ -1,4 +1,4 @@
-package deus.nsi.xmpp.common.packetfilter;
+package deus.nsi.xmpp.common.packetlistener;
 
 import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.filter.PacketFilter;
