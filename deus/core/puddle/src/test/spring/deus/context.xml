@@ -35,12 +35,12 @@
 	
 	more help: http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-classpath-scanning
 	 -->
-	<context:component-scan base-package="org.example"/>
+	<context:component-scan base-package="deus"/>
 	
 	
 	<!-- this is needed for the @Configurable annotations to be recognized and the annotated classes to be injected the
 	dependencies either configured by the related prototype-scoped bean or configured by @Autowired annotations.
 	see http://static.springframework.org/spring/docs/2.5.x/reference/aop.html#aop-atconfigurable for more  -->
-	<context:spring-configured />
+<!--	<context:spring-configured />-->
 	
 </beans>

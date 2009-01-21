@@ -2,12 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="subscriberStubFactory" class="deus.core.subscriber.impl.DelegateSubscriberStubFactory">
-		<property name="subfactories">
-			<list>
-				<idref bean="xmppSubscriberStubFactory" />
-			</list>
-		</property>
-	</bean>
-	
+
+	<bean id="gatekeeper" class="deus.core.gatekeeper.impl.GatekeeperImpl"/>
+
 </beans>

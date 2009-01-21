@@ -60,8 +60,8 @@ public class PublisherImpl<Id extends UserId> extends RemoteCalledPublisherImpl<
 		for (int i = arrLocal.length - 1; i >= 0; i--) {
 			// TODO: think about publishing using multiple threads
 			SubscriberMetadata<Id> subscriberMetadata = (SubscriberMetadata<Id>) arrLocal[i];
-			SubscriberStub<Id> subscriber = subscriberStubFactory.createSubscriberStub(subscriberMetadata, publisherMetadata);
-			subscriber.update(getPublisherMetadata(), change);
+			SubscriberStub<Id> subscriberStub = subscriberStubFactory.createSubscriberStub(subscriberMetadata, publisherMetadata);
+			subscriberStub.update(getPublisherMetadata(), change);
 		}
 	}
 

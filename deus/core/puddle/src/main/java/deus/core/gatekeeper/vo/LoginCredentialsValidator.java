@@ -1,10 +1,10 @@
-package deus.core.login.vo;
+package deus.core.gatekeeper.vo;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import deus.core.login.soul.LoginCredentials;
+import deus.core.gatekeeper.soul.LoginCredentials;
 
 public class LoginCredentialsValidator implements Validator {
 

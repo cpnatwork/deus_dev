@@ -6,6 +6,7 @@ import deus.core.lodself.LodSelf;
 import deus.core.publisher.Publisher;
 import deus.core.subscriber.Subscriber;
 import deus.model.depository.generic.DistributedInformationFolder;
+import deus.model.pub.ListOfSubscribers;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -21,6 +22,15 @@ public class User<Id extends UserId, PifContentType, DifType extends Distributed
 	
 	Barker barker;
 
+	public UserMetadata<Id> getUserMetadata() {
+		return userMetadata;
+	}
+
+	public String toString() {
+		return userMetadata.getUserId().toString();
+	}
 	
-	
+	public ListOfSubscribers getListOfSubscribers() {
+		return publisher.getListOfSubscribers();
+	}
 }
