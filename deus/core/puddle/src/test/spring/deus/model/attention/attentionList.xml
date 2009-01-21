@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd	
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+	
+	<bean id="attentionList" class="deus.model.attention.impl.AttentionListImpl">
+		<constructor-arg ref="attentionListBase" />
+	</bean>
+
+	<util:list id="attentionListBase" value-type="deus.model.attention.AttentionElement">
+		<idref local="publisherOffer"/>
+		<idref local="subscriberRequest"/>
+		<idref local="subscriptionCanceledNotice"/>
+	</util:list>
+
+	<bean id="publisherOffer" class="deus.model.attention.PublisherOffer">
+		<constructor-arg ref="publisherMetadata" />
+		<property name="creationDate" value="1970/01/01 00:01" />
+	</bean>
+
+	<bean id="subscriberRequest" class="deus.model.attention.SubscriberRequest">
+		<constructor-arg ref="subscriberMetadata" />
+		<property name="creationDate" value="1970/01/01 01:01" />
+	</bean>
+
+	<bean id="subscriptionCanceledNotice" class="deus.model.attention.SubscriptionCanceledNotice">
+		<constructor-arg ref="subscriberMetadata" />
+		<property name="creationDate" value="1970/01/01 02:01" />
+	</bean>
+
+
+	<bean id="publisherMetadata" class="deus.model.sub.PublisherMetadata">
+		<property name="userId">
+			<bean class="deus.model.user.id.XmppUserId">
+				<constructor-arg index="0" value="alice" />
+				<constructor-arg index="1" value="aliceServer" />
+			</bean>
+		</property>
+		<property name="fullName" value="Publisher Alice" />
+	</bean>
+
+
+	<bean id="subscriberMetadata" class="deus.model.pub.SubscriberMetadata">
+		<property name="userId">
+			<bean class="deus.model.user.id.XmppUserId">
+				<constructor-arg index="0" value="Bob" />
+				<constructor-arg index="1" value="bobServer" />
+			</bean>
+		</property>
+		<property name="fullName" value="Subscriber Bob" />
+	</bean>
+
+
+	<bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="java.util.Date">
+					<bean class="org.springframework.beans.propertyeditors.CustomDateEditor">
+						<constructor-arg index="0">
+							<bean class="java.text.SimpleDateFormat">
+								<constructor-arg>
+									<value>yyyy/MM/dd HH:mm</value>
+								</constructor-arg>
+							</bean>
+						</constructor-arg>
+						<constructor-arg index="1">
+							<value>false</value>
+						</constructor-arg>
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

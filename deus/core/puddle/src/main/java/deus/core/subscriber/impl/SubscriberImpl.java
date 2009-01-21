@@ -6,9 +6,11 @@ import deus.model.pub.SubscriberMetadata;
 import deus.model.user.id.UserId;
 
 // TODO: add DIF
-public class SubscriberImpl<Id extends UserId, DifType extends DistributedInformationFolder<Id, ?>> extends RemoteCalledSubscriberImpl<Id, DifType> implements Subscriber<Id, DifType> {
+public class SubscriberImpl<Id extends UserId, DifType extends DistributedInformationFolder<Id, ?>, FifContentType>
+		extends RemoteCalledSubscriberImpl<Id, DifType, FifContentType> implements Subscriber<Id, DifType, FifContentType> {
 
 	private final SubscriberMetadata<Id> subscriberMetadata;
+
 
 	public SubscriberImpl(SubscriberMetadata<Id> subscriberMetadata) {
 		super();

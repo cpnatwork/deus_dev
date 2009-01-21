@@ -16,6 +16,12 @@ public class Barker {
 	public AttentionList getAttentionList() {
 		return attentionList;
 	}
+
+
+	// TODO: remove this method and do creation of Barker and other classes by spring using @Configurable
+	public void setAttentionList(AttentionList attentionList) {
+		this.attentionList = attentionList;
+	}
 	
 	// TODO: operations
 	
