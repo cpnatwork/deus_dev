@@ -15,7 +15,7 @@ public class InitDestroyGatekeeperDecorator<InitializerDestroyerType extends Ini
 
 	@Autowired
 	@Qualifier("gatekeeper")
-	private Map<UserIdType, InitializerDestroyerType> remoteListeningInitializerDestroyers;
+	private Map<UserIdType, InitializerDestroyerType> initializerDestroyers;
 
 
 	public InitDestroyGatekeeperDecorator(Gatekeeper decoratedGatekeeper) {
@@ -54,7 +54,7 @@ public class InitDestroyGatekeeperDecorator<InitializerDestroyerType extends Ini
 
 
 	protected final InitializerDestroyerType getInitializerDestroyer(UserIdType userIdType) {
-		return remoteListeningInitializerDestroyers.get(userIdType);
+		return initializerDestroyers.get(userIdType);
 	}
 
 }

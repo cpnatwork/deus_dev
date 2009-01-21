@@ -7,6 +7,7 @@ import deus.core.publisher.Publisher;
 import deus.core.subscriber.Subscriber;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.pub.ListOfSubscribers;
+import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -32,5 +33,11 @@ public class User<Id extends UserId, PifContentType, DifType extends Distributed
 	
 	public ListOfSubscribers getListOfSubscribers() {
 		return publisher.getListOfSubscribers();
+	}
+	
+	public ListOfPublishers getListOfPublishers() {
+		// FIXME: implement!
+		// return subscriber.getListOfPublishers();
+		return null;
 	}
 }

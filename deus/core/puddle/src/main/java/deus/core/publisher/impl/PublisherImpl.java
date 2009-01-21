@@ -1,5 +1,6 @@
 package deus.core.publisher.impl;
 
+import deus.core.User;
 import deus.core.publisher.Publisher;
 import deus.core.subscriber.SubscriberStub;
 import deus.core.subscriber.SubscriberStubFactory;
@@ -7,6 +8,9 @@ import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserId;
+import deus.remoting.initializerdestroyer.RemoteCommand;
+import deus.remoting.initializerdestroyer.impl.AbstractPublisherRemoteCommand;
+import deus.remoting.initializerdestroyer.impl.AbstractSubscriberRemoteCommand;
 
 public class PublisherImpl<Id extends UserId> extends RemoteCalledPublisherImpl<Id> implements Publisher<Id> {
 
@@ -36,7 +40,7 @@ public class PublisherImpl<Id extends UserId> extends RemoteCalledPublisherImpl<
 
 
 	@SuppressWarnings("unchecked")
-	public void notifyObservers(Object change) {
+	public void notifyObservers(final Object change) {
 		/*
 		 * a temporary array buffer, used as a snapshot of the state of current
 		 * Observers.
@@ -60,8 +64,21 @@ public class PublisherImpl<Id extends UserId> extends RemoteCalledPublisherImpl<
 		for (int i = arrLocal.length - 1; i >= 0; i--) {
 			// TODO: think about publishing using multiple threads
 			SubscriberMetadata<Id> subscriberMetadata = (SubscriberMetadata<Id>) arrLocal[i];
-			SubscriberStub<Id> subscriberStub = subscriberStubFactory.createSubscriberStub(subscriberMetadata, publisherMetadata);
-			subscriberStub.update(getPublisherMetadata(), change);
+			
+			RemoteCommand remoteCommand = new AbstractPublisherRemoteCommand(subscriberMetadata) {
+
+				@Override
+				public void execute(SubscriberStub subscriberStub) {
+					subscriberStub.update(getPublisherMetadata(), change);
+				}
+				
+			};
+			// TODO: where to get user from.
+			User user = null;
+			remoteCommand.execute(user);
+			
+//			SubscriberStub<Id> subscriberStub = subscriberStubFactory.createSubscriberStub(subscriberMetadata, publisherMetadata);
+//			subscriberStub.update(getPublisherMetadata(), change);
 		}
 	}
 
