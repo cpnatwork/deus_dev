@@ -2,7 +2,8 @@ package deus.nsi.xmpp.common;
 
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.XMPPConnection;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import deus.model.user.UserMetadata;
 import deus.model.user.id.XmppUserId;
@@ -16,12 +17,11 @@ import deus.nsi.xmpp.common.impl.XmppConversationImpl;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
+@Component
 public class XmppNetwork {
 
+	@Autowired
 	private XmppServerConnectionConfiguration configuration;
-
-	// / property name of XMPP property 'fullName'
-	private XmppConfiguration xmppConfiguration;
 
 
 	public XmppConversation login(UserMetadata<XmppUserId> userMetadata, String password) {
@@ -35,25 +35,8 @@ public class XmppNetwork {
 
 		XMPPConnection connection = new XMPPConnection(connectionConfiguration);
 
-		XmppConversationImpl xmppConversation = new XmppConversationImpl(connection, userMetadata, password);
-		// TODO: think about doing this with spring:
-		// http://static.springframework.org/spring/docs/2.5.x/reference/aop.html#aop-atconfigurable
-		// http://blog.springsource.com/2008/01/23/new-improvements-in-domain-object-dependnecy-injection-feature/
-		xmppConversation.setXmppConfiguration(xmppConfiguration);
+		XmppConversation xmppConversation = new XmppConversationImpl(connection, userMetadata, password);
 		return xmppConversation;
 	}
-
-
-	@Required
-	public void setXmppConfiguration(XmppConfiguration xmppConfiguration) {
-		this.xmppConfiguration = xmppConfiguration;
-	}
-
-
-	@Required
-	public void setXmppServerConnectionConfiguration(XmppServerConnectionConfiguration configuration) {
-		this.configuration = configuration;
-	}
-
 
 }

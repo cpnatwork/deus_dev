@@ -1,5 +1,7 @@
 package deus.nsi.xmpp.publisher.impl.skeleton;
 
+import org.springframework.stereotype.Component;
+
 import deus.nsi.xmpp.common.DelegateToPacketListenerSkeleton;
 import deus.nsi.xmpp.common.XmppConversation;
 

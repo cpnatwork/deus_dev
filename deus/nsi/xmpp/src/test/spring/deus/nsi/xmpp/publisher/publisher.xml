@@ -3,6 +3,26 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
+	<bean id="publisherMetadata" class="deus.model.sub.PublisherMetadata">
+		<property name="userId">
+			<bean class="deus.model.user.id.XmppUserId">
+				<property name="username" value="alice" />
+				<property name="server" value="faui6p15" />
+			</bean>
+		</property>
+		<property name="fullName" value="Alice" />
+	</bean>
+
+
+
+
+	<bean id="publisherXmppConversation" factory-bean="xmppNetwork" factory-method="login">
+		<constructor-arg ref="publisherMetadata" />
+		<constructor-arg value="test" />
+		<qualifier value="publisher"/>
+	</bean>
+
+
 	<bean id="publisherStub" class="deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub">
 		<constructor-arg ref="publisherMetadata" />
 		<constructor-arg ref="subscriberXmppConversation" />
@@ -18,11 +38,11 @@
 		</property>
 	</bean>
 
-	<bean id="subscribePacketListener" parent="userMetadataParsingFilteredPacketListener" class="deus.nsi.xmpp.publisher.impl.skeleton.SubscribePacketListener">
+	<bean id="subscribePacketListener" class="deus.nsi.xmpp.publisher.impl.skeleton.SubscribePacketListener">
 		<constructor-arg ref="publisher" />
 	</bean>
 
-	<bean id="unsubscribePacketListener" parent="userMetadataParsingFilteredPacketListener" class="deus.nsi.xmpp.publisher.impl.skeleton.UnsubscribePacketListener">
+	<bean id="unsubscribePacketListener" class="deus.nsi.xmpp.publisher.impl.skeleton.UnsubscribePacketListener">
 		<constructor-arg ref="publisher" />
 	</bean>
 

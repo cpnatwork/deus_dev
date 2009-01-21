@@ -7,6 +7,8 @@ import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.packet.Packet;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 
 import deus.model.user.UserMetadata;
 import deus.model.user.id.XmppUserId;
@@ -14,12 +16,14 @@ import deus.nsi.xmpp.common.XmppConfiguration;
 import deus.nsi.xmpp.common.XmppConversation;
 
 // TODO: think about synchonrization issues (e.g. with adding/removing of packet listeners)
+@Configurable
 public class XmppConversationImpl implements XmppConversation {
 
 	private final XMPPConnection connection;
 	private final UserMetadata<XmppUserId> userMetadata;
 	private final String password;
 	
+	@Autowired
 	private XmppConfiguration xmppConfiguration;
 
 	private PacketListenerManager packetListenerManager;
@@ -150,12 +154,6 @@ public class XmppConversationImpl implements XmppConversation {
 		assertIsStarted();
 		
 		packetListenerManager.removePacketListener(packetListener);
-	}
-
-	
-
-	public void setXmppConfiguration(XmppConfiguration xmppConfiguration) {
-		this.xmppConfiguration = xmppConfiguration;
 	}
 
 }

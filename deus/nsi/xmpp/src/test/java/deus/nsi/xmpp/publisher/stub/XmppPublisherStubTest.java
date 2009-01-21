@@ -21,7 +21,7 @@ import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/nsi/xmpp/xmpp_pub-sub.xml", "/deus/nsi/xmpp/publisher/publisher.xml",
+@ContextConfiguration(locations = { "/deus/context.xml", "/deus/nsi/xmpp/xmpp.xml", "/deus/nsi/xmpp/publisher/publisher.xml",
 		"/deus/nsi/xmpp/subscriber/subscriber.xml" })
 public class XmppPublisherStubTest {
 

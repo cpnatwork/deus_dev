@@ -1,5 +1,8 @@
 package deus.nsi.xmpp.subscriber.impl.stub;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import deus.core.subscriber.SubscriberStub;
 import deus.core.subscriber.SubscriberStubFactory;
 import deus.model.pub.SubscriberMetadata;
@@ -21,6 +24,7 @@ import deus.nsi.xmpp.common.XmppNetwork;
  */
 public class XmppSubscriberStubFactory implements SubscriberStubFactory<XmppUserId> {
 
+	@Autowired
 	private XmppNetwork xmppNetwork;
 	
 	@Override
@@ -36,13 +40,6 @@ public class XmppSubscriberStubFactory implements SubscriberStubFactory<XmppUser
 		// FIXME: what to do with password here?
 		XmppConversation publisherAccount = xmppNetwork.login(publisherMetadata, "test");
 		return new XmppSubscriberStub(subscriberMetadata, publisherAccount);
-	}
-
-	/**
-	 * Sets the LocalXmppServer class for creating XmppConversation objects per user.
-	 */
-	public void setXmppNetwork(XmppNetwork xmppNetwork) {
-		this.xmppNetwork = xmppNetwork;
 	}
 	
 }

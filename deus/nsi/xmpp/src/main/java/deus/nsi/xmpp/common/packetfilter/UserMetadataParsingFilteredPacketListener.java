@@ -2,14 +2,17 @@ package deus.nsi.xmpp.common.packetfilter;
 
 import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.util.StringUtils;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 
 import deus.model.user.UserMetadata;
 import deus.model.user.id.XmppUserId;
 import deus.nsi.xmpp.common.XmppConfiguration;
 
+@Configurable
 public abstract class UserMetadataParsingFilteredPacketListener extends AbstractFilteredPacketListener {
 
+	@Autowired
 	private XmppConfiguration xmppConfiguration;
 
 
@@ -41,13 +44,6 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 			throw new RuntimeException("property '" + xmppConfiguration.getXmppPropertyFullName()
 					+ "' is null at this presence packet: " + packet);
 		userMetadata.setFullName(fullName.toString());
-	}
-
-
-	// TODO: think about doing this with spring DI into domain objects
-	@Required
-	public void setXmppConfiguration(XmppConfiguration xmppConfiguration) {
-		this.xmppConfiguration = xmppConfiguration;
 	}
 
 }
