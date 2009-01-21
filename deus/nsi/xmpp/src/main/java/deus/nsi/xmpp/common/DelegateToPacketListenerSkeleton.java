@@ -11,7 +11,7 @@ import org.jivesoftware.smack.filter.PacketFilter;
 import deus.nsi.xmpp.common.packetlistener.FilteredPacketListener;
 
 
-public abstract class DelegateToPacketListenerSkeleton {
+public abstract class DelegateToPacketListenerSkeleton implements XmppSkeleton {
 
 	private final XmppConversation userXmppConversation;
 	private Map<PacketListener, PacketFilter> packetListeners;
@@ -30,6 +30,9 @@ public abstract class DelegateToPacketListenerSkeleton {
 
 
 	// TODO: think about this signature: attach(XmppConversation)
+	/* (non-Javadoc)
+	 * @see deus.nsi.xmpp.common.XmppSkeleton#connect()
+	 */
 	public void connect() {
 		// TODO: remove again and think about a better place for this
 		userXmppConversation.getRoster().setSubscriptionMode(SubscriptionMode.manual);
@@ -40,6 +43,9 @@ public abstract class DelegateToPacketListenerSkeleton {
 
 
 	// TODO: think about this signature: detach()
+	/* (non-Javadoc)
+	 * @see deus.nsi.xmpp.common.XmppSkeleton#disconnect()
+	 */
 	public void disconnect() {
 		for (Map.Entry<PacketListener, PacketFilter> packetListenerEntry : packetListeners.entrySet())
 			userXmppConversation.removePacketListener(packetListenerEntry.getKey());
