@@ -20,5 +20,7 @@ public class User<Id extends UserId, PifContentType, DifType extends Distributed
 	LodOther lodOther;
 	
 	Barker barker;
+
+	
 	
 }
