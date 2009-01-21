@@ -64,9 +64,24 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
+			<artifactId>org.springframework.aspects</artifactId>
+			<version>${spring.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
 			<artifactId>org.springframework.test</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+
+		<!--+++ ASPECTJ +++-->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>com.springsource.org.aspectj.runtime</artifactId>
+			<version>1.6.3.RELEASE</version>
+		</dependency>
+
+
 
 		<!--+++ JUNIT +++-->
 		<dependency>
