@@ -4,9 +4,9 @@ import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.pub.SubscriberMetadata;
 
 
-public interface Subscriber<DifType extends DistributedInformationFolder> extends RemoteCalledSubscriber {
+public interface Subscriber extends RemoteCalledSubscriber {
 
-	public DifType getDistributedInformationFolder();
+	public DistributedInformationFolder getDistributedInformationFolder();
 
 
 	public SubscriberMetadata getSubscriberMetadata();

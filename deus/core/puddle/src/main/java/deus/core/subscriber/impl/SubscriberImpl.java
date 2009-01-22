@@ -5,8 +5,7 @@ import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.pub.SubscriberMetadata;
 
 // TODO: add DIF
-public class SubscriberImpl<DifType extends DistributedInformationFolder> extends RemoteCalledSubscriberImpl<DifType>
-		implements Subscriber<DifType> {
+public class SubscriberImpl extends RemoteCalledSubscriberImpl implements Subscriber {
 
 	private final SubscriberMetadata subscriberMetadata;
 
@@ -24,7 +23,7 @@ public class SubscriberImpl<DifType extends DistributedInformationFolder> extend
 
 
 	@Override
-	public DifType getDistributedInformationFolder() {
+	public DistributedInformationFolder getDistributedInformationFolder() {
 		// TODO Auto-generated method stub
 		return null;
 	}
