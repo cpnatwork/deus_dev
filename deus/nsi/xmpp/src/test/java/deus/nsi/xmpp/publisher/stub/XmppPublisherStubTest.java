@@ -26,19 +26,19 @@ import deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton;
 public class XmppPublisherStubTest {
 
 	@Autowired
-	private Publisher<XmppUserId> publisher;
+	private Publisher publisher;
 
 	@Autowired
 	private XmppPublisherSkeleton publisherSkeleton;
 
 	@Autowired
-	private PublisherStub<XmppUserId> publisherStub;
+	private PublisherStub publisherStub;
 
 	@Autowired
-	private PublisherMetadata<XmppUserId> publisherMetadata;
+	private PublisherMetadata publisherMetadata;
 
 	@Autowired
-	private SubscriberMetadata<XmppUserId> subscriberMetadata;
+	private SubscriberMetadata subscriberMetadata;
 
 	@Autowired
 	@Qualifier("publisher")

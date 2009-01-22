@@ -11,7 +11,6 @@ import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserIdType;
-import deus.model.user.id.XmppUserId;
 import deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub;
 import deus.nsi.xmpp.subscriber.impl.stub.XmppSubscriberStub;
 import deus.remoting.initializerdestroyer.RemoteSendingInitializerDestroyer;
@@ -28,13 +27,13 @@ public class XmppRemoteSendingInitializerDestroyer implements RemoteSendingIniti
 	public void setUp(User user) {
 		XmppRemotingState remotingState = getRemotingState(user);
 		
-		ListOfSubscribers<XmppUserId> los = user.getListOfSubscribers();
+		ListOfSubscribers los = user.getListOfSubscribers();
 		for(SubscriberMetadata subscriberMetadata : los) {
 			SubscriberStub subscriberStub = new XmppSubscriberStub(subscriberMetadata, remotingState.getXmppConversation());
 			remotingState.addSubscriberStub(subscriberStub);
 		}
 		
-		ListOfPublishers<XmppUserId> lop = user.getListOfPublishers();
+		ListOfPublishers lop = user.getListOfPublishers();
 		for(PublisherMetadata publisherMetadata : lop) {
 			PublisherStub publisherStub = new XmppPublisherStub(publisherMetadata, remotingState.getXmppConversation());
 			remotingState.addPublisherStub(publisherStub);

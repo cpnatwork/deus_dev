@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 
-
+	<bean id="subscriberUserId" class="deus.model.user.id.UserUrl">
+		<property name="username" value="bob" />
+		<property name="serverBaseUrl" value="deus.org" />
+		<property name="transportIds">
+			<util:map>
+				<entry>
+					<key><util:constant static-field="deus.model.user.id.transportid.TransportIdType.xmpp"/></key>
+					<bean class="deus.model.user.id.transportid.XmppTransportId">
+						<property name="xmppUsername" value="bob" />
+						<property name="xmppServer" value="faui6p15" />
+					</bean>
+				</entry>
+			</util:map>
+		</property>
+	</bean>
 
 	<bean id="subscriberMetadata" class="deus.model.pub.SubscriberMetadata">
-		<property name="userId">
-			<bean class="deus.model.user.id.XmppUserId">
-				<property name="username" value="bob" />
-				<property name="server" value="faui6p15" />
-			</bean>
-		</property>
+		<property name="userId" ref="subscriberUserId"/>
 		<property name="fullName" value="Bob" />
 	</bean>
 

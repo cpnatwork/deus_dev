@@ -6,17 +6,15 @@ import org.jivesoftware.smack.filter.PacketTypeFilter;
 import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.packet.Presence.Type;
-import org.springframework.stereotype.Component;
 
 import deus.core.publisher.RemoteCalledPublisher;
 import deus.model.pub.SubscriberMetadata;
-import deus.model.user.id.XmppUserId;
 import deus.nsi.xmpp.util.PacketPrinter;
 
 
 public class UnsubscribePacketListener extends PublisherPacketListener {
 
-	public UnsubscribePacketListener(RemoteCalledPublisher<XmppUserId> publisher) {
+	public UnsubscribePacketListener(RemoteCalledPublisher publisher) {
 		super(publisher);
 	}
 
@@ -45,7 +43,7 @@ public class UnsubscribePacketListener extends PublisherPacketListener {
 		System.out.println(printer.printPacket(packet));
 
 		Presence presence = (Presence) packet;
-		SubscriberMetadata<XmppUserId> subscriberMetadata = new SubscriberMetadata<XmppUserId>();
+		SubscriberMetadata subscriberMetadata = new SubscriberMetadata();
 		parseFromUserMetadata(presence, subscriberMetadata);
 
 		// TODO: unsubscribe user and put notice to attention list

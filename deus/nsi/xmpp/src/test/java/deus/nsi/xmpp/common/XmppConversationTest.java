@@ -22,7 +22,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
-import deus.model.user.id.XmppUserId;
+import deus.model.user.id.transportid.XmppTransportId;
 import deus.nsi.xmpp.util.PacketPrinter;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,10 +30,10 @@ import deus.nsi.xmpp.util.PacketPrinter;
 public class XmppConversationTest {
 
 	@Autowired
-	private PublisherMetadata<XmppUserId> publisherMetadata;
+	private PublisherMetadata publisherMetadata;
 
 	@Autowired
-	private SubscriberMetadata<XmppUserId> subscriberMetadata;
+	private SubscriberMetadata subscriberMetadata;
 
 	@Autowired
 	@Qualifier("publisher")
@@ -49,7 +49,7 @@ public class XmppConversationTest {
 	@Before
 	public void setUp() throws Exception {
 		receivedPacketCount = 0;
-		
+
 		publisherXmppConversation.start();
 		subscriberXmppConversation.start();
 	}
@@ -83,19 +83,20 @@ public class XmppConversationTest {
 		assertEquals(0, roster.getEntries().size());
 	}
 
-	
+
 	class MyPacketListener implements PacketListener {
-		
+
 		@Override
 		public void processPacket(Packet packet) {
 			PacketPrinter printer = new PacketPrinter();
 			System.out.println(printer.printPacket(packet));
-			
+
 			receivedPacketCount++;
 		}
-		
+
 	};
-	
+
+
 	@Test
 	public void testPacketListener() throws InterruptedException {
 		PacketListener listener = new MyPacketListener();
@@ -112,14 +113,16 @@ public class XmppConversationTest {
 		Message message = new Message();
 		message.setFrom(subscriberMetadata.getUserId().toString());
 		message.setBody("Hello " + publisherMetadata.getFullName() + "!");
-		
-		subscriberXmppConversation.sendPacket(message, publisherMetadata.getUserId());
+
+		subscriberXmppConversation.sendPacket(message, publisherMetadata.getUserId().getTransportId(
+				XmppTransportId.class));
 		Thread.sleep(1000);
 		assertEquals(1, receivedPacketCount);
-		
+
 		publisherXmppConversation.removePacketListener(listener);
-		
-		subscriberXmppConversation.sendPacket(message, publisherMetadata.getUserId());
+
+		subscriberXmppConversation.sendPacket(message, publisherMetadata.getUserId().getTransportId(
+				XmppTransportId.class));
 		// still 1, since we removed the packet listener
 		assertEquals(1, receivedPacketCount);
 	}

@@ -7,6 +7,7 @@ import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserIdType;
 import deus.model.user.id.XmppUserId;
+import deus.model.user.id.transportid.XmppTransportId;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.subscriber.impl.FIFChange;
 /**
@@ -18,12 +19,12 @@ import deus.nsi.xmpp.subscriber.impl.FIFChange;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  *
  */
-public class XmppSubscriberStub extends AbstractSubscriberStub<XmppUserId> {
+public class XmppSubscriberStub extends AbstractSubscriberStub {
 
 	private final XmppConversation publisherXmppConversation;
 
 
-	public XmppSubscriberStub(SubscriberMetadata<XmppUserId> subscriberMetadata, XmppConversation publisherXmppConversation) {
+	public XmppSubscriberStub(SubscriberMetadata subscriberMetadata, XmppConversation publisherXmppConversation) {
 		super(subscriberMetadata);
 		assert (subscriberMetadata.getUserId().getType().equals(UserIdType.xmpp));
 		this.publisherXmppConversation = publisherXmppConversation;
@@ -31,9 +32,9 @@ public class XmppSubscriberStub extends AbstractSubscriberStub<XmppUserId> {
 
 
 	@Override
-	public void update(PublisherMetadata<XmppUserId> publisher, Object change) {
+	public void update(PublisherMetadata publisher, Object change) {
 		IQ changeIq = new FIFChange(change);
-		publisherXmppConversation.sendPacket(changeIq, getSubscriberMetadata().getUserId());
+		publisherXmppConversation.sendPacket(changeIq, getSubscriberMetadata().getUserId().getTransportId(XmppTransportId.class));
 	}
 
 }

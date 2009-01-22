@@ -33,25 +33,49 @@
 	</bean>
 
 
-	<bean id="publisherMetadata" class="deus.model.sub.PublisherMetadata">
-		<property name="userId">
-			<bean class="deus.model.user.id.XmppUserId">
-				<constructor-arg index="0" value="alice" />
-				<constructor-arg index="1" value="aliceServer" />
-			</bean>
+<bean id="publisherUserId" class="deus.model.user.id.UserUrl">
+		<property name="username" value="alice" />
+		<property name="serverBaseUrl" value="deus.org" />
+		<property name="transportIds">
+			<util:map>
+				<entry>
+					<key><util:constant static-field="deus.model.user.id.transportid.TransportIdType.xmpp"/></key>
+					<bean class="deus.model.user.id.transportid.XmppTransportId">
+						<property name="xmppUsername" value="alice" />
+						<property name="xmppServer" value="faui6p15" />
+					</bean>
+				</entry>
+			</util:map>
 		</property>
-		<property name="fullName" value="Publisher Alice" />
 	</bean>
 
 
-	<bean id="subscriberMetadata" class="deus.model.pub.SubscriberMetadata">
-		<property name="userId">
-			<bean class="deus.model.user.id.XmppUserId">
-				<constructor-arg index="0" value="Bob" />
-				<constructor-arg index="1" value="bobServer" />
-			</bean>
+	<bean id="publisherMetadata" class="deus.model.sub.PublisherMetadata">
+		<property name="userId" ref="publisherUserId"/>
+		<property name="fullName" value="Alice" />
+	</bean>
+
+
+	
+	<bean id="subscriberUserId" class="deus.model.user.id.UserUrl">
+		<property name="username" value="bob" />
+		<property name="serverBaseUrl" value="deus.org" />
+		<property name="transportIds">
+			<util:map>
+				<entry>
+					<key><util:constant static-field="deus.model.user.id.transportid.TransportIdType.xmpp"/></key>
+					<bean class="deus.model.user.id.transportid.XmppTransportId">
+						<property name="xmppUsername" value="bob" />
+						<property name="xmppServer" value="faui6p15" />
+					</bean>
+				</entry>
+			</util:map>
 		</property>
-		<property name="fullName" value="Subscriber Bob" />
+	</bean>
+
+	<bean id="subscriberMetadata" class="deus.model.pub.SubscriberMetadata">
+		<property name="userId" ref="subscriberUserId"/>
+		<property name="fullName" value="Bob" />
 	</bean>
 
 

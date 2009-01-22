@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+	<bean id="publisherUserId" class="deus.model.user.id.UserUrl">
+		<property name="username" value="alice" />
+		<property name="serverBaseUrl" value="deus.org" />
+		<property name="transportIds">
+			<util:map>
+				<entry>
+					<key><util:constant static-field="deus.model.user.id.transportid.TransportIdType.xmpp"/></key>
+					<bean class="deus.model.user.id.transportid.XmppTransportId">
+						<property name="xmppUsername" value="alice" />
+						<property name="xmppServer" value="faui6p15" />
+					</bean>
+				</entry>
+			</util:map>
+		</property>
+	</bean>
 
 
 	<bean id="publisherMetadata" class="deus.model.sub.PublisherMetadata">
-		<property name="userId">
-			<bean class="deus.model.user.id.XmppUserId">
-				<property name="username" value="alice" />
-				<property name="server" value="faui6p15" />
-			</bean>
-		</property>
+		<property name="userId" ref="publisherUserId"/>
 		<property name="fullName" value="Alice" />
 	</bean>
 
@@ -19,7 +34,7 @@
 	<bean id="publisherXmppConversation" factory-bean="xmppNetwork" factory-method="login">
 		<constructor-arg ref="publisherMetadata" />
 		<constructor-arg value="test" />
-		<qualifier value="publisher"/>
+		<qualifier value="publisher" />
 	</bean>
 
 
@@ -49,7 +64,7 @@
 	<bean id="listOfSubscribers" class="deus.model.pub.impl.ThreadSafeListOfSubscribers" />
 
 	<bean id="publisher" class="deus.core.publisher.impl.PublisherImpl">
-		<constructor-arg ref="listOfSubscribers"/>
+		<constructor-arg ref="listOfSubscribers" />
 		<constructor-arg ref="publisherMetadata" />
 		<property name="subscriberStubFactory" ref="subscriberStubFactory" />
 	</bean>

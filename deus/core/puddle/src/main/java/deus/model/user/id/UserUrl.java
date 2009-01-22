@@ -2,23 +2,24 @@ package deus.model.user.id;
 
 public class UserUrl extends AbstractUserId {
 
-	private String serverBaseUrl;
 	private String username;
+	private String serverBaseUrl;
+
+	public UserUrl() {
+		username = null;
+		serverBaseUrl = null;
+	}
+
+	public UserUrl(String username, String serverBaseUrl) {
+		super();
+		this.serverBaseUrl = serverBaseUrl;
+		this.username = username;
+	}
 
 
 	@Override
 	public UserIdType getType() {
 		return UserIdType.url;
-	}
-
-
-	public String getServerBaseUrl() {
-		return serverBaseUrl;
-	}
-
-
-	public void setServerBaseUrl(String serverBaseUrl) {
-		this.serverBaseUrl = serverBaseUrl;
 	}
 
 
@@ -29,6 +30,16 @@ public class UserUrl extends AbstractUserId {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+
+	public String getServerBaseUrl() {
+		return serverBaseUrl;
+	}
+
+
+	public void setServerBaseUrl(String serverBaseUrl) {
+		this.serverBaseUrl = serverBaseUrl;
 	}
 
 

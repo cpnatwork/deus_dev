@@ -12,7 +12,7 @@ import deus.nsi.xmpp.subscriber.impl.FIFChange;
 
 public class UpdatePacketListener<DifContentType> extends SubscriberPacketListener<DifContentType> {
 
-	public UpdatePacketListener(RemoteCalledSubscriber<XmppUserId> subscriber) {
+	public UpdatePacketListener(RemoteCalledSubscriber subscriber) {
 		super(subscriber);
 	}
 
@@ -34,7 +34,7 @@ public class UpdatePacketListener<DifContentType> extends SubscriberPacketListen
 		// TODO: do XML to object binding
 		// change = xmltoobjectbind(xml);
 
-		PublisherMetadata<XmppUserId> publisherMetadata = new PublisherMetadata<XmppUserId>();
+		PublisherMetadata publisherMetadata = new PublisherMetadata();
 		parseFromUserMetadata(packet, publisherMetadata);
 
 		subscriber.update(publisherMetadata, change);

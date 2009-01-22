@@ -1,7 +1,9 @@
 package deus.model.user.id.transportid;
 
 public enum TransportIdType {
-
-	xmpp;
 	
+	
+	// icq is only for testing
+	xmpp, icq;
+
 }

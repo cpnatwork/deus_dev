@@ -1,18 +1,54 @@
 package deus.model.user.id;
 
-import java.util.List;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 import deus.model.user.id.transportid.TransportId;
+import deus.model.user.id.transportid.TransportIdType;
 
 public abstract class AbstractUserId implements UserId {
 
-	private List<TransportId> transportIds;
+	private Map<TransportIdType, TransportId> transportIds;
 
+
+	public AbstractUserId() {
+		transportIds = new HashMap<TransportIdType, TransportId>();
+	}
 
 	// TODO: think about setter
+	public void setTransportIds(Map<TransportIdType, TransportId> transportIds) {
+		this.transportIds = transportIds;
+	}
 
-	public List<TransportId> getTransportIds() {
-		return transportIds;
+
+
+	public void addTransportId(TransportId transportId) {
+		TransportId old = transportIds.put(transportId.getType(), transportId);
+		if(old != null)
+			throw new RuntimeException("a transportId of this type (" + transportId.getType() + ") has already been added!");
+	}
+
+
+	@Override
+	public <T extends TransportId> T getTransportId(Class<T> transportIdClass) {
+		TransportIdType type;
+		try {
+			TransportId transportId = transportIdClass.newInstance();
+			Method getTypeMethod = transportIdClass.getMethod("getType", new Class[0]);
+			type = (TransportIdType) getTypeMethod.invoke(transportId);
+			if(type == null)
+				throw new RuntimeException("cannot get type of class " + transportIdClass + " using method 'getType'");
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+		if(!transportIds.containsKey(type))
+			// TODO: think about exception type
+			throw new RuntimeException("no transport id for the type " + type + " available!");
+		
+		return (T) transportIds.get(type);
 	}
 
 
@@ -43,5 +79,8 @@ public abstract class AbstractUserId implements UserId {
 		return true;
 	}
 
+	public Map<TransportIdType, TransportId> getTransportIds() {
+		return transportIds;
+	}
 
 }

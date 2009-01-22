@@ -9,6 +9,7 @@ import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserIdType;
 import deus.model.user.id.XmppUserId;
+import deus.model.user.id.transportid.XmppTransportId;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton;
 
@@ -38,12 +39,12 @@ import deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
+public class XmppPublisherStub extends AbstractPublisherStub {
 
 	private final XmppConversation subscriberXmppConversation;
 
 
-	public XmppPublisherStub(PublisherMetadata<XmppUserId> publisherMetadata,
+	public XmppPublisherStub(PublisherMetadata publisherMetadata,
 			XmppConversation subscriberXmppConversation) {
 		super(publisherMetadata);
 		// TODO: think about this assert
@@ -54,11 +55,11 @@ public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 
 
 	@Override
-	public void addObserver(SubscriberMetadata<XmppUserId> subscriberMetadata) {
+	public void addObserver(SubscriberMetadata subscriberMetadata) {
 		// TODO: implement this method properly
 		// Roster roster = subscriberXmppConversation.getRoster();
 
-		XmppUserId publisherJid = getPublisherMetadata().getUserId();
+		XmppTransportId publisherJid = getPublisherMetadata().getUserId().getTransportId(XmppTransportId.class);
 
 		// roster.createEntry(publisherJid.toString(), getPublisherMetadata().getFullName(), null);
 
@@ -68,11 +69,11 @@ public class XmppPublisherStub extends AbstractPublisherStub<XmppUserId> {
 
 
 	@Override
-	public void deleteObserver(SubscriberMetadata<XmppUserId> subscriberMetadata) {
+	public void deleteObserver(SubscriberMetadata subscriberMetadata) {
 		// TODO: implement this method properly
 		// Roster roster = subscriberXmppConversation.getRoster();
 
-		XmppUserId publisherJid = getPublisherMetadata().getUserId();
+		XmppTransportId publisherJid = getPublisherMetadata().getUserId().getTransportId(XmppTransportId.class);
 
 		// roster.removeEntry(roster.getEntry(publisherJid.toString()));
 

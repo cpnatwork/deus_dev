@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.model.attention.AttentionList;
 import deus.model.user.id.UserId;
+import deus.model.user.id.UserUrl;
 import deus.model.user.id.XmppUserId;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -36,7 +37,7 @@ public class UserFactoryTest {
 
 	@Test
 	public void testCreateUser() {
-		UserId userId = new XmppUserId("username", "server");
+		UserId userId = new UserUrl("username", "server");
 		User user = userFactory.createUser(userId);
 		assertEquals(attentionList, user.barker.getAttentionList());
 		// TODO: extend use case

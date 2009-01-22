@@ -7,10 +7,10 @@ import deus.nsi.xmpp.common.packetlistener.UserMetadataParsingFilteredPacketList
 
 abstract class SubscriberPacketListener<DifContentType> extends UserMetadataParsingFilteredPacketListener {
 
-	protected final RemoteCalledSubscriber<XmppUserId> subscriber;
+	protected final RemoteCalledSubscriber subscriber;
 
 
-	public SubscriberPacketListener(RemoteCalledSubscriber<XmppUserId> subscriber) {
+	public SubscriberPacketListener(RemoteCalledSubscriber subscriber) {
 		super();
 		this.subscriber = subscriber;
 	}

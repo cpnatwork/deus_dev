@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.model.user.UserMetadata;
-import deus.model.user.id.XmppUserId;
+import deus.model.user.id.transportid.XmppTransportId;
 import deus.nsi.xmpp.common.impl.XmppConversationImpl;
 
 
@@ -24,11 +24,12 @@ public class XmppNetwork {
 	private XmppServerConnectionConfiguration configuration;
 
 
-	public XmppConversation login(UserMetadata<XmppUserId> userMetadata, String password) {
-		XmppUserId xmppUserId = userMetadata.getUserId();
+	public XmppConversation login(UserMetadata userMetadata, String password) {
+		XmppTransportId xmppId = userMetadata.getUserId().getTransportId(XmppTransportId.class);
+
 
 		// connect to the XMPP account of the subscriber.
-		ConnectionConfiguration connectionConfiguration = new ConnectionConfiguration(xmppUserId.getServer());
+		ConnectionConfiguration connectionConfiguration = new ConnectionConfiguration(xmppId.getXmppServer());
 		connectionConfiguration.setCompressionEnabled(configuration.isCompression());
 		connectionConfiguration.setSASLAuthenticationEnabled(configuration.isSaslAuthentication());
 		connectionConfiguration.setSecurityMode(configuration.getSecurityMode());

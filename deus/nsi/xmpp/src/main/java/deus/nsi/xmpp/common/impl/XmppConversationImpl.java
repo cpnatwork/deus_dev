@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Configurable;
 
 import deus.model.user.UserMetadata;
 import deus.model.user.id.XmppUserId;
+import deus.model.user.id.transportid.XmppTransportId;
 import deus.nsi.xmpp.common.XmppConfiguration;
 import deus.nsi.xmpp.common.XmppConversation;
 
@@ -20,7 +21,7 @@ import deus.nsi.xmpp.common.XmppConversation;
 public class XmppConversationImpl implements XmppConversation {
 
 	private final XMPPConnection connection;
-	private final UserMetadata<XmppUserId> userMetadata;
+	private final UserMetadata userMetadata;
 	private final String password;
 	
 	@Autowired
@@ -29,7 +30,7 @@ public class XmppConversationImpl implements XmppConversation {
 	private PacketListenerManager packetListenerManager;
 
 
-	public XmppConversationImpl(XMPPConnection connection, UserMetadata<XmppUserId> userMetadata, String password) {
+	public XmppConversationImpl(XMPPConnection connection, UserMetadata userMetadata, String password) {
 		this.connection = connection;
 		this.userMetadata = userMetadata;
 		this.password = password;
@@ -48,7 +49,8 @@ public class XmppConversationImpl implements XmppConversation {
 		}
 
 		try {
-			connection.login(userMetadata.getUserId().getUsername(), password);
+			XmppTransportId xmppId = userMetadata.getUserId().getTransportId(XmppTransportId.class);
+			connection.login(xmppId.getXmppUsername(), password);
 		}
 		catch (XMPPException e) {
 			// if the the user cannot be logged in his local XMPP server, something fatal went wrong!
@@ -125,7 +127,7 @@ public class XmppConversationImpl implements XmppConversation {
 	 * deus.model.user.id.XmppUserId)
 	 */
 	@Override
-	public void sendPacket(Packet packet, XmppUserId receiver) {
+	public void sendPacket(Packet packet, XmppTransportId receiver) {
 		assertIsStarted();
 		
 		packet.setTo(receiver.toString());
