@@ -4,16 +4,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	
-	<bean id="initDestroyRemotingGatekeeperDecorator" class="deus.core.gatekeeper.impl.InitDestroyGatekeeperDecorator">
-		<constructor-arg ref="gateKeeper"/>
+	<bean id="gatekeeperTarget" class="deus.core.gatekeeper.impl.GatekeeperImpl"/>
+
+	<bean id="gatekeeper" class="deus.core.gatekeeper.impl.InitDestroyGatekeeperDecorator">
+		<constructor-arg ref="gatekeeperTarget" />
 	</bean>
+
+	<bean id="remotingInitializerDestroyer" class="deus.nsi.xmpp.bootstrap.XmppRemotingInitializerDestroyer"/>
 	
-	<bean id="initDestroyRemoteListeningGatekeeperDecorator" class="deus.core.gatekeeper.impl.InitDestroyGatekeeperDecorator">
-		<constructor-arg ref="initDestroyRemotingGatekeeperDecorator"/>
-	</bean>
-	
-	<bean id="initDestroyRemoteSendingGatekeeperDecorator" class="deus.core.gatekeeper.impl.InitDestroyGatekeeperDecorator">
-		<constructor-arg ref="initDestroyRemoteListeningGatekeeperDecorator"/>
-	</bean>
+	<bean id="remoteSendingInitializerDestroyer" class="deus.nsi.xmpp.bootstrap.XmppRemoteSendingInitializerDestroyer"/>
+
 
 </beans>

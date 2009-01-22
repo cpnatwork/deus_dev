@@ -35,17 +35,6 @@
 	</bean>
 
 
-	<bean id="subscriberStubFactory" class="deus.core.subscriber.impl.DelegateSubscriberStubFactory">
-		<property name="subfactories">
-			<list>
-				<ref bean="xmppSubscriberStubFactory"/>
-			</list>
-		</property>
-	</bean>
-	
-	<bean id="xmppSubscriberStubFactory" class="deus.nsi.xmpp.subscriber.impl.stub.XmppSubscriberStubFactory"/>
-
-	
 	<bean id="subscriber" class="deus.core.subscriber.impl.SubscriberImpl">
 		<constructor-arg ref="subscriberMetadata" />
 	</bean>

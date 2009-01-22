@@ -9,6 +9,9 @@ import deus.model.user.id.transportid.TransportIdType;
 import deus.model.user.id.transportid.XmppTransportId;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.subscriber.impl.FIFChange;
+
+
+
 /**
  * TODO
  * 

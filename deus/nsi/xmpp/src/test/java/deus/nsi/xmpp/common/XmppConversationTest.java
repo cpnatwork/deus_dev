@@ -26,7 +26,8 @@ import deus.model.user.id.transportid.XmppTransportId;
 import deus.nsi.xmpp.util.PacketPrinter;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/nsi/xmpp/xmpp_pub-sub.xml" })
+@ContextConfiguration(locations = { "/deus/context.xml", "/deus/nsi/xmpp/xmpp.xml", "/deus/nsi/xmpp/subscriber/subscriber.xml",
+		"/deus/nsi/xmpp/publisher/publisher.xml"})
 public class XmppConversationTest {
 
 	@Autowired

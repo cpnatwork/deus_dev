@@ -66,6 +66,6 @@
 	<bean id="publisher" class="deus.core.publisher.impl.PublisherImpl">
 		<constructor-arg ref="listOfSubscribers" />
 		<constructor-arg ref="publisherMetadata" />
-		<property name="subscriberStubFactory" ref="subscriberStubFactory" />
 	</bean>
+	
 </beans>

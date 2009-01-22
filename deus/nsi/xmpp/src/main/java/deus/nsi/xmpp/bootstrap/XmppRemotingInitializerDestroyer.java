@@ -24,6 +24,7 @@ public class XmppRemotingInitializerDestroyer implements RemotingInitializerDest
 		if(remotingState.isRemotingAvailable())
 			throw new IllegalStateException("Can't setup remoting, it has already been setup!");
 		
+		// TODO: get password out of user
 		XmppConversation xmppConversation = xmppNetwork.login(user.getUserMetadata(), "test");
 
 		addSkeletons(remotingState, xmppConversation);
@@ -37,7 +38,7 @@ public class XmppRemotingInitializerDestroyer implements RemotingInitializerDest
 		XmppPublisherSkeleton xmppPublisherSkeleton = new XmppPublisherSkeleton(xmppConversation);
 		xmppPublisherSkeleton.connect();
 		remotingState.setXmppPublisherSkeleton(xmppPublisherSkeleton);
-		// add subscriber skeletong
+		// add subscriber skeleton
 		XmppSubscriberSkeleton xmppSubscriberSkeleton = new XmppSubscriberSkeleton(xmppConversation);
 		xmppSubscriberSkeleton.connect();
 		remotingState.setXmppSubscriberSkeleton(xmppSubscriberSkeleton);
