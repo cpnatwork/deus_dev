@@ -4,13 +4,12 @@ import deus.core.subscriber.RemoteCalledSubscriber;
 import deus.nsi.xmpp.common.packetlistener.UserMetadataParsingFilteredPacketListener;
 
 
-abstract class SubscriberPacketListener<DifContentType> extends UserMetadataParsingFilteredPacketListener {
+abstract class SubscriberPacketListener extends UserMetadataParsingFilteredPacketListener {
 
-	protected final RemoteCalledSubscriber subscriber;
+	protected RemoteCalledSubscriber subscriber;
 
 
-	public SubscriberPacketListener(RemoteCalledSubscriber subscriber) {
-		super();
+	public void setRemoteCalledSubscriber(RemoteCalledSubscriber subscriber) {
 		this.subscriber = subscriber;
 	}
 

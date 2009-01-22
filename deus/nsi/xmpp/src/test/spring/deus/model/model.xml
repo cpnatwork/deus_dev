@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+	<bean id="userId" class="deus.model.user.id.UserUrl">
+		<property name="username" value="bob" />
+		<property name="serverBaseUrl" value="deus.org" />
+		<property name="transportIds">
+			<util:map>
+				<entry>
+					<key>
+						<util:constant static-field="deus.model.user.id.transportid.TransportIdType.xmpp" />
+					</key>
+					<bean class="deus.model.user.id.transportid.XmppTransportId">
+						<property name="xmppUsername" value="bob" />
+						<property name="xmppServer" value="faui6p15" />
+					</bean>
+				</entry>
+			</util:map>
+		</property>
+	</bean>
+
+	<bean id="userMetadata" class="deus.model.user.UserMetadata">
+		<property name="userId" ref="userId" />
+		<property name="fullName" value="Bob" />
+	</bean>
+	
+</beans>

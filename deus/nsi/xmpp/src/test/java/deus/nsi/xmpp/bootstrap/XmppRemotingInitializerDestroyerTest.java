@@ -1,6 +1,7 @@
 package deus.nsi.xmpp.bootstrap;
 
-import static org.junit.Assert.*;
+
+import javax.annotation.Resource;
 
 import org.junit.After;
 import org.junit.Before;
@@ -10,20 +11,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.UserFactory;
+import deus.core.User;
+import deus.model.user.UserMetadata;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/nsi/xmpp/xmpp.xml", "/deus/core/core.xml",
-		"/deus/storage/daos.xml", "/deus/nsi/xmpp/subscriber/subscriber.xml", "/deus/nsi/xmpp/publisher/publisher.xml" })
+@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/core.xml", "/deus/model/model.xml",
+		"/deus/nsi/xmpp/xmpp.xml" })
 public class XmppRemotingInitializerDestroyerTest {
 
+
+	User user;
+
+	@Resource
+	UserMetadata userMetadata;
+
 	@Autowired
-	private UserFactory userFactory;
+	XmppRemotingInitializerDestroyer xmppRemotingInitializerDestroyer;
 
 
 	@Before
 	public void setUp() throws Exception {
-
+		user = new User();
+		user.setUserMetadata(userMetadata);
 	}
 
 
@@ -34,13 +43,15 @@ public class XmppRemotingInitializerDestroyerTest {
 
 	@Test
 	public void testSetUp() {
-		// fail("Not yet implemented");
+		xmppRemotingInitializerDestroyer.setUp(user);
+		// TODO: checks
 	}
 
 
 	@Test
 	public void testTearDown() {
-		// fail("Not yet implemented");
+		// TODO: test
+		//xmppRemotingInitializerDestroyer.tearDown(user);
 	}
 
 }

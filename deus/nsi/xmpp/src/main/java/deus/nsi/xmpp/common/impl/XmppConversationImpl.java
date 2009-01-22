@@ -5,6 +5,7 @@ import org.jivesoftware.smack.Roster;
 import org.jivesoftware.smack.RosterEntry;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
+import org.jivesoftware.smack.Roster.SubscriptionMode;
 import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.packet.Packet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import deus.model.user.id.transportid.XmppTransportId;
 import deus.nsi.xmpp.common.XmppConfiguration;
 import deus.nsi.xmpp.common.XmppConversation;
 
+// FIXME: do we need UserMetadata here? Is XmppTransportId not enough?
 // TODO: think about synchonrization issues (e.g. with adding/removing of packet listeners)
 @Configurable
 public class XmppConversationImpl implements XmppConversation {
@@ -22,7 +24,7 @@ public class XmppConversationImpl implements XmppConversation {
 	private final XMPPConnection connection;
 	private final UserMetadata userMetadata;
 	private final String password;
-	
+
 	@Autowired
 	private XmppConfiguration xmppConfiguration;
 
@@ -33,12 +35,13 @@ public class XmppConversationImpl implements XmppConversation {
 		this.connection = connection;
 		this.userMetadata = userMetadata;
 		this.password = password;
-		
+
 		this.packetListenerManager = new PacketListenerManager(connection);
 	}
 
 
-	public void start() {
+	@Override
+	public void connect() {
 		try {
 			connection.connect();
 		}
@@ -46,10 +49,32 @@ public class XmppConversationImpl implements XmppConversation {
 			// if the subscriber XMPP server is not available, something fatal went wrong!
 			throw new RuntimeException("the local XMPP server of the user " + userMetadata + " is not available", e);
 		}
+	}
 
+
+	@Override
+	public boolean isConnected() {
+		return connection.isConnected();
+	}
+
+	
+	
+	private void assertIsConnected() throws IllegalStateException {
+		if (!isConnected())
+			throw new IllegalStateException("Not connected to XMPP server " + userMetadata.getUserId()
+					+ " yet!");
+	}
+
+	@Override
+	public void login() {
+		assertIsConnected();
+		
 		try {
 			XmppTransportId xmppId = userMetadata.getUserId().getTransportId(XmppTransportId.class);
 			connection.login(xmppId.getXmppUsername(), password);
+
+			// TODO: remove again and think about a better place for this (roster, subscriptionmode)
+			getRoster().setSubscriptionMode(SubscriptionMode.manual);
 		}
 		catch (XMPPException e) {
 			// if the the user cannot be logged in his local XMPP server, something fatal went wrong!
@@ -60,15 +85,17 @@ public class XmppConversationImpl implements XmppConversation {
 
 
 	@Override
-	public boolean isStarted() {
+	public boolean isLoggedIn() {
 		return connection.isAuthenticated();
 	}
 
 
-	private void assertIsStarted() throws IllegalStateException {
-		if(!isStarted())
-			throw new IllegalStateException("Conversation with XMPP account " + userMetadata.getUserId() + " is not started!");
+	private void assertIsLoggedIn() throws IllegalStateException {
+		if (!isLoggedIn())
+			throw new IllegalStateException("Not logged into XMPP account " + userMetadata.getUserId()
+					+ " yet!");
 	}
+
 
 
 	// TODO: think about logout method, should it be externalized into XmppServer??
@@ -90,8 +117,8 @@ public class XmppConversationImpl implements XmppConversation {
 	 */
 	@Override
 	public Roster getRoster() {
-		assertIsStarted();
-		
+		assertIsLoggedIn();
+
 		return connection.getRoster();
 	}
 
@@ -103,8 +130,8 @@ public class XmppConversationImpl implements XmppConversation {
 	 */
 	@Override
 	public void clearRoster() {
-		assertIsStarted();
-		
+		assertIsLoggedIn();
+
 		Roster roster = getRoster();
 		for (RosterEntry entry : roster.getEntries()) {
 			try {
@@ -127,8 +154,8 @@ public class XmppConversationImpl implements XmppConversation {
 	 */
 	@Override
 	public void sendPacket(Packet packet, XmppTransportId receiver) {
-		assertIsStarted();
-		
+		assertIsLoggedIn();
+
 		packet.setTo(receiver.toString());
 		packet.setFrom(userMetadata.toString());
 		packet.setProperty(xmppConfiguration.getXmppPropertyFullName(), userMetadata.getFullName());
@@ -144,7 +171,7 @@ public class XmppConversationImpl implements XmppConversation {
 	 */
 	@Override
 	public void addPacketListener(PacketListener packetListener, PacketFilter packetFilter) {
-		assertIsStarted();
+		assertIsConnected();
 		
 		packetListenerManager.addPacketListener(packetListener, packetFilter);
 	}
@@ -152,8 +179,8 @@ public class XmppConversationImpl implements XmppConversation {
 
 	@Override
 	public void removePacketListener(PacketListener packetListener) {
-		assertIsStarted();
-		
+		assertIsConnected();
+
 		packetListenerManager.removePacketListener(packetListener);
 	}
 

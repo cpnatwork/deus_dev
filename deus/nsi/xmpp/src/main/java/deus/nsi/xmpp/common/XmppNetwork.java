@@ -24,7 +24,7 @@ public class XmppNetwork {
 	@Autowired
 	private XmppServerConnectionConfiguration configuration;
 
-
+	// TODO: rename this method, since it does not login the user!
 	public XmppConversation login(UserMetadata userMetadata, String password) {
 		XmppTransportId xmppId = userMetadata.getUserId().getTransportId(XmppTransportId.class);
 

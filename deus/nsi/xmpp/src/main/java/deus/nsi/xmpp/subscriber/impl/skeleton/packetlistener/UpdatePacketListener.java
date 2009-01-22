@@ -5,21 +5,15 @@ import org.jivesoftware.smack.filter.PacketTypeFilter;
 import org.jivesoftware.smack.packet.IQ;
 import org.jivesoftware.smack.packet.Packet;
 
-import deus.core.subscriber.RemoteCalledSubscriber;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.sub.PublisherMetadata;
 import deus.nsi.xmpp.subscriber.impl.FIFChange;
 
-public class UpdatePacketListener<DifContentType> extends SubscriberPacketListener<DifContentType> {
-
-	public UpdatePacketListener(RemoteCalledSubscriber subscriber) {
-		super(subscriber);
-	}
-
+public class UpdatePacketListener extends SubscriberPacketListener {
 
 	@Override
 	public PacketFilter getFilter() {
-		return new PacketTypeFilter(IQ.class);
+		return new PacketTypeFilter(FIFChange.class);
 	}
 
 

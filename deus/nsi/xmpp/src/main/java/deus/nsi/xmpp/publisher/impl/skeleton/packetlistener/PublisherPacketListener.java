@@ -5,10 +5,10 @@ import deus.nsi.xmpp.common.packetlistener.UserMetadataParsingFilteredPacketList
 
 abstract class PublisherPacketListener extends UserMetadataParsingFilteredPacketListener {
 
-	protected final RemoteCalledPublisher publisher;
+	protected RemoteCalledPublisher publisher;
 
 	
-	public PublisherPacketListener(RemoteCalledPublisher publisher) {
+	public void setRemoteCalledPublisher(RemoteCalledPublisher publisher) {
 		this.publisher = publisher;
 	}
 	

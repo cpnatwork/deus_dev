@@ -1,5 +1,7 @@
 package deus.nsi.xmpp.publisher.impl.skeleton;
 
+import org.springframework.beans.factory.annotation.Configurable;
+
 import deus.nsi.xmpp.common.DelegateToPacketListenerSkeleton;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub;
@@ -23,6 +25,7 @@ import deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
+@Configurable
 public class XmppPublisherSkeleton extends DelegateToPacketListenerSkeleton {
 
 	public XmppPublisherSkeleton(XmppConversation publisherXmppConversation) {

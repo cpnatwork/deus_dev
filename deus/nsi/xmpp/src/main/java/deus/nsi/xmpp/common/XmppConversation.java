@@ -10,11 +10,16 @@ import deus.model.user.id.transportid.XmppTransportId;
 
 public interface XmppConversation {
 
-	public abstract void start();
+	public abstract void connect();
 
 
-	public abstract boolean isStarted();
+	public abstract boolean isConnected();
 
+	
+	public abstract void login();
+	
+	public abstract boolean isLoggedIn();
+	
 
 	public abstract void end();
 

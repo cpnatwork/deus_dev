@@ -54,11 +54,11 @@
 	</bean>
 
 	<bean id="subscribePacketListener" class="deus.nsi.xmpp.publisher.impl.skeleton.packetlistener.SubscribePacketListener">
-		<constructor-arg ref="publisher" />
+		<property name="remoteCalledPublisher" ref="publisher" />
 	</bean>
 
 	<bean id="unsubscribePacketListener" class="deus.nsi.xmpp.publisher.impl.skeleton.packetlistener.UnsubscribePacketListener">
-		<constructor-arg ref="publisher" />
+		<property name="remoteCalledPublisher" ref="publisher" />
 	</bean>
 
 	<bean id="listOfSubscribers" class="deus.model.pub.impl.ThreadSafeListOfSubscribers" />
