@@ -7,11 +7,7 @@ package deus.model.dossier.generic;
  * Abbreviation: PIF
  *  
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
- *
- * @param <ContentType>	the type of the content, stored in this PIF
  */
-public abstract class PersonalInformationFile<ContentType> {
-	
-	private ContentType content;
+public abstract class PersonalInformationFile {
 	
 }

@@ -3,9 +3,8 @@ package deus.core.subscriber;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.sub.PublisherMetadata;
 
-public interface RemoteCalledSubscriber<FifContentType> {
+public interface RemoteCalledSubscriber {
 
-
-	public void update(PublisherMetadata publisherMetadata, ForeignInformationFile<FifContentType> fif);
+	public void update(PublisherMetadata publisherMetadata, ForeignInformationFile fif);
 
 }

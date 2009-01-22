@@ -10,14 +10,14 @@ import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
 
-public class User<PifContentType, DifType extends DistributedInformationFolder<?>, FifContentType> {
+public class User<DifType extends DistributedInformationFolder> {
 
 	UserMetadata userMetadata;
 	
 	Publisher publisher;
-	Subscriber<DifType, FifContentType> subscriber;
+	Subscriber<DifType> subscriber;
 	
-	LodSelf<PifContentType> lodSelf;
+	LodSelf lodSelf;
 	LodOther lodOther;
 	
 	Barker barker;

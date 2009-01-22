@@ -5,8 +5,8 @@ import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.pub.SubscriberMetadata;
 
 // TODO: add DIF
-public class SubscriberImpl<DifType extends DistributedInformationFolder<?>, FifContentType> extends
-		RemoteCalledSubscriberImpl<DifType, FifContentType> implements Subscriber<DifType, FifContentType> {
+public class SubscriberImpl<DifType extends DistributedInformationFolder> extends RemoteCalledSubscriberImpl<DifType>
+		implements Subscriber<DifType> {
 
 	private final SubscriberMetadata subscriberMetadata;
 

@@ -14,6 +14,8 @@ import deus.model.dossier.generic.PersonalInformationFile;
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  */
-public class PersonalPatientFile extends PersonalInformationFile<List<DigitalCard>> {
+public class PersonalPatientFile extends PersonalInformationFile {
+
+	private List<DigitalCard> digitalCards;
 
 }

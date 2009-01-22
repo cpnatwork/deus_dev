@@ -11,14 +11,10 @@ import deus.model.sub.PublisherMetadata;
  * @see PersonalInformationFile
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
- * 
- * @param <ContentType>	the content type of this FIF
  */
-public abstract class ForeignInformationFile<ContentType> {
+public abstract class ForeignInformationFile {
 
 	private PublisherMetadata publisherMetadata;
-
-	private ContentType content;
 
 
 	public PublisherMetadata getPublisherMetadata() {

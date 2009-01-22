@@ -14,6 +14,8 @@ import deus.model.dossier.generic.ForeignInformationFile;
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  */
-public class ForeignPatientFile extends ForeignInformationFile<List<DigitalCard>> {
+public class ForeignPatientFile extends ForeignInformationFile {
 
+	private List<DigitalCard> digitalCards; 
+	
 }

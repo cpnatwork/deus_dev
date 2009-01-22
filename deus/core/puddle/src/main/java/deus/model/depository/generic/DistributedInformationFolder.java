@@ -19,14 +19,14 @@ import deus.model.user.id.UserId;
  * 
  * @param <ContentType> The type of content, the FIFs contain
  */
-public interface DistributedInformationFolder<ContentType> {
+public interface DistributedInformationFolder {
 
-	public ForeignInformationFile<ContentType> getForeignInformationFile(UserId publisherId);
-
-
-	public void updateForeignInformationFile(ForeignInformationFile<ContentType> foreignInformationFile);
+	public ForeignInformationFile getForeignInformationFile(UserId publisherId);
 
 
-	public void addForeignInformationFile(ForeignInformationFile<ContentType> foreignInformationFile);
+	public void updateForeignInformationFile(ForeignInformationFile foreignInformationFile);
+
+
+	public void addForeignInformationFile(ForeignInformationFile foreignInformationFile);
 
 }
