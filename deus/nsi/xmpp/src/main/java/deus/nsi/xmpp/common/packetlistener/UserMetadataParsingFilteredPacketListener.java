@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
 import deus.model.user.UserMetadata;
-import deus.model.user.id.XmppUserId;
+import deus.model.user.id.UserId;
+import deus.model.user.id.UserUrl;
+import deus.model.user.id.transportid.XmppTransportId;
 import deus.nsi.xmpp.common.XmppConfiguration;
 
 @Configurable
@@ -33,12 +35,15 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 		if (from == null)
 			throw new RuntimeException("'from' field is null at this presence packet: " + packet);
 
-		// TODO: think about parsing UserUrl vs. UserXri, ... (also add all transportIds!!!)
-		XmppUserId subscriberJid = new XmppUserId();
-		subscriberJid.setServer(StringUtils.parseServer(from));
-		subscriberJid.setUsername(StringUtils.parseName(from));
+		XmppTransportId subscriberXmppId = new XmppTransportId();
+		subscriberXmppId.setXmppServer(StringUtils.parseServer(from));
+		subscriberXmppId.setXmppUsername(StringUtils.parseName(from));
 
-		userMetadata.setUserId(subscriberJid);
+		// TODO: think about parsing UserUrl vs. UserXri, ... (also add other transportIds!!!)
+		UserId userId = new UserUrl();
+		userId.addTransportId(subscriberXmppId);
+		
+		userMetadata.setUserId(userId);
 
 		Object fullName = packet.getProperty(xmppConfiguration.getXmppPropertyFullName());
 		if (fullName == null)
