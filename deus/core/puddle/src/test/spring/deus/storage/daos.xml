@@ -4,6 +4,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-	<bean id="attentionDao" class="deus.storage.attention.AttentionDaoMock"/>
+	<bean id="attentionDao" class="deus.storage.attention.AttentionDaoStub"/>
+
+	<bean id="userMetadataDao" class="deus.storage.user.UserMetadataDaoStub"/>
 
 </beans>

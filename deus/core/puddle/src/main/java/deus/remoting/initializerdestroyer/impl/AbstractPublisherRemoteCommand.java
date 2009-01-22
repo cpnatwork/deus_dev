@@ -30,6 +30,6 @@ public abstract class AbstractPublisherRemoteCommand extends AbstractRemoteComma
 	}
 
 
-	public abstract void execute(SubscriberStub subscriberStub);
+	protected abstract void execute(SubscriberStub subscriberStub);
 
 }

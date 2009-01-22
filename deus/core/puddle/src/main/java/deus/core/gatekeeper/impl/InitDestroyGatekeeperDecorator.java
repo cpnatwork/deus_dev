@@ -1,23 +1,24 @@
 package deus.core.gatekeeper.impl;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import deus.core.User;
 import deus.core.gatekeeper.Gatekeeper;
-import deus.model.user.id.UserId;
-import deus.model.user.id.UserIdType;
-import deus.remoting.initializerdestroyer.InitializerDestroyer;
+import deus.remoting.initializerdestroyer.RemoteSendingInitializerDestroyer;
+import deus.remoting.initializerdestroyer.RemotingInitializerDestroyer;
 
-public class InitDestroyGatekeeperDecorator<InitializerDestroyerType extends InitializerDestroyer> extends AbstractGatekeeperDecorator<InitializerDestroyerType> {
+public class InitDestroyGatekeeperDecorator extends AbstractGatekeeperDecorator {
 
 	@Autowired
 	@Qualifier("gatekeeper")
-	private Map<UserIdType, InitializerDestroyerType> initializerDestroyers;
+	private RemotingInitializerDestroyer remotingInitializerDestroyer;
 
+	@Autowired
+	@Qualifier("gatekeeper")
+	private RemoteSendingInitializerDestroyer remoteSendingInitializerDestroyer;
 
+	
 	public InitDestroyGatekeeperDecorator(Gatekeeper decoratedGatekeeper) {
 		super(decoratedGatekeeper);
 	}
@@ -25,36 +26,16 @@ public class InitDestroyGatekeeperDecorator<InitializerDestroyerType extends Ini
 
 	@Override
 	protected void doAfterLogin(User user) {
-		// INITIALIZE
-		UserId userId = user.getUserMetadata().getUserId();
-		UserIdType userIdType = userId.getType();
-		InitializerDestroyerType initializer = getInitializerDestroyer(userIdType);
-		if (initializer == null)
-			// TODO: think about the type of this exception
-			throw new RuntimeException("cannot initialize remoting for user with id " + userId
-					+ " because there is no RemotingInitializerDestroyer registered for handling this id type");
-
-		initializer.setUp(user);
+		remotingInitializerDestroyer.setUp(user);
+		remoteSendingInitializerDestroyer.setUp(user);
 	}
 
 
 	@Override
 	protected void doBeforeLogout(User user) {
-		// DESTROY
-		UserId userId = user.getUserMetadata().getUserId();
-		UserIdType userIdType = userId.getType();
-		InitializerDestroyerType destroyer = getInitializerDestroyer(userIdType);
-		if (destroyer == null)
-			// TODO: think about the type of this exception
-			throw new RuntimeException("cannot destroy remoting for user with id " + userId
-					+ " because there is no RemotingInitializerDestroyer registered for handling this id type");
-
-		destroyer.tearDown(user);
+		remoteSendingInitializerDestroyer.tearDown(user);
+		remotingInitializerDestroyer.tearDown(user);
 	}
 
-
-	protected final InitializerDestroyerType getInitializerDestroyer(UserIdType userIdType) {
-		return initializerDestroyers.get(userIdType);
-	}
 
 }

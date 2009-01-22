@@ -20,11 +20,11 @@ public class UserFactory {
 	@Autowired
 	private AttentionDao attentionDao;
 	
-	@Autowired
-	private PubDao pubDao;
-	
-	@Autowired
-	private SubDao subDao;
+//	@Autowired
+//	private PubDao pubDao;
+//	
+//	@Autowired
+//	private SubDao subDao;
 	
 	@Autowired
 	private UserMetadataDao userMetadataDao;
@@ -38,12 +38,12 @@ public class UserFactory {
 		user.barker.setAttentionList(attentionList);
 		
 		
-		ListOfSubscribers los = pubDao.getListOfSubscribers(userId);
-		PublisherMetadata publisherMetadata = pubDao.getPublisherMetadata(userId);
-		user.publisher = new PublisherImpl(los, publisherMetadata);
-		
-		SubscriberMetadata subscriberMetadata = subDao.getSubscriberMetadata(userId);
-		user.subscriber = new SubscriberImpl(subscriberMetadata);
+//		ListOfSubscribers los = pubDao.getListOfSubscribers(userId);
+//		PublisherMetadata publisherMetadata = pubDao.getPublisherMetadata(userId);
+//		user.publisher = new PublisherImpl(los, publisherMetadata);
+//		
+//		SubscriberMetadata subscriberMetadata = subDao.getSubscriberMetadata(userId);
+//		user.subscriber = new SubscriberImpl(subscriberMetadata);
 		
 		user.userMetadata = userMetadataDao.getUserMetadata(userId);
 		

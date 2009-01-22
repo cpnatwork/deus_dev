@@ -1,12 +1,13 @@
 package deus.model.attention;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import deus.model.sub.PublisherMetadata;
-import deus.model.user.id.UserId;
 
 public class PublisherOfferTest {
 
@@ -14,7 +15,7 @@ public class PublisherOfferTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		dec = new PublisherOffer<UserId>(new PublisherMetadata<UserId>());
+		dec = new PublisherOffer(new PublisherMetadata());
 	}
 
 

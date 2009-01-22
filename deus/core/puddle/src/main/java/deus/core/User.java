@@ -28,7 +28,9 @@ public class User {
 	// TODO: think about how to fill this map. Or add RemotingState, when remoting is started??
 	Map<TransportIdType, RemotingState> remotingStates;
 
-
+	boolean loggedIn;
+	
+	
 	public RemotingState getRemotingState(TransportIdType transportIdType) {
 		return remotingStates.get(transportIdType);
 	}
@@ -53,5 +55,14 @@ public class User {
 		// FIXME: implement!
 		// return subscriber.getListOfPublishers();
 		return null;
+	}
+
+
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
+	
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;
 	}
 }

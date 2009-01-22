@@ -4,10 +4,8 @@ package deus.core.gatekeeper.impl;
 import deus.core.User;
 import deus.core.gatekeeper.Gatekeeper;
 import deus.core.gatekeeper.soul.LoginCredentials;
-import deus.remoting.initializerdestroyer.InitializerDestroyer;
 
-public abstract class AbstractGatekeeperDecorator<InitializerDestroyerType extends InitializerDestroyer> implements
-		Gatekeeper {
+public abstract class AbstractGatekeeperDecorator implements Gatekeeper {
 
 	private final Gatekeeper decoratedGatekeeper;
 

@@ -1,9 +1,7 @@
 package deus.core.publisher.impl;
 
-import deus.core.User;
 import deus.core.publisher.Publisher;
 import deus.core.subscriber.SubscriberStub;
-import deus.core.subscriber.SubscriberStubFactory;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
@@ -57,17 +55,16 @@ public class PublisherImpl extends RemoteCalledPublisherImpl implements Publishe
 			// TODO: think about publishing using multiple threads
 			SubscriberMetadata subscriberMetadata = (SubscriberMetadata) arrLocal[i];
 
-			RemoteCommand remoteCommand = new AbstractPublisherRemoteCommand(subscriberMetadata) {
-
-				@Override
-				public void execute(SubscriberStub subscriberStub) {
-					subscriberStub.update(getPublisherMetadata(), change);
-				}
-
-			};
-			// TODO: where to get user from.
-			User user = null;
-			remoteCommand.execute(user);
+//			RemoteCommand remoteCommand = new AbstractPublisherRemoteCommand(subscriberMetadata) {
+//
+//				@Override
+//				protected void execute(SubscriberStub subscriberStub) {
+//					subscriberStub.update(getPublisherMetadata(), change);
+//				}
+//
+//			};
+//
+//			remoteCommand.execute(user);
 
 			// SubscriberStub subscriberStub = subscriberStubFactory.createSubscriberStub(subscriberMetadata, publisherMetadata);
 			// subscriberStub.update(getPublisherMetadata(), change);

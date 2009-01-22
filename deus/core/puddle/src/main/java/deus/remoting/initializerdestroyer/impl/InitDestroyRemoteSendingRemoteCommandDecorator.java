@@ -18,10 +18,10 @@ public class InitDestroyRemoteSendingRemoteCommandDecorator extends AbstractRemo
 	private Map<UserIdType, RemoteSendingInitializerDestroyer> remoteSendingInitializerDestroyers;
 
 
-
 	public InitDestroyRemoteSendingRemoteCommandDecorator(RemoteCommand decoratedRemoteCommand) {
 		super(decoratedRemoteCommand);
 	}
+
 
 	@Override
 	public void beforeExecute(User user) {

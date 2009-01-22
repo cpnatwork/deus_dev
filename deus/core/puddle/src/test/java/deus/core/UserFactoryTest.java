@@ -13,13 +13,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.model.attention.AttentionList;
+import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
-import deus.model.user.id.XmppUserId;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/model/attention/attentionList.xml", "/deus/storage/daos.xml",
-		"/deus/core/user.xml", "/context.xml" })
+		"/deus/core/core.xml", "/deus/context.xml" })
 public class UserFactoryTest {
 
 	@Autowired
@@ -40,6 +40,11 @@ public class UserFactoryTest {
 		UserId userId = new UserUrl("username", "server");
 		User user = userFactory.createUser(userId);
 		assertEquals(attentionList, user.barker.getAttentionList());
+		
+		UserMetadata userMetadata = user.getUserMetadata();
+		assertEquals("full name", userMetadata.getFullName());
+		assertEquals(userId, userMetadata.getUserId());
+		
 		// TODO: extend use case
 	}
 
