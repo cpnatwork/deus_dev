@@ -16,7 +16,6 @@ import deus.core.publisher.Publisher;
 import deus.core.publisher.PublisherStub;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
-import deus.model.user.id.XmppUserId;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton;
 

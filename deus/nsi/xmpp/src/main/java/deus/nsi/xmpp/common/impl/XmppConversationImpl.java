@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
 import deus.model.user.UserMetadata;
-import deus.model.user.id.XmppUserId;
 import deus.model.user.id.transportid.XmppTransportId;
 import deus.nsi.xmpp.common.XmppConfiguration;
 import deus.nsi.xmpp.common.XmppConversation;

@@ -5,8 +5,7 @@ import org.jivesoftware.smack.packet.IQ;
 import deus.core.subscriber.impl.AbstractSubscriberStub;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
-import deus.model.user.id.UserIdType;
-import deus.model.user.id.XmppUserId;
+import deus.model.user.id.transportid.TransportIdType;
 import deus.model.user.id.transportid.XmppTransportId;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.subscriber.impl.FIFChange;
@@ -26,7 +25,9 @@ public class XmppSubscriberStub extends AbstractSubscriberStub {
 
 	public XmppSubscriberStub(SubscriberMetadata subscriberMetadata, XmppConversation publisherXmppConversation) {
 		super(subscriberMetadata);
-		assert (subscriberMetadata.getUserId().getType().equals(UserIdType.xmpp));
+		// TODO: think about this assert
+		assert (subscriberMetadata.getUserId().hasTransportId(TransportIdType.xmpp));
+		
 		this.publisherXmppConversation = publisherXmppConversation;
 	}
 

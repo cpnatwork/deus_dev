@@ -1,14 +1,11 @@
 package deus.nsi.xmpp.publisher.impl.stub;
 
-import org.jivesoftware.smack.Roster;
-import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.packet.Presence;
 
 import deus.core.publisher.impl.AbstractPublisherStub;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
-import deus.model.user.id.UserIdType;
-import deus.model.user.id.XmppUserId;
+import deus.model.user.id.transportid.TransportIdType;
 import deus.model.user.id.transportid.XmppTransportId;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton;
@@ -48,7 +45,7 @@ public class XmppPublisherStub extends AbstractPublisherStub {
 			XmppConversation subscriberXmppConversation) {
 		super(publisherMetadata);
 		// TODO: think about this assert
-		assert (publisherMetadata.getUserId().getType().equals(UserIdType.xmpp));
+		assert (publisherMetadata.getUserId().hasTransportId(TransportIdType.xmpp));
 
 		this.subscriberXmppConversation = subscriberXmppConversation;
 	}

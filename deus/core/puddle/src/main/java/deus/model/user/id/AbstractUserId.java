@@ -16,6 +16,7 @@ public abstract class AbstractUserId implements UserId {
 		transportIds = new HashMap<TransportIdType, TransportId>();
 	}
 
+
 	// TODO: think about setter
 	public void setTransportIds(Map<TransportIdType, TransportId> transportIds) {
 		this.transportIds = transportIds;
@@ -25,11 +26,13 @@ public abstract class AbstractUserId implements UserId {
 	@Override
 	public void addTransportId(TransportId transportId) {
 		TransportId old = transportIds.put(transportId.getType(), transportId);
-		if(old != null)
-			throw new RuntimeException("a transportId of this type (" + transportId.getType() + ") has already been added!");
+		if (old != null)
+			throw new RuntimeException("a transportId of this type (" + transportId.getType()
+					+ ") has already been added!");
 	}
 
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T extends TransportId> T getTransportId(Class<T> transportIdClass) {
 		TransportIdType type;
@@ -37,18 +40,24 @@ public abstract class AbstractUserId implements UserId {
 			TransportId transportId = transportIdClass.newInstance();
 			Method getTypeMethod = transportIdClass.getMethod("getType", new Class[0]);
 			type = (TransportIdType) getTypeMethod.invoke(transportId);
-			if(type == null)
+			if (type == null)
 				throw new RuntimeException("cannot get type of class " + transportIdClass + " using method 'getType'");
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		
-		if(!transportIds.containsKey(type))
+
+		if (!transportIds.containsKey(type))
 			// TODO: think about exception type
 			throw new RuntimeException("no transport id for the type " + type + " available!");
-		
+
 		return (T) transportIds.get(type);
+	}
+
+
+	@Override
+	public boolean hasTransportId(TransportIdType transportIdType) {
+		return transportIds.containsKey(transportIdType);
 	}
 
 
@@ -79,8 +88,10 @@ public abstract class AbstractUserId implements UserId {
 		return true;
 	}
 
+
 	public Map<TransportIdType, TransportId> getTransportIds() {
 		return transportIds;
 	}
+
 
 }

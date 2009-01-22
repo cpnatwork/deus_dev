@@ -7,7 +7,6 @@ import org.jivesoftware.smack.packet.Packet;
 
 import deus.core.subscriber.RemoteCalledSubscriber;
 import deus.model.sub.PublisherMetadata;
-import deus.model.user.id.XmppUserId;
 import deus.nsi.xmpp.subscriber.impl.FIFChange;
 
 public class UpdatePacketListener<DifContentType> extends SubscriberPacketListener<DifContentType> {

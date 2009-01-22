@@ -1,7 +1,6 @@
 package deus.nsi.xmpp.subscriber.impl.skeleton.packetlistener;
 
 import deus.core.subscriber.RemoteCalledSubscriber;
-import deus.model.user.id.XmppUserId;
 import deus.nsi.xmpp.common.packetlistener.UserMetadataParsingFilteredPacketListener;
 
 

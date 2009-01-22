@@ -14,5 +14,7 @@ public interface UserId {
 	public <T extends TransportId> T getTransportId(Class<T> transportIdType);
 
 	void addTransportId(TransportId transportId);
+
+	public boolean hasTransportId(TransportIdType transportIdType);
 	
 }
