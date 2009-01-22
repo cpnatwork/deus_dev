@@ -13,8 +13,6 @@ import deus.model.dossier.generic.ForeignInformationFile;
  * @see DigitalCard
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
- *
- * @param <Id>	The id type of the publisher of this FPF.
  */
 public class ForeignPatientFile extends ForeignInformationFile<List<DigitalCard>> {
 

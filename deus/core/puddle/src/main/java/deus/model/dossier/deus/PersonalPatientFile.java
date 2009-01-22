@@ -13,8 +13,6 @@ import deus.model.dossier.generic.PersonalInformationFile;
  * @see DigitalCard
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
- *
- * @param <Id>
  */
 public class PersonalPatientFile extends PersonalInformationFile<List<DigitalCard>> {
 

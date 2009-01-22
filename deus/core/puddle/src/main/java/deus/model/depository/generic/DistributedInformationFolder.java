@@ -17,7 +17,6 @@ import deus.model.user.id.UserId;
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
- * @param <Id> the ID of the
  * @param <ContentType> The type of content, the FIFs contain
  */
 public interface DistributedInformationFolder<ContentType> {

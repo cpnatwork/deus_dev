@@ -12,7 +12,6 @@ import deus.model.sub.PublisherMetadata;
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
- * @param <Id>	the type of the publisher ID
  * @param <ContentType>	the content type of this FIF
  */
 public abstract class ForeignInformationFile<ContentType> {

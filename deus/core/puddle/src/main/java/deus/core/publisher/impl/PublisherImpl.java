@@ -72,7 +72,7 @@ public class PublisherImpl extends RemoteCalledPublisherImpl implements Publishe
 			User user = null;
 			remoteCommand.execute(user);
 
-			// SubscriberStub<Id> subscriberStub = subscriberStubFactory.createSubscriberStub(subscriberMetadata, publisherMetadata);
+			// SubscriberStub subscriberStub = subscriberStubFactory.createSubscriberStub(subscriberMetadata, publisherMetadata);
 			// subscriberStub.update(getPublisherMetadata(), change);
 		}
 	}
