@@ -2,6 +2,7 @@ package deus.model.user.id;
 
 public enum UserIdType {
 	
-	local, xmpp, openid;
+	// TODO: remove everything except url
+	local, xmpp, openid, url;
 
 }
