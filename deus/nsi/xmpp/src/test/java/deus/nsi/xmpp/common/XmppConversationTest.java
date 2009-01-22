@@ -1,8 +1,6 @@
 package deus.nsi.xmpp.common;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.Roster;
@@ -51,8 +49,10 @@ public class XmppConversationTest {
 	public void setUp() throws Exception {
 		receivedPacketCount = 0;
 
-		publisherXmppConversation.start();
-		subscriberXmppConversation.start();
+		publisherXmppConversation.connect();
+		publisherXmppConversation.login();
+		subscriberXmppConversation.connect();
+		subscriberXmppConversation.login();
 	}
 
 
@@ -61,17 +61,6 @@ public class XmppConversationTest {
 		publisherXmppConversation.end();
 		subscriberXmppConversation.end();
 	}
-
-
-	@Test
-	public void testStartEnd() {
-		assertTrue(publisherXmppConversation.isStarted());
-		publisherXmppConversation.end();
-		assertFalse(publisherXmppConversation.isStarted());
-		publisherXmppConversation.start();
-		assertTrue(publisherXmppConversation.isStarted());
-	}
-
 
 	@Test
 	@Repeat(2)

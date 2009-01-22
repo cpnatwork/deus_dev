@@ -57,18 +57,17 @@ public class XmppConversationImpl implements XmppConversation {
 		return connection.isConnected();
 	}
 
-	
-	
+
 	private void assertIsConnected() throws IllegalStateException {
 		if (!isConnected())
-			throw new IllegalStateException("Not connected to XMPP server " + userMetadata.getUserId()
-					+ " yet!");
+			throw new IllegalStateException("Not connected to XMPP server " + userMetadata.getUserId() + " yet!");
 	}
+
 
 	@Override
 	public void login() {
 		assertIsConnected();
-		
+
 		try {
 			XmppTransportId xmppId = userMetadata.getUserId().getTransportId(XmppTransportId.class);
 			connection.login(xmppId.getXmppUsername(), password);
@@ -92,10 +91,8 @@ public class XmppConversationImpl implements XmppConversation {
 
 	private void assertIsLoggedIn() throws IllegalStateException {
 		if (!isLoggedIn())
-			throw new IllegalStateException("Not logged into XMPP account " + userMetadata.getUserId()
-					+ " yet!");
+			throw new IllegalStateException("Not logged into XMPP account " + userMetadata.getUserId() + " yet!");
 	}
-
 
 
 	// TODO: think about logout method, should it be externalized into XmppServer??
@@ -172,7 +169,10 @@ public class XmppConversationImpl implements XmppConversation {
 	@Override
 	public void addPacketListener(PacketListener packetListener, PacketFilter packetFilter) {
 		assertIsConnected();
-		
+
+		// if we are only connected here, and not logged in, we could have missed some packets, when adding listener
+		// now!
+
 		packetListenerManager.addPacketListener(packetListener, packetFilter);
 	}
 
@@ -180,6 +180,9 @@ public class XmppConversationImpl implements XmppConversation {
 	@Override
 	public void removePacketListener(PacketListener packetListener) {
 		assertIsConnected();
+
+		// if we are only connected here, and not logged in, we could have missed some packets, when adding listener
+		// now!
 
 		packetListenerManager.removePacketListener(packetListener);
 	}

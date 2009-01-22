@@ -50,8 +50,10 @@ public class XmppPublisherStubTest {
 
 	@Before
 	public void setUp() {
-		publisherXmppConversation.start();
-		subscriberXmppConversation.start();
+		publisherXmppConversation.connect();
+		publisherXmppConversation.login();
+		subscriberXmppConversation.connect();
+		subscriberXmppConversation.login();
 		
 		publisherXmppConversation.clearRoster();
 		subscriberXmppConversation.clearRoster();
