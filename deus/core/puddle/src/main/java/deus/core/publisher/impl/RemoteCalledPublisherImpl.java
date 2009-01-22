@@ -4,18 +4,19 @@ package deus.core.publisher.impl;
 import deus.core.publisher.RemoteCalledPublisher;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.SubscriberMetadata;
-import deus.model.user.id.UserId;
 
-public class RemoteCalledPublisherImpl<Id extends UserId> implements RemoteCalledPublisher<Id> {
+public class RemoteCalledPublisherImpl implements RemoteCalledPublisher {
 
-	protected final ListOfSubscribers<Id> listOfSubscribers;
-	
-	public RemoteCalledPublisherImpl(ListOfSubscribers<Id> listOfSubscribers) {
+	protected final ListOfSubscribers listOfSubscribers;
+
+
+	public RemoteCalledPublisherImpl(ListOfSubscribers listOfSubscribers) {
 		super();
 		this.listOfSubscribers = listOfSubscribers;
 	}
 
-	public synchronized void addObserver(SubscriberMetadata<Id> o) {
+
+	public synchronized void addObserver(SubscriberMetadata o) {
 		if (o == null)
 			throw new NullPointerException();
 		if (!listOfSubscribers.contains(o)) {
@@ -23,7 +24,8 @@ public class RemoteCalledPublisherImpl<Id extends UserId> implements RemoteCalle
 		}
 	}
 
-	public synchronized void deleteObserver(SubscriberMetadata<Id> o) {
+
+	public synchronized void deleteObserver(SubscriberMetadata o) {
 		listOfSubscribers.remove(o);
 	}
 

@@ -5,10 +5,9 @@ import deus.core.subscriber.RemoteCalledSubscriber;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.sub.PublisherMetadata;
-import deus.model.user.id.UserId;
 
-public class RemoteCalledSubscriberImpl<Id extends UserId, DifType extends DistributedInformationFolder<Id, ?>, FifContentType>
-		implements RemoteCalledSubscriber<Id, FifContentType> {
+public class RemoteCalledSubscriberImpl<DifType extends DistributedInformationFolder<?>, FifContentType> implements
+		RemoteCalledSubscriber<FifContentType> {
 
 	public RemoteCalledSubscriberImpl() {
 		super();
@@ -16,7 +15,7 @@ public class RemoteCalledSubscriberImpl<Id extends UserId, DifType extends Distr
 
 
 	@Override
-	public void update(PublisherMetadata<Id> publisherMetadata, ForeignInformationFile<Id, FifContentType> fif) {
+	public void update(PublisherMetadata publisherMetadata, ForeignInformationFile<FifContentType> fif) {
 		// FIXME: how to do object change
 	}
 

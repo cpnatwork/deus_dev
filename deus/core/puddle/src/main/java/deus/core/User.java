@@ -9,21 +9,20 @@ import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
 
-public class User<Id extends UserId, PifContentType, DifType extends DistributedInformationFolder<Id, ?>, FifContentType> {
+public class User<PifContentType, DifType extends DistributedInformationFolder<?>, FifContentType> {
 
-	UserMetadata<Id> userMetadata;
+	UserMetadata userMetadata;
 	
-	Publisher<Id> publisher;
-	Subscriber<Id, DifType, FifContentType> subscriber;
+	Publisher publisher;
+	Subscriber<DifType, FifContentType> subscriber;
 	
-	LodSelf<Id, PifContentType> lodSelf;
+	LodSelf<PifContentType> lodSelf;
 	LodOther lodOther;
 	
 	Barker barker;
 
-	public UserMetadata<Id> getUserMetadata() {
+	public UserMetadata getUserMetadata() {
 		return userMetadata;
 	}
 

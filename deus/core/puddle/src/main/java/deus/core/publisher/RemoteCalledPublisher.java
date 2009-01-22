@@ -1,9 +1,8 @@
 package deus.core.publisher;
 
 import deus.model.pub.SubscriberMetadata;
-import deus.model.user.id.UserId;
 
-public interface RemoteCalledPublisher<Id extends UserId> {
+public interface RemoteCalledPublisher {
 
 	/**
 	 * Adds an observer to the set of observers for this object, provided
@@ -13,7 +12,7 @@ public interface RemoteCalledPublisher<Id extends UserId> {
 	 *
 	 * @param   subscriberMetadata   an observer to be added.
 	 */
-	public abstract void addObserver(SubscriberMetadata<Id> subscriberMetadata);
+	public abstract void addObserver(SubscriberMetadata subscriberMetadata);
 
 
 	/**
@@ -21,6 +20,6 @@ public interface RemoteCalledPublisher<Id extends UserId> {
 	 * Passing <CODE>null</CODE> to this method will have no effect.
 	 * @param   subscriberMetadata   the observer to be deleted.
 	 */
-	public abstract void deleteObserver(SubscriberMetadata<Id> subscriberMetadata);
+	public abstract void deleteObserver(SubscriberMetadata subscriberMetadata);
 	
 }

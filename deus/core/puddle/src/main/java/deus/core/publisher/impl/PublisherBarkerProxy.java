@@ -7,29 +7,31 @@ import deus.model.attention.Notice;
 import deus.model.attention.SubscriberRequest;
 import deus.model.attention.SubscriptionCanceledNotice;
 import deus.model.pub.SubscriberMetadata;
-import deus.model.user.id.UserId;
 
-public class PublisherBarkerProxy<Id extends UserId> implements RemoteCalledPublisher<Id> {
+public class PublisherBarkerProxy implements RemoteCalledPublisher {
 
-	private final RemoteCalledPublisher<Id> proxiedPublisher;
+	private final RemoteCalledPublisher proxiedPublisher;
 	private final Barker barker;
-	
-	public PublisherBarkerProxy(RemoteCalledPublisher<Id> proxiedPublisher, Barker barker) {
+
+
+	public PublisherBarkerProxy(RemoteCalledPublisher proxiedPublisher, Barker barker) {
 		this.proxiedPublisher = proxiedPublisher;
 		this.barker = barker;
 	}
 
+
 	@Override
-	public void addObserver(SubscriberMetadata<Id> subscriberMetadata) {
-		BinaryDecisionToMake decision = new SubscriberRequest<Id>(subscriberMetadata);
+	public void addObserver(SubscriberMetadata subscriberMetadata) {
+		BinaryDecisionToMake decision = new SubscriberRequest(subscriberMetadata);
 		barker.addAttentionElement(decision);
 	}
 
+
 	@Override
-	public void deleteObserver(SubscriberMetadata<Id> subscriberMetadata) {
+	public void deleteObserver(SubscriberMetadata subscriberMetadata) {
 		proxiedPublisher.deleteObserver(subscriberMetadata);
-		
-		Notice notice = new SubscriptionCanceledNotice<Id>(subscriberMetadata);
+
+		Notice notice = new SubscriptionCanceledNotice(subscriberMetadata);
 		barker.addAttentionElement(notice);
 	}
 

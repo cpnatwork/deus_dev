@@ -2,22 +2,20 @@ package deus.core.publisher.impl;
 
 import deus.core.publisher.PublisherStub;
 import deus.model.sub.PublisherMetadata;
-import deus.model.user.id.UserId;
 
 
-public abstract class AbstractPublisherStub<Id extends UserId> implements
-		PublisherStub<Id> {
+public abstract class AbstractPublisherStub implements PublisherStub {
 
-	private PublisherMetadata<Id> publisherMetadata;
+	private PublisherMetadata publisherMetadata;
 
 
-	public AbstractPublisherStub(PublisherMetadata<Id> publisherMetadata) {
+	public AbstractPublisherStub(PublisherMetadata publisherMetadata) {
 		this.publisherMetadata = publisherMetadata;
 	}
 
 
 	@Override
-	public PublisherMetadata<Id> getPublisherMetadata() {
+	public PublisherMetadata getPublisherMetadata() {
 		return publisherMetadata;
 	}
 

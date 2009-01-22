@@ -3,23 +3,22 @@ package deus.core.subscriber.impl;
 import deus.core.subscriber.Subscriber;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.pub.SubscriberMetadata;
-import deus.model.user.id.UserId;
 
 // TODO: add DIF
-public class SubscriberImpl<Id extends UserId, DifType extends DistributedInformationFolder<Id, ?>, FifContentType>
-		extends RemoteCalledSubscriberImpl<Id, DifType, FifContentType> implements Subscriber<Id, DifType, FifContentType> {
+public class SubscriberImpl<DifType extends DistributedInformationFolder<?>, FifContentType> extends
+		RemoteCalledSubscriberImpl<DifType, FifContentType> implements Subscriber<DifType, FifContentType> {
 
-	private final SubscriberMetadata<Id> subscriberMetadata;
+	private final SubscriberMetadata subscriberMetadata;
 
 
-	public SubscriberImpl(SubscriberMetadata<Id> subscriberMetadata) {
+	public SubscriberImpl(SubscriberMetadata subscriberMetadata) {
 		super();
 		this.subscriberMetadata = subscriberMetadata;
 	}
 
 
 	@Override
-	public SubscriberMetadata<Id> getSubscriberMetadata() {
+	public SubscriberMetadata getSubscriberMetadata() {
 		return subscriberMetadata;
 	}
 
