@@ -6,6 +6,7 @@ import org.jivesoftware.smack.packet.IQ;
 import org.jivesoftware.smack.packet.Packet;
 
 import deus.core.subscriber.RemoteCalledSubscriber;
+import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.sub.PublisherMetadata;
 import deus.nsi.xmpp.subscriber.impl.FIFChange;
 
@@ -29,7 +30,7 @@ public class UpdatePacketListener<DifContentType> extends SubscriberPacketListen
 		FIFChange fifChange = (FIFChange) iq;
 		String xml = fifChange.getChildElementXML();
 
-		Object change = null;
+		ForeignInformationFile change = null;
 		// TODO: do XML to object binding
 		// change = xmltoobjectbind(xml);
 
