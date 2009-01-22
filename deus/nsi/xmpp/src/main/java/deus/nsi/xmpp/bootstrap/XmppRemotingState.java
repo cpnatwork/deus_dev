@@ -1,19 +1,17 @@
 package deus.nsi.xmpp.bootstrap;
 
-import java.util.List;
-
-import deus.core.publisher.PublisherStub;
-import deus.core.subscriber.SubscriberStub;
-import deus.model.user.id.UserIdType;
 import deus.nsi.xmpp.common.XmppConversation;
-import deus.nsi.xmpp.common.XmppSkeleton;
-import deus.remoting.initializerdestroyer.RemotingState;
+import deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton;
+import deus.nsi.xmpp.subscriber.impl.skeleton.XmppSubscriberSkeleton;
+import deus.remoting.initializerdestroyer.impl.AbstractRemotingState;
 
-public class XmppRemotingState implements RemotingState {
+public class XmppRemotingState extends AbstractRemotingState {
 
 	private final XmppConversation xmppConversation;
 
-	private List<XmppSkeleton> connectedXmppSkeletons;
+	private XmppSubscriberSkeleton xmppSubscriberSkeleton;
+	private XmppPublisherSkeleton xmppPublisherSkeleton;
+
 
 	public XmppRemotingState(XmppConversation xmppConversation) {
 		this.xmppConversation = xmppConversation;
@@ -26,30 +24,38 @@ public class XmppRemotingState implements RemotingState {
 	}
 
 
-	@Override
-	public UserIdType getUserIdType() {
-		return UserIdType.xmpp;
-	}
-	
-	
 	public XmppConversation getXmppConversation() {
 		return xmppConversation;
 	}
 
 
-	public void addConnectedXmppSkeleton(XmppSkeleton xmppSkeleton) {
-		connectedXmppSkeletons.add(xmppSkeleton);
-	}
-	
-	public List<XmppSkeleton> getAllConnectedXmppSkeletons() {
-		return connectedXmppSkeletons;
+	public XmppSubscriberSkeleton getXmppSubscriberSkeleton() {
+		return xmppSubscriberSkeleton;
 	}
 
 
-	public void clearSkeletonList() {
-		connectedXmppSkeletons.clear();
+	public void setXmppSubscriberSkeleton(XmppSubscriberSkeleton xmppSubscriberSkeleton) {
+		this.xmppSubscriberSkeleton = xmppSubscriberSkeleton;
 	}
 
 
-	
+	public XmppPublisherSkeleton getXmppPublisherSkeleton() {
+		return xmppPublisherSkeleton;
+	}
+
+
+	public void setXmppPublisherSkeleton(XmppPublisherSkeleton xmppPublisherSkeleton) {
+		this.xmppPublisherSkeleton = xmppPublisherSkeleton;
+	}
+
+
+	public void removeXmppSubscriberSkeleton() {
+		xmppSubscriberSkeleton = null;
+	}
+
+
+	public void removeXmppPublisherSkeleton() {
+		xmppPublisherSkeleton = null;
+	}
+
 }

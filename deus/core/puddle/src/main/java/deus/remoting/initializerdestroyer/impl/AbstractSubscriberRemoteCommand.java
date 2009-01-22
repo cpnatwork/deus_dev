@@ -1,32 +1,27 @@
 package deus.remoting.initializerdestroyer.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import deus.core.User;
 import deus.core.publisher.PublisherStub;
 import deus.model.sub.PublisherMetadata;
-import deus.remoting.initializerdestroyer.RemoteCommand;
+import deus.model.user.id.transportid.TransportIdType;
 import deus.remoting.initializerdestroyer.RemotingState;
-import deus.remoting.initializerdestroyer.RemotingStateRegistry;
 
-public abstract class AbstractSubscriberRemoteCommand implements RemoteCommand {
-	
+public abstract class AbstractSubscriberRemoteCommand extends AbstractRemoteCommand {
+
 	private final PublisherMetadata publisherMetadata;
 
-	@Autowired
-	private RemotingStateRegistry remotingStateRegistry;
 
-
-	public AbstractSubscriberRemoteCommand(PublisherMetadata publisherMetadata) {
+	public AbstractSubscriberRemoteCommand(PublisherMetadata publisherMetadata, TransportIdType transportIdType) {
+		super(transportIdType);
 		this.publisherMetadata = publisherMetadata;
 	}
 
 
 	@Override
 	public final void execute(User user) {
-		RemotingState remotingState = remotingStateRegistry.getRemotingState(user);
+		RemotingState remotingState = user.getRemotingState(transportIdType);
 
-		// search for the right subscriber stub
+		// search for the right publisher stub
 		for (PublisherStub stub : remotingState.getPublisherStubs())
 			if (stub.getPublisherMetadata().equals(publisherMetadata)) {
 				execute(stub);

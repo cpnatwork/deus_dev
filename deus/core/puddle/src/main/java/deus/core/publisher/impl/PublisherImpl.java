@@ -14,9 +14,6 @@ public class PublisherImpl extends RemoteCalledPublisherImpl implements Publishe
 
 	private final PublisherMetadata publisherMetadata;
 
-	private SubscriberStubFactory subscriberStubFactory;
-
-
 	public PublisherImpl(ListOfSubscribers listOfSubscribers, PublisherMetadata publisherMetadata) {
 		super(listOfSubscribers);
 		this.publisherMetadata = publisherMetadata;
@@ -87,11 +84,6 @@ public class PublisherImpl extends RemoteCalledPublisherImpl implements Publishe
 	@Override
 	public PublisherMetadata getPublisherMetadata() {
 		return publisherMetadata;
-	}
-
-
-	public void setSubscriberStubFactory(SubscriberStubFactory subscriberStubFactory) {
-		this.subscriberStubFactory = subscriberStubFactory;
 	}
 
 }

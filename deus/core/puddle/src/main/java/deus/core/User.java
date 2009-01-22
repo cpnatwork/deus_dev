@@ -1,5 +1,7 @@
 package deus.core;
 
+import java.util.Map;
+
 import deus.core.barker.Barker;
 import deus.core.lodother.LodOther;
 import deus.core.lodself.LodSelf;
@@ -8,6 +10,8 @@ import deus.core.subscriber.Subscriber;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
+import deus.model.user.id.transportid.TransportIdType;
+import deus.remoting.initializerdestroyer.RemotingState;
 
 public class User {
 
@@ -20,6 +24,14 @@ public class User {
 	LodOther lodOther;
 
 	Barker barker;
+
+	// TODO: think about how to fill this map. Or add RemotingState, when remoting is started??
+	Map<TransportIdType, RemotingState> remotingStates;
+
+
+	public RemotingState getRemotingState(TransportIdType transportIdType) {
+		return remotingStates.get(transportIdType);
+	}
 
 
 	public UserMetadata getUserMetadata() {
