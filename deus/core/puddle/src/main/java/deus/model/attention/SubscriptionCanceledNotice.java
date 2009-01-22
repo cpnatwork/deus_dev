@@ -1,19 +1,19 @@
 package deus.model.attention;
 
 import deus.model.pub.SubscriberMetadata;
-import deus.model.user.id.UserId;
 
-public class SubscriptionCanceledNotice<Id extends UserId> extends ConnectionNotice {
+public class SubscriptionCanceledNotice extends ConnectionNotice {
 
-	private final SubscriberMetadata<Id> subscriberMetadata;
-	
-	public SubscriptionCanceledNotice(SubscriberMetadata<Id> subscriberMetadata) {
+	private final SubscriberMetadata subscriberMetadata;
+
+
+	public SubscriptionCanceledNotice(SubscriberMetadata subscriberMetadata) {
 		this.subscriberMetadata = subscriberMetadata;
 	}
 
 
-	public SubscriberMetadata<Id> getSubscriberMetadata() {
+	public SubscriberMetadata getSubscriberMetadata() {
 		return subscriberMetadata;
 	}
-	
+
 }

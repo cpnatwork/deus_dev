@@ -3,18 +3,18 @@ package deus.model.user;
 import deus.model.user.id.UserId;
 
 
-public class UserMetadata<Id extends UserId> {
+public class UserMetadata {
 
-	private Id userId;
+	private UserId userId;
 	private String userFullName;
 
 
-	public Id getUserId() {
+	public UserId getUserId() {
 		return userId;
 	}
 
 
-	public void setUserId(Id userId) {
+	public void setUserId(UserId userId) {
 		this.userId = userId;
 	}
 
@@ -45,7 +45,6 @@ public class UserMetadata<Id extends UserId> {
 	}
 
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -54,7 +53,7 @@ public class UserMetadata<Id extends UserId> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserMetadata<Id> other = (UserMetadata<Id>) obj;
+		UserMetadata other = (UserMetadata) obj;
 		if (userFullName == null) {
 			if (other.userFullName != null)
 				return false;

@@ -1,6 +1,5 @@
 package deus.model.dossier.generic;
 
-import deus.model.user.id.UserId;
 
 /**
  * All the information, that is stored by people in the two roles LoD-self and LoD-other about the concerned person (CP).
@@ -12,7 +11,7 @@ import deus.model.user.id.UserId;
  * @param <Id>	the type of the ID of the concerned person
  * @param <ContentType>	the type of the content, stored in this PIF
  */
-public abstract class PersonalInformationFile<Id extends UserId, ContentType> {
+public abstract class PersonalInformationFile<ContentType> {
 	
 	private ContentType content;
 	

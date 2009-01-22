@@ -1,19 +1,20 @@
 package deus.model.attention;
 
 import deus.model.pub.SubscriberMetadata;
-import deus.model.user.id.UserId;
 
-public class SubscriberRequest<Id extends UserId> extends ConnectionDecisionToMake {
+public class SubscriberRequest extends ConnectionDecisionToMake {
 
-	private final SubscriberMetadata<Id> subscriberMetadata;
-	
-	public SubscriberRequest(SubscriberMetadata<Id> subscriberMetadata) {
+	private final SubscriberMetadata subscriberMetadata;
+
+
+	public SubscriberRequest(SubscriberMetadata subscriberMetadata) {
 		this.subscriberMetadata = subscriberMetadata;
 	}
 
-	public SubscriberMetadata<Id> getSubscriber() {
+
+	public SubscriberMetadata getSubscriber() {
 		return subscriberMetadata;
 	}
 
-		
+
 }
