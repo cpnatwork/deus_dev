@@ -95,7 +95,6 @@ public class XmppConversationImpl implements XmppConversation {
 	}
 
 
-	// TODO: think about logout method, should it be externalized into XmppServer??
 	/*
 	 * (non-Javadoc)
 	 * 

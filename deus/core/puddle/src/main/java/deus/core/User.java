@@ -1,5 +1,6 @@
 package deus.core;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import deus.core.barker.Barker;
@@ -30,12 +31,32 @@ public class User {
 
 	boolean loggedIn;
 	
+
+	public boolean hasRemotingState(TransportIdType transportIdType) {
+		// TODO: change implementation
+		if(remotingStates == null)
+			remotingStates = new HashMap<TransportIdType, RemotingState>();
+		return remotingStates.containsKey(transportIdType);
+	}
+	
+	public void addRemotingState(TransportIdType transportIdType, RemotingState remotingState) {
+		// TODO: change implementation
+		if(remotingStates == null)
+			remotingStates = new HashMap<TransportIdType, RemotingState>();
+		remotingStates.put(transportIdType, remotingState);
+	}
 	
 	public RemotingState getRemotingState(TransportIdType transportIdType) {
 		return remotingStates.get(transportIdType);
 	}
 
 
+	public void removeRemotingState(TransportIdType transportIdType) {
+		remotingStates.remove(transportIdType);
+	}
+
+	
+	
 	public UserMetadata getUserMetadata() {
 		return userMetadata;
 	}
@@ -65,4 +86,17 @@ public class User {
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
 	}
+
+	public void setUserMetadata(UserMetadata userMetadata) {
+		this.userMetadata = userMetadata;
+	}
+
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public Subscriber getSubscriber() {
+		return subscriber;
+	}
+
 }

@@ -19,7 +19,7 @@ import deus.model.user.id.UserUrl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/model/attention/attentionList.xml", "/deus/storage/daos.xml",
-		"/deus/core/core.xml", "/deus/context.xml" })
+		"/deus/core/core.xml", "/deus/core/core-test.xml", "/deus/context.xml" })
 public class UserFactoryTest {
 
 	@Autowired

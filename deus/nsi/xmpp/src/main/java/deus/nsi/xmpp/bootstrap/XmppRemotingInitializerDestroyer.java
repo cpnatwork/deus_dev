@@ -29,7 +29,7 @@ public class XmppRemotingInitializerDestroyer implements RemotingInitializerDest
 		
 		// TODO: get password out of user
 		// 
-		XmppConversation xmppConversation = xmppNetwork.login(user.getUserMetadata(), "test");
+		XmppConversation xmppConversation = xmppNetwork.createConversation(user.getUserMetadata(), "test");
 		XmppRemotingState remotingState = new XmppRemotingState(xmppConversation);
 		
 		// CONNECT
@@ -44,6 +44,7 @@ public class XmppRemotingInitializerDestroyer implements RemotingInitializerDest
 		// ADD REMOTING STATE
 		user.addRemotingState(TransportIdType.xmpp, remotingState);
 	}
+	
 
 	// TODO: refactor
 	private void addSkeletons(XmppRemotingState remotingState, XmppConversation xmppConversation, User user) {

@@ -33,7 +33,7 @@
 	</bean>
 
 
-<bean id="publisherUserId" class="deus.model.user.id.UserUrl">
+	<bean id="publisherUserId" class="deus.model.user.id.UserUrl">
 		<property name="username" value="alice" />
 		<property name="serverBaseUrl" value="deus.org" />
 		<property name="transportIds">

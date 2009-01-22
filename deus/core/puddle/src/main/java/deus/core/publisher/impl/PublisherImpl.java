@@ -33,7 +33,6 @@ public class PublisherImpl extends RemoteCalledPublisherImpl implements Publishe
 	}
 
 
-	@SuppressWarnings("unchecked")
 	public void notifyObservers(final Object change) {
 		/*
 		 * a temporary array buffer, used as a snapshot of the state of current Observers.

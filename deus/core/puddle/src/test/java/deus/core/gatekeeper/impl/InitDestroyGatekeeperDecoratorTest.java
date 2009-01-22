@@ -28,6 +28,7 @@ public class InitDestroyGatekeeperDecoratorTest {
 		credentials.setPassword("password");
 		
 		User user = gatekeeper.login(credentials);
+		// TODO: do tests
 	}
 
 

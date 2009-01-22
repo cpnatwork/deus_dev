@@ -65,7 +65,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>org.springframework.aspects</artifactId>
-			<version>${spring.version}</version>
+		<version>${spring.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -294,6 +294,13 @@
 		<testResources>
 			<testResource>
 				<directory>${basedir}/src/test/resources</directory>
+			</testResource>
+			<testResource>
+				<filtering>false</filtering>
+				<directory>${basedir}/src/main/spring</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
 			</testResource>
 			<testResource>
 				<filtering>false</filtering>
