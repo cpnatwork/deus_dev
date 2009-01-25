@@ -22,6 +22,7 @@ public class PublisherBarkerProxy implements RemoteCalledPublisher {
 
 	@Override
 	public void addObserver(SubscriberMetadata subscriberMetadata) {
+		// PLACE SUBSCRIBER REQUEST
 		BinaryDecisionToMake decision = new SubscriberRequest(subscriberMetadata);
 		barker.addAttentionElement(decision);
 	}
@@ -29,8 +30,10 @@ public class PublisherBarkerProxy implements RemoteCalledPublisher {
 
 	@Override
 	public void deleteObserver(SubscriberMetadata subscriberMetadata) {
+		// DELETE OBSERVER
 		proxiedPublisher.deleteObserver(subscriberMetadata);
 
+		// PLACE NOTICE
 		Notice notice = new SubscriptionCanceledNotice(subscriberMetadata);
 		barker.addAttentionElement(notice);
 	}

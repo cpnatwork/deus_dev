@@ -4,10 +4,18 @@ import java.util.Date;
 
 public abstract class AttentionElement {
 
+	private boolean processed;
 	private Date creationDate;
 
 
-	public abstract boolean isProcessed();
+	public final boolean isProcessed() {
+		return processed;
+	}
+
+
+	public final void setProcessed(boolean processed) {
+		this.processed = processed;
+	}
 
 
 	public final Date getCreationDate() {

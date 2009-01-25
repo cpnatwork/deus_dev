@@ -39,8 +39,8 @@
 		<property name="transportIds">
 			<util:map>
 				<entry>
-					<key><util:constant static-field="deus.model.user.id.transportid.TransportIdType.xmpp"/></key>
-					<bean class="deus.model.user.id.transportid.XmppTransportId">
+					<key><util:constant static-field="deus.model.user.transportid.TransportIdType.xmpp"/></key>
+					<bean class="deus.model.user.transportid.XmppTransportId">
 						<property name="xmppUsername" value="alice" />
 						<property name="xmppServer" value="faui6p15" />
 					</bean>
@@ -63,8 +63,8 @@
 		<property name="transportIds">
 			<util:map>
 				<entry>
-					<key><util:constant static-field="deus.model.user.id.transportid.TransportIdType.xmpp"/></key>
-					<bean class="deus.model.user.id.transportid.XmppTransportId">
+					<key><util:constant static-field="deus.model.user.transportid.TransportIdType.xmpp"/></key>
+					<bean class="deus.model.user.transportid.XmppTransportId">
 						<property name="xmppUsername" value="bob" />
 						<property name="xmppServer" value="faui6p15" />
 					</bean>

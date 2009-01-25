@@ -1,12 +1,45 @@
 package deus.model.sub.impl;
 
+import java.util.Map;
 import java.util.Vector;
 
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.PublisherMetadata;
+import deus.model.sub.SubscriptionState;
 
-public class ThreadSafeListOfPublishers extends Vector<PublisherMetadata> implements ListOfPublishers {
+// TODO: think about thread safety! (before, this was implemented using a Vector!)
+public class ThreadSafeListOfPublishers implements ListOfPublishers {
 
-	private static final long serialVersionUID = -5223112352758013300L;
+	private Map<PublisherMetadata, SubscriptionState> publishers;
+
+
+	@Override
+	public void add(PublisherMetadata publisherMetadata, SubscriptionState subscriptionState) {
+		if (publishers.containsKey(publisherMetadata))
+			throw new IllegalArgumentException("cannot add publisher (" + publisherMetadata
+					+ " to list, it has already been added.");
+
+		publishers.put(publisherMetadata, subscriptionState);
+	}
+
+
+	@Override
+	public void changeState(PublisherMetadata publisherMetadata, SubscriptionState subscriptionState) {
+		if (publishers.containsKey(publisherMetadata))
+			throw new IllegalStateException("cannot change state of publisher (" + publisherMetadata
+					+ ", it has not been added yet.");
+	}
+
+
+	@Override
+	public boolean contains(PublisherMetadata publisherMetadata) {
+		return publishers.containsKey(publisherMetadata);
+	}
+
+
+	@Override
+	public void remove(PublisherMetadata publisherMetadata) {
+		publishers.remove(publisherMetadata);
+	}
 
 }

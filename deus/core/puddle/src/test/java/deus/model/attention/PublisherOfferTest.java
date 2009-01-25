@@ -21,9 +21,9 @@ public class PublisherOfferTest {
 
 	@Test
 	public void testSetDecisionPositive() {
-		assertFalse(dec.isProcessed());
+		assertFalse(dec.isDecisionMade());
 		dec.setDecisionPositive();
-		assertTrue(dec.isProcessed());
+		assertTrue(dec.isDecisionMade());
 		assertTrue(dec.isDecisionPositive());
 		assertFalse(dec.isDecisionNegative());
 	}
@@ -31,9 +31,9 @@ public class PublisherOfferTest {
 	
 	@Test
 	public void testSetDecisionNegative() {
-		assertFalse(dec.isProcessed());
+		assertFalse(dec.isDecisionMade());
 		dec.setDecisionNegative();
-		assertTrue(dec.isProcessed());
+		assertTrue(dec.isDecisionMade());
 		assertTrue(dec.isDecisionNegative());
 		assertFalse(dec.isDecisionPositive());
 	}
@@ -41,7 +41,7 @@ public class PublisherOfferTest {
 	
 	@Test
 	public void testException() {
-		assertFalse(dec.isProcessed());
+		assertFalse(dec.isDecisionMade());
 		try {
 			dec.isDecisionPositive();
 			fail("exception not thrown");

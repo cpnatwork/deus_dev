@@ -5,7 +5,7 @@ import deus.core.publisher.RemoteCalledPublisher;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.SubscriberMetadata;
 
-public class RemoteCalledPublisherImpl implements RemoteCalledPublisher {
+public abstract class RemoteCalledPublisherImpl implements RemoteCalledPublisher {
 
 	protected final ListOfSubscribers listOfSubscribers;
 
@@ -16,17 +16,17 @@ public class RemoteCalledPublisherImpl implements RemoteCalledPublisher {
 	}
 
 
-	public synchronized void addObserver(SubscriberMetadata o) {
-		if (o == null)
+	public synchronized void addObserver(SubscriberMetadata subscriberMetadata) {
+		if (subscriberMetadata == null)
 			throw new NullPointerException();
-		if (!listOfSubscribers.contains(o)) {
-			listOfSubscribers.add(o);
+		if (!listOfSubscribers.contains(subscriberMetadata)) {
+			listOfSubscribers.add(subscriberMetadata);
 		}
 	}
 
 
-	public synchronized void deleteObserver(SubscriberMetadata o) {
-		listOfSubscribers.remove(o);
+	public synchronized void deleteObserver(SubscriberMetadata subscriberMetadata) {
+		listOfSubscribers.remove(subscriberMetadata);
 	}
 
 }

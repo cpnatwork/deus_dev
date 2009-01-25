@@ -6,5 +6,7 @@ import deus.model.sub.PublisherMetadata;
 public interface RemoteCalledSubscriber {
 
 	public void update(PublisherMetadata publisherMetadata, ForeignInformationFile fif);
+	
+	public void acknowledgeSubscription(PublisherMetadata publisherMetadata);
 
 }

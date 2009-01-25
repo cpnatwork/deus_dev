@@ -3,32 +3,36 @@ package deus.model.attention;
 public abstract class BinaryDecisionToMake extends AttentionElement {
 
 	private Boolean decision = null;
-	
+
+	public final boolean isDecisionMade() {
+		return decision != null;
+	}
+
 	public final void setDecisionPositive() {
 		decision = true;
 	}
-	
+
+
 	public final void setDecisionNegative() {
 		decision = false;
 	}
-	
-	public final boolean isProcessed() {
-		return decision != null;
-	}
-	
-	private final void assertIsProcessed() {
-		if(!isProcessed())
-			throw new IllegalStateException("decision is not processed yet!");
+
+
+	private final void assertIsDecisionMade() {
+		if (!isDecisionMade())
+			throw new IllegalStateException("decision is not made yet!");
 	}
 
+
 	public final boolean isDecisionPositive() {
-		assertIsProcessed();
+		assertIsDecisionMade();
 		return decision == true;
 	}
 
+
 	public final boolean isDecisionNegative() {
-		assertIsProcessed();
+		assertIsDecisionMade();
 		return decision == false;
 	}
-		
+
 }
