@@ -1,7 +1,7 @@
 package dacus.model.user.transportid;
 
-import deus.model.user.id.transportid.TransportId;
-import deus.model.user.id.transportid.TransportIdType;
+import deus.model.user.transportid.TransportId;
+import deus.model.user.transportid.TransportIdType;
 
 public class LocalTransportId implements TransportId {
 
