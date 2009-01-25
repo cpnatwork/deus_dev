@@ -12,5 +12,10 @@ public interface SubscriberStub {
 
 
 	public SubscriberMetadata getSubscriberMetadata();
+	
 
+	public void acknowledgeSubscription(PublisherMetadata publisherMetadata);
+	
+	public void denySubscription(PublisherMetadata publisherMetadata);
+	
 }

@@ -1,25 +1,26 @@
 package deus.remoting.initializerdestroyer.impl;
 
-import deus.core.User;
 import deus.core.subscriber.SubscriberStub;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.user.transportid.TransportIdType;
+import deus.remoting.initializerdestroyer.RemoteCommand;
 import deus.remoting.initializerdestroyer.RemotingState;
+import deus.remoting.initializerdestroyer.RemotingStateRegistry;
 
-public abstract class AbstractPublisherRemoteCommand extends AbstractRemoteCommand {
+public abstract class AbstractPublisherRemoteCommand implements RemoteCommand {
 
 	private final SubscriberMetadata subscriberMetadata;
 
 
-	public AbstractPublisherRemoteCommand(SubscriberMetadata subscriberMetadata, TransportIdType transportIdType) {
-		super(transportIdType);
+	public AbstractPublisherRemoteCommand(SubscriberMetadata subscriberMetadata) {
+		super();
 		this.subscriberMetadata = subscriberMetadata;
 	}
 
 
 	@Override
-	public final void execute(User user) {
-		RemotingState remotingState = user.getRemotingState(transportIdType);
+	public final void execute(RemotingStateRegistry remotingStateRegistry, TransportIdType transportIdType) {
+		RemotingState remotingState = remotingStateRegistry.getRemotingState(transportIdType);
 
 		// search for the right subscriber stub
 		for (SubscriberStub stub : remotingState.getSubscriberStubs())

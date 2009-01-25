@@ -2,11 +2,18 @@ package deus.remoting.initializerdestroyer;
 
 import deus.model.user.transportid.TransportIdType;
 
-@Deprecated
+
 public interface RemotingStateRegistry {
 
-	public TransportBoundRemotingStateRegistry getTransportBoundRemotingStateRegistry(TransportIdType transportIdType);
-	
-	public void registerTransportBoundRemotingStateRegistry(TransportBoundRemotingStateRegistry registry);
+	public abstract boolean hasRemotingState(TransportIdType transportIdType);
+
+
+	public abstract void addRemotingState(TransportIdType transportIdType, RemotingState remotingState);
+
+
+	public abstract RemotingState getRemotingState(TransportIdType transportIdType);
+
+
+	public abstract void removeRemotingState(TransportIdType transportIdType);
 
 }

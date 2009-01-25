@@ -1,8 +1,5 @@
 package deus.core;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import deus.core.barker.Barker;
 import deus.core.lodother.LodOther;
 import deus.core.lodself.LodSelf;
@@ -11,8 +8,8 @@ import deus.core.subscriber.Subscriber;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
-import deus.model.user.transportid.TransportIdType;
-import deus.remoting.initializerdestroyer.RemotingState;
+import deus.remoting.initializerdestroyer.RemoteCommandExecutor;
+import deus.remoting.initializerdestroyer.RemotingStateRegistry;
 
 public class User {
 
@@ -27,33 +24,12 @@ public class User {
 	Barker barker;
 
 	// TODO: think about how to fill this map. Or add RemotingState, when remoting is started??
-	Map<TransportIdType, RemotingState> remotingStates;
+	RemoteCommandExecutor remoteCommandExecutor;
 
+	RemotingStateRegistry remotingStateRegistry;
+	
 	boolean loggedIn;
 	
-
-	public boolean hasRemotingState(TransportIdType transportIdType) {
-		// TODO: change implementation
-		if(remotingStates == null)
-			remotingStates = new HashMap<TransportIdType, RemotingState>();
-		return remotingStates.containsKey(transportIdType);
-	}
-	
-	public void addRemotingState(TransportIdType transportIdType, RemotingState remotingState) {
-		// TODO: change implementation
-		if(remotingStates == null)
-			remotingStates = new HashMap<TransportIdType, RemotingState>();
-		remotingStates.put(transportIdType, remotingState);
-	}
-	
-	public RemotingState getRemotingState(TransportIdType transportIdType) {
-		return remotingStates.get(transportIdType);
-	}
-
-
-	public void removeRemotingState(TransportIdType transportIdType) {
-		remotingStates.remove(transportIdType);
-	}
 
 	
 	
@@ -97,6 +73,11 @@ public class User {
 
 	public Subscriber getSubscriber() {
 		return subscriber;
+	}
+
+
+	public RemotingStateRegistry getRemotingStateRegistry() {
+		return remotingStateRegistry;
 	}
 
 }

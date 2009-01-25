@@ -1,31 +1,42 @@
 package deus.remoting.initializerdestroyer.impl;
 
-import deus.core.User;
+import deus.model.user.transportid.TransportIdType;
 import deus.remoting.initializerdestroyer.RemoteCommand;
+import deus.remoting.initializerdestroyer.RemoteCommandDecorator;
+import deus.remoting.initializerdestroyer.RemotingStateRegistry;
 
-public abstract class AbstractRemoteCommandDecorator implements RemoteCommand {
+abstract class AbstractRemoteCommandDecorator implements RemoteCommandDecorator {
 
-	private final RemoteCommand decoratedRemoteCommand;
-
-
-	public AbstractRemoteCommandDecorator(RemoteCommand decoratedRemoteCommand) {
-		this.decoratedRemoteCommand = decoratedRemoteCommand;
-	}
+	private RemoteCommand decoratedRemoteCommand;
 
 
 	@Override
-	public final void execute(User user) {
-		beforeExecute(user);
+	public final void execute(RemotingStateRegistry remotingStateRegistry, TransportIdType transportIdType) {
+		beforeExecute(transportIdType);
 
-		decoratedRemoteCommand.execute(user);
+		decoratedRemoteCommand.execute(remotingStateRegistry, transportIdType);
 
-		afterExecute(user);
+		afterExecute(transportIdType);
 	}
 
+	
+	public void setDecoratedRemoteCommand(RemoteCommand decoratedRemoteCommand) {
+		this.decoratedRemoteCommand = decoratedRemoteCommand;
+	}
+	
 
-	public abstract void beforeExecute(User user);
+	/* (non-Javadoc)
+	 * @see deus.remoting.initializerdestroyer.impl.RemoteCommandDecorator#beforeExecute(deus.model.user.transportid.TransportIdType)
+	 */
+	public abstract void beforeExecute(TransportIdType transportIdType);
 
 
-	public abstract void afterExecute(User user);
+	/* (non-Javadoc)
+	 * @see deus.remoting.initializerdestroyer.impl.RemoteCommandDecorator#afterExecute(deus.model.user.transportid.TransportIdType)
+	 */
+	public abstract void afterExecute(TransportIdType transportIdType);
+	
+
+
 	
 }

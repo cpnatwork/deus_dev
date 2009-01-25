@@ -2,19 +2,11 @@ package deus.model.attention;
 
 import deus.model.sub.PublisherMetadata;
 
-public class SubscriptionGrantedNotice extends ConnectionNotice {
-
-	private final PublisherMetadata publiserMetadata;
-
+public class SubscriptionGrantedNotice extends PublisherSentNotice {
 
 	public SubscriptionGrantedNotice(PublisherMetadata publiserMetadata) {
-		super();
-		this.publiserMetadata = publiserMetadata;
+		super(publiserMetadata);
 	}
 
-
-	public PublisherMetadata getPubliserMetadata() {
-		return publiserMetadata;
-	}
 
 }

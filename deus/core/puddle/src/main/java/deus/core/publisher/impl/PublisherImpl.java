@@ -5,16 +5,38 @@ import deus.core.subscriber.SubscriberStub;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
-import deus.remoting.initializerdestroyer.RemoteCommand;
+import deus.remoting.initializerdestroyer.RemoteCommandExecutor;
 import deus.remoting.initializerdestroyer.impl.AbstractPublisherRemoteCommand;
 
-public class PublisherImpl extends RemoteCalledPublisherImpl implements Publisher {
+public class PublisherImpl implements Publisher {
 
 	private final PublisherMetadata publisherMetadata;
+	private final RemoteCommandExecutor remoteCommandExecutor;
 
-	public PublisherImpl(ListOfSubscribers listOfSubscribers, PublisherMetadata publisherMetadata) {
-		super(listOfSubscribers);
+	protected final ListOfSubscribers listOfSubscribers;
+
+
+	public PublisherImpl(ListOfSubscribers listOfSubscribers, PublisherMetadata publisherMetadata,
+			RemoteCommandExecutor remoteCommandExecutor) {
+		super();
+		this.listOfSubscribers = listOfSubscribers;
+
 		this.publisherMetadata = publisherMetadata;
+		this.remoteCommandExecutor = remoteCommandExecutor;
+	}
+
+
+	public synchronized void addObserver(SubscriberMetadata subscriberMetadata) {
+		if (subscriberMetadata == null)
+			throw new NullPointerException();
+		if (!listOfSubscribers.contains(subscriberMetadata)) {
+			listOfSubscribers.add(subscriberMetadata);
+		}
+	}
+
+
+	public synchronized void deleteObserver(SubscriberMetadata subscriberMetadata) {
+		listOfSubscribers.remove(subscriberMetadata);
 	}
 
 
@@ -54,19 +76,16 @@ public class PublisherImpl extends RemoteCalledPublisherImpl implements Publishe
 			// TODO: think about publishing using multiple threads
 			SubscriberMetadata subscriberMetadata = (SubscriberMetadata) arrLocal[i];
 
-//			RemoteCommand remoteCommand = new AbstractPublisherRemoteCommand(subscriberMetadata) {
-//
-//				@Override
-//				protected void execute(SubscriberStub subscriberStub) {
-//					subscriberStub.update(getPublisherMetadata(), change);
-//				}
-//
-//			};
-//
-//			remoteCommand.execute(user);
+			remoteCommandExecutor.execute(new AbstractPublisherRemoteCommand(subscriberMetadata) {
 
-			// SubscriberStub subscriberStub = subscriberStubFactory.createSubscriberStub(subscriberMetadata, publisherMetadata);
-			// subscriberStub.update(getPublisherMetadata(), change);
+				@Override
+				protected void execute(SubscriberStub subscriberStub) {
+					// TODO: implement properly
+					// subscriberStub.update(getPublisherMetadata(), change);
+				}
+				
+			}, null);
+			// FIXME: replace null with a real userId (above)
 		}
 	}
 

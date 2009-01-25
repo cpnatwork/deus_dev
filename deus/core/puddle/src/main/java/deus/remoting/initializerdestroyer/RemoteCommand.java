@@ -1,10 +1,11 @@
 package deus.remoting.initializerdestroyer;
 
-import deus.core.User;
+import deus.model.user.transportid.TransportIdType;
+
 
 
 public interface RemoteCommand {
 
-	public void execute(User user);
+	public void execute(RemotingStateRegistry remotingStateRegistry, TransportIdType transportIdType);
 	
 }

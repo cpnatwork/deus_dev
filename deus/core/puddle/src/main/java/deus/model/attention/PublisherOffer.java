@@ -16,4 +16,10 @@ public class PublisherOffer extends ConnectionDecisionToMake {
 		return publisherMetadata;
 	}
 
+
+	@Override
+	public DecisionType getType() {
+		return DecisionType.publisherOffer;
+	}
+
 }

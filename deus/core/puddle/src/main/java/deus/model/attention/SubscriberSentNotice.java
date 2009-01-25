@@ -2,12 +2,12 @@ package deus.model.attention;
 
 import deus.model.pub.SubscriberMetadata;
 
-public class SubscriberRequest extends ConnectionDecisionToMake {
+public class SubscriberSentNotice extends ConnectionNotice {
 
 	private final SubscriberMetadata subscriberMetadata;
 
 
-	public SubscriberRequest(SubscriberMetadata subscriberMetadata) {
+	public SubscriberSentNotice(SubscriberMetadata subscriberMetadata) {
 		this.subscriberMetadata = subscriberMetadata;
 	}
 
@@ -15,12 +15,4 @@ public class SubscriberRequest extends ConnectionDecisionToMake {
 	public SubscriberMetadata getSubscriberMetadata() {
 		return subscriberMetadata;
 	}
-
-
-	@Override
-	public DecisionType getType() {
-		return DecisionType.subscriberRequest;
-	}
-
-
 }

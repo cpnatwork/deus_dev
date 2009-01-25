@@ -35,4 +35,6 @@ public abstract class BinaryDecisionToMake extends AttentionElement {
 		return decision == false;
 	}
 
+	public abstract DecisionType getType();
+
 }

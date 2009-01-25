@@ -39,7 +39,7 @@ public class UserFactoryTest {
 	public void testCreateUser() {
 		UserId userId = new UserUrl("username", "server");
 		User user = userFactory.createUser(userId);
-		assertEquals(attentionList, user.barker.getAttentionList());
+		assertEquals(attentionList, user.barker.getUnnoticedAttentionList());
 		
 		UserMetadata userMetadata = user.getUserMetadata();
 		assertEquals("full name", userMetadata.getFullName());

@@ -2,39 +2,32 @@ package deus.remoting.initializerdestroyer.impl;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 import deus.core.User;
-import deus.model.user.id.UserIdType;
+import deus.model.user.transportid.TransportIdType;
 import deus.remoting.initializerdestroyer.RemoteCommand;
 import deus.remoting.initializerdestroyer.RemoteSendingInitializerDestroyer;
 
 public class InitDestroyRemoteSendingRemoteCommandDecorator extends AbstractRemoteCommandDecorator {
 
+	private Map<TransportIdType, RemoteSendingInitializerDestroyer> remoteSendingInitializerDestroyers;
 
-	@Autowired
-	@Qualifier("remoteCommand")
-	private Map<UserIdType, RemoteSendingInitializerDestroyer> remoteSendingInitializerDestroyers;
+	private final User user;
 
-
-	public InitDestroyRemoteSendingRemoteCommandDecorator(RemoteCommand decoratedRemoteCommand) {
-		super(decoratedRemoteCommand);
+	public InitDestroyRemoteSendingRemoteCommandDecorator(User user) {
+		this.user = user;
 	}
 
 
 	@Override
-	public void beforeExecute(User user) {
-		RemoteSendingInitializerDestroyer initializer = remoteSendingInitializerDestroyers.get(user.getUserMetadata()
-				.getUserId().getType());
+	public void beforeExecute(TransportIdType transportIdType) {
+		RemoteSendingInitializerDestroyer initializer = remoteSendingInitializerDestroyers.get(transportIdType);
 		initializer.setUp(user);
 	}
 
 
 	@Override
-	public void afterExecute(User user) {
-		RemoteSendingInitializerDestroyer destroyer = remoteSendingInitializerDestroyers.get(user.getUserMetadata()
-				.getUserId().getType());
+	public void afterExecute(TransportIdType transportIdType) {
+		RemoteSendingInitializerDestroyer destroyer = remoteSendingInitializerDestroyers.get(transportIdType);
 		destroyer.tearDown(user);
 	}
 
