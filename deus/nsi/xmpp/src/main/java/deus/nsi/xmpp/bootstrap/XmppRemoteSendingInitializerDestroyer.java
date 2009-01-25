@@ -9,7 +9,7 @@ import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.PublisherMetadata;
-import deus.model.user.id.transportid.TransportIdType;
+import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub;
 import deus.nsi.xmpp.subscriber.impl.stub.XmppSubscriberStub;
 import deus.remoting.initializerdestroyer.RemoteSendingInitializerDestroyer;

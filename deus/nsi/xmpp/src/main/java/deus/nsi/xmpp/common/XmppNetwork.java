@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.model.user.UserMetadata;
-import deus.model.user.id.transportid.XmppTransportId;
+import deus.model.user.transportid.XmppTransportId;
 import deus.nsi.xmpp.common.impl.XmppConversationImpl;
-import deus.nsi.xmpp.common.XmppServerConnectionConfiguration;
 
 
 /**

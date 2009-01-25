@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.User;
-import deus.model.user.id.transportid.TransportIdType;
+import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.common.XmppNetwork;
 import deus.nsi.xmpp.common.XmppSkeleton;

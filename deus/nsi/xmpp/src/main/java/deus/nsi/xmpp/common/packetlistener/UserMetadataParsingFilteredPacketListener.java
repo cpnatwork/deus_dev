@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Configurable;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
-import deus.model.user.id.transportid.XmppTransportId;
+import deus.model.user.transportid.XmppTransportId;
 import deus.nsi.xmpp.common.XmppConfiguration;
 
 @Configurable

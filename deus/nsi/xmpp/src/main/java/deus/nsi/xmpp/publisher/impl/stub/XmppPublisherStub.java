@@ -5,8 +5,8 @@ import org.jivesoftware.smack.packet.Presence;
 import deus.core.publisher.impl.AbstractPublisherStub;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
-import deus.model.user.id.transportid.TransportIdType;
-import deus.model.user.id.transportid.XmppTransportId;
+import deus.model.user.transportid.TransportIdType;
+import deus.model.user.transportid.XmppTransportId;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton;
 
