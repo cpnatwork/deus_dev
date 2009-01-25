@@ -14,6 +14,7 @@ import deus.nsi.xmpp.publisher.impl.skeleton.packetlistener.UnsubscribePacketLis
 import deus.nsi.xmpp.subscriber.impl.skeleton.XmppSubscriberSkeleton;
 import deus.nsi.xmpp.subscriber.impl.skeleton.packetlistener.UpdatePacketListener;
 import deus.remoting.initializerdestroyer.RemotingInitializerDestroyer;
+import deus.remoting.initializerdestroyer.RemotingStateRegistry;
 
 @Component
 public class XmppRemotingInitializerDestroyer implements RemotingInitializerDestroyer {
@@ -22,8 +23,8 @@ public class XmppRemotingInitializerDestroyer implements RemotingInitializerDest
 	private XmppNetwork xmppNetwork;
 
 	@Override
-	public void setUp(User user) {
-		if(user.hasRemotingState(TransportIdType.xmpp))
+	public void setUp(RemotingStateRegistry remotingStateRegistry) {
+		if(remotingStateRegistry.hasRemotingState(TransportIdType.xmpp))
 			throw new IllegalStateException("Can't setup remoting, it has already been setup!");
 		
 		
@@ -42,7 +43,7 @@ public class XmppRemotingInitializerDestroyer implements RemotingInitializerDest
 		xmppConversation.login();
 		
 		// ADD REMOTING STATE
-		user.addRemotingState(TransportIdType.xmpp, remotingState);
+		remotingStateRegistry.addRemotingState(TransportIdType.xmpp, remotingState);
 	}
 	
 
@@ -76,8 +77,8 @@ public class XmppRemotingInitializerDestroyer implements RemotingInitializerDest
 
 	
 	@Override
-	public void tearDown(User user) {
-		XmppRemotingState remotingState = (XmppRemotingState)user.getRemotingState(TransportIdType.xmpp);
+	public void tearDown(RemotingStateRegistry remotingStateRegistry) {
+		XmppRemotingState remotingState = (XmppRemotingState)remotingStateRegistry.getRemotingState(TransportIdType.xmpp);
 		if(!remotingState.isRemotingAvailable())
 			throw new IllegalStateException("can't tear down remoting, it is not setup!");
 		
@@ -91,7 +92,7 @@ public class XmppRemotingInitializerDestroyer implements RemotingInitializerDest
 		subscriberSkeleton.disconnect();
 		remotingState.removeXmppSubscriberSkeleton();
 		
-		user.removeRemotingState(TransportIdType.xmpp);
+		remotingStateRegistry.removeRemotingState(TransportIdType.xmpp);
 	}
 
 }

@@ -13,13 +13,14 @@ import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub;
 import deus.nsi.xmpp.subscriber.impl.stub.XmppSubscriberStub;
 import deus.remoting.initializerdestroyer.RemoteSendingInitializerDestroyer;
+import deus.remoting.initializerdestroyer.RemotingStateRegistry;
 
 @Component
 public class XmppRemoteSendingInitializerDestroyer implements RemoteSendingInitializerDestroyer {
 
 	@Override
 	public void setUp(User user) {
-		XmppRemotingState remotingState = (XmppRemotingState) user.getRemotingState(TransportIdType.xmpp);
+		XmppRemotingState remotingState = (XmppRemotingState) user.getRemotingStateRegistry().getRemotingState(TransportIdType.xmpp);
 
 		ListOfSubscribers los = user.getListOfSubscribers();
 		for (SubscriberMetadata subscriberMetadata : los) {
@@ -38,7 +39,7 @@ public class XmppRemoteSendingInitializerDestroyer implements RemoteSendingIniti
 
 	@Override
 	public void tearDown(User user) {
-		XmppRemotingState remotingState = (XmppRemotingState) user.getRemotingState(TransportIdType.xmpp);
+		XmppRemotingState remotingState = (XmppRemotingState) user.getRemotingStateRegistry().getRemotingState(TransportIdType.xmpp);
 
 		// TODO: think about this: if this implementation is right, we cannot enforce disconnection of stubs with this
 		// implementation!
