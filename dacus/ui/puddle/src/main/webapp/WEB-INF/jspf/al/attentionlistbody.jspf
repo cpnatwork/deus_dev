@@ -2,13 +2,66 @@
 <div id="attentionFeed">
 <h1>pendingbody</h1>
 <p>Übersicht über alle gestellten und empfangenen Anfragen:</p>
-<ul>
-	<li> offered subscriptions (durch Dritten als CP initiiert), Buttons ACCEPT (acceptsubscr.jsp) + REJECT </li>
-	<li> requested subsriptions (durch Dritten als Subsr initiiert), Buttons CONFIRM (confirmsubscr.jsp) + REFUSE</li>
-	<li> accepted subscriptions (durch Dritten als CP), Button nicht nötig  </li>
-	<li> pending requests (als Subscr an Dritten), Button WITHDRAW </li>
-	<li> pending offers (als CP an Dritten), Button WITHDRAW</li>
-</ul>
+
+<!--<ul>-->
+<!--	<li> X offered subscriptions (durch Dritten als CP initiiert), Buttons ACCEPT (acceptsubscr.jsp) + REJECT </li>-->
+<!--	<li> X requested subsriptions (durch Dritten als Subsr initiiert), Buttons CONFIRM (confirmsubscr.jsp) + REFUSE</li>-->
+<!--	<li> X accepted subscriptions (durch Dritten als CP), Button nicht nötig  </li>-->
+<!--	<li> X pending requests (als Subscr an Dritten), Button WITHDRAW </li>-->
+<!--	<li> X pending offers (als CP an Dritten), Button WITHDRAW</li>-->
+<!--	<li> X SubscriptionPublCancelNotice </li>-->
+<!--	<li> X SubscriptionSubscrCancelNotice </li>-->
+<!--</ul>-->
+
+
+<form action="" method="post">
+<table border="1">
+  <colgroup>
+    <col width="420">
+    <col width="100">
+    <col width="100">
+  </colgroup>
+  <tr>
+    <td>Your Contact Publisher offers subscription</td>
+    <td> <input type="submit" value="confirm"> </td>
+    <td> <input type="submit" value="refuse"> </td>
+  </tr>
+  <tr>
+    <td>Your Contact Subscriber requests subscription</td>
+    <td> <input type="submit" value="confirm_req"> </td>
+    <td> <input type="submit" value="refuse_req"> </td>
+  </tr>
+  <tr>
+    <td>Your Contact Publisher accepted subscription</td>
+    <td> <input type="submit" value="acknowledge_subs"> </td>
+    <td> leer </td>
+  </tr>
+  <tr>
+    <td>Your Request for contact of Publisher is pending</td>
+    <td> <input type="submit" value="withdraw_req"> </td>
+    <td> leer </td>
+  </tr>
+  <tr>
+    <td>Your offer to Subscriber is pending</td>
+    <td> <input type="submit" value="withdraw_offer"> </td>
+    <td> leer </td>
+  </tr>
+  <tr>
+    <td>Publisher has canceled subscription as a publisher </td>
+    <td> <input type="submit" value="notice_cancelpub"> </td>
+    <td> leer </td>
+  </tr>
+  <tr>
+    <td>Subscriber has canceled subscription as a subscriber </td>
+    <td> <input type="submit" value="notice_cancelsub"> </td>
+    <td> leer </td>
+  </tr>
+
+</table>
+</form>
+
+
+
 <p> Button zurück zu HOME </p>
 </div>
 </div>

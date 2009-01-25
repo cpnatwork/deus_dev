@@ -1,0 +1,18 @@
+<div id="content">
+<div id="attentionFeed">
+<h1>Bestätigung</h1>
+<p>Hier muss nochmal abgelehnt werden (refuse):</p>
+
+
+
+
+<form action="" method="post">
+	<input type="submit" value="ok">
+	<input type="submit" value="cancel">
+</form>
+
+
+
+<p> Button zurück zu HOME </p>
+</div>
+</div>

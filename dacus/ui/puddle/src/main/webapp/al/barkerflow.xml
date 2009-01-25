@@ -2,9 +2,45 @@
 <flow xmlns="http://www.springframework.org/schema/webflow"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
-        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+	start-state="attentionlist">
+
+
+
+
+
+	<view-state id="ack_confirm" redirect="false" popup="false">
+		<transition on="ok" to="setflag_confirm" />
+		<transition on="cancel" to="attentionlist" />
+	</view-state>
+
+	<view-state id="ack_refuse" redirect="false" popup="false">
+		<transition on="ok" to="setflag_refuse" />
+		<transition on="cancel" to="attentionlist" />
+	</view-state>
+
 
 	<view-state id="attentionlist">
+		<transition on="confirm" to="ack_confirm" bind="false" />
+		<transition on="refuse" to="ack_refuse" bind="false" />
+		<transition on="notice" to="notice" bind="false" />
 	</view-state>
+
+	<action-state id="notice">
+		<action bean="wasauchimmer" />
+		<transition on="success" to="attentionlist" />
+	</action-state>
+
+	<action-state id="setflag_refuse">
+		<action bean="wasauchimmer" />
+		<transition on="success" to="attentionlist" />
+	</action-state>
+
+	<action-state id="setflag_confirm">
+		<action bean="wasauchimmer" />
+		<transition on="success" to="attentionlist" />
+	</action-state>
+
+
 
 </flow>
