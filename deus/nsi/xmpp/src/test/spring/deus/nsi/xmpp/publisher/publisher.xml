@@ -31,7 +31,7 @@
 
 
 
-	<bean id="publisherXmppConversation" factory-bean="xmppNetwork" factory-method="login">
+	<bean id="publisherXmppConversation" factory-bean="xmppNetwork" factory-method="createConversation">
 		<constructor-arg ref="publisherMetadata" />
 		<constructor-arg value="test" />
 		<qualifier value="publisher" />

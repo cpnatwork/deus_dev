@@ -14,5 +14,5 @@
 		<property name="saslAuthentication" value="false" />
 		<property name="securityMode" value="disabled" />
 	</bean>
-		
+	
 </beans>
