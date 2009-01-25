@@ -1,6 +1,6 @@
 package deus.remoting.initializerdestroyer.impl;
 
-import deus.model.user.id.transportid.TransportIdType;
+import deus.model.user.transportid.TransportIdType;
 import deus.remoting.initializerdestroyer.RemoteCommand;
 
 public abstract class AbstractRemoteCommand implements RemoteCommand {

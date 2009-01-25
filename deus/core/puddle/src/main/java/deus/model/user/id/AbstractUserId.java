@@ -4,8 +4,8 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import deus.model.user.id.transportid.TransportId;
-import deus.model.user.id.transportid.TransportIdType;
+import deus.model.user.transportid.TransportId;
+import deus.model.user.transportid.TransportIdType;
 
 public abstract class AbstractUserId implements UserId {
 

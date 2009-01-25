@@ -1,6 +1,6 @@
 package deus.remoting.initializerdestroyer;
 
-import deus.model.user.id.transportid.TransportIdType;
+import deus.model.user.transportid.TransportIdType;
 
 @Deprecated
 public interface RemotingStateRegistry {

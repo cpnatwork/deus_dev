@@ -1,4 +1,4 @@
-package deus.model.user.id.transportid;
+package deus.model.user.transportid;
 
 public enum TransportIdType {
 	

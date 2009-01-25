@@ -3,7 +3,7 @@ package deus.remoting.initializerdestroyer.impl;
 import deus.core.User;
 import deus.core.subscriber.SubscriberStub;
 import deus.model.pub.SubscriberMetadata;
-import deus.model.user.id.transportid.TransportIdType;
+import deus.model.user.transportid.TransportIdType;
 import deus.remoting.initializerdestroyer.RemotingState;
 
 public abstract class AbstractPublisherRemoteCommand extends AbstractRemoteCommand {

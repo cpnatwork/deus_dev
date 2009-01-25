@@ -11,7 +11,7 @@ import deus.core.subscriber.Subscriber;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
-import deus.model.user.id.transportid.TransportIdType;
+import deus.model.user.transportid.TransportIdType;
 import deus.remoting.initializerdestroyer.RemotingState;
 
 public class User {

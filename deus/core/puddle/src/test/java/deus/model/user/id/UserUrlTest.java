@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import deus.model.user.id.transportid.IcqTransportId;
-import deus.model.user.id.transportid.XmppTransportId;
+import deus.model.user.transportid.IcqTransportId;
+import deus.model.user.transportid.XmppTransportId;
 
 public class UserUrlTest {
 

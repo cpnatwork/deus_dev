@@ -1,7 +1,7 @@
 package deus.model.user.id;
 
-import deus.model.user.id.transportid.TransportId;
-import deus.model.user.id.transportid.TransportIdType;
+import deus.model.user.transportid.TransportId;
+import deus.model.user.transportid.TransportIdType;
 
 public interface UserId {
 	
