@@ -1,7 +1,6 @@
 package deus.core.gatekeeper.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import deus.core.User;
 import deus.core.UserFactory;
