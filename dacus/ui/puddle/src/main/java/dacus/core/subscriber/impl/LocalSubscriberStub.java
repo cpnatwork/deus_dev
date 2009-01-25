@@ -1,5 +1,6 @@
 package dacus.core.subscriber.impl;
 
+import dacus.model.user.transportid.LocalTransportId;
 import deus.core.subscriber.RemoteCalledSubscriber;
 import deus.core.subscriber.impl.AbstractSubscriberStub;
 import deus.model.dossier.generic.ForeignInformationFile;
@@ -20,8 +21,11 @@ public class LocalSubscriberStub extends AbstractSubscriberStub {
 		// TODO: think about this assert
 		assert (subscriberMetadata.getUserId().getType().equals(TransportIdType.local));
 		
+		LocalTransportId subscriberId = getSubscriberMetadata().getUserId().getTransportId(LocalTransportId.class);
+
+		
 		// TODO: how to get RemoteCalledSubscriber
-		// subscriber = userRegistry.getLocalUser(publisherId).getSubscriber();
+		// subscriber = userRegistry.getLocalUser(subscriberId).getSubscriber();
 		subscriber = null;		
 	}
 
