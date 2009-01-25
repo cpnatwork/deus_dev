@@ -1,34 +1,37 @@
 package dacus.core.publisher.impl;
 
+import dacus.model.user.transportid.LocalTransportId;
 import deus.core.publisher.RemoteCalledPublisher;
 import deus.core.publisher.impl.AbstractPublisherStub;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
+import deus.model.user.transportid.TransportIdType;
 
 public class LocalPublisherStub extends AbstractPublisherStub {
 
+	private final RemoteCalledPublisher publisher;
 
 	public LocalPublisherStub(PublisherMetadata publisherMetadata) {
 		super(publisherMetadata);
-		// TODO:
-		//assert(publisherMetadata.getUserId().getType().equals(UserIdType.local));
+		// TODO: think about this assert
+		assert (publisherMetadata.getUserId().hasTransportId(TransportIdType.local));
+		
+		LocalTransportId publisherId = getPublisherMetadata().getUserId().getTransportId(LocalTransportId.class);
+
+		// TODO: somehow get RemoteCalledPublisher
+		// publisher = userRegistry.getLocalUser(publisherId).getPublisher();
+		publisher = null;		
 	}
 
 	
 	@Override
 	public void addObserver(SubscriberMetadata subscriberMetadata) {
-		// TODO: how to get publisher?
-		//RemoteCalledPublisher publisher = new RemoteCalledPublisherImpl(getPublisherMetadata());
-		RemoteCalledPublisher publisher = null;
 		publisher.addObserver(subscriberMetadata);
 	}
 
 
 	@Override
 	public void deleteObserver(SubscriberMetadata subscriberMetadata) {
-		// TODO: how to get publisher?
-		//RemoteCalledPublisher publisher = new RemoteCalledPublisherImpl(getPublisherMetadata());
-		RemoteCalledPublisher publisher = null;
 		publisher.deleteObserver(subscriberMetadata);
 	}
 
