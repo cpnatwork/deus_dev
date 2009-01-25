@@ -35,4 +35,16 @@ public class LocalSubscriberStub extends AbstractSubscriberStub {
 		subscriber.update(publisherMetadata, change);
 	}
 
+
+	@Override
+	public void acknowledgeSubscription(PublisherMetadata publisherMetadata) {
+		subscriber.acknowledgeSubscription(publisherMetadata);
+	}
+
+
+	@Override
+	public void denySubscription(PublisherMetadata publisherMetadata) {
+		subscriber.denySubscription(publisherMetadata);		
+	}
+
 }
