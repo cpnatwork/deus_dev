@@ -6,6 +6,8 @@
 
 	<bean id="gatekeeperTarget" class="deus.core.gatekeeper.impl.GatekeeperImpl" />
 
+	<bean id="loginCredentialChecker" class="deus.core.gatekeeper.impl.LoginCredentialCheckerStub" />	
+
 	<bean id="gatekeeper" class="deus.core.gatekeeper.impl.InitDestroyGatekeeperDecorator">
 		<constructor-arg ref="gatekeeperTarget" />
 	</bean>
