@@ -1,7 +1,7 @@
 package deus.core.publisher.impl;
 
 import deus.core.publisher.Publisher;
-import deus.core.subscriber.SubscriberStub;
+import deus.core.subscriber.stub.SubscriberStub;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;

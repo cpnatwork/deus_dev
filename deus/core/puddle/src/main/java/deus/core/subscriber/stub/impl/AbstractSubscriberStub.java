@@ -1,7 +1,7 @@
-package deus.core.subscriber.impl;
+package deus.core.subscriber.stub.impl;
 
 
-import deus.core.subscriber.SubscriberStub;
+import deus.core.subscriber.stub.SubscriberStub;
 import deus.model.pub.SubscriberMetadata;
 
 public abstract class AbstractSubscriberStub implements SubscriberStub {

@@ -8,6 +8,14 @@ import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.sub.SubscriptionState;
 
+/**
+ * Delegates all methods of <code>RemoteCalledSubscriber</code> to a delegate of type <code>RemoteCalledSubscriber</code>,
+ * the rest of the methods of <code>Subscriber</code> are delegated to the second delegate, which is of type
+ * <code>Subscriber</code>.
+ * 
+ * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
+ * 
+ */
 public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 
 	private final RemoteCalledSubscriber remoteCalledSubscriber;

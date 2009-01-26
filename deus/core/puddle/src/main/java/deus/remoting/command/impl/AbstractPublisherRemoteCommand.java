@@ -1,6 +1,6 @@
 package deus.remoting.command.impl;
 
-import deus.core.subscriber.SubscriberStub;
+import deus.core.subscriber.stub.SubscriberStub;
 import deus.model.pub.SubscriberMetadata;
 import deus.remoting.command.RemoteCommand;
 import deus.remoting.state.RemotingState;

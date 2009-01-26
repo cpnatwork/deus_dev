@@ -1,7 +1,7 @@
 package deus.remoting.state;
 
-import deus.core.publisher.PublisherStub;
-import deus.core.subscriber.SubscriberStub;
+import deus.core.publisher.stub.PublisherStub;
+import deus.core.subscriber.stub.SubscriberStub;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.transportid.TransportIdType;

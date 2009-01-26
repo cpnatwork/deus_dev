@@ -1,4 +1,4 @@
-package deus.core.publisher;
+package deus.core.publisher.stub;
 
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;

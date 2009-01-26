@@ -6,8 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.barker.Barker;
-import deus.core.barker.decisionprocessors.SubscriberRequestDecisionProcessor;
-import deus.core.barker.impl.DelegateDecisionProcessor;
+import deus.core.barker.decisionprocessors.impl.DelegateDecisionProcessor;
+import deus.core.barker.decisionprocessors.impl.SubscriberRequestDecisionProcessor;
 import deus.core.publisher.Publisher;
 import deus.core.publisher.RemoteCalledPublisher;
 import deus.core.publisher.impl.PublisherBarkerProxy;

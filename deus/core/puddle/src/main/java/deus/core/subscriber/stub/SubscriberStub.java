@@ -1,4 +1,4 @@
-package deus.core.subscriber;
+package deus.core.subscriber.stub;
 
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.pub.SubscriberMetadata;

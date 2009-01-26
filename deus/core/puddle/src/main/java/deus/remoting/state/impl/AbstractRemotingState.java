@@ -3,8 +3,8 @@ package deus.remoting.state.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import deus.core.publisher.PublisherStub;
-import deus.core.subscriber.SubscriberStub;
+import deus.core.publisher.stub.PublisherStub;
+import deus.core.subscriber.stub.SubscriberStub;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.remoting.state.RemotingState;

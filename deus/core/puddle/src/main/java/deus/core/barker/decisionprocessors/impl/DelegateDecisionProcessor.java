@@ -1,8 +1,8 @@
-package deus.core.barker.impl;
+package deus.core.barker.decisionprocessors.impl;
 
 import java.util.Map;
 
-import deus.core.barker.DecisionProcessor;
+import deus.core.barker.decisionprocessors.DecisionProcessor;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.DecisionType;
 

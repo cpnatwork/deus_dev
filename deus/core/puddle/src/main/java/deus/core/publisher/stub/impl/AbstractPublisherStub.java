@@ -1,6 +1,6 @@
-package deus.core.publisher.impl;
+package deus.core.publisher.stub.impl;
 
-import deus.core.publisher.PublisherStub;
+import deus.core.publisher.stub.PublisherStub;
 import deus.model.sub.PublisherMetadata;
 
 

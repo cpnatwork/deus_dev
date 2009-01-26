@@ -1,8 +1,8 @@
-package deus.core.barker.decisionprocessors;
+package deus.core.barker.decisionprocessors.impl;
 
-import deus.core.barker.DecisionProcessor;
+import deus.core.barker.decisionprocessors.DecisionProcessor;
 import deus.core.publisher.Publisher;
-import deus.core.subscriber.SubscriberStub;
+import deus.core.subscriber.stub.SubscriberStub;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.remoting.command.impl.AbstractPublisherRemoteCommand;
 import deus.remoting.commandexecutor.RemoteCommandExecutor;

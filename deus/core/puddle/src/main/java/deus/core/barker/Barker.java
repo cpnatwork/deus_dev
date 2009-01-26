@@ -1,5 +1,6 @@
 package deus.core.barker;
 
+import deus.core.barker.decisionprocessors.DecisionProcessor;
 import deus.model.attention.AttentionElement;
 import deus.model.attention.AttentionList;
 import deus.model.attention.decision.BinaryDecisionToMake;

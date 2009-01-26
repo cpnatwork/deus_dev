@@ -1,4 +1,4 @@
-package deus.core.barker;
+package deus.core.barker.decisionprocessors;
 
 import deus.model.attention.decision.BinaryDecisionToMake;
 
