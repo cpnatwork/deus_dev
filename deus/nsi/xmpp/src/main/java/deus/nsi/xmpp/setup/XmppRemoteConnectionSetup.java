@@ -14,9 +14,8 @@ import deus.nsi.xmpp.publisher.impl.skeleton.packetlistener.UnsubscribePacketLis
 import deus.nsi.xmpp.subscriber.impl.skeleton.XmppSubscriberSkeleton;
 import deus.nsi.xmpp.subscriber.impl.skeleton.packetlistener.UpdatePacketListener;
 import deus.remoting.setup.impl.AbstractRemoteConnectionSetup;
-import deus.remoting.state.RemotingStateRegistry;
+import deus.remoting.state.RemotingState;
 
-// FIXME: think about refactoring some of the stuff of this methods to abstract super class!
 @Component
 public class XmppRemoteConnectionSetup extends AbstractRemoteConnectionSetup {
 
@@ -24,8 +23,7 @@ public class XmppRemoteConnectionSetup extends AbstractRemoteConnectionSetup {
 	private XmppNetwork xmppNetwork;
 
 	@Override
-	public void checkedSetUp(User user) {
-
+	public RemotingState checkedSetUp(User user) {
 		// TODO: get password out of user
 		// 
 		XmppConversation xmppConversation = xmppNetwork.createConversation(user.getUserMetadata(), "test");
@@ -40,8 +38,7 @@ public class XmppRemoteConnectionSetup extends AbstractRemoteConnectionSetup {
 		// LOGIN
 		xmppConversation.login();
 		
-		// ADD REMOTING STATE
-		user.getRemotingStateRegistry().addRemotingState(getType(), remotingState);
+		return remotingState;
 	}
 	
 
@@ -73,23 +70,20 @@ public class XmppRemoteConnectionSetup extends AbstractRemoteConnectionSetup {
 		remotingState.setXmppSubscriberSkeleton(xmppSubscriberSkeleton);
 	}
 
-	
-	@Override
-	public void checkedTearDown(User user) {
-		RemotingStateRegistry remotingStateRegistry = user.getRemotingStateRegistry();
-		XmppRemotingState remotingState = (XmppRemotingState)remotingStateRegistry.getRemotingState(getType());
-		
-		remotingState.getXmppConversation().end();
-		
-		XmppSkeleton publisherSkeleton = remotingState.getXmppPublisherSkeleton();
-		publisherSkeleton.disconnect();
-		remotingState.removeXmppPublisherSkeleton();
 
-		XmppSkeleton subscriberSkeleton = remotingState.getXmppSubscriberSkeleton();
-		subscriberSkeleton.disconnect();
-		remotingState.removeXmppSubscriberSkeleton();
+	@Override
+	protected void checkedTearDown(RemotingState remotingState) {
+		XmppRemotingState xmppRemotingState = (XmppRemotingState)remotingState;
 		
-		remotingStateRegistry.removeRemotingState(getType());
+		xmppRemotingState.getXmppConversation().end();
+		
+		XmppSkeleton publisherSkeleton = xmppRemotingState.getXmppPublisherSkeleton();
+		publisherSkeleton.disconnect();
+		xmppRemotingState.removeXmppPublisherSkeleton();
+
+		XmppSkeleton subscriberSkeleton = xmppRemotingState.getXmppSubscriberSkeleton();
+		subscriberSkeleton.disconnect();
+		xmppRemotingState.removeXmppSubscriberSkeleton();
 	}
 
 
@@ -97,5 +91,6 @@ public class XmppRemoteConnectionSetup extends AbstractRemoteConnectionSetup {
 	public TransportIdType getType() {
 		return TransportIdType.xmpp;
 	}
+
 
 }

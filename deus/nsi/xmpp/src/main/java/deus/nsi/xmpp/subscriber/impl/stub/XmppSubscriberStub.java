@@ -42,4 +42,18 @@ public class XmppSubscriberStub extends AbstractSubscriberStub {
 				XmppTransportId.class));
 	}
 
+
+	@Override
+	public void acknowledgeSubscription(PublisherMetadata publisherMetadata) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void denySubscription(PublisherMetadata publisherMetadata) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

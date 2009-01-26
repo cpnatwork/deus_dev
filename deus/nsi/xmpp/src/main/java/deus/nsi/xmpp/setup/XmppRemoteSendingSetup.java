@@ -12,43 +12,34 @@ import deus.model.sub.PublisherMetadata;
 import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub;
 import deus.nsi.xmpp.subscriber.impl.stub.XmppSubscriberStub;
-import deus.remoting.setup.RemoteSendingSetup;
-import deus.remoting.state.RemotingStateRegistry;
+import deus.remoting.setup.impl.AbstractRemoteSendingSetup;
+import deus.remoting.state.RemotingState;
 
 // TODO: think about not setting up all stubs, but only the ones, that are necessary for the following sending
-//FIXME: think about refactoring some of the stuff of this methods to abstract super class!
 @Component
-public class XmppRemoteSendingSetup implements RemoteSendingSetup {
+public class XmppRemoteSendingSetup extends AbstractRemoteSendingSetup {
 
 	@Override
-	public void setUp(User user) {
-		RemotingStateRegistry remotingStateRegistry = user.getRemotingStateRegistry();
-
-		XmppRemotingState remotingState = (XmppRemotingState) remotingStateRegistry
-				.getRemotingState(getType());
-
+	protected void checkedSetUp(User user, RemotingState remotingState) {
+		XmppRemotingState xmppRemotingState = (XmppRemotingState)remotingState;
+				
 		ListOfSubscribers los = user.getListOfSubscribers();
 		for (SubscriberMetadata subscriberMetadata : los) {
-			SubscriberStub subscriberStub = new XmppSubscriberStub(subscriberMetadata, remotingState
+			SubscriberStub subscriberStub = new XmppSubscriberStub(subscriberMetadata, xmppRemotingState
 					.getXmppConversation());
-			remotingState.addSubscriberStub(subscriberStub);
+			xmppRemotingState.addSubscriberStub(subscriberStub);
 		}
 
 		ListOfPublishers lop = user.getListOfPublishers();
 		for (PublisherMetadata publisherMetadata : lop) {
-			PublisherStub publisherStub = new XmppPublisherStub(publisherMetadata, remotingState.getXmppConversation());
-			remotingState.addPublisherStub(publisherStub);
+			PublisherStub publisherStub = new XmppPublisherStub(publisherMetadata, xmppRemotingState.getXmppConversation());
+			xmppRemotingState.addPublisherStub(publisherStub);
 		}
 	}
 
 
 	@Override
-	public void tearDown(User user) {
-		RemotingStateRegistry remotingStateRegistry = user.getRemotingStateRegistry();
-
-		XmppRemotingState remotingState = (XmppRemotingState) remotingStateRegistry
-				.getRemotingState(getType());
-
+	protected void checkedTearDown(RemotingState remotingState) {
 		// TODO: think about this: if this implementation is right, we cannot enforce disconnection of stubs with this
 		// implementation!
 
