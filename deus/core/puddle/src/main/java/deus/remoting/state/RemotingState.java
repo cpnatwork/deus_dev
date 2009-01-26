@@ -17,9 +17,6 @@ import deus.model.user.transportid.TransportIdType;
  */
 public interface RemotingState {
 
-	public boolean isRemotingAvailable();
-
-
 	public SubscriberStub getSubscriberStub(SubscriberMetadata subscriberMetadata);
 
 

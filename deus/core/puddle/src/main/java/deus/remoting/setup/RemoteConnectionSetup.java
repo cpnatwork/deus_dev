@@ -1,10 +1,13 @@
 package deus.remoting.setup;
 
 import deus.core.User;
+import deus.model.user.transportid.TransportIdType;
 
 /**
- * Classes implementing this interface set up and tear down a remote connection. This connection is afterwards ready to
- * receive calls.
+ * Classes implementing this interface set up and tear down a remote connection for a single transport protocol. This
+ * connection is afterwards ready to receive calls.
+ * 
+ * There should be one class implementing this interface per transport protocol, which should be supported.
  * 
  * Before sending, a class implementing <code>RemoteSendingSetup</code> must be used to set up sending.
  * 
@@ -19,5 +22,12 @@ public interface RemoteConnectionSetup {
 
 
 	public void tearDown(User user);
+	
+	/**
+	 * Returns the transport protocol type, that is set up.
+	 * 
+	 * @return	the transport id type of the protocol, that is set up
+	 */
+	public TransportIdType getType();
 
 }

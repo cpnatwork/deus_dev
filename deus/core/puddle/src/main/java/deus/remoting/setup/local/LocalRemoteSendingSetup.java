@@ -1,22 +1,29 @@
 package deus.remoting.setup.local;
 
 import deus.core.User;
-import deus.remoting.setup.RemoteSendingSetup;
+import deus.model.user.transportid.TransportIdType;
+import deus.remoting.setup.impl.AbstractRemoteSendingSetup;
 
 // TODO: where to put this package??
-public class LocalRemoteSendingSetup implements RemoteSendingSetup {
+public class LocalRemoteSendingSetup extends AbstractRemoteSendingSetup {
 
 	@Override
-	public void setUp(User user) {
+	public void checkedSetUp(User user) {
 		// TODO Auto-generated method stub
 
 	}
 
 
 	@Override
-	public void tearDown(User user) {
+	public void checkedTearDown(User user) {
 		// TODO Auto-generated method stub
 
+	}
+
+
+	@Override
+	public TransportIdType getType() {
+		return TransportIdType.local;
 	}
 
 }
