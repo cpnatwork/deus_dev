@@ -19,12 +19,6 @@ public class XmppRemotingState extends AbstractRemotingState {
 	}
 
 
-	@Override
-	public boolean isRemotingAvailable() {
-		return xmppConversation.isLoggedIn();
-	}
-
-
 	public XmppConversation getXmppConversation() {
 		return xmppConversation;
 	}

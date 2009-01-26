@@ -13,13 +13,19 @@ import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub;
 import deus.nsi.xmpp.subscriber.impl.stub.XmppSubscriberStub;
 import deus.remoting.setup.RemoteSendingSetup;
+import deus.remoting.state.RemotingStateRegistry;
 
+// TODO: think about not setting up all stubs, but only the ones, that are necessary for the following sending
+//FIXME: think about refactoring some of the stuff of this methods to abstract super class!
 @Component
 public class XmppRemoteSendingSetup implements RemoteSendingSetup {
 
 	@Override
 	public void setUp(User user) {
-		XmppRemotingState remotingState = (XmppRemotingState) user.getRemotingStateRegistry().getRemotingState(TransportIdType.xmpp);
+		RemotingStateRegistry remotingStateRegistry = user.getRemotingStateRegistry();
+
+		XmppRemotingState remotingState = (XmppRemotingState) remotingStateRegistry
+				.getRemotingState(getType());
 
 		ListOfSubscribers los = user.getListOfSubscribers();
 		for (SubscriberMetadata subscriberMetadata : los) {
@@ -38,13 +44,22 @@ public class XmppRemoteSendingSetup implements RemoteSendingSetup {
 
 	@Override
 	public void tearDown(User user) {
-		XmppRemotingState remotingState = (XmppRemotingState) user.getRemotingStateRegistry().getRemotingState(TransportIdType.xmpp);
+		RemotingStateRegistry remotingStateRegistry = user.getRemotingStateRegistry();
+
+		XmppRemotingState remotingState = (XmppRemotingState) remotingStateRegistry
+				.getRemotingState(getType());
 
 		// TODO: think about this: if this implementation is right, we cannot enforce disconnection of stubs with this
 		// implementation!
 
 		remotingState.clearSubscriberStubList();
 		remotingState.clearPublisherStubList();
+	}
+
+
+	@Override
+	public TransportIdType getType() {
+		return TransportIdType.xmpp;
 	}
 
 }

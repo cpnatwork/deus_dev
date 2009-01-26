@@ -13,20 +13,19 @@ import deus.nsi.xmpp.publisher.impl.skeleton.packetlistener.SubscribePacketListe
 import deus.nsi.xmpp.publisher.impl.skeleton.packetlistener.UnsubscribePacketListener;
 import deus.nsi.xmpp.subscriber.impl.skeleton.XmppSubscriberSkeleton;
 import deus.nsi.xmpp.subscriber.impl.skeleton.packetlistener.UpdatePacketListener;
-import deus.remoting.setup.RemoteConnectionSetup;
+import deus.remoting.setup.impl.AbstractRemoteConnectionSetup;
+import deus.remoting.state.RemotingStateRegistry;
 
+// FIXME: think about refactoring some of the stuff of this methods to abstract super class!
 @Component
-public class XmppRemoteConnectionSetup implements RemoteConnectionSetup {
+public class XmppRemoteConnectionSetup extends AbstractRemoteConnectionSetup {
 
 	@Autowired
 	private XmppNetwork xmppNetwork;
 
 	@Override
-	public void setUp(User user) {
-		if(user.getRemotingStateRegistry().hasRemotingState(TransportIdType.xmpp))
-			throw new IllegalStateException("Can't setup remoting, it has already been setup!");
-		
-		
+	public void checkedSetUp(User user) {
+
 		// TODO: get password out of user
 		// 
 		XmppConversation xmppConversation = xmppNetwork.createConversation(user.getUserMetadata(), "test");
@@ -42,7 +41,7 @@ public class XmppRemoteConnectionSetup implements RemoteConnectionSetup {
 		xmppConversation.login();
 		
 		// ADD REMOTING STATE
-		user.getRemotingStateRegistry().addRemotingState(TransportIdType.xmpp, remotingState);
+		user.getRemotingStateRegistry().addRemotingState(getType(), remotingState);
 	}
 	
 
@@ -76,10 +75,9 @@ public class XmppRemoteConnectionSetup implements RemoteConnectionSetup {
 
 	
 	@Override
-	public void tearDown(User user) {
-		XmppRemotingState remotingState = (XmppRemotingState)user.getRemotingStateRegistry().getRemotingState(TransportIdType.xmpp);
-		if(!remotingState.isRemotingAvailable())
-			throw new IllegalStateException("can't tear down remoting, it is not setup!");
+	public void checkedTearDown(User user) {
+		RemotingStateRegistry remotingStateRegistry = user.getRemotingStateRegistry();
+		XmppRemotingState remotingState = (XmppRemotingState)remotingStateRegistry.getRemotingState(getType());
 		
 		remotingState.getXmppConversation().end();
 		
@@ -91,7 +89,13 @@ public class XmppRemoteConnectionSetup implements RemoteConnectionSetup {
 		subscriberSkeleton.disconnect();
 		remotingState.removeXmppSubscriberSkeleton();
 		
-		user.getRemotingStateRegistry().removeRemotingState(TransportIdType.xmpp);
+		remotingStateRegistry.removeRemotingState(getType());
+	}
+
+
+	@Override
+	public TransportIdType getType() {
+		return TransportIdType.xmpp;
 	}
 
 }
