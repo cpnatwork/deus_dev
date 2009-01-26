@@ -8,7 +8,7 @@ import deus.core.subscriber.Subscriber;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
-import deus.remoting.command.RemoteCommandExecutor;
+import deus.remoting.command.executor.impl.RemoteCommandExecutorImpl;
 import deus.remoting.state.RemotingStateRegistry;
 
 public class User {
@@ -24,7 +24,7 @@ public class User {
 	Barker barker;
 
 	// TODO: think about how to fill this map. Or add RemotingState, when remoting is started??
-	RemoteCommandExecutor remoteCommandExecutor;
+	RemoteCommandExecutorImpl remoteCommandExecutor;
 
 	RemotingStateRegistry remotingStateRegistry;
 	

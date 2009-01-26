@@ -21,8 +21,8 @@ import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserId;
-import deus.remoting.command.RemoteCommandExecutor;
-import deus.remoting.command.impl.InitDestroyRemoteSendingRemoteCommandDecorator;
+import deus.remoting.command.executor.impl.RemoteCommandExecutorImpl;
+import deus.remoting.command.impl.SetupRemoteSendingRemoteCommandDecorator;
 import deus.remoting.state.RemotingStateRegistry;
 import deus.remoting.state.impl.RemotingStateRegistryImpl;
 import deus.storage.attention.AttentionDao;
@@ -55,9 +55,9 @@ public class UserFactory {
 		user.remotingStateRegistry = new RemotingStateRegistryImpl();
 		
 		// REMOTE COMMAND EXECUTOR
-		user.remoteCommandExecutor = new RemoteCommandExecutor(user.remotingStateRegistry);
+		user.remoteCommandExecutor = new RemoteCommandExecutorImpl(user.remotingStateRegistry);
 			// TODO: think about this cyclic dependency
-		user.remoteCommandExecutor.setRemoteCommandDecorator(new InitDestroyRemoteSendingRemoteCommandDecorator(user));
+		user.remoteCommandExecutor.setRemoteCommandDecorator(new SetupRemoteSendingRemoteCommandDecorator(user));
 		
 		
 		// BARKER

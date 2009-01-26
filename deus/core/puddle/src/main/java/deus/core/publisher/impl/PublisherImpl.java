@@ -5,8 +5,8 @@ import deus.core.subscriber.SubscriberStub;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
-import deus.remoting.command.RemoteCommandExecutor;
 import deus.remoting.command.impl.AbstractPublisherRemoteCommand;
+import deus.remoting.commandexecutor.RemoteCommandExecutor;
 
 public class PublisherImpl implements Publisher {
 

@@ -5,8 +5,8 @@ import deus.core.publisher.Publisher;
 import deus.core.subscriber.SubscriberStub;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.remoting.command.RemoteCommand;
-import deus.remoting.command.RemoteCommandExecutor;
 import deus.remoting.command.impl.AbstractPublisherRemoteCommand;
+import deus.remoting.commandexecutor.RemoteCommandExecutor;
 import deus.remoting.state.RemotingStateRegistry;
 
 
