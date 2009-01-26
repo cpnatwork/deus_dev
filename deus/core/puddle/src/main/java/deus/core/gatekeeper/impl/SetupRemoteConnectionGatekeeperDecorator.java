@@ -9,7 +9,6 @@ import deus.remoting.setup.RemoteConnectionSetup;
 
 public class SetupRemoteConnectionGatekeeperDecorator extends AbstractGatekeeperDecorator {
 
-	
 	private Map<TransportIdType, RemoteConnectionSetup> remoteConnectionSetups;
 
 	
