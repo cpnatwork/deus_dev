@@ -1,5 +1,6 @@
 package deus.nsi.xmpp.setup;
 
+import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton;
 import deus.nsi.xmpp.subscriber.impl.skeleton.XmppSubscriberSkeleton;
@@ -56,6 +57,12 @@ public class XmppRemotingState extends AbstractRemotingState {
 
 	public void removeXmppPublisherSkeleton() {
 		xmppPublisherSkeleton = null;
+	}
+
+
+	@Override
+	public TransportIdType getType() {
+		return TransportIdType.xmpp;
 	}
 
 }

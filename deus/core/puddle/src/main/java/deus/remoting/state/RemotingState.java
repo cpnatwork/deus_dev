@@ -4,10 +4,11 @@ import java.util.List;
 
 import deus.core.publisher.PublisherStub;
 import deus.core.subscriber.SubscriberStub;
+import deus.model.user.transportid.TransportIdType;
 
 /**
- * Classes implementing this interface store a remoting state for a user. It consists of all the publisher and
- * subscriber stubs, the user needs to communicate to all connected susbcribers and publishers.
+ * Classes implementing this interface store a remoting state for a specific transport protocol for a user. It consists
+ * of all the publisher and subscriber stubs, the user needs to communicate to all connected susbcribers and publishers.
  * 
  * All stubs can be retrieved as a list, stubs can be added and the whole list can be cleared.
  * 
@@ -35,4 +36,8 @@ public interface RemotingState {
 
 
 	public void clearPublisherStubList();
+	
+	
+	public TransportIdType getType();
+	
 }

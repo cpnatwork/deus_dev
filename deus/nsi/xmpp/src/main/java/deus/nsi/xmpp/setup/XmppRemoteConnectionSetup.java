@@ -14,7 +14,6 @@ import deus.nsi.xmpp.publisher.impl.skeleton.packetlistener.UnsubscribePacketLis
 import deus.nsi.xmpp.subscriber.impl.skeleton.XmppSubscriberSkeleton;
 import deus.nsi.xmpp.subscriber.impl.skeleton.packetlistener.UpdatePacketListener;
 import deus.remoting.setup.RemoteConnectionSetup;
-import deus.remoting.state.RemotingStateRegistry;
 
 @Component
 public class XmppRemoteConnectionSetup implements RemoteConnectionSetup {

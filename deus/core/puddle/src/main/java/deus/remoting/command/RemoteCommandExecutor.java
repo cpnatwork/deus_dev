@@ -2,7 +2,7 @@ package deus.remoting.command;
 
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
-import deus.remoting.command.impl.InitDestroyRemoteSendingRemoteCommandDecorator;
+import deus.remoting.state.RemotingState;
 import deus.remoting.state.RemotingStateRegistry;
 
 public class RemoteCommandExecutor {
@@ -30,12 +30,13 @@ public class RemoteCommandExecutor {
 	
 	public void execute(RemoteCommand remoteCommand, UserId userId) {
 		TransportIdType transportIdType = choseTransportIdType(userId);
+		RemotingState remotingState = remotingStateRegistry.getRemotingState(transportIdType);
 		if(decorator != null) {
 			decorator.setDecoratedRemoteCommand(remoteCommand);
-			decorator.execute(remotingStateRegistry, transportIdType);
+			decorator.execute(remotingState);
 		}
 		else
-			remoteCommand.execute(remotingStateRegistry, transportIdType);
+			remoteCommand.execute(remotingState);
 
 	
 	}

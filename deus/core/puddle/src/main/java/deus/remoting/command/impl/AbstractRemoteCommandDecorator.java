@@ -1,9 +1,8 @@
 package deus.remoting.command.impl;
 
-import deus.model.user.transportid.TransportIdType;
 import deus.remoting.command.RemoteCommand;
 import deus.remoting.command.RemoteCommandDecorator;
-import deus.remoting.state.RemotingStateRegistry;
+import deus.remoting.state.RemotingState;
 
 abstract class AbstractRemoteCommandDecorator implements RemoteCommandDecorator {
 
@@ -11,12 +10,12 @@ abstract class AbstractRemoteCommandDecorator implements RemoteCommandDecorator 
 
 
 	@Override
-	public final void execute(RemotingStateRegistry remotingStateRegistry, TransportIdType transportIdType) {
-		beforeExecute(transportIdType);
+	public final void execute(RemotingState remotingState) {
+		beforeExecute(remotingState);
 
-		decoratedRemoteCommand.execute(remotingStateRegistry, transportIdType);
+		decoratedRemoteCommand.execute(remotingState);
 
-		afterExecute(transportIdType);
+		afterExecute(remotingState);
 	}
 
 	
@@ -28,15 +27,12 @@ abstract class AbstractRemoteCommandDecorator implements RemoteCommandDecorator 
 	/* (non-Javadoc)
 	 * @see deus.remoting.initializerdestroyer.impl.RemoteCommandDecorator#beforeExecute(deus.model.user.transportid.TransportIdType)
 	 */
-	public abstract void beforeExecute(TransportIdType transportIdType);
+	public abstract void beforeExecute(RemotingState remotingState);
 
 
 	/* (non-Javadoc)
 	 * @see deus.remoting.initializerdestroyer.impl.RemoteCommandDecorator#afterExecute(deus.model.user.transportid.TransportIdType)
 	 */
-	public abstract void afterExecute(TransportIdType transportIdType);
-	
-
-
-	
+	public abstract void afterExecute(RemotingState remotingState);
+		
 }

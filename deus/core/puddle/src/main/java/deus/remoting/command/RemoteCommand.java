@@ -1,12 +1,10 @@
 package deus.remoting.command;
 
-import deus.model.user.transportid.TransportIdType;
-import deus.remoting.state.RemotingStateRegistry;
-
+import deus.remoting.state.RemotingState;
 
 
 public interface RemoteCommand {
 
-	public void execute(RemotingStateRegistry remotingStateRegistry, TransportIdType transportIdType);
-	
+	public void execute(RemotingState remotingState);
+
 }

@@ -5,6 +5,7 @@ import java.util.Map;
 import deus.core.User;
 import deus.model.user.transportid.TransportIdType;
 import deus.remoting.setup.RemoteSendingSetup;
+import deus.remoting.state.RemotingState;
 
 public class InitDestroyRemoteSendingRemoteCommandDecorator extends AbstractRemoteCommandDecorator {
 
@@ -18,15 +19,15 @@ public class InitDestroyRemoteSendingRemoteCommandDecorator extends AbstractRemo
 
 
 	@Override
-	public void beforeExecute(TransportIdType transportIdType) {
-		RemoteSendingSetup initializer = remoteSendingInitializerDestroyers.get(transportIdType);
+	public void beforeExecute(RemotingState remotingState) {
+		RemoteSendingSetup initializer = remoteSendingInitializerDestroyers.get(remotingState.getType());
 		initializer.setUp(user);
 	}
 
 
 	@Override
-	public void afterExecute(TransportIdType transportIdType) {
-		RemoteSendingSetup destroyer = remoteSendingInitializerDestroyers.get(transportIdType);
+	public void afterExecute(RemotingState remotingState) {
+		RemoteSendingSetup destroyer = remoteSendingInitializerDestroyers.get(remotingState.getType());
 		destroyer.tearDown(user);
 	}
 

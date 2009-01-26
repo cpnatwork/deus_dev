@@ -2,10 +2,8 @@ package deus.remoting.command.impl;
 
 import deus.core.publisher.PublisherStub;
 import deus.model.sub.PublisherMetadata;
-import deus.model.user.transportid.TransportIdType;
 import deus.remoting.command.RemoteCommand;
 import deus.remoting.state.RemotingState;
-import deus.remoting.state.RemotingStateRegistry;
 
 public abstract class AbstractSubscriberRemoteCommand implements RemoteCommand {
 
@@ -19,9 +17,7 @@ public abstract class AbstractSubscriberRemoteCommand implements RemoteCommand {
 
 
 	@Override
-	public final void execute(RemotingStateRegistry remotingStateRegistry, TransportIdType transportIdType) {
-		RemotingState remotingState = remotingStateRegistry.getRemotingState(transportIdType);
-
+	public final void execute(RemotingState remotingState) {
 		// search for the right publisher stub
 		for (PublisherStub stub : remotingState.getPublisherStubs())
 			if (stub.getPublisherMetadata().equals(publisherMetadata)) {
