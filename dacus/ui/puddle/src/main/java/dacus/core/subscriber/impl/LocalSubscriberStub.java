@@ -2,7 +2,7 @@ package dacus.core.subscriber.impl;
 
 import dacus.model.user.transportid.LocalTransportId;
 import deus.core.subscriber.RemoteCalledSubscriber;
-import deus.core.subscriber.impl.AbstractSubscriberStub;
+import deus.core.subscriber.stub.impl.AbstractSubscriberStub;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;

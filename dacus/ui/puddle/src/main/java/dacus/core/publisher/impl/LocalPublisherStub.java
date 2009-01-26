@@ -2,7 +2,7 @@ package dacus.core.publisher.impl;
 
 import dacus.model.user.transportid.LocalTransportId;
 import deus.core.publisher.RemoteCalledPublisher;
-import deus.core.publisher.impl.AbstractPublisherStub;
+import deus.core.publisher.stub.impl.AbstractPublisherStub;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.transportid.TransportIdType;
