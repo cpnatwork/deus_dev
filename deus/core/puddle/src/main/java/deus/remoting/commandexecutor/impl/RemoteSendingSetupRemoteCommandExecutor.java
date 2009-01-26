@@ -8,7 +8,13 @@ import deus.remoting.command.RemoteCommand;
 import deus.remoting.setup.RemoteSendingSetup;
 import deus.remoting.state.RemotingState;
 
-// TODO: think about decorator pattern for this instead of inheritence from TransportProtocolChoosingRemoteCommandExecutor
+/**
+ * <code>RemoteCommandExecutor</code>, that sets up remote sending before executing the remote command.
+ * Only the sending of the transport protocol, that is used by the remote command is set up!
+ * 
+ * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
+ */
+//TODO: think about decorator pattern for this instead of inheritence from TransportProtocolChoosingRemoteCommandExecutor
 public class RemoteSendingSetupRemoteCommandExecutor extends TransportProtocolChoosingRemoteCommandExecutor {
 	
 	private final Map<TransportIdType, RemoteSendingSetup> remoteSendingSetups;

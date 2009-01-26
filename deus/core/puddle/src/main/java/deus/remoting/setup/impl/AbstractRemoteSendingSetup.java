@@ -1,4 +1,4 @@
-package deus.remoting.setup.impl;
+ package deus.remoting.setup.impl;
 
 import deus.core.User;
 import deus.remoting.setup.RemoteSendingSetup;

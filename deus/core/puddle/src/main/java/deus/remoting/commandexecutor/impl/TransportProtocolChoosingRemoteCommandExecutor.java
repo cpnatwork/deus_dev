@@ -13,13 +13,15 @@ import deus.remoting.tpchoosing.TransportProtocolChoosingStrategy;
 
 // TODO: javadoc
 /**
- *  * 
- * Since the RemoteCommand is agnostic of the transport protocol used to execute it, the strategy pattern is used to
- * inject a chooser for the transport protocol. Each implementation of <code>RemoteCommandExecutor</code> should be
- * aware of the user, to which it belongs, so that a transport protocol can be chosen among the available transport
- * protocols for this user.
+ * Since the <code>RemoteCommand</code> is agnostic of the transport protocol used to execute it, a strategy pattern is
+ * used to inject a chooser for the transport protocol. Each implementation of <code>RemoteCommandExecutor</code> should
+ * be aware of the user, to which it belongs. Also, each <code>RemoteCommand</code> knows the receiver of the command.
+ * Based on these two IDs (sender and receiver), an instance of <code>TransportProtocolChoosingStrategy</code> can
+ * choose a transport protocol among the intersection of the available transport protocols of the sender and the
+ * receiver.
+ * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
- *
+ * 
  */
 public class TransportProtocolChoosingRemoteCommandExecutor implements RemoteCommandExecutor {
 
@@ -37,7 +39,7 @@ public class TransportProtocolChoosingRemoteCommandExecutor implements RemoteCom
 		// sender
 		UserId senderId = user.getUserMetadata().getUserId();
 		UserId receiverId = remoteCommand.getReceiverId();
-		
+
 		TransportIdType chosenTransportIdType = choosingStrategy.chooseTransportIdType(senderId, receiverId);
 		RemotingStateRegistry remotingStateRegistry = user.getRemotingStateRegistry();
 		RemotingState remotingState = remotingStateRegistry.getRemotingState(chosenTransportIdType);
