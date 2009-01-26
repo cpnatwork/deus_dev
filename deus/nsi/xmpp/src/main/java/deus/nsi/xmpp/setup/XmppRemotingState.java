@@ -1,9 +1,9 @@
-package deus.nsi.xmpp.bootstrap;
+package deus.nsi.xmpp.setup;
 
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton;
 import deus.nsi.xmpp.subscriber.impl.skeleton.XmppSubscriberSkeleton;
-import deus.remoting.initializerdestroyer.impl.AbstractRemotingState;
+import deus.remoting.state.impl.AbstractRemotingState;
 
 public class XmppRemotingState extends AbstractRemotingState {
 

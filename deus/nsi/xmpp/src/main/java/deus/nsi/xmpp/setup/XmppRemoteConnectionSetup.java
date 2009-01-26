@@ -1,4 +1,4 @@
-package deus.nsi.xmpp.bootstrap;
+package deus.nsi.xmpp.setup;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,18 +13,18 @@ import deus.nsi.xmpp.publisher.impl.skeleton.packetlistener.SubscribePacketListe
 import deus.nsi.xmpp.publisher.impl.skeleton.packetlistener.UnsubscribePacketListener;
 import deus.nsi.xmpp.subscriber.impl.skeleton.XmppSubscriberSkeleton;
 import deus.nsi.xmpp.subscriber.impl.skeleton.packetlistener.UpdatePacketListener;
-import deus.remoting.initializerdestroyer.RemotingInitializerDestroyer;
-import deus.remoting.initializerdestroyer.RemotingStateRegistry;
+import deus.remoting.initializerdestroyer.RemoteConnectionSetup;
+import deus.remoting.state.RemotingStateRegistry;
 
 @Component
-public class XmppRemotingInitializerDestroyer implements RemotingInitializerDestroyer {
+public class XmppRemoteConnectionSetup implements RemoteConnectionSetup {
 
 	@Autowired
 	private XmppNetwork xmppNetwork;
 
 	@Override
-	public void setUp(RemotingStateRegistry remotingStateRegistry) {
-		if(remotingStateRegistry.hasRemotingState(TransportIdType.xmpp))
+	public void setUp(User user) {
+		if(user.getRemotingStateRegistry().hasRemotingState(TransportIdType.xmpp))
 			throw new IllegalStateException("Can't setup remoting, it has already been setup!");
 		
 		
@@ -43,7 +43,7 @@ public class XmppRemotingInitializerDestroyer implements RemotingInitializerDest
 		xmppConversation.login();
 		
 		// ADD REMOTING STATE
-		remotingStateRegistry.addRemotingState(TransportIdType.xmpp, remotingState);
+		user.getRemotingStateRegistry().addRemotingState(TransportIdType.xmpp, remotingState);
 	}
 	
 
@@ -77,8 +77,8 @@ public class XmppRemotingInitializerDestroyer implements RemotingInitializerDest
 
 	
 	@Override
-	public void tearDown(RemotingStateRegistry remotingStateRegistry) {
-		XmppRemotingState remotingState = (XmppRemotingState)remotingStateRegistry.getRemotingState(TransportIdType.xmpp);
+	public void tearDown(User user) {
+		XmppRemotingState remotingState = (XmppRemotingState)user.getRemotingStateRegistry().getRemotingState(TransportIdType.xmpp);
 		if(!remotingState.isRemotingAvailable())
 			throw new IllegalStateException("can't tear down remoting, it is not setup!");
 		
@@ -92,7 +92,7 @@ public class XmppRemotingInitializerDestroyer implements RemotingInitializerDest
 		subscriberSkeleton.disconnect();
 		remotingState.removeXmppSubscriberSkeleton();
 		
-		remotingStateRegistry.removeRemotingState(TransportIdType.xmpp);
+		user.getRemotingStateRegistry().removeRemotingState(TransportIdType.xmpp);
 	}
 
 }

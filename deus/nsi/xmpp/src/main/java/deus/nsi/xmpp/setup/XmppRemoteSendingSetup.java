@@ -1,4 +1,4 @@
-package deus.nsi.xmpp.bootstrap;
+package deus.nsi.xmpp.setup;
 
 import org.springframework.stereotype.Component;
 
@@ -12,11 +12,10 @@ import deus.model.sub.PublisherMetadata;
 import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub;
 import deus.nsi.xmpp.subscriber.impl.stub.XmppSubscriberStub;
-import deus.remoting.initializerdestroyer.RemoteSendingInitializerDestroyer;
-import deus.remoting.initializerdestroyer.RemotingStateRegistry;
+import deus.remoting.initializerdestroyer.RemoteSendingSetup;
 
 @Component
-public class XmppRemoteSendingInitializerDestroyer implements RemoteSendingInitializerDestroyer {
+public class XmppRemoteSendingSetup implements RemoteSendingSetup {
 
 	@Override
 	public void setUp(User user) {
