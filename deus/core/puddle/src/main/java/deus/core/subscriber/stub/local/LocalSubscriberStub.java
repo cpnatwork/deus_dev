@@ -1,4 +1,4 @@
-package dacus.core.subscriber.impl;
+package deus.core.subscriber.stub.local;
 
 import dacus.model.user.transportid.LocalTransportId;
 import deus.core.subscriber.RemoteCalledSubscriber;

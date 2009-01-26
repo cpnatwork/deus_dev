@@ -23,7 +23,6 @@ public class User {
 
 	Barker barker;
 
-	// TODO: think about how to fill this map. Or add RemotingState, when remoting is started??
 	RemoteCommandExecutor remoteCommandExecutor;
 
 	RemotingStateRegistry remotingStateRegistry;
@@ -74,7 +73,6 @@ public class User {
 	public Subscriber getSubscriber() {
 		return subscriber;
 	}
-
 
 	public RemotingStateRegistry getRemotingStateRegistry() {
 		return remotingStateRegistry;

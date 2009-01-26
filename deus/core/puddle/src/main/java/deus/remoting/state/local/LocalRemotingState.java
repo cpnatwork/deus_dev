@@ -1,4 +1,4 @@
-package dacus.remoting.state;
+package deus.remoting.state.local;
 
 import deus.model.user.transportid.TransportIdType;
 import deus.remoting.state.impl.AbstractRemotingState;

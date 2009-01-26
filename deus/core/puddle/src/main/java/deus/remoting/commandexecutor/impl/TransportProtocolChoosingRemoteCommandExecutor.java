@@ -11,7 +11,6 @@ import deus.remoting.state.RemotingStateRegistry;
 import deus.remoting.tpchoosing.TransportProtocolChoosingStrategy;
 
 
-// TODO: javadoc
 /**
  * Since the <code>RemoteCommand</code> is agnostic of the transport protocol used to execute it, a strategy pattern is
  * used to inject a chooser for the transport protocol. Each implementation of <code>RemoteCommandExecutor</code> should

@@ -1,8 +1,5 @@
-package dacus.remoting.setup;
+package deus.remoting.setup.local;
 
-import dacus.core.publisher.impl.LocalPublisherStub;
-import dacus.core.subscriber.impl.LocalSubscriberStub;
-import dacus.remoting.state.LocalRemotingState;
 import deus.core.User;
 import deus.core.publisher.stub.PublisherStub;
 import deus.core.subscriber.stub.SubscriberStub;
@@ -13,6 +10,7 @@ import deus.model.sub.PublisherMetadata;
 import deus.model.user.transportid.TransportIdType;
 import deus.remoting.setup.impl.AbstractRemoteSendingSetup;
 import deus.remoting.state.RemotingState;
+import deus.remoting.state.local.LocalRemotingState;
 
 public class LocalRemoteSendingSetup extends AbstractRemoteSendingSetup {
 

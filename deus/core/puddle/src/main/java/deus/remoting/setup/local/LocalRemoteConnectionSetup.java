@@ -1,10 +1,10 @@
-package dacus.remoting.setup;
+package deus.remoting.setup.local;
 
-import dacus.remoting.state.LocalRemotingState;
 import deus.core.User;
 import deus.model.user.transportid.TransportIdType;
 import deus.remoting.setup.impl.AbstractRemoteConnectionSetup;
 import deus.remoting.state.RemotingState;
+import deus.remoting.state.local.LocalRemotingState;
 
 public class LocalRemoteConnectionSetup extends AbstractRemoteConnectionSetup {
 

@@ -1,4 +1,4 @@
-package dacus.core.publisher.impl;
+package deus.core.publisher.stub.local;
 
 import dacus.model.user.transportid.LocalTransportId;
 import deus.core.publisher.RemoteCalledPublisher;
