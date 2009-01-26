@@ -13,7 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.core.publisher.Publisher;
-import deus.core.publisher.PublisherStub;
+import deus.core.publisher.stub.PublisherStub;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.nsi.xmpp.common.XmppConversation;

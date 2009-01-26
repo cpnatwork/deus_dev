@@ -3,8 +3,8 @@ package deus.nsi.xmpp.setup;
 import org.springframework.stereotype.Component;
 
 import deus.core.User;
-import deus.core.publisher.PublisherStub;
-import deus.core.subscriber.SubscriberStub;
+import deus.core.publisher.stub.PublisherStub;
+import deus.core.subscriber.stub.SubscriberStub;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.ListOfPublishers;

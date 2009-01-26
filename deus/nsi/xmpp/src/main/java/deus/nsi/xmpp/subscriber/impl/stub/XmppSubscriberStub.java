@@ -2,7 +2,7 @@ package deus.nsi.xmpp.subscriber.impl.stub;
 
 import org.jivesoftware.smack.packet.IQ;
 
-import deus.core.subscriber.impl.AbstractSubscriberStub;
+import deus.core.subscriber.stub.impl.AbstractSubscriberStub;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
