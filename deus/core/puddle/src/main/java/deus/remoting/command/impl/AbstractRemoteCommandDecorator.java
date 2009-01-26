@@ -1,9 +1,9 @@
-package deus.remoting.initializerdestroyer.impl;
+package deus.remoting.command.impl;
 
 import deus.model.user.transportid.TransportIdType;
-import deus.remoting.initializerdestroyer.RemoteCommand;
-import deus.remoting.initializerdestroyer.RemoteCommandDecorator;
-import deus.remoting.initializerdestroyer.RemotingStateRegistry;
+import deus.remoting.command.RemoteCommand;
+import deus.remoting.command.RemoteCommandDecorator;
+import deus.remoting.state.RemotingStateRegistry;
 
 abstract class AbstractRemoteCommandDecorator implements RemoteCommandDecorator {
 

@@ -1,11 +1,11 @@
-package deus.remoting.initializerdestroyer.impl;
+package deus.remoting.state.impl;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import deus.model.user.transportid.TransportIdType;
-import deus.remoting.initializerdestroyer.RemotingState;
-import deus.remoting.initializerdestroyer.RemotingStateRegistry;
+import deus.remoting.state.RemotingState;
+import deus.remoting.state.RemotingStateRegistry;
 
 public class RemotingStateRegistryImpl implements RemotingStateRegistry {
 

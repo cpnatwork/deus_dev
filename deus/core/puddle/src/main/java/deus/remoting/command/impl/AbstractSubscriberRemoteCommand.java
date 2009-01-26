@@ -1,11 +1,11 @@
-package deus.remoting.initializerdestroyer.impl;
+package deus.remoting.command.impl;
 
 import deus.core.publisher.PublisherStub;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.transportid.TransportIdType;
-import deus.remoting.initializerdestroyer.RemoteCommand;
-import deus.remoting.initializerdestroyer.RemotingState;
-import deus.remoting.initializerdestroyer.RemotingStateRegistry;
+import deus.remoting.command.RemoteCommand;
+import deus.remoting.state.RemotingState;
+import deus.remoting.state.RemotingStateRegistry;
 
 public abstract class AbstractSubscriberRemoteCommand implements RemoteCommand {
 

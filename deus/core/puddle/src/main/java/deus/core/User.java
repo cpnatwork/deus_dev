@@ -8,8 +8,8 @@ import deus.core.subscriber.Subscriber;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
-import deus.remoting.initializerdestroyer.RemoteCommandExecutor;
-import deus.remoting.initializerdestroyer.RemotingStateRegistry;
+import deus.remoting.command.RemoteCommandExecutor;
+import deus.remoting.state.RemotingStateRegistry;
 
 public class User {
 

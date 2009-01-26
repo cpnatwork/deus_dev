@@ -1,11 +1,11 @@
-package deus.remoting.initializerdestroyer.impl;
+package deus.remoting.state.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import deus.core.publisher.PublisherStub;
 import deus.core.subscriber.SubscriberStub;
-import deus.remoting.initializerdestroyer.RemotingState;
+import deus.remoting.state.RemotingState;
 
 public abstract class AbstractRemotingState implements RemotingState {
 

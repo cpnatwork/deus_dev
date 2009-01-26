@@ -4,10 +4,10 @@ import deus.core.barker.DecisionProcessor;
 import deus.core.publisher.Publisher;
 import deus.core.subscriber.SubscriberStub;
 import deus.model.attention.SubscriberRequest;
-import deus.remoting.initializerdestroyer.RemoteCommand;
-import deus.remoting.initializerdestroyer.RemoteCommandExecutor;
-import deus.remoting.initializerdestroyer.RemotingStateRegistry;
-import deus.remoting.initializerdestroyer.impl.AbstractPublisherRemoteCommand;
+import deus.remoting.command.RemoteCommand;
+import deus.remoting.command.RemoteCommandExecutor;
+import deus.remoting.command.impl.AbstractPublisherRemoteCommand;
+import deus.remoting.state.RemotingStateRegistry;
 
 
 public class SubscriberRequestDecisionProcessor implements DecisionProcessor<SubscriberRequest> {

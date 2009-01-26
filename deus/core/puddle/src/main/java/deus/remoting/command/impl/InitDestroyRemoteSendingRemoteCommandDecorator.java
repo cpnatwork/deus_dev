@@ -1,10 +1,9 @@
-package deus.remoting.initializerdestroyer.impl;
+package deus.remoting.command.impl;
 
 import java.util.Map;
 
 import deus.core.User;
 import deus.model.user.transportid.TransportIdType;
-import deus.remoting.initializerdestroyer.RemoteCommand;
 import deus.remoting.initializerdestroyer.RemoteSendingInitializerDestroyer;
 
 public class InitDestroyRemoteSendingRemoteCommandDecorator extends AbstractRemoteCommandDecorator {

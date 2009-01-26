@@ -1,4 +1,4 @@
-package deus.remoting.initializerdestroyer;
+package deus.remoting.state;
 
 import deus.model.user.transportid.TransportIdType;
 
