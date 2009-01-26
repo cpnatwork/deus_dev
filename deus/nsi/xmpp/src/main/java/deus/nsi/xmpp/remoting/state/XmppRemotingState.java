@@ -1,4 +1,4 @@
-package deus.nsi.xmpp.setup;
+package deus.nsi.xmpp.remoting.state;
 
 import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.common.XmppConversation;

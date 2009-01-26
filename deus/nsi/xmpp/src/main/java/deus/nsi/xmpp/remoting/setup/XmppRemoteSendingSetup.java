@@ -1,4 +1,4 @@
-package deus.nsi.xmpp.setup;
+package deus.nsi.xmpp.remoting.setup;
 
 import org.springframework.stereotype.Component;
 
@@ -11,6 +11,7 @@ import deus.model.sub.ListOfPublishers;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub;
+import deus.nsi.xmpp.remoting.state.XmppRemotingState;
 import deus.nsi.xmpp.subscriber.impl.stub.XmppSubscriberStub;
 import deus.remoting.setup.impl.AbstractRemoteSendingSetup;
 import deus.remoting.state.RemotingState;

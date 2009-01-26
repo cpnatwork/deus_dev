@@ -1,4 +1,4 @@
-package deus.nsi.xmpp.setup;
+package deus.nsi.xmpp.remoting.setup;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,6 +11,7 @@ import deus.nsi.xmpp.common.XmppSkeleton;
 import deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton;
 import deus.nsi.xmpp.publisher.impl.skeleton.packetlistener.SubscribePacketListener;
 import deus.nsi.xmpp.publisher.impl.skeleton.packetlistener.UnsubscribePacketListener;
+import deus.nsi.xmpp.remoting.state.XmppRemotingState;
 import deus.nsi.xmpp.subscriber.impl.skeleton.XmppSubscriberSkeleton;
 import deus.nsi.xmpp.subscriber.impl.skeleton.packetlistener.UpdatePacketListener;
 import deus.remoting.setup.impl.AbstractRemoteConnectionSetup;
