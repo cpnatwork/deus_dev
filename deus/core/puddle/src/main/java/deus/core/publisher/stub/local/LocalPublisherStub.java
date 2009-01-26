@@ -1,10 +1,10 @@
 package deus.core.publisher.stub.local;
 
-import dacus.model.user.transportid.LocalTransportId;
 import deus.core.publisher.RemoteCalledPublisher;
 import deus.core.publisher.stub.impl.AbstractPublisherStub;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
+import deus.model.user.transportid.LocalTransportId;
 import deus.model.user.transportid.TransportIdType;
 
 public class LocalPublisherStub extends AbstractPublisherStub {

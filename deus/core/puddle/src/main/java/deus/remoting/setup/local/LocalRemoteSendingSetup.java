@@ -2,7 +2,9 @@ package deus.remoting.setup.local;
 
 import deus.core.User;
 import deus.core.publisher.stub.PublisherStub;
+import deus.core.publisher.stub.local.LocalPublisherStub;
 import deus.core.subscriber.stub.SubscriberStub;
+import deus.core.subscriber.stub.local.LocalSubscriberStub;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.ListOfPublishers;

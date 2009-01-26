@@ -1,11 +1,11 @@
 package deus.core.subscriber.stub.local;
 
-import dacus.model.user.transportid.LocalTransportId;
 import deus.core.subscriber.RemoteCalledSubscriber;
 import deus.core.subscriber.stub.impl.AbstractSubscriberStub;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
+import deus.model.user.transportid.LocalTransportId;
 import deus.model.user.transportid.TransportIdType;
 
 // TODO: think about if this is needed. If it is nice to have this, remove the dependency of
