@@ -9,27 +9,28 @@ import deus.remoting.state.RemotingStateRegistry;
 
 public class RemotingStateRegistryImpl implements RemotingStateRegistry {
 
-	Map<TransportIdType, RemotingState> remotingStates;
+	private Map<TransportIdType, RemotingState> remotingStates;
+	
+	public RemotingStateRegistryImpl() {
+		remotingStates = new HashMap<TransportIdType, RemotingState>();
+	}
+	
 	
 	/* (non-Javadoc)
 	 * @see deus.remoting.initializerdestroyer.impl.RemotingStateRegistry#hasRemotingState(deus.model.user.transportid.TransportIdType)
 	 */
 	public boolean hasRemotingState(TransportIdType transportIdType) {
-		// TODO: change implementation
-		if(remotingStates == null)
-			remotingStates = new HashMap<TransportIdType, RemotingState>();
 		return remotingStates.containsKey(transportIdType);
 	}
+	
 	
 	/* (non-Javadoc)
 	 * @see deus.remoting.initializerdestroyer.impl.RemotingStateRegistry#addRemotingState(deus.model.user.transportid.TransportIdType, deus.remoting.initializerdestroyer.RemotingState)
 	 */
 	public void addRemotingState(TransportIdType transportIdType, RemotingState remotingState) {
-		// TODO: change implementation
-		if(remotingStates == null)
-			remotingStates = new HashMap<TransportIdType, RemotingState>();
 		remotingStates.put(transportIdType, remotingState);
 	}
+	
 	
 	/* (non-Javadoc)
 	 * @see deus.remoting.initializerdestroyer.impl.RemotingStateRegistry#getRemotingState(deus.model.user.transportid.TransportIdType)
