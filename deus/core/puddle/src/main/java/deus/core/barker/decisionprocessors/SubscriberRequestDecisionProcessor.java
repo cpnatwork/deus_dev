@@ -4,10 +4,8 @@ import deus.core.barker.DecisionProcessor;
 import deus.core.publisher.Publisher;
 import deus.core.subscriber.SubscriberStub;
 import deus.model.attention.decision.SubscriberRequest;
-import deus.remoting.command.RemoteCommand;
 import deus.remoting.command.impl.AbstractPublisherRemoteCommand;
 import deus.remoting.commandexecutor.RemoteCommandExecutor;
-import deus.remoting.state.RemotingStateRegistry;
 
 
 public class SubscriberRequestDecisionProcessor implements DecisionProcessor<SubscriberRequest> {
@@ -38,8 +36,7 @@ public class SubscriberRequestDecisionProcessor implements DecisionProcessor<Sub
 					subscriberStub.acknowledgeSubscription(publisher.getPublisherMetadata());
 				}
 
-			}, null);
-			// FIXME: replace null with a real userId (above)
+			});
 		}
 		else {
 			remoteCommandExecutor.execute(new AbstractPublisherRemoteCommand(subscriberRequest.getSubscriberMetadata()) {
@@ -49,8 +46,7 @@ public class SubscriberRequestDecisionProcessor implements DecisionProcessor<Sub
 					subscriberStub.denySubscription(publisher.getPublisherMetadata());
 				}
 
-			}, null);
-			// FIXME: replace null with a real userId (above)
+			});
 		}
 	}
 

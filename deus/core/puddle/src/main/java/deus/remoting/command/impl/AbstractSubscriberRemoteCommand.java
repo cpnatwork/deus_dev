@@ -18,12 +18,8 @@ public abstract class AbstractSubscriberRemoteCommand implements RemoteCommand {
 
 	@Override
 	public final void execute(RemotingState remotingState) {
-		// search for the right publisher stub
-		for (PublisherStub stub : remotingState.getPublisherStubs())
-			if (stub.getPublisherMetadata().equals(publisherMetadata)) {
-				execute(stub);
-				break;
-			}
+		PublisherStub stub = remotingState.getPublisherStub(publisherMetadata);
+		execute(stub);
 	}
 
 

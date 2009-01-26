@@ -84,8 +84,7 @@ public class PublisherImpl implements Publisher {
 					// subscriberStub.update(getPublisherMetadata(), change);
 				}
 				
-			}, null);
-			// FIXME: replace null with a real userId (above)
+			});
 		}
 	}
 

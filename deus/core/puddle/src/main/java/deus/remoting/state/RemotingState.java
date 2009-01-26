@@ -1,9 +1,9 @@
 package deus.remoting.state;
 
-import java.util.List;
-
 import deus.core.publisher.PublisherStub;
 import deus.core.subscriber.SubscriberStub;
+import deus.model.pub.SubscriberMetadata;
+import deus.model.sub.PublisherMetadata;
 import deus.model.user.transportid.TransportIdType;
 
 /**
@@ -20,24 +20,24 @@ public interface RemotingState {
 	public boolean isRemotingAvailable();
 
 
-	public List<SubscriberStub> getSubscriberStubs();
+	public SubscriberStub getSubscriberStub(SubscriberMetadata subscriberMetadata);
 
 
 	public void addSubscriberStub(SubscriberStub subscriberStub);
 
 
-	public List<PublisherStub> getPublisherStubs();
+	public void clearSubscriberStubList();
+
+
+	public PublisherStub getPublisherStub(PublisherMetadata publisherMetadata);
 
 
 	public void addPublisherStub(PublisherStub publisherStub);
 
 
-	public void clearSubscriberStubList();
-
-
 	public void clearPublisherStubList();
-	
-	
+
+
 	public TransportIdType getType();
-	
+
 }

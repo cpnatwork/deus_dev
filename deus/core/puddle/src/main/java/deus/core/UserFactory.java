@@ -1,5 +1,8 @@
 package deus.core;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.barker.Barker;
@@ -15,15 +18,14 @@ import deus.core.subscriber.Subscriber;
 import deus.core.subscriber.impl.RemoteCalledSubscriberToSubscriberAdapter;
 import deus.core.subscriber.impl.SubscriberBarkerProxy;
 import deus.core.subscriber.impl.SubscriberImpl;
-import deus.model.attention.AttentionList;
 import deus.model.attention.decision.DecisionType;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
-import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserId;
-import deus.remoting.command.executor.impl.RemoteCommandExecutorImpl;
-import deus.remoting.command.impl.SetupRemoteSendingRemoteCommandDecorator;
-import deus.remoting.state.RemotingStateRegistry;
+import deus.model.user.transportid.TransportIdType;
+import deus.remoting.commandexecutor.impl.RemoteSendingSetupRemoteCommandExecutor;
+import deus.remoting.setup.RemoteSendingSetup;
+import deus.remoting.setup.local.LocalRemoteSendingSetup;
 import deus.remoting.state.impl.RemotingStateRegistryImpl;
 import deus.storage.attention.AttentionDao;
 import deus.storage.pub.PubDao;
@@ -55,9 +57,9 @@ public class UserFactory {
 		user.remotingStateRegistry = new RemotingStateRegistryImpl();
 		
 		// REMOTE COMMAND EXECUTOR
-		user.remoteCommandExecutor = new RemoteCommandExecutorImpl(user.remotingStateRegistry);
-			// TODO: think about this cyclic dependency
-		user.remoteCommandExecutor.setRemoteCommandDecorator(new SetupRemoteSendingRemoteCommandDecorator(user));
+		Map<TransportIdType, RemoteSendingSetup> remoteSendingSetups = new HashMap<TransportIdType, RemoteSendingSetup>();
+		remoteSendingSetups.put(TransportIdType.local, new LocalRemoteSendingSetup());
+		user.remoteCommandExecutor = new RemoteSendingSetupRemoteCommandExecutor(user, remoteSendingSetups);
 		
 		
 		// BARKER
