@@ -2,12 +2,13 @@ package deus.remoting.commandexecutor.impl;
 
 
 import deus.core.User;
+import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 import deus.remoting.command.RemoteCommand;
 import deus.remoting.commandexecutor.RemoteCommandExecutor;
-import deus.remoting.commandexecutor.TransportProtocolChoosingStrategy;
 import deus.remoting.state.RemotingState;
 import deus.remoting.state.RemotingStateRegistry;
+import deus.remoting.tpchoosing.TransportProtocolChoosingStrategy;
 
 
 // TODO: javadoc
@@ -32,10 +33,12 @@ public class TransportProtocolChoosingRemoteCommandExecutor implements RemoteCom
 	}
 
 
-	protected final RemotingState getRemotingState() {
-		// which transport protocol to user for executing the remote command?
-		TransportIdType chosenTransportIdType = choosingStrategy.choseTransportIdType(user.getUserMetadata()
-				.getUserId());
+	protected final RemotingState getRemotingState(RemoteCommand remoteCommand) {
+		// sender
+		UserId senderId = user.getUserMetadata().getUserId();
+		UserId receiverId = remoteCommand.getReceiverId();
+		
+		TransportIdType chosenTransportIdType = choosingStrategy.chooseTransportIdType(senderId, receiverId);
 		RemotingStateRegistry remotingStateRegistry = user.getRemotingStateRegistry();
 		RemotingState remotingState = remotingStateRegistry.getRemotingState(chosenTransportIdType);
 
@@ -50,7 +53,7 @@ public class TransportProtocolChoosingRemoteCommandExecutor implements RemoteCom
 
 	@Override
 	public final void execute(RemoteCommand remoteCommand) {
-		RemotingState remotingState = getRemotingState();
+		RemotingState remotingState = getRemotingState(remoteCommand);
 
 		execute(remoteCommand, remotingState);
 	}

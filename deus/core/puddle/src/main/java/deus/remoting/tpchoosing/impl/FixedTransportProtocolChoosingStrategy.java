@@ -1,8 +1,8 @@
-package deus.remoting.commandexecutor.impl;
+package deus.remoting.tpchoosing.impl;
 
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
-import deus.remoting.commandexecutor.TransportProtocolChoosingStrategy;
+import deus.remoting.tpchoosing.TransportProtocolChoosingStrategy;
 
 /**
  * <code>TransportProtocolChoosingStrategy</code> that always returns the transport id type, that was passed to the
@@ -23,7 +23,7 @@ public class FixedTransportProtocolChoosingStrategy implements TransportProtocol
 
 
 	@Override
-	public TransportIdType choseTransportIdType(UserId userId) {
+	public TransportIdType chooseTransportIdType(UserId senderId, UserId receiverId) {
 		return transportIdType;
 	}
 

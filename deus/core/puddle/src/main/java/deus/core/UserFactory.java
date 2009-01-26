@@ -25,7 +25,6 @@ import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 import deus.remoting.commandexecutor.impl.RemoteSendingSetupRemoteCommandExecutor;
 import deus.remoting.setup.RemoteSendingSetup;
-import deus.remoting.setup.local.LocalRemoteSendingSetup;
 import deus.remoting.state.impl.RemotingStateRegistryImpl;
 import deus.storage.attention.AttentionDao;
 import deus.storage.pub.PubDao;
