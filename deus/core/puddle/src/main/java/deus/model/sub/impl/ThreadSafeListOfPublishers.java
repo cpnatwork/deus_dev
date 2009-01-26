@@ -1,7 +1,7 @@
 package deus.model.sub.impl;
 
+import java.util.Iterator;
 import java.util.Map;
-import java.util.Vector;
 
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.PublisherMetadata;
@@ -40,6 +40,12 @@ public class ThreadSafeListOfPublishers implements ListOfPublishers {
 	@Override
 	public void remove(PublisherMetadata publisherMetadata) {
 		publishers.remove(publisherMetadata);
+	}
+
+
+	@Override
+	public Iterator<PublisherMetadata> iterator() {
+		return publishers.keySet().iterator();
 	}
 
 }

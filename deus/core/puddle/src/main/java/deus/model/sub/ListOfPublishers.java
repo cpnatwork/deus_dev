@@ -1,6 +1,6 @@
 package deus.model.sub;
 
-public interface ListOfPublishers {
+public interface ListOfPublishers extends Iterable<PublisherMetadata> {
 
 	public void add(PublisherMetadata publisherMetadata, SubscriptionState subscriptionState);
 

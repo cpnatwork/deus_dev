@@ -2,6 +2,7 @@ package deus.remoting.setup.impl;
 
 import deus.core.User;
 import deus.remoting.setup.RemoteSendingSetup;
+import deus.remoting.state.RemotingState;
 import deus.remoting.state.RemotingStateRegistry;
 
 public abstract class AbstractRemoteSendingSetup implements RemoteSendingSetup {
@@ -15,11 +16,12 @@ public abstract class AbstractRemoteSendingSetup implements RemoteSendingSetup {
 					+ "! There is no remoting state for the user " + user + " and the transport protocol " + getType()
 					+ " registered! Set up remote connection first!");
 
-		checkedSetUp(user);
+		RemotingState remotingState = remotingStateRegistry.getRemotingState(getType());		
+		checkedSetUp(user, remotingState);
 	}
 
 
-	protected abstract void checkedSetUp(User user);
+	protected abstract void checkedSetUp(User user, RemotingState remotingState);
 
 
 	@Override
@@ -31,10 +33,11 @@ public abstract class AbstractRemoteSendingSetup implements RemoteSendingSetup {
 					+ "! There is no remoting state for the user " + user + " and the transport protocol " + getType()
 					+ " registered! Set up remote connection first!");
 
-		checkedTearDown(user);
+		RemotingState remotingState = remotingStateRegistry.getRemotingState(getType());		
+		checkedTearDown(remotingState);
 	}
 
 
-	protected abstract void checkedTearDown(User user);
+	protected abstract void checkedTearDown(RemotingState remotingState);
 
 }
