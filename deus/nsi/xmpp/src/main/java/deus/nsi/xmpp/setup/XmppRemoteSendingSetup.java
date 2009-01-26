@@ -12,7 +12,7 @@ import deus.model.sub.PublisherMetadata;
 import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub;
 import deus.nsi.xmpp.subscriber.impl.stub.XmppSubscriberStub;
-import deus.remoting.initializerdestroyer.RemoteSendingSetup;
+import deus.remoting.setup.RemoteSendingSetup;
 
 @Component
 public class XmppRemoteSendingSetup implements RemoteSendingSetup {

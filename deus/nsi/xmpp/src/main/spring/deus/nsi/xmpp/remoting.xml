@@ -3,8 +3,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="remotingInitializerDestroyer" class="deus.nsi.xmpp.bootstrap.XmppRemotingInitializerDestroyer"/>
+	<bean id="remotingInitializerDestroyer" class="deus.nsi.xmpp.setup.XmppRemoteConnectionSetup"/>
 	
-	<bean id="remoteSendingInitializerDestroyer" class="deus.nsi.xmpp.bootstrap.XmppRemoteSendingInitializerDestroyer"/>
+	<bean id="remoteSendingInitializerDestroyer" class="deus.nsi.xmpp.setup.XmppRemoteSendingSetup"/>
 
 </beans>

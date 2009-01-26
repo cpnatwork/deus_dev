@@ -13,7 +13,7 @@ import deus.nsi.xmpp.publisher.impl.skeleton.packetlistener.SubscribePacketListe
 import deus.nsi.xmpp.publisher.impl.skeleton.packetlistener.UnsubscribePacketListener;
 import deus.nsi.xmpp.subscriber.impl.skeleton.XmppSubscriberSkeleton;
 import deus.nsi.xmpp.subscriber.impl.skeleton.packetlistener.UpdatePacketListener;
-import deus.remoting.initializerdestroyer.RemoteConnectionSetup;
+import deus.remoting.setup.RemoteConnectionSetup;
 import deus.remoting.state.RemotingStateRegistry;
 
 @Component

@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.core.User;
 import deus.model.user.UserMetadata;
+import deus.nsi.xmpp.setup.XmppRemoteConnectionSetup;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/core.xml", "/deus/model/model.xml",
@@ -26,7 +27,7 @@ public class XmppRemotingInitializerDestroyerTest {
 	UserMetadata userMetadata;
 
 	@Autowired
-	XmppRemotingInitializerDestroyer xmppRemotingInitializerDestroyer;
+	XmppRemoteConnectionSetup xmppRemotingInitializerDestroyer;
 
 
 	@Before
