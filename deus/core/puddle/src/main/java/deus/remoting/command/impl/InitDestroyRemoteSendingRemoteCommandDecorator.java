@@ -4,11 +4,11 @@ import java.util.Map;
 
 import deus.core.User;
 import deus.model.user.transportid.TransportIdType;
-import deus.remoting.initializerdestroyer.RemoteSendingInitializerDestroyer;
+import deus.remoting.setup.RemoteSendingSetup;
 
 public class InitDestroyRemoteSendingRemoteCommandDecorator extends AbstractRemoteCommandDecorator {
 
-	private Map<TransportIdType, RemoteSendingInitializerDestroyer> remoteSendingInitializerDestroyers;
+	private Map<TransportIdType, RemoteSendingSetup> remoteSendingInitializerDestroyers;
 
 	private final User user;
 
@@ -19,14 +19,14 @@ public class InitDestroyRemoteSendingRemoteCommandDecorator extends AbstractRemo
 
 	@Override
 	public void beforeExecute(TransportIdType transportIdType) {
-		RemoteSendingInitializerDestroyer initializer = remoteSendingInitializerDestroyers.get(transportIdType);
+		RemoteSendingSetup initializer = remoteSendingInitializerDestroyers.get(transportIdType);
 		initializer.setUp(user);
 	}
 
 
 	@Override
 	public void afterExecute(TransportIdType transportIdType) {
-		RemoteSendingInitializerDestroyer destroyer = remoteSendingInitializerDestroyers.get(transportIdType);
+		RemoteSendingSetup destroyer = remoteSendingInitializerDestroyers.get(transportIdType);
 		destroyer.tearDown(user);
 	}
 

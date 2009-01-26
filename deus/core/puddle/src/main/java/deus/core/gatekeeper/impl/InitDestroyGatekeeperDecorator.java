@@ -5,18 +5,18 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import deus.core.User;
 import deus.core.gatekeeper.Gatekeeper;
-import deus.remoting.initializerdestroyer.RemoteSendingInitializerDestroyer;
-import deus.remoting.initializerdestroyer.RemotingInitializerDestroyer;
+import deus.remoting.setup.RemoteConnectionSetup;
+import deus.remoting.setup.RemoteSendingSetup;
 
 public class InitDestroyGatekeeperDecorator extends AbstractGatekeeperDecorator {
 
 	@Autowired
 	@Qualifier("gatekeeper")
-	private RemotingInitializerDestroyer remotingInitializerDestroyer;
+	private RemoteConnectionSetup remotingInitializerDestroyer;
 
 	@Autowired
 	@Qualifier("gatekeeper")
-	private RemoteSendingInitializerDestroyer remoteSendingInitializerDestroyer;
+	private RemoteSendingSetup remoteSendingInitializerDestroyer;
 
 	
 	public InitDestroyGatekeeperDecorator(Gatekeeper decoratedGatekeeper) {

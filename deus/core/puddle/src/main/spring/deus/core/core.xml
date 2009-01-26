@@ -13,11 +13,11 @@
 	</bean>
 
 
-	<bean id="remotingInitializerDestroyer" class="deus.remoting.initializerdestroyer.impl.DoNothingRemotingInitializerDestroyer">
+	<bean id="remotingInitializerDestroyer" class="deus.remoting.setup.impl.DoNothingRemoteConnectionSetup">
 		<qualifier value="gatekeeper"/>
 	</bean>
 
-	<bean id="remoteSendingInitializerDestroyer" class="deus.remoting.initializerdestroyer.impl.DoNothingRemoteSendingInitializerDestroyer">
+	<bean id="remoteSendingInitializerDestroyer" class="deus.remoting.setup.impl.DoNothingRemoteSendingSetup">
 		<qualifier value="gatekeeper"/>
 	</bean>
 	
