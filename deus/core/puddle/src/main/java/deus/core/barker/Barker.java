@@ -2,7 +2,7 @@ package deus.core.barker;
 
 import deus.model.attention.AttentionElement;
 import deus.model.attention.AttentionList;
-import deus.model.attention.BinaryDecisionToMake;
+import deus.model.attention.decision.BinaryDecisionToMake;
 
 public class Barker {
 

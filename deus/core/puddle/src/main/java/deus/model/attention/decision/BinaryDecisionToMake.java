@@ -1,4 +1,6 @@
-package deus.model.attention;
+package deus.model.attention.decision;
+
+import deus.model.attention.AttentionElement;
 
 public abstract class BinaryDecisionToMake extends AttentionElement {
 

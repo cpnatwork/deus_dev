@@ -3,7 +3,7 @@ package deus.core.barker.decisionprocessors;
 import deus.core.barker.DecisionProcessor;
 import deus.core.publisher.Publisher;
 import deus.core.subscriber.SubscriberStub;
-import deus.model.attention.SubscriberRequest;
+import deus.model.attention.decision.SubscriberRequest;
 import deus.remoting.command.RemoteCommand;
 import deus.remoting.command.RemoteCommandExecutor;
 import deus.remoting.command.impl.AbstractPublisherRemoteCommand;

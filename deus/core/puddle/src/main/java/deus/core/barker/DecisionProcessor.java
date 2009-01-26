@@ -1,6 +1,6 @@
 package deus.core.barker;
 
-import deus.model.attention.BinaryDecisionToMake;
+import deus.model.attention.decision.BinaryDecisionToMake;
 
 public interface DecisionProcessor<DecisionT extends BinaryDecisionToMake> {
 

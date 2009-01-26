@@ -2,10 +2,10 @@ package deus.core.publisher.impl;
 
 import deus.core.barker.Barker;
 import deus.core.publisher.RemoteCalledPublisher;
-import deus.model.attention.BinaryDecisionToMake;
-import deus.model.attention.Notice;
-import deus.model.attention.SubscriberRequest;
-import deus.model.attention.SubscriptionCanceledNotice;
+import deus.model.attention.decision.BinaryDecisionToMake;
+import deus.model.attention.decision.SubscriberRequest;
+import deus.model.attention.notice.Notice;
+import deus.model.attention.notice.SubscriptionCanceledNotice;
 import deus.model.pub.SubscriberMetadata;
 
 public class PublisherBarkerProxy implements RemoteCalledPublisher {

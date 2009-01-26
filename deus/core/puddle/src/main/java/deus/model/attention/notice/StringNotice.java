@@ -1,4 +1,4 @@
-package deus.model.attention;
+package deus.model.attention.notice;
 
 public class StringNotice extends Notice {
 

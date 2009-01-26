@@ -3,8 +3,8 @@ package deus.core.barker.impl;
 import java.util.Map;
 
 import deus.core.barker.DecisionProcessor;
-import deus.model.attention.BinaryDecisionToMake;
-import deus.model.attention.DecisionType;
+import deus.model.attention.decision.BinaryDecisionToMake;
+import deus.model.attention.decision.DecisionType;
 
 public class DelegateDecisionProcessor implements DecisionProcessor<BinaryDecisionToMake> {
 

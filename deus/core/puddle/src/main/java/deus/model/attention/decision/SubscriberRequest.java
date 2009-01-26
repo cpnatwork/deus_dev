@@ -1,4 +1,4 @@
-package deus.model.attention;
+package deus.model.attention.decision;
 
 import deus.model.pub.SubscriberMetadata;
 

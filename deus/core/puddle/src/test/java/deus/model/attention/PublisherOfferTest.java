@@ -7,6 +7,8 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
+import deus.model.attention.decision.BinaryDecisionToMake;
+import deus.model.attention.decision.PublisherOffer;
 import deus.model.sub.PublisherMetadata;
 
 public class PublisherOfferTest {

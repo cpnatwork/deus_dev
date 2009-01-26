@@ -2,9 +2,9 @@ package deus.core.subscriber.impl;
 
 import deus.core.barker.Barker;
 import deus.core.subscriber.RemoteCalledSubscriber;
-import deus.model.attention.SubscriptionDeniedNotice;
-import deus.model.attention.SubscriptionGrantedNotice;
-import deus.model.attention.UpdateNotice;
+import deus.model.attention.notice.SubscriptionDeniedNotice;
+import deus.model.attention.notice.SubscriptionGrantedNotice;
+import deus.model.attention.notice.UpdateNotice;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.sub.PublisherMetadata;
 

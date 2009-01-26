@@ -16,7 +16,7 @@ import deus.core.subscriber.impl.RemoteCalledSubscriberToSubscriberAdapter;
 import deus.core.subscriber.impl.SubscriberBarkerProxy;
 import deus.core.subscriber.impl.SubscriberImpl;
 import deus.model.attention.AttentionList;
-import deus.model.attention.DecisionType;
+import deus.model.attention.decision.DecisionType;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.PublisherMetadata;
