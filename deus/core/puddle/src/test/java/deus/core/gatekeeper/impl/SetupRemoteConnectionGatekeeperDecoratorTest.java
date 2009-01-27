@@ -75,7 +75,7 @@ public class SetupRemoteConnectionGatekeeperDecoratorTest {
 
 		// LOGIN
 		user = gatekeeper.login(credentials);
-		assertEquals(new UserUrl("username", "deus.org"), user.getUserId());
+		assertEquals(new UserUrl("alice", "deus.org"), user.getUserId());
 		assertTrue(userRegistry.hasUser(user.getUserId()));
 		assertTrue(user.isLoggedIn());
 		
