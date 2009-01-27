@@ -1,5 +1,6 @@
 package deus.model.attention.decision;
 
+import deus.model.attention.AttentionElementType;
 import deus.model.user.UserMetadata;
 
 public class PublisherOffer extends ConnectionDecisionToMake {
@@ -12,7 +13,7 @@ public class PublisherOffer extends ConnectionDecisionToMake {
 	}
 
 
-	public UserMetadata getPublisher() {
+	public UserMetadata getPublisherMetadata() {
 		return publisherMetadata;
 	}
 
@@ -20,6 +21,13 @@ public class PublisherOffer extends ConnectionDecisionToMake {
 	@Override
 	public DecisionType getType() {
 		return DecisionType.publisherOffer;
+	}
+
+
+	@Override
+	public String getCatchphare() {
+		//I18N
+		return "Your Contact "+getPublisherMetadata().getFullName()+" offers subscription";
 	}
 
 }

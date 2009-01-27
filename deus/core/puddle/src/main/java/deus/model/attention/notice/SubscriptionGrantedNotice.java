@@ -8,5 +8,11 @@ public class SubscriptionGrantedNotice extends PublisherSentNotice {
 		super(publisherMetadata);
 	}
 
+	@Override
+	public String getCatchphare() {
+		//I18N
+		return "Your subscription request to "+getPublisherMetadata().getFullName()+" has been granted";
+	}
+
 
 }

@@ -8,4 +8,10 @@ public class SubscriptionDeniedNotice extends PublisherSentNotice {
 		super(publiserMetadata);
 	}
 
+	@Override
+	public String getCatchphare() {
+		//I18N
+		return "Your subscription request to "+getPublisherMetadata().getFullName()+" has been denied";
+	}
+
 }

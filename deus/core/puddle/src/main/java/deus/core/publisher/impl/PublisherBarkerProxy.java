@@ -5,7 +5,7 @@ import deus.core.publisher.RemoteCalledPublisher;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.model.attention.notice.Notice;
-import deus.model.attention.notice.SubscriptionCanceledNotice;
+import deus.model.attention.notice.SubscribedProfileDeletedNotice;
 import deus.model.user.UserMetadata;
 
 public class PublisherBarkerProxy implements RemoteCalledPublisher {
@@ -34,7 +34,7 @@ public class PublisherBarkerProxy implements RemoteCalledPublisher {
 		proxiedPublisher.deleteObserver(subscriberMetadata);
 
 		// PLACE NOTICE
-		Notice notice = new SubscriptionCanceledNotice(subscriberMetadata);
+		Notice notice = new SubscribedProfileDeletedNotice(subscriberMetadata);
 		barker.addUnnoticedAttentionElement(notice);
 	}
 

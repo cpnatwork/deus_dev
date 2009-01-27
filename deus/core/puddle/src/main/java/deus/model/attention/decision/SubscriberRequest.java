@@ -23,4 +23,11 @@ public class SubscriberRequest extends ConnectionDecisionToMake {
 	}
 
 
+	@Override
+	public String getCatchphare() {
+		//I18N
+		return "Your Contact "+getSubscriberMetadata().getFullName()+" requests subscription";
+	}
+
+
 }

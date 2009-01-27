@@ -25,5 +25,8 @@ public abstract class AttentionElement {
 	public final void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
+	
+	public abstract AttentionElementType getAttentionElementType();
+	public abstract String getCatchphare();
 
 }

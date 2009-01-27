@@ -16,5 +16,10 @@ public class UpdateNotice extends Notice {
 	public UserMetadata getPublisherMetadata() {
 		return publisherMetadata;
 	}
+
+	public String getCatchphare() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

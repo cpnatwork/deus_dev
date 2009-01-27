@@ -1,5 +1,6 @@
 package deus.model.attention.notice;
 
+
 public class StringNotice extends Notice {
 
 	private final String notice;
@@ -10,6 +11,11 @@ public class StringNotice extends Notice {
 
 	public String getNotice() {
 		return notice;
+	}
+
+	public String getCatchphare() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

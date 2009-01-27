@@ -2,7 +2,7 @@ package deus.model.attention.notice;
 
 import deus.model.user.UserMetadata;
 
-public class SubscriberSentNotice extends ConnectionNotice {
+public abstract class SubscriberSentNotice extends ConnectionNotice {
 
 	private final UserMetadata subscriberMetadata;
 
@@ -15,4 +15,5 @@ public class SubscriberSentNotice extends ConnectionNotice {
 	public UserMetadata getSubscriberMetadata() {
 		return subscriberMetadata;
 	}
+
 }

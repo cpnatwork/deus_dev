@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import deus.core.User;
 import deus.core.gatekeeper.Gatekeeper;
 import deus.core.gatekeeper.soul.LoginCredentials;
-import deus.model.attention.notice.SubscriptionCanceledNotice;
+import deus.model.attention.notice.SubscribedProfileDeletedNotice;
 import deus.model.sub.SubscriptionState;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -48,7 +48,7 @@ public class UnsubscribeTest extends AbstractUseCaseTest {
 		
 		testAttentionList(bob, 0, 0);
 		testAttentionList(alice, 1, 0);
-		SubscriptionCanceledNotice notice = (SubscriptionCanceledNotice)alice.getBarker().getUnnoticedAttentionList().get(0);
+		SubscribedProfileDeletedNotice notice = (SubscribedProfileDeletedNotice)alice.getBarker().getUnnoticedAttentionList().get(0);
 		testDateNow(notice.getCreationDate());
 		assertEquals(bob.getUserMetadata(), notice.getSubscriberMetadata());
 		
