@@ -5,9 +5,7 @@ import deus.core.subscriber.Subscriber;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.sub.ListOfPublishers;
-import deus.model.sub.SubscriptionState;
 import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
 
 /**
  * Delegates all methods of <code>RemoteCalledSubscriber</code> to a delegate of type
@@ -53,11 +51,6 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 
 	// +++ METHODS OF SUBSCRIBER ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-	@Override
-	public void addPublisher(UserMetadata publisherMetadata, SubscriptionState subscriptionState) {
-		subscriber.addPublisher(publisherMetadata, subscriptionState);
-	}
-
 
 	@Override
 	public DistributedInformationFolder getDistributedInformationFolder() {
@@ -72,14 +65,14 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 
 
 	@Override
-	public void removePublisher(UserMetadata publisherMetadata) {
-		subscriber.removePublisher(publisherMetadata);
+	public void subscribe(UserMetadata publisherMetadata) {
+		subscriber.subscribe(publisherMetadata);
 	}
 
 
 	@Override
-	public void subscribe(UserId publisherId) {
-		subscriber.subscribe(publisherId);
+	public void unsubscribe(UserMetadata publisherMetadata) {
+		subscriber.unsubscribe(publisherMetadata);
 	}
 
 
@@ -87,5 +80,6 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 	public ListOfPublishers getListOfPublishers() {
 		return subscriber.getListOfPublishers();
 	}
+
 
 }

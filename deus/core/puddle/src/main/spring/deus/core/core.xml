@@ -14,11 +14,34 @@
 		<constructor-arg ref="gatekeeperTarget" />
 	</bean>
 	
-	<util:map id="remoteConnectionSetups">
-		<entry>
-			<key><util:constant static-field="deus.model.user.transportid.TransportIdType.local"/></key>
-			<bean class="deus.remoting.setup.local.LocalRemoteConnectionSetup" />
-		</entry>
-	</util:map>
+	<bean id="multiRemoteConnectionSetup" class="deus.remoting.setup.impl.MultiRemoteConnectionSetupImpl">
+		<constructor-arg>
+			<util:map>
+				<entry>
+					<key><util:constant static-field="deus.model.user.transportid.TransportIdType.local"/></key>
+					<bean class="deus.remoting.setup.local.LocalRemoteConnectionSetup" />
+				</entry>
+			</util:map>
+		</constructor-arg>
+	</bean>
+
+
+	<bean id="transportProtocolChoosingStrategy" class="deus.remoting.tpchoosing.impl.FixedTransportProtocolChoosingStrategy">
+		<constructor-arg>
+			<util:constant static-field="deus.model.user.transportid.TransportIdType.local"/>
+		</constructor-arg>
+	</bean>
+	
+	
+	<bean id="multiRemoteSendingSetup" class="deus.remoting.setup.impl.MultiRemoteSendingSetupImpl">
+		<constructor-arg>
+			<util:map>
+				<entry>
+					<key><util:constant static-field="deus.model.user.transportid.TransportIdType.local"/></key>
+					<bean class="deus.remoting.setup.local.LocalRemoteSendingSetup" />
+				</entry>
+			</util:map>		
+		</constructor-arg>
+	</bean>
 
 </beans>

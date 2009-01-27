@@ -20,14 +20,11 @@ import deus.model.attention.decision.DecisionType;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;
-import deus.model.user.transportid.TransportIdType;
 import deus.remoting.commandexecutor.RemoteCommandExecutor;
 import deus.remoting.commandexecutor.impl.TransportProtocolChoosingRemoteCommandExecutor;
-import deus.remoting.setup.impl.MultipleTransportProtocolsRemoteSendingSetupImpl;
-import deus.remoting.setup.local.LocalRemoteSendingSetup;
+import deus.remoting.setup.MultiRemoteSendingSetup;
 import deus.remoting.state.impl.RemotingStateRegistryImpl;
 import deus.remoting.tpchoosing.TransportProtocolChoosingStrategy;
-import deus.remoting.tpchoosing.impl.FixedTransportProtocolChoosingStrategy;
 import deus.storage.attention.AttentionDao;
 import deus.storage.pub.PubDao;
 import deus.storage.sub.SubDao;
@@ -36,6 +33,12 @@ import deus.storage.user.UserMetadataDao;
 @Component
 public class UserFactory {
 
+	@Autowired
+	private TransportProtocolChoosingStrategy transportProtocolChoosingStrategy;
+	
+	@Autowired
+	MultiRemoteSendingSetup multiRemoteSendingSetup;
+	
 	@Autowired
 	private AttentionDao attentionDao;
 
@@ -59,12 +62,11 @@ public class UserFactory {
 		user.remotingStateRegistry = new RemotingStateRegistryImpl();
 
 		// REMOTE COMMAND EXECUTOR
-		TransportProtocolChoosingStrategy transportProtocolChoosingStrategy = new FixedTransportProtocolChoosingStrategy(
-				TransportIdType.local);
-		MultipleTransportProtocolsRemoteSendingSetupImpl remoteSendingSetup = new MultipleTransportProtocolsRemoteSendingSetupImpl();
-		remoteSendingSetup.registerRemoteSendingSetup(new LocalRemoteSendingSetup());
+		///MultiRemoteSendingSetupImpl remoteSendingSetup = new MultiRemoteSendingSetupImpl();
+		///remoteSendingSetup.registerRemoteSendingSetup(new LocalRemoteSendingSetup());
+		
 		RemoteCommandExecutor commandExecutor = new TransportProtocolChoosingRemoteCommandExecutor(
-				userId, user.remotingStateRegistry, transportProtocolChoosingStrategy, remoteSendingSetup);
+				userId, user.remotingStateRegistry, transportProtocolChoosingStrategy, multiRemoteSendingSetup);
 		user.remoteCommandExecutor = commandExecutor;
 
 
@@ -72,13 +74,6 @@ public class UserFactory {
 		user.barker = new Barker();
 		user.barker.setUnnoticedAttentionList(attentionDao.getUnnoticedAttentionList(userId));
 		user.barker.setNoticedAttentionList(attentionDao.getUnnoticedAttentionList(userId));
-
-		// DECISSION PROCESSORS
-		DelegateDecisionProcessor decisionProcessor = new DelegateDecisionProcessor();
-		user.barker.setDecisionProcessor(decisionProcessor);
-
-		SubscriberRequestDecisionProcessor sr = new SubscriberRequestDecisionProcessor(user.publisher, commandExecutor);
-		decisionProcessor.addDecisionProcessor(sr, DecisionType.subscriberRequest);
 
 		// PUBLISHER
 		ListOfSubscribers los = pubDao.getListOfSubscribers(userId);
@@ -88,6 +83,15 @@ public class UserFactory {
 		Publisher publisher = new RemoteCalledPublisherToPublisherAdapter(publisherBarkerProxy, publisherImpl);
 		user.publisher = publisher;
 
+
+		// DECISION PROCESSORS
+		DelegateDecisionProcessor decisionProcessor = new DelegateDecisionProcessor();
+		user.barker.setDecisionProcessor(decisionProcessor);
+
+		// don't use user.publisher here, since this one is proxied!
+		SubscriberRequestDecisionProcessor sr = new SubscriberRequestDecisionProcessor(publisherImpl, commandExecutor);
+		decisionProcessor.addDecisionProcessor(sr, DecisionType.subscriberRequest);
+		
 
 		// SUBSCRIBER
 		ListOfPublishers lop = subDao.getListOfPublishers(userId);

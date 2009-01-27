@@ -22,8 +22,7 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 	 * Returns a UserMetadata object which is filled by parsing the package 'from' element and the package property with
 	 * the name, that is set by the method <code>setXmppPropertyFullName</code>.
 	 * 
-	 * @param packet
-	 *            the packet, from which to parse the 'from' data
+	 * @param packet the packet, from which to parse the 'from' data
 	 * @return
 	 */
 	protected UserMetadata parseFromUserMetadata(Packet packet) {
@@ -32,14 +31,13 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 		if (from == null)
 			throw new RuntimeException("'from' field is null at this presence packet: " + packet);
 
-		XmppTransportId subscriberXmppId = new XmppTransportId();
-		subscriberXmppId.setXmppServer(StringUtils.parseServer(from));
-		subscriberXmppId.setXmppUsername(StringUtils.parseName(from));
+		XmppTransportId subscriberXmppId = new XmppTransportId(StringUtils.parseServer(from), StringUtils
+				.parseName(from));
 
 		// TODO: think about parsing UserUrl vs. UserXri, ... (also add other transportIds!!!)
 		UserId userId = new UserUrl();
 		userId.addTransportId(subscriberXmppId);
-		
+
 		userMetadata.setUserId(userId);
 
 		Object fullName = packet.getProperty(xmppConfiguration.getXmppPropertyFullName());
@@ -47,7 +45,7 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 			throw new RuntimeException("property '" + xmppConfiguration.getXmppPropertyFullName()
 					+ "' is null at this presence packet: " + packet);
 		userMetadata.setFullName(fullName.toString());
-		
+
 		return userMetadata;
 	}
 

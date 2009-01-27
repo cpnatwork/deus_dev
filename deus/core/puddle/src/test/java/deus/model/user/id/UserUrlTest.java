@@ -23,9 +23,7 @@ public class UserUrlTest {
 		userUrl.setUsername("username");
 		userUrl.setServerBaseUrl("server.base.path");
 		
-		xmppTransportId = new XmppTransportId();
-		xmppTransportId.setXmppServer("xmppserver");
-		xmppTransportId.setXmppUsername("xmppUsername");
+		xmppTransportId = new XmppTransportId("xmppUsername", "xmppserver");
 		userUrl.addTransportId(xmppTransportId);
 	}
 	

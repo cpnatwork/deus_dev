@@ -1,21 +1,11 @@
 package deus.model.sub;
 
+import java.util.Map;
+
 import deus.model.user.UserMetadata;
 
-public interface ListOfPublishers extends Iterable<UserMetadata> {
-
-	public void add(UserMetadata publisherMetadata, SubscriptionState subscriptionState);
-
-
-	public void remove(UserMetadata publisherMetadata);
-
-
-	public boolean contains(UserMetadata publisherMetadata);
-
+public interface ListOfPublishers extends Map<UserMetadata, SubscriptionState> {
 
 	public void changeState(UserMetadata publisherMetadata, SubscriptionState subscriptionState);
-	
-	
-	public int size();
 
 }

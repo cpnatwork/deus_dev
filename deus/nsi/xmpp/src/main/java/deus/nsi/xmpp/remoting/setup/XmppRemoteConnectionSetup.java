@@ -76,8 +76,6 @@ public class XmppRemoteConnectionSetup extends AbstractRemoteConnectionSetup {
 	protected void checkedTearDown(RemotingState remotingState) {
 		XmppRemotingState xmppRemotingState = (XmppRemotingState)remotingState;
 		
-		xmppRemotingState.getXmppConversation().end();
-		
 		XmppSkeleton publisherSkeleton = xmppRemotingState.getXmppPublisherSkeleton();
 		publisherSkeleton.disconnect();
 		xmppRemotingState.removeXmppPublisherSkeleton();
@@ -85,6 +83,9 @@ public class XmppRemoteConnectionSetup extends AbstractRemoteConnectionSetup {
 		XmppSkeleton subscriberSkeleton = xmppRemotingState.getXmppSubscriberSkeleton();
 		subscriberSkeleton.disconnect();
 		xmppRemotingState.removeXmppSubscriberSkeleton();
+		
+		// TODO: think whether packages can be lost between removing packet listeners and this call for end()
+		xmppRemotingState.getXmppConversation().end();
 	}
 
 

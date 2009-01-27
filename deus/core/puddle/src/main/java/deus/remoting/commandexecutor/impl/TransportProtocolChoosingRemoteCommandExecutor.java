@@ -5,7 +5,7 @@ import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 import deus.remoting.command.RemoteCommand;
 import deus.remoting.commandexecutor.RemoteCommandExecutor;
-import deus.remoting.setup.MultipleTransportProtocolsRemoteSendingSetup;
+import deus.remoting.setup.MultiRemoteSendingSetup;
 import deus.remoting.state.RemotingState;
 import deus.remoting.state.RemotingStateRegistry;
 import deus.remoting.tpchoosing.TransportProtocolChoosingStrategy;
@@ -28,12 +28,12 @@ public class TransportProtocolChoosingRemoteCommandExecutor implements RemoteCom
 	private final RemotingStateRegistry remotingStateRegistry;
 
 	private final TransportProtocolChoosingStrategy choosingStrategy;
-	private final MultipleTransportProtocolsRemoteSendingSetup remoteSendingSetup;
+	private final MultiRemoteSendingSetup remoteSendingSetup;
 
 
 	public TransportProtocolChoosingRemoteCommandExecutor(UserId userId, RemotingStateRegistry remotingStateRegistry,
 			TransportProtocolChoosingStrategy choosingStrategy,
-			MultipleTransportProtocolsRemoteSendingSetup remoteSendingSetup) {
+			MultiRemoteSendingSetup remoteSendingSetup) {
 		super();
 		this.senderId = userId;
 		this.remotingStateRegistry = remotingStateRegistry;

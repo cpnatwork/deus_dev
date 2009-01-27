@@ -50,7 +50,7 @@
 	</bean>
 
 
-	<bean id="publisherMetadata" class="deus.model.sub.PublisherMetadata">
+	<bean id="publisherMetadata" class="deus.model.user.UserMetadata">
 		<property name="userId" ref="publisherUserId"/>
 		<property name="fullName" value="Alice" />
 	</bean>
@@ -73,7 +73,7 @@
 		</property>
 	</bean>
 
-	<bean id="subscriberMetadata" class="deus.model.pub.SubscriberMetadata">
+	<bean id="subscriberMetadata" class="deus.model.user.UserMetadata">
 		<property name="userId" ref="subscriberUserId"/>
 		<property name="fullName" value="Bob" />
 	</bean>

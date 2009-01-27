@@ -1,5 +1,7 @@
 package deus.core.barker;
 
+import java.util.Date;
+
 import deus.core.barker.decisionprocessors.DecisionProcessor;
 import deus.model.attention.AttentionElement;
 import deus.model.attention.AttentionList;
@@ -15,6 +17,8 @@ public class Barker {
 
 	public void addUnnoticedAttentionElement(AttentionElement attentionElement) {
 		unnoticedAttentionList.add(attentionElement);
+		// set creation date
+		attentionElement.setCreationDate(new Date());
 	}
 
 
@@ -24,12 +28,13 @@ public class Barker {
 		noticedAttentionList.add(attentionElement);
 	}
 
-	
+
 	public void processDecision(BinaryDecisionToMake decision) {
+		noticeAttentionElement(decision);
 		decisionProcessor.process(decision);
 	}
-	
-	
+
+
 	private void assertIsNoticed(AttentionElement attentionElement) {
 		if (!isNoticed(attentionElement))
 			throw new IllegalStateException("attention element (" + attentionElement
@@ -47,14 +52,12 @@ public class Barker {
 			throw new IllegalStateException("attention element (" + attentionElement
 					+ " is not in 'unprocessed' attention list!");
 	}
-	
+
 
 	public boolean isUnnoticed(AttentionElement attentionElement) {
 		return unnoticedAttentionList.contains(attentionElement);
 	}
 
-	
-	
 
 	public AttentionList getUnnoticedAttentionList() {
 		return unnoticedAttentionList;
@@ -79,8 +82,6 @@ public class Barker {
 	public void setDecisionProcessor(DecisionProcessor<BinaryDecisionToMake> decisionProcessor) {
 		this.decisionProcessor = decisionProcessor;
 	}
-
-
 
 
 	// TODO: operations

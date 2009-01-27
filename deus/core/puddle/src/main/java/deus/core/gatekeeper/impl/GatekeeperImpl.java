@@ -37,7 +37,12 @@ public class GatekeeperImpl implements Gatekeeper {
 			throw new IllegalStateException("cannot logout user, he is not logged in!");
 		user.setLoggedIn(false);
 		
+		if(!userRegistry.hasUser(user.getUserId()))
+			throw new IllegalStateException("cannot unregister user, he was not registered!");
+
+			
 		userRegistry.unregisterUser(user.getUserId());
+		
 		
 		// TODO: do more logout stuff, that is necessary
 	}

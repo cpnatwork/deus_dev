@@ -5,6 +5,9 @@ public class LocalTransportId implements TransportId {
 
 	private String username;
 
+	public LocalTransportId() {
+		
+	}
 
 	public LocalTransportId(String username) {
 		super();

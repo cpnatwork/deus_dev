@@ -27,6 +27,10 @@ public abstract class AbstractGatekeeperDecorator implements Gatekeeper {
 
 	@Override
 	public final void logout(User user) {
+		// do check here too, to fail early, if user is not logged in
+		if(!user.isLoggedIn())
+			throw new IllegalStateException("cannot logout user, he is not logged in!");
+		
 		doBeforeLogout(user);
 
 		decoratedGatekeeper.logout(user);

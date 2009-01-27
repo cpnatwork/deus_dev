@@ -1,29 +1,23 @@
 package deus.remoting.setup.impl;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 import deus.remoting.command.Subsystem;
-import deus.remoting.setup.MultipleTransportProtocolsRemoteSendingSetup;
+import deus.remoting.setup.MultiRemoteSendingSetup;
 import deus.remoting.setup.RemoteSendingSetup;
 import deus.remoting.state.RemotingState;
 import deus.remoting.state.RemotingStateRegistry;
 
-public class MultipleTransportProtocolsRemoteSendingSetupImpl implements MultipleTransportProtocolsRemoteSendingSetup {
+public class MultiRemoteSendingSetupImpl implements MultiRemoteSendingSetup {
 
 	private final Map<TransportIdType, RemoteSendingSetup> remoteSendingSetups;
 
 
-	public MultipleTransportProtocolsRemoteSendingSetupImpl() {
+	public MultiRemoteSendingSetupImpl(Map<TransportIdType, RemoteSendingSetup> remoteSendingSetups) {
 		super();
-		this.remoteSendingSetups = new HashMap<TransportIdType, RemoteSendingSetup>();
-	}
-
-
-	public void registerRemoteSendingSetup(RemoteSendingSetup remoteSendingSetup) {
-		remoteSendingSetups.put(remoteSendingSetup.getType(), remoteSendingSetup);
+		this.remoteSendingSetups = remoteSendingSetups;
 	}
 
 

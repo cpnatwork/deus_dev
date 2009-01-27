@@ -28,13 +28,16 @@ public class PublisherImpl implements Publisher {
 	public synchronized void addObserver(UserMetadata subscriberMetadata) {
 		if (subscriberMetadata == null)
 			throw new NullPointerException();
-		if (!listOfSubscribers.contains(subscriberMetadata)) {
+		if (!listOfSubscribers.contains(subscriberMetadata))
 			listOfSubscribers.add(subscriberMetadata);
-		}
+		else
+			throw new IllegalArgumentException("cannot add subscriber, it has already been added!");
 	}
 
 
 	public synchronized void deleteObserver(UserMetadata subscriberMetadata) {
+		if(!listOfSubscribers.contains(subscriberMetadata))
+			throw new IllegalArgumentException("cannot remove subscriber, that has not been added yet!");
 		listOfSubscribers.remove(subscriberMetadata);
 	}
 

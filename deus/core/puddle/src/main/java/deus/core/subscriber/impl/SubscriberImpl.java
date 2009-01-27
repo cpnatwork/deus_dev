@@ -7,7 +7,6 @@ import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.SubscriptionState;
 import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
 import deus.remoting.command.impl.AbstractSubscriberRemoteCommand;
 import deus.remoting.commandexecutor.RemoteCommandExecutor;
 
@@ -42,18 +41,6 @@ public class SubscriberImpl implements Subscriber {
 	}
 
 
-	@Override
-	public void addPublisher(UserMetadata publisherMetadata, SubscriptionState subscriptionState) {
-		listOfPublishers.add(publisherMetadata, subscriptionState);
-	}
-
-
-	@Override
-	public void removePublisher(UserMetadata publisherMetadata) {
-		listOfPublishers.remove(publisherMetadata);
-	}
-
-
 	public ListOfPublishers getListOfPublishers() {
 		return listOfPublishers;
 	}
@@ -61,10 +48,10 @@ public class SubscriberImpl implements Subscriber {
 
 	@Override
 	public void update(UserMetadata publisherMetadata, ForeignInformationFile fif) {
-		if (!listOfPublishers.contains(publisherMetadata))
+		if (!listOfPublishers.containsKey(publisherMetadata))
 			// FIXME: how to handle this??
 			;
-		// FIXME: how to do object change
+		// FIXME: how to do object change (append, update, ...)
 	}
 
 
@@ -76,17 +63,41 @@ public class SubscriberImpl implements Subscriber {
 
 	@Override
 	public void denySubscription(UserMetadata publisherMetadata) {
-		// TODO: what to do here?
+		listOfPublishers.remove(publisherMetadata);
 	}
 
 
 	@Override
-	public void subscribe(UserId publisherId) {
-		remoteCommandExecutor.execute(new AbstractSubscriberRemoteCommand(publisherId) {
+	public void subscribe(UserMetadata publisherMetadata) {
+		if (listOfPublishers.containsKey(publisherMetadata))
+			throw new IllegalArgumentException("cannot subscribe to publisher (" + publisherMetadata + ") again!");
+
+		listOfPublishers.put(publisherMetadata, SubscriptionState.requested);
+
+		remoteCommandExecutor.execute(new AbstractSubscriberRemoteCommand(publisherMetadata.getUserId()) {
 
 			@Override
 			public void execute(PublisherStub publisherStub) {
 				publisherStub.addObserver(getSubscriberMetadata());
+			}
+
+		});
+	}
+
+
+	@Override
+	public void unsubscribe(UserMetadata publisherMetadata) {
+		if (!listOfPublishers.containsKey(publisherMetadata))
+			throw new IllegalArgumentException("cannot unsubscribe from publisher (" + publisherMetadata
+					+ "), that has not been added yet!");
+
+		listOfPublishers.remove(publisherMetadata);
+
+		remoteCommandExecutor.execute(new AbstractSubscriberRemoteCommand(publisherMetadata.getUserId()) {
+
+			@Override
+			public void execute(PublisherStub publisherStub) {
+				publisherStub.deleteObserver(getSubscriberMetadata());
 			}
 
 		});

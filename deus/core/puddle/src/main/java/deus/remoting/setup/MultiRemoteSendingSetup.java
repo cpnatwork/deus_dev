@@ -7,7 +7,7 @@ import deus.remoting.state.RemotingState;
 import deus.remoting.state.RemotingStateRegistry;
 
 
-public interface MultipleTransportProtocolsRemoteSendingSetup {
+public interface MultiRemoteSendingSetup {
 
 	public abstract RemotingState setUpSending(RemotingStateRegistry remotingStateRegistry, TransportIdType type,
 			UserId receiverId, Subsystem receiverSubsystem);

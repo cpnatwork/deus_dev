@@ -38,6 +38,7 @@ public abstract class AbstractUserId implements UserId {
 	public <T extends TransportId> T getTransportId(Class<T> transportIdClass) {
 		TransportIdType type;
 		try {
+			// transportIdClass.getConstructor(String.class, String.class)
 			TransportId transportId = transportIdClass.newInstance();
 			Method getTypeMethod = transportIdClass.getMethod("getType", new Class[0]);
 			type = (TransportIdType) getTypeMethod.invoke(transportId);

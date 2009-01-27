@@ -60,7 +60,8 @@ public class XmppConversationImpl implements XmppConversation {
 
 	private void assertIsConnected() throws IllegalStateException {
 		if (!isConnected())
-			throw new IllegalStateException("Not connected to XMPP server " + userMetadata.getUserId() + " yet!");
+			throw new IllegalStateException("Not connected to XMPP account "
+					+ userMetadata.getUserId().getTransportId(XmppTransportId.class) + " yet!");
 	}
 
 

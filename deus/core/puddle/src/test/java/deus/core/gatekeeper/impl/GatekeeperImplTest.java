@@ -34,7 +34,7 @@ public class GatekeeperImplTest {
 
 	@Test
 	public void testLoginLogout() {
-		LoginCredentials credentials = new LoginCredentials();
+		LoginCredentials credentials = new LoginCredentials("alice", "password");
 
 		// LOGIN
 		user = gatekeeper.login(credentials);

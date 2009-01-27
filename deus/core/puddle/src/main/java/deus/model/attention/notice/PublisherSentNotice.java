@@ -4,16 +4,16 @@ import deus.model.user.UserMetadata;
 
 public abstract class PublisherSentNotice extends ConnectionNotice {
 
-	private final UserMetadata publiserMetadata;
+	private final UserMetadata publisherMetadata;
 
 
-	public PublisherSentNotice(UserMetadata publiserMetadata) {
+	public PublisherSentNotice(UserMetadata publisherMetadata) {
 		super();
-		this.publiserMetadata = publiserMetadata;
+		this.publisherMetadata = publisherMetadata;
 	}
 
 
-	public UserMetadata getPubliserMetadata() {
-		return publiserMetadata;
+	public UserMetadata getPublisherMetadata() {
+		return publisherMetadata;
 	}
 }

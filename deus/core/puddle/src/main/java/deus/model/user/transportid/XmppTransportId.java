@@ -5,6 +5,15 @@ public class XmppTransportId implements TransportId {
 	private String xmppUsername;
 	private String xmppServer;
 
+	public XmppTransportId() {
+	}
+
+	public XmppTransportId(String xmppUsername, String xmppServer) {
+		super();
+		this.xmppUsername = xmppUsername;
+		this.xmppServer = xmppServer;
+	}
+
 
 	@Override
 	public TransportIdType getType() {

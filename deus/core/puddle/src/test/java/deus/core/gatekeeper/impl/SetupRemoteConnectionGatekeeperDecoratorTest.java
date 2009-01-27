@@ -48,7 +48,7 @@ public class SetupRemoteConnectionGatekeeperDecoratorTest {
 
 	@Test
 	public void testLogin() {
-		LoginCredentials credentials = new LoginCredentials();
+		LoginCredentials credentials = new LoginCredentials("alice", "password");
 		user = gatekeeper.login(credentials);
 		
 		RemotingStateRegistry registry = user.getRemotingStateRegistry();
@@ -71,7 +71,7 @@ public class SetupRemoteConnectionGatekeeperDecoratorTest {
 
 	@Test
 	public void testLoginLogout() {
-		LoginCredentials credentials = new LoginCredentials();
+		LoginCredentials credentials = new LoginCredentials("alice", "password");
 
 		// LOGIN
 		user = gatekeeper.login(credentials);
