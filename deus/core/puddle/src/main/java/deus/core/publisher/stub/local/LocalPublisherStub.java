@@ -1,5 +1,8 @@
 package deus.core.publisher.stub.local;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+
 import deus.core.User;
 import deus.core.UserRegistry;
 import deus.core.publisher.RemoteCalledPublisher;
@@ -8,8 +11,10 @@ import deus.model.pub.SubscriberMetadata;
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 
+@Configurable
 public class LocalPublisherStub extends AbstractPublisherStub {
 
+	@Autowired
 	private UserRegistry userRegistry;
 
 	public LocalPublisherStub(UserId publisherId) {

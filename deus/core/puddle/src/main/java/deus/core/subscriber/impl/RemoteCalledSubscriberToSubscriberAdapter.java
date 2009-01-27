@@ -11,9 +11,9 @@ import deus.model.sub.SubscriptionState;
 import deus.model.user.id.UserId;
 
 /**
- * Delegates all methods of <code>RemoteCalledSubscriber</code> to a delegate of type <code>RemoteCalledSubscriber</code>,
- * the rest of the methods of <code>Subscriber</code> are delegated to the second delegate, which is of type
- * <code>Subscriber</code>.
+ * Delegates all methods of <code>RemoteCalledSubscriber</code> to a delegate of type
+ * <code>RemoteCalledSubscriber</code>, the rest of the methods of <code>Subscriber</code> are delegated to the second
+ * delegate, which is of type <code>Subscriber</code>.
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
@@ -31,7 +31,8 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 		this.subscriber = subscriber;
 	}
 
-//	+++ METHODS OF REMOTE CALLED SUBSCRIBER ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	// +++ METHODS OF REMOTE CALLED SUBSCRIBER ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
 	public void acknowledgeSubscription(PublisherMetadata publisherMetadata) {
@@ -51,8 +52,7 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 	}
 
 
-	
-//	+++ METHODS OF SUBSCRIBER ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	// +++ METHODS OF SUBSCRIBER ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
 	public void addPublisher(PublisherMetadata publisherMetadata, SubscriptionState subscriptionState) {
@@ -77,10 +77,12 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 		subscriber.removePublisher(publisherMetadata);
 	}
 
+
 	@Override
 	public void subscribe(UserId publisherId) {
 		subscriber.subscribe(publisherId);
 	}
+
 
 	@Override
 	public ListOfPublishers getListOfPublishers() {

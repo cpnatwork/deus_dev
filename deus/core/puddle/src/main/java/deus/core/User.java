@@ -32,7 +32,9 @@ public class User {
 	boolean loggedIn;
 	
 
-	
+	public Barker getBarker() {
+		return barker;
+	}
 	
 	public UserMetadata getUserMetadata() {
 		return userMetadata;

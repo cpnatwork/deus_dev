@@ -21,11 +21,17 @@ import deus.core.UserFactory;
 import deus.core.UserRegistry;
 import deus.core.gatekeeper.Gatekeeper;
 import deus.core.gatekeeper.soul.LoginCredentials;
+import deus.core.publisher.stub.local.LocalPublisherStub;
+import deus.model.attention.AttentionElement;
+import deus.model.attention.decision.BinaryDecisionToMake;
+import deus.model.attention.decision.DecisionType;
+import deus.model.attention.decision.SubscriberRequest;
+import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserUrl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/model/attention/attentionList.xml", "/deus/storage/daos.xml",
-		"/deus/core/core.xml", "/deus/core/core-test.xml", "/deus/context.xml" })
+@ContextConfiguration(locations = {"/deus/context.xml", "/deus/model/attention/attentionList.xml", "/deus/storage/daos.xml",
+		"/deus/core/core.xml", "/deus/core/core-test.xml" })
 public class RequestSubscriptionLocalTransportTest {
 
 	@Resource(name = "gatekeeper")
@@ -34,8 +40,6 @@ public class RequestSubscriptionLocalTransportTest {
 	@Autowired
 	private UserFactory userFactory;
 
-	@Autowired
-	private UserRegistry userRegistry;
 
 	private User user;
 	
@@ -48,34 +52,56 @@ public class RequestSubscriptionLocalTransportTest {
 	public void setUp() throws Exception {
 		publisherUser = userFactory.createUser(new UserUrl("alice", "deus.org"));
 		credentials = new LoginCredentials();
+		user = gatekeeper.login(credentials);
+
 	}
 
-	@Test
-	public void testLogin() {
-		user = gatekeeper.login(credentials);
-		assertEquals(new UserUrl("username", "deus.org"), user.getUserId());
-		assertTrue(userRegistry.hasUser(user.getUserId()));
-		gatekeeper.logout(user);
-	}
 
 	@Test
 	public void testRequestSubscription() {
-		user = gatekeeper.login(credentials);
+		
+		// REQUEST SUBSCRIPTION
+		assertEquals(0, user.getListOfPublishers().size());
 		user.getSubscriber().subscribe(publisherUser.getUserId());
+		assertEquals(0, user.getListOfPublishers().size());
+		
+		assertEquals(0, publisherUser.getListOfSubscribers().size());
+		assertEquals(1, publisherUser.getBarker().getUnnoticedAttentionList());
+		assertEquals(0, publisherUser.getBarker().getNoticedAttentionList());
+		
+		AttentionElement ae = publisherUser.getBarker().getUnnoticedAttentionList().get(0);
+		// TODO: add check for date
+		System.out.println("creating date: " + ae.getCreationDate());
+		BinaryDecisionToMake decision = (BinaryDecisionToMake)ae;
+		assertEquals(DecisionType.subscriberRequest, decision.getType());
+		
+		SubscriberRequest request = (SubscriberRequest)decision;
+		assertEquals(user.getUserMetadata(), request.getSubscriberMetadata());
+		
+		// ACCEPT REQUEST
+		assertFalse(request.isDecisionMade());
+		request.setDecisionPositive();
+		assertTrue(request.isDecisionMade());
+		publisherUser.getBarker().processDecision(request);
+		
+		assertEquals(0, publisherUser.getBarker().getUnnoticedAttentionList());
+		assertEquals(1, publisherUser.getBarker().getNoticedAttentionList());
+		
+		assertTrue(publisherUser.getListOfSubscribers().contains(user.getUserMetadata()));
+		assertEquals(1, publisherUser.getListOfSubscribers().size());
+		
+		assertTrue(user.getListOfPublishers().contains((PublisherMetadata)user.getUserMetadata()));
+		assertEquals(1, user.getListOfPublishers().size());		
+		
 		gatekeeper.logout(user);
-	}
-
-	@Test
-	public void testLogout() {
-		user = gatekeeper.login(credentials);
-		gatekeeper.logout(user);
-		assertFalse(userRegistry.hasUser(user.getUserId()));
 	}
 
 
 	@After
 	public void tearDown() throws Exception {
 		publisherUser = null;
+		gatekeeper.logout(user);
+
 	}
 
 }

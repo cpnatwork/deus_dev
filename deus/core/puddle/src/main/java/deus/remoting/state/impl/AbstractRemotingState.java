@@ -39,7 +39,7 @@ public abstract class AbstractRemotingState implements RemotingState {
 
 	@Override
 	public void removePublisherStub(UserId publisherId) {
-		if(!subscriberStubs.containsKey(publisherId))
+		if(!publisherStubs.containsKey(publisherId))
 			throw new IllegalArgumentException("remoting state does not contain publisher stub for publisher " + publisherId);
 		publisherStubs.remove(publisherId);
 	}

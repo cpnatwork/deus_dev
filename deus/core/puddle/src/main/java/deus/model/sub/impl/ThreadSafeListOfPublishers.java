@@ -56,4 +56,10 @@ public class ThreadSafeListOfPublishers implements ListOfPublishers {
 		return publishers.keySet().iterator();
 	}
 
+
+	@Override
+	public int size() {
+		return publishers.size();
+	}
+
 }

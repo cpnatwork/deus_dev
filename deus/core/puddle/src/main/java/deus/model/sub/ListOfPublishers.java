@@ -12,5 +12,8 @@ public interface ListOfPublishers extends Iterable<PublisherMetadata> {
 
 
 	public void changeState(PublisherMetadata publisherMetadata, SubscriptionState subscriptionState);
+	
+	
+	public int size();
 
 }

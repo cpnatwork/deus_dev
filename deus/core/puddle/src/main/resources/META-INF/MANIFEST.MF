@@ -1,2 +1,4 @@
 Manifest-Version: 1.0
-Import-Bundle: org.springframework.aspects;version="[2.5.6,2.5.6]"
+Import-Bundle: org.springframework.aspects;version="[2.5.6,2.5.6]",
+ com.springsource.org.aspectj.weaver;version="[1.6.3.RELEASE,1.6.3.RELEASE]"
+ com.springsource.org.aspectj.runtime;version="[1.6.3.RELEASE,1.6.3.RELEASE]"

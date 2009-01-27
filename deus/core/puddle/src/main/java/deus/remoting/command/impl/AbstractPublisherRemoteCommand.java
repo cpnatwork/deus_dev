@@ -41,7 +41,7 @@ public abstract class AbstractPublisherRemoteCommand implements RemoteCommand {
 
 	@Override
 	public Subsystem getReceiverSubsystem() {
-		return Subsystem.publisher;
+		return Subsystem.subscriber;
 	}	
 
 }

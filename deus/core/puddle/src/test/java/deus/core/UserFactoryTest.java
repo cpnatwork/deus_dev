@@ -25,7 +25,7 @@ public class UserFactoryTest {
 	@Autowired
 	private UserFactory userFactory;
 
-	@Resource(name="attentionList")
+	@Resource(name="unnoticedAttentionList")
 	private AttentionList attentionList;
 	
 	
