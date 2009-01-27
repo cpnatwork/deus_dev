@@ -18,6 +18,6 @@ public abstract class AbstractUseCaseTest {
 
 
 	protected void testDateNow(Date date) {
-		assertEquals((new Date()).getTime(), date.getTime(), 500);
+		assertEquals((new Date()).getTime(), date.getTime(), 2000);
 	}
 }

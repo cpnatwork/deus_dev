@@ -47,7 +47,7 @@ public class SubscribeTest extends AbstractUseCaseTest {
 	}
 
 
-	private SubscriberRequest testRequestSubscription() {
+	private SubscriberRequest testRequestSubscription() throws InterruptedException {
 		// REQUEST SUBSCRIPTION
 		assertEquals(0, bob.getListOfPublishers().size());
 		assertEquals(0, alice.getListOfSubscribers().size());
@@ -59,6 +59,12 @@ public class SubscribeTest extends AbstractUseCaseTest {
 		assertEquals(SubscriptionState.requested, bob.getListOfPublishers().get(alice.getUserMetadata()));
 		assertEquals(0, alice.getListOfSubscribers().size());
 
+		
+		
+		Thread.sleep(1000);
+		
+		
+		
 		testAttentionList(alice, 1, 0);
 
 		AttentionElement ae = alice.getBarker().getUnnoticedAttentionList().get(0);
@@ -74,7 +80,7 @@ public class SubscribeTest extends AbstractUseCaseTest {
 	}
 
 
-	private void testAcceptRequest(SubscriberRequest request) {
+	private void testAcceptRequest(SubscriberRequest request) throws InterruptedException {
 		// ACCEPT REQUEST
 		testAttentionList(bob, 0, 0);
 
@@ -82,12 +88,18 @@ public class SubscribeTest extends AbstractUseCaseTest {
 		request.setDecisionPositive();
 		assertTrue(request.isDecisionMade());
 		alice.getBarker().processDecision(request);
-
+		
 		testAttentionList(alice, 0, 1);
 
 		assertTrue(alice.getListOfSubscribers().contains(bob.getUserMetadata()));
 		assertEquals(1, alice.getListOfSubscribers().size());
 
+		
+		
+		Thread.sleep(1000);
+
+		
+		
 		assertEquals(1, bob.getListOfPublishers().size());
 		assertTrue(bob.getListOfPublishers().containsKey(alice.getUserMetadata()));
 		assertEquals(SubscriptionState.granted, bob.getListOfPublishers().get(alice.getUserMetadata()));
@@ -110,7 +122,7 @@ public class SubscribeTest extends AbstractUseCaseTest {
 
 
 	@Test
-	public void testRequestSubscriptionAccept() {
+	public void testRequestSubscriptionAccept() throws InterruptedException {
 		SubscriberRequest request = testRequestSubscription();
 
 		testAcceptRequest(request);
@@ -118,7 +130,7 @@ public class SubscribeTest extends AbstractUseCaseTest {
 
 
 	@Test
-	public void testRequestSubscriptionDeny() {
+	public void testRequestSubscriptionDeny() throws InterruptedException {
 		SubscriberRequest request = testRequestSubscription();
 
 		testDenyRequest(request);
