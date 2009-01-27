@@ -1,11 +1,14 @@
 package deus.remoting.setup;
 
-import deus.core.User;
+import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
+import deus.remoting.command.Subsystem;
+import deus.remoting.state.RemotingState;
 
 /**
  * Classes implementing this interface prepare an existing remote connection over a single transport protocol for
- * sending. After the execution of the method <code>setUp</code>, messages can be sent over the remote connection.
+ * sending to a specified subsystem of a specified user. After the execution of the method <code>setUpSending</code>,
+ * messages can be sent over the remote connection.
  * 
  * There should be one class implementing this interface per transport protocol, which should be supported.
  * 
@@ -14,12 +17,12 @@ import deus.model.user.transportid.TransportIdType;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-public interface RemoteSendingSetup {
+public interface RemoteSendingSetupStrategy {
 
-	public void setUp(User user);
+	void setUpSending(RemotingState remotingState, UserId receiverId, Subsystem receiverSubsystem);
 
 
-	public void tearDown(User user);
+	void tearDownSending(RemotingState remotingState, UserId receiverId, Subsystem receiverSubsystem);
 
 
 	/**
@@ -28,5 +31,4 @@ public interface RemoteSendingSetup {
 	 * @return the transport id type of the protocol, for which sending is set up
 	 */
 	public TransportIdType getType();
-
 }

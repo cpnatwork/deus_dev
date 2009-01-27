@@ -61,4 +61,9 @@ public abstract class AbstractRemotingState implements RemotingState {
 		throw new IllegalArgumentException("no subscriber stub for the subscriber " + subscriberId);
 	}
 
+	
+	public boolean isSendingReady(UserId receiverId) {
+		
+	}
+	
 }

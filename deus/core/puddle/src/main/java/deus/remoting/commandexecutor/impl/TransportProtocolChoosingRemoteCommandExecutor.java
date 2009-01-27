@@ -6,6 +6,7 @@ import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 import deus.remoting.command.RemoteCommand;
 import deus.remoting.commandexecutor.RemoteCommandExecutor;
+import deus.remoting.setup.RemoteSendingSetupStrategy;
 import deus.remoting.state.RemotingState;
 import deus.remoting.state.RemotingStateRegistry;
 import deus.remoting.tpchoosing.TransportProtocolChoosingStrategy;
@@ -27,6 +28,7 @@ public class TransportProtocolChoosingRemoteCommandExecutor implements RemoteCom
 	protected TransportProtocolChoosingStrategy choosingStrategy;
 	protected final User user;
 
+	private RemoteSendingSetupStrategy remoteSendingSetupStrategy;
 
 	public TransportProtocolChoosingRemoteCommandExecutor(User user) {
 		super();
@@ -50,17 +52,27 @@ public class TransportProtocolChoosingRemoteCommandExecutor implements RemoteCom
 	public void setTransportProtocolChoosingStrategy(TransportProtocolChoosingStrategy choosingStrategy) {
 		this.choosingStrategy = choosingStrategy;
 	}
+	
+	public void setRemoteSendingSetupStrategy(RemoteSendingSetupStrategy remoteSendingSetupStrategy) {
+		this.remoteSendingSetupStrategy = remoteSendingSetupStrategy;
+	}
 
 
 	@Override
 	public final void execute(RemoteCommand remoteCommand) {
 		RemotingState remotingState = getRemotingState(remoteCommand);
-
+		
+		remoteSendingSetupStrategy.setupSending(remotingState, remoteCommand.getReceiverId(), remoteCommand.getReceiverSubsystem());
+		
 		execute(remoteCommand, remotingState);
+		
+		remoteSendingSetupStrategy.tearDownSending(remotingState, remoteCommand.getReceiverId(), remoteCommand.getReceiverSubsystem());
 	}
 
 
 	protected void execute(RemoteCommand remoteCommand, RemotingState remotingState) {
+		if(!remotingState.isSendingReady(remoteCommand.getReceiverId(), remoteCommand.getReceiverSubsystem()))
+			throw new IllegalStateException("cannot execute remote command " + remoteCommand + ", remote sending ist not ready!");
 		remoteCommand.execute(remotingState);
 	}
 

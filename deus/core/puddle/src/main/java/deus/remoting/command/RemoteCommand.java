@@ -28,5 +28,7 @@ public interface RemoteCommand {
 
 
 	public UserId getReceiverId();
+	
+	public Subsystem getReceiverSubsystem();
 
 }

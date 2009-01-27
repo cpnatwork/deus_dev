@@ -36,4 +36,6 @@ public interface RemotingState {
 
 	public TransportIdType getType();
 
+	public boolean isSendingReady(UserId receiverId);
+
 }

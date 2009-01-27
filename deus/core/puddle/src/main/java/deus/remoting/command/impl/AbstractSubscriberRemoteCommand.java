@@ -29,6 +29,10 @@ public abstract class AbstractSubscriberRemoteCommand implements RemoteCommand {
 	}
 
 
+	public void createPublisherStub(RemotingStateRegistry registry) {
+	}
+
+
 	public abstract void execute(PublisherStub publisherStub);
 
 
