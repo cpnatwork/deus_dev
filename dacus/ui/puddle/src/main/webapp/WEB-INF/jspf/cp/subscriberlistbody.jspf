@@ -1,7 +1,7 @@
 <div id="content">
-<h1>viewdabbody</h1>
+<h1>subscriberöistbody</h1>
+<p>Hier werden alle Subscriber der eigenen Stammdaten angezeigt</p>
 
-<p>Liste aller Subscriptions, Klicken auf Eintrag/Button führt zu VIEWENTRY, Button auf search führt zu SEARCHDACUS</p>
 
 
 <form action="" method="post">
@@ -11,27 +11,25 @@
     <col width="200">
     <col width="200">
     <col width="200">
-    <col width="100">
+    <col width="200">
   </colgroup>
   <tr>
     <td> Nr.</td>
     <td> Name </td>
     <td> Vorname </td>
-    <td> Letztes Update </td>
     <td> P/S </td>
+    <td> Trennen </td>
   </tr>
   <tr>
     <td> <input type="submit" value="Nr."> </td>
     <td> Name value </td>
     <td> Vorname value</td>
-    <td> Letztes Update value </td>
-    <td> P/S value</td>
+    <td> P/S value </td>
+    <td> <input type="submit" value="trennen"> </td>
   </tr>
 
 </table>
 </form>
-
-
 
 
 </div>

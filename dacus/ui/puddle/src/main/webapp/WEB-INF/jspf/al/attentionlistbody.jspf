@@ -1,6 +1,6 @@
 <div id="content">
 <div id="attentionFeed">
-<h1>pendingbody</h1>
+<h1>attentionlist</h1>
 <p>Übersicht über alle gestellten und empfangenen Anfragen:</p>
 
 <!--<ul>-->
@@ -18,45 +18,119 @@
 <table border="1">
   <colgroup>
     <col width="420">
-    <col width="100">
-    <col width="100">
+    <col width="150">
+    <col width="150">
   </colgroup>
   <tr>
-    <td>Your Contact Publisher offers subscription</td>
+  	<th colspan="3">The following Contacts offers subscription:</th>
+  </tr>
+  <tr>
+    <td> Name value </td>
     <td> <input type="submit" value="confirm"> </td>
     <td> <input type="submit" value="refuse"> </td>
   </tr>
+</table>
+  <br> 
+  
+<table border="1">
+  <colgroup>
+    <col width="420">
+    <col width="150">
+    <col width="150">
+  </colgroup>
   <tr>
-    <td>Your Contact Subscriber requests subscription</td>
-    <td> <input type="submit" value="confirm_req"> </td>
-    <td> <input type="submit" value="refuse_req"> </td>
+    <th colspan="3">The following Contacts requests subscription:</th>
   </tr>
   <tr>
-    <td>Your Contact Publisher accepted subscription</td>
+    <td> Name value </td>
+    <td> <input type="submit" value="confirm"> </td>
+    <td> <input type="submit" value="refuse"> </td>
+  </tr>
+</table>
+  <br> 
+  
+<table border="1">
+  <colgroup>
+    <col width="420">
+    <col width="150">
+    <col width="150">
+  </colgroup>
+  <tr>
+    <th colspan="3">The following Contacts (Publisher) accepted subscription:</th>
+  </tr>
+  <tr>
+    <td> Name value </td>
     <td> <input type="submit" value="acknowledge_subs"> </td>
-    <td> leer </td>
+    <td>  </td>
+  </tr> 
+</table>
+  <br> 
+  
+<table border="1">
+  <colgroup>
+    <col width="420">
+    <col width="150">
+    <col width="150">
+  </colgroup>
+  <tr>
+    <th colspan="3">The following Requests for data are pending:</th>
   </tr>
   <tr>
-    <td>Your Request for contact of Publisher is pending</td>
+    <td> Name value </td>
     <td> <input type="submit" value="withdraw_req"> </td>
-    <td> leer </td>
+    <td>  </td>
+  </tr>
+</table>
+ <br>  
+  
+<table border="1">
+  <colgroup>
+    <col width="420">
+    <col width="150">
+    <col width="150">
+  </colgroup>  
+  <tr>
+    <th colspan="3">The following offers of your data are pending:</th>
   </tr>
   <tr>
-    <td>Your offer to Subscriber is pending</td>
+    <td> Name value </td>
     <td> <input type="submit" value="withdraw_offer"> </td>
-    <td> leer </td>
+    <td>  </td>
+  </tr>
+</table>
+ <br> 
+  
+<table border="1">
+  <colgroup>
+    <col width="420">
+    <col width="150">
+    <col width="150">
+  </colgroup>  
+  <tr>
+    <th colspan="3">The following Publishers have canceled subscription:</th>
   </tr>
   <tr>
-    <td>Publisher has canceled subscription as a publisher </td>
-    <td> <input type="submit" value="notice_cancelpub"> </td>
-    <td> leer </td>
+    <td> Name value </td>
+    <td> <input type="submit" value="otice_cancelpub"> </td>
+    <td>  </td>
+  </tr>
+</table>
+ <br>
+  
+<table border="1">
+  <colgroup>
+    <col width="420">
+    <col width="150">
+    <col width="150">
+  </colgroup>
+  <tr>
+    <th colspan="3">The following Subscribers have canceled subscription:</th>
   </tr>
   <tr>
-    <td>Subscriber has canceled subscription as a subscriber </td>
+    <td> Name value </td>
     <td> <input type="submit" value="notice_cancelsub"> </td>
-    <td> leer </td>
+    <td>  </td>
   </tr>
-
 </table>
 </form>
 
