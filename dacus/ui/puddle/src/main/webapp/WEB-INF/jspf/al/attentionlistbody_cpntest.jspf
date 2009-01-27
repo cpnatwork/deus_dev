@@ -1,0 +1,83 @@
+
+<%@page import="deus.model.attention.AttentionElement"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="deus.model.attention.AttentionElementType"%>
+
+<div id="content">
+<div id="attentionFeed">
+<h1>pendingbody</h1>
+<p>Übersicht über alle gestellten und empfangenen Anfragen:</p>
+
+<!--<ul>-->
+<!--	<li> X offered subscriptions (durch Dritten als CP initiiert), Buttons ACCEPT (acceptsubscr.jsp) + REJECT </li>-->
+<!--	<li> X requested subsriptions (durch Dritten als Subsr initiiert), Buttons CONFIRM (confirmsubscr.jsp) + REFUSE</li>-->
+<!--	<li> X accepted subscriptions (durch Dritten als CP), Button nicht nötig  </li>-->
+<!--	<li> X pending requests (als Subscr an Dritten), Button WITHDRAW </li>-->
+<!--	<li> X pending offers (als CP an Dritten), Button WITHDRAW</li>-->
+<!--	<li> X SubscriptionPublCancelNotice </li>-->
+<!--	<li> X SubscriptionSubscrCancelNotice </li>-->
+<!--</ul>-->
+
+<form action="" method="post">
+
+<table border="1">
+  <colgroup>
+    <col width="420">
+    <col width="100">
+    <col width="100">
+  </colgroup>
+  
+  <tbody>
+<% 
+	int counter = 0;
+	Iterator<AttentionElement> iter = pageContext.getRequest().getAttribute("unnoticedAttentionList").iterator();
+   	while (iter.hasNext()) {
+   		AttentionElement attElem = (AttentionElement) iter.next();
+%>
+				<tr>
+	<td><%= attElem.getCatchphare() %></td>
+<%
+	if (attElem.getAttentionElementType() == AttentionElementType.binaryDecision) {
+%>
+    <td> <input type="submit" value="confirm_<%= counter %>"> </td>
+    <td> <input type="submit" value="refuse_<%= counter %>"> </td>
+<%
+	} else if (attElem.getAttentionElementType() == AttentionElementType.notice) {
+%>
+    <td> <input type="submit" value="notice_<%= counter %>"> </td>
+<%
+	} else {
+%>
+		<td> UNKNOWN AttentionElementType </td>
+<%
+	}
+%>
+    
+				</tr>
+<%
+	++counter;
+	} // end while
+%>
+
+  <tr>
+    <td>=== TODO (Not part of the model!) === </td>
+  </tr>
+  <tr>
+    <td>Your Request for contact of Publisher is pending</td>
+    <td> <input type="submit" value="withdraw_req"> </td>
+    <td> leer </td>
+  </tr>
+  <tr>
+    <td>Your offer to Subscriber is pending</td>
+    <td> <input type="submit" value="withdraw_offer"> </td>
+    <td> leer </td>
+  </tr>
+
+</tbody>
+</table>
+</form>
+
+
+<p> Button zurück zu HOME </p>
+</div>
+</div>

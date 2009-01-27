@@ -27,7 +27,7 @@ body {
 <%@ include file="/WEB-INF/jspf/_frame/header.jspf"%>
 <%@ include file="/WEB-INF/jspf/_frame/menuBar.jspf"%>
 
-<%@ include file="/WEB-INF/jspf/al/attentionlistbody.jspf"%>
+<%@ include file="/WEB-INF/jspf/al/attentionlistbody_cpntest.jspf"%>
 
 <%@ include file="/WEB-INF/jspf/_frame/footnote.jspf"%>
 <%@ include file="/WEB-INF/jspf/_frame/footer.jspf"%>
