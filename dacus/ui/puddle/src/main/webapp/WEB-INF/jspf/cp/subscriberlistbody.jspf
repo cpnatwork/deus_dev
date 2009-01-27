@@ -14,11 +14,11 @@
     <col width="200">
   </colgroup>
   <tr>
-    <td> Nr.</td>
-    <td> Name </td>
-    <td> Vorname </td>
-    <td> P/S </td>
-    <td> Trennen </td>
+    <th> Nr.</th>
+    <th> Name </th>
+    <th> Vorname </th>
+    <th> P/S </th>
+    <th> Trennen </th>
   </tr>
   <tr>
     <td> <input type="submit" value="Nr."> </td>
