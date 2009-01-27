@@ -1,8 +1,8 @@
 package deus.core.subscriber.stub;
 
 import deus.model.dossier.generic.ForeignInformationFile;
-import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
+import deus.model.user.id.UserId;
 
 
 public interface SubscriberStub {
@@ -11,7 +11,7 @@ public interface SubscriberStub {
 	public void update(PublisherMetadata publisherMetadata, ForeignInformationFile change);
 
 
-	public SubscriberMetadata getSubscriberMetadata();
+	public UserId getSubscriberId();
 	
 
 	public void acknowledgeSubscription(PublisherMetadata publisherMetadata);

@@ -1,12 +1,11 @@
 package deus.remoting.commandexecutor.impl;
 
 
-import deus.core.User;
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 import deus.remoting.command.RemoteCommand;
 import deus.remoting.commandexecutor.RemoteCommandExecutor;
-import deus.remoting.setup.RemoteSendingSetupStrategy;
+import deus.remoting.setup.MultipleTransportProtocolsRemoteSendingSetup;
 import deus.remoting.state.RemotingState;
 import deus.remoting.state.RemotingStateRegistry;
 import deus.remoting.tpchoosing.TransportProtocolChoosingStrategy;
@@ -25,54 +24,52 @@ import deus.remoting.tpchoosing.TransportProtocolChoosingStrategy;
  */
 public class TransportProtocolChoosingRemoteCommandExecutor implements RemoteCommandExecutor {
 
-	protected TransportProtocolChoosingStrategy choosingStrategy;
-	protected final User user;
+	private final UserId senderId;
+	private final RemotingStateRegistry remotingStateRegistry;
 
-	private RemoteSendingSetupStrategy remoteSendingSetupStrategy;
+	private final TransportProtocolChoosingStrategy choosingStrategy;
+	private final MultipleTransportProtocolsRemoteSendingSetup remoteSendingSetup;
 
-	public TransportProtocolChoosingRemoteCommandExecutor(User user) {
+
+	public TransportProtocolChoosingRemoteCommandExecutor(UserId userId, RemotingStateRegistry remotingStateRegistry,
+			TransportProtocolChoosingStrategy choosingStrategy,
+			MultipleTransportProtocolsRemoteSendingSetup remoteSendingSetup) {
 		super();
-		this.user = user;
+		this.senderId = userId;
+		this.remotingStateRegistry = remotingStateRegistry;
+		this.choosingStrategy = choosingStrategy;
+		this.remoteSendingSetup = remoteSendingSetup;
 	}
 
 
-	protected final RemotingState getRemotingState(RemoteCommand remoteCommand) {
-		// sender
-		UserId senderId = user.getUserId();
+	protected final TransportIdType chooseTransportProtocol(RemoteCommand remoteCommand) {
 		UserId receiverId = remoteCommand.getReceiverId();
 
 		TransportIdType chosenTransportIdType = choosingStrategy.chooseTransportIdType(senderId, receiverId);
-		RemotingStateRegistry remotingStateRegistry = user.getRemotingStateRegistry();
-		RemotingState remotingState = remotingStateRegistry.getRemotingState(chosenTransportIdType);
-
-		return remotingState;
-	}
-
-
-	public void setTransportProtocolChoosingStrategy(TransportProtocolChoosingStrategy choosingStrategy) {
-		this.choosingStrategy = choosingStrategy;
-	}
-	
-	public void setRemoteSendingSetupStrategy(RemoteSendingSetupStrategy remoteSendingSetupStrategy) {
-		this.remoteSendingSetupStrategy = remoteSendingSetupStrategy;
+		return chosenTransportIdType;
 	}
 
 
 	@Override
 	public final void execute(RemoteCommand remoteCommand) {
-		RemotingState remotingState = getRemotingState(remoteCommand);
-		
-		remoteSendingSetupStrategy.setupSending(remotingState, remoteCommand.getReceiverId(), remoteCommand.getReceiverSubsystem());
-		
+		TransportIdType transportIdType = chooseTransportProtocol(remoteCommand);
+
+		// SETUP
+		RemotingState remotingState = remoteSendingSetup.setUpSending(remotingStateRegistry, transportIdType,
+				remoteCommand.getReceiverId(), remoteCommand.getReceiverSubsystem());
+
 		execute(remoteCommand, remotingState);
-		
-		remoteSendingSetupStrategy.tearDownSending(remotingState, remoteCommand.getReceiverId(), remoteCommand.getReceiverSubsystem());
+
+		// TEAR DOWN
+		remoteSendingSetup.tearDownSending(remotingStateRegistry, transportIdType, remoteCommand.getReceiverId(),
+				remoteCommand.getReceiverSubsystem());
 	}
 
 
 	protected void execute(RemoteCommand remoteCommand, RemotingState remotingState) {
-		if(!remotingState.isSendingReady(remoteCommand.getReceiverId(), remoteCommand.getReceiverSubsystem()))
-			throw new IllegalStateException("cannot execute remote command " + remoteCommand + ", remote sending ist not ready!");
+		if (!remotingState.isSendingReady(remoteCommand.getReceiverId(), remoteCommand.getReceiverSubsystem()))
+			throw new IllegalStateException("cannot execute remote command " + remoteCommand
+					+ ", remote sending ist not ready!");
 		remoteCommand.execute(remotingState);
 	}
 

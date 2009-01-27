@@ -94,7 +94,7 @@ public class XmppPublisherStubTest {
 
 	@Test
 	public void testGetPublisherMetadata() {
-		assertTrue(publisherStub.getPublisherMetadata().equals(publisherMetadata));
+		assertTrue(publisherStub.getPublisherId().equals(publisherMetadata.getUserId()));
 	}
 
 }

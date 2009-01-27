@@ -5,27 +5,23 @@ import deus.core.UserRegistry;
 import deus.core.publisher.RemoteCalledPublisher;
 import deus.core.publisher.stub.impl.AbstractPublisherStub;
 import deus.model.pub.SubscriberMetadata;
-import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 
 public class LocalPublisherStub extends AbstractPublisherStub {
 
 	private UserRegistry userRegistry;
-	private UserId publisherId;
 
-	public LocalPublisherStub(PublisherMetadata publisherMetadata) {
-		super(publisherMetadata);
+	public LocalPublisherStub(UserId publisherId) {
+		super(publisherId);
 		// TODO: think about this assert
-		assert (publisherMetadata.getUserId().hasTransportId(TransportIdType.local));
-		
-		publisherId = publisherMetadata.getUserId();
+		assert (publisherId.hasTransportId(TransportIdType.local));
 	}
 
 	
 	@Override
 	public void addObserver(SubscriberMetadata subscriberMetadata) {
-		User user = userRegistry.getOrCreateTemporaryUser(publisherId);
+		User user = userRegistry.getOrCreateTemporaryUser(getPublisherId());
 		RemoteCalledPublisher publisher = user.getPublisher();
 		
 		publisher.addObserver(subscriberMetadata);
@@ -34,7 +30,7 @@ public class LocalPublisherStub extends AbstractPublisherStub {
 
 	@Override
 	public void deleteObserver(SubscriberMetadata subscriberMetadata) {
-		User user = userRegistry.getOrCreateTemporaryUser(publisherId);
+		User user = userRegistry.getOrCreateTemporaryUser(getPublisherId());
 		RemoteCalledPublisher publisher = user.getPublisher();
 		
 		publisher.deleteObserver(subscriberMetadata);

@@ -4,7 +4,7 @@ import org.jivesoftware.smack.packet.Presence;
 
 import deus.core.publisher.stub.impl.AbstractPublisherStub;
 import deus.model.pub.SubscriberMetadata;
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 import deus.model.user.transportid.XmppTransportId;
 import deus.nsi.xmpp.common.XmppConversation;
@@ -41,11 +41,11 @@ public class XmppPublisherStub extends AbstractPublisherStub {
 	private final XmppConversation subscriberXmppConversation;
 
 
-	public XmppPublisherStub(PublisherMetadata publisherMetadata,
+	public XmppPublisherStub(UserId publisherId,
 			XmppConversation subscriberXmppConversation) {
-		super(publisherMetadata);
+		super(publisherId);
 		// TODO: think about this assert
-		assert (publisherMetadata.getUserId().hasTransportId(TransportIdType.xmpp));
+		assert (publisherId.hasTransportId(TransportIdType.xmpp));
 
 		this.subscriberXmppConversation = subscriberXmppConversation;
 	}
@@ -56,7 +56,7 @@ public class XmppPublisherStub extends AbstractPublisherStub {
 		// TODO: implement this method properly
 		// Roster roster = subscriberXmppConversation.getRoster();
 
-		XmppTransportId publisherJid = getPublisherMetadata().getUserId().getTransportId(XmppTransportId.class);
+		XmppTransportId publisherJid = getPublisherId().getTransportId(XmppTransportId.class);
 
 		// roster.createEntry(publisherJid.toString(), getPublisherMetadata().getFullName(), null);
 
@@ -70,7 +70,7 @@ public class XmppPublisherStub extends AbstractPublisherStub {
 		// TODO: implement this method properly
 		// Roster roster = subscriberXmppConversation.getRoster();
 
-		XmppTransportId publisherJid = getPublisherMetadata().getUserId().getTransportId(XmppTransportId.class);
+		XmppTransportId publisherJid = getPublisherId().getTransportId(XmppTransportId.class);
 
 		// roster.removeEntry(roster.getEntry(publisherJid.toString()));
 

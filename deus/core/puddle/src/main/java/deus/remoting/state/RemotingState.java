@@ -4,6 +4,7 @@ import deus.core.publisher.stub.PublisherStub;
 import deus.core.subscriber.stub.SubscriberStub;
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
+import deus.remoting.command.Subsystem;
 
 /**
  * Classes implementing this interface store a remoting state for a specific transport protocol for a user. It consists
@@ -16,14 +17,17 @@ import deus.model.user.transportid.TransportIdType;
  */
 public interface RemotingState {
 
+	
+
 	public SubscriberStub getSubscriberStub(UserId subscriberId);
 
 
 	public void addSubscriberStub(SubscriberStub subscriberStub);
 
 
-	public void clearSubscriberStubList();
+	public void removeSubscriberStub(UserId subscriberId);
 
+	
 
 	public PublisherStub getPublisherStub(UserId publisherId);
 
@@ -31,11 +35,13 @@ public interface RemotingState {
 	public void addPublisherStub(PublisherStub publisherStub);
 
 
-	public void clearPublisherStubList();
+	public void removePublisherStub(UserId publisherId);
 
+	
 
 	public TransportIdType getType();
 
-	public boolean isSendingReady(UserId receiverId);
+
+	public boolean isSendingReady(UserId receiverId, Subsystem subsystem);
 
 }

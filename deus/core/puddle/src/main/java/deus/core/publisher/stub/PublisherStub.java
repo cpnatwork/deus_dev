@@ -1,7 +1,7 @@
 package deus.core.publisher.stub;
 
 import deus.model.pub.SubscriberMetadata;
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.id.UserId;
 
 /**
  * Classes implementing this interface <b>reside on the subscriber side<b> and <b>talk to the remote publisher</b>.
@@ -32,10 +32,10 @@ public interface PublisherStub {
 
 
 	/**
-	 * Returns the metadata of the publisher, to which this stub connects to communicate.
+	 * Returns the id of the publisher, to which this stub connects to communicate.
 	 * 
-	 * @return metadata of the publisher, to which is talked
+	 * @return id of the publisher, to which is talked
 	 */
-	public PublisherMetadata getPublisherMetadata();
+	public UserId getPublisherId();
 
 }

@@ -1,69 +1,84 @@
 package deus.remoting.state.impl;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import deus.core.publisher.stub.PublisherStub;
 import deus.core.subscriber.stub.SubscriberStub;
 import deus.model.user.id.UserId;
+import deus.remoting.command.Subsystem;
 import deus.remoting.state.RemotingState;
 
 public abstract class AbstractRemotingState implements RemotingState {
 
-	private final List<PublisherStub> publisherStubs;
-	private final List<SubscriberStub> subscriberStubs;
+	private final Map<UserId, PublisherStub> publisherStubs;
+	private final Map<UserId, SubscriberStub> subscriberStubs;
 
 
 	public AbstractRemotingState() {
-		publisherStubs = new ArrayList<PublisherStub>();
-		subscriberStubs = new ArrayList<SubscriberStub>();
+		publisherStubs = new HashMap<UserId, PublisherStub>();
+		subscriberStubs = new HashMap<UserId, SubscriberStub>();
 	}
 
 
 	@Override
 	public void addPublisherStub(PublisherStub publisherStub) {
-		publisherStubs.add(publisherStub);
-	}
-
-
-	@Override
-	public void addSubscriberStub(SubscriberStub subscriberStub) {
-		subscriberStubs.add(subscriberStub);
-	}
-
-
-	@Override
-	public void clearPublisherStubList() {
-		publisherStubs.clear();
-	}
-
-
-	@Override
-	public void clearSubscriberStubList() {
-		subscriberStubs.clear();
+		publisherStubs.put(publisherStub.getPublisherId(), publisherStub);
 	}
 
 
 	@Override
 	public PublisherStub getPublisherStub(UserId publisherId) {
-		for (PublisherStub stub : publisherStubs)
-			if (stub.getPublisherMetadata().getUserId().equals(publisherId))
-				return stub;
-		throw new IllegalArgumentException("no publisher stub for the publisher " + publisherId);
+		PublisherStub stub = publisherStubs.get(publisherId);
+		if (stub == null)
+			throw new IllegalArgumentException("no publisher stub for the publisher " + publisherId + " added!");
+		else
+			return stub;
+	}
+
+
+	@Override
+	public void removePublisherStub(UserId publisherId) {
+		if(!subscriberStubs.containsKey(publisherId))
+			throw new IllegalArgumentException("remoting state does not contain publisher stub for publisher " + publisherId);
+		publisherStubs.remove(publisherId);
+	}
+
+
+	@Override
+	public void addSubscriberStub(SubscriberStub subscriberStub) {
+		subscriberStubs.put(subscriberStub.getSubscriberId(), subscriberStub);
 	}
 
 
 	@Override
 	public SubscriberStub getSubscriberStub(UserId subscriberId) {
-		for (SubscriberStub stub : subscriberStubs)
-			if (stub.getSubscriberMetadata().getUserId().equals(subscriberId))
-				return stub;
-		throw new IllegalArgumentException("no subscriber stub for the subscriber " + subscriberId);
+		SubscriberStub stub = subscriberStubs.get(subscriberId);
+		if (stub == null)
+			throw new IllegalArgumentException("no subscriber stub for the subscriber " + subscriberId + " added!");
+		else
+			return stub;
 	}
 
-	
-	public boolean isSendingReady(UserId receiverId) {
-		
+
+	@Override
+	public void removeSubscriberStub(UserId subscriberId) {
+		if(!subscriberStubs.containsKey(subscriberId))
+			throw new IllegalArgumentException("remoting state does not contain subscriber stub for subscriber " + subscriberId);
+		subscriberStubs.remove(subscriberId);
+ 	}
+
+
+	@Override
+	public boolean isSendingReady(UserId receiverId, Subsystem subsystem) {
+		switch (subsystem) {
+		case publisher:
+			return publisherStubs.containsKey(receiverId);
+		case subscriber:
+			return subscriberStubs.containsKey(receiverId);
+		}
+		throw new IllegalArgumentException("cannot handle subsystem " + subsystem);
 	}
-	
+
+
 }

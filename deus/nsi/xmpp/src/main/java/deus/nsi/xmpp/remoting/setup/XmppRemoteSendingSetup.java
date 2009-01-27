@@ -2,17 +2,14 @@ package deus.nsi.xmpp.remoting.setup;
 
 import org.springframework.stereotype.Component;
 
-import deus.core.User;
 import deus.core.publisher.stub.PublisherStub;
 import deus.core.subscriber.stub.SubscriberStub;
-import deus.model.pub.ListOfSubscribers;
-import deus.model.pub.SubscriberMetadata;
-import deus.model.sub.ListOfPublishers;
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub;
 import deus.nsi.xmpp.remoting.state.XmppRemotingState;
 import deus.nsi.xmpp.subscriber.impl.stub.XmppSubscriberStub;
+import deus.remoting.command.Subsystem;
 import deus.remoting.setup.impl.AbstractRemoteSendingSetup;
 import deus.remoting.state.RemotingState;
 
@@ -20,32 +17,36 @@ import deus.remoting.state.RemotingState;
 @Component
 public class XmppRemoteSendingSetup extends AbstractRemoteSendingSetup {
 
-	@Override
-	protected void checkedSetUp(User user, RemotingState remotingState) {
-		XmppRemotingState xmppRemotingState = (XmppRemotingState)remotingState;
-				
-		ListOfSubscribers los = user.getListOfSubscribers();
-		for (SubscriberMetadata subscriberMetadata : los) {
-			SubscriberStub subscriberStub = new XmppSubscriberStub(subscriberMetadata, xmppRemotingState
-					.getXmppConversation());
-			xmppRemotingState.addSubscriberStub(subscriberStub);
-		}
 
-		ListOfPublishers lop = user.getListOfPublishers();
-		for (PublisherMetadata publisherMetadata : lop) {
-			PublisherStub publisherStub = new XmppPublisherStub(publisherMetadata, xmppRemotingState.getXmppConversation());
-			xmppRemotingState.addPublisherStub(publisherStub);
+	@Override
+	protected void checkedSetUp(RemotingState remotingState, UserId receiverId, Subsystem receiverSubsystem) {
+		assert (remotingState.getType().equals(getType()));
+		XmppRemotingState xmppRemotingState = (XmppRemotingState) remotingState;
+		switch (receiverSubsystem) {
+		case publisher:
+			PublisherStub publisherStub = new XmppPublisherStub(receiverId, xmppRemotingState.getXmppConversation());
+			remotingState.addPublisherStub(publisherStub);
+			break;
+		case subscriber:
+			SubscriberStub subscriberStub = new XmppSubscriberStub(receiverId, xmppRemotingState.getXmppConversation());
+			remotingState.addSubscriberStub(subscriberStub);
+			break;
 		}
 	}
 
 
+	// TODO: think about pulling this to superclass
 	@Override
-	protected void checkedTearDown(RemotingState remotingState) {
-		// TODO: think about this: if this implementation is right, we cannot enforce disconnection of stubs with this
-		// implementation!
-
-		remotingState.clearSubscriberStubList();
-		remotingState.clearPublisherStubList();
+	protected void checkedTearDown(RemotingState remotingState, UserId receiverId, Subsystem receiverSubsystem) {
+		assert (remotingState.getType().equals(getType()));
+		switch (receiverSubsystem) {
+		case publisher:
+			remotingState.removePublisherStub(receiverId);
+			break;
+		case subscriber:
+			remotingState.removeSubscriberStub(receiverId);
+			break;
+		}
 	}
 
 

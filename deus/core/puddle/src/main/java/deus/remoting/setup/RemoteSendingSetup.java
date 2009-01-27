@@ -17,7 +17,7 @@ import deus.remoting.state.RemotingState;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-public interface RemoteSendingSetupStrategy {
+public interface RemoteSendingSetup {
 
 	void setUpSending(RemotingState remotingState, UserId receiverId, Subsystem receiverSubsystem);
 

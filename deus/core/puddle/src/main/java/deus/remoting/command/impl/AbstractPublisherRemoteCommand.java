@@ -3,6 +3,7 @@ package deus.remoting.command.impl;
 import deus.core.subscriber.stub.SubscriberStub;
 import deus.model.user.id.UserId;
 import deus.remoting.command.RemoteCommand;
+import deus.remoting.command.Subsystem;
 import deus.remoting.state.RemotingState;
 
 /**
@@ -36,5 +37,11 @@ public abstract class AbstractPublisherRemoteCommand implements RemoteCommand {
 	public UserId getReceiverId() {
 		return subscriberId;
 	}
+
+
+	@Override
+	public Subsystem getReceiverSubsystem() {
+		return Subsystem.publisher;
+	}	
 
 }

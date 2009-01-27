@@ -2,21 +2,22 @@ package deus.core.subscriber.stub.impl;
 
 
 import deus.core.subscriber.stub.SubscriberStub;
-import deus.model.pub.SubscriberMetadata;
+import deus.model.user.id.UserId;
 
 public abstract class AbstractSubscriberStub implements SubscriberStub {
 
-	private final SubscriberMetadata subscriberMetadata;
+	private final UserId subscriberId;
 
 
-	public AbstractSubscriberStub(SubscriberMetadata subscriberMetadata) {
-		this.subscriberMetadata = subscriberMetadata;
+	public AbstractSubscriberStub(UserId subscriberId) {
+		super();
+		this.subscriberId = subscriberId;
 	}
 
 
 	@Override
-	public SubscriberMetadata getSubscriberMetadata() {
-		return subscriberMetadata;
+	public UserId getSubscriberId() {
+		return subscriberId;
 	}
 
 }

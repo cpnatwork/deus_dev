@@ -1,47 +1,44 @@
 package deus.remoting.setup.local;
 
-import deus.core.User;
 import deus.core.publisher.stub.PublisherStub;
 import deus.core.publisher.stub.local.LocalPublisherStub;
 import deus.core.subscriber.stub.SubscriberStub;
 import deus.core.subscriber.stub.local.LocalSubscriberStub;
-import deus.model.pub.ListOfSubscribers;
-import deus.model.pub.SubscriberMetadata;
-import deus.model.sub.ListOfPublishers;
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
+import deus.remoting.command.Subsystem;
 import deus.remoting.setup.impl.AbstractRemoteSendingSetup;
 import deus.remoting.state.RemotingState;
-import deus.remoting.state.local.LocalRemotingState;
 
 public class LocalRemoteSendingSetup extends AbstractRemoteSendingSetup {
 
-
 	@Override
-	protected void checkedSetUp(User user, RemotingState remotingState) {
-		LocalRemotingState localRemotingState = (LocalRemotingState)remotingState;
-		
-		ListOfSubscribers los = user.getListOfSubscribers();
-		for (SubscriberMetadata subscriberMetadata : los) {
-			SubscriberStub subscriberStub = new LocalSubscriberStub(subscriberMetadata);
-			localRemotingState.addSubscriberStub(subscriberStub);
-		}
-
-		ListOfPublishers lop = user.getListOfPublishers();
-		for (PublisherMetadata publisherMetadata : lop) {
-			PublisherStub publisherStub = new LocalPublisherStub(publisherMetadata);
-			localRemotingState.addPublisherStub(publisherStub);
+	protected void checkedSetUp(RemotingState remotingState, UserId receiverId, Subsystem receiverSubsystem) {
+		assert(remotingState.getType().equals(getType()));
+		switch (receiverSubsystem) {
+		case publisher:
+			PublisherStub publisherStub = new LocalPublisherStub(receiverId);
+			remotingState.addPublisherStub(publisherStub);
+			break;
+		case subscriber:
+			SubscriberStub subscriberStub = new LocalSubscriberStub(receiverId);
+			remotingState.addSubscriberStub(subscriberStub);
+			break;
 		}
 	}
 
-
+	// TODO: think about pulling this to superclass
 	@Override
-	protected void checkedTearDown(RemotingState remotingState) {
-		// TODO: think about this: if this implementation is right, we cannot enforce disconnection of stubs with this
-		// implementation!
-
-		remotingState.clearSubscriberStubList();
-		remotingState.clearPublisherStubList();
+	protected void checkedTearDown(RemotingState remotingState, UserId receiverId, Subsystem receiverSubsystem) {
+		assert(remotingState.getType().equals(getType()));
+		switch (receiverSubsystem) {
+		case publisher:
+			remotingState.removePublisherStub(receiverId);
+			break;
+		case subscriber:
+			remotingState.removeSubscriberStub(receiverId);
+			break;
+		}
 	}
 
 
@@ -49,4 +46,6 @@ public class LocalRemoteSendingSetup extends AbstractRemoteSendingSetup {
 	public TransportIdType getType() {
 		return TransportIdType.local;
 	}
+
+
 }

@@ -4,8 +4,8 @@ import org.jivesoftware.smack.packet.IQ;
 
 import deus.core.subscriber.stub.impl.AbstractSubscriberStub;
 import deus.model.dossier.generic.ForeignInformationFile;
-import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
+import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 import deus.model.user.transportid.XmppTransportId;
 import deus.nsi.xmpp.common.XmppConversation;
@@ -26,10 +26,10 @@ public class XmppSubscriberStub extends AbstractSubscriberStub {
 	private final XmppConversation publisherXmppConversation;
 
 
-	public XmppSubscriberStub(SubscriberMetadata subscriberMetadata, XmppConversation publisherXmppConversation) {
-		super(subscriberMetadata);
+	public XmppSubscriberStub(UserId subscriberId, XmppConversation publisherXmppConversation) {
+		super(subscriberId);
 		// TODO: think about this assert
-		assert (subscriberMetadata.getUserId().hasTransportId(TransportIdType.xmpp));
+		assert (subscriberId.hasTransportId(TransportIdType.xmpp));
 
 		this.publisherXmppConversation = publisherXmppConversation;
 	}
@@ -38,7 +38,7 @@ public class XmppSubscriberStub extends AbstractSubscriberStub {
 	@Override
 	public void update(PublisherMetadata publisher, ForeignInformationFile change) {
 		IQ changeIq = new FIFChange(change);
-		publisherXmppConversation.sendPacket(changeIq, getSubscriberMetadata().getUserId().getTransportId(
+		publisherXmppConversation.sendPacket(changeIq, getSubscriberId().getTransportId(
 				XmppTransportId.class));
 	}
 

@@ -1,51 +1,35 @@
 package deus.remoting.setup.impl;
 
-import deus.core.User;
+import deus.model.user.id.UserId;
+import deus.remoting.command.Subsystem;
 import deus.remoting.setup.RemoteSendingSetup;
 import deus.remoting.state.RemotingState;
-import deus.remoting.state.RemotingStateRegistry;
 
 public abstract class AbstractRemoteSendingSetup implements RemoteSendingSetup {
 
 	@Override
-	public final void setUp(User user) {
-		if (!user.getUserId().hasTransportId(getType()))
-			throw new IllegalStateException("cannot set up remote sending for user using transport protocol "
-					+ getType() + ", user has no transport ID for this protocol!");
+	public void setUpSending(RemotingState remotingState, UserId receiverId, Subsystem receiverSubsystem) {
+		if (!remotingState.getType().equals(getType()))
+			throw new IllegalStateException("cannot set up remote sending for transport protocol " + getType()
+					+ ", remotingState is not for this transport protocol, but for " + remotingState.getType() + "!");
 
-		RemotingStateRegistry remotingStateRegistry = user.getRemotingStateRegistry();
-
-		if (!remotingStateRegistry.hasRemotingState(getType()))
-			throw new IllegalStateException("Can't setup remote sending for protocol " + getType()
-					+ "! There is no remoting state for the user " + user + " and the transport protocol " + getType()
-					+ " registered! Set up remote connection first!");
-
-		RemotingState remotingState = remotingStateRegistry.getRemotingState(getType());
-		checkedSetUp(user, remotingState);
+		checkedSetUp(remotingState, receiverId, receiverSubsystem);
 	}
 
 
-	protected abstract void checkedSetUp(User user, RemotingState remotingState);
+	protected abstract void checkedSetUp(RemotingState remotingState, UserId receiverId, Subsystem receiverSubsystem);
 
 
 	@Override
-	public final void tearDown(User user) {
-		if (!user.getUserId().hasTransportId(getType()))
-			throw new IllegalStateException("cannot tear down remote sending for user using transport protocol "
-					+ getType() + ", user has no transport ID for this protocol!");
+	public void tearDownSending(RemotingState remotingState, UserId receiverId, Subsystem receiverSubsystem) {
+		if (!remotingState.getType().equals(getType()))
+			throw new IllegalStateException("cannot tear down remote sending for transport protocol " + getType()
+					+ ", remotingState is not for this transport protocol, but for " + remotingState.getType() + "!");
 		
-		RemotingStateRegistry remotingStateRegistry = user.getRemotingStateRegistry();
-
-		if (!remotingStateRegistry.hasRemotingState(getType()))
-			throw new IllegalStateException("Can't tear down remote sending for protocol " + getType()
-					+ "! There is no remoting state for the user " + user + " and the transport protocol " + getType()
-					+ " registered! Set up remote connection first!");
-
-		RemotingState remotingState = remotingStateRegistry.getRemotingState(getType());
-		checkedTearDown(remotingState);
+		checkedTearDown(remotingState, receiverId, receiverSubsystem);
 	}
 
 
-	protected abstract void checkedTearDown(RemotingState remotingState);
+	protected abstract void checkedTearDown(RemotingState remotingState, UserId receiverId, Subsystem receiverSubsystem);
 
 }

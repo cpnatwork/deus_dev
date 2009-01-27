@@ -5,7 +5,6 @@ import deus.core.UserRegistry;
 import deus.core.subscriber.RemoteCalledSubscriber;
 import deus.core.subscriber.stub.impl.AbstractSubscriberStub;
 import deus.model.dossier.generic.ForeignInformationFile;
-import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
@@ -17,21 +16,17 @@ import deus.model.user.transportid.TransportIdType;
 public class LocalSubscriberStub extends AbstractSubscriberStub {
 
 	private UserRegistry userRegistry;
-	private UserId subscriberId;
 
-
-	public LocalSubscriberStub(SubscriberMetadata subscriberMetadata) {
-		super(subscriberMetadata);
+	public LocalSubscriberStub(UserId subscriberId) {
+		super(subscriberId);
 		// TODO: think about this assert
-		assert (subscriberMetadata.getUserId().getType().equals(TransportIdType.local));
-		
-		subscriberId = getSubscriberMetadata().getUserId();
+		assert (subscriberId.getType().equals(TransportIdType.local));
 	}
 
 
 	@Override
 	public void update(PublisherMetadata publisherMetadata, ForeignInformationFile change) {
-		User user = userRegistry.getOrCreateTemporaryUser(subscriberId);
+		User user = userRegistry.getOrCreateTemporaryUser(getSubscriberId());
 		RemoteCalledSubscriber subscriber = user.getSubscriber();
 		
 		subscriber.update(publisherMetadata, change);
@@ -40,7 +35,7 @@ public class LocalSubscriberStub extends AbstractSubscriberStub {
 
 	@Override
 	public void acknowledgeSubscription(PublisherMetadata publisherMetadata) {
-		User user = userRegistry.getOrCreateTemporaryUser(subscriberId);
+		User user = userRegistry.getOrCreateTemporaryUser(getSubscriberId());
 		RemoteCalledSubscriber subscriber = user.getSubscriber();
 
 		subscriber.acknowledgeSubscription(publisherMetadata);
@@ -49,7 +44,7 @@ public class LocalSubscriberStub extends AbstractSubscriberStub {
 
 	@Override
 	public void denySubscription(PublisherMetadata publisherMetadata) {
-		User user = userRegistry.getOrCreateTemporaryUser(subscriberId);
+		User user = userRegistry.getOrCreateTemporaryUser(getSubscriberId());
 		RemoteCalledSubscriber subscriber = user.getSubscriber();
 
 		subscriber.denySubscription(publisherMetadata);		
