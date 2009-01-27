@@ -16,6 +16,7 @@
 
 	<properties>
 		<spring.version>2.5.6</spring.version>
+		<aspectj.version>1.6.1</aspectj.version>
 	</properties>
 
 	
@@ -72,25 +73,21 @@
 			<artifactId>org.springframework.test</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-
-		<!--+++ ASPECTJ +++-->
-		<!--<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>com.springsource.org.aspectj.runtime</artifactId>
-			<version>1.6.3.RELEASE</version>
-		</dependency>-->
-
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>com.springsource.org.aspectj.weaver</artifactId>
-			<version>1.6.3.RELEASE</version>
-		</dependency>
-		
+				
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-agent</artifactId>
-			<version>2.5.6</version>
+			<version>${spring.version}</version>
 		</dependency>
+
+
+		<!--+++ ASPECTJ +++-->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>com.springsource.org.aspectj.weaver</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+
 
 
 		<!--+++ JUNIT +++-->

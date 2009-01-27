@@ -40,9 +40,7 @@ public class SubscribePacketListener extends PublisherPacketListener {
 
 		UserMetadata subscriberMetadata = parseFromUserMetadata(presence);
 
-		// TODO: add subscribe request to attention list
 		publisher.addObserver(subscriberMetadata);
-		// TODO: send an answer back after adding
 	}
 
 }

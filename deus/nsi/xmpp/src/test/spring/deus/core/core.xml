@@ -33,7 +33,7 @@
 
 	<bean id="transportProtocolChoosingStrategy" class="deus.remoting.tpchoosing.impl.FixedTransportProtocolChoosingStrategy">
 		<constructor-arg>
-			<util:constant static-field="deus.model.user.transportid.TransportIdType.local"/>
+			<util:constant static-field="deus.model.user.transportid.TransportIdType.xmpp"/>
 		</constructor-arg>
 	</bean>
 	
