@@ -13,6 +13,8 @@ public class UserMetadataDaoStub implements UserMetadataDao {
 		
 		userMetadata.setFullName("full name");
 		
+		
+		
 		return userMetadata;
 	}
 

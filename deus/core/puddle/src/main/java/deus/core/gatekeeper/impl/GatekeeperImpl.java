@@ -23,8 +23,9 @@ public class GatekeeperImpl implements Gatekeeper {
 		UserId userId = loginCredentialChecker.check(credentials);
 		
 		// TODO: do more login stuff, that is necessary
-		
+			
 		User user = userRegistry.createAndRegisterUser(userId);
+		user.setLoggedIn(true);
 		
 		return user;
 	}

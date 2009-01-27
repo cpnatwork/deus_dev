@@ -54,9 +54,7 @@ public class User {
 
 
 	public ListOfPublishers getListOfPublishers() {
-		// FIXME: implement!
-		// return subscriber.getListOfPublishers();
-		return null;
+		return subscriber.getListOfPublishers();
 	}
 
 

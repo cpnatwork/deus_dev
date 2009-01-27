@@ -13,7 +13,4 @@ public interface PubDao {
 
 	public ListOfSubscribers getListOfSubscribers(UserId userId);
 
-
-	public ListOfPublishers getListOfPublishers(UserId userId);
-
 }

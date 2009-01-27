@@ -1,6 +1,7 @@
 package deus.model.user.id;
 
 import java.lang.reflect.Method;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,6 +55,10 @@ public abstract class AbstractUserId implements UserId {
 		return (T) transportIds.get(type);
 	}
 
+	public Collection<TransportIdType> getSupportedTransports() {
+		return transportIds.keySet();
+	}
+	
 
 	@Override
 	public boolean hasTransportId(TransportIdType transportIdType) {

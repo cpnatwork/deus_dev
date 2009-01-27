@@ -1,5 +1,6 @@
 package deus.model.sub.impl;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -10,7 +11,14 @@ import deus.model.sub.SubscriptionState;
 // TODO: think about thread safety! (before, this was implemented using a Vector!)
 public class ThreadSafeListOfPublishers implements ListOfPublishers {
 
-	private Map<PublisherMetadata, SubscriptionState> publishers;
+	private final Map<PublisherMetadata, SubscriptionState> publishers;
+
+	
+
+	public ThreadSafeListOfPublishers() {
+		super();
+		this.publishers = new HashMap<PublisherMetadata, SubscriptionState>();
+	}
 
 
 	@Override

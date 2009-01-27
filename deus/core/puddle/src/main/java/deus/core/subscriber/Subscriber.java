@@ -2,6 +2,7 @@ package deus.core.subscriber;
 
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.pub.SubscriberMetadata;
+import deus.model.sub.ListOfPublishers;
 import deus.model.sub.PublisherMetadata;
 import deus.model.sub.SubscriptionState;
 
@@ -20,7 +21,9 @@ public interface Subscriber extends RemoteCalledSubscriber, RemoteCallingSubscri
 
 	public DistributedInformationFolder getDistributedInformationFolder();
 
-
+	public ListOfPublishers getListOfPublishers();
+	
+	
 	public SubscriberMetadata getSubscriberMetadata();
 
 

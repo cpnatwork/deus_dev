@@ -17,17 +17,17 @@
 		<idref local="subscriptionCanceledNotice"/>
 	</util:list>
 
-	<bean id="publisherOffer" class="deus.model.attention.PublisherOffer">
+	<bean id="publisherOffer" class="deus.model.attention.decision.PublisherOffer">
 		<constructor-arg ref="publisherMetadata" />
 		<property name="creationDate" value="1970/01/01 00:01" />
 	</bean>
 
-	<bean id="subscriberRequest" class="deus.model.attention.SubscriberRequest">
+	<bean id="subscriberRequest" class="deus.model.attention.decision.SubscriberRequest">
 		<constructor-arg ref="subscriberMetadata" />
 		<property name="creationDate" value="1970/01/01 01:01" />
 	</bean>
 
-	<bean id="subscriptionCanceledNotice" class="deus.model.attention.SubscriptionCanceledNotice">
+	<bean id="subscriptionCanceledNotice" class="deus.model.attention.notice.SubscriptionCanceledNotice">
 		<constructor-arg ref="subscriberMetadata" />
 		<property name="creationDate" value="1970/01/01 02:01" />
 	</bean>

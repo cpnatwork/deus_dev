@@ -8,7 +8,7 @@ import deus.model.user.id.UserId;
 
 public class AttentionDaoStub implements AttentionDao {
 
-	@Resource(name="attentionList")
+	@Resource(name="unnoticedAttentionList")
 	private AttentionList defaultList;
 
 	@Override

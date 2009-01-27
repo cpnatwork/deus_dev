@@ -45,7 +45,7 @@ public class UserUrl extends AbstractUserId {
 
 	@Override
 	public String toString() {
-		return serverBaseUrl + username;
+		return serverBaseUrl + "/" + username;
 	}
 
 

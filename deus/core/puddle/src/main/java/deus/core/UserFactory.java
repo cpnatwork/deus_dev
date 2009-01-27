@@ -28,6 +28,7 @@ import deus.remoting.commandexecutor.impl.RemoteSendingSetupRemoteCommandExecuto
 import deus.remoting.setup.RemoteSendingSetup;
 import deus.remoting.setup.local.LocalRemoteSendingSetup;
 import deus.remoting.state.impl.RemotingStateRegistryImpl;
+import deus.remoting.tpchoosing.impl.FixedTransportProtocolChoosingStrategy;
 import deus.storage.attention.AttentionDao;
 import deus.storage.pub.PubDao;
 import deus.storage.sub.SubDao;
@@ -61,7 +62,9 @@ public class UserFactory {
 		// REMOTE COMMAND EXECUTOR
 		Map<TransportIdType, RemoteSendingSetup> remoteSendingSetups = new HashMap<TransportIdType, RemoteSendingSetup>();
 		remoteSendingSetups.put(TransportIdType.local, new LocalRemoteSendingSetup());
-		user.remoteCommandExecutor = new RemoteSendingSetupRemoteCommandExecutor(user, remoteSendingSetups);
+		RemoteSendingSetupRemoteCommandExecutor commandExecutor = new RemoteSendingSetupRemoteCommandExecutor(user, remoteSendingSetups);
+		commandExecutor.setTransportProtocolChoosingStrategy(new FixedTransportProtocolChoosingStrategy(TransportIdType.local));
+		user.remoteCommandExecutor = commandExecutor;
 		
 		
 		// BARKER
@@ -73,12 +76,12 @@ public class UserFactory {
 		DelegateDecisionProcessor decisionProcessor = new DelegateDecisionProcessor();
 		user.barker.setDecisionProcessor(decisionProcessor);
 		
-		SubscriberRequestDecisionProcessor sr = new SubscriberRequestDecisionProcessor(user.publisher, user.remoteCommandExecutor);
+		SubscriberRequestDecisionProcessor sr = new SubscriberRequestDecisionProcessor(user.publisher, commandExecutor);
 		decisionProcessor.addDecisionProcessor(sr, DecisionType.subscriberRequest);
 
 		// PUBLISHER
 		ListOfSubscribers los = pubDao.getListOfSubscribers(userId);
-		PublisherImpl publisherImpl = new PublisherImpl(los, pubDao.getPublisherMetadata(userId), user.remoteCommandExecutor);
+		PublisherImpl publisherImpl = new PublisherImpl(los, pubDao.getPublisherMetadata(userId), commandExecutor);
 		RemoteCalledPublisher publisherBarkerProxy = new PublisherBarkerProxy(publisherImpl, user.barker);
 		
 		Publisher publisher = new RemoteCalledPublisherToPublisherAdapter(publisherBarkerProxy, publisherImpl);
@@ -86,8 +89,8 @@ public class UserFactory {
 		
 		
 		// SUBSCRIBER
-		ListOfPublishers lop = pubDao.getListOfPublishers(userId);
-		SubscriberImpl subscriberImpl = new SubscriberImpl(lop, subDao.getSubscriberMetadata(userId), user.remoteCommandExecutor);
+		ListOfPublishers lop = subDao.getListOfPublishers(userId);
+		SubscriberImpl subscriberImpl = new SubscriberImpl(lop, subDao.getSubscriberMetadata(userId), commandExecutor);
 		RemoteCalledSubscriber subscriberBarkerProxy = new SubscriberBarkerProxy(subscriberImpl, user.barker);
 		
 		Subscriber subscriber = new RemoteCalledSubscriberToSubscriberAdapter(subscriberBarkerProxy, subscriberImpl);

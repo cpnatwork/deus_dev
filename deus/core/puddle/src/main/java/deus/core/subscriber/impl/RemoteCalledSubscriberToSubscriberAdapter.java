@@ -5,6 +5,7 @@ import deus.core.subscriber.Subscriber;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.pub.SubscriberMetadata;
+import deus.model.sub.ListOfPublishers;
 import deus.model.sub.PublisherMetadata;
 import deus.model.sub.SubscriptionState;
 import deus.model.user.id.UserId;
@@ -79,6 +80,11 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 	@Override
 	public void subscribe(UserId publisherId) {
 		subscriber.subscribe(publisherId);
+	}
+
+	@Override
+	public ListOfPublishers getListOfPublishers() {
+		return subscriber.getListOfPublishers();
 	}
 
 }

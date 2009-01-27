@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -40,29 +41,33 @@ public class RequestSubscriptionLocalTransportTest {
 	
 	private User publisherUser;
 
+	private LoginCredentials credentials;
+
+	
 	@Before
 	public void setUp() throws Exception {
 		publisherUser = userFactory.createUser(new UserUrl("alice", "deus.org"));
+		credentials = new LoginCredentials();
 	}
 
-
+	@Test
 	public void testLogin() {
-		LoginCredentials credentials = new LoginCredentials();
-
 		user = gatekeeper.login(credentials);
 		assertEquals(new UserUrl("username", "deus.org"), user.getUserId());
 		assertTrue(userRegistry.hasUser(user.getUserId()));
+		gatekeeper.logout(user);
 	}
 
-
+	@Test
 	public void testRequestSubscription() {
-		// FIXME: add this operation
-		// FIXME: think about how to group operations that match a use case at Subscriber/Publisher
+		user = gatekeeper.login(credentials);
 		user.getSubscriber().subscribe(publisherUser.getUserId());
+		gatekeeper.logout(user);
 	}
 
-
+	@Test
 	public void testLogout() {
+		user = gatekeeper.login(credentials);
 		gatekeeper.logout(user);
 		assertFalse(userRegistry.hasUser(user.getUserId()));
 	}

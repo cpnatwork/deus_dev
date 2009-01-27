@@ -7,5 +7,9 @@
 	<bean id="attentionDao" class="deus.storage.attention.AttentionDaoStub"/>
 
 	<bean id="userMetadataDao" class="deus.storage.user.UserMetadataDaoStub"/>
+	
+	<bean id="pubDao" class="deus.storage.pub.PubDaoStub" />
+	
+	<bean id="subDao" class="deus.storage.sub.SubDaoStub" />
 
 </beans>

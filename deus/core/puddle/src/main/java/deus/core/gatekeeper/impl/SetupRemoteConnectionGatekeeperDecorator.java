@@ -2,37 +2,52 @@ package deus.core.gatekeeper.impl;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 
 import deus.core.User;
 import deus.core.gatekeeper.Gatekeeper;
+import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 import deus.remoting.setup.RemoteConnectionSetup;
 
 public class SetupRemoteConnectionGatekeeperDecorator extends AbstractGatekeeperDecorator {
 
-	@Autowired
+	@Resource(name = "remoteConnectionSetups")
 	private Map<TransportIdType, RemoteConnectionSetup> remoteConnectionSetups;
 
-	
+
 	public SetupRemoteConnectionGatekeeperDecorator(Gatekeeper decoratedGatekeeper) {
 		super(decoratedGatekeeper);
 	}
 
 
-	// FIXME: set up only the remote connection, the user has a transport id for
 	@Override
 	protected void doAfterLogin(User user) {
-		for(RemoteConnectionSetup remoteConnectionSetup : remoteConnectionSetups.values())
-			remoteConnectionSetup.setUp(user);
+		UserId userId = user.getUserId();
+		for (TransportIdType transportIdType : userId.getSupportedTransports()) {
+			RemoteConnectionSetup remoteConnectionSetup = remoteConnectionSetups.get(transportIdType);
+			if (remoteConnectionSetup == null)
+				throw new RuntimeException(
+						"there is no RemoteConnectionSetup registered to setup remoting for transport '"
+								+ transportIdType + "'");
+			else
+				remoteConnectionSetup.setUp(user);
+		}
 	}
 
 
-	// FIXME: tear down only the remote connection, the user has a transport id for
 	@Override
 	protected void doBeforeLogout(User user) {
-		for(RemoteConnectionSetup remoteConnectionSetup : remoteConnectionSetups.values())
-			remoteConnectionSetup.tearDown(user);
+		UserId userId = user.getUserId();
+		for (TransportIdType transportIdType : userId.getSupportedTransports()) {
+			RemoteConnectionSetup remoteConnectionSetup = remoteConnectionSetups.get(transportIdType);
+			if (remoteConnectionSetup == null)
+				throw new RuntimeException(
+						"there is no RemoteConnectionSetup registered to tear down remoting for transport '"
+								+ transportIdType + "'");
+			else
+				remoteConnectionSetup.tearDown(user);
+		}
 	}
 
 

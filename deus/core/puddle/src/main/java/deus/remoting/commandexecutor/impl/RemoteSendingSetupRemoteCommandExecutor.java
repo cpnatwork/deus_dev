@@ -38,7 +38,7 @@ public class RemoteSendingSetupRemoteCommandExecutor extends TransportProtocolCh
 	@Override
 	protected void execute(RemoteCommand remoteCommand, RemotingState remotingState) {
 		beforeExecute(remotingState);
-		super.execute(remoteCommand);
+		super.execute(remoteCommand, remotingState);
 		afterExecute(remotingState);
 	}
 
