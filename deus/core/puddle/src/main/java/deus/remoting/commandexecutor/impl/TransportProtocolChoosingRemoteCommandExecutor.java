@@ -36,7 +36,7 @@ public class TransportProtocolChoosingRemoteCommandExecutor implements RemoteCom
 
 	protected final RemotingState getRemotingState(RemoteCommand remoteCommand) {
 		// sender
-		UserId senderId = user.getUserMetadata().getUserId();
+		UserId senderId = user.getUserId();
 		UserId receiverId = remoteCommand.getReceiverId();
 
 		TransportIdType chosenTransportIdType = choosingStrategy.chooseTransportIdType(senderId, receiverId);

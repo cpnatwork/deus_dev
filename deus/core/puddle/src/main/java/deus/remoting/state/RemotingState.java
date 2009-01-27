@@ -2,8 +2,7 @@ package deus.remoting.state;
 
 import deus.core.publisher.stub.PublisherStub;
 import deus.core.subscriber.stub.SubscriberStub;
-import deus.model.pub.SubscriberMetadata;
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 
 /**
@@ -17,7 +16,7 @@ import deus.model.user.transportid.TransportIdType;
  */
 public interface RemotingState {
 
-	public SubscriberStub getSubscriberStub(SubscriberMetadata subscriberMetadata);
+	public SubscriberStub getSubscriberStub(UserId subscriberId);
 
 
 	public void addSubscriberStub(SubscriberStub subscriberStub);
@@ -26,7 +25,7 @@ public interface RemotingState {
 	public void clearSubscriberStubList();
 
 
-	public PublisherStub getPublisherStub(PublisherMetadata publisherMetadata);
+	public PublisherStub getPublisherStub(UserId publisherId);
 
 
 	public void addPublisherStub(PublisherStub publisherStub);

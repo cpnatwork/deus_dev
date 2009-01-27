@@ -76,7 +76,7 @@ public class PublisherImpl implements Publisher {
 			// TODO: think about publishing using multiple threads
 			SubscriberMetadata subscriberMetadata = (SubscriberMetadata) arrLocal[i];
 
-			remoteCommandExecutor.execute(new AbstractPublisherRemoteCommand(subscriberMetadata) {
+			remoteCommandExecutor.execute(new AbstractPublisherRemoteCommand(subscriberMetadata.getUserId()) {
 
 				@Override
 				protected void execute(SubscriberStub subscriberStub) {

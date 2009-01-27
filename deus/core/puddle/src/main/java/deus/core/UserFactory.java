@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import deus.core.barker.Barker;
 import deus.core.barker.decisionprocessors.impl.DelegateDecisionProcessor;
@@ -25,12 +26,14 @@ import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 import deus.remoting.commandexecutor.impl.RemoteSendingSetupRemoteCommandExecutor;
 import deus.remoting.setup.RemoteSendingSetup;
+import deus.remoting.setup.local.LocalRemoteSendingSetup;
 import deus.remoting.state.impl.RemotingStateRegistryImpl;
 import deus.storage.attention.AttentionDao;
 import deus.storage.pub.PubDao;
 import deus.storage.sub.SubDao;
 import deus.storage.user.UserMetadataDao;
 
+@Component
 public class UserFactory {
 
 	@Autowired
@@ -84,13 +87,12 @@ public class UserFactory {
 		
 		// SUBSCRIBER
 		ListOfPublishers lop = pubDao.getListOfPublishers(userId);
-		SubscriberImpl subscriberImpl = new SubscriberImpl(lop, subDao.getSubscriberMetadata(userId));
+		SubscriberImpl subscriberImpl = new SubscriberImpl(lop, subDao.getSubscriberMetadata(userId), user.remoteCommandExecutor);
 		RemoteCalledSubscriber subscriberBarkerProxy = new SubscriberBarkerProxy(subscriberImpl, user.barker);
 		
 		Subscriber subscriber = new RemoteCalledSubscriberToSubscriberAdapter(subscriberBarkerProxy, subscriberImpl);
 		user.subscriber = subscriber;
-				
-
+		
 
 		return user;
 	}

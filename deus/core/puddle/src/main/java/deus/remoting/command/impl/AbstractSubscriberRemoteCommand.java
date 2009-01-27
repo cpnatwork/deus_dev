@@ -1,7 +1,6 @@
 package deus.remoting.command.impl;
 
 import deus.core.publisher.stub.PublisherStub;
-import deus.model.sub.PublisherMetadata;
 import deus.model.user.id.UserId;
 import deus.remoting.command.RemoteCommand;
 import deus.remoting.state.RemotingState;
@@ -14,18 +13,18 @@ import deus.remoting.state.RemotingState;
  */
 public abstract class AbstractSubscriberRemoteCommand implements RemoteCommand {
 
-	private final PublisherMetadata publisherMetadata;
+	private final UserId publisherId;
 
 
-	public AbstractSubscriberRemoteCommand(PublisherMetadata publisherMetadata) {
+	public AbstractSubscriberRemoteCommand(UserId publisherId) {
 		super();
-		this.publisherMetadata = publisherMetadata;
+		this.publisherId = publisherId;
 	}
 
 
 	@Override
 	public final void execute(RemotingState remotingState) {
-		PublisherStub stub = remotingState.getPublisherStub(publisherMetadata);
+		PublisherStub stub = remotingState.getPublisherStub(publisherId);
 		execute(stub);
 	}
 
@@ -35,6 +34,6 @@ public abstract class AbstractSubscriberRemoteCommand implements RemoteCommand {
 
 	@Override
 	public UserId getReceiverId() {
-		return publisherMetadata.getUserId();
+		return publisherId;
 	}
 }

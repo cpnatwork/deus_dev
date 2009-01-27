@@ -7,6 +7,7 @@ import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.PublisherMetadata;
 import deus.model.sub.SubscriptionState;
+import deus.model.user.id.UserId;
 
 /**
  * Delegates all methods of <code>RemoteCalledSubscriber</code> to a delegate of type <code>RemoteCalledSubscriber</code>,
@@ -73,6 +74,11 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 	@Override
 	public void removePublisher(PublisherMetadata publisherMetadata) {
 		subscriber.removePublisher(publisherMetadata);
+	}
+
+	@Override
+	public void subscribe(UserId publisherId) {
+		subscriber.subscribe(publisherId);
 	}
 
 }

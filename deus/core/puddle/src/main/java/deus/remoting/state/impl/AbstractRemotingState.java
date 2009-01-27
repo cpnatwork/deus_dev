@@ -5,8 +5,7 @@ import java.util.List;
 
 import deus.core.publisher.stub.PublisherStub;
 import deus.core.subscriber.stub.SubscriberStub;
-import deus.model.pub.SubscriberMetadata;
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.id.UserId;
 import deus.remoting.state.RemotingState;
 
 public abstract class AbstractRemotingState implements RemotingState {
@@ -46,20 +45,20 @@ public abstract class AbstractRemotingState implements RemotingState {
 
 
 	@Override
-	public PublisherStub getPublisherStub(PublisherMetadata publisherMetadata) {
+	public PublisherStub getPublisherStub(UserId publisherId) {
 		for (PublisherStub stub : publisherStubs)
-			if (stub.getPublisherMetadata().equals(publisherMetadata))
+			if (stub.getPublisherMetadata().getUserId().equals(publisherId))
 				return stub;
-		throw new IllegalArgumentException("no publisher stub for the publisher " + publisherMetadata);
+		throw new IllegalArgumentException("no publisher stub for the publisher " + publisherId);
 	}
 
 
 	@Override
-	public SubscriberStub getSubscriberStub(SubscriberMetadata subscriberMetadata) {
+	public SubscriberStub getSubscriberStub(UserId subscriberId) {
 		for (SubscriberStub stub : subscriberStubs)
-			if (stub.getSubscriberMetadata().equals(subscriberMetadata))
+			if (stub.getSubscriberMetadata().getUserId().equals(subscriberId))
 				return stub;
-		throw new IllegalArgumentException("no subscriber stub for the subscriber " + subscriberMetadata);
+		throw new IllegalArgumentException("no subscriber stub for the subscriber " + subscriberId);
 	}
 
 }

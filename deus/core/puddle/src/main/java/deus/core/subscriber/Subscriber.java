@@ -16,7 +16,7 @@ import deus.model.sub.SubscriptionState;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-public interface Subscriber extends RemoteCalledSubscriber {
+public interface Subscriber extends RemoteCalledSubscriber, RemoteCallingSubscriber {
 
 	public DistributedInformationFolder getDistributedInformationFolder();
 
@@ -24,9 +24,8 @@ public interface Subscriber extends RemoteCalledSubscriber {
 	public SubscriberMetadata getSubscriberMetadata();
 
 
+	// FIXME: think about whether we need these two methods
 	public void addPublisher(PublisherMetadata publisherMetadata, SubscriptionState subscriptionState);
-
-
 	public void removePublisher(PublisherMetadata publisherMetadata);
 
 }

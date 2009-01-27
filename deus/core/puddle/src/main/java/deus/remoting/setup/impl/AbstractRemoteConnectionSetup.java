@@ -9,6 +9,10 @@ public abstract class AbstractRemoteConnectionSetup implements RemoteConnectionS
 
 	@Override
 	public final void setUp(User user) {
+		if (!user.getUserId().hasTransportId(getType()))
+			throw new IllegalStateException("cannot set up remote connection for user using transport protocol "
+					+ getType() + ", user has no transport ID for this protocol!");
+		
 		RemotingStateRegistry remotingStateRegistry = user.getRemotingStateRegistry();
 
 		if (remotingStateRegistry.hasRemotingState(getType()))
@@ -26,6 +30,10 @@ public abstract class AbstractRemoteConnectionSetup implements RemoteConnectionS
 
 	@Override
 	public final void tearDown(User user) {
+		if (!user.getUserId().hasTransportId(getType()))
+			throw new IllegalStateException("cannot tear down remote connection for user using transport protocol "
+					+ getType() + ", user has no transport ID for this protocol!");
+		
 		RemotingStateRegistry remotingStateRegistry = user.getRemotingStateRegistry();
 
 		if (!remotingStateRegistry.hasRemotingState(getType()))

@@ -1,5 +1,6 @@
 package deus.core.subscriber.impl;
 
+import deus.core.publisher.stub.PublisherStub;
 import deus.core.subscriber.Subscriber;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.generic.ForeignInformationFile;
@@ -7,6 +8,9 @@ import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.PublisherMetadata;
 import deus.model.sub.SubscriptionState;
+import deus.model.user.id.UserId;
+import deus.remoting.command.impl.AbstractSubscriberRemoteCommand;
+import deus.remoting.commandexecutor.RemoteCommandExecutor;
 
 // TODO: add DIF
 public class SubscriberImpl implements Subscriber {
@@ -14,10 +18,15 @@ public class SubscriberImpl implements Subscriber {
 	private final SubscriberMetadata subscriberMetadata;
 	protected final ListOfPublishers listOfPublishers;
 
+	private final RemoteCommandExecutor remoteCommandExecutor;
 
-	public SubscriberImpl(ListOfPublishers listOfPublishers, SubscriberMetadata subscriberMetadata) {
+
+	public SubscriberImpl(ListOfPublishers listOfPublishers, SubscriberMetadata subscriberMetadata,
+			RemoteCommandExecutor remoteCommandExecutor) {
 		this.listOfPublishers = listOfPublishers;
 		this.subscriberMetadata = subscriberMetadata;
+
+		this.remoteCommandExecutor = remoteCommandExecutor;
 	}
 
 
@@ -69,6 +78,19 @@ public class SubscriberImpl implements Subscriber {
 	@Override
 	public void denySubscription(PublisherMetadata publisherMetadata) {
 		// TODO: what to do here?
+	}
+
+
+	@Override
+	public void subscribe(UserId publisherId) {
+		remoteCommandExecutor.execute(new AbstractSubscriberRemoteCommand(publisherId) {
+
+			@Override
+			public void execute(PublisherStub publisherStub) {
+				publisherStub.addObserver(getSubscriberMetadata());
+			}
+
+		});
 	}
 
 }

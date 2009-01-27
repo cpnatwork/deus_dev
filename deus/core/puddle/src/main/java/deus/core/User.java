@@ -8,6 +8,7 @@ import deus.core.subscriber.Subscriber;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
+import deus.model.user.id.UserId;
 import deus.remoting.commandexecutor.RemoteCommandExecutor;
 import deus.remoting.state.RemotingStateRegistry;
 
@@ -23,6 +24,7 @@ public class User {
 
 	Barker barker;
 
+	// TODO: think about removing removeCommandExec. from User
 	RemoteCommandExecutor remoteCommandExecutor;
 
 	RemotingStateRegistry remotingStateRegistry;
@@ -34,6 +36,10 @@ public class User {
 	
 	public UserMetadata getUserMetadata() {
 		return userMetadata;
+	}
+	
+	public UserId getUserId() {
+		return userMetadata.getUserId();
 	}
 
 

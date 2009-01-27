@@ -3,7 +3,7 @@ package deus.core.gatekeeper.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.User;
-import deus.core.UserFactory;
+import deus.core.UserRegistry;
 import deus.core.gatekeeper.Gatekeeper;
 import deus.core.gatekeeper.LoginCredentialChecker;
 import deus.core.gatekeeper.soul.LoginCredentials;
@@ -16,7 +16,7 @@ public class GatekeeperImpl implements Gatekeeper {
 	private LoginCredentialChecker loginCredentialChecker;
 	
 	@Autowired
-	private UserFactory userFactory;
+	private UserRegistry userRegistry;
 	
 	@Override
 	public User login(LoginCredentials credentials) {
@@ -24,7 +24,7 @@ public class GatekeeperImpl implements Gatekeeper {
 		
 		// TODO: do more login stuff, that is necessary
 		
-		User user = userFactory.createUser(userId);
+		User user = userRegistry.createAndRegisterUser(userId);
 		
 		return user;
 	}
@@ -35,6 +35,8 @@ public class GatekeeperImpl implements Gatekeeper {
 		if(!user.isLoggedIn())
 			throw new IllegalStateException("cannot logout user, he is not logged in!");
 		user.setLoggedIn(false);
+		
+		userRegistry.unregisterUser(user.getUserId());
 		
 		// TODO: do more logout stuff, that is necessary
 	}

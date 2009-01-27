@@ -1,4 +1,4 @@
- package deus.remoting.setup.impl;
+package deus.remoting.setup.impl;
 
 import deus.core.User;
 import deus.remoting.setup.RemoteSendingSetup;
@@ -9,6 +9,10 @@ public abstract class AbstractRemoteSendingSetup implements RemoteSendingSetup {
 
 	@Override
 	public final void setUp(User user) {
+		if (!user.getUserId().hasTransportId(getType()))
+			throw new IllegalStateException("cannot set up remote sending for user using transport protocol "
+					+ getType() + ", user has no transport ID for this protocol!");
+
 		RemotingStateRegistry remotingStateRegistry = user.getRemotingStateRegistry();
 
 		if (!remotingStateRegistry.hasRemotingState(getType()))
@@ -16,7 +20,7 @@ public abstract class AbstractRemoteSendingSetup implements RemoteSendingSetup {
 					+ "! There is no remoting state for the user " + user + " and the transport protocol " + getType()
 					+ " registered! Set up remote connection first!");
 
-		RemotingState remotingState = remotingStateRegistry.getRemotingState(getType());		
+		RemotingState remotingState = remotingStateRegistry.getRemotingState(getType());
 		checkedSetUp(user, remotingState);
 	}
 
@@ -26,6 +30,10 @@ public abstract class AbstractRemoteSendingSetup implements RemoteSendingSetup {
 
 	@Override
 	public final void tearDown(User user) {
+		if (!user.getUserId().hasTransportId(getType()))
+			throw new IllegalStateException("cannot tear down remote sending for user using transport protocol "
+					+ getType() + ", user has no transport ID for this protocol!");
+		
 		RemotingStateRegistry remotingStateRegistry = user.getRemotingStateRegistry();
 
 		if (!remotingStateRegistry.hasRemotingState(getType()))
@@ -33,7 +41,7 @@ public abstract class AbstractRemoteSendingSetup implements RemoteSendingSetup {
 					+ "! There is no remoting state for the user " + user + " and the transport protocol " + getType()
 					+ " registered! Set up remote connection first!");
 
-		RemotingState remotingState = remotingStateRegistry.getRemotingState(getType());		
+		RemotingState remotingState = remotingStateRegistry.getRemotingState(getType());
 		checkedTearDown(remotingState);
 	}
 
