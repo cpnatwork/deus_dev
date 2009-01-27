@@ -6,7 +6,7 @@ import org.jivesoftware.smack.packet.IQ;
 import org.jivesoftware.smack.packet.Packet;
 
 import deus.model.dossier.generic.ForeignInformationFile;
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.UserMetadata;
 import deus.nsi.xmpp.subscriber.impl.FIFChange;
 
 public class UpdatePacketListener extends SubscriberPacketListener {
@@ -28,8 +28,7 @@ public class UpdatePacketListener extends SubscriberPacketListener {
 		// TODO: do XML to object binding
 		// change = xmltoobjectbind(xml);
 
-		PublisherMetadata publisherMetadata = new PublisherMetadata();
-		parseFromUserMetadata(packet, publisherMetadata);
+		UserMetadata publisherMetadata = parseFromUserMetadata(packet);
 
 		subscriber.update(publisherMetadata, change);
 	}

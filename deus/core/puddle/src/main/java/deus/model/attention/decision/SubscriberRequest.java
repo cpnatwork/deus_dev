@@ -1,18 +1,18 @@
 package deus.model.attention.decision;
 
-import deus.model.pub.SubscriberMetadata;
+import deus.model.user.UserMetadata;
 
 public class SubscriberRequest extends ConnectionDecisionToMake {
 
-	private final SubscriberMetadata subscriberMetadata;
+	private final UserMetadata subscriberMetadata;
 
 
-	public SubscriberRequest(SubscriberMetadata subscriberMetadata) {
+	public SubscriberRequest(UserMetadata subscriberMetadata) {
 		this.subscriberMetadata = subscriberMetadata;
 	}
 
 
-	public SubscriberMetadata getSubscriberMetadata() {
+	public UserMetadata getSubscriberMetadata() {
 		return subscriberMetadata;
 	}
 

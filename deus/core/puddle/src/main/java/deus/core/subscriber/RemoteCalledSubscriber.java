@@ -1,7 +1,7 @@
 package deus.core.subscriber;
 
 import deus.model.dossier.generic.ForeignInformationFile;
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.UserMetadata;
 
 /**
  * Groups methods of the interface <code>Subscriber</code>, that are called remotely on the subscriber subsystem. These
@@ -16,12 +16,12 @@ import deus.model.sub.PublisherMetadata;
  */
 public interface RemoteCalledSubscriber {
 
-	public void update(PublisherMetadata publisherMetadata, ForeignInformationFile fif);
+	public void update(UserMetadata publisherMetadata, ForeignInformationFile fif);
 
 
-	public void acknowledgeSubscription(PublisherMetadata publisherMetadata);
+	public void acknowledgeSubscription(UserMetadata publisherMetadata);
 
 
-	public void denySubscription(PublisherMetadata publisherMetadata);
+	public void denySubscription(UserMetadata publisherMetadata);
 
 }

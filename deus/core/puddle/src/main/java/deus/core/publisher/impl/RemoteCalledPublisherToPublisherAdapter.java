@@ -3,8 +3,7 @@ package deus.core.publisher.impl;
 import deus.core.publisher.Publisher;
 import deus.core.publisher.RemoteCalledPublisher;
 import deus.model.pub.ListOfSubscribers;
-import deus.model.pub.SubscriberMetadata;
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.UserMetadata;
 
 /**
  * Delegates all methods of <code>RemoteCalledPublisher</code> to a delegate of type <code>RemoteCalledPublisher</code>,
@@ -30,13 +29,13 @@ public class RemoteCalledPublisherToPublisherAdapter implements Publisher {
 //	+++ METHODS OF REMOTE CALLED PUBLISHER ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	
 	@Override
-	public void addObserver(SubscriberMetadata subscriberMetadata) {
+	public void addObserver(UserMetadata subscriberMetadata) {
 		remoteCalledPublisher.addObserver(subscriberMetadata);
 	}
 
 
 	@Override
-	public void deleteObserver(SubscriberMetadata subscriberMetadata) {
+	public void deleteObserver(UserMetadata subscriberMetadata) {
 		remoteCalledPublisher.deleteObserver(subscriberMetadata);
 	}
 
@@ -61,7 +60,7 @@ public class RemoteCalledPublisherToPublisherAdapter implements Publisher {
 
 
 	@Override
-	public PublisherMetadata getPublisherMetadata() {
+	public UserMetadata getPublisherMetadata() {
 		return publisher.getPublisherMetadata();
 	}
 

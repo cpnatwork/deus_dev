@@ -1,10 +1,9 @@
 package deus.core.subscriber;
 
 import deus.model.depository.generic.DistributedInformationFolder;
-import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.ListOfPublishers;
-import deus.model.sub.PublisherMetadata;
 import deus.model.sub.SubscriptionState;
+import deus.model.user.UserMetadata;
 
 /**
  * Central facade of the subscriber subsystem.
@@ -24,11 +23,11 @@ public interface Subscriber extends RemoteCalledSubscriber, RemoteCallingSubscri
 	public ListOfPublishers getListOfPublishers();
 	
 	
-	public SubscriberMetadata getSubscriberMetadata();
+	public UserMetadata getSubscriberMetadata();
 
 
 	// FIXME: think about whether we need these two methods
-	public void addPublisher(PublisherMetadata publisherMetadata, SubscriptionState subscriptionState);
-	public void removePublisher(PublisherMetadata publisherMetadata);
+	public void addPublisher(UserMetadata publisherMetadata, SubscriptionState subscriptionState);
+	public void removePublisher(UserMetadata publisherMetadata);
 
 }

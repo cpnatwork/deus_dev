@@ -23,7 +23,7 @@
 	</bean>
 
 
-	<bean id="publisherMetadata" class="deus.model.sub.PublisherMetadata">
+	<bean id="publisherMetadata" class="deus.model.user.UserMetadata">
 		<property name="userId" ref="publisherUserId"/>
 		<property name="fullName" value="Alice" />
 	</bean>

@@ -24,13 +24,10 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 	 * 
 	 * @param packet
 	 *            the packet, from which to parse the 'from' data
-	 * @param userMetadata
-	 *            the user metadata to fill. Since we don't know, whether it's an instance of PublisherMetadata or
-	 *            SubscriberMetadata, or another subclass of UserMetadata, the user metadata is created and then passed
-	 *            to the method to fill it.
 	 * @return
 	 */
-	protected void parseFromUserMetadata(Packet packet, UserMetadata userMetadata) {
+	protected UserMetadata parseFromUserMetadata(Packet packet) {
+		UserMetadata userMetadata = new UserMetadata();
 		String from = packet.getFrom();
 		if (from == null)
 			throw new RuntimeException("'from' field is null at this presence packet: " + packet);
@@ -50,6 +47,8 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 			throw new RuntimeException("property '" + xmppConfiguration.getXmppPropertyFullName()
 					+ "' is null at this presence packet: " + packet);
 		userMetadata.setFullName(fullName.toString());
+		
+		return userMetadata;
 	}
 
 }

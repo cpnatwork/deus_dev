@@ -4,10 +4,9 @@ import deus.core.subscriber.RemoteCalledSubscriber;
 import deus.core.subscriber.Subscriber;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.generic.ForeignInformationFile;
-import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.ListOfPublishers;
-import deus.model.sub.PublisherMetadata;
 import deus.model.sub.SubscriptionState;
+import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 /**
@@ -35,19 +34,19 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 	// +++ METHODS OF REMOTE CALLED SUBSCRIBER ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
-	public void acknowledgeSubscription(PublisherMetadata publisherMetadata) {
+	public void acknowledgeSubscription(UserMetadata publisherMetadata) {
 		remoteCalledSubscriber.acknowledgeSubscription(publisherMetadata);
 	}
 
 
 	@Override
-	public void denySubscription(PublisherMetadata publisherMetadata) {
+	public void denySubscription(UserMetadata publisherMetadata) {
 		remoteCalledSubscriber.denySubscription(publisherMetadata);
 	}
 
 
 	@Override
-	public void update(PublisherMetadata publisherMetadata, ForeignInformationFile fif) {
+	public void update(UserMetadata publisherMetadata, ForeignInformationFile fif) {
 		remoteCalledSubscriber.update(publisherMetadata, fif);
 	}
 
@@ -55,7 +54,7 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 	// +++ METHODS OF SUBSCRIBER ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
-	public void addPublisher(PublisherMetadata publisherMetadata, SubscriptionState subscriptionState) {
+	public void addPublisher(UserMetadata publisherMetadata, SubscriptionState subscriptionState) {
 		subscriber.addPublisher(publisherMetadata, subscriptionState);
 	}
 
@@ -67,13 +66,13 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 
 
 	@Override
-	public SubscriberMetadata getSubscriberMetadata() {
+	public UserMetadata getSubscriberMetadata() {
 		return subscriber.getSubscriberMetadata();
 	}
 
 
 	@Override
-	public void removePublisher(PublisherMetadata publisherMetadata) {
+	public void removePublisher(UserMetadata publisherMetadata) {
 		subscriber.removePublisher(publisherMetadata);
 	}
 

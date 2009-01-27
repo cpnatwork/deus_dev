@@ -7,7 +7,7 @@ import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.packet.Presence.Type;
 
-import deus.model.pub.SubscriberMetadata;
+import deus.model.user.UserMetadata;
 import deus.nsi.xmpp.util.PacketPrinter;
 
 
@@ -37,8 +37,8 @@ public class UnsubscribePacketListener extends PublisherPacketListener {
 		System.out.println(printer.printPacket(packet));
 
 		Presence presence = (Presence) packet;
-		SubscriberMetadata subscriberMetadata = new SubscriberMetadata();
-		parseFromUserMetadata(presence, subscriberMetadata);
+		UserMetadata subscriberMetadata = new UserMetadata();
+		parseFromUserMetadata(presence);
 
 		// TODO: unsubscribe user and put notice to attention list
 		publisher.deleteObserver(subscriberMetadata);

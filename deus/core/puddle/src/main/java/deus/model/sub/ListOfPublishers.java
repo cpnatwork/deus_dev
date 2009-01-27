@@ -1,17 +1,19 @@
 package deus.model.sub;
 
-public interface ListOfPublishers extends Iterable<PublisherMetadata> {
+import deus.model.user.UserMetadata;
 
-	public void add(PublisherMetadata publisherMetadata, SubscriptionState subscriptionState);
+public interface ListOfPublishers extends Iterable<UserMetadata> {
 
-
-	public void remove(PublisherMetadata publisherMetadata);
-
-
-	public boolean contains(PublisherMetadata publisherMetadata);
+	public void add(UserMetadata publisherMetadata, SubscriptionState subscriptionState);
 
 
-	public void changeState(PublisherMetadata publisherMetadata, SubscriptionState subscriptionState);
+	public void remove(UserMetadata publisherMetadata);
+
+
+	public boolean contains(UserMetadata publisherMetadata);
+
+
+	public void changeState(UserMetadata publisherMetadata, SubscriptionState subscriptionState);
 	
 	
 	public int size();

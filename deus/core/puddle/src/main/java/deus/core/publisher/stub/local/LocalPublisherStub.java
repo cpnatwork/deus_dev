@@ -7,7 +7,7 @@ import deus.core.User;
 import deus.core.UserRegistry;
 import deus.core.publisher.RemoteCalledPublisher;
 import deus.core.publisher.stub.impl.AbstractPublisherStub;
-import deus.model.pub.SubscriberMetadata;
+import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 
@@ -25,7 +25,7 @@ public class LocalPublisherStub extends AbstractPublisherStub {
 
 	
 	@Override
-	public void addObserver(SubscriberMetadata subscriberMetadata) {
+	public void addObserver(UserMetadata subscriberMetadata) {
 		User user = userRegistry.getOrCreateTemporaryUser(getPublisherId());
 		RemoteCalledPublisher publisher = user.getPublisher();
 		
@@ -34,7 +34,7 @@ public class LocalPublisherStub extends AbstractPublisherStub {
 
 
 	@Override
-	public void deleteObserver(SubscriberMetadata subscriberMetadata) {
+	public void deleteObserver(UserMetadata subscriberMetadata) {
 		User user = userRegistry.getOrCreateTemporaryUser(getPublisherId());
 		RemoteCalledPublisher publisher = user.getPublisher();
 		

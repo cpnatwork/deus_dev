@@ -9,6 +9,17 @@ public class UserMetadata {
 	private String userFullName;
 
 
+	public UserMetadata() {
+	}
+
+
+	public UserMetadata(UserId userId, String userFullName) {
+		super();
+		this.userId = userId;
+		this.userFullName = userFullName;
+	}
+
+
 	public UserId getUserId() {
 		return userId;
 	}
@@ -28,13 +39,13 @@ public class UserMetadata {
 		this.userFullName = userFullName;
 	}
 
-	
+
 	@Override
 	public String toString() {
 		return "id: " + userId + ", full name: " + userFullName;
 	}
-	
-	
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

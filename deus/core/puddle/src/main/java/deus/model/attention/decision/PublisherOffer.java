@@ -1,18 +1,18 @@
 package deus.model.attention.decision;
 
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.UserMetadata;
 
 public class PublisherOffer extends ConnectionDecisionToMake {
 
-	private final PublisherMetadata publisherMetadata;
+	private final UserMetadata publisherMetadata;
 
 
-	public PublisherOffer(PublisherMetadata publisherMetadata) {
+	public PublisherOffer(UserMetadata publisherMetadata) {
 		this.publisherMetadata = publisherMetadata;
 	}
 
 
-	public PublisherMetadata getPublisher() {
+	public UserMetadata getPublisher() {
 		return publisherMetadata;
 	}
 

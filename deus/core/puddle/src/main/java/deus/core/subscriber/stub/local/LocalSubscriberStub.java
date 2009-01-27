@@ -5,7 +5,7 @@ import deus.core.UserRegistry;
 import deus.core.subscriber.RemoteCalledSubscriber;
 import deus.core.subscriber.stub.impl.AbstractSubscriberStub;
 import deus.model.dossier.generic.ForeignInformationFile;
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 
@@ -25,7 +25,7 @@ public class LocalSubscriberStub extends AbstractSubscriberStub {
 
 
 	@Override
-	public void update(PublisherMetadata publisherMetadata, ForeignInformationFile change) {
+	public void update(UserMetadata publisherMetadata, ForeignInformationFile change) {
 		User user = userRegistry.getOrCreateTemporaryUser(getSubscriberId());
 		RemoteCalledSubscriber subscriber = user.getSubscriber();
 		
@@ -34,7 +34,7 @@ public class LocalSubscriberStub extends AbstractSubscriberStub {
 
 
 	@Override
-	public void acknowledgeSubscription(PublisherMetadata publisherMetadata) {
+	public void acknowledgeSubscription(UserMetadata publisherMetadata) {
 		User user = userRegistry.getOrCreateTemporaryUser(getSubscriberId());
 		RemoteCalledSubscriber subscriber = user.getSubscriber();
 
@@ -43,7 +43,7 @@ public class LocalSubscriberStub extends AbstractSubscriberStub {
 
 
 	@Override
-	public void denySubscription(PublisherMetadata publisherMetadata) {
+	public void denySubscription(UserMetadata publisherMetadata) {
 		User user = userRegistry.getOrCreateTemporaryUser(getSubscriberId());
 		RemoteCalledSubscriber subscriber = user.getSubscriber();
 

@@ -18,9 +18,8 @@ import org.springframework.test.annotation.Repeat;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.model.pub.SubscriberMetadata;
-import deus.model.sub.PublisherMetadata;
-import deus.model.user.id.transportid.XmppTransportId;
+import deus.model.user.UserMetadata;
+import deus.model.user.transportid.XmppTransportId;
 import deus.nsi.xmpp.util.PacketPrinter;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -29,10 +28,10 @@ import deus.nsi.xmpp.util.PacketPrinter;
 public class XmppConversationTest {
 
 	@Autowired
-	private PublisherMetadata publisherMetadata;
+	private UserMetadata publisherMetadata;
 
 	@Autowired
-	private SubscriberMetadata subscriberMetadata;
+	private UserMetadata subscriberMetadata;
 
 	@Autowired
 	@Qualifier("publisher")

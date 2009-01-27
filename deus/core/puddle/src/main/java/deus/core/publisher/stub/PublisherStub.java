@@ -1,6 +1,6 @@
 package deus.core.publisher.stub;
 
-import deus.model.pub.SubscriberMetadata;
+import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 /**
@@ -19,7 +19,7 @@ public interface PublisherStub {
 	 * 
 	 * @param subscriberMetadata an observer to be added.
 	 */
-	public abstract void addObserver(SubscriberMetadata subscriberMetadata);
+	public abstract void addObserver(UserMetadata subscriberMetadata);
 
 
 	/**
@@ -28,7 +28,7 @@ public interface PublisherStub {
 	 * 
 	 * @param subscriberMetadata the observer to be deleted.
 	 */
-	public abstract void deleteObserver(SubscriberMetadata subscriberMetadata);
+	public abstract void deleteObserver(UserMetadata subscriberMetadata);
 
 
 	/**

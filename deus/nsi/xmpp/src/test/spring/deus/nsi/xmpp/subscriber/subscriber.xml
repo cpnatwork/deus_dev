@@ -22,7 +22,7 @@
 		</property>
 	</bean>
 
-	<bean id="subscriberMetadata" class="deus.model.pub.SubscriberMetadata">
+	<bean id="subscriberMetadata" class="deus.model.user.UserMetadata">
 		<property name="userId" ref="subscriberUserId"/>
 		<property name="fullName" value="Bob" />
 	</bean>

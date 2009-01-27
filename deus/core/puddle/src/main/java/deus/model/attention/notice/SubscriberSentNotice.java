@@ -1,18 +1,18 @@
 package deus.model.attention.notice;
 
-import deus.model.pub.SubscriberMetadata;
+import deus.model.user.UserMetadata;
 
 public class SubscriberSentNotice extends ConnectionNotice {
 
-	private final SubscriberMetadata subscriberMetadata;
+	private final UserMetadata subscriberMetadata;
 
 
-	public SubscriberSentNotice(SubscriberMetadata subscriberMetadata) {
+	public SubscriberSentNotice(UserMetadata subscriberMetadata) {
 		this.subscriberMetadata = subscriberMetadata;
 	}
 
 
-	public SubscriberMetadata getSubscriberMetadata() {
+	public UserMetadata getSubscriberMetadata() {
 		return subscriberMetadata;
 	}
 }

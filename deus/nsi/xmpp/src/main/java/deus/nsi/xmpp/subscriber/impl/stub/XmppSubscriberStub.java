@@ -4,7 +4,7 @@ import org.jivesoftware.smack.packet.IQ;
 
 import deus.core.subscriber.stub.impl.AbstractSubscriberStub;
 import deus.model.dossier.generic.ForeignInformationFile;
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 import deus.model.user.transportid.XmppTransportId;
@@ -36,7 +36,7 @@ public class XmppSubscriberStub extends AbstractSubscriberStub {
 
 
 	@Override
-	public void update(PublisherMetadata publisher, ForeignInformationFile change) {
+	public void update(UserMetadata publisher, ForeignInformationFile change) {
 		IQ changeIq = new FIFChange(change);
 		publisherXmppConversation.sendPacket(changeIq, getSubscriberId().getTransportId(
 				XmppTransportId.class));
@@ -44,14 +44,14 @@ public class XmppSubscriberStub extends AbstractSubscriberStub {
 
 
 	@Override
-	public void acknowledgeSubscription(PublisherMetadata publisherMetadata) {
+	public void acknowledgeSubscription(UserMetadata publisherMetadata) {
 		// TODO Auto-generated method stub
 		
 	}
 
 
 	@Override
-	public void denySubscription(PublisherMetadata publisherMetadata) {
+	public void denySubscription(UserMetadata publisherMetadata) {
 		// TODO Auto-generated method stub
 		
 	}

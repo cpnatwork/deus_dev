@@ -3,20 +3,19 @@ package deus.core.publisher.impl;
 import deus.core.publisher.Publisher;
 import deus.core.subscriber.stub.SubscriberStub;
 import deus.model.pub.ListOfSubscribers;
-import deus.model.pub.SubscriberMetadata;
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.UserMetadata;
 import deus.remoting.command.impl.AbstractPublisherRemoteCommand;
 import deus.remoting.commandexecutor.RemoteCommandExecutor;
 
 public class PublisherImpl implements Publisher {
 
-	private final PublisherMetadata publisherMetadata;
+	private final UserMetadata publisherMetadata;
 	private final RemoteCommandExecutor remoteCommandExecutor;
 
 	protected final ListOfSubscribers listOfSubscribers;
 
 
-	public PublisherImpl(ListOfSubscribers listOfSubscribers, PublisherMetadata publisherMetadata,
+	public PublisherImpl(ListOfSubscribers listOfSubscribers, UserMetadata publisherMetadata,
 			RemoteCommandExecutor remoteCommandExecutor) {
 		super();
 		this.listOfSubscribers = listOfSubscribers;
@@ -26,7 +25,7 @@ public class PublisherImpl implements Publisher {
 	}
 
 
-	public synchronized void addObserver(SubscriberMetadata subscriberMetadata) {
+	public synchronized void addObserver(UserMetadata subscriberMetadata) {
 		if (subscriberMetadata == null)
 			throw new NullPointerException();
 		if (!listOfSubscribers.contains(subscriberMetadata)) {
@@ -35,7 +34,7 @@ public class PublisherImpl implements Publisher {
 	}
 
 
-	public synchronized void deleteObserver(SubscriberMetadata subscriberMetadata) {
+	public synchronized void deleteObserver(UserMetadata subscriberMetadata) {
 		listOfSubscribers.remove(subscriberMetadata);
 	}
 
@@ -74,7 +73,7 @@ public class PublisherImpl implements Publisher {
 
 		for (int i = arrLocal.length - 1; i >= 0; i--) {
 			// TODO: think about publishing using multiple threads
-			SubscriberMetadata subscriberMetadata = (SubscriberMetadata) arrLocal[i];
+			UserMetadata subscriberMetadata = (UserMetadata) arrLocal[i];
 
 			remoteCommandExecutor.execute(new AbstractPublisherRemoteCommand(subscriberMetadata.getUserId()) {
 
@@ -96,7 +95,7 @@ public class PublisherImpl implements Publisher {
 
 
 	@Override
-	public PublisherMetadata getPublisherMetadata() {
+	public UserMetadata getPublisherMetadata() {
 		return publisherMetadata;
 	}
 

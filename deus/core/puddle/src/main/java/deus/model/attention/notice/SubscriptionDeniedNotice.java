@@ -1,10 +1,10 @@
 package deus.model.attention.notice;
 
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.UserMetadata;
 
 public class SubscriptionDeniedNotice extends PublisherSentNotice {
 
-	public SubscriptionDeniedNotice(PublisherMetadata publiserMetadata) {
+	public SubscriptionDeniedNotice(UserMetadata publiserMetadata) {
 		super(publiserMetadata);
 	}
 

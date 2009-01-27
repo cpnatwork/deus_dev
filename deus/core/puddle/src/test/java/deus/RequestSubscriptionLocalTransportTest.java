@@ -90,7 +90,7 @@ public class RequestSubscriptionLocalTransportTest {
 		assertTrue(publisherUser.getListOfSubscribers().contains(user.getUserMetadata()));
 		assertEquals(1, publisherUser.getListOfSubscribers().size());
 		
-		assertTrue(user.getListOfPublishers().contains((PublisherMetadata)user.getUserMetadata()));
+		assertTrue(user.getListOfPublishers().contains(user.getUserMetadata()));
 		assertEquals(1, user.getListOfPublishers().size());		
 		
 		gatekeeper.logout(user);

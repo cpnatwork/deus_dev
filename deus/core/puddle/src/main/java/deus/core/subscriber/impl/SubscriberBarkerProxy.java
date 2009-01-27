@@ -6,7 +6,7 @@ import deus.model.attention.notice.SubscriptionDeniedNotice;
 import deus.model.attention.notice.SubscriptionGrantedNotice;
 import deus.model.attention.notice.UpdateNotice;
 import deus.model.dossier.generic.ForeignInformationFile;
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.UserMetadata;
 
 public class SubscriberBarkerProxy implements RemoteCalledSubscriber {
 
@@ -20,21 +20,21 @@ public class SubscriberBarkerProxy implements RemoteCalledSubscriber {
 	}
 	
 	@Override
-	public void acknowledgeSubscription(PublisherMetadata publisherMetadata) {
+	public void acknowledgeSubscription(UserMetadata publisherMetadata) {
 		proxiedSubscriber.acknowledgeSubscription(publisherMetadata);
 		barker.addUnnoticedAttentionElement(new SubscriptionGrantedNotice(publisherMetadata));
 	}
 
 
 	@Override
-	public void denySubscription(PublisherMetadata publisherMetadata) {
+	public void denySubscription(UserMetadata publisherMetadata) {
 		proxiedSubscriber.denySubscription(publisherMetadata);
 		barker.addUnnoticedAttentionElement(new SubscriptionDeniedNotice(publisherMetadata));
 	}
 	
 	
 	@Override
-	public void update(PublisherMetadata publisherMetadata, ForeignInformationFile fif) {
+	public void update(UserMetadata publisherMetadata, ForeignInformationFile fif) {
 		proxiedSubscriber.update(publisherMetadata, fif);
 		barker.addUnnoticedAttentionElement(new UpdateNotice(publisherMetadata));
 	}

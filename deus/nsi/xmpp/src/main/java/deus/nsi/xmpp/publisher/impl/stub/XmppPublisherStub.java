@@ -3,7 +3,7 @@ package deus.nsi.xmpp.publisher.impl.stub;
 import org.jivesoftware.smack.packet.Presence;
 
 import deus.core.publisher.stub.impl.AbstractPublisherStub;
-import deus.model.pub.SubscriberMetadata;
+import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 import deus.model.user.transportid.XmppTransportId;
@@ -52,7 +52,7 @@ public class XmppPublisherStub extends AbstractPublisherStub {
 
 
 	@Override
-	public void addObserver(SubscriberMetadata subscriberMetadata) {
+	public void addObserver(UserMetadata subscriberMetadata) {
 		// TODO: implement this method properly
 		// Roster roster = subscriberXmppConversation.getRoster();
 
@@ -66,7 +66,7 @@ public class XmppPublisherStub extends AbstractPublisherStub {
 
 
 	@Override
-	public void deleteObserver(SubscriberMetadata subscriberMetadata) {
+	public void deleteObserver(UserMetadata subscriberMetadata) {
 		// TODO: implement this method properly
 		// Roster roster = subscriberXmppConversation.getRoster();
 

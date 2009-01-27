@@ -82,7 +82,7 @@ public class UserFactory {
 
 		// PUBLISHER
 		ListOfSubscribers los = pubDao.getListOfSubscribers(userId);
-		PublisherImpl publisherImpl = new PublisherImpl(los, pubDao.getPublisherMetadata(userId), commandExecutor);
+		PublisherImpl publisherImpl = new PublisherImpl(los, user.userMetadata, commandExecutor);
 		RemoteCalledPublisher publisherBarkerProxy = new PublisherBarkerProxy(publisherImpl, user.barker);
 
 		Publisher publisher = new RemoteCalledPublisherToPublisherAdapter(publisherBarkerProxy, publisherImpl);
@@ -91,7 +91,7 @@ public class UserFactory {
 
 		// SUBSCRIBER
 		ListOfPublishers lop = subDao.getListOfPublishers(userId);
-		SubscriberImpl subscriberImpl = new SubscriberImpl(lop, subDao.getSubscriberMetadata(userId), commandExecutor);
+		SubscriberImpl subscriberImpl = new SubscriberImpl(lop, user.userMetadata, commandExecutor);
 		RemoteCalledSubscriber subscriberBarkerProxy = new SubscriberBarkerProxy(subscriberImpl, user.barker);
 
 		Subscriber subscriber = new RemoteCalledSubscriberToSubscriberAdapter(subscriberBarkerProxy, subscriberImpl);

@@ -7,7 +7,7 @@ import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.packet.Presence.Type;
 
-import deus.model.pub.SubscriberMetadata;
+import deus.model.user.UserMetadata;
 import deus.nsi.xmpp.util.PacketPrinter;
 
 
@@ -38,8 +38,7 @@ public class SubscribePacketListener extends PublisherPacketListener {
 
 		Presence presence = (Presence) packet;
 
-		SubscriberMetadata subscriberMetadata = new SubscriberMetadata();
-		parseFromUserMetadata(presence, subscriberMetadata);
+		UserMetadata subscriberMetadata = parseFromUserMetadata(presence);
 
 		// TODO: add subscribe request to attention list
 		publisher.addObserver(subscriberMetadata);

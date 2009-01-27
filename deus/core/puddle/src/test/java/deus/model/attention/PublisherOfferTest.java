@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.PublisherOffer;
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.UserMetadata;
 
 public class PublisherOfferTest {
 
@@ -17,7 +17,7 @@ public class PublisherOfferTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		dec = new PublisherOffer(new PublisherMetadata());
+		dec = new PublisherOffer(new UserMetadata());
 	}
 
 

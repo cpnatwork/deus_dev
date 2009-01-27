@@ -4,10 +4,9 @@ import deus.core.publisher.stub.PublisherStub;
 import deus.core.subscriber.Subscriber;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.generic.ForeignInformationFile;
-import deus.model.pub.SubscriberMetadata;
 import deus.model.sub.ListOfPublishers;
-import deus.model.sub.PublisherMetadata;
 import deus.model.sub.SubscriptionState;
+import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 import deus.remoting.command.impl.AbstractSubscriberRemoteCommand;
 import deus.remoting.commandexecutor.RemoteCommandExecutor;
@@ -15,13 +14,13 @@ import deus.remoting.commandexecutor.RemoteCommandExecutor;
 // TODO: add DIF
 public class SubscriberImpl implements Subscriber {
 
-	private final SubscriberMetadata subscriberMetadata;
+	private final UserMetadata subscriberMetadata;
 	protected final ListOfPublishers listOfPublishers;
 
 	private final RemoteCommandExecutor remoteCommandExecutor;
 
 
-	public SubscriberImpl(ListOfPublishers listOfPublishers, SubscriberMetadata subscriberMetadata,
+	public SubscriberImpl(ListOfPublishers listOfPublishers, UserMetadata subscriberMetadata,
 			RemoteCommandExecutor remoteCommandExecutor) {
 		this.listOfPublishers = listOfPublishers;
 		this.subscriberMetadata = subscriberMetadata;
@@ -31,7 +30,7 @@ public class SubscriberImpl implements Subscriber {
 
 
 	@Override
-	public SubscriberMetadata getSubscriberMetadata() {
+	public UserMetadata getSubscriberMetadata() {
 		return subscriberMetadata;
 	}
 
@@ -44,13 +43,13 @@ public class SubscriberImpl implements Subscriber {
 
 
 	@Override
-	public void addPublisher(PublisherMetadata publisherMetadata, SubscriptionState subscriptionState) {
+	public void addPublisher(UserMetadata publisherMetadata, SubscriptionState subscriptionState) {
 		listOfPublishers.add(publisherMetadata, subscriptionState);
 	}
 
 
 	@Override
-	public void removePublisher(PublisherMetadata publisherMetadata) {
+	public void removePublisher(UserMetadata publisherMetadata) {
 		listOfPublishers.remove(publisherMetadata);
 	}
 
@@ -61,7 +60,7 @@ public class SubscriberImpl implements Subscriber {
 
 
 	@Override
-	public void update(PublisherMetadata publisherMetadata, ForeignInformationFile fif) {
+	public void update(UserMetadata publisherMetadata, ForeignInformationFile fif) {
 		if (!listOfPublishers.contains(publisherMetadata))
 			// FIXME: how to handle this??
 			;
@@ -70,13 +69,13 @@ public class SubscriberImpl implements Subscriber {
 
 
 	@Override
-	public void acknowledgeSubscription(PublisherMetadata publisherMetadata) {
+	public void acknowledgeSubscription(UserMetadata publisherMetadata) {
 		listOfPublishers.changeState(publisherMetadata, SubscriptionState.granted);
 	}
 
 
 	@Override
-	public void denySubscription(PublisherMetadata publisherMetadata) {
+	public void denySubscription(UserMetadata publisherMetadata) {
 		// TODO: what to do here?
 	}
 

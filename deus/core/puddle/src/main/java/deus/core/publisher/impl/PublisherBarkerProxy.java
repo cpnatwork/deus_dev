@@ -6,7 +6,7 @@ import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.model.attention.notice.Notice;
 import deus.model.attention.notice.SubscriptionCanceledNotice;
-import deus.model.pub.SubscriberMetadata;
+import deus.model.user.UserMetadata;
 
 public class PublisherBarkerProxy implements RemoteCalledPublisher {
 
@@ -21,7 +21,7 @@ public class PublisherBarkerProxy implements RemoteCalledPublisher {
 
 
 	@Override
-	public void addObserver(SubscriberMetadata subscriberMetadata) {
+	public void addObserver(UserMetadata subscriberMetadata) {
 		// PLACE SUBSCRIBER REQUEST
 		BinaryDecisionToMake decision = new SubscriberRequest(subscriberMetadata);
 		barker.addUnnoticedAttentionElement(decision);
@@ -29,7 +29,7 @@ public class PublisherBarkerProxy implements RemoteCalledPublisher {
 
 
 	@Override
-	public void deleteObserver(SubscriberMetadata subscriberMetadata) {
+	public void deleteObserver(UserMetadata subscriberMetadata) {
 		// DELETE OBSERVER
 		proxiedPublisher.deleteObserver(subscriberMetadata);
 

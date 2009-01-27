@@ -17,7 +17,7 @@ import deus.nsi.xmpp.common.XmppConfiguration;
 import deus.nsi.xmpp.common.XmppConversation;
 
 // FIXME: do we need UserMetadata here? Is XmppTransportId not enough?
-// TODO: think about synchonrization issues (e.g. with adding/removing of packet listeners)
+// TODO: think about synchronization issues (e.g. with adding/removing of packet listeners)
 @Configurable
 public class XmppConversationImpl implements XmppConversation {
 

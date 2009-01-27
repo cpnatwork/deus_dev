@@ -1,20 +1,20 @@
 package deus.model.attention.notice;
 
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.UserMetadata;
 
 public class UpdateNotice extends Notice {
 
-	private final PublisherMetadata publiserMetadata;
+	private final UserMetadata publisherMetadata;
 
 
-	public UpdateNotice(PublisherMetadata publiserMetadata) {
+	public UpdateNotice(UserMetadata publisherMetadata) {
 		super();
-		this.publiserMetadata = publiserMetadata;
+		this.publisherMetadata = publisherMetadata;
 	}
 
 
-	public PublisherMetadata getPubliserMetadata() {
-		return publiserMetadata;
+	public UserMetadata getPublisherMetadata() {
+		return publisherMetadata;
 	}
 	
 }

@@ -14,8 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.core.publisher.Publisher;
 import deus.core.publisher.stub.PublisherStub;
-import deus.model.pub.SubscriberMetadata;
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.UserMetadata;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton;
 
@@ -34,10 +33,10 @@ public class XmppPublisherStubTest {
 	private PublisherStub publisherStub;
 
 	@Autowired
-	private PublisherMetadata publisherMetadata;
+	private UserMetadata publisherMetadata;
 
 	@Autowired
-	private SubscriberMetadata subscriberMetadata;
+	private UserMetadata subscriberMetadata;
 
 	@Autowired
 	@Qualifier("publisher")

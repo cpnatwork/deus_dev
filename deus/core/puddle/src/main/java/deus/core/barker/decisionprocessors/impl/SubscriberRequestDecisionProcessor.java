@@ -4,7 +4,7 @@ import deus.core.barker.decisionprocessors.DecisionProcessor;
 import deus.core.publisher.Publisher;
 import deus.core.subscriber.stub.SubscriberStub;
 import deus.model.attention.decision.SubscriberRequest;
-import deus.model.pub.SubscriberMetadata;
+import deus.model.user.UserMetadata;
 import deus.remoting.command.impl.AbstractPublisherRemoteCommand;
 import deus.remoting.commandexecutor.RemoteCommandExecutor;
 
@@ -27,7 +27,7 @@ public class SubscriberRequestDecisionProcessor implements DecisionProcessor<Sub
 		if (!subscriberRequest.isDecisionMade())
 			throw new IllegalStateException("decision (" + subscriberRequest + ") is not made yet");
 
-		SubscriberMetadata subscriberMetadata = subscriberRequest.getSubscriberMetadata();
+		UserMetadata subscriberMetadata = subscriberRequest.getSubscriberMetadata();
 		
 		if (subscriberRequest.isDecisionPositive()) {
 			publisher.addObserver(subscriberMetadata);

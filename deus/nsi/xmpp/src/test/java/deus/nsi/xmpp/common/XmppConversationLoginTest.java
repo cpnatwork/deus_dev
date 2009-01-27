@@ -14,8 +14,8 @@ import org.springframework.test.annotation.ExpectedException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.model.sub.PublisherMetadata;
-import deus.model.user.id.transportid.XmppTransportId;
+import deus.model.user.UserMetadata;
+import deus.model.user.transportid.XmppTransportId;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/context.xml", "/deus/nsi/xmpp/xmpp.xml",
@@ -23,7 +23,7 @@ import deus.model.user.id.transportid.XmppTransportId;
 public class XmppConversationLoginTest {
 
 	@Autowired
-	private PublisherMetadata publisherMetadata;
+	private UserMetadata publisherMetadata;
 
 	@Autowired
 	@Qualifier("publisher")

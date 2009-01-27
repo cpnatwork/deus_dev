@@ -1,6 +1,6 @@
 package deus.model.dossier.generic;
 
-import deus.model.sub.PublisherMetadata;
+import deus.model.user.UserMetadata;
 
 /**
  * The view of a personal information file (PIF), that resides on the subscriber side. This file is sent by the
@@ -14,15 +14,15 @@ import deus.model.sub.PublisherMetadata;
  */
 public abstract class ForeignInformationFile {
 
-	private PublisherMetadata publisherMetadata;
+	private UserMetadata publisherMetadata;
 
 
-	public PublisherMetadata getPublisherMetadata() {
+	public UserMetadata getPublisherMetadata() {
 		return publisherMetadata;
 	}
 
 
-	public void setPublisherMetadata(PublisherMetadata publisherMetadata) {
+	public void setPublisherMetadata(UserMetadata publisherMetadata) {
 		this.publisherMetadata = publisherMetadata;
 	}
 

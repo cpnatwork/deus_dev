@@ -5,24 +5,24 @@ import java.util.Iterator;
 import java.util.Map;
 
 import deus.model.sub.ListOfPublishers;
-import deus.model.sub.PublisherMetadata;
 import deus.model.sub.SubscriptionState;
+import deus.model.user.UserMetadata;
 
 // TODO: think about thread safety! (before, this was implemented using a Vector!)
 public class ThreadSafeListOfPublishers implements ListOfPublishers {
 
-	private final Map<PublisherMetadata, SubscriptionState> publishers;
+	private final Map<UserMetadata, SubscriptionState> publishers;
 
 	
 
 	public ThreadSafeListOfPublishers() {
 		super();
-		this.publishers = new HashMap<PublisherMetadata, SubscriptionState>();
+		this.publishers = new HashMap<UserMetadata, SubscriptionState>();
 	}
 
 
 	@Override
-	public void add(PublisherMetadata publisherMetadata, SubscriptionState subscriptionState) {
+	public void add(UserMetadata publisherMetadata, SubscriptionState subscriptionState) {
 		if (publishers.containsKey(publisherMetadata))
 			throw new IllegalArgumentException("cannot add publisher (" + publisherMetadata
 					+ " to list, it has already been added.");
@@ -32,7 +32,7 @@ public class ThreadSafeListOfPublishers implements ListOfPublishers {
 
 
 	@Override
-	public void changeState(PublisherMetadata publisherMetadata, SubscriptionState subscriptionState) {
+	public void changeState(UserMetadata publisherMetadata, SubscriptionState subscriptionState) {
 		if (publishers.containsKey(publisherMetadata))
 			throw new IllegalStateException("cannot change state of publisher (" + publisherMetadata
 					+ ", it has not been added yet.");
@@ -40,19 +40,19 @@ public class ThreadSafeListOfPublishers implements ListOfPublishers {
 
 
 	@Override
-	public boolean contains(PublisherMetadata publisherMetadata) {
+	public boolean contains(UserMetadata publisherMetadata) {
 		return publishers.containsKey(publisherMetadata);
 	}
 
 
 	@Override
-	public void remove(PublisherMetadata publisherMetadata) {
+	public void remove(UserMetadata publisherMetadata) {
 		publishers.remove(publisherMetadata);
 	}
 
 
 	@Override
-	public Iterator<PublisherMetadata> iterator() {
+	public Iterator<UserMetadata> iterator() {
 		return publishers.keySet().iterator();
 	}
 
