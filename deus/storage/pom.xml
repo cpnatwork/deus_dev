@@ -13,6 +13,19 @@
 	<name>DEUS storage</name>
 
 
+	<!-- don't remove properties, even if they are empty!!! -->
+	<properties>
+		<osgi.rootPackage>deus.storage</osgi.rootPackage>
+		<!--
+			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
+			PersistantAnnotationBeanPostProcessor which is in the given package.
+		-->
+		<osgi.additionalPackageImports>org.springframework.orm.jpa.support</osgi.additionalPackageImports>
+		
+		<osgi.nonExportedPackages>!*.impl</osgi.nonExportedPackages>
+	</properties>
+
+
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 <!--+++ DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
@@ -36,24 +49,7 @@
 	<build>
 	
 		<plugins>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<instructions>
-						<Export-Package></Export-Package>
-						<Private-Package>deus.storage.*</Private-Package>
-
-						<!-- 
-						- org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor
-							requires PersistantAnnotationBeanPostProcessor which is in the given package.
-						
-						 -->
-						<Import-Package>*,org.springframework.orm.jpa.support</Import-Package>
-					</instructions>
-				</configuration>
-			</plugin>
+	
 		</plugins>
 
 	</build>

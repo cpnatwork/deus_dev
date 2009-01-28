@@ -1,36 +1,14 @@
 package deus;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.Date;
-
-import javax.annotation.Resource;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.User;
-import deus.core.gatekeeper.Gatekeeper;
-import deus.core.gatekeeper.soul.LoginCredentials;
-import deus.model.attention.AttentionElement;
-import deus.model.attention.decision.BinaryDecisionToMake;
-import deus.model.attention.decision.DecisionType;
-import deus.model.attention.decision.SubscriberRequest;
-import deus.model.attention.notice.SubscriptionDeniedNotice;
-import deus.model.attention.notice.SubscriptionGrantedNotice;
-import deus.model.sub.SubscriptionState;
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/storage/daos.xml", "/deus/core/core.xml",
-		"/deus/nsi/xmpp/xmpp.xml" })
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/core.xml",
+//		"/deus/nsi/xmpp/xmpp.xml" })
 public class SubscribeTest extends AbstractUseCaseTest {
-
+/*
 	@Resource(name = "gatekeeper")
 	private Gatekeeper gatekeeper;
 
@@ -169,5 +147,5 @@ public class SubscribeTest extends AbstractUseCaseTest {
 		gatekeeper.logout(alice);
 		gatekeeper.logout(bob);
 	}
-
+*/
 }

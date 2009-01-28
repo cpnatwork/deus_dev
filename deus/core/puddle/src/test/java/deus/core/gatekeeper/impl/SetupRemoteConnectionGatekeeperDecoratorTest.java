@@ -26,8 +26,7 @@ import deus.remoting.state.RemotingState;
 import deus.remoting.state.RemotingStateRegistry;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/model/attention/attentionList.xml",
-		"/deus/core/core.xml", "/deus/core/core-test.xml" })
+@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/core.xml", "/deus/core/core-test.xml" })
 public class SetupRemoteConnectionGatekeeperDecoratorTest {
 
 	@Autowired
@@ -37,7 +36,7 @@ public class SetupRemoteConnectionGatekeeperDecoratorTest {
 	@Resource(name = "gatekeeper")
 	private Gatekeeper gatekeeper;
 
-	
+
 	@Before
 	public void setUp() throws Exception {
 
@@ -62,7 +61,7 @@ public class SetupRemoteConnectionGatekeeperDecoratorTest {
 
 		gatekeeper.logout(credentials.getLocalUsername());
 		assertFalse(userRegistry.hasUser(credentials.getLocalUsername()));
-		
+
 		for (TransportIdType type : user.getUserId().getSupportedTransports()) {
 			System.out.println("testing removed remoting state for transport protocol '" + type + "'");
 			RemotingState remotingState = registry.getRemotingState(type);

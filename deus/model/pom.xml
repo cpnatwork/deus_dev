@@ -12,10 +12,16 @@
 	<packaging>bundle</packaging>
 	<name>DEUS model</name>
 	
+	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
-		<rootPackage>deus.model</rootPackage>
-		<!-- don't remove this property, even if it's empty!!! -->
-		<additionalPackageImports></additionalPackageImports>
+		<osgi.rootPackage>deus.model</osgi.rootPackage>
+		<!--
+			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
+			PersistantAnnotationBeanPostProcessor which is in the given package.
+		-->
+		<osgi.additionalPackageImports></osgi.additionalPackageImports>
+		
+		<osgi.nonExportedPackages></osgi.nonExportedPackages>
 	</properties>
 
 

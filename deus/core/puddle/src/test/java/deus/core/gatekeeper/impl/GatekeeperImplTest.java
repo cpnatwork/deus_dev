@@ -19,8 +19,7 @@ import deus.core.gatekeeper.soul.LoginCredentials;
 import deus.model.user.id.UserUrl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/model/attention/attentionList.xml",
-		"/deus/core/core.xml", "/deus/core/core-test.xml" })
+@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/core.xml", "/deus/core/core-test.xml" })
 public class GatekeeperImplTest {
 
 	@Resource(name = "gatekeeperTarget")

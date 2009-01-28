@@ -7,7 +7,7 @@
 	<version>0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>DEUS/DACUS prototype pom</name>
-	
+
 
 	<modules>
 		<module>deus</module>
@@ -19,7 +19,7 @@
 		<aspectj.version>1.6.1</aspectj.version>
 	</properties>
 
-	
+
 	<developers>
 		<developer>
 			<id>cpn</id>
@@ -35,28 +35,28 @@
 			<email>Florian.Rampp@informatik.stud.uni-erlangen.de</email>
 		</developer>
 	</developers>
-	
+
 	<scm>
 		<connection>scm:svn:https://svn.origo.ethz.ch/dacus</connection>
 		<developerConnection>scm:svn:https://svn.origo.ethz.ch/dacus</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
-	
+
 	<issueManagement>
 		<system>Redmine</system>
 		<url>faui6p15.informatik.uni-erlangen.de:3000</url>
 	</issueManagement>
-	
-<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-<!--+++ DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-	
+
+	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++ DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
 	<dependencies>
-        <!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-        
-	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-	    
-	    <!--+++ SPRING +++-->
+		<!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+		<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+		<!--+++ SPRING +++-->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>org.springframework.context</artifactId>
@@ -74,7 +74,7 @@
 			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
-				
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-agent</artifactId>
@@ -99,16 +99,16 @@
 			<version>4.4</version>
 			<scope>test</scope>
 		</dependency>
-		
-		
+
+
 		<!--+++ LOGGING +++-->
 		<!-- Logback ist used as logging backend! -->
-<!--		<dependency>-->
-<!--			<groupId>ch.qos.logback</groupId>-->
-<!--			<artifactId>ch.qos.logback.classic-library</artifactId>-->
-<!--			<type>libd</type>-->
-<!--			<version>0.9.9</version>-->
-<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>ch.qos.logback</groupId>-->
+		<!--			<artifactId>ch.qos.logback.classic-library</artifactId>-->
+		<!--			<type>libd</type>-->
+		<!--			<version>0.9.9</version>-->
+		<!--		</dependency>-->
 		<!-- We use the slf4j api, against which logback is programmed -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -116,37 +116,37 @@
 			<version>1.5.6</version>
 		</dependency>
 		<!-- for libraries using apache commons logging: make loggers use the slf4j api -->
-<!--		<dependency>-->
-<!--			<groupId>org.slf4j</groupId>-->
-<!--			<artifactId>com.springsource.slf4j.org.apache.commons.logging</artifactId>-->
-<!--			<version>1.5.6</version>-->
-<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.slf4j</groupId>-->
+		<!--			<artifactId>com.springsource.slf4j.org.apache.commons.logging</artifactId>-->
+		<!--			<version>1.5.6</version>-->
+		<!--		</dependency>-->
 		<!-- for libraries using java.util.logging: make JUL loggers use the slf4j api -->
-<!--		<dependency>-->
-<!--			<groupId>org.slf4j</groupId>-->
-<!--			<artifactId>com.springsource.slf4j.juli</artifactId>-->
-<!--			<version>1.5.6</version>-->
-<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.slf4j</groupId>-->
+		<!--			<artifactId>com.springsource.slf4j.juli</artifactId>-->
+		<!--			<version>1.5.6</version>-->
+		<!--		</dependency>-->
 		<!-- for libraries using log4j directly: make loggers use the slf4j api	-->
-<!--		<dependency>-->
-<!--			<groupId>org.slf4j</groupId>-->
-<!--			<artifactId>com.springsource.slf4j.org.apache.log4j</artifactId>-->
-<!--			<version>1.5.6</version>-->
-<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.slf4j</groupId>-->
+		<!--			<artifactId>com.springsource.slf4j.org.apache.log4j</artifactId>-->
+		<!--			<version>1.5.6</version>-->
+		<!--		</dependency>-->
 	</dependencies>
-	
-	
-	
-<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-<!--+++ BUILD +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-	
+
+
+
+	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++ BUILD +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
 	<build>
-	
-<!--+++ PLUGINS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-	
+
+		<!--+++ PLUGINS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
 		<plugins>
-		
+
 			<!-- MAVEN PROJECT FILE GENERATION -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -159,13 +159,11 @@
 					<additionalBuildcommands>
 						<buildcommand>org.eclipse.wst.common.project.facet.core.builder</buildcommand>
 						<!--
-							since mvn eclipse:m2eclipse which should add m2eclipse support
-							to eclipse project ignores all other natures and builders, we
-							just use mvn eclipse:eclipse and add m2eclipse nature and
-							builder manually here
+							since mvn eclipse:m2eclipse which should add m2eclipse support to eclipse project ignores all other natures and
+							builders, we just use mvn eclipse:eclipse and add m2eclipse nature and builder manually here
 						-->
 						<buildcommand>org.maven.ide.eclipse.maven2Builder</buildcommand>
-			            <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+						<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
 					</additionalBuildcommands>
 					<additionalProjectnatures>
 						<projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
@@ -189,39 +187,39 @@
 				<configuration>
 					<instructions>
 						<!--
-							export all packages below the root package (except impl packages), and don't reimport them! more on reimporting
-							exported packages here: http://www.osgi.org/blog/2007/04/importance-of-exporting-nd-importing.html
+							export all packages below the root package (except non exported packages), and don't reimport them! more on
+							reimporting exported packages here: http://www.osgi.org/blog/2007/04/importance-of-exporting-nd-importing.html
 						-->
-						<Export-Package>!*.impl,${rootPackage}.*;-noimport:=true</Export-Package>
+						<Export-Package>${osgi.nonExportedPackages},${osgi.rootPackage}.*;-noimport:=true</Export-Package>
 
 						<!--
-							include all other packages (also the impl packages!) as private. Export-Package takes precedence over
+							include all other packages (also the non exported packages!) as private. Export-Package takes precedence over
 							Private-Package!
 						-->
-						<Private-Package>${rootPackage}.*;-split-package:=merge-first</Private-Package>
+						<Private-Package>${osgi.rootPackage}.*;-split-package:=merge-first</Private-Package>
 
 						<!-- remove the BND internal header, that just states, which packages are ignored by BND -->
 						<_removeheaders>Ignore-Package</_removeheaders>
-						
+
 						<!-- add additional package imports -->
-						<Import-Package>${additionalPackageImports},*</Import-Package>
+						<Import-Package>${osgi.additionalPackageImports},*</Import-Package>
 					</instructions>
 				</configuration>
 			</plugin>
-			
+
 
 			<!-- DEPENDENCY COPYING -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<configuration>
-<!--				<outputDirectory>${springdmserver.location}/repository/bundles/usr</outputDirectory>-->
+					<!--				<outputDirectory>${springdmserver.location}/repository/bundles/usr</outputDirectory>-->
 					<outputDirectory>${project.build.directory}/dependencies</outputDirectory>
 					<overWriteReleases>false</overWriteReleases>
 					<overWriteSnapshots>false</overWriteSnapshots>
 					<overWriteIfNewer>true</overWriteIfNewer>
 					<includeScope>runtime</includeScope>
-<!--				<includeTypes>jar</includeTypes>-->
+					<!--				<includeTypes>jar</includeTypes>-->
 				</configuration>
 				<executions>
 					<execution>
@@ -244,8 +242,8 @@
 					<debug>true</debug>
 				</configuration>
 			</plugin>
-		
-		
+
+
 			<!-- COPY ARTIFACT TO APP SERVER ON PHASE pre-integration-test -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -254,17 +252,19 @@
 					<execution>
 						<phase>pre-integration-test</phase>
 						<configuration>
-		
+
 							<tasks>
-								<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>#
+								<taskdef resource="net/sf/antcontrib/antcontrib.properties" />
+								
 								<!-- copy the artifact only, if it is of 'bundle' packaging -->
 								<if>
 									<equals arg1="${project.packaging}" arg2="bundle" />
 									<then>
-										<copy file="${project.build.directory}/${project.build.finalName}.jar" todir="${springdmserver.location}/pickup"/>
+										<copy file="${project.build.directory}/${project.build.finalName}.jar" todir="${springdmserver.location}/pickup" />
 									</then>
 									<else>
-										<echo message="this Maven project is not deployed to app server, since it is not of packaging 'bundle' but '${project.packaging}'"/>
+										<echo
+											message="this Maven project is not deployed to app server, since it is not of packaging 'bundle' but '${project.packaging}'" />
 									</else>
 								</if>
 							</tasks>
@@ -280,7 +280,7 @@
 						<artifactId>ant-contrib</artifactId>
 						<version>20020829</version>
 					</dependency>
-				</dependencies>				
+				</dependencies>
 			</plugin>
 
 			<plugin>
@@ -303,11 +303,11 @@
 					<argLine>-javaagent:target/dependencies/spring-agent-2.5.6.jar</argLine>
 				</configuration>
 			</plugin>
-				
-		
+
+
 		</plugins>
 
-<!--+++ RESOURCES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+		<!--+++ RESOURCES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
 		<resources>
 			<resource>
@@ -344,7 +344,7 @@
 
 	</build>
 
-<!--+++ REPOSITORIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++ REPOSITORIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
 	<repositories>
 		<repository>
@@ -366,7 +366,7 @@
 			<id>com.springsource.repository.libraries.external</id>
 			<name>SpringSource Enterprise Bundle Repository - External Library Releases</name>
 			<url>http://repository.springsource.com/maven/libraries/external</url>
-		</repository> 
+		</repository>
 	</repositories>
-	
+
 </project>
