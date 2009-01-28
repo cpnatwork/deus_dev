@@ -12,4 +12,13 @@
 	
 	<osgi:service id="userFactoryOsgiService" ref="userFactory" interface="deus.core.UserFactory" />
 
+
+	<osgi:reference id="attentionDao" interface="deus.storage.attention.AttentionDao"/>
+	
+	<osgi:reference id="pubDao" interface="deus.storage.sub.SubDao"/>
+	
+	<osgi:reference id="subDao" interface="deus.storage.pub.PubDao"/>
+	
+	<osgi:reference id="userDao" interface="deus.storage.user.UserMetadataDao"/>
+
 </beans>

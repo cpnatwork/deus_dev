@@ -6,10 +6,12 @@
 		http://www.springframework.org/schema/osgi  
 		http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
-	<osgi:service id="gatekeeperOsgiService" ref="gatekeeper" interface="deus.core.gatekeeper.Gatekeeper" />
+	<osgi:service id="attentionDaoOsgiService" ref="attentionDao" interface="deus.storage.attention.AttentionDao" />
 
-	<osgi:service id="userRegistryOsgiService" ref="userRegistry" interface="deus.core.UserRegistry" />
+	<osgi:service id="pubDaoOsgiService" ref="pubDao" interface="deus.storage.pub.PubDao" />
 	
-	<osgi:service id="userFactoryOsgiService" ref="userFactory" interface="deus.core.UserFactory" />
+	<osgi:service id="subDaoOsgiService" ref="subDao" interface="deus.storage.sub.SubDao" />
+	
+	<osgi:service id="userDaoOsgiService" ref="userDao" interface="deus.storage.user.UserMetadataDao" />
 
 </beans>
