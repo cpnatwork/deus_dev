@@ -8,7 +8,7 @@
 
 	<bean id="gatekeeperTarget" class="deus.core.gatekeeper.impl.GatekeeperImpl" />
 
-	<bean id="loginCredentialChecker" class="deus.core.gatekeeper.impl.LoginCredentialCheckerStub" />	
+	<bean id="loginCredentialChecker" class="deus.core.gatekeeper.impl.LoginCredentialCheckerImpl" />	
 
 	<bean id="gatekeeper" class="deus.core.gatekeeper.impl.SetupRemoteConnectionGatekeeperDecorator">
 		<constructor-arg ref="gatekeeperTarget" />

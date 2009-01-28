@@ -8,22 +8,26 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.core.User;
+import deus.core.UserRegistry;
 import deus.core.gatekeeper.Gatekeeper;
 import deus.core.gatekeeper.soul.LoginCredentials;
 import deus.model.attention.notice.SubscribedProfileDeletedNotice;
 import deus.model.sub.SubscriptionState;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/storage/daos.xml", "/deus/core/core.xml" })
+@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/core.xml" })
 public class UnsubscribeTest extends AbstractUseCaseTest {
 
 	@Resource(name = "gatekeeper")
 	private Gatekeeper gatekeeper;
 
+	@Autowired
+	private UserRegistry userRegistry;
 	
 	private User bob;
 
@@ -32,9 +36,11 @@ public class UnsubscribeTest extends AbstractUseCaseTest {
 
 	@Before
 	public void setUp() throws Exception {
-		bob = gatekeeper.login(new LoginCredentials("bob", "password"));
-		
-		alice = gatekeeper.login(new LoginCredentials("alice", "password"));
+		gatekeeper.login(new LoginCredentials("bob", "password"));
+		bob = userRegistry.getUser("bob");
+
+		gatekeeper.login(new LoginCredentials("alice", "password"));
+		alice = userRegistry.getUser("alice");
 	}
 
 	@Test
@@ -82,8 +88,8 @@ public class UnsubscribeTest extends AbstractUseCaseTest {
 	
 	@After
 	public void tearDown() throws Exception {
-		gatekeeper.logout(alice);
-		gatekeeper.logout(bob);
+		gatekeeper.logout("alice");
+		gatekeeper.logout("bob");
 	}
 	
 }

@@ -83,7 +83,4 @@ public class Barker {
 		this.decisionProcessor = decisionProcessor;
 	}
 
-
-	// TODO: operations
-
 }

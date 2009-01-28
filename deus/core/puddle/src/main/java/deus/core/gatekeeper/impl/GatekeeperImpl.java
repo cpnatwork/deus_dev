@@ -3,47 +3,46 @@ package deus.core.gatekeeper.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.User;
+import deus.core.UserFactory;
 import deus.core.UserRegistry;
 import deus.core.gatekeeper.Gatekeeper;
 import deus.core.gatekeeper.LoginCredentialChecker;
 import deus.core.gatekeeper.soul.LoginCredentials;
-import deus.model.user.id.UserId;
 
 
 public class GatekeeperImpl implements Gatekeeper {
 
 	@Autowired
 	private LoginCredentialChecker loginCredentialChecker;
-	
+
 	@Autowired
 	private UserRegistry userRegistry;
-	
+
+	@Autowired
+	private UserFactory userFactory;
+
+
 	@Override
-	public User login(LoginCredentials credentials) {
-		UserId userId = loginCredentialChecker.check(credentials);
-		
+	public void login(LoginCredentials credentials) {
+		if (!loginCredentialChecker.isValid(credentials))
+			// FIXME: think about what to do here
+			;
+
 		// TODO: do more login stuff, that is necessary
-			
-		User user = userRegistry.createAndRegisterUser(userId);
-		user.setLoggedIn(true);
-		
-		return user;
+		User user = userFactory.createUser(credentials.getLocalUsername());
+
+
+		userRegistry.registerUser(credentials.getLocalUsername(), user);
 	}
 
 
 	@Override
-	public void logout(User user) {
-		if(!user.isLoggedIn())
-			throw new IllegalStateException("cannot logout user, he is not logged in!");
-		user.setLoggedIn(false);
-		
-		if(!userRegistry.hasUser(user.getUserId()))
+	public void logout(String localUsername) {
+		if (!userRegistry.hasUser(localUsername))
 			throw new IllegalStateException("cannot unregister user, he was not registered!");
+		
+		userRegistry.unregisterUser(localUsername);
 
-			
-		userRegistry.unregisterUser(user.getUserId());
-		
-		
 		// TODO: do more logout stuff, that is necessary
 	}
 

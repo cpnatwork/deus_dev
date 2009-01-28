@@ -60,7 +60,7 @@
 							requires PersistantAnnotationBeanPostProcessor which is in the given package.
 						
 						 -->
-						<Import-Package>*,org.springframework.orm.jpa.support</Import-Package>
+						<Import-Package>*,org.springframework.orm.jpa.support, deus.core.gatekeeper, deus.core, deus.model.attention, deus.model.attention.notice, deus.model.user</Import-Package>
 					</instructions>
 				</configuration>
 			</plugin>

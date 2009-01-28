@@ -5,6 +5,8 @@ import deus.model.user.id.UserId;
 
 public interface UserMetadataDao {
 
-	public UserMetadata getUserMetadata(UserId userId);
+	public UserMetadata getUserMetadata(String username);
+
+	public UserId getUserId(String username);
 
 }

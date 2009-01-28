@@ -28,18 +28,18 @@ public class User {
 	RemoteCommandExecutor remoteCommandExecutor;
 
 	RemotingStateRegistry remotingStateRegistry;
-	
-	boolean loggedIn;
-	
+
 
 	public Barker getBarker() {
 		return barker;
 	}
-	
+
+
 	public UserMetadata getUserMetadata() {
 		return userMetadata;
 	}
-	
+
+
 	public UserId getUserId() {
 		return userMetadata.getUserId();
 	}
@@ -60,25 +60,20 @@ public class User {
 	}
 
 
-	public boolean isLoggedIn() {
-		return loggedIn;
-	}
-	
-	public void setLoggedIn(boolean loggedIn) {
-		this.loggedIn = loggedIn;
-	}
-
 	public void setUserMetadata(UserMetadata userMetadata) {
 		this.userMetadata = userMetadata;
 	}
+
 
 	public Publisher getPublisher() {
 		return publisher;
 	}
 
+
 	public Subscriber getSubscriber() {
 		return subscriber;
 	}
+
 
 	public RemotingStateRegistry getRemotingStateRegistry() {
 		return remotingStateRegistry;

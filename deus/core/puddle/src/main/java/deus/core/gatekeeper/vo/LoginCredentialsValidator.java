@@ -24,7 +24,7 @@ public class LoginCredentialsValidator implements Validator {
 		loginCredentials = (LoginCredentials) commandObject;
 
 		if ((loginCredentials.getPassword() != "password")
-				&& (loginCredentials.getUsername() != "partha")) {
+				&& (loginCredentials.getLocalUsername() != "partha")) {
 			errors.reject("Credentials provided are not correct.");
 		}
 	}

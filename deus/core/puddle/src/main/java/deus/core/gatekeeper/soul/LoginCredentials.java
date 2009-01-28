@@ -1,33 +1,25 @@
 package deus.core.gatekeeper.soul;
 
 public class LoginCredentials {
-	private String Username;
-	private String Password;
+
+	private final String localUsername;
+	private final String password;
 
 
-	public LoginCredentials(String username, String password) {
+	public LoginCredentials(String localUsername, String password) {
 		super();
-		Username = username;
-		Password = password;
+		this.localUsername = localUsername;
+		this.password = password;
+	}
+
+
+	public String getLocalUsername() {
+		return localUsername;
 	}
 
 
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
-
-	public void setPassword(String password) {
-		Password = password;
-	}
-
-
-	public String getUsername() {
-		return Username;
-	}
-
-
-	public void setUsername(String username) {
-		Username = username;
-	}
 }

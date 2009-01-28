@@ -27,19 +27,17 @@ import deus.remoting.state.RemotingStateRegistry;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/context.xml", "/deus/model/attention/attentionList.xml",
-		"/deus/storage/daos.xml", "/deus/core/core.xml", "/deus/core/core-test.xml" })
+		"/deus/core/core.xml", "/deus/core/core-test.xml" })
 public class SetupRemoteConnectionGatekeeperDecoratorTest {
 
 	@Autowired
 	private UserRegistry userRegistry;
 
-	
+
 	@Resource(name = "gatekeeper")
 	private Gatekeeper gatekeeper;
 
-	private User user;
-
-
+	
 	@Before
 	public void setUp() throws Exception {
 
@@ -49,40 +47,43 @@ public class SetupRemoteConnectionGatekeeperDecoratorTest {
 	@Test
 	public void testLogin() {
 		LoginCredentials credentials = new LoginCredentials("alice", "password");
-		user = gatekeeper.login(credentials);
-		
+		gatekeeper.login(credentials);
+		assertTrue(userRegistry.hasUser(credentials.getLocalUsername()));
+		User user = userRegistry.getUser(credentials.getLocalUsername());
+
 		RemotingStateRegistry registry = user.getRemotingStateRegistry();
 		assertTrue(user.getUserId().hasTransportId(TransportIdType.local));
-		for(TransportIdType type : user.getUserId().getSupportedTransports()) {
+		for (TransportIdType type : user.getUserId().getSupportedTransports()) {
 			System.out.println("testing added remoting state for transport protocol '" + type + "'");
 			RemotingState remotingState = registry.getRemotingState(type);
 			assertNotNull(remotingState);
 			assertEquals(type, remotingState.getType());
 		}
+
+		gatekeeper.logout(credentials.getLocalUsername());
+		assertFalse(userRegistry.hasUser(credentials.getLocalUsername()));
 		
-		gatekeeper.logout(user);
-		
-		for(TransportIdType type : user.getUserId().getSupportedTransports()) {
+		for (TransportIdType type : user.getUserId().getSupportedTransports()) {
 			System.out.println("testing removed remoting state for transport protocol '" + type + "'");
 			RemotingState remotingState = registry.getRemotingState(type);
 			assertNull(remotingState);
 		}
 	}
 
+
 	@Test
 	public void testLoginLogout() {
 		LoginCredentials credentials = new LoginCredentials("alice", "password");
 
 		// LOGIN
-		user = gatekeeper.login(credentials);
+		gatekeeper.login(credentials);
+		User user = userRegistry.getUser(credentials.getLocalUsername());
 		assertEquals(new UserUrl("alice", "deus.org"), user.getUserId());
-		assertTrue(userRegistry.hasUser(user.getUserId()));
-		assertTrue(user.isLoggedIn());
-		
+		assertTrue(userRegistry.hasUser(credentials.getLocalUsername()));
+
 		// LOGOUT
-		gatekeeper.logout(user);
-		assertFalse(userRegistry.hasUser(user.getUserId()));
-		assertFalse(user.isLoggedIn());
+		gatekeeper.logout(credentials.getLocalUsername());
+		assertFalse(userRegistry.hasUser(credentials.getLocalUsername()));
 	}
 
 }

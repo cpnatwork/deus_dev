@@ -1,11 +1,17 @@
 package deus.core.gatekeeper.impl;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import deus.core.User;
+import deus.core.UserRegistry;
 import deus.core.gatekeeper.Gatekeeper;
 import deus.core.gatekeeper.soul.LoginCredentials;
 
 public abstract class AbstractGatekeeperDecorator implements Gatekeeper {
+
+	@Autowired
+	private UserRegistry userRegistry;
 
 	private final Gatekeeper decoratedGatekeeper;
 
@@ -16,24 +22,22 @@ public abstract class AbstractGatekeeperDecorator implements Gatekeeper {
 
 
 	@Override
-	public final User login(LoginCredentials credentials) {
-		User user = decoratedGatekeeper.login(credentials);
+	public final void login(LoginCredentials credentials) {
+		decoratedGatekeeper.login(credentials);
+
+		User user = userRegistry.getUser(credentials.getLocalUsername());
 
 		doAfterLogin(user);
-
-		return user;
 	}
 
 
 	@Override
-	public final void logout(User user) {
-		// do check here too, to fail early, if user is not logged in
-		if(!user.isLoggedIn())
-			throw new IllegalStateException("cannot logout user, he is not logged in!");
-		
+	public final void logout(String localUsername) {
+		User user = userRegistry.getUser(localUsername);
+
 		doBeforeLogout(user);
 
-		decoratedGatekeeper.logout(user);
+		decoratedGatekeeper.logout(localUsername);
 	}
 
 

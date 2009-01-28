@@ -1,21 +1,14 @@
 package deus.model.attention;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public abstract class AttentionElement {
+public abstract class AttentionElement implements Serializable {
 
-//	private boolean processed;
-
+	private static final long serialVersionUID = 8703358479824099313L;
+	
 	private Date creationDate;
 
-//	public final boolean isProcessed() {
-//		return processed;
-//	}
-//
-//
-//	public final void setProcessed(boolean processed) {
-//		this.processed = processed;
-//	}
 
 	public final Date getCreationDate() {
 		return creationDate;

@@ -1,5 +1,8 @@
 
 <%@page import="deus.model.attention.AttentionElement"%>
+<%@page import="deus.model.attention.AttentionList"%>
+<%@page import="deus.core.User"%>
+<%@page import="deus.model.attention.notice.SubscriptionCanceledNotice"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="deus.model.attention.AttentionElementType"%>
 
@@ -29,8 +32,10 @@
   
   <tbody>
 <% 
+	AttentionList attentionList = (AttentionList)pageContext.getRequest().getAttribute("unnoticedAttentionList");
+	attentionList.add(new SubscriptionCanceledNotice(((User)pageContext.getRequest().getAttribute("user")).getUserMetadata()));
 	int counter = 0;
-	Iterator<AttentionElement> iter = pageContext.getRequest().getAttribute("unnoticedAttentionList").iterator();
+	Iterator<AttentionElement> iter = attentionList.iterator();
    	while (iter.hasNext()) {
    		AttentionElement attElem = (AttentionElement) iter.next();
 %>

@@ -19,7 +19,7 @@ import deus.core.gatekeeper.soul.LoginCredentials;
 import deus.model.user.id.UserUrl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/deus/context.xml", "/deus/model/attention/attentionList.xml", "/deus/storage/daos.xml",
+@ContextConfiguration(locations = { "/deus/context.xml", "/deus/model/attention/attentionList.xml",
 		"/deus/core/core.xml", "/deus/core/core-test.xml" })
 public class GatekeeperImplTest {
 
@@ -29,23 +29,21 @@ public class GatekeeperImplTest {
 	@Autowired
 	private UserRegistry userRegistry;
 
-	private User user;
-	
 
 	@Test
 	public void testLoginLogout() {
 		LoginCredentials credentials = new LoginCredentials("alice", "password");
 
 		// LOGIN
-		user = gatekeeper.login(credentials);
+		gatekeeper.login(credentials);
+		assertTrue(userRegistry.hasUser(credentials.getLocalUsername()));
+		User user = userRegistry.getUser(credentials.getLocalUsername());
+
 		assertEquals(new UserUrl("alice", "deus.org"), user.getUserId());
-		assertTrue(userRegistry.hasUser(user.getUserId()));
-		assertTrue(user.isLoggedIn());
-		
+
 		// LOGOUT
-		gatekeeper.logout(user);
-		assertFalse(userRegistry.hasUser(user.getUserId()));
-		assertFalse(user.isLoggedIn());
+		gatekeeper.logout(credentials.getLocalUsername());
+		assertFalse(userRegistry.hasUser(credentials.getLocalUsername()));
 	}
 
 }

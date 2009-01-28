@@ -1,56 +1,22 @@
 package deus.core;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import deus.model.user.id.UserId;
 
-@Component
-public class UserRegistry {
+public interface UserRegistry {
 
-	@Autowired
-	private UserFactory userFactory;
-
-	private Map<UserId, User> registry;
+	public User getUser(String localUsername);
 
 
-	public UserRegistry() {
-		registry = new HashMap<UserId, User>();
-	}
+	public User getOrCreateTemporaryUser(UserId userId);
 
 
-	public User getOrCreateTemporaryUser(UserId userId) {
-		if (registry.containsKey(userId))
-			return registry.get(userId);
-		else {
-			User user = userFactory.createUser(userId);
-			// DON't add the new user to the registry
-			return user;
-		}
-	}
+	public void registerUser(String localUsername, User user);
 
 
-	public User createAndRegisterUser(UserId userId) {
-		if (hasUser(userId))
-			throw new IllegalStateException("cannot register User (" + userId + "), it is already registered");
-		User user = userFactory.createUser(userId);
-		registry.put(userId, user);
-		return user;
-	}
+	public boolean hasUser(String localUsername);
 
 
-	public boolean hasUser(UserId userId) {
-		return registry.containsKey(userId);
-	}
+	public void unregisterUser(String localUsername);
 
-
-	public void unregisterUser(UserId userId) {
-		if (!hasUser(userId))
-			throw new IllegalArgumentException("cannot remove User (" + userId + "), that has not been registered");
-		registry.remove(userId);
-	}
 
 }

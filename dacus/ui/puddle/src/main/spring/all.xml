@@ -3,13 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
-	<bean id="attentionDao" class="deus.storage.attention.AttentionDaoStub"/>
-
-	<bean id="userMetadataDao" class="deus.storage.user.UserMetadataDaoStub"/>
-	
-	<bean id="pubDao" class="deus.storage.pub.PubDaoStub" />
-	
-	<bean id="subDao" class="deus.storage.sub.SubDaoStub" />
+	<import resource="dacus/context.xml"/>
+	<import resource="dacus/osgi.xml"/>
+	<import resource="dacus/ui/view-mapping.xml"/>
+	<import resource="dacus/ui/webflow.xml"/>
 
 </beans>
