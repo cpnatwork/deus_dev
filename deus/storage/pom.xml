@@ -4,13 +4,13 @@
 
 	<parent>
 		<groupId>inf6.promed</groupId>
-		<artifactId>deus-core</artifactId>
+		<artifactId>deus</artifactId>
 		<version>0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>deus-core-puddle</artifactId>
+	<artifactId>deus-storage</artifactId>
 	<packaging>bundle</packaging>
-	<name>DEUS core puddle</name>
+	<name>DEUS storage</name>
 
 
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
@@ -22,12 +22,6 @@
 		<dependency>
 			<groupId>inf6.promed</groupId>
 			<artifactId>deus-model</artifactId>
-			<version>0.1-SNAPSHOT</version>
-		</dependency>
-
-		<dependency>
-			<groupId>inf6.promed</groupId>
-			<artifactId>deus-storage</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
                 
@@ -48,8 +42,9 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Export-Package>deus.model.*,deus.core.*</Export-Package>
-						<Private-Package>deus.*</Private-Package>
+						<Export-Package></Export-Package>
+						<Private-Package>deus.storage.*</Private-Package>
+
 						<!-- 
 						- org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor
 							requires PersistantAnnotationBeanPostProcessor which is in the given package.

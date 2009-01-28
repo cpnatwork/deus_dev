@@ -7,7 +7,7 @@ import deus.storage.user.UserMetadataDao;
 public class UserMetadataDaoStub implements UserMetadataDao {
 
 	@Override
-	public UserMetadata getUserMetadata(UserId userId) {
+	public UserMetadata getUserMetadata(String username) {
 		UserMetadata userMetadata = new UserMetadata();
 		userMetadata.setUserId(userId);
 		
@@ -16,6 +16,12 @@ public class UserMetadataDaoStub implements UserMetadataDao {
 		
 		
 		return userMetadata;
+	}
+
+	@Override
+	public UserId getUserId(String username) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

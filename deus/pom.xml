@@ -18,6 +18,7 @@
 		<module>core</module>
 		<module>nsi</module>
 		<module>model</module>
+		<module>storage</module>
 	</modules>
 	
 </project>
