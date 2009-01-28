@@ -11,6 +11,12 @@
 	<artifactId>deus-model</artifactId>
 	<packaging>bundle</packaging>
 	<name>DEUS model</name>
+	
+	<properties>
+		<rootPackage>deus.model</rootPackage>
+		<!-- don't remove this property, even if it's empty!!! -->
+		<additionalPackageImports></additionalPackageImports>
+	</properties>
 
 
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
@@ -29,26 +35,9 @@
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
 	<build>
-	
-		<plugins>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<instructions>
-						<Export-Package></Export-Package>
-						<Private-Package>deus.model.*</Private-Package>
 
-						<!-- 
-						- org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor
-							requires PersistantAnnotationBeanPostProcessor which is in the given package.
-						
-						 -->
-						<Import-Package>*,org.springframework.orm.jpa.support</Import-Package>
-					</instructions>
-				</configuration>
-			</plugin>
+		<plugins>
+
 		</plugins>
 
 	</build>
