@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.soul.User;
-import deus.core.transport.setup.impl.AbstractRemoteConnectionSetup;
-import deus.core.transport.state.RemotingState;
+import deus.core.transportOLD.setup.impl.AbstractRemoteConnectionSetup;
+import deus.core.transportOLD.state.RemotingState;
 import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.common.XmppNetwork;

@@ -20,8 +20,8 @@ import deus.core.soul.User;
 import deus.core.soul.UserRegistry;
 import deus.core.soul.gatekeeper.Gatekeeper;
 import deus.core.soul.gatekeeper.soul.LoginCredentials;
-import deus.core.transport.state.RemotingState;
-import deus.core.transport.state.RemotingStateRegistry;
+import deus.core.transportOLD.state.RemotingState;
+import deus.core.transportOLD.state.RemotingStateRegistry;
 import deus.model.user.id.UserUrl;
 import deus.model.user.transportid.TransportIdType;
 

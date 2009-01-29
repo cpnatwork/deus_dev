@@ -4,9 +4,9 @@ import org.springframework.stereotype.Component;
 
 import deus.core.soul.publisher.stub.PublisherStub;
 import deus.core.soul.subscriber.stub.SubscriberStub;
-import deus.core.transport.command.Subsystem;
-import deus.core.transport.setup.impl.AbstractRemoteSendingSetup;
-import deus.core.transport.state.RemotingState;
+import deus.core.transportOLD.command.Subsystem;
+import deus.core.transportOLD.setup.impl.AbstractRemoteSendingSetup;
+import deus.core.transportOLD.state.RemotingState;
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub;
