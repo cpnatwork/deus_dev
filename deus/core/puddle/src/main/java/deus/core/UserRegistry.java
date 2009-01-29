@@ -6,7 +6,7 @@ public interface UserRegistry {
 
 	public User getUser(String localUsername);
 
-
+	// CACHING
 	public User getOrCreateTemporaryUser(UserId userId);
 
 
@@ -17,6 +17,5 @@ public interface UserRegistry {
 
 
 	public void unregisterUser(String localUsername);
-
 
 }
