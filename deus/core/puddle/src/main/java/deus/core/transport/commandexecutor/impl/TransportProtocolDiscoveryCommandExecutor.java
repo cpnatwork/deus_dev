@@ -26,6 +26,7 @@ public class TransportProtocolDiscoveryCommandExecutor implements CommandExecuto
 		// AGREE ON TRANSPORT PROTOCOL
 		String transportProtocolId = transportProtocolDiscoveryStrategy.agreeOnTransportProtocol(command
 				.getReceiverId());
+		
 		TransportProtocol transportProtocol = transportProtocolRegistry
 				.getRegisteredTransportProtocol(transportProtocolId);
 		
@@ -34,7 +35,7 @@ public class TransportProtocolDiscoveryCommandExecutor implements CommandExecuto
 		
 		// TID OF LOCAL USER IS GENERATED USING FACTORY!
 		// TID OF REMOTE USER IS LOOKED UP USING DISCOVERY!!
-		rcs.send(command, transportIdFactory.createTransportId(command.getSenderId()),
+		rcs.send(command, transportIdFactory.createTransportId(command.getSenderMetadata().getUserId()),
 				transportProtocolDiscoveryStrategy.getTransportId(transportProtocolId, command.getReceiverId()));
 	}
 

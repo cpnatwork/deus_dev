@@ -16,11 +16,6 @@ import deus.core.soul.subscriber.Subscriber;
 import deus.core.soul.subscriber.impl.RemoteCalledSubscriberToSubscriberAdapter;
 import deus.core.soul.subscriber.impl.SubscriberBarkerProxy;
 import deus.core.soul.subscriber.impl.SubscriberImpl;
-import deus.core.transportOLD.commandexecutor.RemoteCommandExecutor;
-import deus.core.transportOLD.commandexecutor.impl.TransportProtocolChoosingRemoteCommandExecutor;
-import deus.core.transportOLD.setup.MultiRemoteSendingSetup;
-import deus.core.transportOLD.state.impl.RemotingStateRegistryImpl;
-import deus.core.transportOLD.tpchoosing.TransportProtocolChoosingStrategy;
 import deus.model.attention.decision.DecisionType;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
@@ -33,12 +28,6 @@ import deus.storage.user.UserMetadataDao;
 @Component(value="userFactory")
 public class UserFactoryImpl implements UserFactory {
 
-	@Autowired
-	private TransportProtocolChoosingStrategy transportProtocolChoosingStrategy;
-	
-	@Autowired
-	MultiRemoteSendingSetup multiRemoteSendingSetup;
-	
 	@Autowired
 	private AttentionDao attentionDao;
 
@@ -66,19 +55,6 @@ public class UserFactoryImpl implements UserFactory {
 		user.userMetadata = userMetadataDao.getUserMetadata(localUsername);
 		UserId userId = user.getUserId();
 
-		
-		// REMOTING STATE REGISTRY
-		user.remotingStateRegistry = new RemotingStateRegistryImpl();
-
-		// REMOTE COMMAND EXECUTOR
-		///MultiRemoteSendingSetupImpl remoteSendingSetup = new MultiRemoteSendingSetupImpl();
-		///remoteSendingSetup.registerRemoteSendingSetup(new LocalRemoteSendingSetup());
-		
-		RemoteCommandExecutor commandExecutor = new TransportProtocolChoosingRemoteCommandExecutor(
-				userId, user.remotingStateRegistry, transportProtocolChoosingStrategy, multiRemoteSendingSetup);
-		user.remoteCommandExecutor = commandExecutor;
-
-
 		// BARKER
 		user.barker = new Barker();
 		user.barker.setUnnoticedAttentionList(attentionDao.getUnnoticedAttentionList(userId));
@@ -86,7 +62,7 @@ public class UserFactoryImpl implements UserFactory {
 
 		// PUBLISHER
 		ListOfSubscribers los = pubDao.getListOfSubscribers(userId);
-		PublisherImpl publisherImpl = new PublisherImpl(los, user.userMetadata, commandExecutor);
+		PublisherImpl publisherImpl = new PublisherImpl(los, user.userMetadata);
 		RemoteCalledPublisher publisherBarkerProxy = new PublisherBarkerProxy(publisherImpl, user.barker);
 
 		Publisher publisher = new RemoteCalledPublisherToPublisherAdapter(publisherBarkerProxy, publisherImpl);
@@ -98,13 +74,13 @@ public class UserFactoryImpl implements UserFactory {
 		user.barker.setDecisionProcessor(decisionProcessor);
 
 		// don't use user.publisher here, since this one is proxied!
-		SubscriberRequestDecisionProcessor sr = new SubscriberRequestDecisionProcessor(publisherImpl, commandExecutor);
+		SubscriberRequestDecisionProcessor sr = new SubscriberRequestDecisionProcessor(publisherImpl);
 		decisionProcessor.addDecisionProcessor(sr, DecisionType.subscriberRequest);
 		
 
 		// SUBSCRIBER
 		ListOfPublishers lop = subDao.getListOfPublishers(userId);
-		SubscriberImpl subscriberImpl = new SubscriberImpl(lop, user.userMetadata, commandExecutor);
+		SubscriberImpl subscriberImpl = new SubscriberImpl(lop, user.userMetadata);
 		RemoteCalledSubscriber subscriberBarkerProxy = new SubscriberBarkerProxy(subscriberImpl, user.barker);
 
 		Subscriber subscriber = new RemoteCalledSubscriberToSubscriberAdapter(subscriberBarkerProxy, subscriberImpl);

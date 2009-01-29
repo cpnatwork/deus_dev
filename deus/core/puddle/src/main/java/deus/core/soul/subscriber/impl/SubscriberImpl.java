@@ -1,9 +1,13 @@
 package deus.core.soul.subscriber.impl;
 
-import deus.core.soul.publisher.stub.PublisherStub;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+
 import deus.core.soul.subscriber.Subscriber;
-import deus.core.transportOLD.command.impl.AbstractSubscriberRemoteCommand;
-import deus.core.transportOLD.commandexecutor.RemoteCommandExecutor;
+import deus.core.transport.command.Command;
+import deus.core.transport.command.RequestSubscriptionCommand;
+import deus.core.transport.command.UnsubscribeCommand;
+import deus.core.transport.commandexecutor.CommandExecutor;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.sub.ListOfPublishers;
@@ -11,20 +15,19 @@ import deus.model.sub.SubscriptionState;
 import deus.model.user.UserMetadata;
 
 // TODO: add DIF
+@Configurable
 public class SubscriberImpl implements Subscriber {
 
 	private final UserMetadata subscriberMetadata;
 	protected final ListOfPublishers listOfPublishers;
 
-	private final RemoteCommandExecutor remoteCommandExecutor;
+	@Autowired
+	private CommandExecutor commandExecutor;
 
 
-	public SubscriberImpl(ListOfPublishers listOfPublishers, UserMetadata subscriberMetadata,
-			RemoteCommandExecutor remoteCommandExecutor) {
+	public SubscriberImpl(ListOfPublishers listOfPublishers, UserMetadata subscriberMetadata) {
 		this.listOfPublishers = listOfPublishers;
 		this.subscriberMetadata = subscriberMetadata;
-
-		this.remoteCommandExecutor = remoteCommandExecutor;
 	}
 
 
@@ -74,14 +77,7 @@ public class SubscriberImpl implements Subscriber {
 
 		listOfPublishers.put(publisherMetadata, SubscriptionState.requested);
 
-		remoteCommandExecutor.execute(new AbstractSubscriberRemoteCommand(publisherMetadata.getUserId()) {
-
-			@Override
-			public void execute(PublisherStub publisherStub) {
-				publisherStub.addObserver(getSubscriberMetadata());
-			}
-
-		});
+		sendCommandToPublisher(new RequestSubscriptionCommand(), publisherMetadata);
 	}
 
 
@@ -93,14 +89,15 @@ public class SubscriberImpl implements Subscriber {
 
 		listOfPublishers.remove(publisherMetadata);
 
-		remoteCommandExecutor.execute(new AbstractSubscriberRemoteCommand(publisherMetadata.getUserId()) {
-
-			@Override
-			public void execute(PublisherStub publisherStub) {
-				publisherStub.deleteObserver(getSubscriberMetadata());
-			}
-
-		});
+		sendCommandToPublisher(new UnsubscribeCommand(), publisherMetadata);
+	}
+	
+	
+	private void sendCommandToPublisher(Command command, UserMetadata publisherMetadata) {
+		command.setReceiverId(publisherMetadata.getUserId());
+		command.setSenderMetadata(subscriberMetadata);
+		
+		commandExecutor.execute(command);
 	}
 
 }

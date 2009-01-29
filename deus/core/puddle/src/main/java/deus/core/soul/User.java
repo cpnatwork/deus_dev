@@ -5,8 +5,6 @@ import deus.core.soul.lodother.LodOther;
 import deus.core.soul.lodself.LodSelf;
 import deus.core.soul.publisher.Publisher;
 import deus.core.soul.subscriber.Subscriber;
-import deus.core.transportOLD.commandexecutor.RemoteCommandExecutor;
-import deus.core.transportOLD.state.RemotingStateRegistry;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
@@ -23,12 +21,6 @@ public class User {
 	LodOther lodOther;
 
 	Barker barker;
-
-	// TODO: think about removing removeCommandExec. from User
-	RemoteCommandExecutor remoteCommandExecutor;
-
-	RemotingStateRegistry remotingStateRegistry;
-
 
 	public Barker getBarker() {
 		return barker;
@@ -72,11 +64,6 @@ public class User {
 
 	public Subscriber getSubscriber() {
 		return subscriber;
-	}
-
-
-	public RemotingStateRegistry getRemotingStateRegistry() {
-		return remotingStateRegistry;
 	}
 
 }

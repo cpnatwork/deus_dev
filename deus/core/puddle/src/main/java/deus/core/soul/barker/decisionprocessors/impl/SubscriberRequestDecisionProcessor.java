@@ -1,24 +1,29 @@
 package deus.core.soul.barker.decisionprocessors.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+
 import deus.core.soul.barker.decisionprocessors.DecisionProcessor;
 import deus.core.soul.publisher.Publisher;
-import deus.core.soul.subscriber.stub.SubscriberStub;
-import deus.core.transportOLD.command.impl.AbstractPublisherRemoteCommand;
-import deus.core.transportOLD.commandexecutor.RemoteCommandExecutor;
+import deus.core.transport.command.Command;
+import deus.core.transport.command.DenySubscriptionCommand;
+import deus.core.transport.command.GrantSubscriptionCommand;
+import deus.core.transport.commandexecutor.CommandExecutor;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.model.user.UserMetadata;
 
-
+@Configurable
 public class SubscriberRequestDecisionProcessor implements DecisionProcessor<SubscriberRequest> {
 
 	private final Publisher publisher;
-	private final RemoteCommandExecutor remoteCommandExecutor;
+	
+	@Autowired
+	private CommandExecutor commandExecutor;
 
 
-	public SubscriberRequestDecisionProcessor(Publisher publisher, RemoteCommandExecutor remoteCommandExecutor) {
+	public SubscriberRequestDecisionProcessor(Publisher publisher) {
 		super();
 		this.publisher = publisher;
-		this.remoteCommandExecutor = remoteCommandExecutor;
 	}
 
 
@@ -29,28 +34,22 @@ public class SubscriberRequestDecisionProcessor implements DecisionProcessor<Sub
 
 		UserMetadata subscriberMetadata = subscriberRequest.getSubscriberMetadata();
 		
+		Command command;
 		if (subscriberRequest.isDecisionPositive()) {
 			publisher.addObserver(subscriberMetadata);
-						
-			remoteCommandExecutor.execute(new AbstractPublisherRemoteCommand(subscriberMetadata.getUserId()) {
-
-				@Override
-				protected void execute(SubscriberStub subscriberStub) {
-					subscriberStub.acknowledgeSubscription(publisher.getPublisherMetadata());
-				}
-
-			});
+	
+			command = new GrantSubscriptionCommand();
 		}
 		else {
-			remoteCommandExecutor.execute(new AbstractPublisherRemoteCommand(subscriberMetadata.getUserId()) {
-
-				@Override
-				protected void execute(SubscriberStub subscriberStub) {
-					subscriberStub.denySubscription(publisher.getPublisherMetadata());
-				}
-
-			});
+			// do not add observer
+			
+			command = new DenySubscriptionCommand();
 		}
+		
+		command.setReceiverId(subscriberMetadata.getUserId());
+		command.setSenderMetadata(publisher.getPublisherMetadata());
+		
+		commandExecutor.execute(command);
 	}
 
 }

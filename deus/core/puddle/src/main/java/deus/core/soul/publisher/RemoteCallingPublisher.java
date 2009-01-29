@@ -1,5 +1,7 @@
 package deus.core.soul.publisher;
 
+import deus.model.dossier.generic.ForeignInformationFile;
+
 /**
  * Groups methods of the interface <code>Publisher</code> that trigger remote calls. These methods are implemented using
  * a <code>RemoteCommand</code>, that encapsulates the remote action. The calls are delegated to a
@@ -21,7 +23,7 @@ public interface RemoteCallingPublisher {
 	 * 
 	 * @see java.util.Observable#clearChanged()
 	 * @see java.util.Observable#hasChanged()
-	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.ForeignInformationFile)
 	 */
 	// TODO: think about whether to delete this method
 	public abstract void notifyObservers();
@@ -37,8 +39,8 @@ public interface RemoteCallingPublisher {
 	 * @param change any object.
 	 * @see java.util.Observable#clearChanged()
 	 * @see java.util.Observable#hasChanged()
-	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.ForeignInformationFile)
 	 */
-	public abstract void notifyObservers(Object change);
+	public abstract void notifyObservers(ForeignInformationFile change);
 
 }

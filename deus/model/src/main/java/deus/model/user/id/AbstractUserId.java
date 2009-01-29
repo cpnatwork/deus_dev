@@ -1,7 +1,5 @@
 package deus.model.user.id;
 
-import java.lang.reflect.Method;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,8 +21,7 @@ public abstract class AbstractUserId implements UserId {
 		this.transportIds = transportIds;
 	}
 
-
-	@Override
+/*e
 	public void addTransportId(TransportId transportId) {
 		TransportId old = transportIds.put(transportId.getType(), transportId);
 		if (old != null)
@@ -65,7 +62,7 @@ public abstract class AbstractUserId implements UserId {
 	public boolean hasTransportId(TransportIdType transportIdType) {
 		return transportIds.containsKey(transportIdType);
 	}
-
+*/
 
 	@Override
 	public int hashCode() {
@@ -93,11 +90,5 @@ public abstract class AbstractUserId implements UserId {
 			return false;
 		return true;
 	}
-
-
-	public Map<TransportIdType, TransportId> getTransportIds() {
-		return transportIds;
-	}
-
 
 }

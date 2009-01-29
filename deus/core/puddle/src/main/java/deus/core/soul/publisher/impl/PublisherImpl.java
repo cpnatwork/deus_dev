@@ -1,27 +1,32 @@
 package deus.core.soul.publisher.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+
 import deus.core.soul.publisher.Publisher;
-import deus.core.soul.subscriber.stub.SubscriberStub;
-import deus.core.transportOLD.command.impl.AbstractPublisherRemoteCommand;
-import deus.core.transportOLD.commandexecutor.RemoteCommandExecutor;
+import deus.core.transport.command.Command;
+import deus.core.transport.command.UpdateCommand;
+import deus.core.transport.commandexecutor.CommandExecutor;
+import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.user.UserMetadata;
 
+@Configurable
 public class PublisherImpl implements Publisher {
 
 	private final UserMetadata publisherMetadata;
-	private final RemoteCommandExecutor remoteCommandExecutor;
+	
+	@Autowired
+	private CommandExecutor commandExecutor;
 
 	protected final ListOfSubscribers listOfSubscribers;
 
 
-	public PublisherImpl(ListOfSubscribers listOfSubscribers, UserMetadata publisherMetadata,
-			RemoteCommandExecutor remoteCommandExecutor) {
+	public PublisherImpl(ListOfSubscribers listOfSubscribers, UserMetadata publisherMetadata) {
 		super();
 		this.listOfSubscribers = listOfSubscribers;
 
 		this.publisherMetadata = publisherMetadata;
-		this.remoteCommandExecutor = remoteCommandExecutor;
 	}
 
 
@@ -57,7 +62,7 @@ public class PublisherImpl implements Publisher {
 	}
 
 
-	public void notifyObservers(final Object change) {
+	public void notifyObservers(ForeignInformationFile change) {
 		/*
 		 * a temporary array buffer, used as a snapshot of the state of current Observers.
 		 */
@@ -77,16 +82,14 @@ public class PublisherImpl implements Publisher {
 		for (int i = arrLocal.length - 1; i >= 0; i--) {
 			// TODO: think about publishing using multiple threads
 			UserMetadata subscriberMetadata = (UserMetadata) arrLocal[i];
-
-			remoteCommandExecutor.execute(new AbstractPublisherRemoteCommand(subscriberMetadata.getUserId()) {
-
-				@Override
-				protected void execute(SubscriberStub subscriberStub) {
-					// TODO: implement properly
-					// subscriberStub.update(getPublisherMetadata(), change);
-				}
-				
-			});
+			
+			Command command;
+			command = new UpdateCommand(change);
+			
+			command.setReceiverId(subscriberMetadata.getUserId());
+			command.setSenderMetadata(getPublisherMetadata());
+			
+			commandExecutor.execute(command);
 		}
 	}
 
