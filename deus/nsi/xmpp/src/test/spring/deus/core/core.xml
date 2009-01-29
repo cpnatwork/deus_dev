@@ -7,20 +7,20 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">	
 	
 
-	<bean id="gatekeeperTarget" class="deus.core.gatekeeper.impl.GatekeeperImpl" />
+	<bean id="gatekeeperTarget" class="deus.core.soul.gatekeeper.impl.GatekeeperImpl" />
 
-	<bean id="loginCredentialChecker" class="deus.core.gatekeeper.impl.LoginCredentialCheckerStub" />	
+	<bean id="loginCredentialChecker" class="deus.core.soul.gatekeeper.impl.LoginCredentialCheckerStub" />	
 
-	<bean id="gatekeeper" class="deus.core.gatekeeper.impl.SetupRemoteConnectionGatekeeperDecorator">
+	<bean id="gatekeeper" class="deus.core.soul.gatekeeper.impl.SetupRemoteConnectionGatekeeperDecorator">
 		<constructor-arg ref="gatekeeperTarget" />
 	</bean>
 
-	<bean id="multiRemoteConnectionSetup" class="deus.remoting.setup.impl.MultiRemoteConnectionSetupImpl">
+	<bean id="multiRemoteConnectionSetup" class="deus.core.transport.setup.impl.MultiRemoteConnectionSetupImpl">
 		<constructor-arg>
 			<util:map>
 				<entry>
 					<key><util:constant static-field="deus.model.user.transportid.TransportIdType.local" /></key>
-					<bean class="deus.remoting.setup.local.LocalRemoteConnectionSetup" />
+					<bean class="deus.core.transport.setup.local.LocalRemoteConnectionSetup" />
 				</entry>
 				<entry>
 					<key><util:constant static-field="deus.model.user.transportid.TransportIdType.xmpp" /></key>
@@ -31,19 +31,19 @@
 	</bean>
 
 
-	<bean id="transportProtocolChoosingStrategy" class="deus.remoting.tpchoosing.impl.FixedTransportProtocolChoosingStrategy">
+	<bean id="transportProtocolChoosingStrategy" class="deus.core.transport.tpchoosing.impl.FixedTransportProtocolChoosingStrategy">
 		<constructor-arg>
 			<util:constant static-field="deus.model.user.transportid.TransportIdType.xmpp"/>
 		</constructor-arg>
 	</bean>
 	
 	
-	<bean id="multiRemoteSendingSetup" class="deus.remoting.setup.impl.MultiRemoteSendingSetupImpl">
+	<bean id="multiRemoteSendingSetup" class="deus.core.transport.setup.impl.MultiRemoteSendingSetupImpl">
 		<constructor-arg>
 			<util:map>
 				<entry>
 					<key><util:constant static-field="deus.model.user.transportid.TransportIdType.local"/></key>
-					<bean class="deus.remoting.setup.local.LocalRemoteSendingSetup" />
+					<bean class="deus.core.transport.setup.local.LocalRemoteSendingSetup" />
 				</entry>
 				<entry>
 					<key><util:constant static-field="deus.model.user.transportid.TransportIdType.xmpp"/></key>

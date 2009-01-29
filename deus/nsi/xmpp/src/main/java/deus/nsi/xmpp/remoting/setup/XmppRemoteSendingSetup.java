@@ -2,16 +2,16 @@ package deus.nsi.xmpp.remoting.setup;
 
 import org.springframework.stereotype.Component;
 
-import deus.core.publisher.stub.PublisherStub;
-import deus.core.subscriber.stub.SubscriberStub;
+import deus.core.soul.publisher.stub.PublisherStub;
+import deus.core.soul.subscriber.stub.SubscriberStub;
+import deus.core.transport.command.Subsystem;
+import deus.core.transport.setup.impl.AbstractRemoteSendingSetup;
+import deus.core.transport.state.RemotingState;
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.publisher.impl.stub.XmppPublisherStub;
 import deus.nsi.xmpp.remoting.state.XmppRemotingState;
 import deus.nsi.xmpp.subscriber.impl.stub.XmppSubscriberStub;
-import deus.remoting.command.Subsystem;
-import deus.remoting.setup.impl.AbstractRemoteSendingSetup;
-import deus.remoting.state.RemotingState;
 
 // TODO: think about not setting up all stubs, but only the ones, that are necessary for the following sending
 @Component

@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.publisher.Publisher;
-import deus.core.publisher.stub.PublisherStub;
+import deus.core.soul.publisher.Publisher;
+import deus.core.soul.publisher.stub.PublisherStub;
 import deus.model.user.UserMetadata;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton;

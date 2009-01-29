@@ -1,10 +1,10 @@
 package deus.nsi.xmpp.remoting.state;
 
+import deus.core.transport.state.impl.AbstractRemotingState;
 import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.publisher.impl.skeleton.XmppPublisherSkeleton;
 import deus.nsi.xmpp.subscriber.impl.skeleton.XmppSubscriberSkeleton;
-import deus.remoting.state.impl.AbstractRemotingState;
 
 public class XmppRemotingState extends AbstractRemotingState {
 

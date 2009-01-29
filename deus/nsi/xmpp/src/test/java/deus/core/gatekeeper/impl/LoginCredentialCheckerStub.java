@@ -1,7 +1,7 @@
 package deus.core.gatekeeper.impl;
 
-import deus.core.gatekeeper.LoginCredentialChecker;
-import deus.core.gatekeeper.soul.LoginCredentials;
+import deus.core.soul.gatekeeper.LoginCredentialChecker;
+import deus.core.soul.gatekeeper.soul.LoginCredentials;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
 import deus.model.user.transportid.LocalTransportId;

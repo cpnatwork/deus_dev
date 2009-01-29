@@ -3,7 +3,9 @@ package deus.nsi.xmpp.remoting.setup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.User;
+import deus.core.soul.User;
+import deus.core.transport.setup.impl.AbstractRemoteConnectionSetup;
+import deus.core.transport.state.RemotingState;
 import deus.model.user.transportid.TransportIdType;
 import deus.nsi.xmpp.common.XmppConversation;
 import deus.nsi.xmpp.common.XmppNetwork;
@@ -14,8 +16,6 @@ import deus.nsi.xmpp.publisher.impl.skeleton.packetlistener.UnsubscribePacketLis
 import deus.nsi.xmpp.remoting.state.XmppRemotingState;
 import deus.nsi.xmpp.subscriber.impl.skeleton.XmppSubscriberSkeleton;
 import deus.nsi.xmpp.subscriber.impl.skeleton.packetlistener.UpdatePacketListener;
-import deus.remoting.setup.impl.AbstractRemoteConnectionSetup;
-import deus.remoting.state.RemotingState;
 
 @Component
 public class XmppRemoteConnectionSetup extends AbstractRemoteConnectionSetup {

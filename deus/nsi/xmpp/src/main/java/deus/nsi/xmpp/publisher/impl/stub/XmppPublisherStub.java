@@ -2,7 +2,7 @@ package deus.nsi.xmpp.publisher.impl.stub;
 
 import org.jivesoftware.smack.packet.Presence;
 
-import deus.core.publisher.stub.impl.AbstractPublisherStub;
+import deus.core.soul.publisher.stub.impl.AbstractPublisherStub;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;

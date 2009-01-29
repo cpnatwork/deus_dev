@@ -22,7 +22,7 @@
 			PersistantAnnotationBeanPostProcessor which is in the given package.
 		-->
 		<osgi.additionalPackageImports>deus.model.attention, deus.model.attention.notice, deus.model.user,
-		deus.core, deus.core.gatekeeper, org.springframework.orm.jpa.support</osgi.additionalPackageImports>
+		deus.core.soul, deus.core.soul.gatekeeper, org.springframework.orm.jpa.support</osgi.additionalPackageImports>
 		
 		<osgi.nonExportedPackages></osgi.nonExportedPackages>
 	</properties>

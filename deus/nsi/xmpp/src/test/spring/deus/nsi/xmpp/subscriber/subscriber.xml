@@ -35,7 +35,7 @@
 	</bean>
 
 
-	<bean id="subscriber" class="deus.core.subscriber.impl.SubscriberImpl">
+	<bean id="subscriber" class="deus.core.soul.subscriber.impl.SubscriberImpl">
 		<constructor-arg ref="subscriberMetadata" />
 	</bean>
 

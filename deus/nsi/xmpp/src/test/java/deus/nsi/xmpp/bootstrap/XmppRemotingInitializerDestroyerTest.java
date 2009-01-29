@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.User;
+import deus.core.soul.User;
 import deus.model.user.UserMetadata;
 import deus.nsi.xmpp.remoting.setup.XmppRemoteConnectionSetup;
 

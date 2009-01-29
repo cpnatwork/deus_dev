@@ -5,10 +5,10 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
-	<osgi:reference id="gatekeeper" interface="deus.core.gatekeeper.Gatekeeper" />
+	<osgi:reference id="gatekeeper" interface="deus.core.soul.gatekeeper.Gatekeeper" />
 
-	<osgi:reference id="userRegistry" interface="deus.core.UserRegistry" />
+	<osgi:reference id="userRegistry" interface="deus.core.soul.UserRegistry" />
 	
-	<osgi:reference id="userFactory" interface="deus.core.UserFactory" />
+	<osgi:reference id="userFactory" interface="deus.core.soul.UserFactory" />
 
 </beans>

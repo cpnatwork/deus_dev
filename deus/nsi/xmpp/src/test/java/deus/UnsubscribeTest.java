@@ -11,9 +11,9 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.User;
-import deus.core.gatekeeper.Gatekeeper;
-import deus.core.gatekeeper.soul.LoginCredentials;
+import deus.core.soul.User;
+import deus.core.soul.gatekeeper.Gatekeeper;
+import deus.core.soul.gatekeeper.soul.LoginCredentials;
 import deus.model.attention.notice.SubscriptionCanceledNotice;
 import deus.model.sub.SubscriptionState;
 

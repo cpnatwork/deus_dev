@@ -63,7 +63,7 @@
 
 	<bean id="listOfSubscribers" class="deus.model.pub.impl.ThreadSafeListOfSubscribers" />
 
-	<bean id="publisher" class="deus.core.publisher.impl.PublisherImpl">
+	<bean id="publisher" class="deus.core.soul.publisher.impl.PublisherImpl">
 		<constructor-arg ref="listOfSubscribers" />
 		<constructor-arg ref="publisherMetadata" />
 	</bean>
