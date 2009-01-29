@@ -16,14 +16,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.User;
-import deus.core.UserRegistry;
-import deus.core.gatekeeper.Gatekeeper;
-import deus.core.gatekeeper.soul.LoginCredentials;
+import deus.core.soul.User;
+import deus.core.soul.UserRegistry;
+import deus.core.soul.gatekeeper.Gatekeeper;
+import deus.core.soul.gatekeeper.soul.LoginCredentials;
+import deus.core.transport.state.RemotingState;
+import deus.core.transport.state.RemotingStateRegistry;
 import deus.model.user.id.UserUrl;
 import deus.model.user.transportid.TransportIdType;
-import deus.remoting.state.RemotingState;
-import deus.remoting.state.RemotingStateRegistry;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/core.xml", "/deus/core/core-test.xml" })

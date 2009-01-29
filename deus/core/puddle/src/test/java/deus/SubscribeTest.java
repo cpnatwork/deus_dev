@@ -16,10 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.User;
-import deus.core.UserRegistry;
-import deus.core.gatekeeper.Gatekeeper;
-import deus.core.gatekeeper.soul.LoginCredentials;
+import deus.core.soul.User;
+import deus.core.soul.UserRegistry;
+import deus.core.soul.gatekeeper.Gatekeeper;
+import deus.core.soul.gatekeeper.soul.LoginCredentials;
 import deus.model.attention.AttentionElement;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.DecisionType;

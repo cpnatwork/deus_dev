@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Date;
 
-import deus.core.User;
+import deus.core.soul.User;
 
 public abstract class AbstractUseCaseTest {
 
