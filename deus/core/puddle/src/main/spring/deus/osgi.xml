@@ -11,6 +11,9 @@
 	<osgi:service id="userRegistryOsgiService" ref="userRegistry" interface="deus.core.soul.UserRegistry" />
 	
 	<osgi:service id="userFactoryOsgiService" ref="userFactory" interface="deus.core.soul.UserFactory" />
+	
+	
+	<osgi:service id="transportProtocolRegistryOsgiService" ref="transportProtocolRegistry" interface="deus.core.transport.protocolregistry.TransportProtocolRegistry" />
 
 
 	<osgi:reference id="attentionDao" interface="deus.storage.attention.AttentionDao"/>
