@@ -2,8 +2,8 @@ package deus.core.soul.subscriber.impl;
 
 import deus.core.soul.publisher.stub.PublisherStub;
 import deus.core.soul.subscriber.Subscriber;
-import deus.core.transport.command.impl.AbstractSubscriberRemoteCommand;
-import deus.core.transport.commandexecutor.RemoteCommandExecutor;
+import deus.core.transportOLD.command.impl.AbstractSubscriberRemoteCommand;
+import deus.core.transportOLD.commandexecutor.RemoteCommandExecutor;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.sub.ListOfPublishers;

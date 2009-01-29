@@ -3,8 +3,8 @@ package deus.core.soul.barker.decisionprocessors.impl;
 import deus.core.soul.barker.decisionprocessors.DecisionProcessor;
 import deus.core.soul.publisher.Publisher;
 import deus.core.soul.subscriber.stub.SubscriberStub;
-import deus.core.transport.command.impl.AbstractPublisherRemoteCommand;
-import deus.core.transport.commandexecutor.RemoteCommandExecutor;
+import deus.core.transportOLD.command.impl.AbstractPublisherRemoteCommand;
+import deus.core.transportOLD.commandexecutor.RemoteCommandExecutor;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.model.user.UserMetadata;
 

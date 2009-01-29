@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.soul.User;
 import deus.core.soul.gatekeeper.Gatekeeper;
-import deus.core.transport.setup.MultiRemoteConnectionSetup;
+import deus.core.transportOLD.setup.MultiRemoteConnectionSetup;
 import deus.model.user.id.UserId;
 import deus.model.user.transportid.TransportIdType;
 
