@@ -9,4 +9,8 @@ public interface Gatekeeper {
 
 	public void logout(String localUsername);
 
+	
+	public void addUserLoginStateObserver(UserLoginStateObserver observer);
+	
+	public void removeUserLoginStateObserver(UserLoginStateObserver observer);
 }

@@ -1,5 +1,8 @@
 package deus.core.soul.gatekeeper.impl;
 
+import java.util.List;
+import java.util.Vector;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.soul.User;
@@ -7,11 +10,14 @@ import deus.core.soul.UserFactory;
 import deus.core.soul.UserRegistry;
 import deus.core.soul.gatekeeper.Gatekeeper;
 import deus.core.soul.gatekeeper.LoginCredentialChecker;
+import deus.core.soul.gatekeeper.UserLoginStateObserver;
 import deus.core.soul.gatekeeper.soul.LoginCredentials;
 
 
 public class GatekeeperImpl implements Gatekeeper {
 
+	private final List<UserLoginStateObserver> observers;
+	
 	@Autowired
 	private LoginCredentialChecker loginCredentialChecker;
 
@@ -20,6 +26,13 @@ public class GatekeeperImpl implements Gatekeeper {
 
 	@Autowired
 	private UserFactory userFactory;
+
+	
+
+	public GatekeeperImpl() {
+		super();
+		this.observers = new Vector<UserLoginStateObserver>();
+	}
 
 
 	@Override
@@ -33,6 +46,9 @@ public class GatekeeperImpl implements Gatekeeper {
 
 
 		userRegistry.registerUser(credentials.getLocalUsername(), user);
+		
+		for(UserLoginStateObserver observer : observers)
+			observer.loggedIn(user.getUserId());
 	}
 
 
@@ -40,10 +56,26 @@ public class GatekeeperImpl implements Gatekeeper {
 	public void logout(String localUsername) {
 		if (!userRegistry.hasUser(localUsername))
 			throw new IllegalStateException("cannot unregister user, he was not registered!");
+
+		User user = userRegistry.getUser(localUsername);
 		
 		userRegistry.unregisterUser(localUsername);
 
-		// TODO: do more logout stuff, that is necessary
+		for(UserLoginStateObserver observer : observers)
+			observer.loggedIn(user.getUserId());
+	}
+
+
+	@Override
+	public void addUserLoginStateObserver(UserLoginStateObserver observer) {
+		observers.add(observer);
+	}
+
+
+	@Override
+	public void removeUserLoginStateObserver(UserLoginStateObserver observer) {
+		if(observers.remove(observer) == false)
+			throw new IllegalArgumentException("observer was not added!");
 	}
 
 }

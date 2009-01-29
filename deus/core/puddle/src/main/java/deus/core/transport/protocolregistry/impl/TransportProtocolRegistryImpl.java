@@ -1,5 +1,6 @@
 package deus.core.transport.protocolregistry.impl;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,6 +50,12 @@ public class TransportProtocolRegistryImpl implements TransportProtocolRegistry 
 		if (!registeredTransportProtocols.containsKey(transportProtocolId))
 			throw new IllegalArgumentException("transport protocol " + transportProtocolId + " was not registered!");
 		registeredTransportProtocols.remove(transportProtocolId);
+	}
+
+
+	@Override
+	public Collection<String> getAllRegisteredTransportProtocolIds() {
+		return registeredTransportProtocols.keySet();
 	}
 
 }
