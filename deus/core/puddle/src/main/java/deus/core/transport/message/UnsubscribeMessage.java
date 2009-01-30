@@ -1,4 +1,4 @@
-package deus.core.transport.command;
+package deus.core.transport.message;
 
 
 /**
@@ -7,6 +7,6 @@ package deus.core.transport.command;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  *
  */
-public final class UnsubscribeCommand extends Command {
+public final class UnsubscribeMessage extends TransportMessage {
 
 }

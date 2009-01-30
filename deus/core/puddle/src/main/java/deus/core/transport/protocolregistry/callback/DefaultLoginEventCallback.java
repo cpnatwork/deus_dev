@@ -1,12 +1,11 @@
-package deus.core.transport.callback;
+package deus.core.transport.protocolregistry.callback;
 
 import deus.core.transport.id.TransportId;
-import deus.model.user.UserMetadata;
 
 public class DefaultLoginEventCallback implements LoginEventCallback {
 
 	@Override
-	public void loggedIn(UserMetadata userMetadata, TransportId transportId, String password) {
+	public void loggedIn(TransportId transportId, String password) {
 	}
 
 

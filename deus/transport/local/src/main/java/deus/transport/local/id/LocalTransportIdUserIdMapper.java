@@ -1,21 +1,20 @@
-package deus.transport.xmpp.id;
+package deus.transport.local.id;
 
 import deus.core.transport.id.TransportIdUserIdMapper;
 import deus.core.transport.id.TransportId;
 import deus.model.user.id.UserId;
 
-public class XmppLocalUserTransportIdFactory implements TransportIdUserIdMapper {
+public class LocalTransportIdUserIdMapper implements TransportIdUserIdMapper {
 
 	@Override
 	public TransportId map(UserId userId) {
-		// FIXME: create XmppTransportId from UserId
-		return new XmppTransportId();
+		// FIXME: create local transport id from user id
+		return new LocalTransportId("alice");
 	}
-
 
 	@Override
 	public UserId map(TransportId transportId) {
-		// FIXME: create UserId from XmppTransportId
+		// FIXME Auto-generated method stub
 		return null;
 	}
 

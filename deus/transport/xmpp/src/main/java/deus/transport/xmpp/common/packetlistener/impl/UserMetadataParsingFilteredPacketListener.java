@@ -5,11 +5,8 @@ import org.jivesoftware.smack.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
-import deus.core.transport.command.Command;
-import deus.core.transport.receiver.RemoteCommandReceiver;
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
-import deus.model.user.id.UserUrl;
+import deus.core.transport.message.TransportMessage;
+import deus.core.transport.message.receiver.MessageReceiver;
 import deus.transport.xmpp.common.XmppConfiguration;
 import deus.transport.xmpp.id.XmppTransportId;
 
@@ -21,7 +18,7 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 
 
 	@Autowired
-	protected RemoteCommandReceiver remoteCommandReceiver;
+	protected MessageReceiver messageReceiver;
 
 
 	/**
@@ -31,26 +28,27 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 	 * @param packet the packet, from which to parse the 'from' data
 	 * @return
 	 */
-	protected UserMetadata parseFromUserMetadata(Packet packet) {
-		UserMetadata userMetadata = new UserMetadata();
-		// String from = packet.getFrom();
-		// if (from == null)
-		// throw new RuntimeException("'from' field is null at this presence packet: " + packet);
-
-		UserId userId = new UserUrl();
-
-		// FIXME: parse userURL (also think about parsing UserUrl vs. UserXri, ...)
-
-		userMetadata.setUserId(userId);
-
-		Object fullName = packet.getProperty(xmppConfiguration.getXmppPropertyFullName());
-		if (fullName == null)
-			throw new RuntimeException("property '" + xmppConfiguration.getXmppPropertyFullName()
-					+ "' is null at this presence packet: " + packet);
-		userMetadata.setFullName(fullName.toString());
-
-		return userMetadata;
-	}
+//	@Deprecated
+//	protected UserMetadata parseFromUserMetadata(Packet packet) {
+//		UserMetadata userMetadata = new UserMetadata();
+//		// String from = packet.getFrom();
+//		// if (from == null)
+//		// throw new RuntimeException("'from' field is null at this presence packet: " + packet);
+//
+//		UserId userId = new UserUrl();
+//
+//		// FIXME: parse userURL (also think about parsing UserUrl vs. UserXri, ...)
+//
+//		userMetadata.setUserId(userId);
+//
+//		Object fullName = packet.getProperty(xmppConfiguration.getXmppPropertyFullName());
+//		if (fullName == null)
+//			throw new RuntimeException("property '" + xmppConfiguration.getXmppPropertyFullName()
+//					+ "' is null at this presence packet: " + packet);
+//		userMetadata.setFullName(fullName.toString());
+//
+//		return userMetadata;
+//	}
 
 
 	protected XmppTransportId parseXmppTransportId(String xmppTransportId) {
@@ -62,18 +60,16 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 	}
 	
 	
-	protected void sendCommand(Command command, Packet packet) {
-		UserMetadata senderMetadata = parseFromUserMetadata(packet);
-		
-		// FIXME: how to get UserId here? it is not in received package!
-		command.setReceiverId(null);
-		command.setSenderMetadata(senderMetadata);
-		
+	protected void sendCommand(TransportMessage command, Packet packet) {
+		//UserMetadata senderMetadata = parseFromUserMetadata(packet);
 		
 		XmppTransportId senderJid = parseXmppTransportId(packet.getFrom());
 		XmppTransportId receiverJid = parseXmppTransportId(packet.getTo());
 		
-		remoteCommandReceiver.receive(command, senderJid, receiverJid);
+		command.setSenderTid(senderJid);
+		command.setReceiverTid(receiverJid);
+		
+		messageReceiver.receive(command);
 	}
 
 }

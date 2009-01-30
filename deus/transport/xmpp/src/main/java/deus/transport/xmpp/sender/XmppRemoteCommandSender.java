@@ -3,39 +3,38 @@ package deus.transport.xmpp.sender;
 import org.jivesoftware.smack.packet.Presence;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import deus.core.transport.command.Command;
-import deus.core.transport.command.DenySubscriptionCommand;
-import deus.core.transport.command.GrantSubscriptionCommand;
-import deus.core.transport.command.RequestSubscriptionCommand;
-import deus.core.transport.command.SubscribeCommand;
-import deus.core.transport.command.UnsubscribeCommand;
 import deus.core.transport.connectionstate.ConnectionStateRegistry;
-import deus.core.transport.id.TransportId;
-import deus.core.transport.sender.RemoteCommandSender;
+import deus.core.transport.message.DenySubscriptionMessage;
+import deus.core.transport.message.GrantSubscriptionMessage;
+import deus.core.transport.message.TransportMessage;
+import deus.core.transport.message.RequestSubscriptionMessage;
+import deus.core.transport.message.SubscribeMessage;
+import deus.core.transport.message.UnsubscribeMessage;
+import deus.core.transport.message.sender.MessageSender;
 import deus.transport.xmpp.common.XmppConversation;
 import deus.transport.xmpp.connectionstate.XmppConnectionState;
 import deus.transport.xmpp.id.XmppTransportId;
 
-public class XmppRemoteCommandSender implements RemoteCommandSender {
+public class XmppRemoteCommandSender implements MessageSender {
 
 	@Autowired
 	private ConnectionStateRegistry connectionStateRegistry;
 	
 	@Override
-	public void send(Command command, TransportId senderTid, TransportId receiverTid) {
-		XmppConnectionState state = (XmppConnectionState)connectionStateRegistry.getConnectionState(senderTid);
+	public void send(TransportMessage command) {
+		XmppTransportId senderJid = (XmppTransportId)command.getSenderTid();
+		XmppTransportId receiverJid = (XmppTransportId)command.getReceiverTid();
+		
+		XmppConnectionState state = (XmppConnectionState)connectionStateRegistry.getConnectionState(senderJid);
 		if(!state.isConnectionEstablished())
 			throw new IllegalStateException("XMPP connection is not established!");
-		
-		XmppTransportId senderJid = (XmppTransportId)senderTid;
-		XmppTransportId receiverJid = (XmppTransportId)receiverTid;
 		
 		
 		XmppConversation xmppConversation = state.getXmppConversation();
 		
 		// USE CASE: SUBSCRIBE
-		if(command instanceof SubscribeCommand) {
-			if(command instanceof RequestSubscriptionCommand) {
+		if(command instanceof SubscribeMessage) {
+			if(command instanceof RequestSubscriptionMessage) {
 				// TODO: implement this method properly
 				// Roster roster = subscriberXmppConversation.getRoster();
 
@@ -44,10 +43,10 @@ public class XmppRemoteCommandSender implements RemoteCommandSender {
 				Presence presencePacket = new Presence(Presence.Type.subscribe);
 				xmppConversation.sendPacket(presencePacket, receiverJid);
 			}
-			else if(command instanceof GrantSubscriptionCommand) {
+			else if(command instanceof GrantSubscriptionMessage) {
 				// TODO: implement
 			}
-			else if(command instanceof DenySubscriptionCommand) {
+			else if(command instanceof DenySubscriptionMessage) {
 				// TODO: implement
 			}
 			else 
@@ -55,7 +54,7 @@ public class XmppRemoteCommandSender implements RemoteCommandSender {
 			
 		}
 		// USE CASE: UNSUBSCRIBE
-		else if(command instanceof UnsubscribeCommand) {
+		else if(command instanceof UnsubscribeMessage) {
 			// TODO: implement this method properly
 			// Roster roster = subscriberXmppConversation.getRoster();
 

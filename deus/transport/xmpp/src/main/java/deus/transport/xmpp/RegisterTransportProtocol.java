@@ -6,8 +6,8 @@ import javax.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.transport.TransportProtocol;
+import deus.core.transport.message.receiver.MessageReceiver;
 import deus.core.transport.protocolregistry.TransportProtocolRegistry;
-import deus.core.transport.receiver.RemoteCommandReceiver;
 
 public class RegisterTransportProtocol {
 
@@ -21,7 +21,7 @@ public class RegisterTransportProtocol {
 	@PostConstruct
 	public void register() {
 		// TODO: how to inject this into packet listeners
-		RemoteCommandReceiver rcr = transportProtocolRegistry
+		MessageReceiver rcr = transportProtocolRegistry
 				.registerTransportProtocol("local", xmppTransportProtocol);
 	}
 

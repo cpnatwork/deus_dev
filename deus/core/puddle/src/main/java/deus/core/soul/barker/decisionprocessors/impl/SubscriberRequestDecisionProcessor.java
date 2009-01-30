@@ -4,11 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
 import deus.core.soul.barker.decisionprocessors.DecisionProcessor;
+import deus.core.soul.common.BarkerCommandExecutor;
 import deus.core.soul.publisher.Publisher;
-import deus.core.transport.command.Command;
-import deus.core.transport.command.DenySubscriptionCommand;
-import deus.core.transport.command.GrantSubscriptionCommand;
-import deus.core.transport.commandexecutor.CommandExecutor;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.model.user.UserMetadata;
 
@@ -18,7 +15,7 @@ public class SubscriberRequestDecisionProcessor implements DecisionProcessor<Sub
 	private final Publisher publisher;
 	
 	@Autowired
-	private CommandExecutor commandExecutor;
+	private BarkerCommandExecutor barkerCommandExecutor;
 
 
 	public SubscriberRequestDecisionProcessor(Publisher publisher) {
@@ -34,22 +31,16 @@ public class SubscriberRequestDecisionProcessor implements DecisionProcessor<Sub
 
 		UserMetadata subscriberMetadata = subscriberRequest.getSubscriberMetadata();
 		
-		Command command;
 		if (subscriberRequest.isDecisionPositive()) {
 			publisher.addObserver(subscriberMetadata);
 	
-			command = new GrantSubscriptionCommand();
+			barkerCommandExecutor.grantSubscription(subscriberMetadata.getUserId(), publisher.getPublisherMetadata().getUserId());
 		}
 		else {
 			// do not add observer
 			
-			command = new DenySubscriptionCommand();
+			barkerCommandExecutor.denySubscription(subscriberMetadata.getUserId(), publisher.getPublisherMetadata().getUserId());
 		}
-		
-		command.setReceiverId(subscriberMetadata.getUserId());
-		command.setSenderMetadata(publisher.getPublisherMetadata());
-		
-		commandExecutor.execute(command);
 	}
 
 }

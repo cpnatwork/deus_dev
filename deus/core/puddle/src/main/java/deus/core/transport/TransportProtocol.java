@@ -1,28 +1,28 @@
 package deus.core.transport;
 
-import deus.core.transport.callback.LoginEventCallback;
-import deus.core.transport.callback.RegistrationEventCallback;
-import deus.core.transport.id.LocalUserTransportIdFactory;
-import deus.core.transport.sender.RemoteCommandSender;
+import deus.core.transport.id.TransportIdUserIdMapper;
+import deus.core.transport.message.sender.MessageSender;
+import deus.core.transport.protocolregistry.callback.LoginEventCallback;
+import deus.core.transport.protocolregistry.callback.RegistrationEventCallback;
 
 public class TransportProtocol {
 
-	private RemoteCommandSender remoteCommandSender;
+	private MessageSender messageSender;
 
 	private LoginEventCallback loginEventCallback;
 
 	private RegistrationEventCallback registrationEventCallback;
 
-	private LocalUserTransportIdFactory localUserTransportIdFactory;
+	private TransportIdUserIdMapper transportIdUserIdMapper;
 
 
-	public RemoteCommandSender getRemoteCommandSender() {
-		return remoteCommandSender;
+	public MessageSender getMessageSender() {
+		return messageSender;
 	}
 
 
-	public void setRemoteCommandSender(RemoteCommandSender remoteCommandSender) {
-		this.remoteCommandSender = remoteCommandSender;
+	public void setMessageSender(MessageSender messageSender) {
+		this.messageSender = messageSender;
 	}
 
 
@@ -46,13 +46,13 @@ public class TransportProtocol {
 	}
 
 
-	public LocalUserTransportIdFactory getLocalUserTransportIdFactory() {
-		return localUserTransportIdFactory;
+	public TransportIdUserIdMapper getTransportIdUserIdMapper() {
+		return transportIdUserIdMapper;
 	}
 
 
-	public void setLocalUserTransportIdFactory(LocalUserTransportIdFactory localUserTransportIdFactory) {
-		this.localUserTransportIdFactory = localUserTransportIdFactory;
+	public void setTransportIdUserIdMapper(TransportIdUserIdMapper transportIdUserIdMapper) {
+		this.transportIdUserIdMapper = transportIdUserIdMapper;
 	}
 
 

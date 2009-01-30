@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import deus.core.soul.gatekeeper.UserLoginStateObserver;
 import deus.core.transport.TransportProtocol;
-import deus.core.transport.id.LocalUserTransportIdFactory;
+import deus.core.transport.id.TransportIdUserIdMapper;
 import deus.core.transport.id.TransportId;
 import deus.core.transport.protocolregistry.TransportProtocolRegistry;
 import deus.model.user.UserMetadata;
@@ -17,7 +17,7 @@ public class UserLoginStateObserverImpl implements UserLoginStateObserver {
 	private TransportProtocolRegistry transportProtocolRegistry;
 
 	@Autowired
-	private LocalUserTransportIdFactory tidFactory;
+	private TransportIdUserIdMapper transportIdUserIdMapper;
 
 	@Autowired
 	private PasswordLookup passwordLookup;
@@ -27,8 +27,8 @@ public class UserLoginStateObserverImpl implements UserLoginStateObserver {
 	public void loggedIn(UserMetadata userMetadata) {
 		for (String transportProtocolId : transportProtocolRegistry.getAllRegisteredTransportProtocolIds()) {
 			TransportProtocol tp = transportProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId);
-			TransportId transportId = tidFactory.createTransportId(userMetadata.getUserId());
-			tp.getLoginEventCallback().loggedIn(userMetadata, transportId, passwordLookup.getPassword(transportId));
+			TransportId transportId = transportIdUserIdMapper.map(userMetadata.getUserId());
+			tp.getLoginEventCallback().loggedIn(transportId, passwordLookup.getPassword(transportId));
 		}
 	}
 
@@ -37,7 +37,7 @@ public class UserLoginStateObserverImpl implements UserLoginStateObserver {
 	public void loggedOut(UserMetadata userMetadata) {
 		for (String transportProtocolId : transportProtocolRegistry.getAllRegisteredTransportProtocolIds()) {
 			TransportProtocol tp = transportProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId);
-			tp.getLoginEventCallback().loggedOut(tidFactory.createTransportId(userMetadata.getUserId()));
+			tp.getLoginEventCallback().loggedOut(transportIdUserIdMapper.map(userMetadata.getUserId()));
 		}
 	}
 

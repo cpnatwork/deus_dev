@@ -3,11 +3,8 @@ package deus.core.soul.subscriber.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
+import deus.core.soul.common.SubscriberCommandExecutor;
 import deus.core.soul.subscriber.Subscriber;
-import deus.core.transport.command.Command;
-import deus.core.transport.command.RequestSubscriptionCommand;
-import deus.core.transport.command.UnsubscribeCommand;
-import deus.core.transport.commandexecutor.CommandExecutor;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.sub.ListOfPublishers;
@@ -22,7 +19,7 @@ public class SubscriberImpl implements Subscriber {
 	protected final ListOfPublishers listOfPublishers;
 
 	@Autowired
-	private CommandExecutor commandExecutor;
+	private SubscriberCommandExecutor subscriberCommandExecutor;
 
 
 	public SubscriberImpl(ListOfPublishers listOfPublishers, UserMetadata subscriberMetadata) {
@@ -77,7 +74,7 @@ public class SubscriberImpl implements Subscriber {
 
 		listOfPublishers.put(publisherMetadata, SubscriptionState.requested);
 
-		sendCommandToPublisher(new RequestSubscriptionCommand(), publisherMetadata);
+		subscriberCommandExecutor.subscribe(subscriberMetadata.getUserId(), publisherMetadata.getUserId());
 	}
 
 
@@ -89,15 +86,7 @@ public class SubscriberImpl implements Subscriber {
 
 		listOfPublishers.remove(publisherMetadata);
 
-		sendCommandToPublisher(new UnsubscribeCommand(), publisherMetadata);
-	}
-	
-	
-	private void sendCommandToPublisher(Command command, UserMetadata publisherMetadata) {
-		command.setReceiverId(publisherMetadata.getUserId());
-		command.setSenderMetadata(subscriberMetadata);
-		
-		commandExecutor.execute(command);
+		subscriberCommandExecutor.unsubscribe(subscriberMetadata.getUserId(), publisherMetadata.getUserId());
 	}
 
 }

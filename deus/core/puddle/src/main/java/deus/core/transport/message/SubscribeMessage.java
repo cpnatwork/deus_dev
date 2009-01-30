@@ -1,4 +1,4 @@
-package deus.core.transport.command;
+package deus.core.transport.message;
 
 /**
  * Superclass of all commands, belonging to the "subscribe" use case.
@@ -6,6 +6,6 @@ package deus.core.transport.command;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  *
  */
-public abstract class SubscribeCommand extends Command {
+public abstract class SubscribeMessage extends TransportMessage {
 
 }

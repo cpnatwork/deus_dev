@@ -1,4 +1,4 @@
-package deus.core.transport.command;
+package deus.core.transport.message;
 
 import deus.model.dossier.generic.ForeignInformationFile;
 
@@ -8,12 +8,12 @@ import deus.model.dossier.generic.ForeignInformationFile;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-public class UpdateCommand extends Command {
+public class UpdateMessage extends TransportMessage {
 
 	private final ForeignInformationFile foreignInformationFile;
 
 
-	public UpdateCommand(ForeignInformationFile foreignInformationFile) {
+	public UpdateMessage(ForeignInformationFile foreignInformationFile) {
 		super();
 		this.foreignInformationFile = foreignInformationFile;
 	}

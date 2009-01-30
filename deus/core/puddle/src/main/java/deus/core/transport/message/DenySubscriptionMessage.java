@@ -1,4 +1,4 @@
-package deus.core.transport.command;
+package deus.core.transport.message;
 
 /**
  * Command, issued by the publisher to deny a subscription request.
@@ -6,6 +6,6 @@ package deus.core.transport.command;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  *
  */
-public final class DenySubscriptionCommand extends SubscribeCommand {
+public final class DenySubscriptionMessage extends SubscribeMessage {
 
 }

@@ -3,10 +3,8 @@ package deus.core.soul.publisher.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
+import deus.core.soul.common.PublisherCommandExecutor;
 import deus.core.soul.publisher.Publisher;
-import deus.core.transport.command.Command;
-import deus.core.transport.command.UpdateCommand;
-import deus.core.transport.commandexecutor.CommandExecutor;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.user.UserMetadata;
@@ -17,7 +15,7 @@ public class PublisherImpl implements Publisher {
 	private final UserMetadata publisherMetadata;
 	
 	@Autowired
-	private CommandExecutor commandExecutor;
+	private PublisherCommandExecutor publisherCommandExecutor;
 
 	protected final ListOfSubscribers listOfSubscribers;
 
@@ -83,13 +81,7 @@ public class PublisherImpl implements Publisher {
 			// TODO: think about publishing using multiple threads
 			UserMetadata subscriberMetadata = (UserMetadata) arrLocal[i];
 			
-			Command command;
-			command = new UpdateCommand(change);
-			
-			command.setReceiverId(subscriberMetadata.getUserId());
-			command.setSenderMetadata(getPublisherMetadata());
-			
-			commandExecutor.execute(command);
+			publisherCommandExecutor.update(subscriberMetadata.getUserId(), publisherMetadata.getUserId(), change);
 		}
 	}
 

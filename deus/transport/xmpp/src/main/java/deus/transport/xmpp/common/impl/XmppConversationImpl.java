@@ -11,19 +11,16 @@ import org.jivesoftware.smack.packet.Packet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
-import deus.model.user.UserMetadata;
 import deus.transport.xmpp.common.XmppConfiguration;
 import deus.transport.xmpp.common.XmppConversation;
 import deus.transport.xmpp.common.packetlistener.FilteredPacketListener;
 import deus.transport.xmpp.id.XmppTransportId;
 
-// FIXME: do we need UserMetadata here? Is XmppTransportId not enough?
 // TODO: think about synchronization issues (e.g. with adding/removing of packet listeners)
 @Configurable
 public class XmppConversationImpl implements XmppConversation {
 
 	private final XMPPConnection connection;
-	private final UserMetadata userMetadata;
 	private final XmppTransportId xmppTransportId;
 	private final String password;
 
@@ -33,10 +30,8 @@ public class XmppConversationImpl implements XmppConversation {
 	private PacketListenerManager packetListenerManager;
 
 
-	public XmppConversationImpl(XMPPConnection connection, UserMetadata userMetadata, XmppTransportId xmppTransportId,
-			String password) {
+	public XmppConversationImpl(XMPPConnection connection, XmppTransportId xmppTransportId, String password) {
 		this.connection = connection;
-		this.userMetadata = userMetadata;
 		this.xmppTransportId = xmppTransportId;
 		this.password = password;
 
@@ -156,8 +151,9 @@ public class XmppConversationImpl implements XmppConversation {
 		assertIsLoggedIn();
 
 		packet.setTo(receiver.toString());
-		packet.setFrom(userMetadata.toString());
-		packet.setProperty(xmppConfiguration.getXmppPropertyFullName(), userMetadata.getFullName());
+		packet.setFrom(xmppTransportId.toString());
+		// TODO: REMOVE
+		//packet.setProperty(xmppConfiguration.getXmppPropertyFullName(), userMetadata.getFullName());
 		connection.sendPacket(packet);
 	}
 
@@ -177,7 +173,6 @@ public class XmppConversationImpl implements XmppConversation {
 
 		packetListenerManager.addPacketListener(packetListener, packetFilter);
 	}
-	
 
 
 	@Override
@@ -206,7 +201,6 @@ public class XmppConversationImpl implements XmppConversation {
 
 		packetListenerManager.removeAllPacketListeners();
 	}
-
 
 
 }

@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.transport.TransportProtocol;
+import deus.core.transport.message.receiver.MessageReceiver;
 import deus.core.transport.protocolregistry.TransportProtocolRegistry;
-import deus.core.transport.receiver.RemoteCommandReceiver;
 
 @Component
 public class TransportProtocolRegistryImpl implements TransportProtocolRegistry {
@@ -17,7 +17,7 @@ public class TransportProtocolRegistryImpl implements TransportProtocolRegistry 
 	private final Map<String, TransportProtocol> registeredTransportProtocols;
 
 	@Autowired
-	private RemoteCommandReceiver remoteCommandReceiver;
+	private MessageReceiver messageReceiver;
 
 
 	public TransportProtocolRegistryImpl() {
@@ -33,7 +33,7 @@ public class TransportProtocolRegistryImpl implements TransportProtocolRegistry 
 
 
 	@Override
-	public RemoteCommandReceiver registerTransportProtocol(String transportProtocolId,
+	public MessageReceiver registerTransportProtocol(String transportProtocolId,
 			TransportProtocol transportProtocol) {
 		if (registeredTransportProtocols.containsKey(transportProtocolId))
 			throw new IllegalArgumentException("transport protocol " + transportProtocolId
@@ -41,7 +41,7 @@ public class TransportProtocolRegistryImpl implements TransportProtocolRegistry 
 
 		registeredTransportProtocols.put(transportProtocolId, transportProtocol);
 
-		return remoteCommandReceiver;
+		return messageReceiver;
 	}
 
 

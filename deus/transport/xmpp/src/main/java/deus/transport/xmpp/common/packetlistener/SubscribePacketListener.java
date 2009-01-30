@@ -7,8 +7,8 @@ import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.packet.Presence.Type;
 
-import deus.core.transport.command.Command;
-import deus.core.transport.command.RequestSubscriptionCommand;
+import deus.core.transport.message.TransportMessage;
+import deus.core.transport.message.RequestSubscriptionMessage;
 import deus.transport.xmpp.common.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
 import deus.transport.xmpp.util.PacketPrinter;
 
@@ -40,7 +40,7 @@ public class SubscribePacketListener extends UserMetadataParsingFilteredPacketLi
 		System.out.println("SubscribePacketListener: processing packet:");
 		System.out.println(printer.printPacket(packet));
 
-		Command command = new RequestSubscriptionCommand();
+		TransportMessage command = new RequestSubscriptionMessage();
 		sendCommand(command, packet);
 	}
 

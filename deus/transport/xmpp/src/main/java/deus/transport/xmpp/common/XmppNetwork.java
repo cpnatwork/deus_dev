@@ -5,7 +5,6 @@ import org.jivesoftware.smack.XMPPConnection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.model.user.UserMetadata;
 import deus.transport.xmpp.common.impl.XmppConversationImpl;
 import deus.transport.xmpp.id.XmppTransportId;
 
@@ -24,8 +23,7 @@ public class XmppNetwork {
 	private XmppServerConnectionConfiguration configuration;
 
 
-	public XmppConversation createConversation(UserMetadata userMetadata, XmppTransportId xmppTransportId,
-			String password) {
+	public XmppConversation createConversation(XmppTransportId xmppTransportId, String password) {
 		// connect to the XMPP account of the subscriber.
 		ConnectionConfiguration connectionConfiguration = new ConnectionConfiguration(xmppTransportId.getXmppServer());
 		connectionConfiguration.setCompressionEnabled(configuration.isCompression());
@@ -34,8 +32,7 @@ public class XmppNetwork {
 
 		XMPPConnection connection = new XMPPConnection(connectionConfiguration);
 
-		XmppConversation xmppConversation = new XmppConversationImpl(connection, userMetadata, xmppTransportId,
-				password);
+		XmppConversation xmppConversation = new XmppConversationImpl(connection, xmppTransportId, password);
 		return xmppConversation;
 	}
 

@@ -2,10 +2,9 @@ package deus.transport.xmpp.callback;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import deus.core.transport.callback.LoginEventCallback;
 import deus.core.transport.connectionstate.ConnectionStateRegistry;
 import deus.core.transport.id.TransportId;
-import deus.model.user.UserMetadata;
+import deus.core.transport.protocolregistry.callback.LoginEventCallback;
 import deus.transport.xmpp.common.XmppConversation;
 import deus.transport.xmpp.common.XmppNetwork;
 import deus.transport.xmpp.common.packetlistener.FilteredPacketListener;
@@ -25,13 +24,13 @@ public class XmppLoginEventCallback implements LoginEventCallback {
 
 
 	@Override
-	public void loggedIn(UserMetadata userMetadata, TransportId transportId, String password) {
-		XmppConversation xmppConversation = xmppNetwork.createConversation(userMetadata, (XmppTransportId)transportId, password);
+	public void loggedIn(TransportId transportId, String password) {
+		XmppConversation xmppConversation = xmppNetwork.createConversation((XmppTransportId)transportId, password);
 
 		// CONNECT
 		xmppConversation.connect();
 
-		addPacketListeners(xmppConversation, userMetadata);
+		addPacketListeners(xmppConversation);
 
 		// LOGIN
 		xmppConversation.login();
@@ -43,7 +42,7 @@ public class XmppLoginEventCallback implements LoginEventCallback {
 
 
 	// TODO: refactor
-	private void addPacketListeners(XmppConversation xmppConversation, UserMetadata userMetadata) {
+	private void addPacketListeners(XmppConversation xmppConversation) {
 		FilteredPacketListener subscribePacketListener = new SubscribePacketListener();
 		xmppConversation.addFilteredPacketListener(subscribePacketListener);
 

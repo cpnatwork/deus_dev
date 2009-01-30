@@ -1,4 +1,4 @@
-package deus.core.transport.callback;
+package deus.core.transport.protocolregistry.callback;
 
 import deus.core.transport.id.TransportId;
 
