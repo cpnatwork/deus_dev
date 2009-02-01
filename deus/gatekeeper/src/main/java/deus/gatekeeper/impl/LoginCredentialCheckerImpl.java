@@ -1,8 +1,11 @@
-package deus.core.soul.gatekeeper.impl;
+package deus.gatekeeper.impl;
 
-import deus.core.soul.gatekeeper.LoginCredentialChecker;
-import deus.core.soul.gatekeeper.soul.LoginCredentials;
+import org.springframework.stereotype.Component;
 
+import deus.gatekeeper.LoginCredentialChecker;
+import deus.gatekeeper.soul.LoginCredentials;
+
+@Component
 public class LoginCredentialCheckerImpl implements LoginCredentialChecker {
 
 	@Override

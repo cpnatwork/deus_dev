@@ -1,4 +1,4 @@
-package deus.core.soul.gatekeeper.soul;
+package deus.gatekeeper.soul;
 
 public class LoginCredentials {
 

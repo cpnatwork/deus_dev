@@ -1,6 +1,6 @@
-package deus.core.soul.gatekeeper;
+package deus.gatekeeper;
 
-import deus.core.soul.gatekeeper.soul.LoginCredentials;
+import deus.gatekeeper.soul.LoginCredentials;
 
 public interface Gatekeeper {
 

@@ -1,4 +1,4 @@
-package deus.core.soul.gatekeeper;
+package deus.gatekeeper;
 
 import deus.model.user.id.UserId;
 
