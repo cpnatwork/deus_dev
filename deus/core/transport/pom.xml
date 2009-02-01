@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>inf6.promed</groupId>
+		<artifactId>deus-core</artifactId>
+		<version>0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>deus-core-transport</artifactId>
+	<packaging>bundle</packaging>
+	<name>DEUS core transport</name>
+
+
+	<!-- don't remove properties, even if they are empty!!! -->
+	<properties>
+		<osgi.rootPackage>deus.core.transport</osgi.rootPackage>
+		<!--
+			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
+			PersistantAnnotationBeanPostProcessor which is in the given package.
+		-->
+		<osgi.additionalPackageImports>org.springframework.orm.jpa.support</osgi.additionalPackageImports>
+		
+		<osgi.nonExportedPackages></osgi.nonExportedPackages>
+	</properties>
+
+
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--+++ DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	
+	<dependencies>
+        <!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+		<dependency>
+			<groupId>inf6.promed</groupId>
+			<artifactId>deus-model</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>inf6.promed</groupId>
+			<artifactId>deus-core-puddle</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+
+                
+	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	</dependencies>
+	
+	
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--+++ BUILD +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<argLine>-javaagent:${settings.localRepository}/org/springframework/spring-agent/${spring.agent.version}/spring-agent-${spring.agent.version}.jar</argLine>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+	</build>
+	
+
+</project>
