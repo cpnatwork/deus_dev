@@ -16,7 +16,6 @@
 			
 	<modules>
 		<module>core</module>
-		<module>nsi</module>
 		<module>model</module>
 		<module>storage</module>
 		<module>transport</module>
