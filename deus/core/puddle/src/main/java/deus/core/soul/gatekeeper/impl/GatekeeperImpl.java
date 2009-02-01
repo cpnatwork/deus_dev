@@ -48,7 +48,7 @@ public class GatekeeperImpl implements Gatekeeper {
 		userRegistry.registerUser(credentials.getLocalUsername(), user);
 		
 		for(UserLoginStateObserver observer : observers)
-			observer.loggedIn(user.getUserMetadata());
+			observer.loggedIn(user.getUserId());
 	}
 
 
@@ -62,7 +62,7 @@ public class GatekeeperImpl implements Gatekeeper {
 		userRegistry.unregisterUser(localUsername);
 
 		for(UserLoginStateObserver observer : observers)
-			observer.loggedIn(user.getUserMetadata());
+			observer.loggedIn(user.getUserId());
 	}
 
 

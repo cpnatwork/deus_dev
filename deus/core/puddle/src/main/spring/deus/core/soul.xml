@@ -6,42 +6,8 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 
-	<bean id="gatekeeperTarget" class="deus.core.soul.gatekeeper.impl.GatekeeperImpl" />
-
 	<bean id="loginCredentialChecker" class="deus.core.soul.gatekeeper.impl.LoginCredentialCheckerImpl" />	
 
-	<bean id="gatekeeper" class="deus.core.soul.gatekeeper.impl.SetupRemoteConnectionGatekeeperDecorator">
-		<constructor-arg ref="gatekeeperTarget" />
-	</bean>
+	<bean id="gatekeeper" class="deus.core.soul.gatekeeper.impl.GatekeeperImpl" />
 	
-	<bean id="multiRemoteConnectionSetup" class="deus.core.transport.setup.impl.MultiRemoteConnectionSetupImpl">
-		<constructor-arg>
-			<util:map>
-				<entry>
-					<key><util:constant static-field="deus.model.user.transportid.TransportIdType.local"/></key>
-					<bean class="deus.core.transport.setup.local.LocalRemoteConnectionSetup" />
-				</entry>
-			</util:map>
-		</constructor-arg>
-	</bean>
-
-
-	<bean id="transportProtocolChoosingStrategy" class="deus.core.transport.tpchoosing.impl.FixedTransportProtocolChoosingStrategy">
-		<constructor-arg>
-			<util:constant static-field="deus.model.user.transportid.TransportIdType.local"/>
-		</constructor-arg>
-	</bean>
-	
-	
-	<bean id="multiRemoteSendingSetup" class="deus.core.transport.setup.impl.MultiRemoteSendingSetupImpl">
-		<constructor-arg>
-			<util:map>
-				<entry>
-					<key><util:constant static-field="deus.model.user.transportid.TransportIdType.local"/></key>
-					<bean class="deus.core.transport.setup.local.LocalRemoteSendingSetup" />
-				</entry>
-			</util:map>		
-		</constructor-arg>
-	</bean>
-
 </beans>
