@@ -19,7 +19,7 @@
 			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
 			PersistantAnnotationBeanPostProcessor which is in the given package.
 		-->
-		<osgi.additionalPackageImports></osgi.additionalPackageImports>
+		<osgi.additionalPackageImports>org.springframework.orm.jpa.support</osgi.additionalPackageImports>
 		
 		<osgi.nonExportedPackages></osgi.nonExportedPackages>
 	</properties>
