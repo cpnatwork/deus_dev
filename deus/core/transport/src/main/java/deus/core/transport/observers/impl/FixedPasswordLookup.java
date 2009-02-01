@@ -1,9 +1,9 @@
 package deus.core.transport.observers.impl;
 
 import deus.core.transport.id.TransportId;
-import deus.core.transport.observers.PasswordLookup;
+import deus.core.transport.observers.TransportProtocolPasswordLookup;
 
-public class FixedPasswordLookup implements PasswordLookup {
+public class FixedPasswordLookup implements TransportProtocolPasswordLookup {
 
 	private final String password;
 

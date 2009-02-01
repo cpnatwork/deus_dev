@@ -6,8 +6,7 @@
 		http://www.springframework.org/schema/osgi  
 		http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
-	<osgi:service id="transportProtocolRegistryOsgiService" ref="transportProtocolRegistry" interface="deus.core.transport.protocolregistry.TransportProtocolRegistry" />
-
+	<!-- services for sending commands, should be used by core package -->
 	<osgi:service id="barkerCommandExecutorOsgiService" ref="barkerCommandExecutor" interface="deus.core.soul.common.BarkerCommandExecutor"/>
 
 	<osgi:service id="publisherCommandExecutorOsgiService" ref="publisherCommandExecutor" interface="deus.core.soul.common.PublisherCommandExecutor"/>
@@ -16,6 +15,13 @@
 	
 
 
-	<osgi:reference id="userRegistry" interface="deus.core.soul.UserRegistry" />
+	<!--  reference for callback, should be provided by core package -->
+	<osgi:reference id="publisherCommandReceiver" interface="deus.core.transport.commandreceiver.PublisherCommandReceiver" />
+	
+	<osgi:reference id="subscriberCommandReceiver" interface="deus.core.transport.commandreceiver.SubscriberCommandReceiver" />
+
+
+	<!-- service for registration of transport protocols -->
+	<osgi:service id="transportProtocolRegistryOsgiService" ref="transportProtocolRegistry" interface="deus.core.transport.protocolregistry.TransportProtocolRegistry" />
 
 </beans>
