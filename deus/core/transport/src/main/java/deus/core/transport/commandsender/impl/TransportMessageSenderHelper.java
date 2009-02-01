@@ -1,4 +1,4 @@
-package deus.core.transport.commandexecutor;
+package deus.core.transport.commandsender.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

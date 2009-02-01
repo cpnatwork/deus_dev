@@ -1,9 +1,9 @@
-package deus.core.soul.common;
+package deus.core.transport.commandsender;
 
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
-public interface SubscriberCommandExecutor {
+public interface SubscriberCommandSender {
 
 	public void subscribe(UserId subscriberId, UserId publisherId, UserMetadata subscriberMetadata);
 

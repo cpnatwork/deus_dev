@@ -3,8 +3,8 @@ package deus.core.soul.publisher.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
-import deus.core.soul.common.PublisherCommandExecutor;
 import deus.core.soul.publisher.Publisher;
+import deus.core.transport.commandsender.PublisherCommandSender;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.LosEntry;
@@ -17,7 +17,7 @@ public class PublisherImpl implements Publisher {
 	private final UserMetadata publisherMetadata;
 	
 	@Autowired
-	private PublisherCommandExecutor publisherCommandExecutor;
+	private PublisherCommandSender publisherCommandSender;
 
 	protected final ListOfSubscribers listOfSubscribers;
 
@@ -89,7 +89,7 @@ public class PublisherImpl implements Publisher {
 			// TODO: think about publishing using multiple threads
 			UserId subscriberId = (UserId) arrLocal[i];
 			
-			publisherCommandExecutor.update(subscriberId, publisherMetadata.getUserId(), change);
+			publisherCommandSender.update(subscriberId, publisherMetadata.getUserId(), change);
 		}
 	}
 

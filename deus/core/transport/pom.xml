@@ -37,13 +37,6 @@
 			<artifactId>deus-model</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
-
-		<dependency>
-			<groupId>inf6.promed</groupId>
-			<artifactId>deus-core-puddle</artifactId>
-			<version>0.1-SNAPSHOT</version>
-		</dependency>
-
                 
 	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	</dependencies>

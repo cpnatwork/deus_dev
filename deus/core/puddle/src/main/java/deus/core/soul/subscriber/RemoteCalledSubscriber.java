@@ -15,6 +15,7 @@ import deus.model.user.id.UserId;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
+//FIXME: think about how this relates to SubscriberCommandReceiver
 public interface RemoteCalledSubscriber {
 
 	public void update(UserMetadata publisherMetadata, ForeignInformationFile fif);

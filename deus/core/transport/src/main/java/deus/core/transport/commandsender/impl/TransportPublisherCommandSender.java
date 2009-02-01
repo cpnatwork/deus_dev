@@ -1,16 +1,16 @@
-package deus.core.transport.commandexecutor;
+package deus.core.transport.commandsender.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.soul.common.PublisherCommandExecutor;
+import deus.core.transport.commandsender.PublisherCommandSender;
 import deus.core.transport.message.TransportMessage;
 import deus.core.transport.message.UpdateMessage;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.user.id.UserId;
 
 @Component
-public class TransportPublisherCommandExecutor implements PublisherCommandExecutor {
+public class TransportPublisherCommandSender implements PublisherCommandSender {
 	
 	@Autowired
 	private TransportMessageSenderHelper transportMessageSenderHelper;

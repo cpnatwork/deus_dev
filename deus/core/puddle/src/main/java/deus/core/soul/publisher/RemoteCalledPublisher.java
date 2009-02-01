@@ -1,18 +1,20 @@
 package deus.core.soul.publisher;
 
+
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 /**
  * Groups methods of the interface <code>Publisher</code>, that are called remotely. These methods are e.g. called from
- * an instance of the class <code>XmppPublisherSkeleton</code>, which is the part of the stub-skeleton pair, that resides on the
- * publisher side.
+ * an instance of the class <code>XmppPublisherSkeleton</code>, which is the part of the stub-skeleton pair, that
+ * resides on the publisher side.
  * 
  * @see Publisher
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
+// FIXME: think about how this relates to PublisherCommandReceiver
 public interface RemoteCalledPublisher {
 
 	/**

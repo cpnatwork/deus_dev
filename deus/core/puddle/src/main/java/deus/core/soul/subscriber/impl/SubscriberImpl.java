@@ -3,8 +3,8 @@ package deus.core.soul.subscriber.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
-import deus.core.soul.common.SubscriberCommandExecutor;
 import deus.core.soul.subscriber.Subscriber;
+import deus.core.transport.commandsender.SubscriberCommandSender;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.sub.ListOfPublishers;
@@ -21,7 +21,7 @@ public class SubscriberImpl implements Subscriber {
 	protected final ListOfPublishers listOfPublishers;
 
 	@Autowired
-	private SubscriberCommandExecutor subscriberCommandExecutor;
+	private SubscriberCommandSender subscriberCommandSender;
 
 
 	public SubscriberImpl(ListOfPublishers listOfPublishers, UserMetadata subscriberMetadata) {
@@ -79,7 +79,7 @@ public class SubscriberImpl implements Subscriber {
 		entry.setSubscriptionState(SubscriptionState.requested);
 		listOfPublishers.put(publisherMetadata.getUserId(), entry);
 
-		subscriberCommandExecutor.subscribe(subscriberMetadata.getUserId(), publisherMetadata.getUserId(), subscriberMetadata);
+		subscriberCommandSender.subscribe(subscriberMetadata.getUserId(), publisherMetadata.getUserId(), subscriberMetadata);
 	}
 
 
@@ -91,7 +91,7 @@ public class SubscriberImpl implements Subscriber {
 
 		listOfPublishers.remove(publisherMetadata.getUserId());
 
-		subscriberCommandExecutor.unsubscribe(subscriberMetadata.getUserId(), publisherMetadata.getUserId());
+		subscriberCommandSender.unsubscribe(subscriberMetadata.getUserId(), publisherMetadata.getUserId());
 	}
 
 }

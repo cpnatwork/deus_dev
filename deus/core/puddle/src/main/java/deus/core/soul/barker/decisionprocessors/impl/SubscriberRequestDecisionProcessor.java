@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
 import deus.core.soul.barker.decisionprocessors.DecisionProcessor;
-import deus.core.soul.common.BarkerCommandExecutor;
 import deus.core.soul.publisher.Publisher;
+import deus.core.transport.commandsender.BarkerCommandSender;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.model.user.UserMetadata;
 
@@ -15,7 +15,7 @@ public class SubscriberRequestDecisionProcessor implements DecisionProcessor<Sub
 	private final Publisher publisher;
 	
 	@Autowired
-	private BarkerCommandExecutor barkerCommandExecutor;
+	private BarkerCommandSender barkerCommandSender;
 
 
 	public SubscriberRequestDecisionProcessor(Publisher publisher) {
@@ -34,12 +34,12 @@ public class SubscriberRequestDecisionProcessor implements DecisionProcessor<Sub
 		if (subscriberRequest.isDecisionPositive()) {
 			publisher.addObserver(subscriberMetadata.getUserId(), subscriberMetadata);
 	
-			barkerCommandExecutor.grantSubscription(subscriberMetadata.getUserId(), publisher.getPublisherMetadata().getUserId());
+			barkerCommandSender.grantSubscription(subscriberMetadata.getUserId(), publisher.getPublisherMetadata().getUserId());
 		}
 		else {
 			// do not add observer
 			
-			barkerCommandExecutor.denySubscription(subscriberMetadata.getUserId(), publisher.getPublisherMetadata().getUserId());
+			barkerCommandSender.denySubscription(subscriberMetadata.getUserId(), publisher.getPublisherMetadata().getUserId());
 		}
 	}
 

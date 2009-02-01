@@ -1,8 +1,8 @@
-package deus.core.soul.common;
+package deus.core.transport.commandsender;
 
 import deus.model.user.id.UserId;
 
-public interface BarkerCommandExecutor {
+public interface BarkerCommandSender {
 
 	public void grantSubscription(UserId subscriberId, UserId publisherId);
 

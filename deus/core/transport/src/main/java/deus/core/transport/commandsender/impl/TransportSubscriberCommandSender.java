@@ -1,9 +1,9 @@
-package deus.core.transport.commandexecutor;
+package deus.core.transport.commandsender.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.soul.common.SubscriberCommandExecutor;
+import deus.core.transport.commandsender.SubscriberCommandSender;
 import deus.core.transport.message.RequestSubscriptionMessage;
 import deus.core.transport.message.TransportMessage;
 import deus.core.transport.message.UnsubscribeMessage;
@@ -11,7 +11,7 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 @Component
-public class TransportSubscriberCommandExecutor implements SubscriberCommandExecutor {
+public class TransportSubscriberCommandSender implements SubscriberCommandSender {
 
 	@Autowired
 	private TransportMessageSenderHelper transportMessageSenderHelper;

@@ -3,10 +3,8 @@ package deus.core.transport.message.receiver.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.soul.User;
-import deus.core.soul.UserRegistry;
-import deus.core.soul.publisher.RemoteCalledPublisher;
-import deus.core.soul.subscriber.RemoteCalledSubscriber;
+import deus.core.transport.commandreceiver.PublisherCommandReceiver;
+import deus.core.transport.commandreceiver.SubscriberCommandReceiver;
 import deus.core.transport.id.TransportIdUserIdMapper;
 import deus.core.transport.message.DenySubscriptionMessage;
 import deus.core.transport.message.GrantSubscriptionMessage;
@@ -20,10 +18,13 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 @Component
-public class DelegateToUserMessageReceiver implements MessageReceiver {
+public class DelegateToCommandReceiver implements MessageReceiver {
 
 	@Autowired
-	private UserRegistry userRegistry;
+	private PublisherCommandReceiver publisherCommandReceiver;
+	
+	@Autowired
+	private SubscriberCommandReceiver subscriberCommandReceiver;
 	
 	@Autowired
 	private TransportProtocolRegistry transportProtocolRegistry;
@@ -36,27 +37,23 @@ public class DelegateToUserMessageReceiver implements MessageReceiver {
 		UserId receiverId = mapper.map(message.getReceiverTid());
 		UserId senderId = mapper.map(message.getReceiverTid());
 		
-		User user = userRegistry.getOrCreateTemporaryUser(receiverId);
-		RemoteCalledSubscriber subscriber = user.getSubscriber();
-		RemoteCalledPublisher publisher = user.getPublisher();
-	
 		// USE CASE: SUBSCRIBE
 		if(message instanceof SubscribeMessage) {
 			if(message instanceof RequestSubscriptionMessage) {
 				UserMetadata senderMetadata = ((RequestSubscriptionMessage)message).getSenderMetadata();
-				publisher.addObserver(senderId, senderMetadata);
+				publisherCommandReceiver.addObserver(receiverId, senderId, senderMetadata);
 			}
 			else if(message instanceof GrantSubscriptionMessage)
-				subscriber.acknowledgeSubscription(senderId);
+				subscriberCommandReceiver.acknowledgeSubscription(receiverId, senderId);
 			else if(message instanceof DenySubscriptionMessage)
-				subscriber.denySubscription(senderId);
+				subscriberCommandReceiver.denySubscription(receiverId, senderId);
 			else
 				throw new IllegalArgumentException("cannot handle command " + message);
 		}
 		// USE CASE: UNSUBSCRIBE
 		else if(message instanceof UnsubscribeMessage)
 			// FIXME: change interface of publisher to take these arguments
-			publisher.deleteObserver(senderId);
+			publisherCommandReceiver.deleteObserver(receiverId, senderId);
 		else
 			throw new IllegalArgumentException("cannot handle command " + message);
 	}
