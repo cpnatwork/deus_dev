@@ -1,10 +1,10 @@
 package deus.model.pub;
 
-import java.util.List;
+import java.util.Map;
 
-import deus.model.user.UserMetadata;
+import deus.model.user.id.UserId;
 
 
-public interface ListOfSubscribers extends List<UserMetadata> {
+public interface ListOfSubscribers extends Map<UserId, LosEntry> {
 	
 }

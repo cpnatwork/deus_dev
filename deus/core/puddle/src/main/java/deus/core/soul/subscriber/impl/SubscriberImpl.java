@@ -8,8 +8,10 @@ import deus.core.soul.subscriber.Subscriber;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.sub.ListOfPublishers;
+import deus.model.sub.LopEntry;
 import deus.model.sub.SubscriptionState;
 import deus.model.user.UserMetadata;
+import deus.model.user.id.UserId;
 
 // TODO: add DIF
 @Configurable
@@ -56,35 +58,38 @@ public class SubscriberImpl implements Subscriber {
 
 
 	@Override
-	public void acknowledgeSubscription(UserMetadata publisherMetadata) {
-		listOfPublishers.changeState(publisherMetadata, SubscriptionState.granted);
+	public void acknowledgeSubscription(UserId publisherId) {
+		listOfPublishers.changeState(publisherId, SubscriptionState.granted);
 	}
 
 
 	@Override
-	public void denySubscription(UserMetadata publisherMetadata) {
-		listOfPublishers.remove(publisherMetadata);
+	public void denySubscription(UserId publisherId) {
+		listOfPublishers.remove(publisherId);
 	}
 
 
 	@Override
 	public void subscribe(UserMetadata publisherMetadata) {
-		if (listOfPublishers.containsKey(publisherMetadata))
-			throw new IllegalArgumentException("cannot subscribe to publisher (" + publisherMetadata + ") again!");
+		if (listOfPublishers.containsKey(publisherMetadata.getUserId()))
+			throw new IllegalArgumentException("cannot subscribe to publisher (" + publisherMetadata.getUserId() + ") again!");
 
-		listOfPublishers.put(publisherMetadata, SubscriptionState.requested);
+		LopEntry entry = new LopEntry();
+		entry.setPublisherMetadata(publisherMetadata);
+		entry.setSubscriptionState(SubscriptionState.requested);
+		listOfPublishers.put(publisherMetadata.getUserId(), entry);
 
-		subscriberCommandExecutor.subscribe(subscriberMetadata.getUserId(), publisherMetadata.getUserId());
+		subscriberCommandExecutor.subscribe(subscriberMetadata.getUserId(), publisherMetadata.getUserId(), subscriberMetadata);
 	}
 
 
 	@Override
 	public void unsubscribe(UserMetadata publisherMetadata) {
-		if (!listOfPublishers.containsKey(publisherMetadata))
-			throw new IllegalArgumentException("cannot unsubscribe from publisher (" + publisherMetadata
+		if (!listOfPublishers.containsKey(publisherMetadata.getUserId()))
+			throw new IllegalArgumentException("cannot unsubscribe from publisher (" + publisherMetadata.getUserId()
 					+ "), that has not been added yet!");
 
-		listOfPublishers.remove(publisherMetadata);
+		listOfPublishers.remove(publisherMetadata.getUserId());
 
 		subscriberCommandExecutor.unsubscribe(subscriberMetadata.getUserId(), publisherMetadata.getUserId());
 	}

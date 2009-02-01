@@ -7,7 +7,9 @@ import deus.core.soul.common.PublisherCommandExecutor;
 import deus.core.soul.publisher.Publisher;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.pub.ListOfSubscribers;
+import deus.model.pub.LosEntry;
 import deus.model.user.UserMetadata;
+import deus.model.user.id.UserId;
 
 @Configurable
 public class PublisherImpl implements Publisher {
@@ -27,39 +29,45 @@ public class PublisherImpl implements Publisher {
 		this.publisherMetadata = publisherMetadata;
 	}
 
-
-	public synchronized void addObserver(UserMetadata subscriberMetadata) {
-		if (subscriberMetadata == null)
-			throw new NullPointerException();
-		if (!listOfSubscribers.contains(subscriberMetadata))
-			listOfSubscribers.add(subscriberMetadata);
+	@Override
+	public synchronized void addObserver(UserId subscriberId, UserMetadata subscriberMetadata) {
+		if (!listOfSubscribers.containsKey(subscriberId)) {
+			LosEntry entry = new LosEntry();
+			entry.setSubscriberMetadata(subscriberMetadata);
+			listOfSubscribers.put(subscriberId, entry);
+		}
 		else
 			throw new IllegalArgumentException("cannot add subscriber, it has already been added!");
 	}
 
 
-	public synchronized void deleteObserver(UserMetadata subscriberMetadata) {
-		if(!listOfSubscribers.contains(subscriberMetadata))
+	@Override
+	public synchronized void deleteObserver(UserId subscriberId) {
+		if(!listOfSubscribers.containsKey(subscriberId))
 			throw new IllegalArgumentException("cannot remove subscriber, that has not been added yet!");
-		listOfSubscribers.remove(subscriberMetadata);
+		listOfSubscribers.remove(subscriberId);
 	}
 
 
+	@Override
 	public synchronized void deleteObservers() {
 		listOfSubscribers.clear();
 	}
 
 
+	@Override
 	public synchronized int countObservers() {
 		return listOfSubscribers.size();
 	}
 
 
+	@Override
 	public void notifyObservers() {
 		notifyObservers(null);
 	}
 
 
+	@Override
 	public void notifyObservers(ForeignInformationFile change) {
 		/*
 		 * a temporary array buffer, used as a snapshot of the state of current Observers.
@@ -74,14 +82,14 @@ public class PublisherImpl implements Publisher {
 			 * race-condition here is that: 1) a newly-added Observer will miss a notification in progress 2) a recently
 			 * unregistered Observer will be wrongly notified when it doesn't care
 			 */
-			arrLocal = listOfSubscribers.toArray();
+			arrLocal = listOfSubscribers.keySet().toArray();
 		}
 
 		for (int i = arrLocal.length - 1; i >= 0; i--) {
 			// TODO: think about publishing using multiple threads
-			UserMetadata subscriberMetadata = (UserMetadata) arrLocal[i];
+			UserId subscriberId = (UserId) arrLocal[i];
 			
-			publisherCommandExecutor.update(subscriberMetadata.getUserId(), publisherMetadata.getUserId(), change);
+			publisherCommandExecutor.update(subscriberId, publisherMetadata.getUserId(), change);
 		}
 	}
 

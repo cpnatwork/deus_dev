@@ -1,6 +1,7 @@
 package deus.core.soul.publisher;
 
 import deus.model.user.UserMetadata;
+import deus.model.user.id.UserId;
 
 /**
  * Groups methods of the interface <code>Publisher</code>, that are called remotely. These methods are e.g. called from
@@ -21,7 +22,7 @@ public interface RemoteCalledPublisher {
 	 * 
 	 * @param subscriberMetadata an observer to be added.
 	 */
-	public abstract void addObserver(UserMetadata subscriberMetadata);
+	public abstract void addObserver(UserId subscriberId, UserMetadata subscriberMetadata);
 
 
 	/**
@@ -30,6 +31,6 @@ public interface RemoteCalledPublisher {
 	 * 
 	 * @param subscriberMetadata the observer to be deleted.
 	 */
-	public abstract void deleteObserver(UserMetadata subscriberMetadata);
+	public abstract void deleteObserver(UserId subscriberId);
 
 }

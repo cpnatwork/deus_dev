@@ -6,8 +6,6 @@
 		http://www.springframework.org/schema/osgi  
 		http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
-	<!-- SOUL -->
-
 	<osgi:service id="gatekeeperOsgiService" ref="gatekeeper" interface="deus.core.soul.gatekeeper.Gatekeeper" />
 
 	<osgi:service id="userRegistryOsgiService" ref="userRegistry" interface="deus.core.soul.UserRegistry" />
@@ -29,18 +27,4 @@
 	
 	<osgi:reference id="subscriberCommandExecutor" interface="deus.core.soul.common.SubscriberCommandExecutor"/>
 	
-	
-	
-
-	<!-- TRANSPORT -->
-
-	<osgi:service id="transportProtocolRegistryOsgiService" ref="transportProtocolRegistry" interface="deus.core.transport.protocolregistry.TransportProtocolRegistry" />
-
-	<!-- TODO: reference bean and not service! -->
-	<osgi:service id="barkerCommandExecutorOsgiService" ref="barkerCommandExecutor" interface="deus.core.soul.common.BarkerCommandExecutor"/>
-
-	<osgi:service id="publisherCommandExecutorOsgiService" ref="publisherCommandExecutor" interface="deus.core.soul.common.PublisherCommandExecutor"/>
-	
-	<osgi:service id="subscriberCommandExecutorOsgiService" ref="subscriberCommandExecutor" interface="deus.core.soul.common.SubscriberCommandExecutor"/>
-
 </beans>

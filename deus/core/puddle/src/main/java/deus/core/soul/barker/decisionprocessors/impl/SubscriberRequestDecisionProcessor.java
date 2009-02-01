@@ -32,7 +32,7 @@ public class SubscriberRequestDecisionProcessor implements DecisionProcessor<Sub
 		UserMetadata subscriberMetadata = subscriberRequest.getSubscriberMetadata();
 		
 		if (subscriberRequest.isDecisionPositive()) {
-			publisher.addObserver(subscriberMetadata);
+			publisher.addObserver(subscriberMetadata.getUserId(), subscriberMetadata);
 	
 			barkerCommandExecutor.grantSubscription(subscriberMetadata.getUserId(), publisher.getPublisherMetadata().getUserId());
 		}

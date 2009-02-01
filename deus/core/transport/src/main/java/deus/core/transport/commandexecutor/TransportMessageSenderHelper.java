@@ -3,17 +3,16 @@ package deus.core.transport.commandexecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.soul.common.BarkerCommandExecutor;
 import deus.core.transport.TransportProtocol;
 import deus.core.transport.discovery.TransportProtocolDiscoveryStrategy;
 import deus.core.transport.id.TransportIdUserIdMapper;
 import deus.core.transport.message.TransportMessage;
 import deus.core.transport.message.sender.MessageSender;
 import deus.core.transport.protocolregistry.TransportProtocolRegistry;
+import deus.model.user.id.UserId;
 
 @Component
-@Deprecated
-public class TransportProtocolDiscoveryCommandExecutor implements BarkerCommandExecutor {
+class TransportMessageSenderHelper {
 
 	@Autowired
 	private TransportProtocolDiscoveryStrategy transportProtocolDiscoveryStrategy;
@@ -22,22 +21,21 @@ public class TransportProtocolDiscoveryCommandExecutor implements BarkerCommandE
 	private TransportProtocolRegistry transportProtocolRegistry;
 
 
-	@Override
-	public void execute(TransportMessage transportMessage) {
-		// AGREE ON TRANSPORT PROTOCOL
-		String transportProtocolId = transportProtocolDiscoveryStrategy.agreeOnTransportProtocol(transportMessage
-				.getReceiverId());
-		
+	public void send(UserId receiverId, UserId senderId, TransportMessage transportMessage) {
+		// agree on transport protocol
+		String transportProtocolId = transportProtocolDiscoveryStrategy.agreeOnTransportProtocol(receiverId);
 		TransportProtocol transportProtocol = transportProtocolRegistry
 				.getRegisteredTransportProtocol(transportProtocolId);
-		
-		MessageSender messageSender = transportProtocol.getMessageSender();
+
+		// set TIDs of sender and receiver
 		TransportIdUserIdMapper transportIdFactory = transportProtocol.getTransportIdUserIdMapper();
-		
-		// TID OF LOCAL USER IS GENERATED USING FACTORY!
-		// TID OF REMOTE USER IS LOOKED UP USING DISCOVERY!!
-		messageSender.send(transportMessage, transportIdFactory.MAP(transportMessage.getSenderMetadata().getUserId()),
-				transportProtocolDiscoveryStrategy.getTransportId(transportProtocolId, transportMessage.getReceiverId()));
+		transportMessage.setReceiverTid(transportProtocolDiscoveryStrategy.getTransportId(transportProtocolId,
+				receiverId));
+		transportMessage.setSenderTid(transportIdFactory.map(senderId));
+
+		// send mesg
+		MessageSender messageSender = transportProtocol.getMessageSender();
+		messageSender.send(transportMessage);
 	}
 
 }

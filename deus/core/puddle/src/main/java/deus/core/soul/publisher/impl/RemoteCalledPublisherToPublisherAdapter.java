@@ -5,6 +5,7 @@ import deus.core.soul.publisher.RemoteCalledPublisher;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.user.UserMetadata;
+import deus.model.user.id.UserId;
 
 /**
  * Delegates all methods of <code>RemoteCalledPublisher</code> to a delegate of type <code>RemoteCalledPublisher</code>,
@@ -30,14 +31,14 @@ public class RemoteCalledPublisherToPublisherAdapter implements Publisher {
 //	+++ METHODS OF REMOTE CALLED PUBLISHER ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	
 	@Override
-	public void addObserver(UserMetadata subscriberMetadata) {
-		remoteCalledPublisher.addObserver(subscriberMetadata);
+	public void addObserver(UserId subscriberId, UserMetadata subscriberMetadata) {
+		remoteCalledPublisher.addObserver(subscriberId, subscriberMetadata);
 	}
 
 
 	@Override
-	public void deleteObserver(UserMetadata subscriberMetadata) {
-		remoteCalledPublisher.deleteObserver(subscriberMetadata);
+	public void deleteObserver(UserId subscriberId) {
+		remoteCalledPublisher.deleteObserver(subscriberId);
 	}
 
 //	+++ METHODS OF PUBLISHER ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

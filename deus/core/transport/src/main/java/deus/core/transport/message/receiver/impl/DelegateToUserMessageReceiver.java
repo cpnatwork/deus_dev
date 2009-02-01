@@ -7,13 +7,12 @@ import deus.core.soul.User;
 import deus.core.soul.UserRegistry;
 import deus.core.soul.publisher.RemoteCalledPublisher;
 import deus.core.soul.subscriber.RemoteCalledSubscriber;
-import deus.core.transport.id.TransportId;
 import deus.core.transport.id.TransportIdUserIdMapper;
-import deus.core.transport.message.TransportMessage;
 import deus.core.transport.message.DenySubscriptionMessage;
 import deus.core.transport.message.GrantSubscriptionMessage;
 import deus.core.transport.message.RequestSubscriptionMessage;
 import deus.core.transport.message.SubscribeMessage;
+import deus.core.transport.message.TransportMessage;
 import deus.core.transport.message.UnsubscribeMessage;
 import deus.core.transport.message.receiver.MessageReceiver;
 import deus.core.transport.protocolregistry.TransportProtocolRegistry;
@@ -44,15 +43,12 @@ public class DelegateToUserMessageReceiver implements MessageReceiver {
 		// USE CASE: SUBSCRIBE
 		if(message instanceof SubscribeMessage) {
 			if(message instanceof RequestSubscriptionMessage) {
-				UserMetadata senderMetadata = ((RequestSubscriptionMessage)message).getSenderMetadata());
-				// FIXME: change interface of publisher to take these arguments
+				UserMetadata senderMetadata = ((RequestSubscriptionMessage)message).getSenderMetadata();
 				publisher.addObserver(senderId, senderMetadata);
 			}
 			else if(message instanceof GrantSubscriptionMessage)
-				// FIXME: change interface of subscriber to take these arguments
 				subscriber.acknowledgeSubscription(senderId);
 			else if(message instanceof DenySubscriptionMessage)
-				// FIXME: change interface of subscriber to take these arguments
 				subscriber.denySubscription(senderId);
 			else
 				throw new IllegalArgumentException("cannot handle command " + message);

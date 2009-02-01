@@ -2,10 +2,10 @@ package deus.model.sub;
 
 import java.util.Map;
 
-import deus.model.user.UserMetadata;
+import deus.model.user.id.UserId;
 
-public interface ListOfPublishers extends Map<UserMetadata, SubscriptionState> {
+public interface ListOfPublishers extends Map<UserId, LopEntry> {
 
-	public void changeState(UserMetadata publisherMetadata, SubscriptionState subscriptionState);
+	public void changeState(UserId publisherId, SubscriptionState subscriptionState);
 
 }

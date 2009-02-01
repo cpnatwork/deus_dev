@@ -6,6 +6,7 @@ import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
+import deus.model.user.id.UserId;
 
 /**
  * Delegates all methods of <code>RemoteCalledSubscriber</code> to a delegate of type
@@ -32,14 +33,14 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 	// +++ METHODS OF REMOTE CALLED SUBSCRIBER ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
-	public void acknowledgeSubscription(UserMetadata publisherMetadata) {
-		remoteCalledSubscriber.acknowledgeSubscription(publisherMetadata);
+	public void acknowledgeSubscription(UserId publisherId) {
+		remoteCalledSubscriber.acknowledgeSubscription(publisherId);
 	}
 
 
 	@Override
-	public void denySubscription(UserMetadata publisherMetadata) {
-		remoteCalledSubscriber.denySubscription(publisherMetadata);
+	public void denySubscription(UserId publisherId) {
+		remoteCalledSubscriber.denySubscription(publisherId);
 	}
 
 
