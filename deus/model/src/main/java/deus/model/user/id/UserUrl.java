@@ -1,7 +1,7 @@
 package deus.model.user.id;
 
 // TODO: think about only injecting username, etc into constructor, no more setters. Also for Transport ids
-public class UserUrl extends AbstractUserId {
+public class UserUrl implements UserId {
 
 	private String username;
 	private String serverBaseUrl;
