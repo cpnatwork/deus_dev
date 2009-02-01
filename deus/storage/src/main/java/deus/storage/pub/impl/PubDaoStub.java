@@ -3,7 +3,7 @@ package deus.storage.pub.impl;
 import org.springframework.stereotype.Component;
 
 import deus.model.pub.ListOfSubscribers;
-import deus.model.pub.impl.ThreadSafeListOfSubscribers;
+import deus.model.pub.impl.ListOfSubscribersImpl;
 import deus.model.user.id.UserId;
 import deus.storage.pub.PubDao;
 
@@ -13,7 +13,7 @@ public class PubDaoStub implements PubDao {
 
 	@Override
 	public ListOfSubscribers getListOfSubscribers(UserId userId) {
-		return new ThreadSafeListOfSubscribers();
+		return new ListOfSubscribersImpl();
 	}
 
 }
