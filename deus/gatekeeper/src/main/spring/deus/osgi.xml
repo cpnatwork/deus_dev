@@ -6,4 +6,6 @@
 
 	<osgi:service id="gatekeeperOsgiService" ref="gatekeeper" interface="deus.gatekeeper.Gatekeeper" />
 
+	<osgi:reference id="userMetadataDao" interface="deus.storage.user.UserMetadataDao" />
+
 </beans>

@@ -13,7 +13,7 @@ import deus.gatekeeper.UserLoginStateObserver;
 import deus.gatekeeper.soul.LoginCredentials;
 import deus.model.user.id.UserId;
 
-@Component
+@Component("gatekeeper")
 public class GatekeeperImpl implements Gatekeeper {
 
 	private final List<UserLoginStateObserver> observers;

@@ -5,6 +5,5 @@
 
 	<import resource="deus/context.xml"/>
 	<import resource="deus/osgi.xml"/>
-	<import resource="deus/gatekeeper.xml"/>
 
 </beans>
