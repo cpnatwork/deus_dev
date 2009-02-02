@@ -9,6 +9,7 @@ import org.jivesoftware.smack.packet.Presence.Type;
 
 import deus.core.transport.message.TransportMessage;
 import deus.core.transport.message.RequestSubscriptionMessage;
+import deus.model.user.UserMetadata;
 import deus.transport.xmpp.common.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
 import deus.transport.xmpp.util.PacketPrinter;
 
@@ -40,8 +41,41 @@ public class SubscribePacketListener extends UserMetadataParsingFilteredPacketLi
 		System.out.println("SubscribePacketListener: processing packet:");
 		System.out.println(printer.printPacket(packet));
 
-		TransportMessage command = new RequestSubscriptionMessage();
+		UserMetadata subscriberMetadata = new UserMetadata();
+		// FIXME: fill subscriberMetadata
+		
+		TransportMessage command = new RequestSubscriptionMessage(subscriberMetadata);
 		sendCommand(command, packet);
 	}
+	
+	
+	/**
+	 * Returns a UserMetadata object which is filled by parsing the package 'from' element and the package property with
+	 * the name, that is set by the method <code>setXmppPropertyFullName</code>.
+	 * 
+	 * @param packet the packet, from which to parse the 'from' data
+	 * @return
+	 */
+//	@Deprecated
+//	protected UserMetadata parseFromUserMetadata(Packet packet) {
+//		UserMetadata userMetadata = new UserMetadata();
+//		// String from = packet.getFrom();
+//		// if (from == null)
+//		// throw new RuntimeException("'from' field is null at this presence packet: " + packet);
+//
+//		UserId userId = new UserUrl();
+//
+//		// FIXME: parse userURL (also think about parsing UserUrl vs. UserXri, ...)
+//
+//		userMetadata.setUserId(userId);
+//
+//		Object fullName = packet.getProperty(xmppConfiguration.getXmppPropertyFullName());
+//		if (fullName == null)
+//			throw new RuntimeException("property '" + xmppConfiguration.getXmppPropertyFullName()
+//					+ "' is null at this presence packet: " + packet);
+//		userMetadata.setFullName(fullName.toString());
+//
+//		return userMetadata;
+//	}
 
 }

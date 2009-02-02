@@ -6,8 +6,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +14,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.core.soul.User;
 import deus.core.soul.UserRegistry;
-import deus.core.soul.gatekeeper.Gatekeeper;
-import deus.core.soul.gatekeeper.soul.LoginCredentials;
 import deus.model.attention.AttentionElement;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.DecisionType;
@@ -26,12 +22,12 @@ import deus.model.attention.notice.SubscriptionDeniedNotice;
 import deus.model.attention.notice.SubscriptionGrantedNotice;
 import deus.model.sub.SubscriptionState;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/soul.xml" })
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/soul.xml" })
 public class SubscribeTest extends AbstractUseCaseTest {
 
-	@Autowired
-	private Gatekeeper gatekeeper;
+//	@Autowired
+//	private Gatekeeper gatekeeper;
 
 	@Autowired
 	private UserRegistry userRegistry;

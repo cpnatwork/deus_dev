@@ -9,7 +9,7 @@ import deus.core.soul.subscriber.RemoteCalledSubscriber;
 import deus.core.transport.commandreceiver.SubscriberCommandReceiver;
 import deus.model.user.id.UserId;
 
-@Component
+@Component("subscriberCommandReceiver")
 public class SubscriberCommandReceiverImpl implements SubscriberCommandReceiver {
 
 	@Autowired

@@ -5,12 +5,12 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 			
-	<bean id="transportProtocol" class="deus.core.transport.TransportProtocol">
+	<bean id="transportProtocol" class="deus.core.transport.protocol.TransportProtocol">
 		<property name="loginEventCallback">
-			<bean class="deus.core.transport.protocolregistry.callback.DefaultLoginEventCallback" />
+			<bean class="deus.core.transport.protocol.callback.DefaultLoginEventCallback" />
 		</property>
 		<property name="registrationEventCallback">
-			<bean class="deus.core.transport.protocolregistry.callback.DefaultRegistrationEventCallback" />
+			<bean class="deus.core.transport.protocol.callback.DefaultRegistrationEventCallback" />
 		</property>
 		<property name="messageSender" ref="localMessageSender"/>
 		<property name="transportIdUserIdMapper">
@@ -24,6 +24,6 @@
 		<constructor-arg value="local"/>
 	</bean>
 		
-	<bean id="registraterTransportProtocol" class="deus.transport.local.RegisterTransportProtocol" depends-on="transportProtocolRegistry" />
+	<bean id="registerTransportProtocol" class="deus.transport.local.RegisterTransportProtocol" depends-on="transportProtocolRegistry" />
 	
 </beans>

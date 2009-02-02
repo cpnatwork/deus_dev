@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="transportProtocol" class="deus.core.transport.protocol.TransportProtocol">
+		<property name="loginEventCallback">
+			<bean class="deus.transport.xmpp.callback.XmppLoginEventCallback" />
+		</property>
+		<property name="registrationEventCallback">
+			<bean class="deus.core.transport.protocol.callback.DefaultRegistrationEventCallback" />
+		</property>
+		<property name="messageSender" ref="xmppMessageSender"/>
+		<property name="transportIdUserIdMapper">
+			<bean class="deus.transport.local.id.LocalTransportIdUserIdMapper"/>
+		</property>
+	</bean>
+	
+	<bean id="xmppMessageSender" class="deus.transport.xmpp.sender.XmppMessageSender" />
+		
+	<bean id="transportProtocolId" class="java.lang.String">
+		<constructor-arg value="xmpp"/>
+	</bean>
+		
+	<bean id="registerTransportProtocol" class="deus.transport.xmpp.RegisterTransportProtocol" depends-on="transportProtocolRegistry" />
+		
+</beans>

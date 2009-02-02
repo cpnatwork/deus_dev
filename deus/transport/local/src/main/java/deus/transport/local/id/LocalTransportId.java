@@ -1,6 +1,6 @@
 package deus.transport.local.id;
 
-import deus.core.transport.id.TransportId;
+import deus.core.transport.protocol.TransportId;
 
 public class LocalTransportId implements TransportId {
 

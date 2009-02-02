@@ -7,8 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.transport.TransportProtocol;
 import deus.core.transport.message.receiver.MessageReceiver;
+import deus.core.transport.protocol.TransportProtocol;
 import deus.core.transport.protocolregistry.TransportProtocolRegistry;
 
 @Component

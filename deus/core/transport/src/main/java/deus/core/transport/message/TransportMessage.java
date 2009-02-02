@@ -1,6 +1,6 @@
 package deus.core.transport.message;
 
-import deus.core.transport.id.TransportId;
+import deus.core.transport.protocol.TransportId;
 
 public abstract class TransportMessage {
 
@@ -38,5 +38,5 @@ public abstract class TransportMessage {
 	public void setReceiverTid(TransportId receiverTid) {
 		this.receiverTid = receiverTid;
 	}
-
+	
 }

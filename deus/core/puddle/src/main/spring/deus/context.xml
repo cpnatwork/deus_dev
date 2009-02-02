@@ -35,7 +35,7 @@
 	
 	more help: http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-classpath-scanning
 	 -->
-	<context:component-scan base-package="deus"/>
+	<context:component-scan base-package="deus.core.soul"/>
 	
 	
 	<!-- this is needed for the @Configurable annotations to be recognized and the annotated classes to be injected the

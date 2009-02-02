@@ -5,7 +5,7 @@ import java.util.Map;
 
 import deus.core.transport.connectionstate.ConnectionState;
 import deus.core.transport.connectionstate.ConnectionStateRegistry;
-import deus.core.transport.id.TransportId;
+import deus.core.transport.protocol.TransportId;
 
 public class DefaultConnectionStateRegistry implements ConnectionStateRegistry {
 

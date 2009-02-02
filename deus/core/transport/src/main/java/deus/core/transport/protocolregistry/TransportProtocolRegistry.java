@@ -2,8 +2,8 @@ package deus.core.transport.protocolregistry;
 
 import java.util.Collection;
 
-import deus.core.transport.TransportProtocol;
 import deus.core.transport.message.receiver.MessageReceiver;
+import deus.core.transport.protocol.TransportProtocol;
 
 public interface TransportProtocolRegistry {
 

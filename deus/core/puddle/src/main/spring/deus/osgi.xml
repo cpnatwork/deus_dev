@@ -6,11 +6,14 @@
 		http://www.springframework.org/schema/osgi  
 		http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
-	<osgi:service id="gatekeeperOsgiService" ref="gatekeeper" interface="deus.core.soul.gatekeeper.Gatekeeper" />
-
+	<!-- services for UI -->
+	
 	<osgi:service id="userRegistryOsgiService" ref="userRegistry" interface="deus.core.soul.UserRegistry" />
 	
 	<osgi:service id="userFactoryOsgiService" ref="userFactory" interface="deus.core.soul.UserFactory" />
+	
+	
+	<!-- references on DAOs -->
 	
 	<osgi:reference id="attentionDao" interface="deus.storage.attention.AttentionDao"/>
 	
@@ -21,10 +24,20 @@
 	<osgi:reference id="userDao" interface="deus.storage.user.UserMetadataDao"/>
 
 
-	<osgi:reference id="barkerCommandExecutor" interface="deus.core.soul.common.BarkerCommandExecutor"/>
-
-	<osgi:reference id="publisherCommandExecutor" interface="deus.core.soul.common.PublisherCommandExecutor"/>
+	<!-- references to send commands, should be provided by core-transport bundle -->
 	
-	<osgi:reference id="subscriberCommandExecutor" interface="deus.core.soul.common.SubscriberCommandExecutor"/>
+	<osgi:reference id="barkerCommandSender" interface="deus.core.transport.commandsender.BarkerCommandSender"/>
+
+	<osgi:reference id="publisherCommandSender" interface="deus.core.transport.commandsender.PublisherCommandSender"/>
+	
+	<osgi:reference id="subscriberCommandSender" interface="deus.core.transport.commandsender.SubscriberCommandSender"/>
+	
+	
+	<!-- services to receive commands, should be used by core-transport bundle -->
+	
+	<osgi:service id="publisherCommandReceiverOsgiService" ref="publisherCommandReceiver" interface="deus.core.transport.commandreceiver.PublisherCommandReceiver" />
+	
+	<osgi:service id="subscriberCommandReceiverOsgiService" ref="subscriberCommandReceiver" interface="deus.core.transport.commandreceiver.SubscriberCommandReceiver" />
+
 	
 </beans>

@@ -42,12 +42,6 @@ public class UserFactoryImpl implements UserFactory {
 
 
 	@Override
-	public UserId createUserId(String localUsername) {
-		return userMetadataDao.getUserId(localUsername);
-	}
-	
-
-	@Override
 	public User createUser(String localUsername) {
 		User user = new User();
 		

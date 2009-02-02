@@ -3,16 +3,16 @@ package deus.core.transport.commandsender.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.transport.TransportProtocol;
 import deus.core.transport.discovery.TransportProtocolDiscoveryStrategy;
-import deus.core.transport.id.TransportIdUserIdMapper;
 import deus.core.transport.message.TransportMessage;
 import deus.core.transport.message.sender.MessageSender;
+import deus.core.transport.protocol.TransportIdUserIdMapper;
+import deus.core.transport.protocol.TransportProtocol;
 import deus.core.transport.protocolregistry.TransportProtocolRegistry;
 import deus.model.user.id.UserId;
 
 @Component
-class TransportMessageSenderHelper {
+public class TransportMessageSenderHelper {
 
 	@Autowired
 	private TransportProtocolDiscoveryStrategy transportProtocolDiscoveryStrategy;

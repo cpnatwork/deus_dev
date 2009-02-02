@@ -1,6 +1,6 @@
 package deus.core.transport.discovery;
 
-import deus.core.transport.id.TransportId;
+import deus.core.transport.protocol.TransportId;
 import deus.model.user.id.UserId;
 
 public interface TransportProtocolDiscoveryStrategy {

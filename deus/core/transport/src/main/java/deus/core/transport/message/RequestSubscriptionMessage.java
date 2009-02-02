@@ -10,17 +10,17 @@ import deus.model.user.UserMetadata;
  */
 public final class RequestSubscriptionMessage extends SubscribeMessage {
 
-	private final UserMetadata senderMetadata;
+	private final UserMetadata subscriberMetadata;
 
 
-	public RequestSubscriptionMessage(UserMetadata senderMetadata) {
+	public RequestSubscriptionMessage(UserMetadata subscriberMetadata) {
 		super();
-		this.senderMetadata = senderMetadata;
+		this.subscriberMetadata = subscriberMetadata;
 	}
 
 
-	public UserMetadata getSenderMetadata() {
-		return senderMetadata;
+	public UserMetadata getSubscriberMetadata() {
+		return subscriberMetadata;
 	}
 
 }

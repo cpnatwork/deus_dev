@@ -10,7 +10,7 @@ import deus.core.transport.commandreceiver.PublisherCommandReceiver;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
-@Component
+@Component("publisherCommandReceiver")
 public class PublisherCommandReceiverImpl implements PublisherCommandReceiver {
 
 	@Autowired

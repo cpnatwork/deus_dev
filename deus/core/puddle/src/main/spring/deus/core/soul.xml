@@ -6,8 +6,4 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 
-	<bean id="loginCredentialChecker" class="deus.core.soul.gatekeeper.impl.LoginCredentialCheckerImpl" />	
-
-	<bean id="gatekeeper" class="deus.core.soul.gatekeeper.impl.GatekeeperImpl" />
-	
 </beans>

@@ -1,6 +1,6 @@
 package deus.transport.xmpp.id;
 
-import deus.core.transport.id.TransportId;
+import deus.core.transport.protocol.TransportId;
 
 public class XmppTransportId implements TransportId {
 

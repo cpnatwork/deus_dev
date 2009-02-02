@@ -1,9 +1,5 @@
 package deus;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +8,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.core.soul.User;
 import deus.core.soul.UserRegistry;
-import deus.core.soul.gatekeeper.Gatekeeper;
-import deus.core.soul.gatekeeper.soul.LoginCredentials;
-import deus.model.attention.notice.SubscribedProfileDeletedNotice;
-import deus.model.pub.LosEntry;
-import deus.model.sub.LopEntry;
-import deus.model.sub.SubscriptionState;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/soul.xml" })
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/soul.xml" })
 public class UnsubscribeTest extends AbstractUseCaseTest {
 
-	@Autowired
-	private Gatekeeper gatekeeper;
+//	@Autowired
+//	private Gatekeeper gatekeeper;
 
 	@Autowired
 	private UserRegistry userRegistry;

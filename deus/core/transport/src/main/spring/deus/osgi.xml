@@ -7,11 +7,11 @@
 		http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
 	<!-- services for sending commands, should be used by core package -->
-	<osgi:service id="barkerCommandExecutorOsgiService" ref="barkerCommandExecutor" interface="deus.core.soul.common.BarkerCommandExecutor"/>
+	<osgi:service id="barkerCommandSenderOsgiService" ref="transportBarkerCommandSender" interface="deus.core.transport.commandsender.BarkerCommandSender"/>
 
-	<osgi:service id="publisherCommandExecutorOsgiService" ref="publisherCommandExecutor" interface="deus.core.soul.common.PublisherCommandExecutor"/>
+	<osgi:service id="publisherCommandSenderOsgiService" ref="transportPublisherCommandSender" interface="deus.core.transport.commandsender.PublisherCommandSender"/>
 	
-	<osgi:service id="subscriberCommandExecutorOsgiService" ref="subscriberCommandExecutor" interface="deus.core.soul.common.SubscriberCommandExecutor"/>
+	<osgi:service id="subscriberCommandSenderOsgiService" ref="transportSubscriberCommandSender" interface="deus.core.transport.commandsender.SubscriberCommandSender"/>
 	
 
 

@@ -9,7 +9,6 @@ import deus.core.transport.message.GrantSubscriptionMessage;
 import deus.core.transport.message.TransportMessage;
 import deus.model.user.id.UserId;
 
-// TODO: think about common superclass of command executors, with methods to retrieve MessageSender (see old TransportProtocolDiscoveryCommandExecutor)
 @Component
 public class TransportBarkerCommandSender implements BarkerCommandSender {
 

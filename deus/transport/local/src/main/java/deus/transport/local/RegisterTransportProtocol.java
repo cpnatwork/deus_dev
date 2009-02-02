@@ -6,8 +6,8 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import deus.core.transport.TransportProtocol;
 import deus.core.transport.message.receiver.MessageReceiver;
+import deus.core.transport.protocol.TransportProtocol;
 import deus.core.transport.protocolregistry.TransportProtocolRegistry;
 import deus.transport.local.sender.LocalMessageSender;
 
@@ -28,11 +28,11 @@ public class RegisterTransportProtocol {
 
 	@PostConstruct
 	public void register() {
-		MessageReceiver rcr = transportProtocolRegistry
+		MessageReceiver mr = transportProtocolRegistry
 				.registerTransportProtocol(transportProtocolId, localTransportProtocol);
 
-		// connect rcr to rcs
-		localMessageSender.setMessageReceiver(rcr);
+		// connect mr to ms
+		localMessageSender.setMessageReceiver(mr);
 	}
 
 
