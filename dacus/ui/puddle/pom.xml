@@ -52,6 +52,17 @@
 			<artifactId>com.springsource.org.apache.taglibs.standard</artifactId>
 			<version>1.1.2</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>org.springframework.context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.osgi</groupId>
+			<artifactId>org.springframework.osgi-library</artifactId>
+			<type>libd</type>
+		</dependency>
+		
 	</dependencies>
 	
 	

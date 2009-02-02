@@ -44,6 +44,17 @@
 		</dependency>
 		                
 	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	    	    		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>org.springframework.context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.osgi</groupId>
+			<artifactId>org.springframework.osgi-library</artifactId>
+			<type>libd</type>
+		</dependency>
+	    
 	</dependencies>
 	
 	

@@ -18,6 +18,7 @@
 		<spring.version>2.5.6.A</spring.version>
 		<aspectj.version>1.6.1</aspectj.version>
 		<spring.agent.version>2.5.6</spring.agent.version>
+		<spring.osgi.version>1.1.2.B</spring.osgi.version>
 	</properties>
 
 
@@ -52,55 +53,106 @@
 	<!--+++ DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
+	<dependencyManagement>
+	
+		<dependencies>
+		
+			<!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	
+			<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	
+			<!--+++ SPRING +++-->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>org.springframework.context</artifactId>
+				<version>${spring.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			
+				
+			<dependency>
+				<groupId>org.springframework.osgi</groupId>
+				<artifactId>org.springframework.osgi-library</artifactId>
+				<type>libd</type>
+				<scope>provided</scope>
+				<version>${spring.osgi.version}</version>
+			</dependency>
+	
+			
+			
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>org.springframework.aspects</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+	
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-agent</artifactId>
+				<version>${spring.agent.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+	
+			<!--+++ ASPECTJ +++-->
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>com.springsource.org.aspectj.weaver</artifactId>
+				<version>${aspectj.version}</version>
+				<scope>provided</scope>
+			</dependency>
+	
+	
+	
+			<!--+++ LOGGING +++-->
+			<!-- Logback ist used as logging backend! -->
+			<!--		<dependency>-->
+			<!--			<groupId>ch.qos.logback</groupId>-->
+			<!--			<artifactId>ch.qos.logback.classic-library</artifactId>-->
+			<!--			<type>libd</type>-->
+			<!--			<version>0.9.9</version>-->
+			<!--		</dependency>-->
+			<!-- We use the slf4j api, against which logback is programmed -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>com.springsource.slf4j.api</artifactId>
+				<version>1.5.6</version>
+			</dependency>
+			<!-- for libraries using apache commons logging: make loggers use the slf4j api -->
+			<!--		<dependency>-->
+			<!--			<groupId>org.slf4j</groupId>-->
+			<!--			<artifactId>com.springsource.slf4j.org.apache.commons.logging</artifactId>-->
+			<!--			<version>1.5.6</version>-->
+			<!--		</dependency>-->
+			<!-- for libraries using java.util.logging: make JUL loggers use the slf4j api -->
+			<!--		<dependency>-->
+			<!--			<groupId>org.slf4j</groupId>-->
+			<!--			<artifactId>com.springsource.slf4j.juli</artifactId>-->
+			<!--			<version>1.5.6</version>-->
+			<!--		</dependency>-->
+			<!-- for libraries using log4j directly: make loggers use the slf4j api	-->
+			<!--		<dependency>-->
+			<!--			<groupId>org.slf4j</groupId>-->
+			<!--			<artifactId>com.springsource.slf4j.org.apache.log4j</artifactId>-->
+			<!--			<version>1.5.6</version>-->
+			<!--		</dependency>-->
+			
+		</dependencies>
+	</dependencyManagement>
+
+
+
 	<dependencies>
 		<!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
 		<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
-		<!--+++ SPRING +++-->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.context</artifactId>
-			<version>${spring.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.aspects</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>org.springframework.test</artifactId>
 			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-agent</artifactId>
-			<version>${spring.agent.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.osgi</groupId>
-			<artifactId>org.springframework.osgi-library</artifactId>
-			<type>libd</type>
-			<scope>provided</scope>
-			<version>1.1.2.B</version>
-		</dependency>
-
-
-		<!--+++ ASPECTJ +++-->
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>com.springsource.org.aspectj.weaver</artifactId>
-			<version>${aspectj.version}</version>
-			<scope>provided</scope>
-		</dependency>
-
-
 
 		<!--+++ JUNIT +++-->
 		<dependency>
@@ -110,39 +162,6 @@
 			<scope>test</scope>
 		</dependency>
 
-
-		<!--+++ LOGGING +++-->
-		<!-- Logback ist used as logging backend! -->
-		<!--		<dependency>-->
-		<!--			<groupId>ch.qos.logback</groupId>-->
-		<!--			<artifactId>ch.qos.logback.classic-library</artifactId>-->
-		<!--			<type>libd</type>-->
-		<!--			<version>0.9.9</version>-->
-		<!--		</dependency>-->
-		<!-- We use the slf4j api, against which logback is programmed -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>com.springsource.slf4j.api</artifactId>
-			<version>1.5.6</version>
-		</dependency>
-		<!-- for libraries using apache commons logging: make loggers use the slf4j api -->
-		<!--		<dependency>-->
-		<!--			<groupId>org.slf4j</groupId>-->
-		<!--			<artifactId>com.springsource.slf4j.org.apache.commons.logging</artifactId>-->
-		<!--			<version>1.5.6</version>-->
-		<!--		</dependency>-->
-		<!-- for libraries using java.util.logging: make JUL loggers use the slf4j api -->
-		<!--		<dependency>-->
-		<!--			<groupId>org.slf4j</groupId>-->
-		<!--			<artifactId>com.springsource.slf4j.juli</artifactId>-->
-		<!--			<version>1.5.6</version>-->
-		<!--		</dependency>-->
-		<!-- for libraries using log4j directly: make loggers use the slf4j api	-->
-		<!--		<dependency>-->
-		<!--			<groupId>org.slf4j</groupId>-->
-		<!--			<artifactId>com.springsource.slf4j.org.apache.log4j</artifactId>-->
-		<!--			<version>1.5.6</version>-->
-		<!--		</dependency>-->
 	</dependencies>
 
 
@@ -253,6 +272,17 @@
 				</configuration>
 			</plugin>
 
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>**/*Test.java</include>
+						<include>**/*TestCase.java</include>
+					</includes>
+				</configuration>
+			</plugin>
 
 			<!-- COPY ARTIFACT TO APP SERVER ON PHASE pre-integration-test -->
 			<plugin>

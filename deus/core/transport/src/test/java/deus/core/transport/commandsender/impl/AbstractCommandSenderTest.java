@@ -18,7 +18,7 @@ import deus.model.user.id.UserUrl;
 import deus.transport.testTP.protocol.TestTransportId;
 
 
-public class AbstractCommandSenderTest {
+public abstract class AbstractCommandSenderTest {
 
 	@Autowired
 	protected TransportProtocolDiscoveryStrategy transportProtocolDiscoveryStrategy;
