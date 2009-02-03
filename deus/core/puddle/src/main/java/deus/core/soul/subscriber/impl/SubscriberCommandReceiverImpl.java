@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import deus.core.soul.User;
 import deus.core.soul.UserRegistry;
 import deus.core.soul.subscriber.RemoteCalledSubscriber;
-import deus.core.transport.commandreceiver.SubscriberCommandReceiver;
+import deus.core.transport.command.receiver.SubscriberCommandReceiver;
 import deus.model.user.id.UserId;
 
 @Component("subscriberCommandReceiver")

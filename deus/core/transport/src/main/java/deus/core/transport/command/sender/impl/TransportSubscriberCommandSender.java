@@ -1,9 +1,9 @@
-package deus.core.transport.commandsender.impl;
+package deus.core.transport.command.sender.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.transport.commandsender.SubscriberCommandSender;
+import deus.core.transport.command.sender.SubscriberCommandSender;
 import deus.core.transport.message.RequestSubscriptionMessage;
 import deus.core.transport.message.TransportMessage;
 import deus.core.transport.message.UnsubscribeMessage;

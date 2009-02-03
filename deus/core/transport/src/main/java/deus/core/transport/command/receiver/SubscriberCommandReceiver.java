@@ -1,4 +1,4 @@
-package deus.core.transport.commandreceiver;
+package deus.core.transport.command.receiver;
 
 import deus.model.user.id.UserId;
 

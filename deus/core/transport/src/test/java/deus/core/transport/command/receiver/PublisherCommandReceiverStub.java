@@ -1,7 +1,8 @@
-package deus.core.transport.commandreceiver;
+package deus.core.transport.command.receiver;
 
 import org.springframework.stereotype.Component;
 
+import deus.core.transport.command.receiver.PublisherCommandReceiver;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 

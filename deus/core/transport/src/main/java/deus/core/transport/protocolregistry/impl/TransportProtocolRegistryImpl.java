@@ -4,10 +4,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.transport.message.receiver.MessageReceiver;
+import deus.core.transport.message.receiver.impl.DelegateToCommandReceiverMessageReceiver;
 import deus.core.transport.protocol.TransportProtocol;
 import deus.core.transport.protocolregistry.TransportProtocolRegistry;
 
@@ -15,9 +15,6 @@ import deus.core.transport.protocolregistry.TransportProtocolRegistry;
 public class TransportProtocolRegistryImpl implements TransportProtocolRegistry {
 
 	private final Map<String, TransportProtocol> registeredTransportProtocols;
-
-	@Autowired
-	private MessageReceiver messageReceiver;
 
 
 	public TransportProtocolRegistryImpl() {
@@ -40,7 +37,8 @@ public class TransportProtocolRegistryImpl implements TransportProtocolRegistry 
 
 		registeredTransportProtocols.put(transportProtocol.getId(), transportProtocol);
 
-		return messageReceiver;
+		return new DelegateToCommandReceiverMessageReceiver(transportProtocol.getId(), transportProtocol
+				.getTransportIdUserIdMapper());
 	}
 
 

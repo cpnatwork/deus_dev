@@ -1,4 +1,4 @@
-package deus.core.transport.commandsender.impl;
+package deus.core.transport.command.sender.impl;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.transport.commandsender.SubscriberCommandSender;
+import deus.core.transport.command.sender.SubscriberCommandSender;
 import deus.core.transport.message.RequestSubscriptionMessage;
 import deus.core.transport.message.TransportMessage;
 import deus.core.transport.message.UnsubscribeMessage;

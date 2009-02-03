@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Configurable;
 
 import deus.core.soul.barker.decisionprocessors.DecisionProcessor;
 import deus.core.soul.publisher.Publisher;
-import deus.core.transport.commandsender.BarkerCommandSender;
+import deus.core.transport.command.sender.BarkerCommandSender;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.model.user.UserMetadata;
 

@@ -1,4 +1,4 @@
-package deus.core.transport.commandsender.impl;
+package deus.core.transport.command.sender.impl;
 
 import static org.junit.Assert.assertEquals;
 
@@ -98,7 +98,7 @@ public abstract class AbstractCommandSenderTest {
 
 
 	protected void setTids(TransportMessage expectedMessage, UserId senderId, UserId receiverId) {
-		expectedMessage.setReceiverTid(transportProtocolDiscoveryStrategy.getTransportId(testTransportProtocolId, receiverId));
+		expectedMessage.setReceiverTid(transportProtocolDiscoveryStrategy.resolveTransportId(testTransportProtocolId, receiverId));
 		expectedMessage.setSenderTid(mapper.map(senderId));
 	}
 	

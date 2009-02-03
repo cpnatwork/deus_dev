@@ -1,7 +1,5 @@
 package deus.transport.xmpp.common.packetlistener.impl;
 
-import javax.annotation.Resource;
-
 import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +15,6 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 
 	@Autowired
 	private XmppConfiguration xmppConfiguration;
-	
-	@Resource(name="transportProtocolId")
-	private String transportProtocolId;
 
 	@Autowired
 	protected MessageReceiver messageReceiver;
@@ -43,7 +38,7 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 		command.setSenderTid(senderJid);
 		command.setReceiverTid(receiverJid);
 		
-		messageReceiver.receive(command, transportProtocolId);
+		messageReceiver.receive(command);
 	}
 
 }

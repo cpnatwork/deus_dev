@@ -4,6 +4,6 @@ import deus.core.transport.message.TransportMessage;
 
 public interface MessageReceiver {
 
-	public void receive(TransportMessage command, String transportProtocolId);
+	public void receive(TransportMessage command);
 	
 }

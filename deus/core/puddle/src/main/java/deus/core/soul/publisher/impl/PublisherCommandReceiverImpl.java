@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import deus.core.soul.User;
 import deus.core.soul.UserRegistry;
 import deus.core.soul.publisher.RemoteCalledPublisher;
-import deus.core.transport.commandreceiver.PublisherCommandReceiver;
+import deus.core.transport.command.receiver.PublisherCommandReceiver;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 

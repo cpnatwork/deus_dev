@@ -22,8 +22,15 @@ public class FixedTransportProtocolDiscoveryStrategy implements TransportProtoco
 
 
 	@Override
-	public TransportId getTransportId(String transportProtocolId, UserId receiverId) {
-		// TODO Auto-generated method stubs
+	public TransportId resolveTransportId(String transportProtocolId, UserId receiverId) {
+		// FIXME Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public UserId resolveUserId(String transportProtocolId, TransportId receiverTpId) {
+		// FIXME Auto-generated method stub
 		return null;
 	}
 

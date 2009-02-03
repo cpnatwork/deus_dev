@@ -7,6 +7,9 @@ public interface TransportProtocolDiscoveryStrategy {
 
 	public String agreeOnTransportProtocol(UserId receiverId);
 	
-	public TransportId getTransportId(String transportProtocolId, UserId receiverId);
+	// TODO: think about these two methods: do they really belong here, or into the concrete TP plugin? 
+	public TransportId resolveTransportId(String transportProtocolId, UserId receiverId);
+	
+	public UserId resolveUserId(String transportProtocolId, TransportId receiverTpId);
 	
 }

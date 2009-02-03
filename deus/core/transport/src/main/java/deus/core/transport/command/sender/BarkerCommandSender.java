@@ -1,4 +1,4 @@
-package deus.core.transport.commandsender;
+package deus.core.transport.command.sender;
 
 import deus.model.user.id.UserId;
 

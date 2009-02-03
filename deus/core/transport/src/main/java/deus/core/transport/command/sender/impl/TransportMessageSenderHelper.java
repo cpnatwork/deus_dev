@@ -1,4 +1,4 @@
-package deus.core.transport.commandsender.impl;
+package deus.core.transport.command.sender.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -29,7 +29,7 @@ public class TransportMessageSenderHelper {
 
 		// set TIDs of sender and receiver
 		TransportIdUserIdMapper mapper = transportProtocol.getTransportIdUserIdMapper();
-		transportMessage.setReceiverTid(transportProtocolDiscoveryStrategy.getTransportId(transportProtocolId,
+		transportMessage.setReceiverTid(transportProtocolDiscoveryStrategy.resolveTransportId(transportProtocolId,
 				receiverId));
 		transportMessage.setSenderTid(mapper.map(senderId));
 

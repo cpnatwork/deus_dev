@@ -1,4 +1,4 @@
-package deus.core.transport.commandsender.impl;
+package deus.core.transport.command.sender.impl;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.transport.commandsender.BarkerCommandSender;
+import deus.core.transport.command.sender.BarkerCommandSender;
 import deus.core.transport.message.DenySubscriptionMessage;
 import deus.core.transport.message.GrantSubscriptionMessage;
 import deus.core.transport.message.TransportMessage;
