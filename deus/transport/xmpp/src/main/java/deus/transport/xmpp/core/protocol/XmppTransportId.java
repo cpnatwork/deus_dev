@@ -1,4 +1,4 @@
-package deus.transport.xmpp.id;
+package deus.transport.xmpp.core.protocol;
 
 import deus.core.transport.core.protocol.TransportId;
 
@@ -44,6 +44,13 @@ public class XmppTransportId implements TransportId {
 		return xmppUsername + "@" + xmppServer;
 	}
 
+
+
+	@Override
+	public String getTransportProtocolId() {
+		return "xmpp";
+	}
+	
 
 	@Override
 	public int hashCode() {

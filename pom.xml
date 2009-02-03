@@ -250,15 +250,6 @@
 					<includeScope>runtime</includeScope>
 					<!--				<includeTypes>jar</includeTypes>-->
 				</configuration>
-				<executions>
-					<execution>
-						<id>copy-dependencies</id>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<phase>pre-integration-test</phase>
-					</execution>
-				</executions>
 			</plugin>
 
 			<!-- COMPILING -->

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.transport.xmpp.common.impl.XmppConversationImpl;
-import deus.transport.xmpp.id.XmppTransportId;
+import deus.transport.xmpp.core.protocol.XmppTransportId;
 
 
 /**

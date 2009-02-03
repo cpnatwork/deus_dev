@@ -6,6 +6,12 @@
 		http://www.springframework.org/schema/osgi  
 		http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
-	<osgi:reference id="transportProtocolRegistry" interface="deus.core.transport.protocolregistry.TransportProtocolRegistry"/>
+	<!-- CORE -->
+
+	<osgi:reference id="transportProtocolRegistry" interface="deus.core.transport.core.protocolregistry.TransportProtocolRegistry"/>
+	
+	<!-- RECEIVING -->
+	
+	<osgi:reference id="messageReceiver" interface="deus.core.transport.receiving.message.MessageReceiver"/>
 	
 </beans>

@@ -1,6 +1,6 @@
-package deus.transport.xmpp.callback;
+package deus.transport.xmpp.core.protocol.callback;
 
-import deus.transport.xmpp.id.XmppTransportId;
+import deus.transport.xmpp.core.protocol.XmppTransportId;
 
 public class FixedPasswordLookup implements XmppPasswordLookup {
 

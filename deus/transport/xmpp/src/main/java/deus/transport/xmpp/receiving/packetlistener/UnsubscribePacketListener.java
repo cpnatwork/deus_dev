@@ -1,4 +1,4 @@
-package deus.transport.xmpp.common.packetlistener;
+package deus.transport.xmpp.receiving.packetlistener;
 
 import org.jivesoftware.smack.filter.AndFilter;
 import org.jivesoftware.smack.filter.PacketFilter;
@@ -9,7 +9,7 @@ import org.jivesoftware.smack.packet.Presence.Type;
 
 import deus.core.transport.messages.TransportMessage;
 import deus.core.transport.messages.UnsubscribeMessage;
-import deus.transport.xmpp.common.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
+import deus.transport.xmpp.receiving.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
 import deus.transport.xmpp.util.PacketPrinter;
 
 

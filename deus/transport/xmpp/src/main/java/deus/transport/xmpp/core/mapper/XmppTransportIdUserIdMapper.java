@@ -1,10 +1,11 @@
-package deus.transport.xmpp.id;
+package deus.transport.xmpp.core.mapper;
 
 import deus.core.transport.core.protocol.TransportId;
 import deus.core.transport.core.protocol.TransportIdUserIdMapper;
 import deus.model.user.id.UserId;
+import deus.transport.xmpp.core.protocol.XmppTransportId;
 
-public class XmppLocalUserTransportIdFactory implements TransportIdUserIdMapper {
+public class XmppTransportIdUserIdMapper implements TransportIdUserIdMapper {
 
 	@Override
 	public TransportId map(UserId userId) {

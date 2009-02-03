@@ -1,4 +1,4 @@
-package deus.transport.xmpp.common;
+package deus.transport.xmpp.receiving;
 
 import javax.annotation.Resource;
 

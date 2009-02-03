@@ -5,8 +5,7 @@ import org.jivesoftware.smack.Roster;
 import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.packet.Packet;
 
-import deus.transport.xmpp.common.packetlistener.FilteredPacketListener;
-import deus.transport.xmpp.id.XmppTransportId;
+import deus.transport.xmpp.core.protocol.XmppTransportId;
 
 
 public interface XmppConversation {

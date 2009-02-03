@@ -1,10 +1,10 @@
-package deus.transport.xmpp.common.packetlistener.impl;
+package deus.transport.xmpp.receiving.packetlistener.impl;
 
 import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.packet.Packet;
 
-import deus.transport.xmpp.common.packetlistener.FilteredPacketListener;
+import deus.transport.xmpp.common.FilteredPacketListener;
 
 
 /**

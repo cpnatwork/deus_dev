@@ -1,18 +1,18 @@
-package deus.transport.xmpp.callback;
+package deus.transport.xmpp.core.protocol.callback;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.transport.connectionstate.ConnectionStateRegistry;
 import deus.core.transport.core.protocol.TransportId;
 import deus.core.transport.core.protocol.callback.LoginEventCallback;
+import deus.transport.xmpp.common.FilteredPacketListener;
 import deus.transport.xmpp.common.XmppConversation;
 import deus.transport.xmpp.common.XmppNetwork;
-import deus.transport.xmpp.common.packetlistener.FilteredPacketListener;
-import deus.transport.xmpp.common.packetlistener.SubscribePacketListener;
-import deus.transport.xmpp.common.packetlistener.UnsubscribePacketListener;
-import deus.transport.xmpp.common.packetlistener.UpdatePacketListener;
 import deus.transport.xmpp.connectionstate.XmppConnectionState;
-import deus.transport.xmpp.id.XmppTransportId;
+import deus.transport.xmpp.core.protocol.XmppTransportId;
+import deus.transport.xmpp.receiving.packetlistener.SubscribePacketListener;
+import deus.transport.xmpp.receiving.packetlistener.UnsubscribePacketListener;
+import deus.transport.xmpp.receiving.packetlistener.UpdatePacketListener;
 
 public class XmppLoginEventCallback implements LoginEventCallback {
 

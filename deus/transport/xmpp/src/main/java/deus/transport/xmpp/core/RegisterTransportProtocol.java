@@ -1,14 +1,15 @@
-package deus.transport.xmpp;
+package deus.transport.xmpp.core;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import deus.core.transport.core.protocol.TransportProtocol;
 import deus.core.transport.core.protocolregistry.TransportProtocolRegistry;
-import deus.core.transport.receiving.message.MessageReceiver;
 
+@Component
 public class RegisterTransportProtocol {
 
 	@Autowired
@@ -20,9 +21,7 @@ public class RegisterTransportProtocol {
 	
 	@PostConstruct
 	public void register() {
-		// FIXME: how to inject this into packet listeners
-		MessageReceiver mr = transportProtocolRegistry
-				.registerTransportProtocol(transportProtocol);
+		transportProtocolRegistry.registerTransportProtocol(transportProtocol);
 	}
 
 

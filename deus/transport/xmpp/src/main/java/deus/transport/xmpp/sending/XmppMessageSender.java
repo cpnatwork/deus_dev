@@ -1,7 +1,8 @@
-package deus.transport.xmpp.sender;
+package deus.transport.xmpp.sending;
 
 import org.jivesoftware.smack.packet.Presence;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import deus.core.transport.connectionstate.ConnectionStateRegistry;
 import deus.core.transport.core.protocol.MessageSender;
@@ -13,8 +14,9 @@ import deus.core.transport.messages.TransportMessage;
 import deus.core.transport.messages.UnsubscribeMessage;
 import deus.transport.xmpp.common.XmppConversation;
 import deus.transport.xmpp.connectionstate.XmppConnectionState;
-import deus.transport.xmpp.id.XmppTransportId;
+import deus.transport.xmpp.core.protocol.XmppTransportId;
 
+@Component
 public class XmppMessageSender implements MessageSender {
 
 	@Autowired

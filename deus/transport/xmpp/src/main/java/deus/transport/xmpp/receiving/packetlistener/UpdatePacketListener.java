@@ -1,4 +1,4 @@
-package deus.transport.xmpp.common.packetlistener;
+package deus.transport.xmpp.receiving.packetlistener;
 
 import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.filter.PacketTypeFilter;
@@ -9,7 +9,7 @@ import deus.core.transport.messages.TransportMessage;
 import deus.core.transport.messages.UpdateMessage;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.transport.xmpp.FIFChange;
-import deus.transport.xmpp.common.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
+import deus.transport.xmpp.receiving.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
 import deus.transport.xmpp.util.PacketPrinter;
 
 public class UpdatePacketListener extends UserMetadataParsingFilteredPacketListener {

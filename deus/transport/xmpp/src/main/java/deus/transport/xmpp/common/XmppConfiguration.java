@@ -1,7 +1,17 @@
 package deus.transport.xmpp.common;
 
-public interface XmppConfiguration {
+public class XmppConfiguration {
 
-	public String getXmppPropertyFullName();
+	private String xmppPropertyFullName;
+
+
+	public String getXmppPropertyFullName() {
+		return xmppPropertyFullName;
+	}
+
+
+	public void setXmppPropertyFullName(String xmppPropertyFullName) {
+		this.xmppPropertyFullName = xmppPropertyFullName;
+	}
 	
 }

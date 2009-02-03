@@ -8,24 +8,17 @@ import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.Roster.SubscriptionMode;
 import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.packet.Packet;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 
-import deus.transport.xmpp.common.XmppConfiguration;
+import deus.transport.xmpp.common.FilteredPacketListener;
 import deus.transport.xmpp.common.XmppConversation;
-import deus.transport.xmpp.common.packetlistener.FilteredPacketListener;
-import deus.transport.xmpp.id.XmppTransportId;
+import deus.transport.xmpp.core.protocol.XmppTransportId;
 
 // TODO: think about synchronization issues (e.g. with adding/removing of packet listeners)
-@Configurable
 public class XmppConversationImpl implements XmppConversation {
 
 	private final XMPPConnection connection;
 	private final XmppTransportId xmppTransportId;
 	private final String password;
-
-	@Autowired
-	private XmppConfiguration xmppConfiguration;
 
 	private PacketListenerManager packetListenerManager;
 

@@ -94,6 +94,17 @@
 	<build>
 	
 		<plugins>
+		
+					<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Embed-Dependency>smack</Embed-Dependency>
+					</instructions>
+				</configuration>
+			</plugin>
 	
 		</plugins>
 
