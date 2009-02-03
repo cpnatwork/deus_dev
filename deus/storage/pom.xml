@@ -49,6 +49,15 @@
 			<artifactId>org.springframework.osgi-library</artifactId>
 			<type>libd</type>
 		</dependency>
+		
+		
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>com.springsource.org.hibernate</artifactId>
+			<version>3.2.6.ga</version>
+			<scope>provided</scope>
+		</dependency>
 	    
 	</dependencies>
 	

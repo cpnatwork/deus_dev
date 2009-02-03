@@ -1,1 +1,2 @@
 Manifest-Version: 1.0
+Import-Bundle: com.springsource.org.hibernate;version="[3.2.6.ga,3.2.6.ga]"
