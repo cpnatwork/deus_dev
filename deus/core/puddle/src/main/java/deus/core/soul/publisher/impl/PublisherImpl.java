@@ -15,7 +15,6 @@ import deus.model.user.id.UserId;
 public class PublisherImpl implements Publisher {
 
 	private final UserId publisherId;
-	private final UserMetadata publisherMetadata;
 	
 	@Autowired
 	private PublisherCommandSender publisherCommandSender;
@@ -23,12 +22,11 @@ public class PublisherImpl implements Publisher {
 	protected final ListOfSubscribers listOfSubscribers;
 
 
-	public PublisherImpl(ListOfSubscribers listOfSubscribers, UserId publisherId, UserMetadata publisherMetadata) {
+	public PublisherImpl(ListOfSubscribers listOfSubscribers, UserId publisherId) {
 		super();
 		this.listOfSubscribers = listOfSubscribers;
 
 		this.publisherId = publisherId;
-		this.publisherMetadata = publisherMetadata;
 	}
 
 	@Override
@@ -103,14 +101,8 @@ public class PublisherImpl implements Publisher {
 
 
 	@Override
-	public UserMetadata getPublisherMetadata() {
-		return publisherMetadata;
-	}
-
-	@Override
 	public UserId getPublisherId() {
 		return publisherId;
 	}
-	
 
 }

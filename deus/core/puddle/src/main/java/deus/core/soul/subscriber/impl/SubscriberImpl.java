@@ -39,13 +39,7 @@ public class SubscriberImpl implements Subscriber {
 		return subscriberId;
 	}
 
-
-	@Override
-	public UserMetadata getSubscriberMetadata() {
-		return subscriberMetadata;
-	}
-
-
+	
 	@Override
 	public DistributedInformationFolder getDistributedInformationFolder() {
 		// TODO Auto-generated method stub
