@@ -22,7 +22,7 @@
 			PersistantAnnotationBeanPostProcessor which is in the given package.
 		-->
 		<osgi.additionalPackageImports>deus.model.attention, deus.model.attention.notice, deus.model.user,
-		deus.core.soul, deus.core.soul.gatekeeper, org.springframework.orm.jpa.support</osgi.additionalPackageImports>
+		deus.core.soul, deus.gatekeeper, org.springframework.web.servlet.view, org.springframework.orm.jpa.support</osgi.additionalPackageImports>
 		
 		<osgi.nonExportedPackages></osgi.nonExportedPackages>
 	</properties>
@@ -34,6 +34,24 @@
 	
 	<dependencies>
         <!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+        <dependency>
+			<groupId>inf6.promed</groupId>
+			<artifactId>deus-model</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>inf6.promed</groupId>
+			<artifactId>deus-core-puddle</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+				
+		<dependency>
+			<groupId>inf6.promed</groupId>
+			<artifactId>deus-gatekeeper</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+		
         
 		<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 		<dependency>
