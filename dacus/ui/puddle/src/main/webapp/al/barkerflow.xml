@@ -22,7 +22,7 @@
 
 	<view-state id="attentionlist" redirect="false" popup="false">
 		<on-entry>
-			<evaluate expression="userFactory.createUserId(username)" result="requestScope.userId" />
+			<evaluate expression="userIdFactory.createUserId(username)" result="requestScope.userId" />
 			<evaluate expression="userFactory.createUser(username)" result="requestScope.user" />
 			<evaluate expression="requestScope.user.getBarker().getUnnoticedAttentionList()" result="requestScope.unnoticedAttentionList" />
 		</on-entry>

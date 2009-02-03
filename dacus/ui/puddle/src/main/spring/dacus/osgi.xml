@@ -9,6 +9,8 @@
 
 	<osgi:reference id="userRegistry" interface="deus.core.soul.UserRegistry" />
 	
+	<osgi:reference id="userIdFactory" interface="deus.gatekeeper.UserIdFactory" />
+	
 	<osgi:reference id="userFactory" interface="deus.core.soul.UserFactory" />
 
 </beans>

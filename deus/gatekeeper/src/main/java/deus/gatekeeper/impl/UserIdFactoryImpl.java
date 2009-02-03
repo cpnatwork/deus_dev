@@ -7,7 +7,7 @@ import deus.gatekeeper.UserIdFactory;
 import deus.model.user.id.UserId;
 import deus.storage.user.UserMetadataDao;
 
-@Component
+@Component("userIdFactory")
 public class UserIdFactoryImpl implements UserIdFactory {
 
 	@Autowired
