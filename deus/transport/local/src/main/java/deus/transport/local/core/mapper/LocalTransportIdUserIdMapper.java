@@ -1,8 +1,9 @@
-package deus.transport.local.id;
+package deus.transport.local.core.mapper;
 
 import deus.core.transport.core.protocol.TransportId;
 import deus.core.transport.core.protocol.TransportIdUserIdMapper;
 import deus.model.user.id.UserId;
+import deus.transport.local.core.protocol.LocalTransportId;
 
 public class LocalTransportIdUserIdMapper implements TransportIdUserIdMapper {
 

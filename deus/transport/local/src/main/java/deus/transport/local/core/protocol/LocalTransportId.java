@@ -1,4 +1,4 @@
-package deus.transport.local.id;
+package deus.transport.local.core.protocol;
 
 import deus.core.transport.core.protocol.TransportId;
 

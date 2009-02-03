@@ -1,4 +1,4 @@
-package deus.transport.local;
+package deus.transport.local.core.protocol;
 
 import javax.annotation.Resource;
 

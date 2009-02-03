@@ -1,4 +1,4 @@
-package deus.transport.local;
+package deus.transport.local.core;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
