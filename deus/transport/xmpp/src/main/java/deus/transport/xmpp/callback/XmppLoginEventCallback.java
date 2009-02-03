@@ -3,8 +3,8 @@ package deus.transport.xmpp.callback;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.transport.connectionstate.ConnectionStateRegistry;
-import deus.core.transport.protocol.TransportId;
-import deus.core.transport.protocol.callback.LoginEventCallback;
+import deus.core.transport.core.protocol.TransportId;
+import deus.core.transport.core.protocol.callback.LoginEventCallback;
 import deus.transport.xmpp.common.XmppConversation;
 import deus.transport.xmpp.common.XmppNetwork;
 import deus.transport.xmpp.common.packetlistener.FilteredPacketListener;

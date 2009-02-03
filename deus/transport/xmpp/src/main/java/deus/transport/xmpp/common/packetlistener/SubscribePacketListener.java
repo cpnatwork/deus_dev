@@ -7,8 +7,8 @@ import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.packet.Presence.Type;
 
-import deus.core.transport.message.TransportMessage;
-import deus.core.transport.message.RequestSubscriptionMessage;
+import deus.core.transport.messages.RequestSubscriptionMessage;
+import deus.core.transport.messages.TransportMessage;
 import deus.model.user.UserMetadata;
 import deus.transport.xmpp.common.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
 import deus.transport.xmpp.util.PacketPrinter;

@@ -5,9 +5,10 @@ import org.jivesoftware.smack.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.transport.message.TransportMessage;
-import deus.core.transport.message.receiver.MessageReceiver;
+import deus.core.transport.messages.TransportMessage;
+import deus.core.transport.receiving.message.MessageReceiver;
 import deus.transport.xmpp.common.XmppConfiguration;
+import deus.transport.xmpp.common.XmppMessageReceiver;
 import deus.transport.xmpp.id.XmppTransportId;
 
 @Component
@@ -17,7 +18,7 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 	private XmppConfiguration xmppConfiguration;
 
 	@Autowired
-	protected MessageReceiver messageReceiver;
+	protected XmppMessageReceiver messageReceiver;
 
 
 	protected XmppTransportId parseXmppTransportId(String xmppTransportId) {

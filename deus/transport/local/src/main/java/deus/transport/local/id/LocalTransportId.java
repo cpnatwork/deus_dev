@@ -1,6 +1,6 @@
 package deus.transport.local.id;
 
-import deus.core.transport.protocol.TransportId;
+import deus.core.transport.core.protocol.TransportId;
 
 public class LocalTransportId implements TransportId {
 
@@ -15,6 +15,12 @@ public class LocalTransportId implements TransportId {
 
 	public String getUsername() {
 		return username;
+	}
+
+
+	@Override
+	public String getTransportProtocolId() {
+		return "local";
 	}
 
 }

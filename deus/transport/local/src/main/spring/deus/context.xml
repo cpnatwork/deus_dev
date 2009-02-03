@@ -24,4 +24,19 @@
 -->
 	<context:annotation-config />
 	
+		
+	<!-- 
+	the aforementioned annotations require the bean to already be present in the application context. If you do not like
+	to instantiate the bean in XML using <bean>, use stereotype annotations to annotate the spring managed components:
+			
+	stereotypes for spring managed components:
+	@Component
+	 @Controller
+	 @Service
+	 @Repository
+	
+	more help: http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-classpath-scanning
+	 -->
+	<context:component-scan base-package="deus.transport.local"/>
+	
 </beans>

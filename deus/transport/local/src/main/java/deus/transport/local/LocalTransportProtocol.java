@@ -2,7 +2,7 @@ package deus.transport.local;
 
 import javax.annotation.Resource;
 
-import deus.core.transport.protocol.AbstractTransportProtocol;
+import deus.core.transport.core.protocol.AbstractTransportProtocol;
 
 public class LocalTransportProtocol extends AbstractTransportProtocol {
 

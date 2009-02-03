@@ -1,6 +1,6 @@
 package deus.core.transport.connectionstate;
 
-import deus.core.transport.protocol.TransportId;
+import deus.core.transport.core.protocol.TransportId;
 
 public interface ConnectionStateRegistry {
 

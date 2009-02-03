@@ -5,8 +5,8 @@ import org.jivesoftware.smack.filter.PacketTypeFilter;
 import org.jivesoftware.smack.packet.IQ;
 import org.jivesoftware.smack.packet.Packet;
 
-import deus.core.transport.message.TransportMessage;
-import deus.core.transport.message.UpdateMessage;
+import deus.core.transport.messages.TransportMessage;
+import deus.core.transport.messages.UpdateMessage;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.transport.xmpp.FIFChange;
 import deus.transport.xmpp.common.packetlistener.impl.UserMetadataParsingFilteredPacketListener;

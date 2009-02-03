@@ -1,6 +1,6 @@
 package deus.transport.testTP.protocol;
 
-import deus.core.transport.protocol.TransportId;
+import deus.core.transport.core.protocol.TransportId;
 
 public class TestTransportId implements TransportId {
 
@@ -49,6 +49,12 @@ public class TestTransportId implements TransportId {
 		else if (!username.equals(other.username))
 			return false;
 		return true;
+	}
+
+
+	@Override
+	public String getTransportProtocolId() {
+		return "testProtocol";
 	}
 
 

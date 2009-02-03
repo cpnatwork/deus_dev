@@ -5,9 +5,9 @@ import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import deus.core.transport.message.receiver.MessageReceiver;
-import deus.core.transport.protocol.TransportProtocol;
-import deus.core.transport.protocolregistry.TransportProtocolRegistry;
+import deus.core.transport.core.protocol.TransportProtocol;
+import deus.core.transport.core.protocolregistry.TransportProtocolRegistry;
+import deus.core.transport.receiving.message.MessageReceiver;
 
 public class RegisterTransportProtocol {
 

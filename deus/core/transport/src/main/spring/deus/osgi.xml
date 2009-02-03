@@ -6,22 +6,30 @@
 		http://www.springframework.org/schema/osgi  
 		http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
-	<!-- services for sending commands, should be used by core package -->
-	<osgi:service id="barkerCommandSenderOsgiService" ref="transportBarkerCommandSender" interface="deus.core.transport.commandsender.BarkerCommandSender"/>
-
-	<osgi:service id="publisherCommandSenderOsgiService" ref="transportPublisherCommandSender" interface="deus.core.transport.commandsender.PublisherCommandSender"/>
+	<!-- CORE -->
 	
-	<osgi:service id="subscriberCommandSenderOsgiService" ref="transportSubscriberCommandSender" interface="deus.core.transport.commandsender.SubscriberCommandSender"/>
-	
-
-
-	<!--  reference for callback, should be provided by core package -->
-	<osgi:reference id="publisherCommandReceiver" interface="deus.core.transport.commandreceiver.PublisherCommandReceiver" />
-	
-	<osgi:reference id="subscriberCommandReceiver" interface="deus.core.transport.commandreceiver.SubscriberCommandReceiver" />
-
-
 	<!-- service for registration of transport protocols -->
-	<osgi:service id="transportProtocolRegistryOsgiService" ref="transportProtocolRegistry" interface="deus.core.transport.protocolregistry.TransportProtocolRegistry" />
+	<osgi:service id="transportProtocolRegistryOsgiService" ref="transportProtocolRegistry" interface="deus.core.transport.core.protocolregistry.TransportProtocolRegistry" />
+	
+	
+	
+	<!-- SENDING -->
+	
+	<!-- services for sending commands, should be used by core package -->
+	<osgi:service id="barkerCommandSenderOsgiService" ref="barkerCommandSender" interface="deus.core.transport.sending.command.BarkerCommandSender"/>
+
+	<osgi:service id="publisherCommandSenderOsgiService" ref="publisherCommandSender" interface="deus.core.transport.sending.command.PublisherCommandSender"/>
+	
+	<osgi:service id="subscriberCommandSenderOsgiService" ref="subscriberCommandSender" interface="deus.core.transport.sending.command.SubscriberCommandSender"/>
+	
+
+
+	<!-- RECEIVING -->
+
+	<!-- service for receiving transport messages -->
+	<osgi:service id="messageReceiverOsgiService" ref="messageReceiver" interface="deus.core.transport.receiving.message.MessageReceiver"/>
+	
+	<osgi:service id="commandReceiverRegistryOsgiService" ref="commandReceiverRegistry" interface="deus.core.transport.receiving.command.CommandReceiverRegistry"/>
+
 
 </beans>
