@@ -1,6 +1,9 @@
 package deus.core.transport.protocolregistry.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.Before;
@@ -14,26 +17,27 @@ import deus.core.transport.message.TransportMessage;
 import deus.core.transport.message.sender.MessageSender;
 import deus.core.transport.protocol.TransportId;
 import deus.core.transport.protocol.TransportIdUserIdMapper;
-import deus.core.transport.protocol.TransportProtocol;
 import deus.core.transport.protocolregistry.TransportProtocolRegistry;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
 import deus.transport.testTP.protocol.TestTransportId;
+import deus.transport.testTP.protocol.TestTransportProtocol;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/transport/test.xml" })
 public class TransportProtocolRegistryImplTest {
 	
-	private TransportProtocol tp;
+	private TestTransportProtocol tp;
 
 
 	@Autowired
 	private TransportProtocolRegistry registry;
 
+	private String testProtocolId;
 
 	@Before
 	public void setUp() throws Exception {
-		tp = new TransportProtocol();
+		tp = new TestTransportProtocol();
 		tp.setLoginEventCallback(null); // we don't need login for this test
 		tp.setRegistrationEventCallback(null); // we don't need registration for this test
 		
@@ -62,6 +66,8 @@ public class TransportProtocolRegistryImplTest {
 			}
 
 		});
+		
+		testProtocolId = tp.getId();
 	}
 
 
@@ -73,17 +79,17 @@ public class TransportProtocolRegistryImplTest {
 	@Test
 	public void testRegisterTransportProtocol() {
 		assertTrue(registry.getAllRegisteredTransportProtocolIds().isEmpty());
-		assertNull(registry.getRegisteredTransportProtocol("test"));
+		assertNull(registry.getRegisteredTransportProtocol(testProtocolId));
 		
-		registry.registerTransportProtocol("test", tp);
+		registry.registerTransportProtocol(tp);
 		
-		assertTrue(registry.getAllRegisteredTransportProtocolIds().contains("test"));
-		assertEquals(tp, registry.getRegisteredTransportProtocol("test"));
+		assertTrue(registry.getAllRegisteredTransportProtocolIds().contains(testProtocolId));
+		assertEquals(tp, registry.getRegisteredTransportProtocol(testProtocolId));
 		
-		registry.unregisterTransportProtocol("test");
+		registry.unregisterTransportProtocol(testProtocolId);
 		
 		assertTrue(registry.getAllRegisteredTransportProtocolIds().isEmpty());
-		assertNull(registry.getRegisteredTransportProtocol("test"));
+		assertNull(registry.getRegisteredTransportProtocol(testProtocolId));
 		
 		try {
 			registry.unregisterTransportProtocol("haha");

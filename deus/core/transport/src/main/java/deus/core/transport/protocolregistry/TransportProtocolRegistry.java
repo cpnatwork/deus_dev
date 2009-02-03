@@ -7,8 +7,7 @@ import deus.core.transport.protocol.TransportProtocol;
 
 public interface TransportProtocolRegistry {
 
-	public MessageReceiver registerTransportProtocol(String transportProtocolId,
-			TransportProtocol transportProtocol);
+	public MessageReceiver registerTransportProtocol(TransportProtocol transportProtocol);
 
 
 	public void unregisterTransportProtocol(String transportProtocolId);

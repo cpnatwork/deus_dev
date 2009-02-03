@@ -33,13 +33,12 @@ public class TransportProtocolRegistryImpl implements TransportProtocolRegistry 
 
 
 	@Override
-	public MessageReceiver registerTransportProtocol(String transportProtocolId,
-			TransportProtocol transportProtocol) {
-		if (registeredTransportProtocols.containsKey(transportProtocolId))
-			throw new IllegalArgumentException("transport protocol " + transportProtocolId
+	public MessageReceiver registerTransportProtocol(TransportProtocol transportProtocol) {
+		if (registeredTransportProtocols.containsKey(transportProtocol.getId()))
+			throw new IllegalArgumentException("transport protocol " + transportProtocol
 					+ " has already been registered!");
 
-		registeredTransportProtocols.put(transportProtocolId, transportProtocol);
+		registeredTransportProtocols.put(transportProtocol.getId(), transportProtocol);
 
 		return messageReceiver;
 	}

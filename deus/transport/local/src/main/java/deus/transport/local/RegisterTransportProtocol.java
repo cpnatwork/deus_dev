@@ -2,7 +2,6 @@ package deus.transport.local;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,12 +14,9 @@ public class RegisterTransportProtocol {
 
 	@Autowired
 	private TransportProtocolRegistry transportProtocolRegistry;
-	
-	@Resource(name="transportProtocolId")
-	private String transportProtocolId;
 
 	@Autowired
-	private TransportProtocol localTransportProtocol;
+	private TransportProtocol transportProtocol;
 
 	@Autowired
 	private LocalMessageSender localMessageSender;
@@ -29,7 +25,7 @@ public class RegisterTransportProtocol {
 	@PostConstruct
 	public void register() {
 		MessageReceiver mr = transportProtocolRegistry
-				.registerTransportProtocol(transportProtocolId, localTransportProtocol);
+				.registerTransportProtocol(transportProtocol);
 
 		// connect mr to ms
 		localMessageSender.setMessageReceiver(mr);
@@ -38,7 +34,7 @@ public class RegisterTransportProtocol {
 
 	@PreDestroy
 	public void unregister() {
-		transportProtocolRegistry.unregisterTransportProtocol(transportProtocolId);
+		transportProtocolRegistry.unregisterTransportProtocol(transportProtocol.getId());
 
 		localMessageSender.setMessageReceiver(null);
 	}

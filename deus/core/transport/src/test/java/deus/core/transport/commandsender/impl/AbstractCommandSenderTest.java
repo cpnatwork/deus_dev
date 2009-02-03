@@ -11,11 +11,11 @@ import deus.core.transport.message.TransportMessage;
 import deus.core.transport.message.sender.MessageSender;
 import deus.core.transport.protocol.TransportId;
 import deus.core.transport.protocol.TransportIdUserIdMapper;
-import deus.core.transport.protocol.TransportProtocol;
 import deus.core.transport.protocolregistry.TransportProtocolRegistry;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
 import deus.transport.testTP.protocol.TestTransportId;
+import deus.transport.testTP.protocol.TestTransportProtocol;
 
 
 public abstract class AbstractCommandSenderTest {
@@ -28,12 +28,14 @@ public abstract class AbstractCommandSenderTest {
 	
 	
 	protected TransportMessage lastSentTransportMessage;
-	private TransportProtocol tp;
+	private TestTransportProtocol tp;
 	protected TransportIdUserIdMapper mapper;
 
 	
 	protected UserId subscriberId;	
 	protected UserId publisherId;
+
+	private String testTransportProtocolId;
 
 
 	public AbstractCommandSenderTest() {
@@ -46,7 +48,7 @@ public abstract class AbstractCommandSenderTest {
 		subscriberId = new UserUrl("bob", "deus.org");
 		publisherId = new UserUrl("alice", "deus.org");
 
-		tp = new TransportProtocol();
+		tp = new TestTransportProtocol();
 		tp.setLoginEventCallback(null); // we don't need login for this test
 		tp.setRegistrationEventCallback(null); // we don't need registration for this test
 		
@@ -75,14 +77,16 @@ public abstract class AbstractCommandSenderTest {
 			}
 
 		});
+		
+		testTransportProtocolId = tp.getId();
 
-		transportProtocolRegistry.registerTransportProtocol("test", tp);
+		transportProtocolRegistry.registerTransportProtocol(tp);
 	}
 
 
 	@After
 	public void tearDown() throws Exception {
-		transportProtocolRegistry.unregisterTransportProtocol("test");
+		transportProtocolRegistry.unregisterTransportProtocol(testTransportProtocolId);
 	}
 
 
@@ -94,7 +98,7 @@ public abstract class AbstractCommandSenderTest {
 
 
 	protected void setTids(TransportMessage expectedMessage, UserId senderId, UserId receiverId) {
-		expectedMessage.setReceiverTid(transportProtocolDiscoveryStrategy.getTransportId("test", receiverId));
+		expectedMessage.setReceiverTid(transportProtocolDiscoveryStrategy.getTransportId(testTransportProtocolId, receiverId));
 		expectedMessage.setSenderTid(mapper.map(senderId));
 	}
 	

@@ -4,7 +4,7 @@ import deus.core.transport.message.sender.MessageSender;
 import deus.core.transport.protocol.callback.LoginEventCallback;
 import deus.core.transport.protocol.callback.RegistrationEventCallback;
 
-public class TransportProtocol {
+public abstract class AbstractTransportProtocol implements TransportProtocol {
 
 	private MessageSender messageSender;
 
@@ -15,6 +15,9 @@ public class TransportProtocol {
 	private TransportIdUserIdMapper transportIdUserIdMapper;
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.transport.protocol.TransportProtocol#getMessageSender()
+	 */
 	public MessageSender getMessageSender() {
 		return messageSender;
 	}
@@ -25,6 +28,9 @@ public class TransportProtocol {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.transport.protocol.TransportProtocol#getLoginEventCallback()
+	 */
 	public LoginEventCallback getLoginEventCallback() {
 		return loginEventCallback;
 	}
@@ -35,6 +41,9 @@ public class TransportProtocol {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.transport.protocol.TransportProtocol#getRegistrationEventCallback()
+	 */
 	public RegistrationEventCallback getRegistrationEventCallback() {
 		return registrationEventCallback;
 	}
@@ -45,6 +54,9 @@ public class TransportProtocol {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.transport.protocol.TransportProtocol#getTransportIdUserIdMapper()
+	 */
 	public TransportIdUserIdMapper getTransportIdUserIdMapper() {
 		return transportIdUserIdMapper;
 	}
@@ -54,4 +66,14 @@ public class TransportProtocol {
 		this.transportIdUserIdMapper = transportIdUserIdMapper;
 	}
 
+	/* (non-Javadoc)
+	 * @see deus.core.transport.protocol.TransportProtocol#getTransportProtocolId()
+	 */
+	public abstract String getId();
+	
+	
+	public String toString() {
+		return getId();
+	}
+	
 }

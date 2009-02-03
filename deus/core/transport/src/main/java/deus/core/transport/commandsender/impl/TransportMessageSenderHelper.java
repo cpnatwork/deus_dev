@@ -28,10 +28,10 @@ public class TransportMessageSenderHelper {
 				.getRegisteredTransportProtocol(transportProtocolId);
 
 		// set TIDs of sender and receiver
-		TransportIdUserIdMapper transportIdFactory = transportProtocol.getTransportIdUserIdMapper();
+		TransportIdUserIdMapper mapper = transportProtocol.getTransportIdUserIdMapper();
 		transportMessage.setReceiverTid(transportProtocolDiscoveryStrategy.getTransportId(transportProtocolId,
 				receiverId));
-		transportMessage.setSenderTid(transportIdFactory.map(senderId));
+		transportMessage.setSenderTid(mapper.map(senderId));
 
 		// send mesg
 		MessageSender messageSender = transportProtocol.getMessageSender();

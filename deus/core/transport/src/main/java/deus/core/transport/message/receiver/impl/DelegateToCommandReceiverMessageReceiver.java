@@ -35,7 +35,7 @@ public class DelegateToCommandReceiverMessageReceiver implements MessageReceiver
 		TransportIdUserIdMapper mapper = transportProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId).getTransportIdUserIdMapper();
 
 		UserId receiverId = mapper.map(message.getReceiverTid());
-		UserId senderId = mapper.map(message.getReceiverTid());
+		UserId senderId = mapper.map(message.getSenderTid());
 		
 		// USE CASE: SUBSCRIBE
 		if(message instanceof SubscribeMessage) {
