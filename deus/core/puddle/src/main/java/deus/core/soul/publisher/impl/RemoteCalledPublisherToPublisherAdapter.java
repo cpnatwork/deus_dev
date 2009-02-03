@@ -62,6 +62,12 @@ public class RemoteCalledPublisherToPublisherAdapter implements Publisher {
 
 
 	@Override
+	public UserId getPublisherId() {
+		return publisher.getPublisherId();
+	}
+	
+
+	@Override
 	public UserMetadata getPublisherMetadata() {
 		return publisher.getPublisherMetadata();
 	}

@@ -12,6 +12,7 @@ import deus.core.transport.messages.RequestSubscriptionMessage;
 import deus.core.transport.messages.TransportMessage;
 import deus.core.transport.messages.UnsubscribeMessage;
 import deus.core.transport.sending.command.SubscriberCommandSender;
+import deus.model.dossier.proj.party.Gender;
 import deus.model.user.UserMetadata;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,7 +25,7 @@ public class TransportSubscriberCommandSenderTest extends AbstractCommandSenderT
 
 	@Test
 	public void testSubscribe() {
-		UserMetadata subscriberMetadata = new UserMetadata(subscriberId, "Bob");
+		UserMetadata subscriberMetadata = new UserMetadata("Bob", Gender.male);
 
 		transportSubscriberCommandSender.subscribe(subscriberId, publisherId, subscriberMetadata);
 

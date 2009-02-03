@@ -14,6 +14,7 @@ import deus.model.user.id.UserId;
 @Configurable
 public class PublisherImpl implements Publisher {
 
+	private final UserId publisherId;
 	private final UserMetadata publisherMetadata;
 	
 	@Autowired
@@ -22,10 +23,11 @@ public class PublisherImpl implements Publisher {
 	protected final ListOfSubscribers listOfSubscribers;
 
 
-	public PublisherImpl(ListOfSubscribers listOfSubscribers, UserMetadata publisherMetadata) {
+	public PublisherImpl(ListOfSubscribers listOfSubscribers, UserId publisherId, UserMetadata publisherMetadata) {
 		super();
 		this.listOfSubscribers = listOfSubscribers;
 
+		this.publisherId = publisherId;
 		this.publisherMetadata = publisherMetadata;
 	}
 
@@ -89,7 +91,7 @@ public class PublisherImpl implements Publisher {
 			// TODO: think about publishing using multiple threads
 			UserId subscriberId = (UserId) arrLocal[i];
 			
-			publisherCommandSender.update(subscriberId, publisherMetadata.getUserId(), change);
+			publisherCommandSender.update(subscriberId, publisherId, change);
 		}
 	}
 
@@ -104,5 +106,11 @@ public class PublisherImpl implements Publisher {
 	public UserMetadata getPublisherMetadata() {
 		return publisherMetadata;
 	}
+
+	@Override
+	public UserId getPublisherId() {
+		return publisherId;
+	}
+	
 
 }

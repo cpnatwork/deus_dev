@@ -2,6 +2,7 @@ package deus.core.soul.publisher;
 
 import deus.model.pub.ListOfSubscribers;
 import deus.model.user.UserMetadata;
+import deus.model.user.id.UserId;
 
 // TODO: think about whether we need all the methods here
 
@@ -40,6 +41,9 @@ public interface Publisher extends RemoteCalledPublisher, RemoteCallingPublisher
 	public ListOfSubscribers getListOfSubscribers();
 
 
+	public abstract UserId getPublisherId();
+	
+	
 	public abstract UserMetadata getPublisherMetadata();
 
 }

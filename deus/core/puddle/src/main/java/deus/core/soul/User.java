@@ -12,6 +12,7 @@ import deus.model.user.id.UserId;
 
 public class User {
 
+	UserId userId;
 	UserMetadata userMetadata;
 
 	Publisher publisher;
@@ -33,12 +34,12 @@ public class User {
 
 
 	public UserId getUserId() {
-		return userMetadata.getUserId();
+		return userId;
 	}
 
 
 	public String toString() {
-		return userMetadata.getUserId().toString();
+		return userId.toString();
 	}
 
 

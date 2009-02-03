@@ -1,6 +1,7 @@
 package deus.core.soul.subscriber;
 
 import deus.model.user.UserMetadata;
+import deus.model.user.id.UserId;
 
 /**
  * Groups methods of the interface <code>Subscriber</code> that trigger remote calls. These methods are implemented using
@@ -12,8 +13,8 @@ import deus.model.user.UserMetadata;
  */
 public interface RemoteCallingSubscriber {
 
-	public void subscribe(UserMetadata publisherMetadata);
+	public void subscribe(UserId publisherId, UserMetadata publisherMetadata);
 
-	void unsubscribe(UserMetadata publisherMetadata);
+	void unsubscribe(UserId publisherId);
 	
 }

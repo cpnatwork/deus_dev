@@ -1,32 +1,24 @@
 package deus.model.user;
 
-import deus.model.user.id.UserId;
+import deus.model.dossier.proj.party.Gender;
 
-
+// TODO: what if userFullName changes??? or gender??? (unknown -> male/female)
 public class UserMetadata {
 
-	private UserId userId;
 	private String userFullName;
+
+	private Gender gender;
 
 
 	public UserMetadata() {
+		userFullName = "";
+		gender = Gender.unknown;
 	}
 
 
-	public UserMetadata(UserId userId, String userFullName) {
+	public UserMetadata(String userFullName, Gender gender) {
 		super();
-		this.userId = userId;
 		this.userFullName = userFullName;
-	}
-
-
-	public UserId getUserId() {
-		return userId;
-	}
-
-
-	public void setUserId(UserId userId) {
-		this.userId = userId;
 	}
 
 
@@ -40,9 +32,19 @@ public class UserMetadata {
 	}
 
 
+	public Gender getGender() {
+		return gender;
+	}
+
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+
 	@Override
 	public String toString() {
-		return "id: " + userId + ", full name: " + userFullName;
+		return "full name: " + userFullName;
 	}
 
 
@@ -50,8 +52,8 @@ public class UserMetadata {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + ((userFullName == null) ? 0 : userFullName.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
 	}
 
@@ -65,20 +67,19 @@ public class UserMetadata {
 		if (getClass() != obj.getClass())
 			return false;
 		UserMetadata other = (UserMetadata) obj;
+		if (gender == null) {
+			if (other.gender != null)
+				return false;
+		}
+		else if (!gender.equals(other.gender))
+			return false;
 		if (userFullName == null) {
 			if (other.userFullName != null)
 				return false;
 		}
 		else if (!userFullName.equals(other.userFullName))
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
-				return false;
-		}
-		else if (!userId.equals(other.userId))
-			return false;
 		return true;
 	}
-
 
 }

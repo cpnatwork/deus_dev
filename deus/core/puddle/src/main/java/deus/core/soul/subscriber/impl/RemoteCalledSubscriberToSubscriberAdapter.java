@@ -59,6 +59,13 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 	}
 
 
+
+	@Override
+	public UserId getSubscriberId() {
+		return subscriber.getSubscriberId();
+	}
+
+
 	@Override
 	public UserMetadata getSubscriberMetadata() {
 		return subscriber.getSubscriberMetadata();
@@ -66,14 +73,14 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 
 
 	@Override
-	public void subscribe(UserMetadata publisherMetadata) {
-		subscriber.subscribe(publisherMetadata);
+	public void subscribe(UserId publisherId, UserMetadata publisherMetadata) {
+		subscriber.subscribe(publisherId, publisherMetadata);
 	}
 
 
 	@Override
-	public void unsubscribe(UserMetadata publisherMetadata) {
-		subscriber.unsubscribe(publisherMetadata);
+	public void unsubscribe(UserId publisherId) {
+		subscriber.unsubscribe(publisherId);
 	}
 
 

@@ -12,14 +12,9 @@ public class UserMetadataDaoStub implements UserMetadataDao {
 
 	@Override
 	public UserMetadata getUserMetadata(String username) {
-		UserId userId = getUserId(username);
-		
 		UserMetadata userMetadata = new UserMetadata();
-		userMetadata.setUserId(userId);
 		
 		userMetadata.setFullName("full name");
-		
-		
 		
 		return userMetadata;
 	}

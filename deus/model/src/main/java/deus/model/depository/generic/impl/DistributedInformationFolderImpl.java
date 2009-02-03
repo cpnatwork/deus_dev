@@ -23,22 +23,22 @@ public abstract class DistributedInformationFolderImpl implements
 
 	@Override
 	public void updateForeignInformationFile(ForeignInformationFile foreignInformationFile) {
-		if (!foreignInformationFiles.containsKey(foreignInformationFile.getPublisherMetadata().getUserId()))
+		if (!foreignInformationFiles.containsKey(foreignInformationFile.getPublisherId()))
 			throw new IllegalArgumentException("cannot update FIF " + foreignInformationFile
 					+ ", it is not contained in the DIF yet!");
 		else
-			foreignInformationFiles.put(foreignInformationFile.getPublisherMetadata().getUserId(),
+			foreignInformationFiles.put(foreignInformationFile.getPublisherId(),
 					foreignInformationFile);
 	}
 
 
 	@Override
 	public void addForeignInformationFile(ForeignInformationFile foreignInformationFile) {
-		if (foreignInformationFiles.containsKey(foreignInformationFile.getPublisherMetadata().getUserId()))
+		if (foreignInformationFiles.containsKey(foreignInformationFile.getPublisherId()))
 			throw new IllegalArgumentException("cannot add FIF " + foreignInformationFile
 					+ ", there already exists a FIF with the same publisher id!");
 		else
-			foreignInformationFiles.put(foreignInformationFile.getPublisherMetadata().getUserId(),
+			foreignInformationFiles.put(foreignInformationFile.getPublisherId(),
 					foreignInformationFile);
 	}
 

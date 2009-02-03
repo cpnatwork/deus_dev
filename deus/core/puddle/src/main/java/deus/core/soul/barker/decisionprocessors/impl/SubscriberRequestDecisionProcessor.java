@@ -32,14 +32,14 @@ public class SubscriberRequestDecisionProcessor implements DecisionProcessor<Sub
 		UserMetadata subscriberMetadata = subscriberRequest.getSubscriberMetadata();
 		
 		if (subscriberRequest.isDecisionPositive()) {
-			publisher.addObserver(subscriberMetadata.getUserId(), subscriberMetadata);
+			publisher.addObserver(subscriberRequest.getSubscriberId(), subscriberMetadata);
 	
-			barkerCommandSender.grantSubscription(subscriberMetadata.getUserId(), publisher.getPublisherMetadata().getUserId());
+			barkerCommandSender.grantSubscription(subscriberRequest.getSubscriberId(), publisher.getPublisherId());
 		}
 		else {
 			// do not add observer
 			
-			barkerCommandSender.denySubscription(subscriberMetadata.getUserId(), publisher.getPublisherMetadata().getUserId());
+			barkerCommandSender.denySubscription(subscriberRequest.getSubscriberId(), publisher.getPublisherId());
 		}
 	}
 

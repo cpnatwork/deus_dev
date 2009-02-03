@@ -52,7 +52,7 @@ public class SubscribeTest extends AbstractUseCaseTest {
 		assertEquals(0, bob.getListOfPublishers().size());
 		assertEquals(0, alice.getListOfSubscribers().size());
 
-		bob.getSubscriber().subscribe(alice.getUserMetadata());
+		bob.getSubscriber().subscribe(alice.getUserId(), alice.getUserMetadata());
 
 		assertEquals(1, bob.getListOfPublishers().size());
 		assertTrue(bob.getListOfPublishers().containsKey(alice.getUserMetadata()));

@@ -27,7 +27,7 @@ public class PublisherBarkerProxy implements RemoteCalledPublisher {
 	@Override
 	public void addObserver(UserId subscriberId, UserMetadata subscriberMetadata) {
 		// PLACE SUBSCRIBER REQUEST
-		BinaryDecisionToMake decision = new SubscriberRequest(subscriberMetadata);
+		BinaryDecisionToMake decision = new SubscriberRequest(subscriberId, subscriberMetadata);
 		barker.addUnnoticedAttentionElement(decision);
 	}
 

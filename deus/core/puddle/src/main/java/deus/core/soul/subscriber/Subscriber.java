@@ -3,6 +3,7 @@ package deus.core.soul.subscriber;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
+import deus.model.user.id.UserId;
 
 /**
  * Central facade of the subscriber subsystem.
@@ -21,6 +22,9 @@ public interface Subscriber extends RemoteCalledSubscriber, RemoteCallingSubscri
 
 
 	public ListOfPublishers getListOfPublishers();
+
+
+	public UserId getSubscriberId();
 
 
 	public UserMetadata getSubscriberMetadata();
