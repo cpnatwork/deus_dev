@@ -1,5 +1,7 @@
 package deus.core.soul.publisher.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
@@ -13,7 +15,9 @@ import deus.model.user.id.UserId;
 
 @Configurable
 public class PublisherImpl implements Publisher {
-
+	
+	private final Logger logger = LoggerFactory.getLogger(PublisherImpl.class);
+	
 	private final UserId publisherId;
 	
 	@Autowired
@@ -31,6 +35,8 @@ public class PublisherImpl implements Publisher {
 
 	@Override
 	public synchronized void addObserver(UserId subscriberId, UserMetadata subscriberMetadata) {
+		logger.trace("adding subscriber {}", subscriberId);
+		
 		if (!listOfSubscribers.containsKey(subscriberId)) {
 			LosEntry entry = new LosEntry();
 			entry.setSubscriberMetadata(subscriberMetadata);
@@ -43,6 +49,8 @@ public class PublisherImpl implements Publisher {
 
 	@Override
 	public synchronized void deleteObserver(UserId subscriberId) {
+		logger.trace("removing subscriber {}", subscriberId);
+		
 		if(!listOfSubscribers.containsKey(subscriberId))
 			throw new IllegalArgumentException("cannot remove subscriber, that has not been added yet!");
 		listOfSubscribers.remove(subscriberId);
@@ -51,6 +59,8 @@ public class PublisherImpl implements Publisher {
 
 	@Override
 	public synchronized void deleteObservers() {
+		logger.trace("removing all subscribers");
+		
 		listOfSubscribers.clear();
 	}
 
@@ -62,13 +72,9 @@ public class PublisherImpl implements Publisher {
 
 
 	@Override
-	public void notifyObservers() {
-		notifyObservers(null);
-	}
-
-
-	@Override
 	public void notifyObservers(ForeignInformationFile change) {
+		logger.trace("notifying subscribers of change {}", change);
+		
 		/*
 		 * a temporary array buffer, used as a snapshot of the state of current Observers.
 		 */

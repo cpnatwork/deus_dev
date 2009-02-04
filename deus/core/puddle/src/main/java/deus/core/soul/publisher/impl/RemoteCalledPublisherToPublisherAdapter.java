@@ -68,12 +68,6 @@ public class RemoteCalledPublisherToPublisherAdapter implements Publisher {
 
 
 	@Override
-	public void notifyObservers() {
-		publisher.notifyObservers();
-	}
-
-
-	@Override
 	public void notifyObservers(ForeignInformationFile change) {
 		publisher.notifyObservers(change);
 	}

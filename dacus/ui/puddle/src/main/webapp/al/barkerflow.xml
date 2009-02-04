@@ -6,16 +6,16 @@
 
 
 	<input name="username" required="true" />
-<!--	<input name="password" required="true" />-->
+	<!--	<input name="password" required="true" />-->
 
 
 	<view-state id="ack_confirm" redirect="false" popup="false">
-		<!--		<transition on="ok" to="setflag_confirm" />-->
+<!--		<transition on="ok" to="setflag_confirm" />-->
 		<transition on="cancel" to="attentionlist" />
 	</view-state>
 
 	<view-state id="ack_refuse" redirect="false" popup="false">
-		<!--		<transition on="ok" to="setflag_refuse" />-->
+<!--		<transition on="ok" to="setflag_refuse" />-->
 		<transition on="cancel" to="attentionlist" />
 	</view-state>
 
@@ -25,9 +25,19 @@
 			<evaluate expression="userIdFactory.createUserId(username)" result="requestScope.userId" />
 			<evaluate expression="userFactory.createUser(username)" result="requestScope.user" />
 			<evaluate expression="requestScope.user.getBarker().getUnnoticedAttentionList()" result="requestScope.unnoticedAttentionList" />
+			<evaluate expression="requestScope.unnoticedAttentionList.get(0)" result="requestScope.decision" />
+			<evaluate expression="requestScope.decision.setDecisionPositive()" />
+			<evaluate expression="requestScope.user.getBarker().processDecision(requestScope.decision)" />
 		</on-entry>
 
-		<transition on="confirm" to="ack_confirm" bind="false" />
+		<transition on="confirm" to="ack_confirm" bind="false">
+			<evaluate expression="userFactory.createUser(username)" result="requestScope.user" />
+			<evaluate expression="requestScope.user.getBarker().getUnnoticedAttentionList()" result="requestScope.unnoticedAttentionList" />
+			<evaluate expression="requestScope.unnoticedAttentionList.get(0)" result="requestScope.decision" />
+			<evaluate expression="requestScope.decision.setDecisionPositive()" />
+			<evaluate expression="requestScope.user.getBarker().processDecision(requestScope.decision)" />
+		</transition>
+
 		<transition on="refuse" to="ack_refuse" bind="false" />
 		<!--
 			<transition on="notice" to="notice" bind="false" />
@@ -36,22 +46,21 @@
 			<evaluate expression="gatekeeper.logout()" />
 		</on-exit>
 	</view-state>
-
-	<!--	<action-state id="notice">-->
-	<!--		<action bean="wasauchimmer" />-->
-	<!--		<transition on="success" to="attentionlist" />-->
-	<!--	</action-state>-->
-	<!---->
-	<!--	<action-state id="setflag_refuse">-->
-	<!--		<action bean="wasauchimmer" />-->
-	<!--		<transition on="success" to="attentionlist" />-->
-	<!--	</action-state>-->
-	<!---->
-	<!--	<action-state id="setflag_confirm">-->
-	<!--		<action bean="wasauchimmer" />-->
-	<!--		<transition on="success" to="attentionlist" />-->
-	<!--	</action-state>-->
-
-
+	
+<!---->
+<!--	<action-state id="notice">-->
+<!--					<action bean="wasauchimmer" />-->
+<!--		<transition on="success" to="attentionlist" />-->
+<!--	</action-state>-->
+<!---->
+<!--	<action-state id="setflag_refuse">-->
+<!--					<action bean="wasauchimmer" />-->
+<!--		<transition on="success" to="attentionlist" />-->
+<!--	</action-state>-->
+<!---->
+<!--	<action-state id="setflag_confirm">-->
+<!--					<action bean="wasauchimmer" />-->
+<!--		<transition on="success" to="attentionlist" />-->
+<!--	</action-state>-->
 
 </flow>

@@ -1,7 +1,6 @@
 package deus.core.soul.subscriber;
 
 import deus.model.dossier.generic.ForeignInformationFile;
-import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 /**
@@ -18,7 +17,7 @@ import deus.model.user.id.UserId;
 //FIXME: think about how this relates to SubscriberCommandReceiver
 public interface RemoteCalledSubscriber {
 
-	public void update(UserMetadata publisherMetadata, ForeignInformationFile fif);
+	public void update(UserId publisherId, ForeignInformationFile change);
 
 
 	public void acknowledgeSubscription(UserId publisherId);

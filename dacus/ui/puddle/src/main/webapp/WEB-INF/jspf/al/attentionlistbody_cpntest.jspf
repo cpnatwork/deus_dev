@@ -3,6 +3,7 @@
 <%@page import="deus.model.attention.AttentionList"%>
 <%@page import="deus.core.soul.User"%>
 <%@page import="deus.model.attention.notice.SubscriptionCanceledNotice"%>
+<%@page import="deus.model.attention.decision.SubscriberRequest"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="deus.model.attention.AttentionElementType"%>
 
@@ -34,6 +35,8 @@
 <% 
 	AttentionList attentionList = (AttentionList)pageContext.getRequest().getAttribute("unnoticedAttentionList");
 	attentionList.add(new SubscriptionCanceledNotice(((User)pageContext.getRequest().getAttribute("user")).getUserMetadata()));
+	attentionList.add(new SubscriberRequest(((User)pageContext.getRequest().getAttribute("user")).getUserId(),
+			((User)pageContext.getRequest().getAttribute("user")).getUserMetadata()));
 	int counter = 0;
 	Iterator<AttentionElement> iter = attentionList.iterator();
    	while (iter.hasNext()) {
@@ -44,12 +47,19 @@
 <%
 	if (attElem.getAttentionElementType() == AttentionElementType.binaryDecision) {
 %>
-    <td> <input type="submit" value="confirm_<%= counter %>"> </td>
-    <td> <input type="submit" value="refuse_<%= counter %>"> </td>
+    <td> <input type="submit" value="Confirm!" name="_eventId_confirm" /> 
+		<input name="number" type="hidden" value="<%= counter %>"/>
+	</td>
+
+    <td> <input type="submit" value="Refuse!" name="_eventId_refuse" />
+		<input name="number" type="hidden" value="<%= counter %>"/>
+    </td>
 <%
 	} else if (attElem.getAttentionElementType() == AttentionElementType.notice) {
 %>
-    <td> <input type="submit" value="notice_<%= counter %>"> </td>
+    <td> <input type="submit" value="Notice!" name="_eventId_notice" />
+    	<input name="number" type="hidden" value="<%= counter %>"/>
+    </td>
 <%
 	} else {
 %>

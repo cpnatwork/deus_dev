@@ -1,5 +1,7 @@
 package deus.core.soul.subscriber.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
@@ -16,6 +18,9 @@ import deus.model.user.id.UserId;
 // TODO: add DIF
 @Configurable
 public class SubscriberImpl implements Subscriber {
+	
+	private final Logger logger = LoggerFactory.getLogger(SubscriberImpl.class);
+	
 
 	private final UserId subscriberId;
 	private final UserMetadata subscriberMetadata;
@@ -53,8 +58,10 @@ public class SubscriberImpl implements Subscriber {
 
 
 	@Override
-	public void update(UserMetadata publisherMetadata, ForeignInformationFile fif) {
-		if (!listOfPublishers.containsKey(publisherMetadata))
+	public void update(UserId publisherId, ForeignInformationFile change) {
+		logger.trace("in subscriber {}: updating the DIF for publisher {}", getSubscriberId(), publisherId);
+		
+		if (!listOfPublishers.containsKey(publisherId))
 			// FIXME: how to handle this??
 			;
 		// FIXME: how to do object change (append, update, ...)
@@ -63,12 +70,16 @@ public class SubscriberImpl implements Subscriber {
 
 	@Override
 	public void acknowledgeSubscription(UserId publisherId) {
+		logger.trace("in subscriber of {}: publisher {} acknowledged subscription", getSubscriberId(), publisherId);
+		
 		listOfPublishers.changeState(publisherId, SubscriptionState.granted);
 	}
 
 
 	@Override
 	public void denySubscription(UserId publisherId) {
+		logger.trace("in subscriber of {}: publisher {} denied subscription", getSubscriberId(), publisherId);
+		
 		listOfPublishers.remove(publisherId);
 	}
 
@@ -78,6 +89,9 @@ public class SubscriberImpl implements Subscriber {
 		if (listOfPublishers.containsKey(publisherId))
 			throw new IllegalArgumentException("cannot subscribe to publisher (" + publisherId
 					+ ") again!");
+		
+		logger.trace("in subscriber {}: subscribing to publisher {}", getSubscriberId(), publisherId);
+
 
 		LopEntry entry = new LopEntry();
 		entry.setPublisherMetadata(publisherMetadata);
@@ -93,6 +107,8 @@ public class SubscriberImpl implements Subscriber {
 		if (!listOfPublishers.containsKey(publisherId))
 			throw new IllegalArgumentException("cannot unsubscribe from publisher (" + publisherId
 					+ "), that has not been added yet!");
+		
+		logger.trace("in subscriber {}: unsubscribing from publisher {}", getSubscriberId(), publisherId);
 
 		listOfPublishers.remove(publisherId);
 

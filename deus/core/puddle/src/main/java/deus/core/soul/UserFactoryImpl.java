@@ -1,11 +1,13 @@
 package deus.core.soul;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.soul.barker.Barker;
 import deus.core.soul.barker.decisionprocessors.impl.DelegateDecisionProcessor;
 import deus.core.soul.barker.decisionprocessors.impl.SubscriberRequestDecisionProcessor;
+import deus.core.soul.barker.impl.BarkerImpl;
 import deus.core.soul.publisher.Publisher;
 import deus.core.soul.publisher.RemoteCalledPublisher;
 import deus.core.soul.publisher.impl.PublisherBarkerProxy;
@@ -28,6 +30,8 @@ import deus.storage.user.UserMetadataDao;
 @Component(value="userFactory")
 public class UserFactoryImpl implements UserFactory {
 
+	private final Logger logger = LoggerFactory.getLogger(BarkerImpl.class);
+	
 	@Autowired
 	private AttentionDao attentionDao;
 
@@ -43,6 +47,8 @@ public class UserFactoryImpl implements UserFactory {
 
 	@Override
 	public User createUser(String localUsername) {
+		logger.error("creating user for username " + localUsername);
+		
 		User user = new User();
 		
 		// METADATA AND ID
@@ -50,14 +56,14 @@ public class UserFactoryImpl implements UserFactory {
 		UserId userId = user.getUserId();
 
 		// BARKER
-		user.barker = new Barker();
-		user.barker.setUnnoticedAttentionList(attentionDao.getUnnoticedAttentionList(userId));
-		user.barker.setNoticedAttentionList(attentionDao.getUnnoticedAttentionList(userId));
+		user.barkerImpl = new BarkerImpl();
+		user.barkerImpl.setUnnoticedAttentionList(attentionDao.getUnnoticedAttentionList(userId));
+		user.barkerImpl.setNoticedAttentionList(attentionDao.getUnnoticedAttentionList(userId));
 
 		// PUBLISHER
 		ListOfSubscribers los = pubDao.getListOfSubscribers(userId);
 		PublisherImpl publisherImpl = new PublisherImpl(los, userId);
-		RemoteCalledPublisher publisherBarkerProxy = new PublisherBarkerProxy(publisherImpl, user.barker, los);
+		RemoteCalledPublisher publisherBarkerProxy = new PublisherBarkerProxy(publisherImpl, user.barkerImpl, los);
 
 		Publisher publisher = new RemoteCalledPublisherToPublisherAdapter(publisherBarkerProxy, publisherImpl);
 		user.publisher = publisher;
@@ -65,7 +71,7 @@ public class UserFactoryImpl implements UserFactory {
 
 		// DECISION PROCESSORS
 		DelegateDecisionProcessor decisionProcessor = new DelegateDecisionProcessor();
-		user.barker.setDecisionProcessor(decisionProcessor);
+		user.barkerImpl.setDecisionProcessor(decisionProcessor);
 
 		// don't use user.publisher here, since this one is proxied!
 		SubscriberRequestDecisionProcessor sr = new SubscriberRequestDecisionProcessor(publisherImpl);
@@ -75,7 +81,7 @@ public class UserFactoryImpl implements UserFactory {
 		// SUBSCRIBER
 		ListOfPublishers lop = subDao.getListOfPublishers(userId);
 		SubscriberImpl subscriberImpl = new SubscriberImpl(lop, userId, user.getUserMetadata());
-		RemoteCalledSubscriber subscriberBarkerProxy = new SubscriberBarkerProxy(subscriberImpl, user.barker, lop);
+		RemoteCalledSubscriber subscriberBarkerProxy = new SubscriberBarkerProxy(subscriberImpl, user.barkerImpl, lop);
 
 		Subscriber subscriber = new RemoteCalledSubscriberToSubscriberAdapter(subscriberBarkerProxy, subscriberImpl);
 		user.subscriber = subscriber;

@@ -21,10 +21,10 @@ public class User {
 	LodSelf lodSelf;
 	LodOther lodOther;
 
-	Barker barker;
+	Barker barkerImpl;
 
 	public Barker getBarker() {
-		return barker;
+		return barkerImpl;
 	}
 
 

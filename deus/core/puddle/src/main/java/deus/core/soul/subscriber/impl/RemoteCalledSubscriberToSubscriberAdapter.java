@@ -45,8 +45,8 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 
 
 	@Override
-	public void update(UserMetadata publisherMetadata, ForeignInformationFile fif) {
-		remoteCalledSubscriber.update(publisherMetadata, fif);
+	public void update(UserId publisherId, ForeignInformationFile fif) {
+		remoteCalledSubscriber.update(publisherId, fif);
 	}
 
 

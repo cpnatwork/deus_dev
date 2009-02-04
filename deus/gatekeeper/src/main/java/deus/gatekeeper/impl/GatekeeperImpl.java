@@ -3,6 +3,8 @@ package deus.gatekeeper.impl;
 import java.util.List;
 import java.util.Vector;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +18,8 @@ import deus.model.user.id.UserId;
 @Component("gatekeeper")
 public class GatekeeperImpl implements Gatekeeper {
 
+	private final Logger logger = LoggerFactory.getLogger(GatekeeperImpl.class);
+	
 	private final List<UserLoginStateObserver> observers;
 
 	@Autowired
@@ -39,6 +43,8 @@ public class GatekeeperImpl implements Gatekeeper {
 
 		// TODO: do more login stuff, that is necessary
 		UserId userId = userIdFactory.createUserId(credentials.getLocalUsername());
+		
+		logger.debug("user with id {} logged in", userId);
 
 		for (UserLoginStateObserver observer : observers)
 			observer.loggedIn(userId);
@@ -49,6 +55,8 @@ public class GatekeeperImpl implements Gatekeeper {
 	public void logout(String localUsername) {
 		UserId userId = userIdFactory.createUserId(localUsername);
 
+		logger.debug("user with id {} logged out", userId);
+		
 		for (UserLoginStateObserver observer : observers)
 			observer.loggedOut(userId);
 	}
