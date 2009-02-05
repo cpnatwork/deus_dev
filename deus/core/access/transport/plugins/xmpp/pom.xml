@@ -4,13 +4,13 @@
 
 	<parent>
 		<groupId>inf6.promed</groupId>
-		<artifactId>deus-transport</artifactId>
+		<artifactId>deus-core-access-transport-plugins</artifactId>
 		<version>0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>deus-transport-xmpp</artifactId>
+	<artifactId>deus-core-access-transport-plugins-xmpp</artifactId>
 	<packaging>bundle</packaging>
-	<name>DEUS local transport</name>
+	<name>DEUS xmpp transport</name>
 
 
 	<!-- don't remove properties, even if they are empty!!! -->
