@@ -7,7 +7,7 @@ import deus.core.access.storage.sub.inmemory.ListOfPublishersImpl;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;
 
-@Component
+
 public class SubDaoImpl implements SubDao {
 
 	@Override

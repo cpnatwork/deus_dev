@@ -7,7 +7,6 @@ import deus.core.access.storage.user.api.UserMetadataDao;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
-@Component
 public class UserMetadataDaoImpl extends HibernateDaoSupport implements UserMetadataDao {
 	
 //	public String addNew(UserMetadata obj) {

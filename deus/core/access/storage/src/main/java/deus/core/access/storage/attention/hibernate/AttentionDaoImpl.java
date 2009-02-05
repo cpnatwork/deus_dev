@@ -7,7 +7,7 @@ import deus.core.access.storage.attention.inmemory.AttentionListImpl;
 import deus.model.attention.AttentionList;
 import deus.model.user.id.UserId;
 
-@Component
+
 public class AttentionDaoImpl implements AttentionDao {
 
 	@Override
