@@ -15,7 +15,7 @@ public abstract class AbstractTransportProtocol implements TransportProtocol {
 
 
 	/* (non-Javadoc)
-	 * @see deus.core.transport.protocol.TransportProtocol#getMessageSender()
+	 * @see deus.core.access.transport.protocol.TransportProtocol#getMessageSender()
 	 */
 	public MessageSender getMessageSender() {
 		return messageSender;
@@ -28,7 +28,7 @@ public abstract class AbstractTransportProtocol implements TransportProtocol {
 
 
 	/* (non-Javadoc)
-	 * @see deus.core.transport.protocol.TransportProtocol#getLoginEventCallback()
+	 * @see deus.core.access.transport.protocol.TransportProtocol#getLoginEventCallback()
 	 */
 	public LoginEventCallback getLoginEventCallback() {
 		return loginEventCallback;
@@ -41,7 +41,7 @@ public abstract class AbstractTransportProtocol implements TransportProtocol {
 
 
 	/* (non-Javadoc)
-	 * @see deus.core.transport.protocol.TransportProtocol#getRegistrationEventCallback()
+	 * @see deus.core.access.transport.protocol.TransportProtocol#getRegistrationEventCallback()
 	 */
 	public RegistrationEventCallback getRegistrationEventCallback() {
 		return registrationEventCallback;
@@ -54,7 +54,7 @@ public abstract class AbstractTransportProtocol implements TransportProtocol {
 
 
 	/* (non-Javadoc)
-	 * @see deus.core.transport.protocol.TransportProtocol#getTransportIdUserIdMapper()
+	 * @see deus.core.access.transport.protocol.TransportProtocol#getTransportIdUserIdMapper()
 	 */
 	public TransportIdUserIdMapper getTransportIdUserIdMapper() {
 		return transportIdUserIdMapper;
@@ -66,7 +66,7 @@ public abstract class AbstractTransportProtocol implements TransportProtocol {
 	}
 
 	/* (non-Javadoc)
-	 * @see deus.core.transport.protocol.TransportProtocol#getTransportProtocolId()
+	 * @see deus.core.access.transport.protocol.TransportProtocol#getTransportProtocolId()
 	 */
 	public abstract String getId();
 	

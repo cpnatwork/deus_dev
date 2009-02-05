@@ -15,12 +15,12 @@
 
 	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
-		<osgi.rootPackage>deus.transport.local</osgi.rootPackage>
+		<osgi.rootPackage>deus.core.access.transport.plugins.local</osgi.rootPackage>
 		<!--
 			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
 			PersistantAnnotationBeanPostProcessor which is in the given package.
 		-->
-		<osgi.additionalPackageImports>deus.core.transport.core.protocol.callback,org.springframework.orm.jpa.support</osgi.additionalPackageImports>
+		<osgi.additionalPackageImports>deus.core.access.transport.core.soul.protocol.callback,org.springframework.orm.jpa.support</osgi.additionalPackageImports>
 		
 		<osgi.nonExportedPackages>!*.impl</osgi.nonExportedPackages>
 	</properties>

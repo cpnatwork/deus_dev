@@ -5,6 +5,6 @@
 
 	<import resource="deus/context.xml"/>
 	<import resource="deus/osgi.xml"/>
-	<import resource="deus/core/transport.xml"/>
+	<import resource="deus/core/access/transport-core.xml"/>
 
 </beans>

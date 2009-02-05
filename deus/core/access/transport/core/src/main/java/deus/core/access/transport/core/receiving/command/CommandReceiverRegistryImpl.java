@@ -12,7 +12,7 @@ public class CommandReceiverRegistryImpl implements CommandReceiverRegistry {
 
 
 	/* (non-Javadoc)
-	 * @see deus.core.transport.receiving.command.CommandReceiverRegistry#getPublisherCommandReceiver()
+	 * @see deus.core.access.transport.receiving.command.CommandReceiverRegistry#getPublisherCommandReceiver()
 	 */
 	public PublisherCommandReceiver getPublisherCommandReceiver() {
 		return publisherCommandReceiver;
@@ -20,7 +20,7 @@ public class CommandReceiverRegistryImpl implements CommandReceiverRegistry {
 
 
 	/* (non-Javadoc)
-	 * @see deus.core.transport.receiving.command.CommandReceiverRegistry#registerPublisherCommandReceiver(deus.core.transport.receiving.command.PublisherCommandReceiver)
+	 * @see deus.core.access.transport.receiving.command.CommandReceiverRegistry#registerPublisherCommandReceiver(deus.core.access.transport.receiving.command.PublisherCommandReceiver)
 	 */
 	public void registerPublisherCommandReceiver(PublisherCommandReceiver publisherCommandReceiver) {
 		this.publisherCommandReceiver = publisherCommandReceiver;
@@ -28,7 +28,7 @@ public class CommandReceiverRegistryImpl implements CommandReceiverRegistry {
 
 
 	/* (non-Javadoc)
-	 * @see deus.core.transport.receiving.command.CommandReceiverRegistry#getSubscriberCommandReceiver()
+	 * @see deus.core.access.transport.receiving.command.CommandReceiverRegistry#getSubscriberCommandReceiver()
 	 */
 	public SubscriberCommandReceiver getSubscriberCommandReceiver() {
 		return subscriberCommandReceiver;
@@ -36,7 +36,7 @@ public class CommandReceiverRegistryImpl implements CommandReceiverRegistry {
 
 
 	/* (non-Javadoc)
-	 * @see deus.core.transport.receiving.command.CommandReceiverRegistry#registerSubscriberCommandReceiver(deus.core.transport.receiving.command.SubscriberCommandReceiver)
+	 * @see deus.core.access.transport.receiving.command.CommandReceiverRegistry#registerSubscriberCommandReceiver(deus.core.access.transport.receiving.command.SubscriberCommandReceiver)
 	 */
 	public void registerSubscriberCommandReceiver(SubscriberCommandReceiver subscriberCommandReceiver) {
 		this.subscriberCommandReceiver = subscriberCommandReceiver;

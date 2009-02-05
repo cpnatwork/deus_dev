@@ -15,7 +15,7 @@
 
 	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
-		<osgi.rootPackage>deus.transport.xmpp</osgi.rootPackage>
+		<osgi.rootPackage>deus.core.access.transport.plugins.xmpp</osgi.rootPackage>
 		<!--
 			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
 			PersistantAnnotationBeanPostProcessor which is in the given package.
@@ -95,7 +95,7 @@
 	
 		<plugins>
 		
-					<plugin>
+			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 				<extensions>true</extensions>
