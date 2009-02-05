@@ -17,7 +17,7 @@ public class SubDaoImpl implements SubDao {
 	}
 
 	@Override
-	public UserId create(ListOfPublishers obj) {
+	public UserId addNew(ListOfPublishers obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}

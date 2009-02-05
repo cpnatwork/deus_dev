@@ -29,7 +29,7 @@ public class UserMetadataDaoHibernateTest {
 	@Test
 	public void testCreate() {
 		//UserId userId = new UserUrl("testuser_UserMetadataDaoHibernateTest", "testhostname_UserMetadataDaoHibernateTest");
-		sut.create(new UserMetadata( "fullname_UserMetadataDaoHibernateTest", Gender.male));
+		sut.addNew(new UserMetadata( "fullname_UserMetadataDaoHibernateTest", Gender.male));
 	}
 
 	@Test

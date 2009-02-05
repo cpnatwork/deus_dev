@@ -16,7 +16,7 @@ public class PubDaoInmemory implements PubDao {
 	}
 
 	@Override
-	public UserId create(ListOfSubscribers obj) {
+	public UserId addNew(ListOfSubscribers obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}
