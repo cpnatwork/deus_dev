@@ -18,24 +18,30 @@ import deus.model.user.id.UserId;
 // TODO: add DIF
 @Configurable
 public class SubscriberImpl implements Subscriber {
-	
+
 	private final Logger logger = LoggerFactory.getLogger(SubscriberImpl.class);
-	
+
 
 	private final UserId subscriberId;
 	private final UserMetadata subscriberMetadata;
 
 	protected final ListOfPublishers listOfPublishers;
 
+	private final DistributedInformationFolder distributedInformationFolder;
+
+
 	@Autowired
 	private SubscriberCommandSender subscriberCommandSender;
 
 
-	public SubscriberImpl(ListOfPublishers listOfPublishers, UserId subscriberId, UserMetadata subscriberMetadata) {
+	public SubscriberImpl(ListOfPublishers listOfPublishers, UserId subscriberId, UserMetadata subscriberMetadata,
+			DistributedInformationFolder distributedInformationFolder) {
 		this.listOfPublishers = listOfPublishers;
 
 		this.subscriberId = subscriberId;
 		this.subscriberMetadata = subscriberMetadata;
+
+		this.distributedInformationFolder = distributedInformationFolder;
 	}
 
 
@@ -44,11 +50,10 @@ public class SubscriberImpl implements Subscriber {
 		return subscriberId;
 	}
 
-	
+
 	@Override
 	public DistributedInformationFolder getDistributedInformationFolder() {
-		// TODO Auto-generated method stub
-		return null;
+		return distributedInformationFolder;
 	}
 
 
@@ -60,7 +65,7 @@ public class SubscriberImpl implements Subscriber {
 	@Override
 	public void update(UserId publisherId, ForeignInformationFile change) {
 		logger.trace("in subscriber {}: updating the DIF for publisher {}", getSubscriberId(), publisherId);
-		
+
 		if (!listOfPublishers.containsKey(publisherId))
 			// FIXME: how to handle this??
 			;
@@ -71,7 +76,7 @@ public class SubscriberImpl implements Subscriber {
 	@Override
 	public void acknowledgeSubscription(UserId publisherId) {
 		logger.trace("in subscriber of {}: publisher {} acknowledged subscription", getSubscriberId(), publisherId);
-		
+
 		listOfPublishers.changeState(publisherId, SubscriptionState.granted);
 	}
 
@@ -79,7 +84,7 @@ public class SubscriberImpl implements Subscriber {
 	@Override
 	public void denySubscription(UserId publisherId) {
 		logger.trace("in subscriber of {}: publisher {} denied subscription", getSubscriberId(), publisherId);
-		
+
 		listOfPublishers.remove(publisherId);
 	}
 
@@ -87,9 +92,8 @@ public class SubscriberImpl implements Subscriber {
 	@Override
 	public void subscribe(UserId publisherId, UserMetadata publisherMetadata) {
 		if (listOfPublishers.containsKey(publisherId))
-			throw new IllegalArgumentException("cannot subscribe to publisher (" + publisherId
-					+ ") again!");
-		
+			throw new IllegalArgumentException("cannot subscribe to publisher (" + publisherId + ") again!");
+
 		logger.trace("in subscriber {}: subscribing to publisher {}", getSubscriberId(), publisherId);
 
 
@@ -107,7 +111,7 @@ public class SubscriberImpl implements Subscriber {
 		if (!listOfPublishers.containsKey(publisherId))
 			throw new IllegalArgumentException("cannot unsubscribe from publisher (" + publisherId
 					+ "), that has not been added yet!");
-		
+
 		logger.trace("in subscriber {}: unsubscribing from publisher {}", getSubscriberId(), publisherId);
 
 		listOfPublishers.remove(publisherId);
