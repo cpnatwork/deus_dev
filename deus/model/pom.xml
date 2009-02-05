@@ -51,8 +51,15 @@
 		<!--  Hibernate Annotations -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>3.3.1.GA</version>
+			<artifactId>com.springsource.org.hibernate.annotations</artifactId>
+			<version>3.3.1.ga</version>
+		</dependency>
+
+		<!-- JPA -->		
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>com.springsource.javax.persistence</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 
 	</dependencies>
