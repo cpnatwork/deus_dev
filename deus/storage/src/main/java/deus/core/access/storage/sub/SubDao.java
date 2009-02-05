@@ -1,8 +1,8 @@
-package deus.storage.sub;
+package deus.core.access.storage.sub;
 
+import deus.core.access.storage.Dao;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;
-import deus.storage.Dao;
 
 public interface SubDao extends Dao<ListOfPublishers, UserId> {
 

@@ -1,4 +1,4 @@
-package deus.storage.attention;
+package deus.core.access.storage.attention;
 
 import deus.model.attention.AttentionList;
 import deus.model.user.id.UserId;

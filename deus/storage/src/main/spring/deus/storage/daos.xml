@@ -59,13 +59,13 @@
 		</property>
 	</bean>
 
-	<bean id="attentionDao" class="deus.storage.attention.impl.AttentionDaoHibernate" />
+	<bean id="attentionDao" class="deus.core.access.storage.attention.impl.AttentionDaoHibernate" />
 
-	<bean id="pubDao" class="deus.storage.pub.impl.PubDaoHibernate" />
+	<bean id="pubDao" class="deus.core.access.storage.pub.impl.PubDaoHibernate" />
 
-	<bean id="subDao" class="deus.storage.sub.impl.SubDaoHibernate" />
+	<bean id="subDao" class="deus.core.access.storage.sub.impl.SubDaoHibernate" />
 
-	<bean id="userDao" class="deus.storage.user.impl.UserMetadataDaoHibernate">
+	<bean id="userDao" class="deus.core.access.storage.user.impl.UserMetadataDaoHibernate">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>

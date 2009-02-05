@@ -1,10 +1,10 @@
-package deus.storage.sub.impl;
+package deus.core.access.storage.sub.impl;
 
 import org.springframework.stereotype.Component;
 
+import deus.core.access.storage.sub.SubDao;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;
-import deus.storage.sub.SubDao;
 
 @Component
 public class SubDaoInmemory implements SubDao {

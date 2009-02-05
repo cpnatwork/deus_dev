@@ -1,11 +1,11 @@
-package deus.storage.attention.impl;
+package deus.core.access.storage.attention.impl;
 
 import org.springframework.stereotype.Component;
 
+import deus.core.access.storage.attention.AttentionDao;
 import deus.model.attention.AttentionList;
 import deus.model.attention.impl.AttentionListImpl;
 import deus.model.user.id.UserId;
-import deus.storage.attention.AttentionDao;
 
 @Component
 public class AttentionDaoHibernate implements AttentionDao {

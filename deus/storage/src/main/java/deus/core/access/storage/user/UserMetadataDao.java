@@ -1,7 +1,7 @@
-package deus.storage.user;
+package deus.core.access.storage.user;
 
+import deus.core.access.storage.Dao;
 import deus.model.user.UserMetadata;
-import deus.storage.Dao;
 
 public interface UserMetadataDao extends Dao<UserMetadata, String> {
 

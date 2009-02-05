@@ -2,7 +2,7 @@ package deus.model.sub;
 
 import org.hibernate.annotations.Entity;
 
-import deus.storage.sub.impl.ListOfPublishersImpl;
+import deus.core.access.storage.sub.impl.ListOfPublishersImpl;
 
 @Entity
 public class LopTO extends ListOfPublishersImpl {

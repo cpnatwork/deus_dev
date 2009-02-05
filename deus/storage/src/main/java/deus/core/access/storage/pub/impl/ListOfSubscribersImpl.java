@@ -1,4 +1,4 @@
-package deus.storage.pub.impl;
+package deus.core.access.storage.pub.impl;
 
 import java.util.HashMap;
 

@@ -1,8 +1,8 @@
-package deus.storage.pub;
+package deus.core.access.storage.pub;
 
+import deus.core.access.storage.Dao;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.user.id.UserId;
-import deus.storage.Dao;
 
 public interface PubDao extends Dao<ListOfSubscribers, UserId>{
 

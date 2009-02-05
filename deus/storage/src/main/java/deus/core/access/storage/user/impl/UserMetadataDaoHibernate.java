@@ -1,11 +1,11 @@
-package deus.storage.user.impl;
+package deus.core.access.storage.user.impl;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.storage.Dao;
+import deus.core.access.storage.user.UserMetadataDao;
 import deus.model.user.UserMetadata;
-import deus.storage.Dao;
-import deus.storage.user.UserMetadataDao;
 
 @Component
 public class UserMetadataDaoHibernate extends HibernateDaoSupport implements
