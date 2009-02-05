@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import deus.gatekeeper.Gatekeeper;
 import deus.gatekeeper.UserLoginStateObserver;
 import deus.model.user.id.UserId;
-import deus.model.user.id.UserUrl;
 
 @Component(value = "userRegistry")
 public class UserRegistryImpl implements UserRegistry {
@@ -20,69 +19,68 @@ public class UserRegistryImpl implements UserRegistry {
 	@Autowired
 	Gatekeeper gatekeeper;
 	
-	Map<String, User> registry;
+	Map<UserId, User> registry;
 	
 	
 	class UserRegistryUserLoginStateObserver implements UserLoginStateObserver {
 
 		@Override
-		public void loggedIn(String localUsername, UserId userId) {
-			User user = userFactory.createUser(localUsername);
-			registerUser(localUsername, user);
+		public void loggedIn(UserId userId) {
+			registerUser(userId);
 		}
 
 		@Override
-		public void loggedOut(String localUsername, UserId userId) {
-			unregisterUser(localUsername);
+		public void loggedOut(UserId userId) {
+			unregisterUser(userId);
 		}
 		
 	}
 
 
 	public UserRegistryImpl() {
-		registry = new HashMap<String, User>();
+		registry = new HashMap<UserId, User>();
 		gatekeeper.addUserLoginStateObserver(new UserRegistryUserLoginStateObserver());
 	}
 
 
-	public User getUser(String localUsername) {
-		return registry.get(localUsername);
+	public User getUser(UserId userId) {
+		return registry.get(userId);
 	}
 
 
 	// TODO: think about this method...
 	public User getOrCreateTemporaryUser(UserId userId) {
-		// TODO: really get local username from user url???
-		String localUsername = ((UserUrl)userId).getUsername();
-		
-		if (hasUser(localUsername))
-			return getUser(localUsername);
+		if (hasUser(userId))
+			return getUser(userId);
 		else {
-			User user = userFactory.createUser(localUsername);
+			User user = userFactory.createUser(userId);
 			// DON't add the new user to the registry
 			return user;
 		}
 	}
 
 
-	public void registerUser(String localUsername, User user) {
-		if (hasUser(localUsername))
-			throw new IllegalStateException("cannot register User with local username '" + localUsername
+	public void registerUser(UserId userId) {
+		if (hasUser(userId))
+			throw new IllegalStateException("cannot register User with local username '" + userId
 					+ "', it is already registered");
-		registry.put(localUsername, user);
+		
+		User user = userFactory.createUser(userId);
+		
+		registry.put(userId, user);
 	}
 
 
-	public boolean hasUser(String localUsername) {
-		return registry.containsKey(localUsername);
+	public boolean hasUser(UserId userId) {
+		return registry.containsKey(userId);
 	}
 
 
-	public void unregisterUser(String localUsername) {
-		if (!hasUser(localUsername))
-			throw new IllegalArgumentException("cannot remove user with username '" + localUsername
+	public void unregisterUser(UserId userId) {
+		if (!hasUser(userId))
+			throw new IllegalArgumentException("cannot remove user with username '" + userId
 					+ "' that has not been registered");
-		registry.remove(localUsername);
+		registry.remove(userId);
 	}
 
 }

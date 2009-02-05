@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +23,11 @@ import deus.model.attention.decision.SubscriberRequest;
 import deus.model.attention.notice.SubscriptionDeniedNotice;
 import deus.model.attention.notice.SubscriptionGrantedNotice;
 import deus.model.sub.SubscriptionState;
+import deus.model.user.id.UserUrl;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/soul.xml" })
 public class SubscribeTest extends AbstractUseCaseTest {
-
-//	@Autowired
-//	private Gatekeeper gatekeeper;
 
 	@Autowired
 	private UserRegistry userRegistry;
@@ -37,14 +37,17 @@ public class SubscribeTest extends AbstractUseCaseTest {
 	private User alice;
 
 
-//	@Before
-//	public void setUp() throws Exception {
-//		gatekeeper.login(new LoginCredentials("bob", "password"));
-//		bob = userRegistry.getUser("bob");
-//
-//		gatekeeper.login(new LoginCredentials("alice", "password"));
-//		alice = userRegistry.getUser("alice");
-//	}
+	@Before
+	public void setUp() throws Exception {
+		UserUrl userUrlBob = new UserUrl("bob", "deus.org");
+		userRegistry.registerUser(userUrlBob);
+		bob = userRegistry.getUser(userUrlBob);
+
+		
+		UserUrl userUrlAlice = new UserUrl("alice", "deus.org");
+		userRegistry.registerUser(userUrlAlice);
+		alice = userRegistry.getUser(userUrlAlice);
+	}
 
 
 	private SubscriberRequest testRequestSubscription() {
@@ -153,10 +156,10 @@ public class SubscribeTest extends AbstractUseCaseTest {
 	}
 
 
-//	@After
-//	public void tearDown() throws Exception {
-//		gatekeeper.logout("alice");
-//		gatekeeper.logout("bob");
-//	}
+	@After
+	public void tearDown() throws Exception {
+		userRegistry.unregisterUser(alice.getUserId());
+		userRegistry.unregisterUser(bob.getUserId());
+	}
 
 }

@@ -9,11 +9,9 @@ import deus.core.access.storage.attention.api.AttentionDao;
 import deus.core.access.storage.pub.api.PubDao;
 import deus.core.access.storage.sub.api.SubDao;
 import deus.core.access.storage.user.api.UserMetadataDao;
-import deus.core.soul.barker.Barker;
 import deus.core.soul.barker.decisionprocessors.DelegateDecisionProcessor;
 import deus.core.soul.barker.decisionprocessors.SubscriberRequestDecisionProcessor;
 import deus.core.soul.barker.impl.BarkerImpl;
-
 import deus.core.soul.publisher.Publisher;
 import deus.core.soul.publisher.RemoteCalledPublisher;
 import deus.core.soul.publisher.impl.PublisherBarkerProxy;
@@ -25,7 +23,6 @@ import deus.core.soul.subscriber.impl.RemoteCalledSubscriberToSubscriberAdapter;
 import deus.core.soul.subscriber.impl.SubscriberBarkerProxy;
 import deus.core.soul.subscriber.impl.SubscriberImpl;
 import deus.model.attention.decision.DecisionType;
-import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;
@@ -33,7 +30,7 @@ import deus.model.user.id.UserId;
 @Component(value="userFactory")
 public class UserFactoryImpl implements UserFactory {
 
-	private final Logger logger = LoggerFactory.getLogger(BarkerImpl.class);
+	private final Logger logger = LoggerFactory.getLogger(UserFactoryImpl.class);
 	
 	@Autowired
 	private AttentionDao attentionDao;
@@ -49,14 +46,13 @@ public class UserFactoryImpl implements UserFactory {
 
 
 	@Override
-	public User createUser(String localUsername) {
-		logger.error("creating user for username " + localUsername);
-		
+	public User createUser(UserId userId) {
 		User user = new User();
+		user.userId = userId;
+		
 		
 		// METADATA AND ID
-		user.userMetadata = userMetadataDao.getById(localUsername);
-		UserId userId = user.getUserId();
+		user.userMetadata = userMetadataDao.getById(userId);
 
 		// BARKER
 		user.barker = new BarkerImpl();

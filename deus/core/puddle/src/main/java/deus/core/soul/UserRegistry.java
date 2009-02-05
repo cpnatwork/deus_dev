@@ -4,18 +4,18 @@ import deus.model.user.id.UserId;
 
 public interface UserRegistry {
 
-	public User getUser(String localUsername);
+	public User getUser(UserId userId);
 
 	// CACHING
 	public User getOrCreateTemporaryUser(UserId userId);
 
 
-	public void registerUser(String localUsername, User user);
+	public void registerUser(UserId userId);
 
 
-	public boolean hasUser(String localUsername);
+	public boolean hasUser(UserId userId);
 
 
-	public void unregisterUser(String localUsername);
+	public void unregisterUser(UserId userId);
 
 }
