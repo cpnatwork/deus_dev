@@ -1,6 +1,6 @@
 package deus.core.access.storage.pub.model;
 
-import deus.core.access.storage.pub.hibernate.ListOfSubscribersImpl;
+import deus.core.access.storage.pub.inmemory.ListOfSubscribersImpl;
 
 public class LosTO extends ListOfSubscribersImpl{
 

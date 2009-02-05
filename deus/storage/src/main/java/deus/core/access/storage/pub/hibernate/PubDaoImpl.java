@@ -3,11 +3,12 @@ package deus.core.access.storage.pub.hibernate;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.pub.api.PubDao;
+import deus.core.access.storage.pub.inmemory.ListOfSubscribersImpl;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.user.id.UserId;
 
 @Component
-public class PubDaoHibernate implements PubDao {
+public class PubDaoImpl implements PubDao {
 
 	@Override
 	public ListOfSubscribers getListOfSubscribers(UserId losOwnerUserId) {

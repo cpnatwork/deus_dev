@@ -3,11 +3,12 @@ package deus.core.access.storage.sub.hibernate;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.sub.api.SubDao;
+import deus.core.access.storage.sub.inmemory.ListOfPublishersImpl;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;
 
 @Component
-public class SubDaoInmemory implements SubDao {
+public class SubDaoImpl implements SubDao {
 
 	@Override
 	public ListOfPublishers getListOfPublishers(UserId lopOwnerUserId) {

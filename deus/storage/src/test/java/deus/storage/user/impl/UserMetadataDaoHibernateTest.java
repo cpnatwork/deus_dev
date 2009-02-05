@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.access.storage.Dao;
+import deus.core.access.storage.common.Dao;
 import deus.model.dossier.proj.party.Gender;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;

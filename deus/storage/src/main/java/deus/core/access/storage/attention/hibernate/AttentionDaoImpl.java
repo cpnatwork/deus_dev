@@ -8,7 +8,7 @@ import deus.model.attention.impl.AttentionListImpl;
 import deus.model.user.id.UserId;
 
 @Component
-public class AttentionDaoHibernate implements AttentionDao {
+public class AttentionDaoImpl implements AttentionDao {
 
 	@Override
 	public AttentionList getNoticedAttentionList(UserId alOwnerUserId) {

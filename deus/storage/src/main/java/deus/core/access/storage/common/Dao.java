@@ -1,7 +1,7 @@
 /**
  * 
  */
-package deus.core.access.storage;
+package deus.core.access.storage.common;
 
 /**
  * @author cpn
