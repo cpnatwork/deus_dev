@@ -1,6 +1,6 @@
 package deus.core.soul.barker;
 
-import deus.core.soul.barker.decisionprocessors.DecisionProcessor;
+import deus.core.soul.barker.decisionprocessors.DelegateDecisionProcessor;
 import deus.model.attention.AttentionElement;
 import deus.model.attention.AttentionList;
 import deus.model.attention.decision.BinaryDecisionToMake;
@@ -35,6 +35,6 @@ public interface Barker {
 	public abstract void setNoticedAttentionList(AttentionList noticedAttentionList);
 
 
-	public abstract void setDecisionProcessor(DecisionProcessor<BinaryDecisionToMake> decisionProcessor);
+	public abstract void setDecisionProcessor(DelegateDecisionProcessor decisionProcessor);
 
 }

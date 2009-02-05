@@ -1,9 +1,8 @@
-package deus.core.soul.barker.decisionprocessors.impl;
+package deus.core.soul.barker.decisionprocessors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
-import deus.core.soul.barker.decisionprocessors.DecisionProcessor;
 import deus.core.soul.publisher.Publisher;
 import deus.core.transport.sending.command.BarkerCommandSender;
 import deus.model.attention.decision.SubscriberRequest;

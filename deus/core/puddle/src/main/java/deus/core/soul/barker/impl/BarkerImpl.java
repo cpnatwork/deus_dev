@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import deus.core.soul.barker.Barker;
-import deus.core.soul.barker.decisionprocessors.DecisionProcessor;
+import deus.core.soul.barker.decisionprocessors.DelegateDecisionProcessor;
 import deus.model.attention.AttentionElement;
 import deus.model.attention.AttentionList;
 import deus.model.attention.decision.BinaryDecisionToMake;
@@ -17,7 +17,7 @@ public class BarkerImpl implements Barker {
 	
 	private AttentionList unnoticedAttentionList;
 	private AttentionList noticedAttentionList;
-	private DecisionProcessor<BinaryDecisionToMake> decisionProcessor;
+	private DelegateDecisionProcessor decisionProcessor;
 
 
 	/* (non-Javadoc)
@@ -122,7 +122,7 @@ public class BarkerImpl implements Barker {
 	/* (non-Javadoc)
 	 * @see deus.core.soul.barker.impl.Barker#setDecisionProcessor(deus.core.soul.barker.decisionprocessors.DecisionProcessor)
 	 */
-	public void setDecisionProcessor(DecisionProcessor<BinaryDecisionToMake> decisionProcessor) {
+	public void setDecisionProcessor(DelegateDecisionProcessor decisionProcessor) {
 		this.decisionProcessor = decisionProcessor;
 	}
 

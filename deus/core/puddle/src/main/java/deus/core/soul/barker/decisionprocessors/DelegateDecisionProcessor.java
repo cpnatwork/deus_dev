@@ -1,9 +1,8 @@
-package deus.core.soul.barker.decisionprocessors.impl;
+package deus.core.soul.barker.decisionprocessors;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import deus.core.soul.barker.decisionprocessors.DecisionProcessor;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.DecisionType;
 
@@ -24,7 +23,6 @@ public class DelegateDecisionProcessor implements DecisionProcessor<BinaryDecisi
 	}
 
 
-	// TODO: think about template parameter of this method
 	public <T extends BinaryDecisionToMake> void addDecisionProcessor(DecisionProcessor<T> decisionProcessor,
 			DecisionType type) {
 		decisionProcessors.put(type, (DecisionProcessor<BinaryDecisionToMake>) decisionProcessor);
