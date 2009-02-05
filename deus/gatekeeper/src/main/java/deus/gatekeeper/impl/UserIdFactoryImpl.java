@@ -3,9 +3,9 @@ package deus.gatekeeper.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.storage.user.api.UserMetadataDao;
 import deus.gatekeeper.UserIdFactory;
 import deus.model.user.id.UserId;
-import deus.storage.user.UserMetadataDao;
 
 @Component("userIdFactory")
 public class UserIdFactoryImpl implements UserIdFactory {

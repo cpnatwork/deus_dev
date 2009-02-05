@@ -1,9 +1,9 @@
 package deus.core.gatekeeper.impl;
 
+import deus.core.access.storage.user.api.UserMetadataDao;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
-import deus.storage.user.UserMetadataDao;
 
 public class UserMetadataDaoStub implements UserMetadataDao {
 
@@ -14,7 +14,7 @@ public class UserMetadataDaoStub implements UserMetadataDao {
 
 
 	@Override
-	public UserMetadata getUserMetadata(String username) {
+	public UserMetadata getById(String username) {
 		// TODO Auto-generated method stub
 		return null;
 	}

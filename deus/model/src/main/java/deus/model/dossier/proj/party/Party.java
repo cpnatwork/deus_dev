@@ -1,22 +1,27 @@
 package deus.model.dossier.proj.party;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Embeddable;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
 import deus.model.user.id.UserId;
 
-
+@Embeddable
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "partytype", discriminatorType = DiscriminatorType.STRING)
 public abstract class Party {
 
 	protected UserId id;
-
 
 	public UserId getId() {
 		return id;
 	}
 
-
 	public void setId(UserId id) {
 		this.id = id;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -25,7 +30,6 @@ public abstract class Party {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {

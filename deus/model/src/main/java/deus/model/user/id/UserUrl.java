@@ -1,15 +1,10 @@
 package deus.model.user.id;
 
 // TODO: think about only injecting username, etc into constructor, no more setters. Also for Transport ids
-public class UserUrl implements UserId {
+public class UserUrl extends UserId {
 
-	private String username;
-	private String serverBaseUrl;
-
-	public UserUrl() {
-		username = null;
-		serverBaseUrl = null;
-	}
+	private String username = null;
+	private String serverBaseUrl = null;
 
 	public UserUrl(String username, String serverBaseUrl) {
 		super();
@@ -18,7 +13,6 @@ public class UserUrl implements UserId {
 	}
 
 
-	@Override
 	public UserIdType getType() {
 		return UserIdType.url;
 	}
@@ -44,9 +38,13 @@ public class UserUrl implements UserId {
 	}
 
 
+	public String getId() {
+		return serverBaseUrl + "/" + username;
+	}
+	
 	@Override
 	public String toString() {
-		return serverBaseUrl + "/" + username;
+		return getId();
 	}
 
 

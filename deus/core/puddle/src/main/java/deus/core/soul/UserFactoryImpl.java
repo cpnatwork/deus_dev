@@ -5,9 +5,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.storage.attention.api.AttentionDao;
+import deus.core.access.storage.pub.api.PubDao;
+import deus.core.access.storage.sub.api.SubDao;
+import deus.core.access.storage.user.api.UserMetadataDao;
+import deus.core.soul.barker.Barker;
 import deus.core.soul.barker.decisionprocessors.DelegateDecisionProcessor;
 import deus.core.soul.barker.decisionprocessors.SubscriberRequestDecisionProcessor;
 import deus.core.soul.barker.impl.BarkerImpl;
+
 import deus.core.soul.publisher.Publisher;
 import deus.core.soul.publisher.RemoteCalledPublisher;
 import deus.core.soul.publisher.impl.PublisherBarkerProxy;
@@ -23,10 +29,6 @@ import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;
-import deus.storage.attention.AttentionDao;
-import deus.storage.pub.PubDao;
-import deus.storage.sub.SubDao;
-import deus.storage.user.UserMetadataDao;
 
 @Component(value="userFactory")
 public class UserFactoryImpl implements UserFactory {
@@ -53,7 +55,7 @@ public class UserFactoryImpl implements UserFactory {
 		User user = new User();
 		
 		// METADATA AND ID
-		user.userMetadata = userMetadataDao.getUserMetadata(localUsername);
+		user.userMetadata = userMetadataDao.getById(localUsername);
 		UserId userId = user.getUserId();
 
 		// BARKER
@@ -81,8 +83,8 @@ public class UserFactoryImpl implements UserFactory {
 
 		// SUBSCRIBER
 		ListOfPublishers lop = subDao.getListOfPublishers(userId);
-		DistributedInformationFolder distributedInformationFolder = subDao.getDistributedInformationFolder(userId);
-		SubscriberImpl subscriberImpl = new SubscriberImpl(lop, userId, user.getUserMetadata(), distributedInformationFolder);
+		//DistributedInformationFolder distributedInformationFolder = subDao.getDistributedInformationFolder(userId);
+		SubscriberImpl subscriberImpl = new SubscriberImpl(lop, userId, user.getUserMetadata(), null); //distributedInformationFolder);
 		RemoteCalledSubscriber subscriberBarkerProxy = new SubscriberBarkerProxy(subscriberImpl, user.barker, lop);
 
 		Subscriber subscriber = new RemoteCalledSubscriberToSubscriberAdapter(subscriberBarkerProxy, subscriberImpl);

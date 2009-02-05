@@ -1,12 +1,16 @@
 package deus.model.user.id;
 
+import javax.persistence.Embeddable;
 
-public interface UserId {
+@Embeddable
+abstract public class UserId {
 	
-	public int hashCode();
+	abstract public int hashCode();
 	
-	public boolean equals(Object obj);
+	abstract public boolean equals(Object obj);
 	
-	public UserIdType getType();
+	abstract public UserIdType getType();
+	
+	abstract public String getId();
 
 }

@@ -1,8 +1,11 @@
 package deus.model.user;
 
+import javax.persistence.Embeddable;
+
 import deus.model.dossier.proj.party.Gender;
 
 // TODO: what if userFullName changes??? or gender??? (unknown -> male/female)
+@Embeddable
 public class UserMetadata {
 
 	private String userFullName;

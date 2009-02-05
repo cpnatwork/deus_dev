@@ -11,34 +11,63 @@
 	<artifactId>deus-model</artifactId>
 	<packaging>bundle</packaging>
 	<name>DEUS model</name>
-	
+
 	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
 		<osgi.rootPackage>deus.model</osgi.rootPackage>
 		<!--
-			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
+			org.springframework.orm.jpa.support: this is needed for
+			<context:component-scan />. This BeanPostProcessor requires
 			PersistantAnnotationBeanPostProcessor which is in the given package.
 		-->
 		<osgi.additionalPackageImports></osgi.additionalPackageImports>
-		
+
 		<osgi.nonExportedPackages></osgi.nonExportedPackages>
 	</properties>
 
 
-<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-<!--+++ DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-	
+	<!--
+		+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	-->
+	<!--
+		+++ DEPENDENCIES
+		++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	-->
+	<!--
+		+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	-->
+
 	<dependencies>
-        <!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-                
-	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+		<!--
+			+++ INTRA-PROJECT DEPENDENCIES
+			++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		-->
+
+		<!--
+			+++ INTER-PROJECT DEPENDENCIES
+			++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		-->
+
+		<!--  Hibernate Annotations -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.3.1.GA</version>
+		</dependency>
+
 	</dependencies>
-	
-	
-<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-<!--+++ BUILD +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+
+	<!--
+		+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	-->
+	<!--
+		+++ BUILD
+		+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	-->
+	<!--
+		+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	-->
 
 	<build>
 
@@ -47,6 +76,6 @@
 		</plugins>
 
 	</build>
-	
+
 
 </project>
