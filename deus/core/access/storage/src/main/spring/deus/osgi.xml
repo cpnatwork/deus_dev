@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/osgi  
+		http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+	<osgi:service id="attentionDaoOsgiService" ref="attentionDao" interface="deus.core.access.storage.attention.api.AttentionDao" />
+
+	<osgi:service id="pubDaoOsgiService" ref="pubDao" interface="deus.core.access.storage.pub.api.PubDao" />
+	
+	<osgi:service id="subDaoOsgiService" ref="subDao" interface="deus.core.access.storage.sub.api.SubDao" />
+	
+	<osgi:service id="userDaoOsgiService" ref="userDao" interface="deus.core.access.storage.user.api.UserMetadataDao" />
+
+</beans>
