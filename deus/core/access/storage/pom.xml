@@ -4,11 +4,11 @@
 
 	<parent>
 		<groupId>inf6.promed</groupId>
-		<artifactId>deus</artifactId>
+		<artifactId>deus-core-access</artifactId>
 		<version>0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>deus-storage</artifactId>
+	<artifactId>deus-core-access-storage</artifactId>
 	<packaging>bundle</packaging>
 	<name>DEUS storage</name>
 
