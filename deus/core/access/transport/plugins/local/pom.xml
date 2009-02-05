@@ -10,7 +10,7 @@
 
 	<artifactId>deus-core-access-transport-plugins-local</artifactId>
 	<packaging>bundle</packaging>
-	<name>DEUS local transport</name>
+	<name>DEUS core access transport plugins local</name>
 
 
 	<!-- don't remove properties, even if they are empty!!! -->

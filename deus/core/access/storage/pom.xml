@@ -10,7 +10,7 @@
 
 	<artifactId>deus-core-access-storage</artifactId>
 	<packaging>bundle</packaging>
-	<name>DEUS storage</name>
+	<name>DEUS core access storage</name>
 
 
 	<!-- don't remove properties, even if they are empty!!! -->

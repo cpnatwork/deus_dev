@@ -10,7 +10,7 @@
 
 	<artifactId>deus-core-access-transport-plugins-xmpp</artifactId>
 	<packaging>bundle</packaging>
-	<name>DEUS xmpp transport</name>
+	<name>DEUS core access transport plugins xmpp</name>
 
 
 	<!-- don't remove properties, even if they are empty!!! -->
