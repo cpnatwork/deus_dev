@@ -1,12 +1,8 @@
 package deus.storage.user;
 
 import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
+import deus.storage.Dao;
 
-public interface UserMetadataDao {
-
-	public UserMetadata getUserMetadata(String username);
-
-	public UserId getUserId(String username);
+public interface UserMetadataDao extends Dao<UserMetadata, String> {
 
 }

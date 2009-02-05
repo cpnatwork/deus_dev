@@ -8,15 +8,15 @@ import deus.model.user.id.UserId;
 import deus.storage.attention.AttentionDao;
 
 @Component
-public class AttentionDaoStub implements AttentionDao {
+public class AttentionDaoHibernate implements AttentionDao {
 
 	@Override
-	public AttentionList getNoticedAttentionList(UserId id) {
+	public AttentionList getNoticedAttentionList(UserId alOwnerUserId) {
 		return new AttentionListImpl();
 	}
 
 	@Override
-	public AttentionList getUnnoticedAttentionList(UserId id) {
+	public AttentionList getUnnoticedAttentionList(UserId alOwnerUserId) {
 		return new AttentionListImpl();
 	}
 	

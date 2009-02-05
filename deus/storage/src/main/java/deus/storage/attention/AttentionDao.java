@@ -5,8 +5,8 @@ import deus.model.user.id.UserId;
 
 public interface AttentionDao {
 
-	public AttentionList getUnnoticedAttentionList(UserId id);
+	public AttentionList getUnnoticedAttentionList(UserId alOwnerUserId);
 	
-	public AttentionList getNoticedAttentionList(UserId id);
+	public AttentionList getNoticedAttentionList(UserId alOwnerUserId);
 	
 }
