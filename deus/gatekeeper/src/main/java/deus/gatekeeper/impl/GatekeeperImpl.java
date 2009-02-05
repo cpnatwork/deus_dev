@@ -47,7 +47,7 @@ public class GatekeeperImpl implements Gatekeeper {
 		logger.debug("user with id {} logged in", userId);
 
 		for (UserLoginStateObserver observer : observers)
-			observer.loggedIn(userId);
+			observer.loggedIn(credentials.getLocalUsername(), userId);
 	}
 
 
@@ -58,7 +58,7 @@ public class GatekeeperImpl implements Gatekeeper {
 		logger.debug("user with id {} logged out", userId);
 		
 		for (UserLoginStateObserver observer : observers)
-			observer.loggedOut(userId);
+			observer.loggedOut(localUsername, userId);
 	}
 
 
