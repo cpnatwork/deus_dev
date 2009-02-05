@@ -1,4 +1,4 @@
-package deus.model.dossier.party;
+package deus.core.access.storage.dossier.model.dc.party;
 
 import java.util.List;
 import java.util.UUID;

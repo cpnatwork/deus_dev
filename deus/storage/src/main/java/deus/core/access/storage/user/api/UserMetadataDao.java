@@ -1,4 +1,4 @@
-package deus.core.access.storage.user;
+package deus.core.access.storage.user.api;
 
 import deus.core.access.storage.Dao;
 import deus.model.user.UserMetadata;

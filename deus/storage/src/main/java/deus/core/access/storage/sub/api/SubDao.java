@@ -1,4 +1,4 @@
-package deus.core.access.storage.sub;
+package deus.core.access.storage.sub.api;
 
 import deus.core.access.storage.Dao;
 import deus.model.sub.ListOfPublishers;

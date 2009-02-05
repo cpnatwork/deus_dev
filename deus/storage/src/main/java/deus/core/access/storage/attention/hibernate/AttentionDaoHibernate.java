@@ -1,8 +1,8 @@
-package deus.core.access.storage.attention.impl;
+package deus.core.access.storage.attention.hibernate;
 
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.attention.AttentionDao;
+import deus.core.access.storage.attention.api.AttentionDao;
 import deus.model.attention.AttentionList;
 import deus.model.attention.impl.AttentionListImpl;
 import deus.model.user.id.UserId;

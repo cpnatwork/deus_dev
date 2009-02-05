@@ -1,4 +1,4 @@
-package deus.model.user;
+package deus.core.access.storage.user.model;
 
 import java.util.UUID;
 
@@ -10,6 +10,7 @@ import org.hibernate.annotations.Entity;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.NaturalId;
 
+import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 @Entity

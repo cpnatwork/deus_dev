@@ -1,4 +1,4 @@
-package deus.core.access.storage.pub;
+package deus.core.access.storage.pub.api;
 
 import deus.core.access.storage.Dao;
 import deus.model.pub.ListOfSubscribers;

@@ -1,8 +1,8 @@
-package deus.core.access.storage.pub.impl;
+package deus.core.access.storage.pub.hibernate;
 
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.pub.PubDao;
+import deus.core.access.storage.pub.api.PubDao;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.user.id.UserId;
 
