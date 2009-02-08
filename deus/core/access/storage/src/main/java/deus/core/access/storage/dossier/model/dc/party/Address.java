@@ -2,19 +2,29 @@ package deus.core.access.storage.dossier.model.dc.party;
 
 import java.util.UUID;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.NaturalId;
+
+import deus.model.user.id.UserId;
+
 public abstract class Address extends deus.model.dossier.proj.party.Address {
 
-	private UUID id;
-
-	public UUID getId() {
-		return id;
+	private UUID uuid;
+	
+	@Id
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	public UUID getUuid() {
+		return uuid;
 	}
-
-
-	public void setId(UUID id) {
-		this.id = id;
+		
+	public void setUuid(UUID uuid) {
+		this.uuid = uuid;
 	}
-
+	
 
 	@Override
 	public int hashCode() {

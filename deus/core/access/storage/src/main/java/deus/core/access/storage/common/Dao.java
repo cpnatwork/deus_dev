@@ -1,35 +1,39 @@
-/**
- * 
- */
 package deus.core.access.storage.common;
 
 /**
+ * A generic interface for DAO classes
+ * 
+ * The interface is parameterized by the DAO-managed entity type (= value object type) as well as 
+ * the conceptual primary key type of the entity (= value object).
+ * 
  * @author cpn
  */
-public interface Dao<DomT,KeyT> {
+public interface Dao<EntityT,ConcPrimKeyT> {
 	/**
 	 * CREATE of CRUD
 	 * 
-	 * @param domObj
+	 * 
+	 * 
+	 * @param valueObj
 	 * @return
 	 */
-    KeyT addNew(DomT domObj);
+    ConcPrimKeyT addNew(EntityT valueObj);
     
     /**
      * READ of CRUD
      * 
-     * @param domObjKey
+     * @param valueObjKey
      * @return
      */
-    DomT getById(KeyT domObjKey);
+    EntityT getById(ConcPrimKeyT valueObjKey);
     
     // TODO: UPDATE of CRUD
     
     /**
      * DELETE of CRUD
      * 
-     * @param domObjKey
+     * @param valueObjKey
      */
-    void deleteById(KeyT domObjKey);
+    void deleteById(ConcPrimKeyT valueObjKey);
 
 }
