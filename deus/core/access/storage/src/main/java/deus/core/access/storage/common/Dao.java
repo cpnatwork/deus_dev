@@ -1,39 +1,50 @@
 package deus.core.access.storage.common;
 
+import java.io.Serializable;
+
 /**
  * A generic interface for DAO classes
  * 
- * The interface is parameterized by the DAO-managed entity type (= value object type) as well as 
- * the conceptual primary key type of the entity (= value object).
+ * The interface is parameterized by the DAO-managed entity type as well as the conceptual primary key type of the
+ * entity.
  * 
  * @author cpn
  */
-public interface Dao<EntityT,ConcPrimKeyT> {
+public interface Dao<EntityT, NaturalIdT extends Serializable> {
+
 	/**
 	 * CREATE of CRUD
 	 * 
 	 * 
 	 * 
-	 * @param valueObj
+	 * @param entity
 	 * @return
 	 */
-    ConcPrimKeyT addNew(EntityT valueObj);
-    
-    /**
-     * READ of CRUD
-     * 
-     * @param valueObjKey
-     * @return
-     */
-    EntityT getById(ConcPrimKeyT valueObjKey);
-    
-    // TODO: UPDATE of CRUD
-    
-    /**
-     * DELETE of CRUD
-     * 
-     * @param valueObjKey
-     */
-    void deleteById(ConcPrimKeyT valueObjKey);
+	void addNewEntity(EntityT entity);
+
+
+	/**
+	 * READ of CRUD
+	 * 
+	 * @param naturalId
+	 * @return
+	 */
+	EntityT getByNaturalId(NaturalIdT naturalId);
+
+
+	/**
+	 * UPDATE of CRUD
+	 * 
+	 * @param entity
+	 */
+	void updateEntity(EntityT entity);
+
+
+	/**
+	 * DELETE of CRUD
+	 * 
+	 * @param naturalId
+	 */
+	void deleteByNaturalId(NaturalIdT naturalId);
 
 }

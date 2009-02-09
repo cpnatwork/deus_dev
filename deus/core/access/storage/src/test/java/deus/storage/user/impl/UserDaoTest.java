@@ -19,10 +19,9 @@ import deus.model.user.id.UserUrl;
  * @author cpn
  * 
  */
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = { "/deus/context.xml", "/deus/storage/daos.xml" })
-// FIXME: fix test!
-public class UserMetadataDaoHibernateTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "/deus/context.xml", "/deus/storage/daos.xml" })
+public class UserDaoTest {
 
 //	@Autowired
 //	private Dao<UserMetadata, String> sut;

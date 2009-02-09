@@ -11,26 +11,33 @@ public class PubDaoInmemory implements PubDao {
 
 	@Override
 	public ListOfSubscribers getListOfSubscribers(UserId losOwnerUserId) {
-		// FIXME: legacy
-		return new ListOfSubscribersImpl();
-	}
-
-	@Override
-	public UserId addNew(ListOfSubscribers obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteById(UserId id) {
+	public void addNewEntity(ListOfSubscribers entity) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public ListOfSubscribers getById(UserId id) {
+	public void deleteByNaturalId(UserId naturalId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ListOfSubscribers getByNaturalId(UserId naturalId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void updateEntity(ListOfSubscribers entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

@@ -40,7 +40,10 @@
 		</property>
 	</bean>
 
-	<!-- Spring ORM SessionFactory (based upon Hibernate) (using any Spring JDBC Data Source) -->
+	<!--
+		Spring ORM SessionFactory (based upon Hibernate) (using any Spring
+		JDBC Data Source)
+	-->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource">
@@ -59,16 +62,37 @@
 		</property>
 	</bean>
 
-	<bean id="attentionDao" class="deus.core.access.storage.attention.hibernate.AttentionDaoImpl" />
-
-	<bean id="pubDao" class="deus.core.access.storage.pub.hibernate.PubDaoImpl" />
-
-	<bean id="subDao" class="deus.core.access.storage.sub.hibernate.SubDaoImpl" />
-
-	<bean id="userDao" class="deus.core.access.storage.user.hibernate.UserMetadataDaoImpl">
+	<bean id="attentionDao"
+		class="deus.core.access.storage.attention.hibernate.AttentionDaoImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="pubDao" class="deus.core.access.storage.pub.hibernate.PubDaoImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="subDao" class="deus.core.access.storage.sub.hibernate.SubDaoImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory" />
 		</property>
 	</bean>
 
+	<bean id="userDao"
+		class="deus.core.access.storage.user.hibernate.UserDaoImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="localUserDao"
+		class="deus.core.access.storage.user.hibernate.LocalUserDaoImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+	
 </beans>

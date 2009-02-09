@@ -11,26 +11,32 @@ public class SubDaoInmemory implements SubDao {
 
 	@Override
 	public ListOfPublishers getListOfPublishers(UserId lopOwnerUserId) {
-		// FIXME: legacy
-		return new ListOfPublishersImpl();
-	}
-
-	@Override
-	public UserId addNew(ListOfPublishers obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteById(UserId id) {
+	public void addNewEntity(ListOfPublishers entity) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public ListOfPublishers getById(UserId id) {
+	public void deleteByNaturalId(UserId naturalId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ListOfPublishers getByNaturalId(UserId naturalId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void updateEntity(ListOfPublishers entity) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

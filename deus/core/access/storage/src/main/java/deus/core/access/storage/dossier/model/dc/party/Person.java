@@ -25,8 +25,8 @@ public class Person extends deus.model.dossier.proj.party.Person {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Address> getAddresses() {
-		return (List<Address>) addresses;
+	public List<AddressPO> getAddresses() {
+		return (List<AddressPO>) addresses;
 	}
 
 	@SuppressWarnings("unchecked")
