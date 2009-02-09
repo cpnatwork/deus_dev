@@ -7,7 +7,7 @@ import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;
 
 @Component
-public class SubDaoInmemory implements SubDao {
+public class SubDaoInmemoryImpl implements SubDao {
 
 	@Override
 	public ListOfPublishers getListOfPublishers(UserId lopOwnerUserId) {

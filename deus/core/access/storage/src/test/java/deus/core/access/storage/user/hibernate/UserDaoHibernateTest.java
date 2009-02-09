@@ -18,8 +18,8 @@ import deus.model.user.id.UserUrl;
  * 
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/storage/daos.xml" })
-public class UserDaoTest {
+@ContextConfiguration(locations = { "/deus/context.xml", "/deus/storage/hibernate.xml" })
+public class UserDaoHibernateTest {
 
 	@Autowired
 	private UserDao sut;
@@ -27,20 +27,19 @@ public class UserDaoTest {
 
 	@Test
 	public void testCreate() {
-		UserId userId = new UserUrl("testuser_UserMetadataDaoHibernateTest",
-				"testhostname_UserMetadataDaoHibernateTest");
+		UserId userId = new UserUrl("testuser_UserDaoTest", "testhostname_UserDaoTest");
 		sut.addNewEntity(userId);
 	}
 
 
 	@Test
 	public void testGet() {
-		sut.getByNaturalId("testuser_UserMetadataDaoHibernateTest");
+		sut.getByNaturalId("testuser_UserDaoTest");
 	}
 
 
 	@Test
 	public void testDelete() {
-		sut.deleteByNaturalId("testuser_UserMetadataDaoHibernateTest");
+		sut.deleteByNaturalId("testuser_UserDaoTest");
 	}
 }

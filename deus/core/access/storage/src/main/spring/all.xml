@@ -5,6 +5,6 @@
 
 	<import resource="deus/context.xml"/>
 	<import resource="deus/osgi.xml"/>
-	<import resource="deus/storage/daos.xml"/>
+	<import resource="deus/storage/hibernate.xml"/>
 
 </beans>

@@ -17,10 +17,10 @@ import deus.model.user.id.UserId;
  * 
  */
 @Component
-public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
+public class UserDaoHibernateImpl extends HibernateDaoSupport implements UserDao {
 
 	@Autowired
-	UserPoDaoInternal userPoDao = null;
+	InternalUserPoDaoHibernateImpl userPoDao = null;
 
 
 	@Override
@@ -36,6 +36,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	@Override
 	public void deleteByNaturalId(String concPrimKey) {
+		// TODO: how to delete the associated UserMetadata (CASCADE or programmatically)
 		userPoDao.deleteByNaturalId(concPrimKey);
 	}
 

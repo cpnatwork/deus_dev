@@ -11,16 +11,16 @@ import deus.core.access.storage.user.model.UserPO;
 import deus.model.user.id.UserId;
 
 @Component
-public class LocalUserDaoImpl extends HibernateDaoSupport implements LocalUserDao {
+public class LocalUserDaoHibernateImpl extends HibernateDaoSupport implements LocalUserDao {
 
 	@Autowired
 	UserDao userDao = null;
 
 	@Autowired
-	UserPoDaoInternal userPoDao = null;
+	InternalUserPoDaoHibernateImpl userPoDao = null;
 
 	@Autowired
-	LocalUserPoDaoInternal localUserPoDao = null;
+	InternalLocalUserPoDaoHibernateImpl localUserPoDao = null;
 
 
 	@Override

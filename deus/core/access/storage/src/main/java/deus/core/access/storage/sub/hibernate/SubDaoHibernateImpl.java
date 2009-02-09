@@ -5,7 +5,7 @@ import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;
 
 
-public class SubDaoImpl implements SubDao {
+public class SubDaoHibernateImpl implements SubDao {
 
 	@Override
 	public ListOfPublishers getListOfPublishers(UserId lopOwnerUserId) {

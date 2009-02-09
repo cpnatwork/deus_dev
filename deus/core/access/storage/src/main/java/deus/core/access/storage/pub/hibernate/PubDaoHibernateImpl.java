@@ -5,7 +5,7 @@ import deus.model.pub.ListOfSubscribers;
 import deus.model.user.id.UserId;
 
 
-public class PubDaoImpl implements PubDao {
+public class PubDaoHibernateImpl implements PubDao {
 
 	@Override
 	public ListOfSubscribers getListOfSubscribers(UserId losOwnerUserId) {

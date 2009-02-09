@@ -8,9 +8,9 @@ import deus.core.access.storage.common.hibernate.GenericTechDaoImpl;
 import deus.core.access.storage.user.model.UserMetadataPO;
 
 @Component
-public class UserMetadataPoDaoInternal extends GenericTechDaoImpl<UserMetadataPO, UUID> {
+public class InternalUserMetadataPoDaoHibernateImpl extends GenericTechDaoImpl<UserMetadataPO, UUID> {
 
-	public UserMetadataPoDaoInternal() {
+	public InternalUserMetadataPoDaoHibernateImpl() {
 		super(UserMetadataPO.class);
 	}
 

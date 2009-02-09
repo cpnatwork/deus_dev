@@ -8,9 +8,9 @@ import deus.core.access.storage.common.hibernate.GenericInternalDaoImpl;
 import deus.core.access.storage.user.model.LocalUserPO;
 
 @Component
-public class LocalUserPoDaoInternal extends GenericInternalDaoImpl<LocalUserPO, UUID, String> {
+public class InternalLocalUserPoDaoHibernateImpl extends GenericInternalDaoImpl<LocalUserPO, UUID, String> {
 
-	public LocalUserPoDaoInternal() {
+	public InternalLocalUserPoDaoHibernateImpl() {
 		super(LocalUserPO.class);
 	}
 

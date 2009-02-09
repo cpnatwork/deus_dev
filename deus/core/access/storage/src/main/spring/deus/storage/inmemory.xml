@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--
+		required until inmemory is separated from hibernate implementation
+	-->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" />
+
+	<bean id="attentionDao"
+		class="deus.core.access.storage.attention.inmemory.AttentionDaoInmemoryImpl">
+	</bean>
+
+	<bean id="pubDao"
+		class="deus.core.access.storage.pub.inmemory.PubDaoInmemoryImpl">
+	</bean>
+
+	<bean id="subDao"
+		class="deus.core.access.storage.sub.inmemory.SubDaoInmemoryImpl">
+	</bean>
+
+	<bean id="userDao"
+		class="deus.core.access.storage.user.inmemory.UserDaoInmemoryImpl">
+	</bean>
+
+	<bean id="localUserDao"
+		class="deus.core.access.storage.user.inmemory.LocalUserDaoInmemoryImpl">
+	</bean>
+
+</beans>

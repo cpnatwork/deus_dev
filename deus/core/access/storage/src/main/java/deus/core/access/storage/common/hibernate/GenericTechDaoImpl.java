@@ -2,6 +2,10 @@ package deus.core.access.storage.common.hibernate;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import deus.core.access.storage.common.TechDao;
@@ -11,9 +15,18 @@ public class GenericTechDaoImpl<TechEntityT, TechIdT extends Serializable> exten
 
 	private Class<TechEntityT> entityPoType;
 
+	@Autowired
+	private SessionFactory sessionFactory;
+
 
 	protected GenericTechDaoImpl(Class<TechEntityT> entityPoType) {
 		this.entityPoType = entityPoType;
+	}
+
+
+	@PostConstruct
+	public void init() {
+		setSessionFactory(sessionFactory);
 	}
 
 

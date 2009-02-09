@@ -6,7 +6,7 @@ import deus.model.attention.AttentionList;
 import deus.model.user.id.UserId;
 
 
-public class AttentionDaoImpl implements AttentionDao {
+public class AttentionDaoHibernateImpl implements AttentionDao {
 
 	@Override
 	public AttentionList getNoticedAttentionList(UserId alOwnerUserId) {

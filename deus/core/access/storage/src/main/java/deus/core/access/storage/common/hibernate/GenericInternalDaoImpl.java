@@ -2,7 +2,11 @@ package deus.core.access.storage.common.hibernate;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
+
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import deus.core.access.storage.common.InternalDao;
@@ -12,11 +16,18 @@ public class GenericInternalDaoImpl<TechEntityT, TechIdT extends Serializable, N
 
 	private Class<TechEntityT> entityPoType;
 
+	@Autowired
+	private SessionFactory sessionFactory;
 
 	protected GenericInternalDaoImpl(Class<TechEntityT> entityPoType) {
 		this.entityPoType = entityPoType;
+		
 	}
 
+	@PostConstruct
+    public void init() {
+        setSessionFactory(sessionFactory);
+    }
 
 	@Override
 	public void addNewEntity(TechEntityT entityPO) {

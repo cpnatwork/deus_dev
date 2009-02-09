@@ -2,7 +2,11 @@ package deus.core.access.storage.common.hibernate;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
+
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import deus.core.access.storage.common.Dao;
@@ -12,9 +16,18 @@ public class GenericuConcDaoImpl<EntityT, NaturalIdT extends Serializable> exten
 
 	private Class<EntityT> entityType;
 
+	@Autowired
+	private SessionFactory sessionFactory;
+
 
 	protected GenericuConcDaoImpl(Class<EntityT> entityType) {
 		this.entityType = entityType;
+	}
+
+
+	@PostConstruct
+	public void init() {
+		setSessionFactory(sessionFactory);
 	}
 
 

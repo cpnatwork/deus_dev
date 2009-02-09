@@ -7,7 +7,7 @@ import deus.model.pub.ListOfSubscribers;
 import deus.model.user.id.UserId;
 
 @Component
-public class PubDaoInmemory implements PubDao {
+public class PubDaoInmemoryImpl implements PubDao {
 
 	@Override
 	public ListOfSubscribers getListOfSubscribers(UserId losOwnerUserId) {
