@@ -12,13 +12,13 @@
 	</bean>
 
 	<!-- Spring JDBC Abstract Data Source -->
-	<bean id="springJdbcDataSourceHsqldb" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
-		<property name="url" value="jdbc:hsqldb:hsql://localhost:9001" />
-		<property name="username" value="sa" />
-		<property name="password" value="" />
-	</bean>
+<!--	<bean id="springJdbcDataSourceHsqldb" class="org.apache.commons.dbcp.BasicDataSource"-->
+<!--		destroy-method="close">-->
+<!--		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />-->
+<!--		<property name="url" value="jdbc:hsqldb:hsql://localhost:9001" />-->
+<!--		<property name="username" value="sa" />-->
+<!--		<property name="password" value="" />-->
+<!--	</bean>-->
 
 
 	<!-- Hibernate Properties -->
