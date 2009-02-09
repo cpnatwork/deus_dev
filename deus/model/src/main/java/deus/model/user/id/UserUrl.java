@@ -1,32 +1,25 @@
 package deus.model.user.id;
 
+import org.hibernate.annotations.Entity;
+
 // TODO: think about only injecting username, etc into constructor, no more setters. Also for Transport ids
+
+@SuppressWarnings("serial")
+@Entity
 public class UserUrl extends UserId {
 
-	private String username = null;
 	private String serverBaseUrl = null;
 
 	public UserUrl(String username, String serverBaseUrl) {
 		super();
 		this.serverBaseUrl = serverBaseUrl;
-		this.username = username;
+		setUsername(username);
 	}
 
-
+	@Override
 	public UserIdType getType() {
 		return UserIdType.url;
 	}
-
-
-	public String getUsername() {
-		return username;
-	}
-
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
 
 	public String getServerBaseUrl() {
 		return serverBaseUrl;
@@ -38,8 +31,13 @@ public class UserUrl extends UserId {
 	}
 
 
+	public String getUrl() {
+		return serverBaseUrl + "/" + getUsername();
+	}
+	
+	@Override
 	public String getId() {
-		return serverBaseUrl + "/" + username;
+		return getUrl();
 	}
 	
 	@Override
@@ -53,7 +51,7 @@ public class UserUrl extends UserId {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((serverBaseUrl == null) ? 0 : serverBaseUrl.hashCode());
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		result = prime * result + ((getUsername() == null) ? 0 : getUsername().hashCode());
 		return result;
 	}
 
@@ -73,11 +71,11 @@ public class UserUrl extends UserId {
 		}
 		else if (!serverBaseUrl.equals(other.serverBaseUrl))
 			return false;
-		if (username == null) {
-			if (other.username != null)
+		if (getUsername() == null) {
+			if (other.getUsername() != null)
 				return false;
 		}
-		else if (!username.equals(other.username))
+		else if (!getUsername().equals(other.getUsername()))
 			return false;
 		return true;
 	}

@@ -1,5 +1,9 @@
 package deus.model.user.id;
 
+import org.hibernate.annotations.Entity;
+
+@SuppressWarnings("serial")
+@Entity
 public class UserXri extends UserId {
 	String xri = null;
 	
@@ -26,6 +30,11 @@ public class UserXri extends UserId {
 		return getXri();
 	}
 
+	@Override
+	public String toString() {
+		return getId();
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
