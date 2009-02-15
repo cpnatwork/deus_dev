@@ -5,6 +5,8 @@ import deus.model.user.UserMetadata;
 public class LosEntry {
 
 	private UserMetadata subscriberMetadata;
+	
+	// TODO: insert SHARE SET here!
 
 
 	public UserMetadata getSubscriberMetadata() {
