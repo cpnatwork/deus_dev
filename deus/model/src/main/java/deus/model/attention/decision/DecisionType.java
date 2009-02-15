@@ -2,6 +2,6 @@ package deus.model.attention.decision;
 
 public enum DecisionType {
 
-	publisherOffer, subscriberRequest;
+	publisherOffer, subscriberRequest, contribution;
 	
 }

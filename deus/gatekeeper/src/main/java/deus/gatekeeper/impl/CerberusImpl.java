@@ -9,16 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.user.api.LocalUserDao;
-import deus.gatekeeper.Gatekeeper;
+import deus.gatekeeper.Cerberus;
 import deus.gatekeeper.LoginCredentialChecker;
 import deus.gatekeeper.UserLoginStateObserver;
 import deus.gatekeeper.soul.LoginCredentials;
 import deus.model.user.id.UserId;
 
-@Component("gatekeeper")
-public class GatekeeperImpl implements Gatekeeper {
+@Component("cerberus")
+public class CerberusImpl implements Cerberus {
 
-	private final Logger logger = LoggerFactory.getLogger(GatekeeperImpl.class);
+	private final Logger logger = LoggerFactory.getLogger(CerberusImpl.class);
 	
 	private final List<UserLoginStateObserver> observers;
 
@@ -29,7 +29,7 @@ public class GatekeeperImpl implements Gatekeeper {
 	private LocalUserDao localUserDao;
 
 
-	public GatekeeperImpl() {
+	public CerberusImpl() {
 		super();
 		this.observers = new Vector<UserLoginStateObserver>();
 	}

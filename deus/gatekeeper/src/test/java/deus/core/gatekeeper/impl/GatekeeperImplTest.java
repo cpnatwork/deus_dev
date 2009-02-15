@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.gatekeeper.Gatekeeper;
+import deus.gatekeeper.Cerberus;
 import deus.gatekeeper.UserLoginStateObserver;
 import deus.gatekeeper.soul.LoginCredentials;
 import deus.model.user.id.UserId;
@@ -19,7 +19,7 @@ import deus.model.user.id.UserId;
 public class GatekeeperImplTest {
 
 	@Autowired
-	private Gatekeeper gatekeeper;
+	private Cerberus cerberus;
 
 
 	private int loggedIn;
@@ -52,25 +52,25 @@ public class GatekeeperImplTest {
 			
 		};
 		
-		gatekeeper.addUserLoginStateObserver(obs);
+		cerberus.addUserLoginStateObserver(obs);
 		
 		assertEquals(0, loggedIn);
 		assertEquals(0, loggedOut);
 		// LOGIN
-		gatekeeper.login(credentials);
+		cerberus.login(credentials);
 		assertEquals(1, loggedIn);
 		assertEquals(0, loggedOut);
 		
 		// LOGOUT
-		gatekeeper.logout(credentials.getLocalUsername());
+		cerberus.logout(credentials.getLocalUsername());
 		
 		assertEquals(1, loggedIn);
 		assertEquals(1, loggedOut);
 		
-		gatekeeper.removeUserLoginStateObserver(obs);
+		cerberus.removeUserLoginStateObserver(obs);
 		
-		gatekeeper.login(credentials);
-		gatekeeper.logout(credentials.getLocalUsername());
+		cerberus.login(credentials);
+		cerberus.logout(credentials.getLocalUsername());
 		assertEquals(1, loggedIn);
 		assertEquals(1, loggedOut);		
 	}

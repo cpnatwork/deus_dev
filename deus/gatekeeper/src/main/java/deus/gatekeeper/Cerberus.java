@@ -2,7 +2,7 @@ package deus.gatekeeper;
 
 import deus.gatekeeper.soul.LoginCredentials;
 
-public interface Gatekeeper {
+public interface Cerberus {
 
 	public void login(LoginCredentials credentials);
 

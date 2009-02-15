@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.gatekeeper.Gatekeeper;
+import deus.gatekeeper.Cerberus;
 import deus.gatekeeper.UserLoginStateObserver;
 import deus.model.user.id.UserId;
 
@@ -17,7 +17,7 @@ public class UserRegistryImpl implements UserRegistry {
 	UserFactory userFactory;
 
 	@Autowired
-	Gatekeeper gatekeeper;
+	Cerberus cerberus;
 	
 	Map<UserId, User> registry;
 	
@@ -39,7 +39,7 @@ public class UserRegistryImpl implements UserRegistry {
 
 	public UserRegistryImpl() {
 		registry = new HashMap<UserId, User>();
-		gatekeeper.addUserLoginStateObserver(new UserRegistryUserLoginStateObserver());
+		cerberus.addUserLoginStateObserver(new UserRegistryUserLoginStateObserver());
 	}
 
 
