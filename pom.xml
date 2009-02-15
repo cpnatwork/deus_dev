@@ -211,6 +211,21 @@
 						<projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
 						<projectnature>com.springsource.server.ide.facet.core.bundlenature</projectnature>
 					</additionalProjectnatures>
+					<!-- added this, so that automatically, the spring dm server is the default runtime! -->
+					<additionalConfig>
+						<file>
+							<name>.settings/org.eclipse.wst.common.project.facet.core.xml</name>
+							<content>
+								<![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<faceted-project>
+	<runtime name="SpringSource dm Server (Runtime) v1.0"/>
+	<installed facet="com.springsource.server.bundle" version="1.0"/>
+</faceted-project>
+								]]>
+							</content>
+						</file>
+					</additionalConfig>
 					<classpathContainers>
 						<classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
 						<classpathContainer>com.springsource.server.ide.jdt.core.MANIFEST_CLASSPATH_CONTAINER</classpathContainer>
