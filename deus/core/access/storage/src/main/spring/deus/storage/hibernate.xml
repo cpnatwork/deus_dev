@@ -5,8 +5,9 @@
 
 	<!-- Spring JDBC Abstract Data Source -->
 	<bean id="springJdbcDataSourceDerby"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-		destroy-method="close">
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- TODO: why this? it doesn't work! -->
+		<!-- destroy-method="close">-->
 		<property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
 		<property name="url" value="jdbc:derby:db/deus;create=true" />
 	</bean>

@@ -4,10 +4,11 @@
 
 
 	<bean id="transportProtocol" class="deus.core.access.transport.plugins.xmpp.core.protocol.XmppTransportProtocol">
-		<property name="loginEventCallbacdeus.core.access.transport.plugins.xmpp.core.protocol.callbackre.protocol.callback.XmppLoginEventCallback" />
+		<property name="loginEventCallback">
+			<bean class="deus.core.access.transport.plugins.xmpp.core.protocol.callback.XmppLoginEventCallback" />
 		</property>
 		<property name="registrationEventCallback">
-			<bean class="deus.core.transport.core.protocol.callback.DefaultRegistrationEventCallback" />
+			<bean class="deus.core.access.transport.core.soul.protocol.callback.DefaultRegistrationEventCallback" />
 		</property>
 		<property name="messageSender" ref="xmppMessageSender" />
 		<property name="transportIdUserIdMapper">
@@ -27,14 +28,15 @@
 	</bean>
 
 	<bean id="xmppConfiguration" class="deus.core.access.transport.plugins.xmpp.common.XmppConfiguration">
-		<property name="xmppProdeus.core.access.transport.plugins.xmpp.core.protocol.callback>
+		<property name="xmppPropertyFullName" value="fullName" />
+	</bean>
 
 
-	<bean id="passwordLookup" class="deus.transport.xmpp.core.protocol.callback.FixedPasswordLookup">
+	<bean id="passwordLookup" class="deus.core.access.transport.plugins.xmpp.core.protocol.callback.FixedPasswordLookup">
 		<constructor-arg value="test" />
 	</bean>
-	
-	
-	<bean id="connectionStateRegistry" class="deus.core.transport.connectionstate.DefaultConnectionStateRegistry" />
+
+
+	<bean id="connectionStateRegistry" class="deus.core.access.transport.core.connectionstate.DefaultConnectionStateRegistry" />
 
 </beans>
