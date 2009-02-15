@@ -1,6 +1,6 @@
 package deus.core.access.transport.plugins.testTP.protocol;
 
-import deus.core.access.transport.core.protocol.AbstractTransportProtocol;
+import deus.core.access.transport.core.soul.protocol.AbstractTransportProtocol;
 
 public class TestTransportProtocol extends AbstractTransportProtocol {
 

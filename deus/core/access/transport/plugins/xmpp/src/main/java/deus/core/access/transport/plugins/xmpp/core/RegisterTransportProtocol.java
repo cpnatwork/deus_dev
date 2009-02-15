@@ -6,8 +6,8 @@ import javax.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.transport.core.protocol.TransportProtocol;
-import deus.core.transport.core.protocolregistry.TransportProtocolRegistry;
+import deus.core.access.transport.core.soul.protocol.TransportProtocol;
+import deus.core.access.transport.core.soul.protocolregistry.TransportProtocolRegistry;
 
 @Component
 public class RegisterTransportProtocol {

@@ -16,7 +16,7 @@ import deus.model.dossier.proj.party.Gender;
 import deus.model.user.UserMetadata;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/transport/test.xml" })
+@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transport/core/test.xml" })
 public class TransportSubscriberCommandSenderTest extends AbstractCommandSenderTest {
 
 	@Autowired

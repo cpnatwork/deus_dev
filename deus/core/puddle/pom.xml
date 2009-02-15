@@ -40,13 +40,13 @@
 
 		<dependency>
 			<groupId>inf6.promed</groupId>
-			<artifactId>deus-storage</artifactId>
+			<artifactId>deus-core-access-storage</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>inf6.promed</groupId>
-			<artifactId>deus-core-transport</artifactId>
+			<artifactId>deus-core-access-transport-core</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
 		

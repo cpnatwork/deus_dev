@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.attention.api.AttentionDao;
 import deus.core.access.storage.pub.api.PubDao;
 import deus.core.access.storage.sub.api.SubDao;
-import deus.core.access.storage.user.api.UserMetadataDao;
+import deus.core.access.storage.user.api.UserDao;
 import deus.core.soul.barker.decisionprocessors.DelegateDecisionProcessor;
 import deus.core.soul.barker.decisionprocessors.SubscriberRequestDecisionProcessor;
 import deus.core.soul.barker.impl.BarkerImpl;
@@ -42,7 +42,7 @@ public class UserFactoryImpl implements UserFactory {
 	private SubDao subDao;
 
 	@Autowired
-	private UserMetadataDao userMetadataDao;
+	private UserDao userDao;
 
 
 	@Override
@@ -52,7 +52,7 @@ public class UserFactoryImpl implements UserFactory {
 		
 		
 		// METADATA AND ID
-		user.userMetadata = userMetadataDao.getById(userId);
+		user.userMetadata = userDao.getUserMetadata(userId);
 
 		// BARKER
 		user.barker = new BarkerImpl();

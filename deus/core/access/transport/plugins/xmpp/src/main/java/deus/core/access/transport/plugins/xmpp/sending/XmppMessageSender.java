@@ -4,17 +4,17 @@ import org.jivesoftware.smack.packet.Presence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.transport.core.connectionstate.ConnectionStateRegistry;
+import deus.core.access.transport.core.messages.DenySubscriptionMessage;
+import deus.core.access.transport.core.messages.GrantSubscriptionMessage;
+import deus.core.access.transport.core.messages.RequestSubscriptionMessage;
+import deus.core.access.transport.core.messages.SubscribeMessage;
+import deus.core.access.transport.core.messages.TransportMessage;
+import deus.core.access.transport.core.messages.UnsubscribeMessage;
+import deus.core.access.transport.core.soul.protocol.MessageSender;
 import deus.core.access.transport.plugins.xmpp.common.XmppConversation;
 import deus.core.access.transport.plugins.xmpp.connectionstate.XmppConnectionState;
 import deus.core.access.transport.plugins.xmpp.core.protocol.XmppTransportId;
-import deus.core.transport.connectionstate.ConnectionStateRegistry;
-import deus.core.transport.core.protocol.MessageSender;
-import deus.core.transport.messages.DenySubscriptionMessage;
-import deus.core.transport.messages.GrantSubscriptionMessage;
-import deus.core.transport.messages.RequestSubscriptionMessage;
-import deus.core.transport.messages.SubscribeMessage;
-import deus.core.transport.messages.TransportMessage;
-import deus.core.transport.messages.UnsubscribeMessage;
 
 @Component
 public class XmppMessageSender implements MessageSender {

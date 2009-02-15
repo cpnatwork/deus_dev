@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
+import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.subscriber.Subscriber;
-import deus.core.transport.sending.command.SubscriberCommandSender;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.sub.ListOfPublishers;

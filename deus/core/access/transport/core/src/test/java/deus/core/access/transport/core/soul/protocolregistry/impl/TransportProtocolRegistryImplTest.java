@@ -24,7 +24,7 @@ import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/transport/test.xml" })
+@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transport/core/test.xml" })
 public class TransportProtocolRegistryImplTest {
 	
 	private TestTransportProtocol tp;

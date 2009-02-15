@@ -15,7 +15,7 @@ import deus.model.dossier.deus.ForeignPatientFile;
 import deus.model.dossier.generic.ForeignInformationFile;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/transport/test.xml" })
+@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transport/core/test.xml" })
 public class TransportPublisherCommandSenderTest extends AbstractCommandSenderTest {
 
 	@Autowired

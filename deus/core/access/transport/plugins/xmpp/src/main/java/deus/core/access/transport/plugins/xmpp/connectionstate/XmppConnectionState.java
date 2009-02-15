@@ -1,7 +1,7 @@
 package deus.core.access.transport.plugins.xmpp.connectionstate;
 
+import deus.core.access.transport.core.connectionstate.ConnectionState;
 import deus.core.access.transport.plugins.xmpp.common.XmppConversation;
-import deus.core.transport.connectionstate.ConnectionState;
 
 public class XmppConnectionState implements ConnectionState {
 

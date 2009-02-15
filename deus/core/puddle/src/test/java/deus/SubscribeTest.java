@@ -39,14 +39,14 @@ public class SubscribeTest extends AbstractUseCaseTest {
 
 	@Before
 	public void setUp() throws Exception {
-		UserUrl userUrlBob = new UserUrl("bob", "deus.org");
-		userRegistry.registerUser(userUrlBob);
-		bob = userRegistry.getUser(userUrlBob);
-
-		
-		UserUrl userUrlAlice = new UserUrl("alice", "deus.org");
-		userRegistry.registerUser(userUrlAlice);
-		alice = userRegistry.getUser(userUrlAlice);
+//		UserUrl userUrlBob = new UserUrl("bob", "deus.org");
+//		userRegistry.registerUser(userUrlBob);
+//		bob = userRegistry.getUser(userUrlBob);
+//
+//		
+//		UserUrl userUrlAlice = new UserUrl("alice", "deus.org");
+//		userRegistry.registerUser(userUrlAlice);
+//		alice = userRegistry.getUser(userUrlAlice);
 	}
 
 
@@ -121,6 +121,7 @@ public class SubscribeTest extends AbstractUseCaseTest {
 	}
 
 
+	// TODO: REENABLE
 	@Test
 	public void testRequestSubscriptionDeny() {
 //		SubscriberRequest request = testRequestSubscription();
@@ -158,8 +159,8 @@ public class SubscribeTest extends AbstractUseCaseTest {
 
 	@After
 	public void tearDown() throws Exception {
-		userRegistry.unregisterUser(alice.getUserId());
-		userRegistry.unregisterUser(bob.getUserId());
+//		userRegistry.unregisterUser(alice.getUserId());
+//		userRegistry.unregisterUser(bob.getUserId());
 	}
 
 }

@@ -3,10 +3,10 @@ package deus.core.soul.subscriber.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.transport.core.receiving.command.SubscriberCommandReceiver;
 import deus.core.soul.User;
 import deus.core.soul.UserRegistry;
 import deus.core.soul.subscriber.RemoteCalledSubscriber;
-import deus.core.transport.receiving.command.SubscriberCommandReceiver;
 import deus.model.user.id.UserId;
 
 @Component("subscriberCommandReceiver")

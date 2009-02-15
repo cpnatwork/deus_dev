@@ -2,6 +2,9 @@ package deus.core.access.transport.plugins.xmpp.core.protocol.callback;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import deus.core.access.transport.core.connectionstate.ConnectionStateRegistry;
+import deus.core.access.transport.core.soul.protocol.TransportId;
+import deus.core.access.transport.core.soul.protocol.callback.LoginEventCallback;
 import deus.core.access.transport.plugins.xmpp.common.FilteredPacketListener;
 import deus.core.access.transport.plugins.xmpp.common.XmppConversation;
 import deus.core.access.transport.plugins.xmpp.common.XmppNetwork;
@@ -10,9 +13,6 @@ import deus.core.access.transport.plugins.xmpp.core.protocol.XmppTransportId;
 import deus.core.access.transport.plugins.xmpp.receiving.packetlistener.SubscribePacketListener;
 import deus.core.access.transport.plugins.xmpp.receiving.packetlistener.UnsubscribePacketListener;
 import deus.core.access.transport.plugins.xmpp.receiving.packetlistener.UpdatePacketListener;
-import deus.core.transport.connectionstate.ConnectionStateRegistry;
-import deus.core.transport.core.protocol.TransportId;
-import deus.core.transport.core.protocol.callback.LoginEventCallback;
 
 public class XmppLoginEventCallback implements LoginEventCallback {
 

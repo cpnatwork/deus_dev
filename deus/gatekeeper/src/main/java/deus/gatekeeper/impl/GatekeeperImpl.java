@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.user.api.LocalUserIdDao;
+import deus.core.access.storage.user.api.LocalUserDao;
 import deus.gatekeeper.Gatekeeper;
 import deus.gatekeeper.LoginCredentialChecker;
 import deus.gatekeeper.UserLoginStateObserver;
@@ -26,7 +26,7 @@ public class GatekeeperImpl implements Gatekeeper {
 	private LoginCredentialChecker loginCredentialChecker;
 
 	@Autowired
-	private LocalUserIdDao localUserIdDao;
+	private LocalUserDao localUserDao;
 
 
 	public GatekeeperImpl() {
@@ -42,7 +42,7 @@ public class GatekeeperImpl implements Gatekeeper {
 			;
 
 		// TODO: do more login stuff, that is necessary
-		UserId userId = localUserIdDao.getById(credentials.getLocalUsername());
+		UserId userId = localUserDao.getByNaturalId(credentials.getLocalUsername());
 		
 		logger.debug("user with id {} logged in", userId);
 
@@ -53,7 +53,7 @@ public class GatekeeperImpl implements Gatekeeper {
 
 	@Override
 	public void logout(String localUsername) {
-		UserId userId = localUserIdDao.getById(localUsername);
+		UserId userId = localUserDao.getByNaturalId(localUsername);
 
 		logger.debug("user with id {} logged out", userId);
 		

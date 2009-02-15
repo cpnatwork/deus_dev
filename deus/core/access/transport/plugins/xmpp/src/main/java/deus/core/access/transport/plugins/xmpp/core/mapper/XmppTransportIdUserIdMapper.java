@@ -1,8 +1,8 @@
 package deus.core.access.transport.plugins.xmpp.core.mapper;
 
+import deus.core.access.transport.core.soul.protocol.TransportId;
+import deus.core.access.transport.core.soul.protocol.TransportIdUserIdMapper;
 import deus.core.access.transport.plugins.xmpp.core.protocol.XmppTransportId;
-import deus.core.transport.core.protocol.TransportId;
-import deus.core.transport.core.protocol.TransportIdUserIdMapper;
 import deus.model.user.id.UserId;
 
 public class XmppTransportIdUserIdMapper implements TransportIdUserIdMapper {

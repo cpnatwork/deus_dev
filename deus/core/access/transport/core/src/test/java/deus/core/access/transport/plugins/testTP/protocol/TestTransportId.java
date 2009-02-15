@@ -1,6 +1,6 @@
 package deus.core.access.transport.plugins.testTP.protocol;
 
-import deus.core.access.transport.core.protocol.TransportId;
+import deus.core.access.transport.core.soul.protocol.TransportId;
 
 public class TestTransportId implements TransportId {
 

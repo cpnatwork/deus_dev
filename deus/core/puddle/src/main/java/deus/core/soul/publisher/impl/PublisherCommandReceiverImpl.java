@@ -3,10 +3,10 @@ package deus.core.soul.publisher.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.transport.core.receiving.command.PublisherCommandReceiver;
 import deus.core.soul.User;
 import deus.core.soul.UserRegistry;
 import deus.core.soul.publisher.RemoteCalledPublisher;
-import deus.core.transport.receiving.command.PublisherCommandReceiver;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 

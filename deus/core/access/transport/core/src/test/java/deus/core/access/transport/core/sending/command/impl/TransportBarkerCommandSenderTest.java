@@ -12,7 +12,7 @@ import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.sending.command.BarkerCommandSender;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/transport/test.xml" })
+@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transport/core/test.xml" })
 public class TransportBarkerCommandSenderTest extends AbstractCommandSenderTest {
 
 	@Autowired

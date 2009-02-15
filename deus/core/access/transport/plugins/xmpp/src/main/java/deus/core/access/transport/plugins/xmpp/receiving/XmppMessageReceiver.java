@@ -5,8 +5,8 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.transport.messages.TransportMessage;
-import deus.core.transport.receiving.message.MessageReceiver;
+import deus.core.access.transport.core.messages.TransportMessage;
+import deus.core.access.transport.core.receiving.message.MessageReceiver;
 
 @Component
 public class XmppMessageReceiver {

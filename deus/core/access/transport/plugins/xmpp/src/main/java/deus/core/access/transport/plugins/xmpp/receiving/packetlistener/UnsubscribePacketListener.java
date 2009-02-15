@@ -7,10 +7,10 @@ import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.packet.Presence.Type;
 
+import deus.core.access.transport.core.messages.TransportMessage;
+import deus.core.access.transport.core.messages.UnsubscribeMessage;
 import deus.core.access.transport.plugins.xmpp.receiving.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
 import deus.core.access.transport.plugins.xmpp.util.PacketPrinter;
-import deus.core.transport.messages.TransportMessage;
-import deus.core.transport.messages.UnsubscribeMessage;
 
 
 public class UnsubscribePacketListener extends UserMetadataParsingFilteredPacketListener {
