@@ -3,7 +3,7 @@ package deus.core.soul.subscriber.impl;
 import deus.core.soul.subscriber.RemoteCalledSubscriber;
 import deus.core.soul.subscriber.Subscriber;
 import deus.model.depository.generic.DistributedInformationFolder;
-import deus.model.dossier.generic.ForeignInformationFile;
+import deus.model.dossier.DigitalCard;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
@@ -45,8 +45,8 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 
 
 	@Override
-	public void update(UserId publisherId, ForeignInformationFile fif) {
-		remoteCalledSubscriber.update(publisherId, fif);
+	public void update(UserId publisherId, DigitalCard digitalCard) {
+		remoteCalledSubscriber.update(publisherId, digitalCard);
 	}
 
 

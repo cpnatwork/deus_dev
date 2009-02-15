@@ -1,6 +1,7 @@
 package deus.model.dossier.deus;
 
 import java.util.List;
+import java.util.Set;
 
 import deus.model.dossier.DigitalCard;
 import deus.model.dossier.generic.PersonalInformationFile;
@@ -16,6 +17,8 @@ import deus.model.dossier.generic.PersonalInformationFile;
  */
 public class PersonalPatientFile extends PersonalInformationFile {
 
-	private List<DigitalCard> digitalCards;
+	public PersonalPatientFile(Set<DigitalCard> digitalCards) {
+		super(digitalCards);
+	}
 
 }

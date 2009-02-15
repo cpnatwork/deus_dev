@@ -1,6 +1,6 @@
 package deus.core.soul.publisher;
 
-import deus.model.dossier.generic.ForeignInformationFile;
+import deus.model.dossier.DigitalCard;
 
 /**
  * Groups methods of the interface <code>Publisher</code> that trigger remote calls. These methods are implemented using
@@ -24,6 +24,6 @@ public interface RemoteCallingPublisher {
 	 * @see java.util.Observable#hasChanged()
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.ForeignInformationFile)
 	 */
-	public abstract void notifyObservers(ForeignInformationFile change);
+	public abstract void notifyObservers(DigitalCard digitalCard);
 
 }

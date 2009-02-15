@@ -11,8 +11,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.messages.UpdateMessage;
 import deus.core.access.transport.core.sending.command.PublisherCommandSender;
-import deus.model.dossier.deus.ForeignPatientFile;
-import deus.model.dossier.generic.ForeignInformationFile;
+import deus.model.dossier.DigitalCard;
+import deus.model.dossier.PartyInformationDC;
+import deus.model.user.id.UserUrl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transport/core/test.xml" })
@@ -23,16 +24,16 @@ public class TransportPublisherCommandSenderTest extends AbstractCommandSenderTe
 
 	@Test
 	public void testUpdate() {
-		ForeignInformationFile fif = new ForeignPatientFile();
+		DigitalCard digitalCard = new PartyInformationDC(new UserUrl("higgins", "deus.org"), new UserUrl("alice", "deus.org"), "surgery1");
 		
-		transportPublisherCommandSender.update(subscriberId, publisherId, fif);
+		transportPublisherCommandSender.update(subscriberId, publisherId, digitalCard);
 
-		TransportMessage expectedMessage = new UpdateMessage(fif);
+		TransportMessage expectedMessage = new UpdateMessage(digitalCard);
 		setTids(expectedMessage, publisherId, subscriberId);
 		
 		testEqualsMessage(expectedMessage, lastSentTransportMessage);
 		
-		assertEquals(fif, ((UpdateMessage)lastSentTransportMessage).getForeignInformationFile());
+		assertEquals(digitalCard, ((UpdateMessage)lastSentTransportMessage).getDigitalCard());
 	}
 
 	

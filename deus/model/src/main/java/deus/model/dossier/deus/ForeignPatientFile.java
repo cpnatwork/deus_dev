@@ -1,9 +1,11 @@
 package deus.model.dossier.deus;
 
-import java.util.List;
+import java.util.Set;
 
 import deus.model.dossier.DigitalCard;
 import deus.model.dossier.generic.ForeignInformationFile;
+import deus.model.user.UserMetadata;
+import deus.model.user.id.UserId;
 
 /**
  * The FIF in the context of DEUS. The type of the content stored is a list of digital cards.
@@ -16,6 +18,8 @@ import deus.model.dossier.generic.ForeignInformationFile;
  */
 public class ForeignPatientFile extends ForeignInformationFile {
 
-	private List<DigitalCard> digitalCards; 
-	
+	public ForeignPatientFile(UserId publisherId, UserMetadata publisherMetadata, Set<DigitalCard> digitalCards) {
+		super(publisherId, publisherMetadata, digitalCards);
+	}
+
 }

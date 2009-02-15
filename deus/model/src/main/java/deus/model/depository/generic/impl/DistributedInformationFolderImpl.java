@@ -4,6 +4,7 @@ import java.util.Map;
 
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.generic.ForeignInformationFile;
+import deus.model.dossier.generic.InformationFile;
 import deus.model.user.id.UserId;
 
 public abstract class DistributedInformationFolderImpl implements
@@ -13,7 +14,7 @@ public abstract class DistributedInformationFolderImpl implements
 
 
 	@Override
-	public ForeignInformationFile getForeignInformationFile(UserId publisherId) {
+	public InformationFile getForeignInformationFile(UserId publisherId) {
 		if (!foreignInformationFiles.containsKey(publisherId))
 			throw new IllegalArgumentException("no FIF for publisher id " + publisherId);
 		else

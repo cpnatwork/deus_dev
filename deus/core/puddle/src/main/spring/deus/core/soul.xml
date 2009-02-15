@@ -6,4 +6,8 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 
+	<bean id="foreignInformationFileUpdateStrategy" class="deus.core.soul.common.SimpleReplaceInformationFileUpdateStrategy"/>
+	
+	<bean id="personalInformationFileUpdateStrategy" class="deus.core.soul.common.SimpleReplaceInformationFileUpdateStrategy"/>
+
 </beans>

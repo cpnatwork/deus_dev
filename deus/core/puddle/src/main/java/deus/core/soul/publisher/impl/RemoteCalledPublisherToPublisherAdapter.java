@@ -2,7 +2,7 @@ package deus.core.soul.publisher.impl;
 
 import deus.core.soul.publisher.Publisher;
 import deus.core.soul.publisher.RemoteCalledPublisher;
-import deus.model.dossier.generic.ForeignInformationFile;
+import deus.model.dossier.DigitalCard;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
@@ -68,8 +68,8 @@ public class RemoteCalledPublisherToPublisherAdapter implements Publisher {
 
 
 	@Override
-	public void notifyObservers(ForeignInformationFile change) {
-		publisher.notifyObservers(change);
+	public void notifyObservers(DigitalCard digitalCard) {
+		publisher.notifyObservers(digitalCard);
 	}
 
 }

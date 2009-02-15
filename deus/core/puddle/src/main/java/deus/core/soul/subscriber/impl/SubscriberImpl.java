@@ -1,21 +1,24 @@
 package deus.core.soul.subscriber.impl;
 
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
 import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
+import deus.core.soul.common.InformationFileUpdateStrategy;
 import deus.core.soul.subscriber.Subscriber;
 import deus.model.depository.generic.DistributedInformationFolder;
-import deus.model.dossier.generic.ForeignInformationFile;
+import deus.model.dossier.DigitalCard;
+import deus.model.dossier.generic.InformationFile;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.LopEntry;
 import deus.model.sub.SubscriptionState;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
-// TODO: add DIF
 @Configurable
 public class SubscriberImpl implements Subscriber {
 
@@ -29,6 +32,8 @@ public class SubscriberImpl implements Subscriber {
 
 	private final DistributedInformationFolder distributedInformationFolder;
 
+	@Resource(name="foreignInformationFileUpdateStrategy")
+	private InformationFileUpdateStrategy foreignInformationFileUpdateStrategy;
 
 	@Autowired
 	private SubscriberCommandSender subscriberCommandSender;
@@ -63,13 +68,18 @@ public class SubscriberImpl implements Subscriber {
 
 
 	@Override
-	public void update(UserId publisherId, ForeignInformationFile change) {
+	public void update(UserId publisherId, DigitalCard digitalCard) {
+		if(!digitalCard.getCpId().equals(subscriberId))
+			// FIXME: how to handle this??
+			;
 		logger.trace("in subscriber {}: updating the DIF for publisher {}", getSubscriberId(), publisherId);
-
+		
 		if (!listOfPublishers.containsKey(publisherId))
 			// FIXME: how to handle this??
 			;
-		// FIXME: how to do object change (append, update, ...)
+
+		InformationFile fif = distributedInformationFolder.getForeignInformationFile(publisherId);
+		foreignInformationFileUpdateStrategy.update(fif, digitalCard);
 	}
 
 

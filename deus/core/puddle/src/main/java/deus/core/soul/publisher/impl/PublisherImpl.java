@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Configurable;
 
 import deus.core.access.transport.core.sending.command.PublisherCommandSender;
 import deus.core.soul.publisher.Publisher;
-import deus.model.dossier.generic.ForeignInformationFile;
+import deus.model.dossier.DigitalCard;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.LosEntry;
 import deus.model.user.UserMetadata;
@@ -72,8 +72,8 @@ public class PublisherImpl implements Publisher {
 
 
 	@Override
-	public void notifyObservers(ForeignInformationFile change) {
-		logger.trace("notifying subscribers of change {}", change);
+	public void notifyObservers(DigitalCard digitalCard) {
+		logger.trace("notifying subscribers of change {}", digitalCard);
 		
 		/*
 		 * a temporary array buffer, used as a snapshot of the state of current Observers.
@@ -95,7 +95,7 @@ public class PublisherImpl implements Publisher {
 			// TODO: think about publishing using multiple threads
 			UserId subscriberId = (UserId) arrLocal[i];
 			
-			publisherCommandSender.update(subscriberId, publisherId, change);
+			publisherCommandSender.update(subscriberId, publisherId, digitalCard);
 		}
 	}
 

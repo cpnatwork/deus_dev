@@ -1,6 +1,6 @@
 package deus.core.access.transport.core.messages;
 
-import deus.model.dossier.generic.ForeignInformationFile;
+import deus.model.dossier.DigitalCard;
 
 /**
  * Command, issued by the publisher to inform registered subscribers about an update.
@@ -10,17 +10,17 @@ import deus.model.dossier.generic.ForeignInformationFile;
  */
 public class UpdateMessage extends TransportMessage {
 
-	private final ForeignInformationFile foreignInformationFile;
+	private final DigitalCard digitalCard;
 
 
-	public UpdateMessage(ForeignInformationFile foreignInformationFile) {
+	public UpdateMessage(DigitalCard digitalCard) {
 		super();
-		this.foreignInformationFile = foreignInformationFile;
+		this.digitalCard = digitalCard;
 	}
 
 
-	public ForeignInformationFile getForeignInformationFile() {
-		return foreignInformationFile;
+	public DigitalCard getDigitalCard() {
+		return digitalCard;
 	}
 
 }

@@ -23,6 +23,7 @@ import deus.core.soul.subscriber.impl.RemoteCalledSubscriberToSubscriberAdapter;
 import deus.core.soul.subscriber.impl.SubscriberBarkerProxy;
 import deus.core.soul.subscriber.impl.SubscriberImpl;
 import deus.model.attention.decision.DecisionType;
+import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;
@@ -79,8 +80,8 @@ public class UserFactoryImpl implements UserFactory {
 
 		// SUBSCRIBER
 		ListOfPublishers lop = subDao.getListOfPublishers(userId);
-		//DistributedInformationFolder distributedInformationFolder = subDao.getDistributedInformationFolder(userId);
-		SubscriberImpl subscriberImpl = new SubscriberImpl(lop, userId, user.getUserMetadata(), null); //distributedInformationFolder);
+		DistributedInformationFolder distributedInformationFolder = subDao.getDistributedInformationFolder(userId);
+		SubscriberImpl subscriberImpl = new SubscriberImpl(lop, userId, user.getUserMetadata(), distributedInformationFolder);
 		RemoteCalledSubscriber subscriberBarkerProxy = new SubscriberBarkerProxy(subscriberImpl, user.barker, lop);
 
 		Subscriber subscriber = new RemoteCalledSubscriberToSubscriberAdapter(subscriberBarkerProxy, subscriberImpl);

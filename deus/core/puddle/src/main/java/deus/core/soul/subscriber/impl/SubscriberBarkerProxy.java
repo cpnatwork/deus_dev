@@ -9,6 +9,7 @@ import deus.model.attention.notice.Notice;
 import deus.model.attention.notice.SubscriptionDeniedNotice;
 import deus.model.attention.notice.SubscriptionGrantedNotice;
 import deus.model.attention.notice.UpdateNotice;
+import deus.model.dossier.DigitalCard;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
@@ -63,10 +64,10 @@ public class SubscriberBarkerProxy implements RemoteCalledSubscriber {
 
 
 	@Override
-	public void update(UserId publisherId, ForeignInformationFile fif) {
+	public void update(UserId publisherId, DigitalCard digitalCard) {
 		logger.debug("proxying call to update");
 		
-		proxiedSubscriber.update(publisherId, fif);
+		proxiedSubscriber.update(publisherId, digitalCard);
 		
 		Notice notice = new UpdateNotice(listOfPublishers.get(publisherId).getPublisherMetadata());
 		barker.addUnnoticedAttentionElement(notice);

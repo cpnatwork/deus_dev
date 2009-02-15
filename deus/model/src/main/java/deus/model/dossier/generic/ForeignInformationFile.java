@@ -1,5 +1,8 @@
 package deus.model.dossier.generic;
 
+import java.util.Set;
+
+import deus.model.dossier.DigitalCard;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -13,11 +16,17 @@ import deus.model.user.id.UserId;
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  */
-public abstract class ForeignInformationFile {
+public abstract class ForeignInformationFile extends InformationFile {
 
-	private UserId publisherId;
+	private final UserId publisherId;
 
-	private UserMetadata publisherMetadata;
+	private final UserMetadata publisherMetadata;
+
+	public ForeignInformationFile(UserId publisherId, UserMetadata publisherMetadata, Set<DigitalCard> digitalCards) {
+		super(digitalCards);
+		this.publisherId = publisherId;
+		this.publisherMetadata = publisherMetadata;
+	}
 
 
 	public UserId getPublisherId() {
@@ -25,18 +34,8 @@ public abstract class ForeignInformationFile {
 	}
 
 
-	public void setPublisherId(UserId publisherId) {
-		this.publisherId = publisherId;
-	}
-
-
 	public UserMetadata getPublisherMetadata() {
 		return publisherMetadata;
-	}
-
-
-	public void setPublisherMetadata(UserMetadata publisherMetadata) {
-		this.publisherMetadata = publisherMetadata;
 	}
 
 }

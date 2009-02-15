@@ -1,6 +1,7 @@
 package deus.model.depository.generic;
 
 import deus.model.dossier.generic.ForeignInformationFile;
+import deus.model.dossier.generic.InformationFile;
 import deus.model.user.id.UserId;
 
 /**
@@ -21,7 +22,7 @@ import deus.model.user.id.UserId;
  */
 public interface DistributedInformationFolder {
 
-	public ForeignInformationFile getForeignInformationFile(UserId publisherId);
+	public InformationFile getForeignInformationFile(UserId publisherId);
 
 
 	public void updateForeignInformationFile(ForeignInformationFile foreignInformationFile);

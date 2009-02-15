@@ -10,7 +10,7 @@ import deus.core.access.transport.core.messages.UpdateMessage;
 import deus.core.access.transport.plugins.xmpp.FIFChange;
 import deus.core.access.transport.plugins.xmpp.receiving.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
 import deus.core.access.transport.plugins.xmpp.util.PacketPrinter;
-import deus.model.dossier.generic.ForeignInformationFile;
+import deus.model.dossier.DigitalCard;
 
 public class UpdatePacketListener extends UserMetadataParsingFilteredPacketListener {
 
@@ -33,11 +33,11 @@ public class UpdatePacketListener extends UserMetadataParsingFilteredPacketListe
 		FIFChange fifChange = (FIFChange) iq;
 		String xml = fifChange.getChildElementXML();
 
-		ForeignInformationFile change = null;
+		DigitalCard digitalCard = null;
 		// TODO: do XML to object binding
-		// change = xmltoobjectbind(xml);
+		// digitalCard = xmltoobjectbind(xml);
 
-		TransportMessage command = new UpdateMessage(change);
+		TransportMessage command = new UpdateMessage(digitalCard);
 		sendCommand(command, packet);
 	}
 

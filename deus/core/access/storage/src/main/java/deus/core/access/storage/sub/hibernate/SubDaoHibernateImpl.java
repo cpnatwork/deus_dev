@@ -1,6 +1,7 @@
 package deus.core.access.storage.sub.hibernate;
 
 import deus.core.access.storage.sub.api.SubDao;
+import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;
 
@@ -9,6 +10,14 @@ public class SubDaoHibernateImpl implements SubDao {
 
 	@Override
 	public ListOfPublishers getListOfPublishers(UserId lopOwnerUserId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+
+	@Override
+	public DistributedInformationFolder getDistributedInformationFolder(UserId userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -40,6 +49,5 @@ public class SubDaoHibernateImpl implements SubDao {
 		// TODO Auto-generated method stub
 
 	}
-
 
 }
