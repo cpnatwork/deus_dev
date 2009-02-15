@@ -9,9 +9,13 @@ import deus.core.access.storage.attention.api.AttentionDao;
 import deus.core.access.storage.pub.api.PubDao;
 import deus.core.access.storage.sub.api.SubDao;
 import deus.core.access.storage.user.api.UserDao;
+import deus.core.soul.barker.decisionprocessors.ContributionDecisionProcessor;
 import deus.core.soul.barker.decisionprocessors.DelegateDecisionProcessor;
 import deus.core.soul.barker.decisionprocessors.SubscriberRequestDecisionProcessor;
 import deus.core.soul.barker.impl.BarkerImpl;
+import deus.core.soul.contribution.counter.impl.ContributionCounterImpl;
+import deus.core.soul.contribution.update.Updater;
+import deus.core.soul.contribution.update.impl.UpdaterImpl;
 import deus.core.soul.publisher.Publisher;
 import deus.core.soul.publisher.RemoteCalledPublisher;
 import deus.core.soul.publisher.impl.PublisherBarkerProxy;
@@ -24,6 +28,7 @@ import deus.core.soul.subscriber.impl.SubscriberBarkerProxy;
 import deus.core.soul.subscriber.impl.SubscriberImpl;
 import deus.model.attention.decision.DecisionType;
 import deus.model.depository.generic.DistributedInformationFolder;
+import deus.model.dossier.generic.PersonalInformationFile;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;
@@ -67,15 +72,26 @@ public class UserFactoryImpl implements UserFactory {
 
 		Publisher publisher = new RemoteCalledPublisherToPublisherAdapter(publisherBarkerProxy, publisherImpl);
 		user.publisher = publisher;
+		
+		// CONTRIBUTION COUNTER
+		// FIXME: load PIF from dao
+		PersonalInformationFile pif = null;
+		Updater updater = new UpdaterImpl(pif);		
+		user.contributionCounter = new ContributionCounterImpl(user.userId, user.barker, updater);
 
-
+		
 		// DECISION PROCESSORS
 		DelegateDecisionProcessor decisionProcessor = new DelegateDecisionProcessor();
 		user.barker.setDecisionProcessor(decisionProcessor);
 
+		// DP for subscriber request
 		// don't use user.publisher here, since this one is proxied!
 		SubscriberRequestDecisionProcessor sr = new SubscriberRequestDecisionProcessor(publisherImpl);
 		decisionProcessor.addDecisionProcessor(sr, DecisionType.subscriberRequest);
+		
+		// DP for contribution
+		ContributionDecisionProcessor cdr = new ContributionDecisionProcessor(updater);
+		decisionProcessor.addDecisionProcessor(cdr, DecisionType.contribution);
 		
 
 		// SUBSCRIBER

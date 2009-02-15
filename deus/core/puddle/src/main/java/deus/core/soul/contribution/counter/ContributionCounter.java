@@ -14,6 +14,9 @@ import deus.model.user.id.UserId;
  */
 public interface ContributionCounter {
 
-	public void contribute(DigitalCard contributedDigitalCard, UserId contributorId);
+	public void contributeSelf(DigitalCard contributedDigitalCard);
+
+
+	public void contributeOther(DigitalCard contributedDigitalCard, UserId contributorId);
 
 }

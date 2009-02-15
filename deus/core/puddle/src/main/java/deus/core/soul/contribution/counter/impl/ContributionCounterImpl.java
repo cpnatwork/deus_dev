@@ -9,7 +9,6 @@ import deus.model.dossier.DigitalCard;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
-
 public class ContributionCounterImpl implements ContributionCounter {
 
 	private final UserId userId;
@@ -17,8 +16,8 @@ public class ContributionCounterImpl implements ContributionCounter {
 	private final Barker barker;
 
 	private final Updater updater;
-	
-	
+
+
 	public ContributionCounterImpl(UserId userId, Barker barker, Updater updater) {
 		super();
 		this.userId = userId;
@@ -26,33 +25,34 @@ public class ContributionCounterImpl implements ContributionCounter {
 		this.updater = updater;
 	}
 
-	@Override
-	public void contribute(DigitalCard contributedDigitalCard, UserId contributorId) {
+
+	private void checkDc(DigitalCard contributedDigitalCard) {
 		// TODO: do we use RuntimeException here?
-		if(!contributorId.equals(contributedDigitalCard.getContributorId()))
-			throw new RuntimeException("ID of the contributor does not match the id in the digital card!");
-		
-		// TODO: do we use RuntimeException here?
-		if(!userId.equals(contributedDigitalCard.getCpId()))
-			throw new RuntimeException("ID of the CP is not the ID of the user, that is handled in this contribution counter"); 
-		
-		if (contributorId.equals(userId))
-			contributeSelf(contributedDigitalCard);
-		else
-			contributeOther(contributedDigitalCard);
+		if (!userId.equals(contributedDigitalCard.getCpId()))
+			throw new RuntimeException(
+					"ID of the CP is not the ID of the user, that is handled in this contribution counter");
 	}
 
 
-	private void contributeSelf(DigitalCard contributedDigitalCard) {
+	@Override
+	public void contributeSelf(DigitalCard contributedDigitalCard) {
+		checkDc(contributedDigitalCard);
 		updater.commit(contributedDigitalCard);
 	}
 
 
-	private void contributeOther(DigitalCard contributedDigitalCard) {
+	@Override
+	public void contributeOther(DigitalCard contributedDigitalCard, UserId contributorId) {
+		checkDc(contributedDigitalCard);
+
+		// TODO: do we use RuntimeException here?
+		if (!contributorId.equals(contributedDigitalCard.getContributorId()))
+			throw new RuntimeException("ID of the contributor does not match the id in the digital card!");
+
 		// FIXME: do contributors need to register before contributing????
 		// if not, than a UserMetadata of should be passed to contribute()
 		// otherwise a Map<UserId, UserMetadata> of the contributors should be added
-		
+
 		UserMetadata contributorMetadata = null;
 
 		BinaryDecisionToMake decision = new Contribution(contributorMetadata, contributedDigitalCard);

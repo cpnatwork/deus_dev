@@ -1,7 +1,7 @@
 package deus.core.soul;
 
 import deus.core.soul.barker.Barker;
-import deus.core.soul.lodother.LodOther;
+import deus.core.soul.contribution.counter.ContributionCounter;
 import deus.core.soul.publisher.Publisher;
 import deus.core.soul.subscriber.Subscriber;
 import deus.model.pub.ListOfSubscribers;
@@ -17,7 +17,7 @@ public class User {
 	Publisher publisher;
 	Subscriber subscriber;
 
-	LodOther lodOther;
+	ContributionCounter contributionCounter;
 
 	Barker barker;
 
