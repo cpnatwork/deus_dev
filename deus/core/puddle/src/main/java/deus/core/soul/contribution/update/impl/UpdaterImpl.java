@@ -27,6 +27,8 @@ public class UpdaterImpl implements Updater {
 	@Override
 	public void commit(DigitalCard digitalCard) {
 		personalInformationFileUpdateStrategy.update(personalInformationFile, digitalCard);
+		
+		// FIXME: store PIF here!
 	}
 
 }
