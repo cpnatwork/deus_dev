@@ -14,9 +14,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.core.access.transport.core.messages.TransportMessage;
+import deus.core.access.transport.core.soul.mapper.TransportIdMapper;
+import deus.core.access.transport.core.soul.mapper.UserIdMapper;
 import deus.core.access.transport.core.soul.protocol.MessageSender;
 import deus.core.access.transport.core.soul.protocol.TransportId;
-import deus.core.access.transport.core.soul.protocol.TransportIdUserIdMapper;
 import deus.core.access.transport.core.soul.protocolregistry.TransportProtocolRegistry;
 import deus.core.access.transport.plugins.testTP.protocol.TestTransportId;
 import deus.core.access.transport.plugins.testTP.protocol.TestTransportProtocol;
@@ -41,22 +42,33 @@ public class TransportProtocolRegistryImplTest {
 		tp.setLoginEventCallback(null); // we don't need login for this test
 		tp.setRegistrationEventCallback(null); // we don't need registration for this test
 		
-		TransportIdUserIdMapper mapper = new TransportIdUserIdMapper() {
+		TransportIdMapper transportIdMapper = new TransportIdMapper() {
 
 			@Override
-			public TransportId map(UserId userId) {
-				return new TestTransportId(userId.toString());
-			}
-
-
-			@Override
-			public UserId map(TransportId transportId) {
+			public UserId resolveLocal(TransportId transportId) {
 				return new UserUrl(((TestTransportId) transportId).getUsername(), "deus.org");
+
 			}
 
 		};
+		tp.setTransportIdMapper(transportIdMapper);
 		
-		tp.setTransportIdUserIdMapper(mapper);
+		UserIdMapper userIdMapper = new UserIdMapper() {
+
+			@Override
+			public TransportId resolveLocal(UserId userId, String transportProtocolId) {
+				return new TestTransportId(userId.toString());
+			}
+
+			@Override
+			public TransportId resolveRemote(UserId userId, String transportProtocolId) {
+				return new TestTransportId(userId.toString());
+			}
+
+		};
+		tp.setUserIdMapper(userIdMapper);
+		
+		
 		
 		tp.setMessageSender(new MessageSender() {
 

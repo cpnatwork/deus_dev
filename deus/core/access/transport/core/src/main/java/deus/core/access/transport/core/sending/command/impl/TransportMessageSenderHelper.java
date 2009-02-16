@@ -8,6 +8,7 @@ import deus.core.access.transport.core.sending.message.MessageSenderRegistry;
 import deus.core.access.transport.core.soul.discovery.TransportProtocolDiscoveryStrategy;
 import deus.core.access.transport.core.soul.mapper.UserIdMapper;
 import deus.core.access.transport.core.soul.protocol.MessageSender;
+import deus.core.access.transport.core.soul.protocolregistry.TransportProtocolRegistry;
 import deus.model.user.id.UserId;
 
 @Component
@@ -17,7 +18,7 @@ public class TransportMessageSenderHelper {
 	private TransportProtocolDiscoveryStrategy transportProtocolDiscoveryStrategy;
 
 	@Autowired
-	private UserIdMapper userIdMapper;
+	private TransportProtocolRegistry transportProtocolRegistry;
 
 	@Autowired
 	private MessageSenderRegistry messageSenderRegistry;
@@ -27,6 +28,8 @@ public class TransportMessageSenderHelper {
 		// agree on transport protocol
 		String transportProtocolId = transportProtocolDiscoveryStrategy.agreeOnTransportProtocol(receiverId);
 
+		UserIdMapper userIdMapper = transportProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId).getUserIdMapper();
+		
 		// set sender ID
 		transportMessage.setSenderId(senderId);
 		

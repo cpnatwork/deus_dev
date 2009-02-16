@@ -1,5 +1,7 @@
 package deus.core.access.transport.core.soul.protocol;
 
+import deus.core.access.transport.core.soul.mapper.TransportIdMapper;
+import deus.core.access.transport.core.soul.mapper.UserIdMapper;
 import deus.core.access.transport.core.soul.protocol.callback.LoginEventCallback;
 import deus.core.access.transport.core.soul.protocol.callback.RegistrationEventCallback;
 
@@ -11,12 +13,12 @@ public abstract class AbstractTransportProtocol implements TransportProtocol {
 
 	private RegistrationEventCallback registrationEventCallback;
 
-	private TransportIdUserIdMapper transportIdUserIdMapper;
+	private TransportIdMapper transportIdMapper;
+	
+	private UserIdMapper userIdMapper;
 
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.transport.protocol.TransportProtocol#getMessageSender()
-	 */
+	@Override
 	public MessageSender getMessageSender() {
 		return messageSender;
 	}
@@ -27,9 +29,7 @@ public abstract class AbstractTransportProtocol implements TransportProtocol {
 	}
 
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.transport.protocol.TransportProtocol#getLoginEventCallback()
-	 */
+	@Override
 	public LoginEventCallback getLoginEventCallback() {
 		return loginEventCallback;
 	}
@@ -40,9 +40,7 @@ public abstract class AbstractTransportProtocol implements TransportProtocol {
 	}
 
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.transport.protocol.TransportProtocol#getRegistrationEventCallback()
-	 */
+	@Override
 	public RegistrationEventCallback getRegistrationEventCallback() {
 		return registrationEventCallback;
 	}
@@ -52,22 +50,32 @@ public abstract class AbstractTransportProtocol implements TransportProtocol {
 		this.registrationEventCallback = registrationEventCallback;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transport.protocol.TransportProtocol#getTransportIdUserIdMapper()
-	 */
-	public TransportIdUserIdMapper getTransportIdUserIdMapper() {
-		return transportIdUserIdMapper;
+	
+	@Override
+	public TransportIdMapper getTransportIdMapper() {
+		return transportIdMapper;
 	}
 
 
-	public void setTransportIdUserIdMapper(TransportIdUserIdMapper transportIdUserIdMapper) {
-		this.transportIdUserIdMapper = transportIdUserIdMapper;
+	public void setTransportIdMapper(TransportIdMapper transportIdMapper) {
+		this.transportIdMapper = transportIdMapper;
 	}
+
+	@Override
+	public UserIdMapper getUserIdMapper() {
+		return userIdMapper;
+	}
+
+
+	public void setUserIdMapper(UserIdMapper userIdMapper) {
+		this.userIdMapper = userIdMapper;
+	}
+
 
 	/* (non-Javadoc)
 	 * @see deus.core.access.transport.protocol.TransportProtocol#getTransportProtocolId()
 	 */
+	@Override
 	public abstract String getId();
 	
 	

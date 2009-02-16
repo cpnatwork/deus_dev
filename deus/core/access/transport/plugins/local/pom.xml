@@ -40,7 +40,7 @@
 
 		<dependency>
 			<groupId>inf6.promed</groupId>
-			<artifactId>deus-core-transport</artifactId>
+			<artifactId>deus-core-access-transport-core</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
                 

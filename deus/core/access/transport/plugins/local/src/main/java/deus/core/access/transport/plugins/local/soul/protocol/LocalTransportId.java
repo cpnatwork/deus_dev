@@ -1,6 +1,6 @@
 package deus.core.access.transport.plugins.local.soul.protocol;
 
-import deus.core.transport.core.protocol.TransportId;
+import deus.core.access.transport.core.soul.protocol.TransportId;
 
 public class LocalTransportId implements TransportId {
 

@@ -3,8 +3,8 @@ package deus.core.access.transport.core.soul.observers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.transport.core.soul.mapper.UserIdMapper;
 import deus.core.access.transport.core.soul.protocol.TransportId;
-import deus.core.access.transport.core.soul.protocol.TransportIdUserIdMapper;
 import deus.core.access.transport.core.soul.protocol.TransportProtocol;
 import deus.core.access.transport.core.soul.protocolregistry.TransportProtocolRegistry;
 import deus.gatekeeper.UserLoginStateObserver;
@@ -20,8 +20,8 @@ public class TransportProtocolLoginUserLoginStateObserver implements UserLoginSt
 	public void loggedIn(UserId userId) {
 		for (String transportProtocolId : transportProtocolRegistry.getAllRegisteredTransportProtocolIds()) {
 			TransportProtocol tp = transportProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId);
-			TransportIdUserIdMapper transportIdUserIdMapper = tp.getTransportIdUserIdMapper();
-			TransportId transportId = transportIdUserIdMapper.map(userId);
+			UserIdMapper userIdMapper = tp.getUserIdMapper();
+			TransportId transportId = userIdMapper.resolveLocal(userId, transportProtocolId);
 			tp.getLoginEventCallback().loggedIn(transportId);
 		}
 	}
@@ -31,8 +31,9 @@ public class TransportProtocolLoginUserLoginStateObserver implements UserLoginSt
 	public void loggedOut(UserId userId) {
 		for (String transportProtocolId : transportProtocolRegistry.getAllRegisteredTransportProtocolIds()) {
 			TransportProtocol tp = transportProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId);
-			TransportIdUserIdMapper transportIdUserIdMapper = tp.getTransportIdUserIdMapper();
-			tp.getLoginEventCallback().loggedOut(transportIdUserIdMapper.map(userId));
+			UserIdMapper userIdMapper = tp.getUserIdMapper();
+			TransportId transportId = userIdMapper.resolveLocal(userId, transportProtocolId);
+			tp.getLoginEventCallback().loggedOut(transportId);
 		}
 	}
 

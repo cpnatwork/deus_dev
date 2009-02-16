@@ -8,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.soul.discovery.TransportProtocolDiscoveryStrategy;
+import deus.core.access.transport.core.soul.mapper.TransportIdMapper;
+import deus.core.access.transport.core.soul.mapper.UserIdMapper;
 import deus.core.access.transport.core.soul.protocol.MessageSender;
 import deus.core.access.transport.core.soul.protocol.TransportId;
-import deus.core.access.transport.core.soul.protocol.TransportIdUserIdMapper;
 import deus.core.access.transport.core.soul.protocolregistry.TransportProtocolRegistry;
 import deus.core.access.transport.plugins.testTP.protocol.TestTransportId;
 import deus.core.access.transport.plugins.testTP.protocol.TestTransportProtocol;
@@ -29,7 +30,8 @@ public abstract class AbstractCommandSenderTest {
 	
 	protected TransportMessage lastSentTransportMessage;
 	private TestTransportProtocol tp;
-	protected TransportIdUserIdMapper mapper;
+	protected TransportIdMapper transportIdMapper;
+	protected UserIdMapper userIdMapper;
 
 	
 	protected UserId subscriberId;	
@@ -52,22 +54,33 @@ public abstract class AbstractCommandSenderTest {
 		tp.setLoginEventCallback(null); // we don't need login for this test
 		tp.setRegistrationEventCallback(null); // we don't need registration for this test
 		
-		mapper = new TransportIdUserIdMapper() {
+		transportIdMapper = new TransportIdMapper() {
 
 			@Override
-			public TransportId map(UserId userId) {
-				return new TestTransportId(userId.toString());
-			}
-
-
-			@Override
-			public UserId map(TransportId transportId) {
+			public UserId resolveLocal(TransportId transportId) {
 				return new UserUrl(((TestTransportId) transportId).getUsername(), "deus.org");
+
 			}
 
 		};
+		tp.setTransportIdMapper(transportIdMapper);
 		
-		tp.setTransportIdUserIdMapper(mapper);
+		userIdMapper = new UserIdMapper() {
+
+			@Override
+			public TransportId resolveLocal(UserId userId, String transportProtocolId) {
+				return new TestTransportId(userId.toString());
+			}
+
+			@Override
+			public TransportId resolveRemote(UserId userId, String transportProtocolId) {
+				return new TestTransportId(userId.toString());
+			}
+
+		};
+		tp.setUserIdMapper(userIdMapper);
+		
+		
 		
 		tp.setMessageSender(new MessageSender() {
 
@@ -99,8 +112,8 @@ public abstract class AbstractCommandSenderTest {
 
 	protected void setTids(TransportMessage expectedMessage, UserId senderId, UserId receiverId) {
 		expectedMessage.setSenderId(senderId);
-		expectedMessage.setReceiverTid(transportProtocolDiscoveryStrategy.resolveTransportId(testTransportProtocolId, receiverId));
-		expectedMessage.setSenderTid(mapper.map(senderId));
+		expectedMessage.setReceiverTid(userIdMapper.resolveRemote(receiverId, testTransportProtocolId));
+		expectedMessage.setSenderTid(userIdMapper.resolveLocal(senderId, testTransportProtocolId));
 	}
 	
 }

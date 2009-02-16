@@ -13,9 +13,13 @@
 			<bean class="deus.core.transport.core.protocol.callback.DefaultRegistrationEventCallback" />
 		</property>
 		<property name="messageSender" ref="localMessageSender"/>
-		<property name="transportIdUserIdMapper">
-			<bean class="deus.core.access.transport.plugins.local.soul.mapper.LocalTransportIdUserIdMapper"/>
+		<property name="transportIdMapper">
+			<bean class="deus.core.access.transport.plugins.local.soul.mapper.LocalTransportIdMapper"/>
 		</property>
+		<property name="userIdMapper">
+			<bean class="deus.core.access.transport.plugins.local.soul.mapper.LocalUserIdMapper"/>
+		</property>
+
 	</bean>
 	
 	<bean id="transportProtocolId" class="java.lang.String">

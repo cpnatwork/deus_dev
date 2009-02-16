@@ -14,6 +14,7 @@ import deus.core.access.transport.core.receiving.command.PublisherCommandReceive
 import deus.core.access.transport.core.receiving.command.SubscriberCommandReceiver;
 import deus.core.access.transport.core.receiving.message.MessageReceiver;
 import deus.core.access.transport.core.soul.mapper.TransportIdMapper;
+import deus.core.access.transport.core.soul.protocolregistry.TransportProtocolRegistry;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -24,18 +25,21 @@ public class DelegateToCommandReceiverMessageReceiver implements MessageReceiver
 	private CommandReceiverRegistry registry;
 
 	@Autowired
-	private TransportIdMapper transportIdMapper;
+	private TransportProtocolRegistry transportProtocolRegistry;
 
 
 	// TODO: refactor (introduce more receive methods and dispatch in this one)
 	@Override
 	public void receive(String transportProtocolId, TransportMessage message) {
+		TransportIdMapper transportIdMapper = transportProtocolRegistry.getRegisteredTransportProtocol(
+				transportProtocolId).getTransportIdMapper();
+
 		UserId receiverId = transportIdMapper.resolveLocal(message.getReceiverTid());
 		UserId senderId = message.getSenderId();
 
 		PublisherCommandReceiver publisherCommandReceiver = registry.getPublisherCommandReceiver();
 		SubscriberCommandReceiver subscriberCommandReceiver = registry.getSubscriberCommandReceiver();
-		
+
 		// USE CASE: SUBSCRIBE
 		if (message instanceof SubscribeMessage) {
 			if (message instanceof RequestSubscriptionMessage) {
