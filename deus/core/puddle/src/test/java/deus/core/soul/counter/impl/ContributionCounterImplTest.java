@@ -30,7 +30,7 @@ public class ContributionCounterImplTest {
 	@Test
 	public void testContributeWithBadContributorId() {
 		try {
-			counter.contribute(digitalCard, new UserUrl("bob", "deus.org"));
+			counter.contributeOther(digitalCard, new UserUrl("bob", "deus.org"));
 			fail("contribution with different contributor id than in the DC is possible");
 		}
 		catch(RuntimeException e) {
