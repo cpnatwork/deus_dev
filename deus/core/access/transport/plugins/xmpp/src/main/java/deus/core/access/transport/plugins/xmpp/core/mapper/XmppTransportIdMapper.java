@@ -8,7 +8,9 @@ public class XmppTransportIdMapper implements TransportIdMapper {
 
 	@Override
 	public UserId resolveLocal(TransportId transportId) {
-		// TODO Auto-generated method stub
+		// FIXME: should we also include the receivers user ID in transport messages, so that this
+		// mapper can be avoided completely?
+		
 		return null;
 	}
 

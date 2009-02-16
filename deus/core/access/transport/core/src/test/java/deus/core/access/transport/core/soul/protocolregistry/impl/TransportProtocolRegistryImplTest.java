@@ -56,12 +56,12 @@ public class TransportProtocolRegistryImplTest {
 		UserIdMapper userIdMapper = new UserIdMapper() {
 
 			@Override
-			public TransportId resolveLocal(UserId userId, String transportProtocolId) {
+			public TransportId resolveLocal(UserId userId) {
 				return new TestTransportId(userId.toString());
 			}
 
 			@Override
-			public TransportId resolveRemote(UserId userId, String transportProtocolId) {
+			public TransportId resolveRemote(UserId userId) {
 				return new TestTransportId(userId.toString());
 			}
 

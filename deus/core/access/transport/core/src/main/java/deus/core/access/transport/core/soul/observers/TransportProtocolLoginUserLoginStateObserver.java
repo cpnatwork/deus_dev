@@ -21,7 +21,7 @@ public class TransportProtocolLoginUserLoginStateObserver implements UserLoginSt
 		for (String transportProtocolId : transportProtocolRegistry.getAllRegisteredTransportProtocolIds()) {
 			TransportProtocol tp = transportProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId);
 			UserIdMapper userIdMapper = tp.getUserIdMapper();
-			TransportId transportId = userIdMapper.resolveLocal(userId, transportProtocolId);
+			TransportId transportId = userIdMapper.resolveLocal(userId);
 			tp.getLoginEventCallback().loggedIn(transportId);
 		}
 	}
@@ -32,7 +32,7 @@ public class TransportProtocolLoginUserLoginStateObserver implements UserLoginSt
 		for (String transportProtocolId : transportProtocolRegistry.getAllRegisteredTransportProtocolIds()) {
 			TransportProtocol tp = transportProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId);
 			UserIdMapper userIdMapper = tp.getUserIdMapper();
-			TransportId transportId = userIdMapper.resolveLocal(userId, transportProtocolId);
+			TransportId transportId = userIdMapper.resolveLocal(userId);
 			tp.getLoginEventCallback().loggedOut(transportId);
 		}
 	}

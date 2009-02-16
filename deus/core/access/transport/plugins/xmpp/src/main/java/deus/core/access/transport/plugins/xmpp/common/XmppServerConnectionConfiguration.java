@@ -4,11 +4,24 @@ import org.jivesoftware.smack.ConnectionConfiguration.SecurityMode;
 
 public class XmppServerConnectionConfiguration {
 
+	private String localXmppServerAddress;
+
+
 	private boolean compression;
 
 	private boolean saslAuthentication;
 
 	private SecurityMode securityMode;
+
+
+	public String getLocalXmppServerAddress() {
+		return localXmppServerAddress;
+	}
+
+
+	public void setLocalXmppServerAddress(String localXmppServerAddress) {
+		this.localXmppServerAddress = localXmppServerAddress;
+	}
 
 
 	public boolean isCompression() {

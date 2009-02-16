@@ -23,8 +23,9 @@
 		<constructor-arg value="xmpp" />
 	</bean>
 
-
+	<!-- TODO: externalize settings to properties-file -->
 	<bean id="xmppServerConnectionConfiguration" class="deus.core.access.transport.plugins.xmpp.common.XmppServerConnectionConfiguration">
+		<property name="localXmppServerAddress" value="faui6p15:9090"/>
 		<property name="compression" value="false" />
 		<property name="saslAuthentication" value="false" />
 		<property name="securityMode" value="disabled" />

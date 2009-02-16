@@ -68,12 +68,12 @@ public abstract class AbstractCommandSenderTest {
 		userIdMapper = new UserIdMapper() {
 
 			@Override
-			public TransportId resolveLocal(UserId userId, String transportProtocolId) {
+			public TransportId resolveLocal(UserId userId) {
 				return new TestTransportId(userId.toString());
 			}
 
 			@Override
-			public TransportId resolveRemote(UserId userId, String transportProtocolId) {
+			public TransportId resolveRemote(UserId userId) {
 				return new TestTransportId(userId.toString());
 			}
 
@@ -112,8 +112,8 @@ public abstract class AbstractCommandSenderTest {
 
 	protected void setTids(TransportMessage expectedMessage, UserId senderId, UserId receiverId) {
 		expectedMessage.setSenderId(senderId);
-		expectedMessage.setReceiverTid(userIdMapper.resolveRemote(receiverId, testTransportProtocolId));
-		expectedMessage.setSenderTid(userIdMapper.resolveLocal(senderId, testTransportProtocolId));
+		expectedMessage.setReceiverTid(userIdMapper.resolveRemote(receiverId));
+		expectedMessage.setSenderTid(userIdMapper.resolveLocal(senderId));
 	}
 	
 }

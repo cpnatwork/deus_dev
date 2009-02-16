@@ -34,8 +34,8 @@ public class TransportMessageSenderHelper {
 		transportMessage.setSenderId(senderId);
 		
 		// set TIDs of sender and receiver
-		transportMessage.setReceiverTid(userIdMapper.resolveRemote(receiverId, transportProtocolId));
-		transportMessage.setSenderTid(userIdMapper.resolveLocal(senderId, transportProtocolId));
+		transportMessage.setReceiverTid(userIdMapper.resolveRemote(receiverId));
+		transportMessage.setSenderTid(userIdMapper.resolveLocal(senderId));
 
 		// send mesg
 		MessageSender messageSender = messageSenderRegistry.getMessageSender(transportProtocolId);
