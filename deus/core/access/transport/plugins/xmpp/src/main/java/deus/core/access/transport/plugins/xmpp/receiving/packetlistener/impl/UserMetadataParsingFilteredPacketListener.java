@@ -32,6 +32,7 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 		XmppTransportId receiverJid = parseXmppTransportId(packet.getTo());
 		
 		// FIXME: add sender ID here
+		// FIXME: add receiver ID here
 		
 		command.setSenderTid(senderJid);
 		command.setReceiverTid(receiverJid);

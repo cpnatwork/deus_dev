@@ -48,6 +48,7 @@ public class XmppMessageSender implements MessageSender {
 
 				Presence presencePacket = new Presence(Presence.Type.subscribe);
 				presencePacket.setProperty(xmppConfiguration.getXmppPropertySenderId(), message.getSenderId());
+				presencePacket.setProperty(xmppConfiguration.getXmppPropertyReceiverId(), message.getReceiverId());
 				xmppConversation.sendPacket(presencePacket, receiverJid);
 			}
 			else if(message instanceof GrantSubscriptionMessage) {

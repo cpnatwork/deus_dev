@@ -6,6 +6,8 @@ public class XmppConfiguration {
 
 	private String xmppPropertySenderId;
 
+	private String xmppPropertyReceiverId;
+
 
 	public String getXmppPropertyFullName() {
 		return xmppPropertyFullName;
@@ -26,5 +28,14 @@ public class XmppConfiguration {
 		this.xmppPropertySenderId = xmppPropertySenderId;
 	}
 
+
+	public String getXmppPropertyReceiverId() {
+		return xmppPropertyReceiverId;
+	}
+
+
+	public void setXmppPropertyReceiverId(String xmppPropertyReceiverId) {
+		this.xmppPropertyReceiverId = xmppPropertyReceiverId;
+	}
 
 }

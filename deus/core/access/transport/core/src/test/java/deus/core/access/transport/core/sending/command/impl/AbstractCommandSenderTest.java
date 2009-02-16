@@ -105,13 +105,18 @@ public abstract class AbstractCommandSenderTest {
 
 	protected void testEqualsMessage(TransportMessage expected, TransportMessage actual) {
 		assertEquals(expected.getClass(), actual.getClass());
-		assertEquals(expected.getReceiverTid(), actual.getReceiverTid());
+		
+		assertEquals(expected.getSenderId(), actual.getSenderId());
+		assertEquals(expected.getReceiverId(), actual.getReceiverId());
+
 		assertEquals(expected.getSenderTid(), actual.getSenderTid());
+		assertEquals(expected.getReceiverTid(), actual.getReceiverTid());
 	}
 
 
 	protected void setTids(TransportMessage expectedMessage, UserId senderId, UserId receiverId) {
 		expectedMessage.setSenderId(senderId);
+		expectedMessage.setReceiverId(receiverId);
 		expectedMessage.setReceiverTid(userIdMapper.resolveRemote(receiverId));
 		expectedMessage.setSenderTid(userIdMapper.resolveLocal(senderId));
 	}

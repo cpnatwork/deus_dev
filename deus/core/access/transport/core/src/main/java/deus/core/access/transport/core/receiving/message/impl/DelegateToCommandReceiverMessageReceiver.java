@@ -31,11 +31,14 @@ public class DelegateToCommandReceiverMessageReceiver implements MessageReceiver
 	// TODO: refactor (introduce more receive methods and dispatch in this one)
 	@Override
 	public void receive(String transportProtocolId, TransportMessage message) {
-		TransportIdMapper transportIdMapper = transportProtocolRegistry.getRegisteredTransportProtocol(
-				transportProtocolId).getTransportIdMapper();
-
-		UserId receiverId = transportIdMapper.resolveLocal(message.getReceiverTid());
 		UserId senderId = message.getSenderId();
+		UserId receiverId = message.getReceiverId();
+		
+		// FIXME: remove this
+		//TransportIdMapper transportIdMapper = transportProtocolRegistry.getRegisteredTransportProtocol(
+		//		transportProtocolId).getTransportIdMapper();
+		//UserId receiverId = transportIdMapper.resolveLocal(message.getReceiverTid());
+		
 
 		PublisherCommandReceiver publisherCommandReceiver = registry.getPublisherCommandReceiver();
 		SubscriberCommandReceiver subscriberCommandReceiver = registry.getSubscriberCommandReceiver();

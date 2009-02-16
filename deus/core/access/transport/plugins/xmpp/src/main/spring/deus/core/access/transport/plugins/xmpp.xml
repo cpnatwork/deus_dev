@@ -33,6 +33,8 @@
 
 	<bean id="xmppConfiguration" class="deus.core.access.transport.plugins.xmpp.common.XmppConfiguration">
 		<property name="xmppPropertyFullName" value="fullName" />
+		<property name="xmppPropertySenderId" value="sender" />
+		<property name="xmppPropertyReceiverId" value="receiver" />
 	</bean>
 
 

@@ -6,6 +6,7 @@ import deus.model.user.id.UserId;
 public abstract class TransportMessage {
 
 	private UserId senderId;
+	private UserId receiverId;
 
 	private TransportId senderTid;
 	private TransportId receiverTid;
@@ -16,14 +17,6 @@ public abstract class TransportMessage {
 	}
 
 
-	public TransportMessage(UserId senderId, TransportId senderTid, TransportId receiverTid) {
-		super();
-		this.senderId = senderId;
-		this.senderTid = senderTid;
-		this.receiverTid = receiverTid;
-	}
-
-
 	public UserId getSenderId() {
 		return senderId;
 	}
@@ -31,6 +24,16 @@ public abstract class TransportMessage {
 
 	public void setSenderId(UserId senderId) {
 		this.senderId = senderId;
+	}
+
+
+	public UserId getReceiverId() {
+		return receiverId;
+	}
+
+
+	public void setReceiverId(UserId receiverId) {
+		this.receiverId = receiverId;
 	}
 
 
