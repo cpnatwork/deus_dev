@@ -23,6 +23,7 @@ public interface Subscriber extends RemoteCalledSubscriber, RemoteCallingSubscri
 	public ListOfPublishers getListOfPublishers();
 
 
+	@Deprecated
 	public UserId getSubscriberId();
 
 }

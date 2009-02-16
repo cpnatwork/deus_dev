@@ -33,10 +33,9 @@ public class ContributionCounterImplTest {
 			counter.contributeOther(digitalCard, new UserUrl("bob", "deus.org"));
 			fail("contribution with different contributor id than in the DC is possible");
 		}
-		catch(RuntimeException e) {
+		catch(IllegalArgumentException e) {
 			assertEquals("ID of the contributor does not match the id in the digital card!", e.getMessage());
 		}
 	}
-
 	
 }

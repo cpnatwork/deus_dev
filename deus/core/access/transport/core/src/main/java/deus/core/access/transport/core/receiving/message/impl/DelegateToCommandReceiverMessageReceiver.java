@@ -51,7 +51,6 @@ public class DelegateToCommandReceiverMessageReceiver implements MessageReceiver
 		}
 		// USE CASE: UNSUBSCRIBE
 		else if (message instanceof UnsubscribeMessage)
-			// FIXME: change interface of publisher to take these arguments
 			publisherCommandReceiver.deleteObserver(receiverId, senderId);
 		else
 			throw new IllegalArgumentException("cannot handle command " + message);

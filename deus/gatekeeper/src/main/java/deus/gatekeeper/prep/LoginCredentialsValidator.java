@@ -1,4 +1,4 @@
-package deus.gatekeeper.vo;
+package deus.gatekeeper.prep;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;

@@ -15,7 +15,7 @@ public class PartyInformationDC extends ContainerCard<Party> {
 	
 	public void setPartyInformation(Party partyInformation) {
 		if(!partyInformation.getId().equals(getCpId()))
-			throw new RuntimeException("passed a party information with an ID not equal to the id of the CP of this digital card!");
+			throw new IllegalArgumentException("passed a party information with an ID not equal to the ID of the CP of this digital card!");
 		root = partyInformation;
 	}
 

@@ -69,9 +69,9 @@ public class SubscriberImpl implements Subscriber {
 
 	@Override
 	public void update(UserId publisherId, DigitalCard digitalCard) {
-		if(!digitalCard.getCpId().equals(subscriberId))
-			// FIXME: how to handle this??
-			;
+		if(!digitalCard.getCpId().equals(publisherId))
+			throw new IllegalArgumentException("ID of publisher does not match CP ID in passed digital card");
+		
 		logger.trace("in subscriber {}: updating the DIF for publisher {}", getSubscriberId(), publisherId);
 		
 		if (!listOfPublishers.containsKey(publisherId))

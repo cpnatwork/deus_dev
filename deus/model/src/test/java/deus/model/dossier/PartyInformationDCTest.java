@@ -41,7 +41,7 @@ public class PartyInformationDCTest {
 			dc.setPartyInformation(otherPerson);
 			fail("could set party information with different ID than the one of the digital card");
 		}
-		catch(RuntimeException e) {}
+		catch(IllegalArgumentException e) {}
 	}
 
 }
