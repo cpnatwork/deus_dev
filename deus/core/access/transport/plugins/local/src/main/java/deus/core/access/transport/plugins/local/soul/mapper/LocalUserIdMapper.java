@@ -21,7 +21,8 @@ public class LocalUserIdMapper implements UserIdMapper {
 
 	@Override
 	public TransportId resolveRemote(UserId userId) {
-		// FIXME: this is actually done by discovery, right? so it should go to the transport-core-package!
+		// FIXME: Implement this by using discovery
+		// it should stay here, but maybe use discovery helper classes from transport-core
 		
 		return new LocalTransportId(userId.getUsername());
 	}
