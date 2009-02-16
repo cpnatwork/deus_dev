@@ -27,6 +27,9 @@ public class TransportMessageSenderHelper {
 		// agree on transport protocol
 		String transportProtocolId = transportProtocolDiscoveryStrategy.agreeOnTransportProtocol(receiverId);
 
+		// set sender ID
+		transportMessage.setSenderId(senderId);
+		
 		// set TIDs of sender and receiver
 		transportMessage.setReceiverTid(userIdMapper.resolveRemote(receiverId, transportProtocolId));
 		transportMessage.setSenderTid(userIdMapper.resolveLocal(senderId, transportProtocolId));

@@ -25,11 +25,13 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 	}
 	
 	
-	protected void sendCommand(TransportMessage command, Packet packet) {
+	protected void receiveCommand(TransportMessage command, Packet packet) {
 		//UserMetadata senderMetadata = parseFromUserMetadata(packet);
 		
 		XmppTransportId senderJid = parseXmppTransportId(packet.getFrom());
 		XmppTransportId receiverJid = parseXmppTransportId(packet.getTo());
+		
+		// FIXME: add sender ID here
 		
 		command.setSenderTid(senderJid);
 		command.setReceiverTid(receiverJid);

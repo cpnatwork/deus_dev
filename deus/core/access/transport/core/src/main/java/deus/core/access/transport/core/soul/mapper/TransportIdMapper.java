@@ -7,7 +7,4 @@ public interface TransportIdMapper {
 
 	public UserId resolveLocal(TransportId transportId);
 
-
-	public UserId resolveRemote(TransportId transportId);
-
 }

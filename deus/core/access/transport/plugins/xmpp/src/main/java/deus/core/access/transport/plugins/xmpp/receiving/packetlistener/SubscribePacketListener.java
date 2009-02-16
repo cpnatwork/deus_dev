@@ -45,7 +45,7 @@ public class SubscribePacketListener extends UserMetadataParsingFilteredPacketLi
 		// FIXME: fill subscriberMetadata
 		
 		TransportMessage command = new RequestSubscriptionMessage(subscriberMetadata);
-		sendCommand(command, packet);
+		receiveCommand(command, packet);
 	}
 	
 	

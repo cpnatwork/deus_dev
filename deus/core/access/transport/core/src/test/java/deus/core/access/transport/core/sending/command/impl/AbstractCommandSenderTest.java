@@ -98,6 +98,7 @@ public abstract class AbstractCommandSenderTest {
 
 
 	protected void setTids(TransportMessage expectedMessage, UserId senderId, UserId receiverId) {
+		expectedMessage.setSenderId(senderId);
 		expectedMessage.setReceiverTid(transportProtocolDiscoveryStrategy.resolveTransportId(testTransportProtocolId, receiverId));
 		expectedMessage.setSenderTid(mapper.map(senderId));
 	}

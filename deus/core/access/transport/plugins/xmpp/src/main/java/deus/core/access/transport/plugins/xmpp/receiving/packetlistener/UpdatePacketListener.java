@@ -38,7 +38,7 @@ public class UpdatePacketListener extends UserMetadataParsingFilteredPacketListe
 		// digitalCard = xmltoobjectbind(xml);
 
 		TransportMessage command = new UpdateMessage(digitalCard);
-		sendCommand(command, packet);
+		receiveCommand(command, packet);
 	}
 
 }

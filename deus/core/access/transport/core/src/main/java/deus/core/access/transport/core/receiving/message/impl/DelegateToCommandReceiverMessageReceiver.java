@@ -31,7 +31,7 @@ public class DelegateToCommandReceiverMessageReceiver implements MessageReceiver
 	@Override
 	public void receive(String transportProtocolId, TransportMessage message) {
 		UserId receiverId = transportIdMapper.resolveLocal(message.getReceiverTid());
-		UserId senderId = transportIdMapper.resolveRemote(message.getSenderTid());
+		UserId senderId = message.getSenderId();
 
 		PublisherCommandReceiver publisherCommandReceiver = registry.getPublisherCommandReceiver();
 		SubscriberCommandReceiver subscriberCommandReceiver = registry.getSubscriberCommandReceiver();

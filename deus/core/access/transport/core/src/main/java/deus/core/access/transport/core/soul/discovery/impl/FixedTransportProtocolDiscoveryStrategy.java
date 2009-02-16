@@ -27,11 +27,4 @@ public class FixedTransportProtocolDiscoveryStrategy implements TransportProtoco
 		return null;
 	}
 
-
-	@Override
-	public UserId resolveUserId(String transportProtocolId, TransportId receiverTpId) {
-		// FIXME Auto-generated method stub
-		return null;
-	}
-
 }

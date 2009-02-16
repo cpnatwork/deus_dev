@@ -1,8 +1,11 @@
 package deus.core.access.transport.core.messages;
 
 import deus.core.access.transport.core.soul.protocol.TransportId;
+import deus.model.user.id.UserId;
 
 public abstract class TransportMessage {
+
+	private UserId senderId;
 
 	private TransportId senderTid;
 	private TransportId receiverTid;
@@ -13,10 +16,21 @@ public abstract class TransportMessage {
 	}
 
 
-	public TransportMessage(TransportId senderTid, TransportId receiverTid) {
+	public TransportMessage(UserId senderId, TransportId senderTid, TransportId receiverTid) {
 		super();
+		this.senderId = senderId;
 		this.senderTid = senderTid;
 		this.receiverTid = receiverTid;
+	}
+
+
+	public UserId getSenderId() {
+		return senderId;
+	}
+
+
+	public void setSenderId(UserId senderId) {
+		this.senderId = senderId;
 	}
 
 
@@ -38,5 +52,5 @@ public abstract class TransportMessage {
 	public void setReceiverTid(TransportId receiverTid) {
 		this.receiverTid = receiverTid;
 	}
-	
+
 }

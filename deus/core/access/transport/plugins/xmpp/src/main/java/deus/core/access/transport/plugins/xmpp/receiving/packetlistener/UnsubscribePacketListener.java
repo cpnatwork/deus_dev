@@ -40,7 +40,7 @@ public class UnsubscribePacketListener extends UserMetadataParsingFilteredPacket
 		System.out.println(printer.printPacket(packet));
 
 		TransportMessage command = new UnsubscribeMessage();
-		sendCommand(command, packet);
+		receiveCommand(command, packet);
 	}
 
 

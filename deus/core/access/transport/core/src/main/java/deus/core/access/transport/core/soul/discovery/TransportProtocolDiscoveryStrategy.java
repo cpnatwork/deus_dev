@@ -10,7 +10,4 @@ public interface TransportProtocolDiscoveryStrategy {
 	@Deprecated
 	public TransportId resolveTransportId(String transportProtocolId, UserId receiverId);
 	
-	@Deprecated
-	public UserId resolveUserId(String transportProtocolId, TransportId receiverTpId);
-	
 }
