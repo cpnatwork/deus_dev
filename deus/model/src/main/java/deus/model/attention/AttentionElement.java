@@ -19,7 +19,6 @@ public abstract class AttentionElement implements Serializable {
 		this.creationDate = creationDate;
 	}
 	
-	public abstract AttentionElementType getAttentionElementType();
 	public abstract String getCatchphare();
 
 }

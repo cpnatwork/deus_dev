@@ -69,7 +69,7 @@ public class SubscriberBarkerProxy implements RemoteCalledSubscriber {
 		
 		proxiedSubscriber.update(publisherId, digitalCard);
 		
-		Notice notice = new UpdateNotice(listOfPublishers.get(publisherId).getPublisherMetadata());
+		Notice notice = new UpdateNotice(listOfPublishers.get(publisherId).getPublisherMetadata(), digitalCard);
 		barker.addUnnoticedAttentionElement(notice);
 		
 		logger.debug("added {} to barker", notice);

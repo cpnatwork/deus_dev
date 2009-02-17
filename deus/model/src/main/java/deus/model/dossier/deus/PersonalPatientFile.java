@@ -1,6 +1,5 @@
 package deus.model.dossier.deus;
 
-import java.util.List;
 import java.util.Set;
 
 import deus.model.dossier.DigitalCard;

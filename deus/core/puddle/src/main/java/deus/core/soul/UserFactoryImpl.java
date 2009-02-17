@@ -67,10 +67,10 @@ public class UserFactoryImpl implements UserFactory {
 
 		// PUBLISHER
 		ListOfSubscribers los = pubDao.getListOfSubscribers(userId);
-		PublisherImpl publisherImpl = new PublisherImpl(los, userId);
-		RemoteCalledPublisher publisherBarkerProxy = new PublisherBarkerProxy(publisherImpl, user.barker, los);
+		Publisher publisherTarget = new PublisherImpl(los, userId);
+		RemoteCalledPublisher publisherBarkerProxy = new PublisherBarkerProxy(publisherTarget, user.barker, los);
 
-		Publisher publisher = new RemoteCalledPublisherToPublisherAdapter(publisherBarkerProxy, publisherImpl);
+		Publisher publisher = new RemoteCalledPublisherToPublisherAdapter(publisherBarkerProxy, publisherTarget);
 		user.publisher = publisher;
 		
 		// CONTRIBUTION COUNTER
@@ -86,7 +86,7 @@ public class UserFactoryImpl implements UserFactory {
 
 		// DP for subscriber request
 		// don't use user.publisher here, since this one is proxied!
-		SubscriberRequestDecisionProcessor sr = new SubscriberRequestDecisionProcessor(publisherImpl);
+		SubscriberRequestDecisionProcessor sr = new SubscriberRequestDecisionProcessor(publisherTarget);
 		decisionProcessor.addDecisionProcessor(sr, DecisionType.subscriberRequest);
 		
 		// DP for contribution

@@ -10,6 +10,7 @@ import org.junit.Test;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.PublisherOffer;
 import deus.model.user.UserMetadata;
+import deus.model.user.id.UserUrl;
 
 public class PublisherOfferTest {
 
@@ -17,7 +18,7 @@ public class PublisherOfferTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		dec = new PublisherOffer(new UserMetadata());
+		dec = new PublisherOffer(new UserUrl("alice", "deus.org"), new UserMetadata());
 	}
 
 

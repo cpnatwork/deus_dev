@@ -1,15 +1,22 @@
 package deus.model.attention.decision;
 
-import deus.model.attention.AttentionElementType;
 import deus.model.user.UserMetadata;
+import deus.model.user.id.UserId;
 
 public class PublisherOffer extends ConnectionDecisionToMake {
 
+	private final UserId publisherId;
 	private final UserMetadata publisherMetadata;
 
 
-	public PublisherOffer(UserMetadata publisherMetadata) {
+	public PublisherOffer(UserId publisherId, UserMetadata publisherMetadata) {
+		this.publisherId = publisherId;
 		this.publisherMetadata = publisherMetadata;
+	}
+
+
+	public UserId getPublisherId() {
+		return publisherId;
 	}
 
 
@@ -26,8 +33,8 @@ public class PublisherOffer extends ConnectionDecisionToMake {
 
 	@Override
 	public String getCatchphare() {
-		//I18N
-		return "Your Contact "+getPublisherMetadata().getFullName()+" offers subscription";
+		// I18N
+		return "Your Contact " + getPublisherMetadata().getFullName() + " offers subscription";
 	}
 
 }

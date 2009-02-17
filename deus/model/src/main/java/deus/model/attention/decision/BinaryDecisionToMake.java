@@ -1,15 +1,16 @@
 package deus.model.attention.decision;
 
 import deus.model.attention.AttentionElement;
-import deus.model.attention.AttentionElementType;
 
 public abstract class BinaryDecisionToMake extends AttentionElement {
 
 	private Boolean decision = null;
 
+
 	public final boolean isDecisionMade() {
 		return decision != null;
 	}
+
 
 	public final void setDecisionPositive() {
 		decision = true;
@@ -38,10 +39,7 @@ public abstract class BinaryDecisionToMake extends AttentionElement {
 		return decision == false;
 	}
 
-	public final AttentionElementType getAttentionElementType() {
-		return AttentionElementType.binaryDecision;
-	}
-	
+
 	public abstract DecisionType getType();
 
 }
