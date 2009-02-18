@@ -3,8 +3,8 @@ package deus.core.soul.decisionprocessor.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.transport.core.receiving.soulcallback.PublisherExportedToPeer;
 import deus.core.access.transport.core.sending.command.BarkerCommandSender;
-import deus.core.soul.publisher.PublisherExportedToPeer;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;

@@ -3,9 +3,9 @@ package deus.core.soul.subscriber.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.transport.core.receiving.soulcallback.SubscriberExportedToPeer;
 import deus.core.soul.subscriber.Subscriber;
 import deus.core.soul.subscriber.SubscriberExportedToClient;
-import deus.core.soul.subscriber.SubscriberExportedToPeer;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.DigitalCard;
 import deus.model.sub.ListOfPublishers;

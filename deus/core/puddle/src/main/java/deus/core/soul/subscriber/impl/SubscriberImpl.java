@@ -23,7 +23,7 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 @Component
-@Qualifier(value="target")
+@Qualifier("target")
 public class SubscriberImpl implements Subscriber {
 
 	private final Logger logger = LoggerFactory.getLogger(SubscriberImpl.class);

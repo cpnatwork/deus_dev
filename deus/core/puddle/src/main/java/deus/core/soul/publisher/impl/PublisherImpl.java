@@ -16,7 +16,7 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 @Component
-@Qualifier(value="target")
+@Qualifier("target")
 public class PublisherImpl implements Publisher {
 	
 	private final Logger logger = LoggerFactory.getLogger(PublisherImpl.class);

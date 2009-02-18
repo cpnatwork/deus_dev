@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.pub.api.PubDao;
+import deus.core.access.transport.core.receiving.soulcallback.PublisherExportedToPeer;
 import deus.core.soul.barker.BarkerExportedToSubsystems;
-import deus.core.soul.publisher.PublisherExportedToPeer;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.model.attention.notice.Notice;
@@ -24,7 +24,7 @@ public class PublisherBarkerProxy implements PublisherExportedToPeer {
 	private final Logger logger = LoggerFactory.getLogger(PublisherBarkerProxy.class);
 	
 	@Autowired
-	@Qualifier(value="target")
+	@Qualifier("target")
 	private PublisherExportedToPeer proxiedPublisher;
 	
 	@Autowired

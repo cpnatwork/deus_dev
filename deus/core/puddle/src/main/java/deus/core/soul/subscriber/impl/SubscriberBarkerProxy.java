@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.sub.api.SubDao;
+import deus.core.access.transport.core.receiving.soulcallback.SubscriberExportedToPeer;
 import deus.core.soul.barker.BarkerExportedToSubsystems;
-import deus.core.soul.subscriber.SubscriberExportedToPeer;
 import deus.model.attention.notice.Notice;
 import deus.model.attention.notice.SubscriptionDeniedNotice;
 import deus.model.attention.notice.SubscriptionGrantedNotice;
@@ -19,7 +19,7 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 @Component
-@Qualifier(value="proxy")
+@Qualifier("proxy")
 public class SubscriberBarkerProxy implements SubscriberExportedToPeer {
 
 	private final Logger logger = LoggerFactory.getLogger(SubscriberBarkerProxy.class);

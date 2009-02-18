@@ -3,9 +3,9 @@ package deus.core.soul.publisher.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.transport.core.receiving.soulcallback.PublisherExportedToPeer;
 import deus.core.soul.publisher.Publisher;
 import deus.core.soul.publisher.PublisherExportedToClient;
-import deus.core.soul.publisher.PublisherExportedToPeer;
 import deus.model.dossier.DigitalCard;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.user.UserMetadata;

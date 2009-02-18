@@ -1,5 +1,7 @@
 package deus.core.soul.publisher;
 
+import deus.core.access.transport.core.receiving.soulcallback.PublisherExportedToPeer;
+
 
 /**
  * Central facade of the publisher subsystem.

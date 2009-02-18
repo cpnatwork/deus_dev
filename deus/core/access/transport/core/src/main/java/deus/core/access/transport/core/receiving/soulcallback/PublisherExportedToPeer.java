@@ -1,4 +1,4 @@
-package deus.core.soul.publisher;
+package deus.core.access.transport.core.receiving.soulcallback;
 
 
 import deus.model.user.UserMetadata;
@@ -14,7 +14,6 @@ import deus.model.user.id.UserId;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-// FIXME: think about how this relates to PublisherCommandReceiver
 public interface PublisherExportedToPeer {
 
 	/**

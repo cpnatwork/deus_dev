@@ -1,5 +1,7 @@
 package deus.core.soul.subscriber;
 
+import deus.core.access.transport.core.receiving.soulcallback.SubscriberExportedToPeer;
+
 
 /**
  * Central facade of the subscriber subsystem.

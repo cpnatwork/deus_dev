@@ -1,7 +1,5 @@
 package deus.core.access.transport.plugins.local.receiving;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,15 +9,12 @@ import deus.core.access.transport.core.receiving.message.MessageReceiver;
 @Component
 public class LocalMessageForwarder {
 
-	@Resource(name = "transportProtocolId")
-	private String transportProtocolId;
-
 	@Autowired
 	private MessageReceiver messageReceiver;
 
 
 	public void forward(TransportMessage transportMessage) {
-		messageReceiver.receive(transportProtocolId, transportMessage);
+		messageReceiver.receive(transportMessage);
 	}
 
 }

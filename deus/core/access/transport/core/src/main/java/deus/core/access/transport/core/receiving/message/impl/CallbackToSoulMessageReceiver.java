@@ -9,45 +9,34 @@ import deus.core.access.transport.core.messages.RequestSubscriptionMessage;
 import deus.core.access.transport.core.messages.SubscribeMessage;
 import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.messages.UnsubscribeMessage;
-import deus.core.access.transport.core.receiving.command.CommandReceiverRegistry;
-import deus.core.access.transport.core.receiving.command.PublisherCommandReceiver;
-import deus.core.access.transport.core.receiving.command.SubscriberCommandReceiver;
 import deus.core.access.transport.core.receiving.message.MessageReceiver;
-import deus.core.access.transport.core.soul.mapper.TransportIdMapper;
-import deus.core.access.transport.core.soul.protocolregistry.TransportProtocolRegistry;
+import deus.core.access.transport.core.receiving.soulcallback.PublisherExportedToPeer;
+import deus.core.access.transport.core.receiving.soulcallback.SoulCallbackRegistry;
+import deus.core.access.transport.core.receiving.soulcallback.SubscriberExportedToPeer;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 @Component("messageReceiver")
-public class DelegateToCommandReceiverMessageReceiver implements MessageReceiver {
+public class CallbackToSoulMessageReceiver implements MessageReceiver {
 
 	@Autowired
-	private CommandReceiverRegistry registry;
-
-	@Autowired
-	private TransportProtocolRegistry transportProtocolRegistry;
+	private SoulCallbackRegistry registry;
 
 
 	// TODO: refactor (introduce more receive methods and dispatch in this one)
 	@Override
-	public void receive(String transportProtocolId, TransportMessage message) {
+	public void receive(TransportMessage message) {
 		UserId senderId = message.getSenderId();
 		UserId receiverId = message.getReceiverId();
-		
-		// FIXME: remove this
-		//TransportIdMapper transportIdMapper = transportProtocolRegistry.getRegisteredTransportProtocol(
-		//		transportProtocolId).getTransportIdMapper();
-		//UserId receiverId = transportIdMapper.resolveLocal(message.getReceiverTid());
-		
 
-		PublisherCommandReceiver publisherCommandReceiver = registry.getPublisherCommandReceiver();
-		SubscriberCommandReceiver subscriberCommandReceiver = registry.getSubscriberCommandReceiver();
+		PublisherExportedToPeer publisherCommandReceiver = registry.getPublisher();
+		SubscriberExportedToPeer subscriberCommandReceiver = registry.getSubscriber();
 
 		// USE CASE: SUBSCRIBE
 		if (message instanceof SubscribeMessage) {
 			if (message instanceof RequestSubscriptionMessage) {
 				UserMetadata senderMetadata = ((RequestSubscriptionMessage) message).getSubscriberMetadata();
-				publisherCommandReceiver.addObserver(receiverId, senderId, senderMetadata);
+				publisherCommandReceiver.addSubscriber(receiverId, senderId, senderMetadata);
 			}
 			else if (message instanceof GrantSubscriptionMessage)
 				subscriberCommandReceiver.acknowledgeSubscription(receiverId, senderId);
@@ -58,7 +47,7 @@ public class DelegateToCommandReceiverMessageReceiver implements MessageReceiver
 		}
 		// USE CASE: UNSUBSCRIBE
 		else if (message instanceof UnsubscribeMessage)
-			publisherCommandReceiver.deleteObserver(receiverId, senderId);
+			publisherCommandReceiver.deleteSubscriber(receiverId, senderId);
 		else
 			throw new IllegalArgumentException("cannot handle command " + message);
 	}
