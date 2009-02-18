@@ -1,7 +1,7 @@
 package deus.core.soul;
 
 import deus.core.soul.barker.BarkerExportedToClient;
-import deus.core.soul.contribution.counter.ContributionCounter;
+import deus.core.soul.contribution.hub.ContributionHubExportedToPeer;
 import deus.core.soul.publisher.Publisher;
 import deus.core.soul.subscriber.Subscriber;
 import deus.model.user.UserMetadata;
@@ -15,7 +15,7 @@ public class User {
 	Publisher publisher;
 	Subscriber subscriber;
 
-	ContributionCounter contributionCounter;
+	ContributionHubExportedToPeer contributionHub;
 
 	BarkerExportedToClient barker;
 

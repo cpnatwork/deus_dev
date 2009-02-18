@@ -7,21 +7,21 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-import deus.core.soul.contribution.counter.ContributionCounter;
-import deus.core.soul.contribution.counter.impl.ContributionCounterImpl;
+import deus.core.soul.contribution.hub.ContributionHubExportedToPeer;
+import deus.core.soul.contribution.hub.impl.ContributionHubImpl;
 import deus.model.dossier.DigitalCard;
 import deus.model.dossier.PartyInformationDC;
 import deus.model.user.id.UserUrl;
 
 public class ContributionCounterImplTest {
 
-	private ContributionCounter counter;
+	private ContributionHubExportedToPeer counter;
 	
 	private DigitalCard digitalCard;
 	
 	@Before
 	public void setUp() throws Exception {
-		counter = new ContributionCounterImpl(new UserUrl("alice", "deus.org"), null, null);
+		counter = new ContributionHubImpl(new UserUrl("alice", "deus.org"), null, null);
 		
 		digitalCard = new PartyInformationDC(new UserUrl("higgins", "deus.org"), new UserUrl("alice", "deus.org"), "higgins about alice");
 	}

@@ -13,7 +13,7 @@ import deus.core.soul.barker.decisionprocessors.ContributionDecisionProcessor;
 import deus.core.soul.barker.decisionprocessors.DelegateDecisionProcessor;
 import deus.core.soul.barker.decisionprocessors.SubscriberRequestDecisionProcessor;
 import deus.core.soul.barker.impl.BarkerImpl;
-import deus.core.soul.contribution.counter.impl.ContributionCounterImpl;
+import deus.core.soul.contribution.hub.impl.ContributionHubImpl;
 import deus.core.soul.contribution.update.Updater;
 import deus.core.soul.contribution.update.impl.UpdaterImpl;
 import deus.core.soul.publisher.Publisher;
@@ -77,7 +77,7 @@ public class UserFactoryImpl implements UserFactory {
 		// FIXME: load PIF from dao
 		PersonalInformationFile pif = null;
 		Updater updater = new UpdaterImpl(pif);		
-		user.contributionCounter = new ContributionCounterImpl(user.userId, user.barker, updater);
+		user.contributionCounter = new ContributionHubImpl(user.userId, user.barker, updater);
 
 		
 		// DECISION PROCESSORS

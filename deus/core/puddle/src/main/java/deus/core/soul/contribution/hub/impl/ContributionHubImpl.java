@@ -1,7 +1,7 @@
-package deus.core.soul.contribution.counter.impl;
+package deus.core.soul.contribution.hub.impl;
 
 import deus.core.soul.barker.BarkerExportedToSubsystems;
-import deus.core.soul.contribution.counter.ContributionCounter;
+import deus.core.soul.contribution.hub.ContributionHub;
 import deus.core.soul.contribution.update.Updater;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.Contribution;
@@ -9,7 +9,7 @@ import deus.model.dossier.DigitalCard;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
-public class ContributionCounterImpl implements ContributionCounter {
+public class ContributionHubImpl implements ContributionHub {
 
 	private final UserId userId;
 
@@ -18,7 +18,7 @@ public class ContributionCounterImpl implements ContributionCounter {
 	private final Updater updater;
 
 
-	public ContributionCounterImpl(UserId userId, BarkerExportedToSubsystems barker, Updater updater) {
+	public ContributionHubImpl(UserId userId, BarkerExportedToSubsystems barker, Updater updater) {
 		super();
 		this.userId = userId;
 		this.barker = barker;
