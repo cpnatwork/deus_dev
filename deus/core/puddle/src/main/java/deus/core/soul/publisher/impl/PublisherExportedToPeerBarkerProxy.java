@@ -19,9 +19,9 @@ import deus.model.user.id.UserId;
 
 @Component
 @Qualifier(value="proxy")
-public class PublisherBarkerProxy implements PublisherExportedToPeer {
+public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPeer {
 
-	private final Logger logger = LoggerFactory.getLogger(PublisherBarkerProxy.class);
+	private final Logger logger = LoggerFactory.getLogger(PublisherExportedToPeerBarkerProxy.class);
 	
 	@Autowired
 	@Qualifier("target")

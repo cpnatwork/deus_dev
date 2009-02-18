@@ -20,7 +20,7 @@ import deus.model.user.id.UserId;
  * 
  */
 @Component
-public class RemoteCalledPublisherToPublisherAdapter implements Publisher {
+public class ProxiedPublisherAdapter implements Publisher {
 
 	@Autowired
 	private PublisherExportedToClient publisherExportedToClient;

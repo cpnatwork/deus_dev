@@ -21,7 +21,7 @@ import deus.model.user.id.UserId;
  * 
  */
 @Component
-public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
+public class ProxiedSubscriberAdapter implements Subscriber {
 
 	@Autowired
 	private SubscriberExportedToPeer subscriberExportedToPeer;
