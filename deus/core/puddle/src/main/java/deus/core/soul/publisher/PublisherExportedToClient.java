@@ -1,6 +1,8 @@
 package deus.core.soul.publisher;
 
 import deus.model.dossier.DigitalCard;
+import deus.model.pub.ListOfSubscribers;
+import deus.model.user.id.UserId;
 
 /**
  * Groups methods of the interface <code>Publisher</code> that trigger remote calls. These methods are implemented using
@@ -10,7 +12,7 @@ import deus.model.dossier.DigitalCard;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-public interface RemoteCallingPublisher {
+public interface PublisherExportedToClient {
 
 	/**
 	 * If this object has changed, as indicated by the <code>hasChanged</code> method, then notify all of its observers
@@ -24,6 +26,24 @@ public interface RemoteCallingPublisher {
 	 * @see java.util.Observable#hasChanged()
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.ForeignInformationFile)
 	 */
-	public abstract void notifyObservers(DigitalCard digitalCard);
+	public abstract void notifySubscribers(UserId publisherId, DigitalCard digitalCard);
 
+
+	public ListOfSubscribers getListOfSubscribers(UserId publisherId);
+
+
+	/**
+	 * Clears the observer list so that this object no longer has any observers.
+	 */
+	@Deprecated
+	public abstract void deleteSubscribers(UserId publisherId);
+
+
+	/**
+	 * Returns the number of observers of this <tt>Observable</tt> object.
+	 * 
+	 * @return the number of observers of this object.
+	 */
+	@Deprecated
+	public abstract int countSubscribers(UserId publisherId);
 }

@@ -1,6 +1,6 @@
 package deus.core.soul.contribution.counter.impl;
 
-import deus.core.soul.barker.Barker;
+import deus.core.soul.barker.BarkerExportedToSubsystems;
 import deus.core.soul.contribution.counter.ContributionCounter;
 import deus.core.soul.contribution.update.Updater;
 import deus.model.attention.decision.BinaryDecisionToMake;
@@ -13,12 +13,12 @@ public class ContributionCounterImpl implements ContributionCounter {
 
 	private final UserId userId;
 
-	private final Barker barker;
+	private final BarkerExportedToSubsystems barker;
 
 	private final Updater updater;
 
 
-	public ContributionCounterImpl(UserId userId, Barker barker, Updater updater) {
+	public ContributionCounterImpl(UserId userId, BarkerExportedToSubsystems barker, Updater updater) {
 		super();
 		this.userId = userId;
 		this.barker = barker;

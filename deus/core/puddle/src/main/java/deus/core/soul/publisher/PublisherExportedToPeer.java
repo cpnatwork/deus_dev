@@ -15,7 +15,7 @@ import deus.model.user.id.UserId;
  * 
  */
 // FIXME: think about how this relates to PublisherCommandReceiver
-public interface RemoteCalledPublisher {
+public interface PublisherExportedToPeer {
 
 	/**
 	 * Adds an observer to the set of observers for this object, provided that it is not the same as some observer
@@ -24,7 +24,7 @@ public interface RemoteCalledPublisher {
 	 * 
 	 * @param subscriberMetadata an observer to be added.
 	 */
-	public abstract void addObserver(UserId subscriberId, UserMetadata subscriberMetadata);
+	public abstract void addSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata);
 
 
 	/**
@@ -33,6 +33,6 @@ public interface RemoteCalledPublisher {
 	 * 
 	 * @param subscriberMetadata the observer to be deleted.
 	 */
-	public abstract void deleteObserver(UserId subscriberId);
+	public abstract void deleteSubscriber(UserId publisherId, UserId subscriberId);
 
 }

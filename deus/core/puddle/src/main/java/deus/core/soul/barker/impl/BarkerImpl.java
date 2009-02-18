@@ -4,19 +4,26 @@ import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import deus.core.access.storage.attention.api.AttentionDao;
 import deus.core.soul.barker.Barker;
 import deus.core.soul.barker.decisionprocessors.DelegateDecisionProcessor;
 import deus.model.attention.AttentionElement;
 import deus.model.attention.AttentionList;
 import deus.model.attention.decision.BinaryDecisionToMake;
+import deus.model.user.id.UserId;
 
+@Component
 public class BarkerImpl implements Barker {
 	
 	private final Logger logger = LoggerFactory.getLogger(BarkerImpl.class);
 	
-	private AttentionList unnoticedAttentionList;
-	private AttentionList noticedAttentionList;
+	@Autowired
+	private AttentionDao attentionDao;
+	
+	@Autowired
 	private DelegateDecisionProcessor decisionProcessor;
 
 
@@ -25,10 +32,11 @@ public class BarkerImpl implements Barker {
 	 */
 	public void addUnnoticedAttentionElement(AttentionElement attentionElement) {
 		logger.trace("adding unnoticed attention element {}", attentionElement);
-		
-		unnoticedAttentionList.add(attentionElement);
+
 		// set creation date
 		attentionElement.setCreationDate(new Date());
+		
+		attentionDao.addNewEntity(attentionElement);
 	}
 
 
@@ -36,13 +44,12 @@ public class BarkerImpl implements Barker {
 	 * @see deus.core.soul.barker.impl.Barker#noticeAttentionElement(deus.model.attention.AttentionElement)
 	 */
 	public void noticeAttentionElement(AttentionElement attentionElement) {
-		assertIsUnnoticed(attentionElement);
+		// FIXME: do check
+		//assertIsUnnoticed(attentionElement);
 		
 		logger.trace("noticing attention element {}", attentionElement);
 		
-		
-		unnoticedAttentionList.remove(attentionElement);
-		noticedAttentionList.add(attentionElement);
+		attentionDao.noticeAttentionElement(attentionElement);
 	}
 
 
@@ -57,73 +64,19 @@ public class BarkerImpl implements Barker {
 	}
 
 
-	private void assertIsNoticed(AttentionElement attentionElement) {
-		if (!isNoticed(attentionElement))
-			throw new IllegalStateException("attention element (" + attentionElement
-					+ " is not in 'processed' attention list!");
-	}
-
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.barker.impl.Barker#isNoticed(deus.model.attention.AttentionElement)
-	 */
-	public boolean isNoticed(AttentionElement attentionElement) {
-		return noticedAttentionList.contains(attentionElement);
-	}
-
-
-	private void assertIsUnnoticed(AttentionElement attentionElement) {
-		if (!isUnnoticed(attentionElement))
-			throw new IllegalStateException("attention element (" + attentionElement
-					+ " is not in 'unprocessed' attention list!");
-	}
-
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.barker.impl.Barker#isUnnoticed(deus.model.attention.AttentionElement)
-	 */
-	public boolean isUnnoticed(AttentionElement attentionElement) {
-		return unnoticedAttentionList.contains(attentionElement);
-	}
-
-
 	/* (non-Javadoc)
 	 * @see deus.core.soul.barker.impl.Barker#getUnnoticedAttentionList()
 	 */
-	public AttentionList getUnnoticedAttentionList() {
-		return unnoticedAttentionList;
+	public AttentionList getUnnoticedAttentionList(UserId userId) {
+		return attentionDao.getUnnoticedAttentionList(userId);
 	}
 
-
+	
 	/* (non-Javadoc)
-	 * @see deus.core.soul.barker.impl.Barker#setUnnoticedAttentionList(deus.model.attention.AttentionList)
+	 * @see deus.core.soul.barker.impl.Barker#getUnnoticedAttentionList()
 	 */
-	public void setUnnoticedAttentionList(AttentionList unnoticedAttentionList) {
-		this.unnoticedAttentionList = unnoticedAttentionList;
-	}
-
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.barker.impl.Barker#getNoticedAttentionList()
-	 */
-	public AttentionList getNoticedAttentionList() {
-		return noticedAttentionList;
-	}
-
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.barker.impl.Barker#setNoticedAttentionList(deus.model.attention.AttentionList)
-	 */
-	public void setNoticedAttentionList(AttentionList noticedAttentionList) {
-		this.noticedAttentionList = noticedAttentionList;
-	}
-
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.barker.impl.Barker#setDecisionProcessor(deus.core.soul.barker.decisionprocessors.DecisionProcessor)
-	 */
-	public void setDecisionProcessor(DelegateDecisionProcessor decisionProcessor) {
-		this.decisionProcessor = decisionProcessor;
+	public AttentionList getNoticedAttentionList(UserId userId) {
+		return attentionDao.getNoticedAttentionList(userId);
 	}
 
 }

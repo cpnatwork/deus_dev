@@ -15,14 +15,14 @@ import deus.model.user.id.UserId;
  * 
  */
 //FIXME: think about how this relates to SubscriberCommandReceiver
-public interface RemoteCalledSubscriber {
+public interface SubscriberExportedToPeer {
 
-	public void update(UserId publisherId, DigitalCard digitalCard);
-
-
-	public void acknowledgeSubscription(UserId publisherId);
+	public void update(UserId subscriberId, UserId publisherId, DigitalCard digitalCard);
 
 
-	public void denySubscription(UserId publisherId);
+	public void acknowledgeSubscription(UserId subscriberId, UserId publisherId);
+
+
+	public void denySubscription(UserId subscriberId, UserId publisherId);
 
 }

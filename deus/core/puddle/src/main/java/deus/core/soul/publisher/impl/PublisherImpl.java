@@ -3,8 +3,9 @@ package deus.core.soul.publisher.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.stereotype.Component;
 
+import deus.core.access.storage.pub.api.PubDao;
 import deus.core.access.transport.core.sending.command.PublisherCommandSender;
 import deus.core.soul.publisher.Publisher;
 import deus.model.dossier.DigitalCard;
@@ -13,67 +14,73 @@ import deus.model.pub.LosEntry;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
-@Configurable
+@Component
 public class PublisherImpl implements Publisher {
 	
 	private final Logger logger = LoggerFactory.getLogger(PublisherImpl.class);
 	
-	private final UserId publisherId;
-	
 	@Autowired
 	private PublisherCommandSender publisherCommandSender;
-
-	protected final ListOfSubscribers listOfSubscribers;
-
-
-	public PublisherImpl(ListOfSubscribers listOfSubscribers, UserId publisherId) {
-		super();
-		this.listOfSubscribers = listOfSubscribers;
-
-		this.publisherId = publisherId;
-	}
+	
+	@Autowired
+	private PubDao pubDao;
 
 	@Override
-	public synchronized void addObserver(UserId subscriberId, UserMetadata subscriberMetadata) {
+	public synchronized void addSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
 		logger.trace("adding subscriber {}", subscriberId);
+
+		ListOfSubscribers listOfSubscribers = pubDao.getListOfSubscribers(publisherId);
 		
-		if (!listOfSubscribers.containsKey(subscriberId)) {
-			LosEntry entry = new LosEntry();
-			entry.setSubscriberMetadata(subscriberMetadata);
-			listOfSubscribers.put(subscriberId, entry);
-		}
-		else
+		if (listOfSubscribers.containsKey(subscriberId))
 			throw new IllegalArgumentException("cannot add subscriber, it has already been added!");
+	
+		LosEntry entry = new LosEntry();
+		entry.setSubscriberMetadata(subscriberMetadata);
+		listOfSubscribers.put(subscriberId, entry);
+		
+		// FIXME: store by using dao.store():
 	}
 
 
 	@Override
-	public synchronized void deleteObserver(UserId subscriberId) {
+	public synchronized void deleteSubscriber(UserId publisherId, UserId subscriberId) {
 		logger.trace("removing subscriber {}", subscriberId);
+
+		ListOfSubscribers listOfSubscribers = pubDao.getListOfSubscribers(publisherId);
 		
 		if(!listOfSubscribers.containsKey(subscriberId))
 			throw new IllegalArgumentException("cannot remove subscriber, that has not been added yet!");
 		listOfSubscribers.remove(subscriberId);
+		
+		// FIXME: store by using dao.store():
 	}
 
 
 	@Override
-	public synchronized void deleteObservers() {
+	public synchronized void deleteSubscribers(UserId publisherId) {
 		logger.trace("removing all subscribers");
+
+		ListOfSubscribers listOfSubscribers = pubDao.getListOfSubscribers(publisherId);
 		
 		listOfSubscribers.clear();
+		
+		// FIXME: store by using dao.store():
 	}
 
 
 	@Override
-	public synchronized int countObservers() {
+	public synchronized int countSubscribers(UserId publisherId) {
+		ListOfSubscribers listOfSubscribers = pubDao.getListOfSubscribers(publisherId);
+		
 		return listOfSubscribers.size();
 	}
 
 
 	@Override
-	public void notifyObservers(DigitalCard digitalCard) {
+	public void notifySubscribers(UserId publisherId, DigitalCard digitalCard) {
 		logger.trace("notifying subscribers of change {}", digitalCard);
+		
+		ListOfSubscribers listOfSubscribers = pubDao.getListOfSubscribers(publisherId);
 		
 		/*
 		 * a temporary array buffer, used as a snapshot of the state of current Observers.
@@ -100,15 +107,12 @@ public class PublisherImpl implements Publisher {
 	}
 
 
+	// FIXME: think about returning a DTO to the frontend here
 	@Override
-	public ListOfSubscribers getListOfSubscribers() {
+	public ListOfSubscribers getListOfSubscribers(UserId publisherId) {
+		ListOfSubscribers listOfSubscribers = pubDao.getListOfSubscribers(publisherId);
+		
 		return listOfSubscribers;
-	}
-
-
-	@Override
-	public UserId getPublisherId() {
-		return publisherId;
 	}
 
 }

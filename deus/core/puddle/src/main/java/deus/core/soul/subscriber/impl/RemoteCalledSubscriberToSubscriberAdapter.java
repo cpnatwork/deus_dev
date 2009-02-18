@@ -1,7 +1,11 @@
 package deus.core.soul.subscriber.impl;
 
-import deus.core.soul.subscriber.RemoteCalledSubscriber;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import deus.core.soul.subscriber.Subscriber;
+import deus.core.soul.subscriber.SubscriberExportedToClient;
+import deus.core.soul.subscriber.SubscriberExportedToPeer;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.dossier.DigitalCard;
 import deus.model.sub.ListOfPublishers;
@@ -9,44 +13,39 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 /**
- * Delegates all methods of <code>RemoteCalledSubscriber</code> to a delegate of type
- * <code>RemoteCalledSubscriber</code>, the rest of the methods of <code>Subscriber</code> are delegated to the second
+ * Delegates all methods of <code>SubscriberExportedToPeer</code> to a delegate of type
+ * <code>SubscriberExportedToPeer</code>, the rest of the methods of <code>Subscriber</code> are delegated to the second
  * delegate, which is of type <code>Subscriber</code>.
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
+@Component
 public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 
-	private final RemoteCalledSubscriber remoteCalledSubscriber;
-	private final Subscriber subscriber;
-
-
-	public RemoteCalledSubscriberToSubscriberAdapter(RemoteCalledSubscriber remoteCalledSubscriber,
-			Subscriber subscriber) {
-		super();
-		this.remoteCalledSubscriber = remoteCalledSubscriber;
-		this.subscriber = subscriber;
-	}
+	@Autowired
+	private SubscriberExportedToPeer subscriberExportedToPeer;
+	@Autowired
+	private SubscriberExportedToClient subscriberExportedToClient;
 
 
 	// +++ METHODS OF REMOTE CALLED SUBSCRIBER ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
-	public void acknowledgeSubscription(UserId publisherId) {
-		remoteCalledSubscriber.acknowledgeSubscription(publisherId);
+	public void acknowledgeSubscription(UserId subscriberId, UserId publisherId) {
+		subscriberExportedToPeer.acknowledgeSubscription(subscriberId, publisherId);
 	}
 
 
 	@Override
-	public void denySubscription(UserId publisherId) {
-		remoteCalledSubscriber.denySubscription(publisherId);
+	public void denySubscription(UserId subscriberId, UserId publisherId) {
+		subscriberExportedToPeer.denySubscription(subscriberId, publisherId);
 	}
 
 
 	@Override
-	public void update(UserId publisherId, DigitalCard digitalCard) {
-		remoteCalledSubscriber.update(publisherId, digitalCard);
+	public void update(UserId subscriberId, UserId publisherId, DigitalCard digitalCard) {
+		subscriberExportedToPeer.update(subscriberId, publisherId, digitalCard);
 	}
 
 
@@ -54,33 +53,26 @@ public class RemoteCalledSubscriberToSubscriberAdapter implements Subscriber {
 
 
 	@Override
-	public DistributedInformationFolder getDistributedInformationFolder() {
-		return subscriber.getDistributedInformationFolder();
-	}
-
-
-
-	@Override
-	public UserId getSubscriberId() {
-		return subscriber.getSubscriberId();
+	public DistributedInformationFolder getDistributedInformationFolder(UserId subscriberId) {
+		return subscriberExportedToClient.getDistributedInformationFolder(subscriberId);
 	}
 
 
 	@Override
-	public void subscribe(UserId publisherId, UserMetadata publisherMetadata) {
-		subscriber.subscribe(publisherId, publisherMetadata);
+	public void subscribe(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata) {
+		subscriberExportedToClient.subscribe(subscriberId, publisherId, publisherMetadata);
 	}
 
 
 	@Override
-	public void unsubscribe(UserId publisherId) {
-		subscriber.unsubscribe(publisherId);
+	public void unsubscribe(UserId subscriberId, UserId publisherId) {
+		subscriberExportedToClient.unsubscribe(subscriberId, publisherId);
 	}
 
 
 	@Override
-	public ListOfPublishers getListOfPublishers() {
-		return subscriber.getListOfPublishers();
+	public ListOfPublishers getListOfPublishers(UserId subscriberId) {
+		return subscriberExportedToClient.getListOfPublishers(subscriberId);
 	}
 
 

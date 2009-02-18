@@ -17,11 +17,11 @@ import deus.core.soul.contribution.counter.impl.ContributionCounterImpl;
 import deus.core.soul.contribution.update.Updater;
 import deus.core.soul.contribution.update.impl.UpdaterImpl;
 import deus.core.soul.publisher.Publisher;
-import deus.core.soul.publisher.RemoteCalledPublisher;
+import deus.core.soul.publisher.PublisherExportedToPeer;
 import deus.core.soul.publisher.impl.PublisherBarkerProxy;
 import deus.core.soul.publisher.impl.PublisherImpl;
 import deus.core.soul.publisher.impl.RemoteCalledPublisherToPublisherAdapter;
-import deus.core.soul.subscriber.RemoteCalledSubscriber;
+import deus.core.soul.subscriber.SubscriberExportedToPeer;
 import deus.core.soul.subscriber.Subscriber;
 import deus.core.soul.subscriber.impl.RemoteCalledSubscriberToSubscriberAdapter;
 import deus.core.soul.subscriber.impl.SubscriberBarkerProxy;
@@ -56,7 +56,7 @@ public class UserFactoryImpl implements UserFactory {
 		User user = new User();
 		user.userId = userId;
 		
-		
+		/*
 		// METADATA AND ID
 		user.userMetadata = userDao.getUserMetadata(userId);
 
@@ -68,7 +68,7 @@ public class UserFactoryImpl implements UserFactory {
 		// PUBLISHER
 		ListOfSubscribers los = pubDao.getListOfSubscribers(userId);
 		Publisher publisherTarget = new PublisherImpl(los, userId);
-		RemoteCalledPublisher publisherBarkerProxy = new PublisherBarkerProxy(publisherTarget, user.barker, los);
+		PublisherExportedToPeer publisherBarkerProxy = new PublisherBarkerProxy(publisherTarget, user.barker, los);
 
 		Publisher publisher = new RemoteCalledPublisherToPublisherAdapter(publisherBarkerProxy, publisherTarget);
 		user.publisher = publisher;
@@ -98,12 +98,13 @@ public class UserFactoryImpl implements UserFactory {
 		ListOfPublishers lop = subDao.getListOfPublishers(userId);
 		DistributedInformationFolder distributedInformationFolder = subDao.getDistributedInformationFolder(userId);
 		SubscriberImpl subscriberImpl = new SubscriberImpl(lop, userId, user.getUserMetadata(), distributedInformationFolder);
-		RemoteCalledSubscriber subscriberBarkerProxy = new SubscriberBarkerProxy(subscriberImpl, user.barker, lop);
+		SubscriberExportedToPeer subscriberBarkerProxy = new SubscriberBarkerProxy(subscriberImpl, user.barker, lop);
 
 		Subscriber subscriber = new RemoteCalledSubscriberToSubscriberAdapter(subscriberBarkerProxy, subscriberImpl);
 		user.subscriber = subscriber;
 
 
+		*/
 		return user;
 	}
 }

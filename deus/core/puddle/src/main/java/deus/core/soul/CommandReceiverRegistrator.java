@@ -15,9 +15,11 @@ public class CommandReceiverRegistrator {
 	@Autowired
 	private CommandReceiverRegistry registry;
 
+	// FIXME: replace by PublisherExportedToPeer
 	@Autowired
 	private PublisherCommandReceiver publisherCommandReceiver;
 
+	// FIXME: replace by SubscriberExportedToPeer
 	@Autowired
 	private SubscriberCommandReceiver subscriberCommandReceiver;
 

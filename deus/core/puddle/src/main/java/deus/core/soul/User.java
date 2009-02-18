@@ -1,11 +1,9 @@
 package deus.core.soul;
 
-import deus.core.soul.barker.Barker;
+import deus.core.soul.barker.BarkerExportedToClient;
 import deus.core.soul.contribution.counter.ContributionCounter;
 import deus.core.soul.publisher.Publisher;
 import deus.core.soul.subscriber.Subscriber;
-import deus.model.pub.ListOfSubscribers;
-import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -19,9 +17,9 @@ public class User {
 
 	ContributionCounter contributionCounter;
 
-	Barker barker;
+	BarkerExportedToClient barker;
 
-	public Barker getBarker() {
+	public BarkerExportedToClient getBarker() {
 		return barker;
 	}
 
@@ -40,15 +38,6 @@ public class User {
 		return userId.toString();
 	}
 
-
-	public ListOfSubscribers getListOfSubscribers() {
-		return publisher.getListOfSubscribers();
-	}
-
-
-	public ListOfPublishers getListOfPublishers() {
-		return subscriber.getListOfPublishers();
-	}
 
 
 	public void setUserMetadata(UserMetadata userMetadata) {

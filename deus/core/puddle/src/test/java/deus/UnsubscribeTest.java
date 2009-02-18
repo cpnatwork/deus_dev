@@ -1,13 +1,8 @@
 package deus;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.core.soul.User;
-import deus.core.soul.UserRegistry;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/soul.xml" })
@@ -16,9 +11,6 @@ public class UnsubscribeTest extends AbstractUseCaseTest {
 //	@Autowired
 //	private Gatekeeper gatekeeper;
 
-	@Autowired
-	private UserRegistry userRegistry;
-	
 	private User bob;
 
 	private User alice;

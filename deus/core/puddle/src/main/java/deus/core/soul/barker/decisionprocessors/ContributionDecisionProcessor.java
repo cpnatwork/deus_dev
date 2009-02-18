@@ -1,17 +1,16 @@
 package deus.core.soul.barker.decisionprocessors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import deus.core.soul.contribution.update.Updater;
 import deus.model.attention.decision.Contribution;
 
+@Component
 public class ContributionDecisionProcessor implements DecisionProcessor<Contribution> {
 
-	public final Updater updater;
-
-
-	public ContributionDecisionProcessor(Updater updater) {
-		super();
-		this.updater = updater;
-	}
+	@Autowired
+	public Updater updater;
 
 
 	@Override
