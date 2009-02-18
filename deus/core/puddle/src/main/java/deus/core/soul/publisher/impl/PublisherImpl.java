@@ -3,6 +3,7 @@ package deus.core.soul.publisher.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.pub.api.PubDao;
@@ -15,6 +16,7 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 @Component
+@Qualifier(value="target")
 public class PublisherImpl implements Publisher {
 	
 	private final Logger logger = LoggerFactory.getLogger(PublisherImpl.class);

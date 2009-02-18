@@ -19,6 +19,6 @@ public interface ContributionHubExportedToPeer {
 	 * @param contributedDigitalCard	the digital card to contribute
 	 * @param contributorId		the user ID of the contributor
 	 */
-	public abstract void contributeOther(DigitalCard contributedDigitalCard, UserId contributorId);
+	public abstract void contributeOther(UserId userId, DigitalCard contributedDigitalCard, UserId contributorId);
 
 }

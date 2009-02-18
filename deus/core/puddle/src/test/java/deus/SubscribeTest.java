@@ -4,16 +4,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import deus.core.soul.User;
 import deus.model.attention.decision.SubscriberRequest;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/soul.xml" })
 public class SubscribeTest extends AbstractUseCaseTest {
 
-	private User bob;
-
-	private User alice;
+//	private User bob;
+//
+//	private User alice;
 
 
 	@Before

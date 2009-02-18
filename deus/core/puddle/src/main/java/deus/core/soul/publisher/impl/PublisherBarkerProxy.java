@@ -1,10 +1,9 @@
 package deus.core.soul.publisher.impl;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.pub.api.PubDao;
@@ -19,11 +18,13 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 @Component
+@Qualifier(value="proxy")
 public class PublisherBarkerProxy implements PublisherExportedToPeer {
 
 	private final Logger logger = LoggerFactory.getLogger(PublisherBarkerProxy.class);
 	
-	@Resource(name="proxiedPublisher")
+	@Autowired
+	@Qualifier(value="target")
 	private PublisherExportedToPeer proxiedPublisher;
 	
 	@Autowired
@@ -39,6 +40,7 @@ public class PublisherBarkerProxy implements PublisherExportedToPeer {
 		
 		// PLACE SUBSCRIBER REQUEST
 		BinaryDecisionToMake decision = new SubscriberRequest(subscriberId, subscriberMetadata);
+		decision.setUserId(publisherId);
 		barker.addUnnoticedAttentionElement(decision);
 		
 		logger.trace("added {} to barker", decision);
@@ -57,6 +59,7 @@ public class PublisherBarkerProxy implements PublisherExportedToPeer {
 		// PLACE NOTICE
 		UserMetadata subscriberMetadata = listOfSubscribers.get(subscriberId).getSubscriberMetadata();
 		Notice notice = new SubscribedProfileDeletedNotice(subscriberMetadata);
+		notice.setUserId(publisherId);
 		barker.addUnnoticedAttentionElement(notice);
 		
 		logger.trace("added {} to barker", notice);

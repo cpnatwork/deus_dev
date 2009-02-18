@@ -1,6 +1,7 @@
 package deus.core.soul.contribution.update;
 
 import deus.model.dossier.DigitalCard;
+import deus.model.user.id.UserId;
 
 
 /**
@@ -12,6 +13,6 @@ import deus.model.dossier.DigitalCard;
  */
 public interface Updater {
 
-	public void commit(DigitalCard digitalCard);
+	public void commit(UserId cpId, DigitalCard digitalCard);
 	
 }

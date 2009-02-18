@@ -1,10 +1,9 @@
 package deus.core.soul.subscriber.impl;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.sub.api.SubDao;
@@ -20,11 +19,13 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 @Component
+@Qualifier(value="proxy")
 public class SubscriberBarkerProxy implements SubscriberExportedToPeer {
 
 	private final Logger logger = LoggerFactory.getLogger(SubscriberBarkerProxy.class);
 
-	@Resource(name = "proxiedSubscriber")
+	@Autowired
+	@Qualifier(value="target")
 	private SubscriberExportedToPeer proxiedSubscriber;
 
 	@Autowired
@@ -45,6 +46,7 @@ public class SubscriberBarkerProxy implements SubscriberExportedToPeer {
 		// get publisher metadata out of LoP
 		UserMetadata publisherMetadata = listOfPublishers.get(publisherId).getPublisherMetadata();
 		Notice notice = new SubscriptionGrantedNotice(publisherMetadata);
+		notice.setUserId(subscriberId);
 		barker.addUnnoticedAttentionElement(notice);
 
 		logger.debug("added {} to barker", notice);
@@ -62,6 +64,7 @@ public class SubscriberBarkerProxy implements SubscriberExportedToPeer {
 		// get publisher metadata out of LoP
 		UserMetadata publisherMetadata = listOfPublishers.get(publisherId).getPublisherMetadata();
 		Notice notice = new SubscriptionDeniedNotice(publisherMetadata);
+		notice.setUserId(subscriberId);
 		barker.addUnnoticedAttentionElement(notice);
 
 		logger.debug("added {} to barker", notice);
@@ -76,6 +79,7 @@ public class SubscriberBarkerProxy implements SubscriberExportedToPeer {
 
 		ListOfPublishers listOfPublishers = subDao.getListOfPublishers(subscriberId);
 		Notice notice = new UpdateNotice(listOfPublishers.get(publisherId).getPublisherMetadata(), digitalCard);
+		notice.setUserId(subscriberId);
 		barker.addUnnoticedAttentionElement(notice);
 
 		logger.debug("added {} to barker", notice);

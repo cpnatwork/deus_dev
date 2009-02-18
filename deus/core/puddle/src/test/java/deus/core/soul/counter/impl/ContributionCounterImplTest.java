@@ -21,7 +21,7 @@ public class ContributionCounterImplTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		counter = new ContributionHubImpl(new UserUrl("alice", "deus.org"), null, null);
+		counter = new ContributionHubImpl();
 		
 		digitalCard = new PartyInformationDC(new UserUrl("higgins", "deus.org"), new UserUrl("alice", "deus.org"), "higgins about alice");
 	}
@@ -30,7 +30,7 @@ public class ContributionCounterImplTest {
 	@Test
 	public void testContributeWithBadContributorId() {
 		try {
-			counter.contributeOther(digitalCard, new UserUrl("bob", "deus.org"));
+			counter.contributeOther(new UserUrl("alice", "deus.org"), digitalCard, new UserUrl("bob", "deus.org"));
 			fail("contribution with different contributor id than in the DC is possible");
 		}
 		catch(IllegalArgumentException e) {

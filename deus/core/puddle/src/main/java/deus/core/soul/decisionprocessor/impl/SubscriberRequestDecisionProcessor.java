@@ -1,4 +1,4 @@
-package deus.core.soul.barker.decisionprocessors;
+package deus.core.soul.decisionprocessor.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,7 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 @Component
-public class SubscriberRequestDecisionProcessor implements DecisionProcessor<SubscriberRequest> {
+public class SubscriberRequestDecisionProcessor implements GenericDecisionProcessor<SubscriberRequest> {
 
 	@Autowired
 	private PublisherExportedToPeer publisher;

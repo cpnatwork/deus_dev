@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.sub.api.SubDao;
@@ -22,6 +23,7 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 @Component
+@Qualifier(value="target")
 public class SubscriberImpl implements Subscriber {
 
 	private final Logger logger = LoggerFactory.getLogger(SubscriberImpl.class);

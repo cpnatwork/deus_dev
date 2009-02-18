@@ -1,6 +1,7 @@
 package deus.core.soul.contribution.hub;
 
 import deus.model.dossier.DigitalCard;
+import deus.model.user.id.UserId;
 
 
 public interface ContributionHubExportedToClient {
@@ -14,6 +15,6 @@ public interface ContributionHubExportedToClient {
 	 * 
 	 * @param contributedDigitalCard the digital card to contribute to the PIF.
 	 */
-	public void contributeSelf(DigitalCard contributedDigitalCard);
+	public void contributeSelf(UserId userId, DigitalCard contributedDigitalCard);
 	
 }

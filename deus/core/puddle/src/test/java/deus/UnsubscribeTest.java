@@ -2,8 +2,6 @@ package deus;
 
 import org.junit.Test;
 
-import deus.core.soul.User;
-
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/soul.xml" })
 public class UnsubscribeTest extends AbstractUseCaseTest {
@@ -11,9 +9,9 @@ public class UnsubscribeTest extends AbstractUseCaseTest {
 //	@Autowired
 //	private Gatekeeper gatekeeper;
 
-	private User bob;
-
-	private User alice;
+//	private User bob;
+//
+//	private User alice;
 
 
 //	@Before

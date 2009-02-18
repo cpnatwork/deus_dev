@@ -9,25 +9,22 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.attention.api.AttentionDao;
 import deus.core.soul.barker.Barker;
-import deus.core.soul.barker.decisionprocessors.DelegateDecisionProcessor;
 import deus.model.attention.AttentionElement;
 import deus.model.attention.AttentionList;
-import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.user.id.UserId;
 
 @Component
 public class BarkerImpl implements Barker {
-	
+
 	private final Logger logger = LoggerFactory.getLogger(BarkerImpl.class);
-	
+
 	@Autowired
 	private AttentionDao attentionDao;
-	
-	@Autowired
-	private DelegateDecisionProcessor decisionProcessor;
 
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.core.soul.barker.impl.Barker#addUnnoticedAttentionElement(deus.model.attention.AttentionElement)
 	 */
 	public void addUnnoticedAttentionElement(AttentionElement attentionElement) {
@@ -35,44 +32,39 @@ public class BarkerImpl implements Barker {
 
 		// set creation date
 		attentionElement.setCreationDate(new Date());
-		
+
 		attentionDao.addNewEntity(attentionElement);
 	}
 
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.core.soul.barker.impl.Barker#noticeAttentionElement(deus.model.attention.AttentionElement)
 	 */
 	public void noticeAttentionElement(AttentionElement attentionElement) {
 		// FIXME: do check
-		//assertIsUnnoticed(attentionElement);
-		
+		// assertIsUnnoticed(attentionElement);
+
 		logger.trace("noticing attention element {}", attentionElement);
-		
+
 		attentionDao.noticeAttentionElement(attentionElement);
 	}
 
 
-	/* (non-Javadoc)
-	 * @see deus.core.soul.barker.impl.Barker#processDecision(deus.model.attention.decision.BinaryDecisionToMake)
-	 */
-	public void processDecision(BinaryDecisionToMake decision) {
-		logger.trace("processing decision {}", decision);
-		
-		noticeAttentionElement(decision);
-		decisionProcessor.process(decision);
-	}
-
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.core.soul.barker.impl.Barker#getUnnoticedAttentionList()
 	 */
 	public AttentionList getUnnoticedAttentionList(UserId userId) {
 		return attentionDao.getUnnoticedAttentionList(userId);
 	}
 
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.core.soul.barker.impl.Barker#getUnnoticedAttentionList()
 	 */
 	public AttentionList getNoticedAttentionList(UserId userId) {
