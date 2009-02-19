@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.transport.core.soul.protocol.TransportProtocol;
-import deus.core.access.transport.core.soul.protocolregistry.TransportProtocolRegistry;
+import deus.core.access.transport.core.soul.protocolregistry.ExportedTransportProtocolRegistry;
 
 @Component
 public class RegisterTransportProtocol {
 
 	@Autowired
-	private TransportProtocolRegistry transportProtocolRegistry;
+	private ExportedTransportProtocolRegistry transportProtocolRegistry;
 
 	@Autowired
 	private TransportProtocol transportProtocol;

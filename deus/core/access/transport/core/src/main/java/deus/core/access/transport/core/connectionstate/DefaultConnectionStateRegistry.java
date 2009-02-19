@@ -16,10 +16,12 @@ public class DefaultConnectionStateRegistry implements ConnectionStateRegistry {
 
 
 	@Override
-	public void addConnectionState(TransportId transportId, ConnectionState ConnectionState) {
+	public void addConnectionState(TransportId transportId, ConnectionState connectionState) {
 		if (hasConnectionState(transportId))
 			throw new IllegalStateException("cannot add connection state for transport id " + transportId
 					+ ", there already is a connection state for this transport id");
+		
+		connectionStates.put(transportId, connectionState);
 	}
 
 

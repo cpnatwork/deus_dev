@@ -8,11 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.soul.discovery.TransportProtocolDiscoveryStrategy;
-import deus.core.access.transport.core.soul.mapper.TransportIdMapper;
 import deus.core.access.transport.core.soul.mapper.UserIdMapper;
 import deus.core.access.transport.core.soul.protocol.MessageSender;
 import deus.core.access.transport.core.soul.protocol.TransportId;
-import deus.core.access.transport.core.soul.protocolregistry.TransportProtocolRegistry;
+import deus.core.access.transport.core.soul.protocolregistry.ExportedTransportProtocolRegistry;
 import deus.core.access.transport.plugins.testTP.protocol.TestTransportId;
 import deus.core.access.transport.plugins.testTP.protocol.TestTransportProtocol;
 import deus.model.user.id.UserId;
@@ -25,12 +24,11 @@ public abstract class AbstractCommandSenderTest {
 	protected TransportProtocolDiscoveryStrategy transportProtocolDiscoveryStrategy;
 	
 	@Autowired
-	private TransportProtocolRegistry transportProtocolRegistry;
+	private ExportedTransportProtocolRegistry transportProtocolRegistry;
 	
 	
 	protected TransportMessage lastSentTransportMessage;
 	private TestTransportProtocol tp;
-	protected TransportIdMapper transportIdMapper;
 	protected UserIdMapper userIdMapper;
 
 	
@@ -53,17 +51,6 @@ public abstract class AbstractCommandSenderTest {
 		tp = new TestTransportProtocol();
 		tp.setLoginEventCallback(null); // we don't need login for this test
 		tp.setRegistrationEventCallback(null); // we don't need registration for this test
-		
-		transportIdMapper = new TransportIdMapper() {
-
-			@Override
-			public UserId resolveLocal(TransportId transportId) {
-				return new UserUrl(((TestTransportId) transportId).getUsername(), "deus.org");
-
-			}
-
-		};
-		tp.setTransportIdMapper(transportIdMapper);
 		
 		userIdMapper = new UserIdMapper() {
 

@@ -14,7 +14,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.core.access.transport.core.messages.TransportMessage;
-import deus.core.access.transport.core.soul.mapper.TransportIdMapper;
 import deus.core.access.transport.core.soul.mapper.UserIdMapper;
 import deus.core.access.transport.core.soul.protocol.MessageSender;
 import deus.core.access.transport.core.soul.protocol.TransportId;
@@ -22,7 +21,6 @@ import deus.core.access.transport.core.soul.protocolregistry.TransportProtocolRe
 import deus.core.access.transport.plugins.testTP.protocol.TestTransportId;
 import deus.core.access.transport.plugins.testTP.protocol.TestTransportProtocol;
 import deus.model.user.id.UserId;
-import deus.model.user.id.UserUrl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transport/core/test.xml" })
@@ -41,18 +39,7 @@ public class TransportProtocolRegistryImplTest {
 		tp = new TestTransportProtocol();
 		tp.setLoginEventCallback(null); // we don't need login for this test
 		tp.setRegistrationEventCallback(null); // we don't need registration for this test
-		
-		TransportIdMapper transportIdMapper = new TransportIdMapper() {
-
-			@Override
-			public UserId resolveLocal(TransportId transportId) {
-				return new UserUrl(((TestTransportId) transportId).getUsername(), "deus.org");
-
-			}
-
-		};
-		tp.setTransportIdMapper(transportIdMapper);
-		
+				
 		UserIdMapper userIdMapper = new UserIdMapper() {
 
 			@Override
@@ -73,7 +60,7 @@ public class TransportProtocolRegistryImplTest {
 		tp.setMessageSender(new MessageSender() {
 
 			@Override
-			public void send(TransportMessage command) {
+			public void send(@SuppressWarnings("unused") TransportMessage message) {
 				System.out.println("sending");
 			}
 

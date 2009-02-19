@@ -5,12 +5,14 @@ import deus.core.access.transport.core.soul.protocol.TransportId;
 public class DefaultRegistrationEventCallback implements RegistrationEventCallback {
 
 	@Override
-	public void registered(TransportId transportId) {
+	public void registered(@SuppressWarnings("unused") TransportId transportId) {
+		// DO NOTHING
 	}
 
 
 	@Override
-	public void unregistered(TransportId transportId) {
+	public void unregistered(@SuppressWarnings("unused") TransportId transportId) {
+		// DO NOTHING
 	}
 
 }

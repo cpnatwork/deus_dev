@@ -48,7 +48,7 @@ public abstract class AbstractFilteredPacketListener implements FilteredPacketLi
 	 * 
 	 * @see AbstractFilteredPacketListener#getFilter()
 	 */
-	protected boolean accept(Packet packet) {
+	protected boolean accept(@SuppressWarnings("unused") Packet packet) {
 		throw new UnsupportedOperationException("accept not implemented! Either implement this method or getFilter()");
 	}
 

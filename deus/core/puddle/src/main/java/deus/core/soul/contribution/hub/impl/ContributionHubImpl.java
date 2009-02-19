@@ -12,7 +12,7 @@ import deus.model.dossier.DigitalCard;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
-@Component
+@Component("contributionHub")
 public class ContributionHubImpl implements ContributionHub {
 
 	@Autowired

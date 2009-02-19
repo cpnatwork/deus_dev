@@ -8,10 +8,14 @@
 
 	<!-- UI -->
 	
-	<osgi:service id="userRegistryOsgiService" ref="userRegistry" interface="deus.core.soul.UserRegistry" />
+	<osgi:service id="subscriberOsgiService" ref="subscriber" interface="deus.core.soul.subscriber.SubscriberExportedToClient" />
 	
-	<osgi:service id="userFactoryOsgiService" ref="userFactory" interface="deus.core.soul.UserFactory" />
+	<osgi:service id="publisherOsgiService" ref="publisher" interface="deus.core.soul.publisher.PublisherExportedToClient" />
+
+	<osgi:service id="barkerOsgiService" ref="barker" interface="deus.core.soul.barker.BarkerExportedToClient" />
 	
+	<osgi:service id="contributionHubOsgiService" ref="contributionHub" interface="deus.core.soul.contribution.hub.ContributionHubExportedToClient" />
+		
 	
 	<!-- DAOs -->
 	
@@ -21,23 +25,23 @@
 	
 	<osgi:reference id="subDao" interface="deus.core.access.storage.pub.api.PubDao"/>
 	
-	<osgi:reference id="userDao" interface="deus.core.access.storage.user.api.UserMetadataDao"/>
+	<osgi:reference id="userDao" interface="deus.core.access.storage.user.api.UserDao"/>
 
 
 	<!-- TRANSPORT -->
 
 	<!-- references to send commands, should be provided by core-transport bundle -->
 	
-	<osgi:reference id="barkerCommandSender" interface="deus.core.transport.sending.command.BarkerCommandSender"/>
+	<osgi:reference id="barkerCommandSender" interface="deus.core.access.transport.core.sending.command.BarkerCommandSender"/>
 
-	<osgi:reference id="publisherCommandSender" interface="deus.core.transport.sending.command.PublisherCommandSender"/>
+	<osgi:reference id="publisherCommandSender" interface="deus.core.access.transport.core.sending.command.PublisherCommandSender"/>
 	
-	<osgi:reference id="subscriberCommandSender" interface="deus.core.transport.sending.command.SubscriberCommandSender"/>
+	<osgi:reference id="subscriberCommandSender" interface="deus.core.access.transport.core.sending.command.SubscriberCommandSender"/>
 	
 	
 	<!-- services to receive commands, should be used by core-transport bundle -->
 	
-	<osgi:reference id="commandReceiverRegistry" interface="deus.core.transport.receiving.command.CommandReceiverRegistry"/>
+	<osgi:reference id="soulCallbackRegistry" interface="deus.core.access.transport.core.receiving.soulcallback.ExportedSoulCallbackRegistry"/>
 
 	
 </beans>

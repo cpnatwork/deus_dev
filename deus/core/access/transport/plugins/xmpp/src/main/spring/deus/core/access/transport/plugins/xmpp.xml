@@ -11,9 +11,6 @@
 			<bean class="deus.core.access.transport.core.soul.protocol.callback.DefaultRegistrationEventCallback" />
 		</property>
 		<property name="messageSender" ref="xmppMessageSender" />
-		<property name="transportIdMapper">
-			<bean class="deus.core.access.transport.plugins.xmpp.core.mapper.XmppTransportIdMapper" />
-		</property>
 		<property name="userIdMapper">
 			<bean class="deus.core.access.transport.plugins.xmpp.core.mapper.XmppUserIdMapper" />
 		</property>

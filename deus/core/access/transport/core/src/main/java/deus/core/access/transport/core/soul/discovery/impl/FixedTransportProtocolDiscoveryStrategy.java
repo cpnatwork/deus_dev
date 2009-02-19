@@ -15,7 +15,7 @@ public class FixedTransportProtocolDiscoveryStrategy implements TransportProtoco
 
 
 	@Override
-	public String agreeOnTransportProtocol(UserId receiverId) {
+	public String agreeOnTransportProtocol(@SuppressWarnings("unused") UserId receiverId) {
 		return transportProtocolId;
 	}
 

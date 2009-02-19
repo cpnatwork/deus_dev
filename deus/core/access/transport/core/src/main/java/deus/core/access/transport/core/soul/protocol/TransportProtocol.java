@@ -1,6 +1,5 @@
 package deus.core.access.transport.core.soul.protocol;
 
-import deus.core.access.transport.core.soul.mapper.TransportIdMapper;
 import deus.core.access.transport.core.soul.mapper.UserIdMapper;
 import deus.core.access.transport.core.soul.protocol.callback.LoginEventCallback;
 import deus.core.access.transport.core.soul.protocol.callback.RegistrationEventCallback;
@@ -18,8 +17,6 @@ public interface TransportProtocol {
 
 	
 
-	public abstract TransportIdMapper getTransportIdMapper();
-		
 	public abstract UserIdMapper getUserIdMapper();
 
 

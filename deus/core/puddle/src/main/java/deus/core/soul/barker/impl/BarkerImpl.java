@@ -13,7 +13,7 @@ import deus.model.attention.AttentionElement;
 import deus.model.attention.AttentionList;
 import deus.model.user.id.UserId;
 
-@Component
+@Component("barker")
 public class BarkerImpl implements Barker {
 
 	private final Logger logger = LoggerFactory.getLogger(BarkerImpl.class);

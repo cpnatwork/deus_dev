@@ -15,7 +15,7 @@ import deus.model.pub.LosEntry;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
-@Component
+@Component("publisher")
 @Qualifier("target")
 public class PublisherImpl implements Publisher {
 	
@@ -40,7 +40,7 @@ public class PublisherImpl implements Publisher {
 		entry.setSubscriberMetadata(subscriberMetadata);
 		listOfSubscribers.put(subscriberId, entry);
 		
-		// FIXME: store by using dao.store():
+		pubDao.updateEntity(listOfSubscribers);
 	}
 
 
@@ -54,7 +54,7 @@ public class PublisherImpl implements Publisher {
 			throw new IllegalArgumentException("cannot remove subscriber, that has not been added yet!");
 		listOfSubscribers.remove(subscriberId);
 		
-		// FIXME: store by using dao.store():
+		pubDao.updateEntity(listOfSubscribers);
 	}
 
 
@@ -66,7 +66,7 @@ public class PublisherImpl implements Publisher {
 		
 		listOfSubscribers.clear();
 		
-		// FIXME: store by using dao.store():
+		pubDao.updateEntity(listOfSubscribers);
 	}
 
 

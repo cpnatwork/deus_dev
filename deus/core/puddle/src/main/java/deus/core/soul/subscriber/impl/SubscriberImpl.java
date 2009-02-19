@@ -22,7 +22,7 @@ import deus.model.sub.SubscriptionState;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
-@Component
+@Component("subscriber")
 @Qualifier("target")
 public class SubscriberImpl implements Subscriber {
 
@@ -85,7 +85,7 @@ public class SubscriberImpl implements Subscriber {
 
 		listOfPublishers.changeState(publisherId, SubscriptionState.granted);
 		
-		// FIXME: store LoP by using dao.store()
+		subDao.updateEntity(listOfPublishers);
 	}
 
 
@@ -97,7 +97,7 @@ public class SubscriberImpl implements Subscriber {
 		
 		listOfPublishers.remove(publisherId);
 		
-		// FIXME: store LoP by using dao.store()
+		subDao.updateEntity(listOfPublishers);
 	}
 
 
@@ -116,7 +116,7 @@ public class SubscriberImpl implements Subscriber {
 		entry.setSubscriptionState(SubscriptionState.requested);
 		listOfPublishers.put(publisherId, entry);
 
-		// FIXME: store LoP by using dao.store()
+		subDao.updateEntity(listOfPublishers);
 		
 		
 		UserMetadata subscriberMetadata = userDao.getUserMetadata(subscriberId);
@@ -137,7 +137,7 @@ public class SubscriberImpl implements Subscriber {
 
 		listOfPublishers.remove(publisherId);
 		
-		// FIXME: store LoP by using dao.store()
+		subDao.updateEntity(listOfPublishers);
 
 		subscriberCommandSender.unsubscribe(subscriberId, publisherId);
 	}

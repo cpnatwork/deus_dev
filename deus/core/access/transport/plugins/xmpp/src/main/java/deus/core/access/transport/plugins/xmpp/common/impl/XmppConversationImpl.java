@@ -132,7 +132,7 @@ public class XmppConversationImpl implements XmppConversation {
 	}
 
 
-	// TODO: think about how to make clear, that TO, FROM and 'fullname' property are set in this method
+	// TODO: think about how to make clear, that TO and FROM are set in this method
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -145,8 +145,6 @@ public class XmppConversationImpl implements XmppConversation {
 
 		packet.setTo(receiver.toString());
 		packet.setFrom(xmppTransportId.toString());
-		// TODO: REMOVE
-		//packet.setProperty(xmppConfiguration.getXmppPropertyFullName(), userMetadata.getFullName());
 		connection.sendPacket(packet);
 	}
 
