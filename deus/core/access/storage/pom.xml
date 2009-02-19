@@ -21,38 +21,29 @@
 			<context:component-scan />. This BeanPostProcessor requires
 			PersistantAnnotationBeanPostProcessor which is in the given package.
 		-->
-		<osgi.additionalPackageImports>org.springframework.orm.jpa.support</osgi.additionalPackageImports>
+		<osgi.additionalPackageImports>
+			org.springframework.beans.factory.config,
+			org.springframework.jdbc.datasource,
+			org.springframework.orm.jpa.support
+		</osgi.additionalPackageImports>
 
 		<osgi.nonExportedPackages>!*.impl</osgi.nonExportedPackages>
 	</properties>
 
 
-	<!--
-		+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	-->
-	<!--
-		+++ DEPENDENCIES
-		++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	-->
-	<!--
-		+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	-->
+	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++ DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
 	<dependencies>
-		<!--
-			+++ INTRA-PROJECT DEPENDENCIES
-			++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-		-->
+		<!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 		<dependency>
 			<groupId>inf6.promed</groupId>
 			<artifactId>deus-model</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
 
-		<!--
-			+++ INTER-PROJECT DEPENDENCIES
-			++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-		-->
+		<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -83,7 +74,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>com.springsource.org.hibernate</artifactId>
-			<version>3.3.1.GA</version>
+			<version>3.2.6.ga</version>
 		</dependency>
 
 		<!-- Hibernate Annotations -->
@@ -110,16 +101,9 @@
 	</dependencies>
 
 
-	<!--
-		+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	-->
-	<!--
-		+++ BUILD
-		+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	-->
-	<!--
-		+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	-->
+	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++ BUILD +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
 	<build>
 
