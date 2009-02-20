@@ -21,11 +21,7 @@
 			<context:component-scan />. This BeanPostProcessor requires
 			PersistantAnnotationBeanPostProcessor which is in the given package.
 		-->
-		<osgi.additionalPackageImports>
-			org.springframework.beans.factory.config,
-			org.springframework.jdbc.datasource,
-			org.springframework.orm.jpa.support
-		</osgi.additionalPackageImports>
+		<osgi.additionalPackageImports></osgi.additionalPackageImports>
 
 		<osgi.nonExportedPackages>!*.impl</osgi.nonExportedPackages>
 	</properties>
@@ -44,24 +40,6 @@
 		</dependency>
 
 		<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.context</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.osgi</groupId>
-			<artifactId>org.springframework.osgi-library</artifactId>
-			<type>libd</type>
-		</dependency>
-
-
-		<!-- Spring TX (formerly Spring DAO) -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.transaction</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
 
 	</dependencies>
 

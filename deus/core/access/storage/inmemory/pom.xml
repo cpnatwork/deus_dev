@@ -22,9 +22,6 @@
 			PersistantAnnotationBeanPostProcessor which is in the given package.
 		-->
 		<osgi.additionalPackageImports>
-			org.springframework.beans.factory.config,
-			org.springframework.jdbc.datasource,
-			org.springframework.orm.jpa.support
 		</osgi.additionalPackageImports>
 
 		<osgi.nonExportedPackages>!*.impl</osgi.nonExportedPackages>
@@ -59,49 +56,6 @@
 			<groupId>org.springframework.osgi</groupId>
 			<artifactId>org.springframework.osgi-library</artifactId>
 			<type>libd</type>
-		</dependency>
-
-
-		<!-- Spring TX (formerly Spring DAO) -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.transaction</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-
-		<!-- Spring ORM -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.orm</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-
-		<!-- Hibernate -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>com.springsource.org.hibernate</artifactId>
-			<version>3.2.6.ga</version>
-		</dependency>
-
-		<!-- Hibernate Annotations -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>com.springsource.org.hibernate.annotations</artifactId>
-			<version>3.3.1.ga</version>
-		</dependency>
-
-		<!-- javax.transaction -->
-		<dependency>
-			<groupId>javax.transaction</groupId>
-			<artifactId>com.springsource.javax.transaction</artifactId>
-			<version>1.1.0</version>
-		</dependency>
-
-		<!--  DERBY -->
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>com.springsource.org.apache.derby</artifactId>
-			<version>10.4.1000003.648739</version>
 		</dependency>
 
 	</dependencies>

@@ -2,7 +2,6 @@ package deus.core.access.storage.user.inmemory;
 
 import java.util.HashMap;
 
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.user.api.UserDao;
@@ -18,7 +17,7 @@ import deus.model.user.id.UserId;
  * 
  */
 @Component
-public class UserDaoInmemoryImpl extends HibernateDaoSupport implements UserDao {
+public class UserDaoInmemoryImpl implements UserDao {
 
 	static HashMap<String, UserPO> userPoMap = new HashMap<String, UserPO>();
 
