@@ -22,4 +22,11 @@ public class DossierDaoInmemoryImpl implements DossierDao {
 
 	}
 
+
+	@Override
+	public void deletePIF(UserId userId) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

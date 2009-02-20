@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.gatekeeper.cerberus.Cerberus;
 import deus.gatekeeper.cerberus.UserLoginStateObserver;
-import deus.gatekeeper.soul.LoginCredentials;
+import deus.gatekeeper.puddle.LoginCredentials;
 import deus.model.user.id.UserId;
 
 @RunWith(SpringJUnit4ClassRunner.class)

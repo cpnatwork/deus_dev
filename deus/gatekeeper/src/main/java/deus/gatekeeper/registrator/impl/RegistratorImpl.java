@@ -1,17 +1,29 @@
 package deus.gatekeeper.registrator.impl;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.storage.api.attention.AttentionDao;
+import deus.core.access.storage.api.attention.AttentionListImpl;
+import deus.core.access.storage.api.dossier.api.DossierDao;
+import deus.core.access.storage.api.pub.api.PubDao;
+import deus.core.access.storage.api.pub.model.ListOfSubscribersImpl;
+import deus.core.access.storage.api.sub.api.SubDao;
+import deus.core.access.storage.api.sub.model.ListOfPublishersImpl;
 import deus.core.access.storage.api.user.api.LocalUserDao;
-import deus.gatekeeper.registrator.RegistrationInformation;
+import deus.gatekeeper.puddle.RegistrationInformation;
 import deus.gatekeeper.registrator.Registrator;
 import deus.gatekeeper.registrator.UserIdGenerator;
 import deus.gatekeeper.registrator.UserRegistrationStateObserver;
+import deus.model.depository.deus.impl.DistributedPatientFolderImpl;
+import deus.model.dossier.DigitalCard;
+import deus.model.dossier.deus.PersonalPatientFile;
 import deus.model.user.Account;
+import deus.model.user.UserRole;
 import deus.model.user.id.UserId;
 
 @Component("registrator")
@@ -23,6 +35,20 @@ public class RegistratorImpl implements Registrator {
 	private LocalUserDao localUserDao;
 
 	@Autowired
+	private AttentionDao attentionDao;
+	
+	@Autowired
+	private PubDao pubDao;
+
+	
+	@Autowired
+	private SubDao subDao;
+	
+	@Autowired
+	private DossierDao dossierDao;
+
+
+	@Autowired
 	private UserIdGenerator userIdGenerator;
 
 
@@ -32,20 +58,48 @@ public class RegistratorImpl implements Registrator {
 
 
 	@Override
-	public void register(RegistrationInformation registrationInformation) {		
+	public void register(RegistrationInformation registrationInformation) {
 		UserId userId = userIdGenerator.generateUserId(registrationInformation.getDesiredUserIdType(),
 				registrationInformation.getLocalUsername());
 
-		Account account = new Account(registrationInformation.getLocalUsername(), registrationInformation.getPassword(), userId);
-		
-		localUserDao.createAccount(account);
+		Account account = new Account(registrationInformation.getLocalUsername(),
+				registrationInformation.getPassword(), userId, registrationInformation.getUserRoles());
 
-		// FIXME: what else to do? create a PIF here??
-		
+		createAccount(account);
+
 		notifyObservers(userId, true);
 	}
 
 
+	private void createAccount(Account account) {
+		localUserDao.createAccount(account);
+		attentionDao.createAttentionList(new AttentionListImpl());
+
+		// INITIALIZING ROLE DATA ELEMENTS
+		for (UserRole userRole : account.getUserRoles())
+			initRole(userRole);
+	}
+
+
+	private void initRole(UserRole userRole) {
+		switch (userRole) {
+		case cp:
+			pubDao.addNewEntity(new ListOfSubscribersImpl());
+			// FIXME: which subtype of PIF to create here?
+			dossierDao.store(new PersonalPatientFile(new HashSet<DigitalCard>()));
+			break;
+		case subscriber:
+			subDao.addNewEntity(new ListOfPublishersImpl());
+			// FIXME: which subtype of DIF to create here?
+			subDao.createDistributedInformationFolder(new DistributedPatientFolderImpl());
+			break;
+		case contributorOther:
+			// TODO: what to init here?
+			break;
+		}
+	}
+	
+	
 	private void notifyObservers(UserId userId, boolean registered) {
 		/*
 		 * a temporary array buffer, used as a snapshot of the state of current Observers.
@@ -79,14 +133,59 @@ public class RegistratorImpl implements Registrator {
 	public void unregister(UserId userId) {
 		// FIXME: implement unregistering a user (use case account closing!)
 		
+
+		
+		Account account = localUserDao.getAccount(userId);
+		
+		destroyAccount(account);
+
 		notifyObservers(userId, false);
+	}
+
+	
+	
+	
+	
+	private void destroyAccount(Account account) {
+		UserId userId = account.getUserId();
+		
+		localUserDao.deleteAccount(userId);
+		attentionDao.deleteAttentionList(userId);
+
+		// INITIALIZING ROLE DATA ELEMENTS
+		for (UserRole userRole : account.getUserRoles())
+			destroyRole(userRole, userId);
+	}
+	
+
+
+	private void destroyRole(UserRole userRole, UserId userId) {
+		switch (userRole) {
+		case cp:
+			pubDao.deleteByNaturalId(userId);
+			dossierDao.deletePIF(userId);
+			break;
+		case subscriber:
+			subDao.deleteByNaturalId(userId);
+			subDao.deleteDistributedInformationFolder(userId);
+			break;
+		case contributorOther:
+			// TODO: what to destroy here?
+			break;
+		}
+	}
+
+
+	
+	
+	public boolean existsLocalUsername(String localUserName) {
+		return localUserDao.existsLocalUsername(localUserName);
 	}
 
 
 	@Override
 	public void addUserRegistrationStateObserver(UserRegistrationStateObserver observer) {
 		observers.add(observer);
-
 	}
 
 

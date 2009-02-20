@@ -32,5 +32,17 @@ public class AttentionDaoInmemoryImpl implements AttentionDao {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void createAttentionList(AttentionListImpl attentionListImpl) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteAttentionList(UserId userId) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

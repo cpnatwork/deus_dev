@@ -12,7 +12,7 @@ public class UserUrl extends UserId {
 
 	public UserUrl(String username, String serverBaseUrl) {
 		super();
-		this.serverBaseUrl = serverBaseUrl;
+		setServerBaseUrl(serverBaseUrl);
 		setUsername(username);
 	}
 
@@ -27,6 +27,7 @@ public class UserUrl extends UserId {
 
 
 	public void setServerBaseUrl(String serverBaseUrl) {
+		// FIXME: do check for valid URL, without trailing '/'
 		this.serverBaseUrl = serverBaseUrl;
 	}
 

@@ -12,7 +12,7 @@ import deus.core.access.storage.api.user.api.LocalUserDao;
 import deus.gatekeeper.cerberus.Cerberus;
 import deus.gatekeeper.cerberus.LoginCredentialChecker;
 import deus.gatekeeper.cerberus.UserLoginStateObserver;
-import deus.gatekeeper.soul.LoginCredentials;
+import deus.gatekeeper.puddle.LoginCredentials;
 import deus.model.user.id.UserId;
 
 @Component("cerberus")

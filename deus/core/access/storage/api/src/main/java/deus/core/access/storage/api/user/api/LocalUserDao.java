@@ -13,4 +13,10 @@ public interface LocalUserDao extends Dao<UserId,String>{
 
 	void createAccount(Account account);
 
+	boolean existsLocalUsername(String localUserName);
+
+	void deleteAccount(UserId userId);
+
+	Account getAccount(UserId userId);
+
 }

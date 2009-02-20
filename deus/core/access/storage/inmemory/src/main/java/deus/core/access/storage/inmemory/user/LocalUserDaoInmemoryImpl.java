@@ -47,4 +47,22 @@ public class LocalUserDaoInmemoryImpl implements LocalUserDao {
 		
 	}
 
+	@Override
+	public boolean existsLocalUsername(String localUserName) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void deleteAccount(UserId userId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Account getAccount(UserId userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

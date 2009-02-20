@@ -34,4 +34,18 @@ public class AttentionDaoHibernateImpl implements AttentionDao {
 
 	}
 
+
+	@Override
+	public void createAttentionList(AttentionListImpl attentionListImpl) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void deleteAttentionList(UserId userId) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

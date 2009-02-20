@@ -9,5 +9,7 @@ public interface DossierDao { // extends Dao<DomT, KeyT> {
 	public PersonalInformationFile getByNaturalId(UserId userId);
 	
 	public void store(PersonalInformationFile personalInformationFile);
+
+	public void deletePIF(UserId userId);
 	
 }

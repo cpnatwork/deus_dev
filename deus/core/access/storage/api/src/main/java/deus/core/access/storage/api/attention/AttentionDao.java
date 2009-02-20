@@ -13,5 +13,9 @@ public interface AttentionDao {
 	public void addNewEntity(AttentionElement attentionElement);
 
 	public void noticeAttentionElement(AttentionElement attentionElement);
+
+	public void createAttentionList(AttentionListImpl attentionListImpl);
+
+	public void deleteAttentionList(UserId userId);
 	
 }

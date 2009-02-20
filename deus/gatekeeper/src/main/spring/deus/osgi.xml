@@ -10,9 +10,20 @@
 	
 	<osgi:service id="registratorOsgiService" ref="registrator" interface="deus.gatekeeper.registrator.Registrator" />
 	
+	<!-- for previewing the userId while registration -->
+	<osgi:service id="userIdGeneratorOsgiService" ref="userIdGenerator" interface="deus.gatekeeper.registrator.UserIdGenerator" />
+	
 	
 	<!-- DAOs -->
-	
+
 	<osgi:reference id="localUserDao" interface="deus.core.access.storage.api.user.api.LocalUserDao" />
+
+	<osgi:reference id="attentionDao" interface="deus.core.access.storage.api.attention.AttentionDao" />
+
+	<osgi:reference id="pubDao" interface="deus.core.access.storage.api.pub.api.PubDao" />
+
+	<osgi:reference id="subDao" interface="deus.core.access.storage.api.sub.api.SubDao" />
+
+	<osgi:reference id="dossierDao" interface="deus.core.access.storage.api.dossier.api.DossierDao" />
 
 </beans>

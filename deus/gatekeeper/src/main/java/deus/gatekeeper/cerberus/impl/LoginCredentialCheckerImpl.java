@@ -3,7 +3,7 @@ package deus.gatekeeper.cerberus.impl;
 import org.springframework.stereotype.Component;
 
 import deus.gatekeeper.cerberus.LoginCredentialChecker;
-import deus.gatekeeper.soul.LoginCredentials;
+import deus.gatekeeper.puddle.LoginCredentials;
 
 @Component
 public class LoginCredentialCheckerImpl implements LoginCredentialChecker {
