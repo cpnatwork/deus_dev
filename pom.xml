@@ -245,8 +245,9 @@
 						<!--
 							export all packages below the root package (except non exported packages), and don't reimport them! more on
 							reimporting exported packages here: http://www.osgi.org/blog/2007/04/importance-of-exporting-nd-importing.html
+							If this behaviour is desired, add ;-noimport:=true at the end!
 						-->
-						<Export-Package>${osgi.nonExportedPackages},${osgi.rootPackage}.*;-noimport:=true</Export-Package>
+						<Export-Package>${osgi.nonExportedPackages},${osgi.rootPackage}.*</Export-Package>
 
 						<!--
 							include all other packages (also the non exported packages!) as private. Export-Package takes precedence over
@@ -259,10 +260,9 @@
 
 						<!-- add additional package imports -->
 						<Import-Package>${osgi.additionalPackageImports},*</Import-Package>
-<!--						<Import-Bundle>com.springsource.ch.qos.logback.classic;version="[0.9.9,0.9.9]",com.springsource.slf4j.api;version="[1.5.0,1.5.0]"</Import-Bundle>-->
 
 						<Application-TraceLevels>${application.traceLevels}</Application-TraceLevels>
-					</instructions><!-- com.springsource.slf4j.bridge;version="[1.5.0,1.5.0]", ,com.springsource.slf4j.org.apache.commons.logging;version="[1.5.0,1.5.0]",com.springsource.slf4j.org.apache.log4j;version="[1.5.0,1.5.0]"-->
+					</instructions>
 				</configuration>
 			</plugin>
 
@@ -272,13 +272,13 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<configuration>
-					<!--				<outputDirectory>${springdmserver.location}/repository/bundles/usr</outputDirectory>-->
+					<!--	<outputDirectory>${springdmserver.location}/repository/bundles/usr</outputDirectory>-->
 					<outputDirectory>${project.build.directory}/dependencies</outputDirectory>
 					<overWriteReleases>false</overWriteReleases>
 					<overWriteSnapshots>false</overWriteSnapshots>
 					<overWriteIfNewer>true</overWriteIfNewer>
 					<includeScope>runtime</includeScope>
-					<!--				<includeTypes>jar</includeTypes>-->
+					<!--	<includeTypes>jar</includeTypes>-->
 				</configuration>
 			</plugin>
 
