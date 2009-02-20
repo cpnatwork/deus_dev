@@ -1,4 +1,4 @@
-package deus.core.access.storage.pub.inmemory;
+package deus.core.access.storage.pub.model;
 
 import java.util.HashMap;
 

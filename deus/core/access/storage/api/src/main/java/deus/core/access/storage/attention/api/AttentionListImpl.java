@@ -1,4 +1,4 @@
-package deus.core.access.storage.attention.inmemory;
+package deus.core.access.storage.attention.api;
 
 import java.util.ArrayList;
 import java.util.Collection;

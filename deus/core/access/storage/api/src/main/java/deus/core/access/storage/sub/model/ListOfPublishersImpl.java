@@ -1,4 +1,4 @@
-package deus.core.access.storage.sub.inmemory;
+package deus.core.access.storage.sub.model;
 
 import java.util.HashMap;
 

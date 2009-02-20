@@ -3,6 +3,7 @@ package deus.core.access.storage.attention.inmemory;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.attention.api.AttentionDao;
+import deus.core.access.storage.attention.api.AttentionListImpl;
 import deus.model.attention.AttentionElement;
 import deus.model.attention.AttentionList;
 import deus.model.user.id.UserId;

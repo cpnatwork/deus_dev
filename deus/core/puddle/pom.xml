@@ -40,7 +40,7 @@
 
 		<dependency>
 			<groupId>inf6.promed</groupId>
-			<artifactId>deus-core-access-storage</artifactId>
+			<artifactId>deus-core-access-storage-api</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
 		

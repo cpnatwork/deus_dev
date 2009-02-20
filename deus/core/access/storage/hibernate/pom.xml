@@ -8,7 +8,7 @@
 		<version>0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>deus-core-access-storage-hiberante</artifactId>
+	<artifactId>deus-core-access-storage-hibernate</artifactId>
 	<packaging>bundle</packaging>
 	<name>DEUS core access storage hibernate</name>
 
