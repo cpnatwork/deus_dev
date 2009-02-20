@@ -4,11 +4,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
-<!--	<osgi:service id="gatekeeperOsgiService" ref="gatekeeper" interface="deus.gatekeeper.Gatekeeper" />-->
+	<!-- to UI -->
 
-<!--	<osgi:service id="userIdFactoryOsgiService" ref="userIdFactory" interface="deus.gatekeeper.UserIdFactory" />-->
-
-	<osgi:reference id="userDao" interface="deus.core.access.storage.api.user.api.UserDao" />
+	<osgi:service id="cerberusOsgiService" ref="cerberus" interface="deus.gatekeeper.cerberus.Cerberus" />
+	
+	<osgi:service id="registratorOsgiService" ref="registrator" interface="deus.gatekeeper.registrator.Registrator" />
+	
+	
+	<!-- DAOs -->
 	
 	<osgi:reference id="localUserDao" interface="deus.core.access.storage.api.user.api.LocalUserDao" />
 

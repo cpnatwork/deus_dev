@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.gatekeeper.Cerberus;
-import deus.gatekeeper.UserLoginStateObserver;
+import deus.gatekeeper.cerberus.Cerberus;
+import deus.gatekeeper.cerberus.UserLoginStateObserver;
 import deus.gatekeeper.soul.LoginCredentials;
 import deus.model.user.id.UserId;
 

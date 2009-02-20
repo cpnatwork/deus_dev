@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.user.api.LocalUserDao;
 import deus.core.access.storage.api.user.api.UserDao;
+import deus.model.user.Account;
 import deus.model.user.id.UserId;
 
 
@@ -38,6 +39,12 @@ public class LocalUserDaoInmemoryImpl implements LocalUserDao {
 	@Override
 	public void updateEntity(UserId entity) {
 		userDao.updateEntity(entity);
+	}
+
+	@Override
+	public void createAccount(Account account) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

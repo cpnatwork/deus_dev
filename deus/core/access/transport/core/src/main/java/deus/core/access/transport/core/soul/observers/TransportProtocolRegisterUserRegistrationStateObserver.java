@@ -7,33 +7,34 @@ import deus.core.access.transport.core.soul.mapper.UserIdMapper;
 import deus.core.access.transport.core.soul.protocol.TransportId;
 import deus.core.access.transport.core.soul.protocol.TransportProtocol;
 import deus.core.access.transport.core.soul.protocolregistry.TransportProtocolRegistry;
-import deus.gatekeeper.cerberus.UserLoginStateObserver;
+import deus.gatekeeper.registrator.UserRegistrationStateObserver;
 import deus.model.user.id.UserId;
 
 @Component
-public class TransportProtocolLoginUserLoginStateObserver implements UserLoginStateObserver {
+public class TransportProtocolRegisterUserRegistrationStateObserver implements UserRegistrationStateObserver {
 
 	@Autowired
 	private TransportProtocolRegistry transportProtocolRegistry;
 	
+	
 	@Override
-	public void loggedIn(UserId userId) {
+	public void registered(UserId userId) {
 		for (String transportProtocolId : transportProtocolRegistry.getAllRegisteredTransportProtocolIds()) {
 			TransportProtocol tp = transportProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId);
 			UserIdMapper userIdMapper = tp.getUserIdMapper();
 			TransportId transportId = userIdMapper.resolveLocal(userId);
-			tp.getLoginEventCallback().loggedIn(transportId);
+			tp.getRegistrationEventCallback().registered(transportId);
 		}
 	}
 
 
 	@Override
-	public void loggedOut(UserId userId) {
+	public void unregistered(UserId userId) {
 		for (String transportProtocolId : transportProtocolRegistry.getAllRegisteredTransportProtocolIds()) {
 			TransportProtocol tp = transportProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId);
 			UserIdMapper userIdMapper = tp.getUserIdMapper();
 			TransportId transportId = userIdMapper.resolveLocal(userId);
-			tp.getLoginEventCallback().loggedOut(transportId);
+			tp.getRegistrationEventCallback().unregistered(transportId);
 		}
 	}
 

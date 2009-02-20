@@ -8,6 +8,7 @@ import deus.core.access.storage.api.user.api.LocalUserDao;
 import deus.core.access.storage.api.user.api.UserDao;
 import deus.core.access.storage.api.user.model.LocalUserPO;
 import deus.core.access.storage.api.user.model.UserPO;
+import deus.model.user.Account;
 import deus.model.user.id.UserId;
 
 @Component
@@ -54,6 +55,13 @@ public class LocalUserDaoHibernateImpl extends HibernateDaoSupport implements Lo
 		UserPO entity = userPoDao.getByNaturalId(userId.getId());
 		entity.setUserId(userId);
 		userPoDao.updateEntity(entity);
+	}
+
+
+	@Override
+	public void createAccount(Account account) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

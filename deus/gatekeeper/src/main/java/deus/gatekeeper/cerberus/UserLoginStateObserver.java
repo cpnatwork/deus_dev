@@ -1,4 +1,4 @@
-package deus.gatekeeper;
+package deus.gatekeeper.cerberus;
 
 import deus.model.user.id.UserId;
 

@@ -1,4 +1,4 @@
-package deus.gatekeeper.impl;
+package deus.gatekeeper.cerberus.impl;
 
 import java.util.List;
 import java.util.Vector;
@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.user.api.LocalUserDao;
-import deus.gatekeeper.Cerberus;
-import deus.gatekeeper.LoginCredentialChecker;
-import deus.gatekeeper.UserLoginStateObserver;
+import deus.gatekeeper.cerberus.Cerberus;
+import deus.gatekeeper.cerberus.LoginCredentialChecker;
+import deus.gatekeeper.cerberus.UserLoginStateObserver;
 import deus.gatekeeper.soul.LoginCredentials;
 import deus.model.user.id.UserId;
 
@@ -46,6 +46,8 @@ public class CerberusImpl implements Cerberus {
 		
 		logger.debug("user with id {} logged in", userId);
 
+
+		// FIXME: implement thread safe notifying (see RegistratorImpl)
 		for (UserLoginStateObserver observer : observers)
 			observer.loggedIn(userId);
 	}
@@ -57,6 +59,7 @@ public class CerberusImpl implements Cerberus {
 
 		logger.debug("user with id {} logged out", userId);
 		
+		// FIXME: implement thread safe notifying (see RegistratorImpl)
 		for (UserLoginStateObserver observer : observers)
 			observer.loggedOut(userId);
 	}
