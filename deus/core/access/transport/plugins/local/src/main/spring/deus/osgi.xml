@@ -8,10 +8,10 @@
 
 	<!-- CORE -->
 
-	<osgi:reference id="transportProtocolRegistry" interface="deus.core.transport.core.protocolregistry.TransportProtocolRegistry"/>
+	<osgi:reference id="transportProtocolRegistry" interface="deus.core.access.transport.core.soul.protocolregistry.ExportedTransportProtocolRegistry"/>
 	
 	<!-- RECEIVING -->
 	
-	<osgi:reference id="messageReceiver" interface="deus.core.transport.receiving.message.MessageReceiver"/>
+	<osgi:reference id="messageReceiver" interface="deus.core.access.transport.core.receiving.message.MessageReceiver"/>
 	
 </beans>

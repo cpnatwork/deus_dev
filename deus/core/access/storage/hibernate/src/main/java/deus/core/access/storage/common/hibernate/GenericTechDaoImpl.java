@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import deus.core.access.storage.common.TechDao;
+import deus.core.access.storage.api.common.TechDao;
 
 public class GenericTechDaoImpl<TechEntityT, TechIdT extends Serializable> extends HibernateDaoSupport implements
 		TechDao<TechEntityT, TechIdT> {

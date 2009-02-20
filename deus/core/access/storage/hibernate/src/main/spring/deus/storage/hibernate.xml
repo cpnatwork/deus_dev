@@ -75,19 +75,19 @@
 	</bean>
 
 	<bean id="pubDao"
-		class="deus.core.access.storage.pub.hibernate.PubDaoHibernateImpl">
+		class="deus.core.access.storage.api.pub.hibernate.PubDaoHibernateImpl">
 	</bean>
 
 	<bean id="subDao"
-		class="deus.core.access.storage.sub.hibernate.SubDaoHibernateImpl">
+		class="deus.core.access.storage.api.sub.hibernate.SubDaoHibernateImpl">
 	</bean>
 
 	<bean id="userDao"
-		class="deus.core.access.storage.user.hibernate.UserDaoHibernateImpl">
+		class="deus.core.access.storage.api.user.hibernate.UserDaoHibernateImpl">
 	</bean>
 
 	<bean id="localUserDao"
-		class="deus.core.access.storage.user.hibernate.LocalUserDaoHibernateImpl">
+		class="deus.core.access.storage.api.user.hibernate.LocalUserDaoHibernateImpl">
 	</bean>
 
 </beans>

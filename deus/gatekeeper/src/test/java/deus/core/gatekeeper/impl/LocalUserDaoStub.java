@@ -1,6 +1,6 @@
 package deus.core.gatekeeper.impl;
 
-import deus.core.access.storage.user.api.LocalUserDao;
+import deus.core.access.storage.api.user.api.LocalUserDao;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
 

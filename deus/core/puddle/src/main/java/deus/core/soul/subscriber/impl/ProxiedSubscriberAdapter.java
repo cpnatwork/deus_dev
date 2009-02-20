@@ -1,6 +1,7 @@
 package deus.core.soul.subscriber.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.transport.core.receiving.soulcallback.SubscriberExportedToPeer;
@@ -20,13 +21,16 @@ import deus.model.user.id.UserId;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-@Component
+@Component("subscriber")
 public class ProxiedSubscriberAdapter implements Subscriber {
-
-	@Autowired
-	private SubscriberExportedToPeer subscriberExportedToPeer;
+	
 	@Autowired
 	private SubscriberExportedToClient subscriberExportedToClient;
+	
+
+	@Autowired
+	@Qualifier("proxy")
+	private SubscriberExportedToPeer subscriberExportedToPeer;
 
 
 	// +++ METHODS OF REMOTE CALLED SUBSCRIBER ++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -4,10 +4,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
-	<osgi:service id="gatekeeperOsgiService" ref="gatekeeper" interface="deus.gatekeeper.Gatekeeper" />
+<!--	<osgi:service id="gatekeeperOsgiService" ref="gatekeeper" interface="deus.gatekeeper.Gatekeeper" />-->
 
-	<osgi:service id="userIdFactoryOsgiService" ref="userIdFactory" interface="deus.gatekeeper.UserIdFactory" />
+<!--	<osgi:service id="userIdFactoryOsgiService" ref="userIdFactory" interface="deus.gatekeeper.UserIdFactory" />-->
 
-	<osgi:reference id="userMetadataDao" interface="deus.core.access.storage.user.api.UserMetadataDao" />
+	<osgi:reference id="userDao" interface="deus.core.access.storage.api.user.api.UserDao" />
+	
+	<osgi:reference id="localUserDao" interface="deus.core.access.storage.api.user.api.LocalUserDao" />
 
 </beans>

@@ -7,10 +7,10 @@
 			
 	<bean id="localTransportProtocol" class="deus.core.access.transport.plugins.local.soul.protocol.LocalTransportProtocol">
 		<property name="loginEventCallback">
-			<bean class="deus.core.transport.core.protocol.callback.DefaultLoginEventCallback" />
+			<bean class="deus.core.access.transport.core.soul.protocol.callback.DefaultLoginEventCallback" />
 		</property>
 		<property name="registrationEventCallback">
-			<bean class="deus.core.transport.core.protocol.callback.DefaultRegistrationEventCallback" />
+			<bean class="deus.core.access.transport.core.soul.protocol.callback.DefaultRegistrationEventCallback" />
 		</property>
 		<property name="messageSender" ref="localMessageSender"/>
 		<property name="userIdMapper">

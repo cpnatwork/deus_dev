@@ -35,7 +35,7 @@
 	
 	more help: http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-classpath-scanning
 	 -->
-	<context:component-scan base-package="deus.core.access.storage"/>
+	<context:component-scan base-package="deus.core.access.storage.inmemory"/>
 	
 	
 </beans>

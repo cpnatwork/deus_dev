@@ -1,6 +1,7 @@
 package deus.core.soul.publisher.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.transport.core.receiving.soulcallback.PublisherExportedToPeer;
@@ -19,12 +20,14 @@ import deus.model.user.id.UserId;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-@Component
+@Component("publisher")
 public class ProxiedPublisherAdapter implements Publisher {
 
 	@Autowired
 	private PublisherExportedToClient publisherExportedToClient;
+	
 	@Autowired
+	@Qualifier("proxy")
 	private PublisherExportedToPeer publisherExportedToPeer;
 
 

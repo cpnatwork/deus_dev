@@ -1,6 +1,7 @@
 package deus.core.soul.decisionprocessor.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.transport.core.receiving.soulcallback.PublisherExportedToPeer;
@@ -13,6 +14,7 @@ import deus.model.user.id.UserId;
 public class SubscriberRequestDecisionProcessor implements GenericDecisionProcessor<SubscriberRequest> {
 
 	@Autowired
+	@Qualifier("target")
 	private PublisherExportedToPeer publisher;
 	
 	@Autowired

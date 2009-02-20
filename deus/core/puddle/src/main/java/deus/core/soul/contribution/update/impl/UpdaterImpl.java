@@ -5,7 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.dossier.api.DossierDao;
+import deus.core.access.storage.api.dossier.api.DossierDao;
 import deus.core.soul.common.InformationFileUpdateStrategy;
 import deus.core.soul.contribution.update.Updater;
 import deus.model.dossier.DigitalCard;

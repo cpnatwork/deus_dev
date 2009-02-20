@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.pub.api.PubDao;
+import deus.core.access.storage.api.pub.api.PubDao;
 import deus.core.access.transport.core.sending.command.PublisherCommandSender;
 import deus.core.soul.publisher.Publisher;
 import deus.model.dossier.DigitalCard;
@@ -15,7 +15,7 @@ import deus.model.pub.LosEntry;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
-@Component("publisher")
+@Component
 @Qualifier("target")
 public class PublisherImpl implements Publisher {
 	

@@ -3,7 +3,7 @@ package deus.core.access.transport.core.receiving.soulcallback;
 import org.springframework.stereotype.Component;
 
 
-@Component("souldCallbackRegistry")
+@Component("soulCallbackRegistry")
 public class SoulCallbackRegistryImpl implements SoulCallbackRegistry {
 
 	private PublisherExportedToPeer publisher;

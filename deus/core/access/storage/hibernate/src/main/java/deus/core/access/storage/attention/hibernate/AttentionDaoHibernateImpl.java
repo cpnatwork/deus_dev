@@ -1,7 +1,7 @@
 package deus.core.access.storage.attention.hibernate;
 
-import deus.core.access.storage.attention.api.AttentionDao;
-import deus.core.access.storage.attention.api.AttentionListImpl;
+import deus.core.access.storage.api.attention.AttentionDao;
+import deus.core.access.storage.api.attention.AttentionListImpl;
 import deus.model.attention.AttentionElement;
 import deus.model.attention.AttentionList;
 import deus.model.user.id.UserId;

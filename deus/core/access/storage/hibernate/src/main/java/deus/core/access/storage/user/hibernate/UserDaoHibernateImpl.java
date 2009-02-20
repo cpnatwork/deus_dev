@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.user.api.UserDao;
-import deus.core.access.storage.user.model.UserMetadataPO;
-import deus.core.access.storage.user.model.UserPO;
+import deus.core.access.storage.api.user.api.UserDao;
+import deus.core.access.storage.api.user.model.UserMetadataPO;
+import deus.core.access.storage.api.user.model.UserPO;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 

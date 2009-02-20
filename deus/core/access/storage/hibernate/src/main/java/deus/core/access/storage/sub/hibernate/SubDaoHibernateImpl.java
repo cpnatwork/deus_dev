@@ -1,6 +1,6 @@
 package deus.core.access.storage.sub.hibernate;
 
-import deus.core.access.storage.sub.api.SubDao;
+import deus.core.access.storage.api.sub.api.SubDao;
 import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;

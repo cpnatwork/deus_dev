@@ -137,7 +137,7 @@ public class XmppConversationImpl implements XmppConversation {
 	 * (non-Javadoc)
 	 * 
 	 * @see deus.nsi.xmpp.common.XmppConversation#sendPacket(org.jivesoftware.smack.packet.Packet,
-	 * deus.core.access.storage.user.model.id.XmppUserId)
+	 * deus.core.access.storage.api.user.model.id.XmppUserId)
 	 */
 	@Override
 	public void sendPacket(Packet packet, XmppTransportId receiver) {

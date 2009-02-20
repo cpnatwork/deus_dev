@@ -1,6 +1,6 @@
 package deus.core.access.storage.pub.hibernate;
 
-import deus.core.access.storage.pub.api.PubDao;
+import deus.core.access.storage.api.pub.api.PubDao;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.user.id.UserId;
 

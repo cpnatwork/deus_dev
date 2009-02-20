@@ -19,13 +19,15 @@
 	
 	<!-- DAOs -->
 	
-	<osgi:reference id="attentionDao" interface="deus.core.access.storage.attention.api.AttentionDao"/>
+	<osgi:reference id="attentionDao" interface="deus.core.access.storage.api.attention.AttentionDao"/>
 	
-	<osgi:reference id="pubDao" interface="deus.core.access.storage.sub.api.SubDao"/>
+	<osgi:reference id="pubDao" interface="deus.core.access.storage.api.sub.api.SubDao"/>
 	
-	<osgi:reference id="subDao" interface="deus.core.access.storage.pub.api.PubDao"/>
+	<osgi:reference id="subDao" interface="deus.core.access.storage.api.pub.api.PubDao"/>
 	
-	<osgi:reference id="userDao" interface="deus.core.access.storage.user.api.UserDao"/>
+	<osgi:reference id="userDao" interface="deus.core.access.storage.api.user.api.UserDao"/>
+	
+	<osgi:reference id="dossierDao" interface="deus.core.access.storage.api.dossier.api.DossierDao"/>
 
 
 	<!-- TRANSPORT -->

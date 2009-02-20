@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.user.api.LocalUserDao;
+import deus.core.access.storage.api.user.api.LocalUserDao;
 import deus.gatekeeper.Cerberus;
 import deus.gatekeeper.LoginCredentialChecker;
 import deus.gatekeeper.UserLoginStateObserver;

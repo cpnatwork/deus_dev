@@ -15,7 +15,7 @@
 
 	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
-		<osgi.rootPackage>deus.core.access.storage</osgi.rootPackage>
+		<osgi.rootPackage>deus.core.access.storage.api</osgi.rootPackage>
 		<!--
 			org.springframework.orm.jpa.support: this is needed for
 			<context:component-scan />. This BeanPostProcessor requires

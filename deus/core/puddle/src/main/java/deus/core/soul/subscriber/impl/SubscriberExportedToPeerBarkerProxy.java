@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.sub.api.SubDao;
+import deus.core.access.storage.api.sub.api.SubDao;
 import deus.core.access.transport.core.receiving.soulcallback.SubscriberExportedToPeer;
 import deus.core.soul.barker.BarkerExportedToSubsystems;
 import deus.model.attention.notice.Notice;
@@ -25,7 +25,7 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 	private final Logger logger = LoggerFactory.getLogger(SubscriberExportedToPeerBarkerProxy.class);
 
 	@Autowired
-	@Qualifier(value="target")
+	@Qualifier("target")
 	private SubscriberExportedToPeer proxiedSubscriber;
 
 	@Autowired

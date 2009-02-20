@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.sub.api.SubDao;
-import deus.core.access.storage.user.api.UserDao;
+import deus.core.access.storage.api.sub.api.SubDao;
+import deus.core.access.storage.api.user.api.UserDao;
 import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.common.InformationFileUpdateStrategy;
 import deus.core.soul.subscriber.Subscriber;
@@ -22,7 +22,7 @@ import deus.model.sub.SubscriptionState;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
-@Component("subscriber")
+@Component
 @Qualifier("target")
 public class SubscriberImpl implements Subscriber {
 
