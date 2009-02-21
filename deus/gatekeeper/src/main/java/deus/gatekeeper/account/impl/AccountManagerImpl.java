@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.user.api.AccountDao;
 import deus.gatekeeper.account.AccountManager;
-import deus.gatekeeper.registrator.rolesetup.UserRoleSetup;
+import deus.gatekeeper.rolesetup.UserRoleSetup;
 import deus.model.user.Account;
 import deus.model.user.UserRole;
 import deus.model.user.id.UserId;

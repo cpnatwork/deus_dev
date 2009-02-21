@@ -1,4 +1,4 @@
-package deus.gatekeeper.registrator.rolesetup;
+package deus.gatekeeper.rolesetup;
 
 import deus.model.user.UserRole;
 import deus.model.user.id.UserId;

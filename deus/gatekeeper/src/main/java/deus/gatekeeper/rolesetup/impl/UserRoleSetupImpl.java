@@ -1,4 +1,4 @@
-package deus.gatekeeper.registrator.rolesetup.impl;
+package deus.gatekeeper.rolesetup.impl;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -7,8 +7,8 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import deus.gatekeeper.registrator.rolesetup.UserRoleSetup;
-import deus.gatekeeper.registrator.rolesetup.UserRoleSetupObserver;
+import deus.gatekeeper.rolesetup.UserRoleSetup;
+import deus.gatekeeper.rolesetup.UserRoleSetupObserver;
 import deus.model.user.UserRole;
 import deus.model.user.id.UserId;
 

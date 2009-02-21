@@ -14,6 +14,11 @@
 	<osgi:service id="userIdGeneratorOsgiService" ref="userIdGenerator" interface="deus.gatekeeper.registrator.UserIdGenerator" />
 	
 	
+	<!-- to soul -->
+	
+	<osgi:service id="userRoleSetupOsgiService" ref="userRoleSetup" interface="deus.gatekeeper.rolesetup.UserRoleSetup" />
+	
+	
 	<!-- DAOs -->
 
 	<osgi:reference id="localUserDao" interface="deus.core.access.storage.api.user.api.LocalUserDao" />

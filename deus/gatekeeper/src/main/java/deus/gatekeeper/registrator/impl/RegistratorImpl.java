@@ -16,7 +16,7 @@ import deus.gatekeeper.puddle.RegistrationInformation;
 import deus.gatekeeper.registrator.Registrator;
 import deus.gatekeeper.registrator.UserIdGenerator;
 import deus.gatekeeper.registrator.UserRegistrationStateObserver;
-import deus.gatekeeper.registrator.rolesetup.UserRoleSetup;
+import deus.gatekeeper.rolesetup.UserRoleSetup;
 import deus.model.user.Account;
 import deus.model.user.UserRole;
 import deus.model.user.id.UserId;
