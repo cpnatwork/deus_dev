@@ -1,10 +1,7 @@
 package deus.gatekeeper.registrator.impl;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Vector;
-
-import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -35,7 +32,7 @@ public class RegistratorImpl implements Registrator {
 	@Autowired
 	private UserRoleSetup userRoleSetup;
 
-	
+
 	@Autowired
 	private UserIdGenerator userIdGenerator;
 
@@ -44,29 +41,6 @@ public class RegistratorImpl implements Registrator {
 		this.observers = new Vector<UserRegistrationStateObserver>();
 	}
 
-
-	@Override
-	public void register(RegistrationInformation registrationInformation) {
-		UserId userId = userIdGenerator.generateUserId(registrationInformation.getDesiredUserIdType(),
-				registrationInformation.getLocalUsername());
-
-		Account account = new Account(registrationInformation.getLocalUsername(),
-				registrationInformation.getPassword(), userId, registrationInformation.getUserRoles());
-
-		createAccount(account);
-
-		notifyObservers(userId, true);
-	}
-
-
-	private void createAccount(Account account) {
-		localUserDao.createAccount(account);
-		attentionDao.createAttentionList(new AttentionListImpl());
-
-		// INITIALIZING ROLE DATA ELEMENTS
-		for (UserRole userRole : account.getUserRoles())
-			userRoleSetup.setUpRole(userRole, account.getUserId());
-	}
 
 	private void notifyObservers(UserId userId, boolean registered) {
 		/*
@@ -98,34 +72,51 @@ public class RegistratorImpl implements Registrator {
 
 
 	@Override
-	public void unregister(UserId userId) {
-		// FIXME: implement unregistering a user (use case account closing!)
-		
+	public void register(RegistrationInformation registrationInformation) {
+		UserId userId = userIdGenerator.generateUserId(registrationInformation.getDesiredUserIdType(),
+				registrationInformation.getLocalUsername());
 
-		
+		Account account = new Account(registrationInformation.getLocalUsername(),
+				registrationInformation.getPassword(), userId, registrationInformation.getUserRoles());
+
+		createAccount(account);
+
+		notifyObservers(userId, true);
+	}
+
+
+	private void createAccount(Account account) {
+		localUserDao.createAccount(account);
+		attentionDao.createAttentionList(new AttentionListImpl());
+
+		// INITIALIZING ROLE DATA ELEMENTS
+		for (UserRole userRole : account.getUserRoles())
+			userRoleSetup.setUpRole(userRole, account.getUserId());
+	}
+
+
+	@Override
+	public void unregister(UserId userId) {
 		Account account = localUserDao.getAccount(userId);
-		
+
 		destroyAccount(account);
 
 		notifyObservers(userId, false);
 	}
 
-	
-	
-	
-	
+
 	private void destroyAccount(Account account) {
 		UserId userId = account.getUserId();
-		
+
 		localUserDao.deleteAccount(userId);
 		attentionDao.deleteAttentionList(userId);
 
-		// INITIALIZING ROLE DATA ELEMENTS
+		// DESTROYING ROLE DATA ELEMENTS
 		for (UserRole userRole : account.getUserRoles())
 			userRoleSetup.tearDownRole(userRole, userId);
 	}
-	
-	
+
+
 	public boolean existsLocalUsername(String localUserName) {
 		return localUserDao.existsLocalUsername(localUserName);
 	}
