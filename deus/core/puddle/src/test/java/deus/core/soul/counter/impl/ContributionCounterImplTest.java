@@ -7,8 +7,8 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-import deus.core.soul.contribution.hub.ContributionHubExportedToPeer;
-import deus.core.soul.contribution.hub.impl.ContributionHubImpl;
+import deus.core.soul.contributionhub.ContributionHubExportedToPeer;
+import deus.core.soul.contributionhub.impl.ContributionHubImpl;
 import deus.model.dossier.DigitalCard;
 import deus.model.dossier.PartyInformationDC;
 import deus.model.user.id.UserUrl;

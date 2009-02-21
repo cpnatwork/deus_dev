@@ -3,7 +3,7 @@ package deus.core.soul.decisionprocessor.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.soul.contribution.update.Updater;
+import deus.core.soul.common.pifupdate.Updater;
 import deus.model.attention.decision.Contribution;
 
 @Component

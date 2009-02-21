@@ -32,10 +32,9 @@ public class RegistratorImpl implements Registrator {
 	@Autowired
 	private AttentionDao attentionDao;
 
-	@Resource(name="userRoleSetups")
-	private Map<UserRole, UserRoleSetup> userRoleSetups;
+	@Autowired
+	private UserRoleSetup userRoleSetup;
 
-	
 	
 	@Autowired
 	private UserIdGenerator userIdGenerator;
@@ -66,7 +65,7 @@ public class RegistratorImpl implements Registrator {
 
 		// INITIALIZING ROLE DATA ELEMENTS
 		for (UserRole userRole : account.getUserRoles())
-			userRoleSetups.get(userRole).setUpRole(account.getUserId());
+			userRoleSetup.setUpRole(userRole, account.getUserId());
 	}
 
 	private void notifyObservers(UserId userId, boolean registered) {
@@ -123,7 +122,7 @@ public class RegistratorImpl implements Registrator {
 
 		// INITIALIZING ROLE DATA ELEMENTS
 		for (UserRole userRole : account.getUserRoles())
-			userRoleSetups.get(userRole).tearDownRole(userId);
+			userRoleSetup.tearDownRole(userRole, userId);
 	}
 	
 	

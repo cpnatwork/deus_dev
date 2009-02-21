@@ -1,11 +1,10 @@
-package deus.core.soul.contribution.hub.impl;
+package deus.core.soul.contributionhub.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.soul.barker.BarkerExportedToSubsystems;
-import deus.core.soul.contribution.hub.ContributionHub;
-import deus.core.soul.contribution.update.Updater;
+import deus.core.soul.contributionhub.ContributionHub;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.Contribution;
 import deus.model.dossier.DigitalCard;
@@ -18,27 +17,12 @@ public class ContributionHubImpl implements ContributionHub {
 	@Autowired
 	private BarkerExportedToSubsystems barker;
 
-	@Autowired
-	private Updater updater;
-
-
-	private void checkDc(UserId cpId, DigitalCard contributedDigitalCard) {
+	
+	@Override
+	public void contributeOther(UserId cpId, DigitalCard contributedDigitalCard, UserId contributorId) {
 		if (!cpId.equals(contributedDigitalCard.getCpId()))
 			throw new IllegalArgumentException(
 					"ID of the CP is not the ID of the user, that is handled in this contribution counter");
-	}
-
-
-	@Override
-	public void contributeSelf(UserId cpId, DigitalCard contributedDigitalCard) {
-		checkDc(cpId, contributedDigitalCard);
-		updater.commit(cpId, contributedDigitalCard);
-	}
-
-
-	@Override
-	public void contributeOther(UserId cpId, DigitalCard contributedDigitalCard, UserId contributorId) {
-		checkDc(cpId, contributedDigitalCard);
 
 		if (!contributorId.equals(contributedDigitalCard.getContributorId()))
 			throw new IllegalArgumentException("ID of the contributor does not match the id in the digital card!");

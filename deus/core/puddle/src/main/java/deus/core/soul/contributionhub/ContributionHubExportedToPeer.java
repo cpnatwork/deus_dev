@@ -1,9 +1,9 @@
-package deus.core.soul.contribution.hub;
+package deus.core.soul.contributionhub;
 
 import deus.model.dossier.DigitalCard;
 import deus.model.user.id.UserId;
 
-
+@Deprecated
 public interface ContributionHubExportedToPeer {
 
 	/**

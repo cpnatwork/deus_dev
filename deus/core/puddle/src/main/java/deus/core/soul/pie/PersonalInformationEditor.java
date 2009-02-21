@@ -1,10 +1,19 @@
-package deus.core.soul.contribution.hub;
+package deus.core.soul.pie;
 
 import deus.model.dossier.DigitalCard;
+import deus.model.dossier.generic.PersonalInformationFile;
 import deus.model.user.id.UserId;
 
+public interface PersonalInformationEditor {
 
-public interface ContributionHubExportedToClient {
+	/**
+	 * Plain edit of PIF without any restrictions.
+	 * 
+	 * @param userId
+	 * @param personalInformationFile
+	 */
+	public void updatePersonalInformationFile(UserId userId, PersonalInformationFile personalInformationFile);
+
 
 	/**
 	 * This method is used to self-contribute a digital card to the PIF, i.e. the contributor is the owner of the PIF
@@ -15,6 +24,9 @@ public interface ContributionHubExportedToClient {
 	 * 
 	 * @param contributedDigitalCard the digital card to contribute to the PIF.
 	 */
-	public void contributeSelf(UserId userId, DigitalCard contributedDigitalCard);
-	
+	public void contributeDigitalCard(UserId userId, DigitalCard digitalCard);
+
+
+	public PersonalInformationFile getPersonalInformationFile(UserId userId);
+
 }

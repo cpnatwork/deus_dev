@@ -1,4 +1,4 @@
-package deus.core.soul.contribution.update;
+package deus.core.soul.common.pifupdate;
 
 import deus.model.dossier.DigitalCard;
 import deus.model.user.id.UserId;

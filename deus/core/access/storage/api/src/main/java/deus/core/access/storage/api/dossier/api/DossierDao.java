@@ -11,5 +11,7 @@ public interface DossierDao { // extends Dao<DomT, KeyT> {
 	public void store(PersonalInformationFile personalInformationFile);
 
 	public void deletePIF(UserId userId);
+
+	public void update(UserId userId, PersonalInformationFile personalInformationFile);
 	
 }

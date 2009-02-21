@@ -29,4 +29,11 @@ public class DossierDaoInmemoryImpl implements DossierDao {
 		
 	}
 
+
+	@Override
+	public void update(UserId userId, PersonalInformationFile personalInformationFile) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
