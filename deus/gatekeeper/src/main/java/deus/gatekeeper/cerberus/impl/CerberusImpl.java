@@ -41,7 +41,7 @@ public class CerberusImpl implements Cerberus {
 
 
 	@Override
-	public void login(LoginCredentials credentials) {
+	public UserId login(LoginCredentials credentials) {
 		if (!loginCredentialChecker.isValid(credentials))
 			// FIXME: think about what to do here
 			;
@@ -58,6 +58,8 @@ public class CerberusImpl implements Cerberus {
 		// FIXME: implement thread safe notifying (see RegistratorImpl)
 		for (UserLoginStateObserver observer : observers)
 			observer.loggedIn(userId);
+		
+		return userId;
 	}
 
 

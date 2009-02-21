@@ -2,7 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:osgi="http://www.springframework.org/schema/osgi"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd"
+		 osgi:default-timeout="10000">
 
 	<!-- to UI -->
 
@@ -10,8 +11,8 @@
 	
 	<osgi:service id="registratorOsgiService" ref="registrator" interface="deus.gatekeeper.registrator.Registrator" />
 	
-	<!-- for previewing the userId while registration -->
-	<osgi:service id="userRoleSetupOsgiService" ref="userRoleSetup" interface="deus.gatekeeper.rolesetup.UserRoleSetup" />
+	<!-- for previewing the userId while registration, userRoleSetupOsgiService can  also be used in the UI -->
+	<osgi:service id="userIdGeneratorOsgiService" ref="userIdGenerator" interface="deus.gatekeeper.registrator.UserIdGenerator" />
 
 	<osgi:service id="accountManagerOsgiService" ref="accountManager" interface="deus.gatekeeper.account.AccountManager" />
 	

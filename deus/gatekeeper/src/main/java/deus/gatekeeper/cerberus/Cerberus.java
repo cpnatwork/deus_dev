@@ -1,10 +1,11 @@
 package deus.gatekeeper.cerberus;
 
 import deus.gatekeeper.puddle.LoginCredentials;
+import deus.model.user.id.UserId;
 
 public interface Cerberus {
 
-	public void login(LoginCredentials credentials);
+	public UserId login(LoginCredentials credentials);
 
 
 	public void logout(String localUsername);

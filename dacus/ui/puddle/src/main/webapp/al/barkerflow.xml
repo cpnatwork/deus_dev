@@ -4,30 +4,26 @@
         http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
 	start-state="attentionlist">
 
-
-	<input name="username" required="true" />
+	<input name="userIdString" required="true" />
 	<!--	<input name="password" required="true" />-->
 
 
 	<view-state id="ack_confirm" redirect="false" popup="false">
-<!--		<transition on="ok" to="setflag_confirm" />-->
+		<!--		<transition on="ok" to="setflag_confirm" />-->
 		<transition on="cancel" to="attentionlist" />
 	</view-state>
 
 	<view-state id="ack_refuse" redirect="false" popup="false">
-<!--		<transition on="ok" to="setflag_refuse" />-->
+		<!--		<transition on="ok" to="setflag_refuse" />-->
 		<transition on="cancel" to="attentionlist" />
 	</view-state>
 
 
 	<view-state id="attentionlist" redirect="false" popup="false">
 		<on-entry>
-			<evaluate expression="userIdFactory.createUserId(username)" result="requestScope.userId" />
-			<evaluate expression="userFactory.createUser(username)" result="requestScope.user" />
-			<evaluate expression="requestScope.user.getBarker().getUnnoticedAttentionList()" result="requestScope.unnoticedAttentionList" />
-			<evaluate expression="requestScope.unnoticedAttentionList.get(0)" result="requestScope.decision" />
-			<evaluate expression="requestScope.decision.setDecisionPositive()" />
-			<evaluate expression="requestScope.user.getBarker().processDecision(requestScope.decision)" />
+
+			<evaluate expression="userUrlParser.parseUserUrl(userIdString)" result="requestScope.userId" />
+			<evaluate expression="barker.getUnnoticedAttentionList(userId)" result="requestScope.unnoticedAttentionList" />
 		</on-entry>
 
 		<transition on="confirm" to="ack_confirm" bind="false">
@@ -43,24 +39,24 @@
 			<transition on="notice" to="notice" bind="false" />
 		-->
 		<on-exit>
-			<evaluate expression="gatekeeper.logout()" />
+			<evaluate expression="cerberus.logout()" />
 		</on-exit>
 	</view-state>
-	
-<!---->
-<!--	<action-state id="notice">-->
-<!--					<action bean="wasauchimmer" />-->
-<!--		<transition on="success" to="attentionlist" />-->
-<!--	</action-state>-->
-<!---->
-<!--	<action-state id="setflag_refuse">-->
-<!--					<action bean="wasauchimmer" />-->
-<!--		<transition on="success" to="attentionlist" />-->
-<!--	</action-state>-->
-<!---->
-<!--	<action-state id="setflag_confirm">-->
-<!--					<action bean="wasauchimmer" />-->
-<!--		<transition on="success" to="attentionlist" />-->
-<!--	</action-state>-->
+
+	<!---->
+	<!--	<action-state id="notice">-->
+	<!--					<action bean="wasauchimmer" />-->
+	<!--		<transition on="success" to="attentionlist" />-->
+	<!--	</action-state>-->
+	<!---->
+	<!--	<action-state id="setflag_refuse">-->
+	<!--					<action bean="wasauchimmer" />-->
+	<!--		<transition on="success" to="attentionlist" />-->
+	<!--	</action-state>-->
+	<!---->
+	<!--	<action-state id="setflag_confirm">-->
+	<!--					<action bean="wasauchimmer" />-->
+	<!--		<transition on="success" to="attentionlist" />-->
+	<!--	</action-state>-->
 
 </flow>

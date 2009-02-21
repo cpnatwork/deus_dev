@@ -21,9 +21,18 @@
 			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
 			PersistantAnnotationBeanPostProcessor which is in the given package.
 		-->
-		<osgi.additionalPackageImports>deus.model.attention, deus.model.attention.notice, deus.model.attention.decision, 
-		deus.model.user, deus.core.soul, deus.gatekeeper, org.springframework.web.servlet.view,
-		org.springframework.orm.jpa.support</osgi.additionalPackageImports>
+		<osgi.additionalPackageImports>
+		deus.model.attention, deus.model.attention.notice, deus.model.attention.decision, 
+		deus.model.user,
+		
+		deus.core.soul, deus.core.soul.subscriber, deus.core.soul.publisher, deus.core.soul.barker,
+		deus.core.soul.pie,
+		
+		deus.gatekeeper.registrator, deus.gatekeeper, deus.gatekeeper.cerberus, deus.gatekeeper.registrator,
+		deus.gatekeeper.account, deus.gatekeeper.puddle,
+		
+		org.springframework.web.servlet.view, org.springframework.orm.jpa.support
+		</osgi.additionalPackageImports>
 		
 		<osgi.nonExportedPackages></osgi.nonExportedPackages>
 	</properties>
