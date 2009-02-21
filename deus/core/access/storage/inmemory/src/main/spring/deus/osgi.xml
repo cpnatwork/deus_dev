@@ -17,5 +17,7 @@
 	<osgi:service id="userDaoOsgiService" ref="userDao" interface="deus.core.access.storage.api.user.api.UserDao" />
 	
 	<osgi:service id="dossierDaoOsgiService" ref="dossierDao" interface="deus.core.access.storage.api.dossier.api.DossierDao" />
+	
+	<osgi:service id="accountDaoOsgiServce" ref="accountDao" interface="deus.core.access.storage.api.user.api.AccountDao" />
 
 </beans>

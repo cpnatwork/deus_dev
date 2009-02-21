@@ -1,4 +1,4 @@
-package deus.core.gatekeeper.impl;
+package deus.gatekeeper.cerberus.impl;
 
 import deus.core.access.storage.api.user.api.LocalUserDao;
 import deus.model.user.Account;

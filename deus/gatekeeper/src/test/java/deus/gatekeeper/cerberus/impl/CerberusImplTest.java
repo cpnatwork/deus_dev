@@ -1,4 +1,4 @@
-package deus.core.gatekeeper.impl;
+package deus.gatekeeper.cerberus.impl;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,8 +15,8 @@ import deus.gatekeeper.puddle.LoginCredentials;
 import deus.model.user.id.UserId;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml" , "/deus/storage/daos.xml" })
-public class GatekeeperImplTest {
+@ContextConfiguration(locations = { "/deus/context.xml" , "/deus/storage/daos.xml", "/deus/gatekeeper/gatekeeper.xml" })
+public class CerberusImplTest {
 
 	@Autowired
 	private Cerberus cerberus;

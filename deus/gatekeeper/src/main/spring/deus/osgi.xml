@@ -25,10 +25,7 @@
 
 	<osgi:reference id="attentionDao" interface="deus.core.access.storage.api.attention.AttentionDao" />
 
-	<osgi:reference id="pubDao" interface="deus.core.access.storage.api.pub.api.PubDao" />
+	<osgi:reference id="accountDao" interface="deus.core.access.storage.api.user.api.AccountDao" />
 
-	<osgi:reference id="subDao" interface="deus.core.access.storage.api.sub.api.SubDao" />
-
-	<osgi:reference id="dossierDao" interface="deus.core.access.storage.api.dossier.api.DossierDao" />
 
 </beans>
