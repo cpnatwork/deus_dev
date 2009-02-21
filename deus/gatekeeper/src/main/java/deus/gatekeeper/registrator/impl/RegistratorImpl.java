@@ -1,27 +1,22 @@
 package deus.gatekeeper.registrator.impl;
 
-import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
+
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.attention.AttentionDao;
 import deus.core.access.storage.api.attention.AttentionListImpl;
-import deus.core.access.storage.api.dossier.api.DossierDao;
-import deus.core.access.storage.api.pub.api.PubDao;
-import deus.core.access.storage.api.pub.model.ListOfSubscribersImpl;
-import deus.core.access.storage.api.sub.api.SubDao;
-import deus.core.access.storage.api.sub.model.ListOfPublishersImpl;
 import deus.core.access.storage.api.user.api.LocalUserDao;
 import deus.gatekeeper.puddle.RegistrationInformation;
 import deus.gatekeeper.registrator.Registrator;
 import deus.gatekeeper.registrator.UserIdGenerator;
 import deus.gatekeeper.registrator.UserRegistrationStateObserver;
-import deus.model.depository.deus.impl.DistributedPatientFolderImpl;
-import deus.model.dossier.DigitalCard;
-import deus.model.dossier.deus.PersonalPatientFile;
+import deus.gatekeeper.registrator.rolesetup.UserRoleSetup;
 import deus.model.user.Account;
 import deus.model.user.UserRole;
 import deus.model.user.id.UserId;
@@ -36,18 +31,12 @@ public class RegistratorImpl implements Registrator {
 
 	@Autowired
 	private AttentionDao attentionDao;
-	
-	@Autowired
-	private PubDao pubDao;
+
+	@Resource(name="userRoleSetups")
+	private Map<UserRole, UserRoleSetup> userRoleSetups;
 
 	
-	@Autowired
-	private SubDao subDao;
 	
-	@Autowired
-	private DossierDao dossierDao;
-
-
 	@Autowired
 	private UserIdGenerator userIdGenerator;
 
@@ -77,29 +66,9 @@ public class RegistratorImpl implements Registrator {
 
 		// INITIALIZING ROLE DATA ELEMENTS
 		for (UserRole userRole : account.getUserRoles())
-			initRole(userRole);
+			userRoleSetups.get(userRole).setUpRole(account.getUserId());
 	}
 
-
-	private void initRole(UserRole userRole) {
-		switch (userRole) {
-		case cp:
-			pubDao.addNewEntity(new ListOfSubscribersImpl());
-			// FIXME: which subtype of PIF to create here?
-			dossierDao.store(new PersonalPatientFile(new HashSet<DigitalCard>()));
-			break;
-		case subscriber:
-			subDao.addNewEntity(new ListOfPublishersImpl());
-			// FIXME: which subtype of DIF to create here?
-			subDao.createDistributedInformationFolder(new DistributedPatientFolderImpl());
-			break;
-		case contributorOther:
-			// TODO: what to init here?
-			break;
-		}
-	}
-	
-	
 	private void notifyObservers(UserId userId, boolean registered) {
 		/*
 		 * a temporary array buffer, used as a snapshot of the state of current Observers.
@@ -154,28 +123,8 @@ public class RegistratorImpl implements Registrator {
 
 		// INITIALIZING ROLE DATA ELEMENTS
 		for (UserRole userRole : account.getUserRoles())
-			destroyRole(userRole, userId);
+			userRoleSetups.get(userRole).tearDownRole(userId);
 	}
-	
-
-
-	private void destroyRole(UserRole userRole, UserId userId) {
-		switch (userRole) {
-		case cp:
-			pubDao.deleteByNaturalId(userId);
-			dossierDao.deletePIF(userId);
-			break;
-		case subscriber:
-			subDao.deleteByNaturalId(userId);
-			subDao.deleteDistributedInformationFolder(userId);
-			break;
-		case contributorOther:
-			// TODO: what to destroy here?
-			break;
-		}
-	}
-
-
 	
 	
 	public boolean existsLocalUsername(String localUserName) {
