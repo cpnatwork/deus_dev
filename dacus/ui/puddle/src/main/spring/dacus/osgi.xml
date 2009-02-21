@@ -5,12 +5,25 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
-	<osgi:reference id="gatekeeper" interface="deus.gatekeeper.Gatekeeper" />
+	<!-- FROM GATEKEEPER -->
 
-	<osgi:reference id="userRegistry" interface="deus.core.soul.UserRegistry" />
+	<osgi:reference id="cerberus" interface="deus.gatekeeper.cerberus.Cerberus" />
 	
-	<osgi:reference id="userIdFactory" interface="deus.gatekeeper.UserIdFactory" />
+	<osgi:reference id="registrator" interface="deus.gatekeeper.registrator.Registrator" />
 	
-	<osgi:reference id="userFactory" interface="deus.core.soul.UserFactory" />
+	<osgi:reference id="userIdGenerator" interface="deus.gatekeeper.registrator.UserIdGenerator" />	
+	
+	<osgi:reference id="accountManager" interface="deus.gatekeeper.account.AccountManager" />
+		
+
+	<!-- FROM SOUL -->
+	
+	<osgi:reference id="subscriber" interface="deus.core.soul.subscriber.SubscriberExportedToClient" />	
+	
+	<osgi:reference id="publisher" interface="deus.core.soul.publisher.PublisherExportedToClient" />
+
+	<osgi:reference id="barker" interface="deus.core.soul.barker.BarkerExportedToClient" />
+	
+	<osgi:reference id="personalInformationEditor" interface="deus.core.soul.pie.PersonalInformationEditor" />
 
 </beans>
