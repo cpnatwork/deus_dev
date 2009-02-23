@@ -1,4 +1,4 @@
-package deus.model.ifcontent.proj.party;
+package deus.model.dossier.proj.party;
 
 import deus.model.dossier.proj.party.common.EntityTag;
 

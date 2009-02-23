@@ -1,4 +1,4 @@
-package deus.model.ifcontent;
+package deus.model.dossier;
 
 import deus.model.user.id.UserId;
 

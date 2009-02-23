@@ -1,4 +1,4 @@
-package deus.model.ifcontent.proj.party;
+package deus.model.dossier.proj.party;
 
 public enum RelatedPersonType {
 

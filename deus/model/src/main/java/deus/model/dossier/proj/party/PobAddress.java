@@ -1,4 +1,4 @@
-package deus.model.ifcontent.proj.party;
+package deus.model.dossier.proj.party;
 
 public class PobAddress extends Address {
 
