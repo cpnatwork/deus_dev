@@ -1,7 +1,7 @@
 package deus.gatekeeper.cerberus.impl;
 
 import deus.core.access.storage.api.user.api.LocalUserDao;
-import deus.model.user.Account;
+import deus.model.account.Account;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
 

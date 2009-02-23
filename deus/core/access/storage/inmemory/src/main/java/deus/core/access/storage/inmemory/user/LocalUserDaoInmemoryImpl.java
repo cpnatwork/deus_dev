@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.user.api.LocalUserDao;
 import deus.core.access.storage.api.user.api.UserDao;
-import deus.model.user.Account;
+import deus.model.account.Account;
 import deus.model.user.id.UserId;
 
 

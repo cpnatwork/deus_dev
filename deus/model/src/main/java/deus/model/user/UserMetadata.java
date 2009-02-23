@@ -20,6 +20,7 @@ public class UserMetadata {
 	public UserMetadata(String userFullName, Gender gender) {
 		super();
 		this.userFullName = userFullName;
+		this.gender = gender;
 	}
 
 

@@ -1,7 +1,8 @@
-package deus.model.user;
+package deus.model.account;
 
 import java.util.Set;
 
+import deus.model.user.UserRole;
 import deus.model.user.id.UserId;
 
 

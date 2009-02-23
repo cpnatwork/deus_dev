@@ -10,9 +10,9 @@ import deus.core.access.storage.api.sub.api.SubDao;
 import deus.core.access.storage.api.sub.model.ListOfPublishersImpl;
 import deus.core.soul.common.AbstractUserRoleSetupObserver;
 import deus.core.soul.subscriber.SubscriberExportedToClient;
-import deus.model.depository.impl.DistributedInformationFolderImpl;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.LopEntry;
+import deus.model.sub.impl.DistributedInformationFolderImpl;
 import deus.model.user.UserRole;
 import deus.model.user.id.UserId;
 

@@ -3,7 +3,7 @@ package deus.core.access.storage.inmemory.user;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.user.api.AccountDao;
-import deus.model.user.Account;
+import deus.model.account.Account;
 import deus.model.user.id.UserId;
 
 @Component("accountDao")
