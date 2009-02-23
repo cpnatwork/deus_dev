@@ -1,7 +1,7 @@
 package deus.core.soul.pie;
 
-import deus.model.dossier.PersonalInformationFile;
-import deus.model.ifcontent.DigitalCard;
+import deus.model.dossier.DigitalCard;
+import deus.model.pie.PersonalInformationFile;
 import deus.model.user.id.UserId;
 
 public interface PersonalInformationEditor {

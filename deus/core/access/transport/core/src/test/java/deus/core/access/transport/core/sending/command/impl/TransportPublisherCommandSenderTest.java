@@ -11,8 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.messages.UpdateMessage;
 import deus.core.access.transport.core.sending.command.PublisherCommandSender;
-import deus.model.ifcontent.DigitalCard;
-import deus.model.ifcontent.PartyInformationDC;
+import deus.model.dossier.DigitalCard;
+import deus.model.dossier.PartyInformationDC;
 import deus.model.user.id.UserUrl;
 
 @RunWith(SpringJUnit4ClassRunner.class)

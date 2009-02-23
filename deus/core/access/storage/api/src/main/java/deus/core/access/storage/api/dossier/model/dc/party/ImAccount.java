@@ -2,7 +2,7 @@ package deus.core.access.storage.api.dossier.model.dc.party;
 
 import java.util.UUID;
 
-public class ImAccount extends deus.model.ifcontent.proj.party.ImAccount {
+public class ImAccount extends deus.model.dossier.proj.party.ImAccount {
 
 	private UUID id;
 

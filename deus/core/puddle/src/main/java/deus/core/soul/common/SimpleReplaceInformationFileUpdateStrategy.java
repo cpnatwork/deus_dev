@@ -2,8 +2,8 @@ package deus.core.soul.common;
 
 import java.util.Set;
 
+import deus.model.dossier.DigitalCard;
 import deus.model.dossier.InformationFile;
-import deus.model.ifcontent.DigitalCard;
 
 public class SimpleReplaceInformationFileUpdateStrategy implements InformationFileUpdateStrategy {
 

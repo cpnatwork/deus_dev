@@ -7,7 +7,7 @@ import deus.core.soul.barker.BarkerExportedToSubsystems;
 import deus.core.soul.contributionhub.ContributionHub;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.Contribution;
-import deus.model.ifcontent.DigitalCard;
+import deus.model.dossier.DigitalCard;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 

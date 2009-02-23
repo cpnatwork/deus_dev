@@ -1,7 +1,7 @@
 package deus.model.depository;
 
-import deus.model.dossier.ForeignInformationFile;
 import deus.model.dossier.InformationFile;
+import deus.model.sub.ForeignInformationFile;
 import deus.model.user.id.UserId;
 
 /**

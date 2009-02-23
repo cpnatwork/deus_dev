@@ -1,8 +1,9 @@
-package deus.model.dossier;
+package deus.model.pie;
 
 import java.util.Set;
 
-import deus.model.ifcontent.DigitalCard;
+import deus.model.dossier.DigitalCard;
+import deus.model.dossier.InformationFile;
 import deus.model.user.id.UserId;
 
 

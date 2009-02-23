@@ -12,7 +12,7 @@ import deus.core.access.transport.core.messages.RequestSubscriptionMessage;
 import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.messages.UnsubscribeMessage;
 import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
-import deus.model.ifcontent.proj.party.Gender;
+import deus.model.dossier.proj.party.Gender;
 import deus.model.user.UserMetadata;
 
 @RunWith(SpringJUnit4ClassRunner.class)

@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import deus.model.depository.DistributedInformationFolder;
-import deus.model.dossier.ForeignInformationFile;
 import deus.model.dossier.InformationFile;
+import deus.model.sub.ForeignInformationFile;
 import deus.model.user.id.UserId;
 
 public class DistributedInformationFolderImpl implements

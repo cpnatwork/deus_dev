@@ -8,7 +8,7 @@ import deus.core.access.transport.core.receiving.soulcallback.SubscriberExported
 import deus.core.soul.subscriber.Subscriber;
 import deus.core.soul.subscriber.SubscriberExportedToClient;
 import deus.model.depository.DistributedInformationFolder;
-import deus.model.ifcontent.DigitalCard;
+import deus.model.dossier.DigitalCard;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;

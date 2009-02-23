@@ -2,7 +2,7 @@ package deus.core.access.storage.api.dossier.model.dc.party;
 
 import java.util.UUID;
 
-public class WebPresence extends deus.model.ifcontent.proj.party.WebPresence {
+public class WebPresence extends deus.model.dossier.proj.party.WebPresence {
 
 	private UUID id;
 

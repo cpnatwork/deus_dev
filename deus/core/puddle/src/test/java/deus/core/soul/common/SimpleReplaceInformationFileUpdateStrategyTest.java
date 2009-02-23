@@ -9,14 +9,14 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
+import deus.model.dossier.DigitalCard;
 import deus.model.dossier.InformationFile;
-import deus.model.dossier.PersonalInformationFile;
-import deus.model.ifcontent.DigitalCard;
-import deus.model.ifcontent.MyPartyInformationDC;
-import deus.model.ifcontent.PartyInformationDC;
-import deus.model.ifcontent.proj.party.Gender;
-import deus.model.ifcontent.proj.party.Party;
-import deus.model.ifcontent.proj.party.Person;
+import deus.model.dossier.MyPartyInformationDC;
+import deus.model.dossier.PartyInformationDC;
+import deus.model.dossier.proj.party.Gender;
+import deus.model.dossier.proj.party.Party;
+import deus.model.dossier.proj.party.Person;
+import deus.model.pie.PersonalInformationFile;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
 

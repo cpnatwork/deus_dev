@@ -2,7 +2,6 @@ package deus.model.dossier;
 
 import java.util.Set;
 
-import deus.model.ifcontent.DigitalCard;
 import deus.model.user.id.UserId;
 
 public abstract class InformationFile {

@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.sound.sampled.Clip;
 
-import deus.model.ifcontent.proj.party.common.DatePlace;
+import deus.model.dossier.proj.party.common.DatePlace;
 
 public class Person extends Party {
 

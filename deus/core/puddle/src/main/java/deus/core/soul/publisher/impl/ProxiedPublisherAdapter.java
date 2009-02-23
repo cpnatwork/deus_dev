@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import deus.core.access.transport.core.receiving.soulcallback.PublisherExportedToPeer;
 import deus.core.soul.publisher.Publisher;
 import deus.core.soul.publisher.PublisherExportedToClient;
-import deus.model.ifcontent.DigitalCard;
+import deus.model.dossier.DigitalCard;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;

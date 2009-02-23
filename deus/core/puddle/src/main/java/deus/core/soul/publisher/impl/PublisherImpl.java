@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.pub.api.PubDao;
 import deus.core.access.transport.core.sending.command.PublisherCommandSender;
 import deus.core.soul.publisher.Publisher;
-import deus.model.ifcontent.DigitalCard;
+import deus.model.dossier.DigitalCard;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.LosEntry;
 import deus.model.user.UserMetadata;

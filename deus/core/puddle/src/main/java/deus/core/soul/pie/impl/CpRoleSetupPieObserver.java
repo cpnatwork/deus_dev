@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.dossier.api.DossierDao;
 import deus.core.soul.common.AbstractUserRoleSetupObserver;
-import deus.model.dossier.PersonalInformationFile;
-import deus.model.ifcontent.DigitalCard;
+import deus.model.dossier.DigitalCard;
+import deus.model.pie.PersonalInformationFile;
 import deus.model.user.UserRole;
 import deus.model.user.id.UserId;
 
