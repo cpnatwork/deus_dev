@@ -9,14 +9,15 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
-import deus.model.dossier.DigitalCard;
-import deus.model.dossier.MyPartyInformationDC;
-import deus.model.dossier.PartyInformationDC;
-import deus.model.dossier.generic.InformationFile;
-import deus.model.dossier.generic.PersonalInformationFile;
-import deus.model.dossier.proj.party.Gender;
-import deus.model.dossier.proj.party.Party;
-import deus.model.dossier.proj.party.Person;
+import deus.model.dossier.InformationFile;
+import deus.model.dossier.PersonalInformationFile;
+import deus.model.ifcontent.DigitalCard;
+import deus.model.ifcontent.MyPartyInformationDC;
+import deus.model.ifcontent.PartyInformationDC;
+import deus.model.ifcontent.proj.party.Gender;
+import deus.model.ifcontent.proj.party.Party;
+import deus.model.ifcontent.proj.party.Person;
+import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
 
 public class SimpleReplaceInformationFileUpdateStrategyTest {
@@ -32,15 +33,17 @@ public class SimpleReplaceInformationFileUpdateStrategyTest {
 
 	@Before
 	public void setUp() throws Exception {
+		UserId userId = new UserUrl("alice", "deus.org");
+		
 		strategy = new SimpleReplaceInformationFileUpdateStrategy();
 
 		digitalCards = new HashSet<DigitalCard>();
-		informationFile = new PersonalInformationFile(digitalCards);
+		informationFile = new PersonalInformationFile(userId, digitalCards);
 
 		dc = new MyPartyInformationDC(new UserUrl("alice", "deus.org"));
 
 		Party party = new Person();
-		party.setId(new UserUrl("alice", "deus.org"));
+		party.setId(userId);
 
 		dc.setPartyInformation(party);
 	}

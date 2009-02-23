@@ -1,6 +1,6 @@
-package deus.model.dossier;
+package deus.model.ifcontent;
 
-import deus.model.dossier.proj.party.Party;
+import deus.model.ifcontent.proj.party.Party;
 import deus.model.user.id.UserId;
 
 public class PartyInformationDC extends DigitalCard {

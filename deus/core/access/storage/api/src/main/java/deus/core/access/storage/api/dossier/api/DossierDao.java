@@ -1,6 +1,6 @@
 package deus.core.access.storage.api.dossier.api;
 
-import deus.model.dossier.generic.PersonalInformationFile;
+import deus.model.dossier.PersonalInformationFile;
 import deus.model.user.id.UserId;
 
 

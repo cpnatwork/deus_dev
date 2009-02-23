@@ -1,6 +1,6 @@
 package deus.core.soul.common.pifupdate;
 
-import deus.model.dossier.DigitalCard;
+import deus.model.ifcontent.DigitalCard;
 import deus.model.user.id.UserId;
 
 

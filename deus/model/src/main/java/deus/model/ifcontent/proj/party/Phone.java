@@ -1,6 +1,6 @@
-package deus.model.dossier.proj.party;
+package deus.model.ifcontent.proj.party;
 
-import deus.model.dossier.proj.party.common.EntityTag;
+import deus.model.ifcontent.proj.party.common.EntityTag;
 
 public class Phone {
 

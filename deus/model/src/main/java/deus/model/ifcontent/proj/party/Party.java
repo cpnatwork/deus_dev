@@ -1,4 +1,4 @@
-package deus.model.dossier.proj.party;
+package deus.model.ifcontent.proj.party;
 
 import deus.model.user.id.UserId;
 

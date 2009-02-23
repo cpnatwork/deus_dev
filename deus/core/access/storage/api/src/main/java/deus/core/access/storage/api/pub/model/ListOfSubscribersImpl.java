@@ -11,4 +11,10 @@ public class ListOfSubscribersImpl extends HashMap<UserId, LosEntry> implements 
 
 	private static final long serialVersionUID = 8207701628832549782L;
 
+	@Override
+	public UserId getOwnerId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

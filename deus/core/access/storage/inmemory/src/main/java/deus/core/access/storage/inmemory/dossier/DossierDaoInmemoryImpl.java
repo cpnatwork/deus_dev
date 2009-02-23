@@ -3,7 +3,7 @@ package deus.core.access.storage.inmemory.dossier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.dossier.api.DossierDao;
-import deus.model.dossier.generic.PersonalInformationFile;
+import deus.model.dossier.PersonalInformationFile;
 import deus.model.user.id.UserId;
 
 @Component("dossierDao")

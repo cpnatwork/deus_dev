@@ -1,6 +1,6 @@
 package deus.core.access.transport.core.messages;
 
-import deus.model.dossier.DigitalCard;
+import deus.model.ifcontent.DigitalCard;
 
 /**
  * Command, issued by the publisher to inform registered subscribers about an update.

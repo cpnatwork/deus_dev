@@ -1,18 +1,35 @@
 package deus.model.depository.impl;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import deus.model.depository.DistributedInformationFolder;
-import deus.model.dossier.generic.ForeignInformationFile;
-import deus.model.dossier.generic.InformationFile;
+import deus.model.dossier.ForeignInformationFile;
+import deus.model.dossier.InformationFile;
 import deus.model.user.id.UserId;
 
 public class DistributedInformationFolderImpl implements
 		DistributedInformationFolder {
 
+	private final UserId ownerId;
+	
 	protected Map<UserId, ForeignInformationFile> foreignInformationFiles;
 
+	
+	
+	public DistributedInformationFolderImpl(UserId ownerId) {
+		super();
+		this.ownerId = ownerId;
+		this.foreignInformationFiles = new HashMap<UserId, ForeignInformationFile>();
+	}
 
+
+	@Override
+	public UserId getOwnerId() {
+		return ownerId;
+	}
+	
+	
 	@Override
 	public InformationFile getForeignInformationFile(UserId publisherId) {
 		if (!foreignInformationFiles.containsKey(publisherId))
@@ -42,5 +59,6 @@ public class DistributedInformationFolderImpl implements
 			foreignInformationFiles.put(foreignInformationFile.getPublisherId(),
 					foreignInformationFile);
 	}
+
 
 }

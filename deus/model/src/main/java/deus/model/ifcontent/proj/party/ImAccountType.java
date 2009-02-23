@@ -1,4 +1,4 @@
-package deus.model.dossier.proj.party;
+package deus.model.ifcontent.proj.party;
 
 public enum ImAccountType {
 

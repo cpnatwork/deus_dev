@@ -1,8 +1,9 @@
-package deus.model.dossier.generic;
+package deus.model.dossier;
 
 import java.util.Set;
 
-import deus.model.dossier.DigitalCard;
+import deus.model.ifcontent.DigitalCard;
+import deus.model.user.id.UserId;
 
 
 /**
@@ -14,9 +15,10 @@ import deus.model.dossier.DigitalCard;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  */
 public class PersonalInformationFile extends InformationFile {
-
-	public PersonalInformationFile(Set<DigitalCard> digitalCards) {
-		super(digitalCards);
+	
+	public PersonalInformationFile(UserId ownerId, Set<DigitalCard> digitalCards) {
+		super(ownerId, digitalCards);
 	}
+	
 
 }

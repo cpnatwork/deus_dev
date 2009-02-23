@@ -1,6 +1,6 @@
 package deus.model.user;
 
-import deus.model.dossier.proj.party.Gender;
+import deus.model.ifcontent.proj.party.Gender;
 
 // TODO: what if userFullName changes??? or gender??? (unknown -> male/female)
 

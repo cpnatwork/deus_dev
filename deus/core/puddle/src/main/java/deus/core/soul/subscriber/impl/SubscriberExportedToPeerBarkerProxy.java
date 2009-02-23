@@ -13,7 +13,7 @@ import deus.model.attention.notice.Notice;
 import deus.model.attention.notice.SubscriptionDeniedNotice;
 import deus.model.attention.notice.SubscriptionGrantedNotice;
 import deus.model.attention.notice.UpdateNotice;
-import deus.model.dossier.DigitalCard;
+import deus.model.ifcontent.DigitalCard;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;

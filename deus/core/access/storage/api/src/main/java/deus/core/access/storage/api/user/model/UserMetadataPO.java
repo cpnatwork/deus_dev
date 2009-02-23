@@ -2,7 +2,7 @@ package deus.core.access.storage.api.user.model;
 
 import java.util.UUID;
 
-import deus.model.dossier.proj.party.Gender;
+import deus.model.ifcontent.proj.party.Gender;
 import deus.model.user.UserMetadata;
 
 

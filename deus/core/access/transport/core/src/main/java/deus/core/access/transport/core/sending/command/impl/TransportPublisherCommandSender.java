@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.messages.UpdateMessage;
 import deus.core.access.transport.core.sending.command.PublisherCommandSender;
-import deus.model.dossier.DigitalCard;
+import deus.model.ifcontent.DigitalCard;
 import deus.model.user.id.UserId;
 
 @Component("publisherCommandSender")

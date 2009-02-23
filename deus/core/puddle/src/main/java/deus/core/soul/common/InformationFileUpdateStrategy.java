@@ -1,7 +1,7 @@
 package deus.core.soul.common;
 
-import deus.model.dossier.DigitalCard;
-import deus.model.dossier.generic.InformationFile;
+import deus.model.dossier.InformationFile;
+import deus.model.ifcontent.DigitalCard;
 
 /**
  * Implementations of this strategy realize different update semantics, when a digital card for a given

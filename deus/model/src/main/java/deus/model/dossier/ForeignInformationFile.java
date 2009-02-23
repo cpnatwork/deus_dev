@@ -1,8 +1,8 @@
-package deus.model.dossier.generic;
+package deus.model.dossier;
 
 import java.util.Set;
 
-import deus.model.dossier.DigitalCard;
+import deus.model.ifcontent.DigitalCard;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -22,8 +22,8 @@ public class ForeignInformationFile extends InformationFile {
 
 	private final UserMetadata publisherMetadata;
 
-	public ForeignInformationFile(UserId publisherId, UserMetadata publisherMetadata, Set<DigitalCard> digitalCards) {
-		super(digitalCards);
+	public ForeignInformationFile(UserId ownerId, UserId publisherId, UserMetadata publisherMetadata, Set<DigitalCard> digitalCards) {
+		super(ownerId, digitalCards);
 		this.publisherId = publisherId;
 		this.publisherMetadata = publisherMetadata;
 	}

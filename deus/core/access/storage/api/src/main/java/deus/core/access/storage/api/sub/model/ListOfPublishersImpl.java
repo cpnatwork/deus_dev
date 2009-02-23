@@ -21,4 +21,11 @@ public class ListOfPublishersImpl extends HashMap<UserId, LopEntry> implements L
 		get(publisherId).setSubscriptionState(subscriptionState);
 	}
 
+
+	@Override
+	public UserId getOwnerId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -9,8 +9,8 @@ import org.junit.Test;
 
 import deus.core.soul.contributionhub.ContributionHub;
 import deus.core.soul.contributionhub.impl.ContributionHubImpl;
-import deus.model.dossier.DigitalCard;
-import deus.model.dossier.PartyInformationDC;
+import deus.model.ifcontent.DigitalCard;
+import deus.model.ifcontent.PartyInformationDC;
 import deus.model.user.id.UserUrl;
 
 public class ContributionCounterImplTest {

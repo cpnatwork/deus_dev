@@ -30,7 +30,7 @@ public class SubscriberRoleSetupSubscriberObserver extends AbstractUserRoleSetup
 	@Override
 	public void setUpRole(UserId userId) {
 		subDao.addNewEntity(new ListOfPublishersImpl());
-		subDao.createDistributedInformationFolder(new DistributedInformationFolderImpl());
+		subDao.createDistributedInformationFolder(new DistributedInformationFolderImpl(userId));
 	}
 
 

@@ -1,6 +1,6 @@
 package deus.model.attention.decision;
 
-import deus.model.dossier.DigitalCard;
+import deus.model.ifcontent.DigitalCard;
 import deus.model.user.UserMetadata;
 
 public class Contribution extends BinaryDecisionToMake {

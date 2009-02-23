@@ -14,8 +14,8 @@ import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.common.InformationFileUpdateStrategy;
 import deus.core.soul.subscriber.Subscriber;
 import deus.model.depository.DistributedInformationFolder;
-import deus.model.dossier.DigitalCard;
-import deus.model.dossier.generic.InformationFile;
+import deus.model.dossier.InformationFile;
+import deus.model.ifcontent.DigitalCard;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.LopEntry;
 import deus.model.sub.SubscriptionState;
@@ -111,7 +111,7 @@ public class SubscriberImpl implements Subscriber {
 		logger.trace("in subscriber {}: subscribing to publisher {}", subscriberId, publisherId);
 
 
-		LopEntry entry = new LopEntry();
+		LopEntry entry = new LopEntry(subscriberId);
 		entry.setPublisherMetadata(publisherMetadata);
 		entry.setSubscriptionState(SubscriptionState.requested);
 		listOfPublishers.put(publisherId, entry);

@@ -10,7 +10,7 @@ import deus.core.access.transport.core.messages.UpdateMessage;
 import deus.core.access.transport.plugins.xmpp.FIFChange;
 import deus.core.access.transport.plugins.xmpp.receiving.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
 import deus.core.access.transport.plugins.xmpp.util.PacketPrinter;
-import deus.model.dossier.DigitalCard;
+import deus.model.ifcontent.DigitalCard;
 
 public class UpdatePacketListener extends UserMetadataParsingFilteredPacketListener {
 

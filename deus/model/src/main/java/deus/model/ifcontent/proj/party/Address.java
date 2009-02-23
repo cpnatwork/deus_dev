@@ -1,8 +1,8 @@
-package deus.model.dossier.proj.party;
+package deus.model.ifcontent.proj.party;
 
 import java.util.Locale;
 
-import deus.model.dossier.proj.party.common.EntityTag;
+import deus.model.ifcontent.proj.party.common.EntityTag;
 
 public abstract class Address {
 

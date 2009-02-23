@@ -2,14 +2,14 @@ package deus.core.access.storage.api.dossier.model.dc.party;
 
 import java.util.List;
 
-import deus.model.dossier.proj.party.Email;
-import deus.model.dossier.proj.party.ImAccount;
-import deus.model.dossier.proj.party.Occupation;
-import deus.model.dossier.proj.party.Phone;
-import deus.model.dossier.proj.party.RelatedPerson;
-import deus.model.dossier.proj.party.WebPresence;
+import deus.model.ifcontent.proj.party.Email;
+import deus.model.ifcontent.proj.party.ImAccount;
+import deus.model.ifcontent.proj.party.Occupation;
+import deus.model.ifcontent.proj.party.Phone;
+import deus.model.ifcontent.proj.party.RelatedPerson;
+import deus.model.ifcontent.proj.party.WebPresence;
 
-public class Person extends deus.model.dossier.proj.party.Person {
+public class Person extends deus.model.ifcontent.proj.party.Person {
 
 	@SuppressWarnings("unchecked")
 	public List<Phone> getPhones() {
