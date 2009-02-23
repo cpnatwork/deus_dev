@@ -10,13 +10,11 @@ import deus.core.access.storage.api.pub.api.PubDao;
 import deus.core.access.storage.api.pub.model.ListOfSubscribersImpl;
 import deus.core.soul.common.AbstractUserRoleSetupObserver;
 import deus.core.soul.publisher.PublisherExportedToClient;
-import deus.gatekeeper.rolesetup.UserRoleSetupObserver;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.LosEntry;
 import deus.model.user.UserRole;
 import deus.model.user.id.UserId;
 
-// FIXME: add as observer to UserRoleSetup
 @Component
 public class CpRoleSetupPublisherObserver extends AbstractUserRoleSetupObserver {
 

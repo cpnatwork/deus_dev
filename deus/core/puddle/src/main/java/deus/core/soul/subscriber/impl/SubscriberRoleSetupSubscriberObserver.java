@@ -10,13 +10,12 @@ import deus.core.access.storage.api.sub.api.SubDao;
 import deus.core.access.storage.api.sub.model.ListOfPublishersImpl;
 import deus.core.soul.common.AbstractUserRoleSetupObserver;
 import deus.core.soul.subscriber.SubscriberExportedToClient;
-import deus.model.depository.deus.impl.DistributedPatientFolderImpl;
+import deus.model.depository.impl.DistributedInformationFolderImpl;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.LopEntry;
 import deus.model.user.UserRole;
 import deus.model.user.id.UserId;
 
-//FIXME: add as observer to UserRoleSetup
 @Component
 public class SubscriberRoleSetupSubscriberObserver extends AbstractUserRoleSetupObserver {
 	
@@ -31,8 +30,7 @@ public class SubscriberRoleSetupSubscriberObserver extends AbstractUserRoleSetup
 	@Override
 	public void setUpRole(UserId userId) {
 		subDao.addNewEntity(new ListOfPublishersImpl());
-		// FIXME: which subtype of DIF to create here?
-		subDao.createDistributedInformationFolder(new DistributedPatientFolderImpl());
+		subDao.createDistributedInformationFolder(new DistributedInformationFolderImpl());
 	}
 
 

@@ -2,7 +2,6 @@ package deus.core.access.storage.sub.hibernate;
 
 import deus.core.access.storage.api.sub.api.SubDao;
 import deus.model.depository.DistributedInformationFolder;
-import deus.model.depository.deus.impl.DistributedPatientFolderImpl;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;
 
@@ -52,19 +51,20 @@ public class SubDaoHibernateImpl implements SubDao {
 	}
 
 
-
 	@Override
-	public void createDistributedInformationFolder(DistributedPatientFolderImpl distributedPatientFolderImpl) {
+	public void createDistributedInformationFolder(DistributedInformationFolder distributedInformationFolder) {
 		// TODO Auto-generated method stub
 		
 	}
-
-
-
+	
+	
 	@Override
 	public void deleteDistributedInformationFolder(UserId userId) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
 
 }

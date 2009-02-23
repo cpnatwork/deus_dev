@@ -8,11 +8,10 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.dossier.api.DossierDao;
 import deus.core.soul.common.AbstractUserRoleSetupObserver;
 import deus.model.dossier.DigitalCard;
-import deus.model.dossier.deus.PersonalPatientFile;
+import deus.model.dossier.generic.PersonalInformationFile;
 import deus.model.user.UserRole;
 import deus.model.user.id.UserId;
 
-//FIXME: add as observer to UserRoleSetup
 @Component
 public class CpRoleSetupPieObserver extends AbstractUserRoleSetupObserver {
 
@@ -28,8 +27,7 @@ public class CpRoleSetupPieObserver extends AbstractUserRoleSetupObserver {
 
 	@Override
 	protected void setUpRole(UserId userId) {
-		// FIXME: which subtype of PIF to create here?
-		dossierDao.store(new PersonalPatientFile(new HashSet<DigitalCard>()));
+		dossierDao.store(new PersonalInformationFile(new HashSet<DigitalCard>()));
 	}
 
 

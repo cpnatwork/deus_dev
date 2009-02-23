@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import deus.model.attention.AttentionElement;
 import deus.model.attention.AttentionList;
+import deus.model.user.id.UserId;
 
 public class AttentionListImpl extends ArrayList<AttentionElement> implements AttentionList {
 
@@ -18,6 +19,13 @@ public class AttentionListImpl extends ArrayList<AttentionElement> implements At
 
 	public AttentionListImpl(Collection<? extends AttentionElement> c) {
 		super(c);
+	}
+
+
+	@Override
+	public UserId getUserId() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
