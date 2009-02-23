@@ -1,13 +1,13 @@
-package deus.model.depository.generic.impl;
+package deus.model.depository.impl;
 
 import java.util.Map;
 
-import deus.model.depository.generic.DistributedInformationFolder;
+import deus.model.depository.DistributedInformationFolder;
 import deus.model.dossier.generic.ForeignInformationFile;
 import deus.model.dossier.generic.InformationFile;
 import deus.model.user.id.UserId;
 
-public abstract class DistributedInformationFolderImpl implements
+public class DistributedInformationFolderImpl implements
 		DistributedInformationFolder {
 
 	protected Map<UserId, ForeignInformationFile> foreignInformationFiles;

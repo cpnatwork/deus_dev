@@ -4,7 +4,7 @@ import java.util.Set;
 
 import deus.model.dossier.DigitalCard;
 
-public class InformationFile {
+public abstract class InformationFile {
 
 	private final Set<DigitalCard> digitalCards;
 

@@ -13,7 +13,7 @@ import deus.core.access.storage.api.user.api.UserDao;
 import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.common.InformationFileUpdateStrategy;
 import deus.core.soul.subscriber.Subscriber;
-import deus.model.depository.generic.DistributedInformationFolder;
+import deus.model.depository.DistributedInformationFolder;
 import deus.model.dossier.DigitalCard;
 import deus.model.dossier.generic.InformationFile;
 import deus.model.sub.ListOfPublishers;

@@ -3,8 +3,8 @@ package deus.core.access.storage.inmemory.sub;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.sub.api.SubDao;
+import deus.model.depository.DistributedInformationFolder;
 import deus.model.depository.deus.impl.DistributedPatientFolderImpl;
-import deus.model.depository.generic.DistributedInformationFolder;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;
 

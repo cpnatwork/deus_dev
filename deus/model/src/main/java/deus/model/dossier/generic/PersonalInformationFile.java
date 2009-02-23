@@ -13,7 +13,7 @@ import deus.model.dossier.DigitalCard;
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  */
-public abstract class PersonalInformationFile extends InformationFile {
+public class PersonalInformationFile extends InformationFile {
 
 	public PersonalInformationFile(Set<DigitalCard> digitalCards) {
 		super(digitalCards);

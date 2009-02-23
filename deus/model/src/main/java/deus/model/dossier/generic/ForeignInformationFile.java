@@ -16,7 +16,7 @@ import deus.model.user.id.UserId;
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  */
-public abstract class ForeignInformationFile extends InformationFile {
+public class ForeignInformationFile extends InformationFile {
 
 	private final UserId publisherId;
 
