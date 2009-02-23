@@ -1,16 +1,11 @@
 package deus.model.dossier.proj.party;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.Embeddable;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-
 import deus.model.user.id.UserId;
 
-@Embeddable
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "partytype", discriminatorType = DiscriminatorType.STRING)
+//FIXME: REMOVE HIBERNATE STUFF!
+//@Embeddable
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(name = "partytype", discriminatorType = DiscriminatorType.STRING)
 public abstract class Party {
 
 	protected UserId id;

@@ -1,9 +1,9 @@
 package deus.model.user.id;
 
-import org.hibernate.annotations.Entity;
 
-@SuppressWarnings("serial")
-@Entity
+//FIXME: REMOVE HIBERNATE STUFF!
+//@SuppressWarnings("serial")
+//@Entity
 public class UserXri extends UserId {
 	String xri = null;
 	

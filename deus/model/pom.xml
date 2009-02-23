@@ -49,18 +49,20 @@
 		-->
 
 		<!--  Hibernate Annotations -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>com.springsource.org.hibernate.annotations</artifactId>
-			<version>3.3.1.ga</version>
-		</dependency>
+		
+<!-- TODO: REMOVE THESE TWO DEPENDENCIES -->
+<!--		<dependency>-->
+<!--			<groupId>org.hibernate</groupId>-->
+<!--			<artifactId>com.springsource.org.hibernate.annotations</artifactId>-->
+<!--			<version>3.3.1.ga</version>-->
+<!--		</dependency>-->
 
 		<!-- JPA -->		
-		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>com.springsource.javax.persistence</artifactId>
-			<version>1.0.0</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>javax.persistence</groupId>-->
+<!--			<artifactId>com.springsource.javax.persistence</artifactId>-->
+<!--			<version>1.0.0</version>-->
+<!--		</dependency>-->
 
 	</dependencies>
 

@@ -1,11 +1,11 @@
 package deus.model.user.id;
 
-import org.hibernate.annotations.Entity;
 
 // TODO: think about only injecting username, etc into constructor, no more setters. Also for Transport ids
 
-@SuppressWarnings("serial")
-@Entity
+// FIXME: REMOVE HIBERNATE STUFF!
+//@SuppressWarnings("serial")
+//@Entity
 public class UserUrl extends UserId {
 
 	private String serverBaseUrl = null;
