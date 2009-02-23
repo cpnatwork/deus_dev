@@ -3,19 +3,11 @@ package deus.core.access.storage.api.user.model;
 import java.io.Serializable;
 import java.util.UUID;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-
-import org.hibernate.annotations.Entity;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.NaturalId;
-
 import deus.model.user.id.UserId;
 
 @SuppressWarnings("serial")
-@Entity
+// FIXME: REMOVE HIBERNATE STUFF FROM THIS CLASS
+//@Entity
 public class UserPO implements Serializable {
 
 	private UUID uuid;
@@ -23,9 +15,9 @@ public class UserPO implements Serializable {
 	private UserMetadataPO userMetadataPO = null;
 
 
-	@Id
-	@GeneratedValue(generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+//	@Id
+//	@GeneratedValue(generator = "system-uuid")
+//	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	public UUID getUuid() {
 		return uuid;
 	}
@@ -36,14 +28,14 @@ public class UserPO implements Serializable {
 	}
 
 
-	@NaturalId
+//	@NaturalId
 	public String getId() {
 		return userId.getId();
 	}
 
 
-	@OneToOne
-	@PrimaryKeyJoinColumn
+//	@OneToOne
+//	@PrimaryKeyJoinColumn
 	public UserId getUserId() {
 		return userId;
 	}
@@ -54,8 +46,8 @@ public class UserPO implements Serializable {
 	}
 
 
-	@OneToOne
-	@PrimaryKeyJoinColumn
+//	@OneToOne
+//	@PrimaryKeyJoinColumn
 	public UserMetadataPO getUserMetadataPO() {
 		return userMetadataPO;
 	}

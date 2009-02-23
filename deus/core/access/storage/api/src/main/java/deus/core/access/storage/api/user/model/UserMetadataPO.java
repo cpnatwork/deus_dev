@@ -2,16 +2,12 @@ package deus.core.access.storage.api.user.model;
 
 import java.util.UUID;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-import org.hibernate.annotations.Entity;
-import org.hibernate.annotations.GenericGenerator;
-
 import deus.model.dossier.proj.party.Gender;
 import deus.model.user.UserMetadata;
 
-@Entity
+
+// FIXME: REMOVE HIBERNATE STUFF FROM THIS CLASS
+//@Entity
 public class UserMetadataPO extends UserMetadata {
 
 	private UUID uuid;
@@ -23,9 +19,9 @@ public class UserMetadataPO extends UserMetadata {
 	}
 
 
-	@Id
-	@GeneratedValue(generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+//	@Id
+//	@GeneratedValue(generator = "system-uuid")
+//	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	public UUID getUuid() {
 		return uuid;
 	}

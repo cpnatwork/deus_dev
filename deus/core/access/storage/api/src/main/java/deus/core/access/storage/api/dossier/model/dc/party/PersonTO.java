@@ -3,13 +3,6 @@ package deus.core.access.storage.api.dossier.model.dc.party;
 import java.util.List;
 import java.util.UUID;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-import org.hibernate.annotations.Entity;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.NaturalId;
-
 import deus.model.dossier.proj.party.Address;
 import deus.model.dossier.proj.party.Email;
 import deus.model.dossier.proj.party.ImAccount;
@@ -19,14 +12,15 @@ import deus.model.dossier.proj.party.RelatedPerson;
 import deus.model.dossier.proj.party.WebPresence;
 import deus.model.user.id.UserId;
 
-@Entity
+// FIXME: REMOVE HIBERNATE STUFF FROM THIS CLASS
+//@Entity
 public class PersonTO extends deus.model.dossier.proj.party.Person {
 
 	private UUID uuid;
 
-	@Id
-	@GeneratedValue(generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+//	@Id
+//	@GeneratedValue(generator = "system-uuid")
+//	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	public UUID getUuid() {
 		return uuid;
 	}
@@ -35,7 +29,7 @@ public class PersonTO extends deus.model.dossier.proj.party.Person {
 		this.uuid = uuid;
 	}
 	
-	@NaturalId
+//	@NaturalId
 	public UserId getId() {
 		return id;
 	}

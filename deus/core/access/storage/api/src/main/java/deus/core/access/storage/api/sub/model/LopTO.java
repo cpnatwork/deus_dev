@@ -1,8 +1,8 @@
 package deus.core.access.storage.api.sub.model;
 
-import org.hibernate.annotations.Entity;
 
-@Entity
+// FIXME: REMOVE
+//@Entity
 public class LopTO extends ListOfPublishersImpl {
 
 	/**
