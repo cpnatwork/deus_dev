@@ -2,17 +2,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>inf6.promed</groupId>
-	<artifactId>deus</artifactId>
-	<version>0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<name>DEUS all</name>
-
 	<parent>
 		<groupId>inf6.promed</groupId>
 		<artifactId>prototype-pom</artifactId>
 		<version>0.1-SNAPSHOT</version>
 	</parent>
+
+	<artifactId>deus</artifactId>
+	<packaging>pom</packaging>
+	<name>DEUS all</name>
 			
 	<modules>
 		<module>core</module>

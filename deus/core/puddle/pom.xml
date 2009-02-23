@@ -38,28 +38,28 @@
 		<dependency>
 			<groupId>inf6.promed</groupId>
 			<artifactId>deus-model</artifactId>
-			<version>0.1-SNAPSHOT</version>
+			<type>bundle</type>
 		</dependency>
 
 		<dependency>
 			<groupId>inf6.promed</groupId>
 			<artifactId>deus-core-access-storage-api</artifactId>
-			<version>0.1-SNAPSHOT</version>
+			<type>bundle</type>
 		</dependency>
 		
 		<dependency>
 			<groupId>inf6.promed</groupId>
 			<artifactId>deus-core-access-transport-core</artifactId>
-			<version>0.1-SNAPSHOT</version>
+			<type>bundle</type>
 		</dependency>
 		
 				
 		<dependency>
 			<groupId>inf6.promed</groupId>
 			<artifactId>deus-gatekeeper</artifactId>
-			<version>0.1-SNAPSHOT</version>
+			<type>bundle</type>
 		</dependency>
-                
+
                 
 	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	    

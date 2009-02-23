@@ -59,6 +59,84 @@
 		<dependencies>
 		
 			<!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+			
+			<dependency>
+				<groupId>inf6.promed</groupId>
+				<artifactId>deus-core-access-storage-api</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
+			
+			<dependency>
+				<groupId>inf6.promed</groupId>
+				<artifactId>deus-core-access-storage-inmemory</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
+			
+			<dependency>
+				<groupId>inf6.promed</groupId>
+				<artifactId>deus-core-access-storage-hibernate</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
+			
+			<dependency>
+				<groupId>inf6.promed</groupId>
+				<artifactId>deus-core-access-transport-core</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
+			
+			<dependency>
+				<groupId>inf6.promed</groupId>
+				<artifactId>deus-core-access-transport-plugins-local</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
+			
+			<dependency>
+				<groupId>inf6.promed</groupId>
+				<artifactId>deus-core-access-transport-plugins-xmpp</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
+			
+			<dependency>
+				<groupId>inf6.promed</groupId>
+				<artifactId>deus-core-puddle</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
+		
+			<dependency>
+				<groupId>inf6.promed</groupId>
+				<artifactId>deus-gatekeeper</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
+			
+			<dependency>
+				<groupId>inf6.promed</groupId>
+				<artifactId>deus-model</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
+	
+	
+			<dependency>
+				<groupId>inf6.promed</groupId>
+				<artifactId>dacus-core-puddle</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
+			
+			<dependency>
+				<groupId>inf6.promed</groupId>
+				<artifactId>dacus-ui-puddle</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
 	
 			<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	
