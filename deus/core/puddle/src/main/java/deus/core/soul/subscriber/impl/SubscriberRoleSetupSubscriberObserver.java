@@ -27,6 +27,7 @@ public class SubscriberRoleSetupSubscriberObserver extends AbstractUserRoleSetup
 
 	@Override
 	public void setUpRole(UserId userId) {
+		// FUTURE: init data objects in database for subsystem Subscriber here!
 	}
 
 
@@ -36,6 +37,8 @@ public class SubscriberRoleSetupSubscriberObserver extends AbstractUserRoleSetup
 		for (Map.Entry<UserId, LopEntry> entry : lop.entrySet()) {
 			subscriber.unsubscribe(userId, entry.getKey());
 		}
+		
+		// FUTURE: destroy data objects in database for subsystem Subscriber here!
 	}
 
 

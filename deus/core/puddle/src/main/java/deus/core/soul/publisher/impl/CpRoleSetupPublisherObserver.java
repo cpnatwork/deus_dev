@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.pub.api.PubDao;
-import deus.core.access.storage.api.pub.model.ListOfSubscribersImpl;
 import deus.core.soul.common.AbstractUserRoleSetupObserver;
 import deus.core.soul.publisher.PublisherExportedToClient;
 import deus.model.pub.ListOfSubscribers;
@@ -28,7 +27,7 @@ public class CpRoleSetupPublisherObserver extends AbstractUserRoleSetupObserver 
 
 	@Override
 	public void setUpRole(UserId userId) {
-		pubDao.addNewEntity(new ListOfSubscribersImpl());
+		// FUTURE: init data objects in database for subsystem Subscriber here!
 	}
 
 
@@ -40,7 +39,7 @@ public class CpRoleSetupPublisherObserver extends AbstractUserRoleSetupObserver 
 			// publisher.
 		}
 
-		pubDao.deleteByNaturalId(userId);
+		// FUTURE: destroy data objects in database for subsystem Subscriber here!
 	}
 
 
