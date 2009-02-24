@@ -28,7 +28,7 @@
 
 	<osgi:reference id="attentionDao" interface="deus.core.access.storage.api.attention.AttentionDao" />
 
-	<osgi:reference id="accountDao" interface="deus.core.access.storage.api.user.api.AccountDao" />
+	<osgi:reference id="accountDao" interface="deus.core.access.storage.api.user.AccountDoRep" />
 
 
 </beans>

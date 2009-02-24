@@ -8,8 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.user.api.AccountDao;
-import deus.core.access.storage.api.user.api.LocalUserDao;
+import deus.core.access.storage.api.user.AccountDoRep;
 import deus.gatekeeper.cerberus.Cerberus;
 import deus.gatekeeper.cerberus.LoginCredentialChecker;
 import deus.gatekeeper.cerberus.UserLoginStateObserver;
@@ -28,10 +27,7 @@ public class CerberusImpl implements Cerberus {
 	private LoginCredentialChecker loginCredentialChecker;
 
 	@Autowired
-	private LocalUserDao localUserDao;
-
-	@Autowired
-	private AccountDao accountDao;
+	private AccountDoRep accountDoRep;
 
 
 	public CerberusImpl() {
@@ -47,12 +43,14 @@ public class CerberusImpl implements Cerberus {
 			;
 
 		// TODO: do more login stuff, that is necessary
-		UserId userId = localUserDao.getByNaturalId(credentials.getLocalUsername());
-
+		Account account = accountDoRep.getByNaturalId(credentials.getLocalUsername());
+		UserId userId = account.getUserId();
+		
 		logger.debug("user with id {} logged in", userId);
 
-
-		storeLoggedInState(userId, true);
+		account.setLoggedIn(true);
+		
+		accountDoRep.updateEntity(account);
 
 
 		// FIXME: implement thread safe notifying (see RegistratorImpl)
@@ -61,20 +59,17 @@ public class CerberusImpl implements Cerberus {
 		
 		return userId;
 	}
-
-
-	private void storeLoggedInState(UserId userId, boolean loggedIn) {
-		Account account = accountDao.getByNaturalId(userId);
-		account.setLoggedIn(loggedIn);
-		accountDao.updateEntity(account);
-	}
-
+	
 
 	@Override
 	public void logout(String localUsername) {
-		UserId userId = localUserDao.getByNaturalId(localUsername);
+		Account account = accountDoRep.getByNaturalId(localUsername);
+		UserId userId = account.getUserId();
+		
+		account.setLoggedIn(false);
+		
+		accountDoRep.updateEntity(account);
 
-		storeLoggedInState(userId, false);
 
 		logger.debug("user with id {} logged out", userId);
 
