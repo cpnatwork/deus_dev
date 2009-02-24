@@ -2,13 +2,13 @@ package deus.core.access.storage.inmemory.sub;
 
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.sub.api.LopEntryDao;
+import deus.core.access.storage.api.sub.api.LopEntryDoRep;
 import deus.model.sub.DistributedInformationFolder;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.id.UserId;
 
 @Component("subDao")
-public class SubDaoInmemoryImpl implements LopEntryDao {
+public class SubDaoInmemoryImpl implements LopEntryDoRep {
 
 	@Override
 	public ListOfPublishers getListOfPublishers(UserId lopOwnerUserId) {

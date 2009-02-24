@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.sub.api.LopEntryDao;
+import deus.core.access.storage.api.sub.api.LopEntryDoRep;
 import deus.core.access.transport.core.receiving.soulcallback.SubscriberExportedToPeer;
 import deus.core.soul.barker.BarkerExportedToSubsystems;
 import deus.model.attention.notice.Notice;
@@ -14,7 +14,7 @@ import deus.model.attention.notice.SubscriptionDeniedNotice;
 import deus.model.attention.notice.SubscriptionGrantedNotice;
 import deus.model.attention.notice.UpdateNotice;
 import deus.model.dossier.DigitalCard;
-import deus.model.sub.ListOfPublishers;
+import deus.model.sub.LopEntry;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -32,7 +32,7 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 	private BarkerExportedToSubsystems barker;
 
 	@Autowired
-	private LopEntryDao lopEntryDao;
+	private LopEntryDoRep lopEntryDoRep;
 
 
 	@Override
@@ -41,10 +41,10 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 
 		proxiedSubscriber.acknowledgeSubscription(subscriberId, publisherId);
 
-		ListOfPublishers listOfPublishers = lopEntryDao.getListOfPublishers(subscriberId);
-		
+		LopEntry lopEntry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
+
 		// get publisher metadata out of LoP
-		UserMetadata publisherMetadata = listOfPublishers.get(publisherId).getPublisherMetadata();
+		UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
 		Notice notice = new SubscriptionGrantedNotice(publisherMetadata);
 		notice.setUserId(subscriberId);
 		barker.addUnnoticedAttentionElement(notice);
@@ -59,10 +59,10 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 
 		proxiedSubscriber.denySubscription(subscriberId, publisherId);
 
-		ListOfPublishers listOfPublishers = lopEntryDao.getListOfPublishers(subscriberId);
-		
+		LopEntry lopEntry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
+
 		// get publisher metadata out of LoP
-		UserMetadata publisherMetadata = listOfPublishers.get(publisherId).getPublisherMetadata();
+		UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
 		Notice notice = new SubscriptionDeniedNotice(publisherMetadata);
 		notice.setUserId(subscriberId);
 		barker.addUnnoticedAttentionElement(notice);
@@ -77,13 +77,12 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 
 		proxiedSubscriber.update(subscriberId, publisherId, digitalCard);
 
-		ListOfPublishers listOfPublishers = lopEntryDao.getListOfPublishers(subscriberId);
-		Notice notice = new UpdateNotice(listOfPublishers.get(publisherId).getPublisherMetadata(), digitalCard);
+		LopEntry lopEntry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
+		Notice notice = new UpdateNotice(lopEntry.getPublisherMetadata(), digitalCard);
 		notice.setUserId(subscriberId);
 		barker.addUnnoticedAttentionElement(notice);
 
 		logger.debug("added {} to barker", notice);
 	}
-
 
 }

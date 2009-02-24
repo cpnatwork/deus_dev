@@ -5,25 +5,22 @@ import deus.model.user.id.UserId;
 
 public class LopEntry {
 
-	private UserId ownerId;
-	
+	private UserId publisherId;
 	private UserMetadata publisherMetadata;
+
 	private RequestedSubscriptionState requestedSubscriptionState;
-	
-	
-	public LopEntry(UserId ownerId) {
-		super();
-		this.ownerId = ownerId;
+
+
+	public UserId getPublisherId() {
+		return publisherId;
+		
 	}
 
 
-	/**
-	 * Returns the ID of the owner of this LopEntry. The owner is the subscriber owning the list of publishers.
-	 */
-	public UserId getOwnerId() {
-		return ownerId;
+	public void setPublisherId(UserId publisherId) {
+		this.publisherId = publisherId;
 	}
-	
+
 
 	public UserMetadata getPublisherMetadata() {
 		return publisherMetadata;
@@ -43,5 +40,5 @@ public class LopEntry {
 	public void setSubscriptionState(RequestedSubscriptionState requestedSubscriptionState) {
 		this.requestedSubscriptionState = requestedSubscriptionState;
 	}
-	
+
 }

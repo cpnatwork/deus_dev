@@ -7,7 +7,9 @@ public class LosEntry {
 
 	private final UserId ownerId;
 
+	private UserId subscriberId;
 	private UserMetadata subscriberMetadata;
+
 	private OfferedSubscriptionState offeredSubscriptionState;
 
 
@@ -25,6 +27,16 @@ public class LosEntry {
 	 */
 	public UserId getOwnerId() {
 		return ownerId;
+	}
+
+
+	public UserId getSubscriberId() {
+		return subscriberId;
+	}
+
+
+	public void setSubscriberId(UserId subscriberId) {
+		this.subscriberId = subscriberId;
 	}
 
 

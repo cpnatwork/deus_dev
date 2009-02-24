@@ -15,6 +15,7 @@
 		<module>core</module>
 		<module>gatekeeper</module>
 		<module>model</module>
+		<module>storage</module>
 	</modules>
 	
 </project>
