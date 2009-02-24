@@ -12,7 +12,7 @@ import deus.core.access.storage.api.sub.DifDoRep;
 import deus.core.access.storage.api.sub.FifDoRep;
 import deus.core.access.storage.api.sub.LopDoRep;
 import deus.core.access.storage.api.sub.LopEntryDoRep;
-import deus.core.access.storage.api.user.api.UserDao;
+import deus.core.access.storage.api.user.UserMetadataDoRep;
 import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.common.InformationFileUpdateStrategy;
 import deus.core.soul.subscriber.Subscriber;
@@ -32,7 +32,7 @@ public class SubscriberImpl implements Subscriber {
 	private final Logger logger = LoggerFactory.getLogger(SubscriberImpl.class);
 
 	@Autowired
-	private UserDao userDao;
+	private UserMetadataDoRep userMetadataDoRep;
 	
 	@Autowired
 	private LopEntryDoRep lopEntryDoRep;
@@ -118,7 +118,7 @@ public class SubscriberImpl implements Subscriber {
 		entry.setSubscriptionState(RequestedSubscriptionState.requested);
 		lopEntryDoRep.addNewEntity(subscriberId, entry);
 
-		UserMetadata subscriberMetadata = userDao.getUserMetadata(subscriberId);
+		UserMetadata subscriberMetadata = userMetadataDoRep.getByNaturalId(subscriberId);
 		
 		subscriberCommandSender.subscribe(subscriberId, publisherId, subscriberMetadata);
 	}

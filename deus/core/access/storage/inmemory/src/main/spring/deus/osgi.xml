@@ -15,7 +15,7 @@
 
 	<osgi:service id="localUserDaoOsgiService" ref="localUserDao" interface="deus.core.access.storage.api.user.api.LocalUserDao" />
 	
-	<osgi:service id="userDaoOsgiService" ref="userDao" interface="deus.core.access.storage.api.user.api.UserDao" />
+	<osgi:service id="userDaoOsgiService" ref="userDao" interface="deus.core.access.storage.api.user.UserMetadataDoRep" />
 	
 	<osgi:service id="dossierDaoOsgiService" ref="dossierDao" interface="deus.core.access.storage.api.dossier.api.DossierDao" />
 	

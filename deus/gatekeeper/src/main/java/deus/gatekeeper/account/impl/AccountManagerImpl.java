@@ -3,7 +3,7 @@ package deus.gatekeeper.account.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.user.AccountDoRep;
+import deus.core.access.storage.api.account.AccountDoRep;
 import deus.gatekeeper.account.AccountManager;
 import deus.gatekeeper.rolesetup.UserRoleSetup;
 import deus.model.account.Account;

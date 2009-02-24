@@ -6,7 +6,8 @@ import java.util.Vector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.user.api.LocalUserDao;
+import deus.core.access.storage.api.account.AccountDoRep;
+import deus.core.access.storage.api.user.UserMetadataDoRep;
 import deus.gatekeeper.puddle.RegistrationInformation;
 import deus.gatekeeper.registrator.Registrator;
 import deus.gatekeeper.registrator.UserIdGenerator;
@@ -22,8 +23,11 @@ public class RegistratorImpl implements Registrator {
 	private final List<UserRegistrationStateObserver> observers;
 
 	@Autowired
-	private LocalUserDao localUserDao;
+	private AccountDoRep accountDoRep;
 
+	@Autowired
+	private UserMetadataDoRep userMetadataDoRep;
+	
 	@Autowired
 	private UserRoleSetup userRoleSetup;
 
@@ -74,6 +78,8 @@ public class RegistratorImpl implements Registrator {
 		Account account = new Account(registrationInformation.getLocalUsername(),
 				registrationInformation.getPassword(), userId, registrationInformation.getUserRoles());
 
+		userMetadataDoRep.addNewEntity(userId, registrationInformation.getUserMetadata());
+		
 		createAccount(account);
 
 		notifyObservers(userId, true);
@@ -81,7 +87,7 @@ public class RegistratorImpl implements Registrator {
 
 
 	private void createAccount(Account account) {
-		localUserDao.createAccount(account);
+		accountDoRep.addNewEntity(account);
 		// FUTURE: init data objects in database for subsystem Barker here!
 		
 		// INITIALIZING ROLE DATA ELEMENTS
@@ -91,19 +97,19 @@ public class RegistratorImpl implements Registrator {
 
 
 	@Override
-	public void unregister(UserId userId) {
-		Account account = localUserDao.getAccount(userId);
+	public void unregister(String localUsername) {
+		Account account = accountDoRep.getByNaturalId(localUsername);
 
 		destroyAccount(account);
 
-		notifyObservers(userId, false);
+		notifyObservers(account.getUserId(), false);
 	}
 
 
 	private void destroyAccount(Account account) {
 		UserId userId = account.getUserId();
 
-		localUserDao.deleteAccount(userId);
+		accountDoRep.deleteByNaturalId(account.getLocalUsername());
 		// FUTURE: destroy data objects in database for subsystem Barker here!
 		
 		// DESTROYING ROLE DATA ELEMENTS
@@ -113,7 +119,7 @@ public class RegistratorImpl implements Registrator {
 
 
 	public boolean existsLocalUsername(String localUserName) {
-		return localUserDao.existsLocalUsername(localUserName);
+		return accountDoRep.existsAccount(localUserName);
 	}
 
 

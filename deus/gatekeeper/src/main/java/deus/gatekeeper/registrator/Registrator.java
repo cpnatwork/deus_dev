@@ -1,7 +1,6 @@
 package deus.gatekeeper.registrator;
 
 import deus.gatekeeper.puddle.RegistrationInformation;
-import deus.model.user.id.UserId;
 
 
 public interface Registrator {
@@ -9,7 +8,7 @@ public interface Registrator {
 	public void register(RegistrationInformation registrationInformation);
 
 
-	public void unregister(UserId userId);
+	public void unregister(String localUsername);
 
 	
 	public boolean existsLocalUsername(String localUserName);

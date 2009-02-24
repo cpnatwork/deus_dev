@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.access.storage.api.user.api.UserDao;
+import deus.core.access.storage.api.user.UserMetadataDoRep;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
 
@@ -22,7 +22,7 @@ import deus.model.user.id.UserUrl;
 public class UserDaoInmemoryTest {
 
 	@Autowired
-	private UserDao sut;
+	private UserMetadataDoRep sut;
 
 
 	@Test
