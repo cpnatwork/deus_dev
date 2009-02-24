@@ -7,7 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.attention.AttentionDao;
+import deus.core.access.storage.api.attention.AttentionElementDoRep;
+import deus.core.access.storage.api.attention.AttentionListDoRep;
 import deus.core.soul.barker.Barker;
 import deus.model.attention.AttentionElement;
 import deus.model.attention.AttentionList;
@@ -19,56 +20,45 @@ public class BarkerImpl implements Barker {
 	private final Logger logger = LoggerFactory.getLogger(BarkerImpl.class);
 
 	@Autowired
-	private AttentionDao attentionDao;
+	private AttentionElementDoRep attentionElementDoRep;
+
+	@Autowired
+	private AttentionListDoRep attentionListDoRep;
 
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see deus.core.soul.barker.impl.Barker#addUnnoticedAttentionElement(deus.model.attention.AttentionElement)
-	 */
-	public void addUnnoticedAttentionElement(AttentionElement attentionElement) {
+	@Override
+	public void addUnnoticedAttentionElement(UserId userId, AttentionElement attentionElement) {
 		logger.trace("adding unnoticed attention element {}", attentionElement);
 
 		// set creation date
 		attentionElement.setCreationDate(new Date());
 
-		attentionDao.addNewEntity(attentionElement);
+		attentionElementDoRep.addNewEntity(userId, attentionElement);
 	}
 
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see deus.core.soul.barker.impl.Barker#noticeAttentionElement(deus.model.attention.AttentionElement)
-	 */
-	public void noticeAttentionElement(AttentionElement attentionElement) {
+	@Override
+	public void noticeAttentionElement(UserId userId, AttentionElement attentionElement) {
 		// FIXME: do check
 		// assertIsUnnoticed(attentionElement);
 
 		logger.trace("noticing attention element {}", attentionElement);
 
-		attentionDao.noticeAttentionElement(attentionElement);
+		attentionElement.setNoticed(true);
+
+		attentionElementDoRep.updateEntity(userId, attentionElement);
 	}
 
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see deus.core.soul.barker.impl.Barker#getUnnoticedAttentionList()
-	 */
+	@Override
 	public AttentionList getUnnoticedAttentionList(UserId userId) {
-		return attentionDao.getUnnoticedAttentionList(userId);
+		return attentionListDoRep.getUnnoticedAttentionList(userId);
 	}
 
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see deus.core.soul.barker.impl.Barker#getUnnoticedAttentionList()
-	 */
+	@Override
 	public AttentionList getNoticedAttentionList(UserId userId) {
-		return attentionDao.getNoticedAttentionList(userId);
+		return attentionListDoRep.getUnnoticedAttentionList(userId);
 	}
 
 }

@@ -7,7 +7,7 @@ import deus.model.user.id.UserId;
 
 public interface BarkerExportedToClient {
 
-	public abstract void noticeAttentionElement(AttentionElement attentionElement);
+	public abstract void noticeAttentionElement(UserId userId, AttentionElement attentionElement);
 
 
 	public abstract AttentionList getUnnoticedAttentionList(UserId userId);

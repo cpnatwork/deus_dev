@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import deus.core.soul.common.pifupdate.Updater;
 import deus.model.attention.decision.Contribution;
+import deus.model.user.id.UserId;
 
 @Component
 public class ContributionDecisionProcessor implements GenericDecisionProcessor<Contribution> {
@@ -14,13 +15,13 @@ public class ContributionDecisionProcessor implements GenericDecisionProcessor<C
 
 
 	@Override
-	public void process(Contribution contributionDecision) {
+	public void process(UserId userId, Contribution contributionDecision) {
 		if (!contributionDecision.isDecisionMade())
 			throw new IllegalStateException("decision (" + contributionDecision + ") is not made yet");
 
 
 		if (contributionDecision.isDecisionPositive()) {
-			updater.commit(contributionDecision.getUserId(), contributionDecision.getContributedDigitalCard());
+			updater.commit(userId, contributionDecision.getContributedDigitalCard());
 		}
 		else {
 			// do nothing

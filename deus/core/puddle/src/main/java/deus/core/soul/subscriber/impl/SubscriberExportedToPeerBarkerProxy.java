@@ -46,8 +46,7 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 		// get publisher metadata out of LoP
 		UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
 		Notice notice = new SubscriptionGrantedNotice(publisherMetadata);
-		notice.setUserId(subscriberId);
-		barker.addUnnoticedAttentionElement(notice);
+		barker.addUnnoticedAttentionElement(subscriberId, notice);
 
 		logger.debug("added {} to barker", notice);
 	}
@@ -64,8 +63,7 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 		// get publisher metadata out of LoP
 		UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
 		Notice notice = new SubscriptionDeniedNotice(publisherMetadata);
-		notice.setUserId(subscriberId);
-		barker.addUnnoticedAttentionElement(notice);
+		barker.addUnnoticedAttentionElement(subscriberId, notice);
 
 		logger.debug("added {} to barker", notice);
 	}
@@ -79,8 +77,7 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 
 		LopEntry lopEntry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
 		Notice notice = new UpdateNotice(lopEntry.getPublisherMetadata(), digitalCard);
-		notice.setUserId(subscriberId);
-		barker.addUnnoticedAttentionElement(notice);
+		barker.addUnnoticedAttentionElement(subscriberId, notice);
 
 		logger.debug("added {} to barker", notice);
 	}

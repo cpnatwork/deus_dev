@@ -22,12 +22,9 @@ public class SubscriberRequestDecisionProcessor implements GenericDecisionProces
 
 
 	@Override
-	public void process(SubscriberRequest subscriberRequest) {
+	public void process(UserId userId, SubscriberRequest subscriberRequest) {
 		if (!subscriberRequest.isDecisionMade())
 			throw new IllegalStateException("decision (" + subscriberRequest + ") is not made yet");
-
-		UserId userId = subscriberRequest.getUserId();
-		
 		
 		UserMetadata subscriberMetadata = subscriberRequest.getSubscriberMetadata();
 				

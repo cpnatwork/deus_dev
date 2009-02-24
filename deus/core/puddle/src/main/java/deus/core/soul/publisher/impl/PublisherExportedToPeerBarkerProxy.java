@@ -40,8 +40,7 @@ public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPe
 		
 		// PLACE SUBSCRIBER REQUEST
 		BinaryDecisionToMake decision = new SubscriberRequest(subscriberId, subscriberMetadata);
-		decision.setUserId(publisherId);
-		barker.addUnnoticedAttentionElement(decision);
+		barker.addUnnoticedAttentionElement(publisherId, decision);
 		
 		logger.trace("added {} to barker", decision);
 	}
@@ -59,8 +58,7 @@ public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPe
 		// PLACE NOTICE
 		UserMetadata subscriberMetadata = losEntry.getSubscriberMetadata();
 		Notice notice = new SubscribedProfileDeletedNotice(subscriberMetadata);
-		notice.setUserId(publisherId);
-		barker.addUnnoticedAttentionElement(notice);
+		barker.addUnnoticedAttentionElement(publisherId, notice);
 		
 		logger.trace("added {} to barker", notice);
 	}

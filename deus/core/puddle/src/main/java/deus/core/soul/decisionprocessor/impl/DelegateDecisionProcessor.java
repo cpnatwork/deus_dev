@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import deus.core.soul.decisionprocessor.DecisionProcessor;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.DecisionType;
+import deus.model.user.id.UserId;
 
 @Component
 public class DelegateDecisionProcessor implements DecisionProcessor {
@@ -26,9 +27,9 @@ public class DelegateDecisionProcessor implements DecisionProcessor {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T extends BinaryDecisionToMake> void process(T decision) {
+	public <T extends BinaryDecisionToMake> void process(UserId userId, T decision) {
 		GenericDecisionProcessor<T> decisionProcessor = (GenericDecisionProcessor<T>)genericDecisionProcessors.get(decision.getType());
-		decisionProcessor.process(decision);
+		decisionProcessor.process(userId, decision);
 	}
 
 

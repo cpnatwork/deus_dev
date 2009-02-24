@@ -6,8 +6,6 @@ import java.util.Vector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.attention.AttentionDao;
-import deus.core.access.storage.api.attention.AttentionListImpl;
 import deus.core.access.storage.api.user.api.LocalUserDao;
 import deus.gatekeeper.puddle.RegistrationInformation;
 import deus.gatekeeper.registrator.Registrator;
@@ -25,9 +23,6 @@ public class RegistratorImpl implements Registrator {
 
 	@Autowired
 	private LocalUserDao localUserDao;
-
-	@Autowired
-	private AttentionDao attentionDao;
 
 	@Autowired
 	private UserRoleSetup userRoleSetup;
@@ -87,8 +82,8 @@ public class RegistratorImpl implements Registrator {
 
 	private void createAccount(Account account) {
 		localUserDao.createAccount(account);
-		attentionDao.createAttentionList(new AttentionListImpl());
-
+		// FUTURE: init data objects in database for subsystem Barker here!
+		
 		// INITIALIZING ROLE DATA ELEMENTS
 		for (UserRole userRole : account.getUserRoles())
 			userRoleSetup.setUpRole(userRole, account.getUserId());
@@ -109,8 +104,8 @@ public class RegistratorImpl implements Registrator {
 		UserId userId = account.getUserId();
 
 		localUserDao.deleteAccount(userId);
-		attentionDao.deleteAttentionList(userId);
-
+		// FUTURE: destroy data objects in database for subsystem Barker here!
+		
 		// DESTROYING ROLE DATA ELEMENTS
 		for (UserRole userRole : account.getUserRoles())
 			userRoleSetup.tearDownRole(userRole, userId);

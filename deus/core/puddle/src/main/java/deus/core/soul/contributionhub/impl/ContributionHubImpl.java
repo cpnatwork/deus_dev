@@ -34,8 +34,7 @@ public class ContributionHubImpl implements ContributionHub {
 		UserMetadata contributorMetadata = null;
 
 		BinaryDecisionToMake decision = new Contribution(contributorMetadata, contributedDigitalCard);
-		decision.setUserId(cpId);
-		barker.addUnnoticedAttentionElement(decision);
+		barker.addUnnoticedAttentionElement(cpId, decision);
 	}
 
 }
