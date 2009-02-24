@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.pub.api.PubDao;
+import deus.core.access.storage.api.pub.api.LosDoRep;
+import deus.core.access.storage.api.pub.api.LosEntryDoRep;
 import deus.core.access.transport.core.sending.command.PublisherCommandSender;
 import deus.core.soul.publisher.Publisher;
 import deus.model.dossier.DigitalCard;
@@ -18,29 +19,37 @@ import deus.model.user.id.UserId;
 @Component
 @Qualifier("target")
 public class PublisherImpl implements Publisher {
-	
+
 	private final Logger logger = LoggerFactory.getLogger(PublisherImpl.class);
-	
+
 	@Autowired
 	private PublisherCommandSender publisherCommandSender;
-	
+
 	@Autowired
-	private PubDao pubDao;
+	private LosEntryDoRep losEntryDoRep;
+
+	@Autowired
+	private LosDoRep losDoRep;
+
+
+	// FIXME: think about returning a DTO to the frontend here
+	@Override
+	public ListOfSubscribers getListOfSubscribers(UserId publisherId) {
+		return losDoRep.getByNaturalId(publisherId);
+	}
+
 
 	@Override
 	public synchronized void addSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
 		logger.trace("adding subscriber {}", subscriberId);
 
-		ListOfSubscribers listOfSubscribers = pubDao.getListOfSubscribers(publisherId);
-		
-		if (listOfSubscribers.containsKey(subscriberId))
+		if (losEntryDoRep.containsEntity(subscriberId, publisherId))
 			throw new IllegalArgumentException("cannot add subscriber, it has already been added!");
-	
+
 		LosEntry entry = new LosEntry(publisherId);
 		entry.setSubscriberMetadata(subscriberMetadata);
-		listOfSubscribers.put(subscriberId, entry);
-		
-		pubDao.updateEntity(listOfSubscribers);
+
+		losEntryDoRep.addNewEntity(publisherId, entry);
 	}
 
 
@@ -48,13 +57,10 @@ public class PublisherImpl implements Publisher {
 	public synchronized void deleteSubscriber(UserId publisherId, UserId subscriberId) {
 		logger.trace("removing subscriber {}", subscriberId);
 
-		ListOfSubscribers listOfSubscribers = pubDao.getListOfSubscribers(publisherId);
-		
-		if(!listOfSubscribers.containsKey(subscriberId))
+		if (!losEntryDoRep.containsEntity(subscriberId, publisherId))
 			throw new IllegalArgumentException("cannot remove subscriber, that has not been added yet!");
-		listOfSubscribers.remove(subscriberId);
-		
-		pubDao.updateEntity(listOfSubscribers);
+
+		losEntryDoRep.deleteByNaturalId(subscriberId, publisherId);
 	}
 
 
@@ -62,28 +68,22 @@ public class PublisherImpl implements Publisher {
 	public synchronized void deleteSubscribers(UserId publisherId) {
 		logger.trace("removing all subscribers");
 
-		ListOfSubscribers listOfSubscribers = pubDao.getListOfSubscribers(publisherId);
-		
-		listOfSubscribers.clear();
-		
-		pubDao.updateEntity(listOfSubscribers);
+		ListOfSubscribers listOfSubscribers = losDoRep.deleteAllEntities(publisherId);
 	}
 
 
 	@Override
 	public synchronized int countSubscribers(UserId publisherId) {
-		ListOfSubscribers listOfSubscribers = pubDao.getListOfSubscribers(publisherId);
-		
-		return listOfSubscribers.size();
+		return losDoRep.getSubscriberCount(publisherId);
 	}
 
 
 	@Override
 	public void notifySubscribers(UserId publisherId, DigitalCard digitalCard) {
 		logger.trace("notifying subscribers of change {}", digitalCard);
-		
-		ListOfSubscribers listOfSubscribers = pubDao.getListOfSubscribers(publisherId);
-		
+
+		ListOfSubscribers listOfSubscribers = losDoRep.getByNaturalId(publisherId);
+
 		/*
 		 * a temporary array buffer, used as a snapshot of the state of current Observers.
 		 */
@@ -103,18 +103,10 @@ public class PublisherImpl implements Publisher {
 		for (int i = arrLocal.length - 1; i >= 0; i--) {
 			// TODO: think about publishing using multiple threads
 			UserId subscriberId = (UserId) arrLocal[i];
-			
+
 			publisherCommandSender.update(subscriberId, publisherId, digitalCard);
 		}
 	}
 
-
-	// FIXME: think about returning a DTO to the frontend here
-	@Override
-	public ListOfSubscribers getListOfSubscribers(UserId publisherId) {
-		ListOfSubscribers listOfSubscribers = pubDao.getListOfSubscribers(publisherId);
-		
-		return listOfSubscribers;
-	}
 
 }

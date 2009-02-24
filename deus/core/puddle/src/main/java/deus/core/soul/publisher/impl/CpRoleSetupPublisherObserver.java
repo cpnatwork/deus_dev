@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.pub.api.PubDao;
+import deus.core.access.storage.api.pub.api.LosDoRep;
 import deus.core.soul.common.AbstractUserRoleSetupObserver;
 import deus.core.soul.publisher.PublisherExportedToClient;
 import deus.model.pub.ListOfSubscribers;
@@ -18,7 +18,7 @@ import deus.model.user.id.UserId;
 public class CpRoleSetupPublisherObserver extends AbstractUserRoleSetupObserver {
 
 	@Autowired
-	private PubDao pubDao;
+	private LosDoRep losDoRep;
 
 	@Autowired
 	@Qualifier("target")
@@ -33,7 +33,7 @@ public class CpRoleSetupPublisherObserver extends AbstractUserRoleSetupObserver 
 
 	@Override
 	public void tearDownRole(UserId userId) {
-		ListOfSubscribers los = pubDao.getByNaturalId(userId);
+		ListOfSubscribers los = losDoRep.getByNaturalId(userId);
 		for (Map.Entry<UserId, LosEntry> entry : los.entrySet()) {
 			// FIXME: implement removing of all subscribers
 			// publisher.

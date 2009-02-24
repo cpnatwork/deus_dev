@@ -5,14 +5,18 @@ import deus.model.user.id.UserId;
 
 public interface LopEntryDoRep {
 
-	public boolean containsEntity(UserId publisherId, UserId subscriberId);
+	public void addNewEntity(UserId subscriberId, LopEntry entry);
 
-	public LopEntry getByNaturalId(UserId publisherId, UserId subscriberId);
-
-	public void updateEntity(LopEntry entry);
 
 	public void deleteByNaturalId(UserId publisherId, UserId subscriberId);
 
-	public void addNewEntity(UserId subscriberId, LopEntry entry);
-	
+
+	public void updateEntity(UserId publisherId, LopEntry entry);
+
+
+	public LopEntry getByNaturalId(UserId publisherId, UserId subscriberId);
+
+
+	public boolean containsEntity(UserId publisherId, UserId subscriberId);
+
 }

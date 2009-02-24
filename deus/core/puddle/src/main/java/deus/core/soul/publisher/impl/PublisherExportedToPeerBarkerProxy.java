@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.pub.api.PubDao;
+import deus.core.access.storage.api.pub.api.LosEntryDoRep;
 import deus.core.access.transport.core.receiving.soulcallback.PublisherExportedToPeer;
 import deus.core.soul.barker.BarkerExportedToSubsystems;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.model.attention.notice.Notice;
 import deus.model.attention.notice.SubscribedProfileDeletedNotice;
-import deus.model.pub.ListOfSubscribers;
+import deus.model.pub.LosEntry;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -31,7 +31,7 @@ public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPe
 	private BarkerExportedToSubsystems barker;
 	
 	@Autowired
-	private PubDao pubDao;
+	private LosEntryDoRep losEntryDoRep;
 
 	
 	@Override
@@ -54,10 +54,10 @@ public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPe
 		// DELETE OBSERVER
 		proxiedPublisher.deleteSubscriber(publisherId, subscriberId);
 
-		ListOfSubscribers listOfSubscribers = pubDao.getListOfSubscribers(publisherId);
+		LosEntry losEntry = losEntryDoRep.getByNaturalId(subscriberId, publisherId);
 		
 		// PLACE NOTICE
-		UserMetadata subscriberMetadata = listOfSubscribers.get(subscriberId).getSubscriberMetadata();
+		UserMetadata subscriberMetadata = losEntry.getSubscriberMetadata();
 		Notice notice = new SubscribedProfileDeletedNotice(subscriberMetadata);
 		notice.setUserId(publisherId);
 		barker.addUnnoticedAttentionElement(notice);

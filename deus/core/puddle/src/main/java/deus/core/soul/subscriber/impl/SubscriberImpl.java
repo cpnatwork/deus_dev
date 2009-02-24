@@ -94,7 +94,7 @@ public class SubscriberImpl implements Subscriber {
 		LopEntry entry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
 		entry.setSubscriptionState(RequestedSubscriptionState.granted);
 		
-		lopEntryDoRep.updateEntity(entry);
+		lopEntryDoRep.updateEntity(subscriberId, entry);
 	}
 
 
