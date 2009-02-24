@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.sub.api.SubDao;
+import deus.core.access.storage.api.sub.api.LopEntryDao;
 import deus.core.access.storage.api.sub.model.ListOfPublishersImpl;
 import deus.core.soul.common.AbstractUserRoleSetupObserver;
 import deus.core.soul.subscriber.SubscriberExportedToClient;
@@ -20,7 +20,7 @@ import deus.model.user.id.UserId;
 public class SubscriberRoleSetupSubscriberObserver extends AbstractUserRoleSetupObserver {
 	
 	@Autowired
-	private SubDao subDao;
+	private LopEntryDao lopEntryDao;
 
 	@Autowired
 	@Qualifier("target")
@@ -29,20 +29,20 @@ public class SubscriberRoleSetupSubscriberObserver extends AbstractUserRoleSetup
 
 	@Override
 	public void setUpRole(UserId userId) {
-		subDao.addNewEntity(new ListOfPublishersImpl());
-		subDao.createDistributedInformationFolder(new DistributedInformationFolderImpl(userId));
+		lopEntryDao.addNewEntity(new ListOfPublishersImpl());
+		lopEntryDao.createDistributedInformationFolder(new DistributedInformationFolderImpl(userId));
 	}
 
 
 	@Override
 	public void tearDownRole(UserId userId) {
-		ListOfPublishers lop = subDao.getByNaturalId(userId);
+		ListOfPublishers lop = lopEntryDao.getByNaturalId(userId);
 		for (Map.Entry<UserId, LopEntry> entry : lop.entrySet()) {
 			subscriber.unsubscribe(userId, entry.getKey());
 		}
 
-		subDao.deleteByNaturalId(userId);
-		subDao.deleteDistributedInformationFolder(userId);
+		lopEntryDao.deleteByNaturalId(userId);
+		lopEntryDao.deleteDistributedInformationFolder(userId);
 	}
 
 

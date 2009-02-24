@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.sub.api.SubDao;
+import deus.core.access.storage.api.sub.api.LopEntryDao;
 import deus.core.access.storage.api.user.api.UserDao;
 import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.common.InformationFileUpdateStrategy;
@@ -18,7 +18,7 @@ import deus.model.dossier.InformationFile;
 import deus.model.sub.DistributedInformationFolder;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.LopEntry;
-import deus.model.sub.SubscriptionState;
+import deus.model.sub.RequestedSubscriptionState;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -32,7 +32,7 @@ public class SubscriberImpl implements Subscriber {
 	private UserDao userDao;
 	
 	@Autowired
-	private SubDao subDao;
+	private LopEntryDao lopEntryDao;
 
 	@Resource(name="foreignInformationFileUpdateStrategy")
 	private InformationFileUpdateStrategy foreignInformationFileUpdateStrategy;
@@ -44,14 +44,14 @@ public class SubscriberImpl implements Subscriber {
 	// FIXME: think about returning a DTO to the frontend here
 	@Override
 	public DistributedInformationFolder getDistributedInformationFolder(UserId subscriberId) {
-		DistributedInformationFolder distributedInformationFolder = subDao.getDistributedInformationFolder(subscriberId);
+		DistributedInformationFolder distributedInformationFolder = lopEntryDao.getDistributedInformationFolder(subscriberId);
 		return distributedInformationFolder;
 	}
 
 	// FIXME: think about returning a DTO to the frontend here
 	@Override
 	public ListOfPublishers getListOfPublishers(UserId subscriberId) {
-		ListOfPublishers listOfPublishers = subDao.getListOfPublishers(subscriberId);
+		ListOfPublishers listOfPublishers = lopEntryDao.getListOfPublishers(subscriberId);
 		return listOfPublishers;
 	}
 
@@ -63,12 +63,12 @@ public class SubscriberImpl implements Subscriber {
 		
 		logger.trace("in subscriber {}: updating the DIF for publisher {}", subscriberId, publisherId);
 		
-		ListOfPublishers listOfPublishers = subDao.getListOfPublishers(subscriberId);
+		ListOfPublishers listOfPublishers = lopEntryDao.getListOfPublishers(subscriberId);
 
 		if (!listOfPublishers.containsKey(publisherId))
 			// FIXME: how to handle this??
 			;
-		DistributedInformationFolder distributedInformationFolder = subDao.getDistributedInformationFolder(subscriberId);
+		DistributedInformationFolder distributedInformationFolder = lopEntryDao.getDistributedInformationFolder(subscriberId);
 		
 		InformationFile fif = distributedInformationFolder.getForeignInformationFile(publisherId);
 		foreignInformationFileUpdateStrategy.update(fif, digitalCard);
@@ -81,11 +81,11 @@ public class SubscriberImpl implements Subscriber {
 	public void acknowledgeSubscription(UserId subscriberId, UserId publisherId) {
 		logger.trace("in subscriber of {}: publisher {} acknowledged subscription", subscriberId, publisherId);
 
-		ListOfPublishers listOfPublishers = subDao.getListOfPublishers(subscriberId);
+		ListOfPublishers listOfPublishers = lopEntryDao.getListOfPublishers(subscriberId);
 
-		listOfPublishers.changeState(publisherId, SubscriptionState.granted);
+		listOfPublishers.changeState(publisherId, RequestedSubscriptionState.granted);
 		
-		subDao.updateEntity(listOfPublishers);
+		lopEntryDao.updateEntity(listOfPublishers);
 	}
 
 
@@ -93,17 +93,17 @@ public class SubscriberImpl implements Subscriber {
 	public void denySubscription(UserId subscriberId, UserId publisherId) {
 		logger.trace("in subscriber of {}: publisher {} denied subscription", subscriberId, publisherId);
 
-		ListOfPublishers listOfPublishers = subDao.getListOfPublishers(subscriberId);
+		ListOfPublishers listOfPublishers = lopEntryDao.getListOfPublishers(subscriberId);
 		
 		listOfPublishers.remove(publisherId);
 		
-		subDao.updateEntity(listOfPublishers);
+		lopEntryDao.updateEntity(listOfPublishers);
 	}
 
 
 	@Override
 	public void subscribe(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata) {
-		ListOfPublishers listOfPublishers = subDao.getListOfPublishers(subscriberId);
+		ListOfPublishers listOfPublishers = lopEntryDao.getListOfPublishers(subscriberId);
 
 		if (listOfPublishers.containsKey(publisherId))
 			throw new IllegalArgumentException("cannot subscribe to publisher (" + publisherId + ") again!");
@@ -113,10 +113,10 @@ public class SubscriberImpl implements Subscriber {
 
 		LopEntry entry = new LopEntry(subscriberId);
 		entry.setPublisherMetadata(publisherMetadata);
-		entry.setSubscriptionState(SubscriptionState.requested);
+		entry.setSubscriptionState(RequestedSubscriptionState.requested);
 		listOfPublishers.put(publisherId, entry);
 
-		subDao.updateEntity(listOfPublishers);
+		lopEntryDao.updateEntity(listOfPublishers);
 		
 		
 		UserMetadata subscriberMetadata = userDao.getUserMetadata(subscriberId);
@@ -127,7 +127,7 @@ public class SubscriberImpl implements Subscriber {
 
 	@Override
 	public void unsubscribe(UserId subscriberId, UserId publisherId) {
-		ListOfPublishers listOfPublishers = subDao.getListOfPublishers(subscriberId);
+		ListOfPublishers listOfPublishers = lopEntryDao.getListOfPublishers(subscriberId);
 
 		if (!listOfPublishers.containsKey(publisherId))
 			throw new IllegalArgumentException("cannot unsubscribe from publisher (" + publisherId
@@ -137,7 +137,7 @@ public class SubscriberImpl implements Subscriber {
 
 		listOfPublishers.remove(publisherId);
 		
-		subDao.updateEntity(listOfPublishers);
+		lopEntryDao.updateEntity(listOfPublishers);
 
 		subscriberCommandSender.unsubscribe(subscriberId, publisherId);
 	}

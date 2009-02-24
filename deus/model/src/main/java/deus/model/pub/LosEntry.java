@@ -8,10 +8,12 @@ public class LosEntry {
 	private final UserId ownerId;
 
 	private UserMetadata subscriberMetadata;
+	private OfferedSubscriptionState offeredSubscriptionState;
+
 
 	// TODO: insert SHARE SET here!
 
-	
+
 	public LosEntry(UserId ownerId) {
 		super();
 		this.ownerId = ownerId;
@@ -34,4 +36,15 @@ public class LosEntry {
 	public void setSubscriberMetadata(UserMetadata subscriberMetadata) {
 		this.subscriberMetadata = subscriberMetadata;
 	}
+
+
+	public OfferedSubscriptionState getOfferedSubscriptionState() {
+		return offeredSubscriptionState;
+	}
+
+
+	public void setOfferedSubscriptionState(OfferedSubscriptionState offeredSubscriptionState) {
+		this.offeredSubscriptionState = offeredSubscriptionState;
+	}
+
 }

@@ -11,7 +11,7 @@
 
 	<osgi:service id="pubDaoOsgiService" ref="pubDao" interface="deus.core.access.storage.api.pub.api.PubDao" />
 	
-	<osgi:service id="subDaoOsgiService" ref="subDao" interface="deus.core.access.storage.api.sub.api.SubDao" />
+	<osgi:service id="subDaoOsgiService" ref="subDao" interface="deus.core.access.storage.api.sub.api.LopEntryDao" />
 	
 	<osgi:service id="userDaoOsgiService" ref="userDao" interface="deus.core.access.storage.api.user.api.UserMetadataDao" />
 

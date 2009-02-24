@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.sub.api.SubDao;
+import deus.core.access.storage.api.sub.api.LopEntryDao;
 import deus.core.access.transport.core.receiving.soulcallback.SubscriberExportedToPeer;
 import deus.core.soul.barker.BarkerExportedToSubsystems;
 import deus.model.attention.notice.Notice;
@@ -32,7 +32,7 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 	private BarkerExportedToSubsystems barker;
 
 	@Autowired
-	private SubDao subDao;
+	private LopEntryDao lopEntryDao;
 
 
 	@Override
@@ -41,7 +41,7 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 
 		proxiedSubscriber.acknowledgeSubscription(subscriberId, publisherId);
 
-		ListOfPublishers listOfPublishers = subDao.getListOfPublishers(subscriberId);
+		ListOfPublishers listOfPublishers = lopEntryDao.getListOfPublishers(subscriberId);
 		
 		// get publisher metadata out of LoP
 		UserMetadata publisherMetadata = listOfPublishers.get(publisherId).getPublisherMetadata();
@@ -59,7 +59,7 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 
 		proxiedSubscriber.denySubscription(subscriberId, publisherId);
 
-		ListOfPublishers listOfPublishers = subDao.getListOfPublishers(subscriberId);
+		ListOfPublishers listOfPublishers = lopEntryDao.getListOfPublishers(subscriberId);
 		
 		// get publisher metadata out of LoP
 		UserMetadata publisherMetadata = listOfPublishers.get(publisherId).getPublisherMetadata();
@@ -77,7 +77,7 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 
 		proxiedSubscriber.update(subscriberId, publisherId, digitalCard);
 
-		ListOfPublishers listOfPublishers = subDao.getListOfPublishers(subscriberId);
+		ListOfPublishers listOfPublishers = lopEntryDao.getListOfPublishers(subscriberId);
 		Notice notice = new UpdateNotice(listOfPublishers.get(publisherId).getPublisherMetadata(), digitalCard);
 		notice.setUserId(subscriberId);
 		barker.addUnnoticedAttentionElement(notice);

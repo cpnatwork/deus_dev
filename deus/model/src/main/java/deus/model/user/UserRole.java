@@ -7,7 +7,7 @@ package deus.model.user;
  * 
  * subscriber means, the user can subscribe to the PIF of other users and maintain a DIF of FPFs of other users.
  * 
- * contributorOther means, the user can contribute to the PPF of other users.
+ * contributor means, the user can contribute to the PPF of other users.
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
@@ -16,6 +16,6 @@ package deus.model.user;
 // the role cp
 public enum UserRole {
 
-	cp, subscriber, contributorOther;
+	cp, subscriber, contributor;
 
 }

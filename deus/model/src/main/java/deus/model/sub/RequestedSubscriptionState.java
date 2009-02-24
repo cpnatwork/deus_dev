@@ -1,6 +1,6 @@
 package deus.model.sub;
 
-public enum SubscriptionState {
+public enum RequestedSubscriptionState {
 
 	requested, granted;
 	

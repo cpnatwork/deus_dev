@@ -8,7 +8,7 @@ public class LopEntry {
 	private UserId ownerId;
 	
 	private UserMetadata publisherMetadata;
-	private SubscriptionState subscriptionState;
+	private RequestedSubscriptionState requestedSubscriptionState;
 	
 	
 	public LopEntry(UserId ownerId) {
@@ -35,13 +35,13 @@ public class LopEntry {
 	}
 
 
-	public SubscriptionState getSubscriptionState() {
-		return subscriptionState;
+	public RequestedSubscriptionState getSubscriptionState() {
+		return requestedSubscriptionState;
 	}
 
 
-	public void setSubscriptionState(SubscriptionState subscriptionState) {
-		this.subscriptionState = subscriptionState;
+	public void setSubscriptionState(RequestedSubscriptionState requestedSubscriptionState) {
+		this.requestedSubscriptionState = requestedSubscriptionState;
 	}
 	
 }

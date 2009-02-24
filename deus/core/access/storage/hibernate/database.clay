@@ -16,24 +16,24 @@
 <domain alias="" column-size="10" decimal-digits="0" default-value="" mandatory="false" name="TERNARY_BOOLEAN" remarks="" uid="3e4e0197:11f83d834a8:-7eba">
 <domain-description/>
 <data-type jdbc-type="1111" literal-prefix="'" literal-suffix="'" name="ENUM" selected-variant-pattern="ENUM('true', 'false', 'unknown')">
+<variant type-name-pattern="ENUM('true', 'false', 'unknown')"/>
 <variant type-name-pattern="ENUM('%1')"/>
 <variant type-name-pattern="ENUM('%1', '%2')"/>
-<variant type-name-pattern="ENUM('true', 'false', 'unknown')"/>
 </data-type>
 </domain>
 <domain alias="" column-size="10" decimal-digits="0" default-value="" mandatory="false" name="GENDER" remarks="" uid="3e4e0197:11f83d834a8:-7cba">
 <domain-description/>
 <data-type jdbc-type="1111" literal-prefix="'" literal-suffix="'" name="ENUM" selected-variant-pattern="ENUM('male', 'female', 'unknown')">
+<variant type-name-pattern="ENUM('male', 'female', 'unknown')"/>
 <variant type-name-pattern="ENUM('%1')"/>
 <variant type-name-pattern="ENUM('%1', '%2')"/>
-<variant type-name-pattern="ENUM('male', 'female', 'unknown')"/>
 </data-type>
 </domain>
 </domain-list>
 <table-list>
 <table alias="" name="ATTENTION_ELEMENT" remarks="" uid="3e4e0197:11f83d834a8:-7ff8">
 <table-description/>
-<table-figure-bounds height="-1" width="-1" x="432" y="242"/>
+<table-figure-bounds height="-1" width="-1" x="567" y="313"/>
 <column-list>
 <column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="USER_ID" remarks="" uid="3e4e0197:11f83d834a8:-7ee6">
 <column-description/>
@@ -58,9 +58,9 @@
 <column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="true" name="ATTENTION_ELEMENT_TYPE" remarks="" uid="3e4e0197:11f83d834a8:-7cbb">
 <column-description/>
 <data-type jdbc-type="1111" literal-prefix="'" literal-suffix="'" name="ENUM" selected-variant-pattern="ENUM('PUBLISHER_OFFER')">
+<variant type-name-pattern="ENUM('PUBLISHER_OFFER')"/>
 <variant type-name-pattern="ENUM('%1')"/>
 <variant type-name-pattern="ENUM('%1', '%2')"/>
-<variant type-name-pattern="ENUM('PUBLISHER_OFFER')"/>
 </data-type>
 </column>
 <column alias="Noticed" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="NOTICED" remarks="" uid="3e4e0197:11f83d834a8:-7ec0">
@@ -78,9 +78,9 @@
 <column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" domain="TERNARY_BOOLEAN" mandatory="false" name="DECISION_MADE" remarks="" uid="3e4e0197:11f83d834a8:-7eb7">
 <column-description/>
 <data-type jdbc-type="1111" literal-prefix="'" literal-suffix="'" name="ENUM" selected-variant-pattern="ENUM('true', 'false', 'unknown')">
+<variant type-name-pattern="ENUM('true', 'false', 'unknown')"/>
 <variant type-name-pattern="ENUM('%1')"/>
 <variant type-name-pattern="ENUM('%1', '%2')"/>
-<variant type-name-pattern="ENUM('true', 'false', 'unknown')"/>
 </data-type>
 </column>
 <column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="false" name="SENDER_USER_METADATA" remarks="" uid="3e4e0197:11f83d834a8:-7dba">
@@ -97,12 +97,32 @@
 <variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
 </data-type>
 </column>
-<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="false" name="DIGITAL_CARD" remarks="" uid="3e4e0197:11f83d834a8:-7ccb">
+<column alias="" auto-increment="false" column-size="512" decimal-digits="0" default-value="" mandatory="false" name="DC_CONTRIBUTOR_GIVEN_NAME" remarks="" uid="3e4e0197:11f83d834a8:-7ccb">
 <column-description/>
-<data-type jdbc-type="1" literal-prefix="'" literal-suffix="'" name="CHAR" selected-variant-pattern="CHAR(%n)">
-<variant type-name-pattern="CHAR"/>
-<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n)"/>
-<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n) BINARY"/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" mandatory="false" name="DC_CONCERNED_USER_ID" remarks="" uid="6222fb87:11fa8395cbc:-7f22">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" mandatory="false" name="DC_CONTRIBUTOR_USER_ID" remarks="" uid="6222fb87:11fa8395cbc:-7f21">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="VIEWER_USER_ID" remarks="" uid="6222fb87:11fa8395cbc:-7e4e">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
 </data-type>
 </column>
 </column-list>
@@ -113,64 +133,48 @@
 </primary-key>
 <unique-key-list/>
 <foreign-key-list>
-<foreign-key alias="" name="FK_USER_ID" on-delete="" on-update="" referenced-key="PK_USER" referenced-table="USER" referenced-table-schema="DEUS" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="" uid="3e4e0197:11f83d834a8:-7ee7">
+<foreign-key alias="" name="FK_SENDER_USER_METADATA" on-delete="" on-update="" referenced-key="PK_USER" referenced-table="USER" referenced-table-schema="DEUS" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="" uid="3e4e0197:11f83d834a8:-7d30">
 <foreign-key-description/>
 <foreign-key-figure>
-<fk-fig-source-terminal x="10" y="81"/>
-<fk-fig-target-terminal x="24" y="23"/>
-<fk-fig-bendpoint-list/>
-</foreign-key-figure>
-<foreign-key-column column-name="USER_ID" referenced-key-column-name="ID"/>
-</foreign-key>
-<foreign-key alias="" name="FK_SENDER_USER_METADATA" on-delete="" on-update="" referenced-key="PK_USER_METADATA" referenced-table="USER_METADATA" referenced-table-schema="DEUS" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="" uid="3e4e0197:11f83d834a8:-7d30">
-<foreign-key-description/>
-<foreign-key-figure>
+<fk-fig-source-terminal x="305" y="2"/>
+<fk-fig-target-terminal x="344" y="63"/>
 <fk-fig-bendpoint-list/>
 </foreign-key-figure>
 <foreign-key-column column-name="SENDER_USER_METADATA" referenced-key-column-name="USER_ID"/>
 </foreign-key>
-<foreign-key alias="" name="FK_RECEIVER_USER_METADATA" on-delete="" on-update="" referenced-key="PK_USER_METADATA" referenced-table="USER_METADATA" referenced-table-schema="DEUS" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="" uid="3e4e0197:11f83d834a8:-7cf9">
+<foreign-key alias="" name="FK_RECEIVER_USER_METADATA" on-delete="" on-update="" referenced-key="PK_USER" referenced-table="USER" referenced-table-schema="DEUS" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="" uid="3e4e0197:11f83d834a8:-7cf9">
 <foreign-key-description/>
 <foreign-key-figure>
-<fk-fig-source-terminal x="318" y="10"/>
-<fk-fig-target-terminal x="135" y="23"/>
+<fk-fig-source-terminal x="399" y="2"/>
+<fk-fig-target-terminal x="363" y="15"/>
 <fk-fig-bendpoint-list/>
 </foreign-key-figure>
 <foreign-key-column column-name="RECEIVER_USER_METADATA" referenced-key-column-name="USER_ID"/>
 </foreign-key>
-<foreign-key alias="" name="FK_DIGITAL_CARD" on-delete="" on-update="" referenced-key="PK_DIGITAL_CARD" referenced-table="DIGITAL_CARD" referenced-table-schema="DEUS" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="" uid="3e4e0197:11f83d834a8:-7cd5">
+<foreign-key alias="" name="FK_DIGITAL_CARD" on-delete="" on-update="" referenced-key="PK_PARTY_DIGITAL_CARD" referenced-table="PARTY_DIGITAL_CARD" referenced-table-schema="DEUS" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="" uid="3e4e0197:11f83d834a8:-7cd5">
 <foreign-key-description/>
 <foreign-key-figure>
-<fk-fig-source-terminal x="56" y="126"/>
-<fk-fig-target-terminal x="39" y="13"/>
+<fk-fig-source-terminal x="71" y="186"/>
+<fk-fig-target-terminal x="306" y="0"/>
 <fk-fig-bendpoint-list/>
 </foreign-key-figure>
-<foreign-key-column column-name="DIGITAL_CARD" referenced-key-column-name="CONTRIBUTOR_GIVEN_NAME"/>
+<foreign-key-column column-name="DC_CONTRIBUTOR_GIVEN_NAME" referenced-key-column-name="CONTRIBUTOR_GIVEN_NAME"/>
+<foreign-key-column column-name="DC_CONCERNED_USER_ID" referenced-key-column-name="CONCERNED_USER_ID"/>
+<foreign-key-column column-name="DC_CONTRIBUTOR_USER_ID" referenced-key-column-name="CONTRIBUTOR_USER_ID"/>
+<foreign-key-column column-name="VIEWER_USER_ID" referenced-key-column-name="VIEWER_USER_ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_USER_ID" on-delete="" on-update="" referenced-key="PK_USER" referenced-table="USER" referenced-table-schema="DEUS" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="" uid="6222fb87:11fa8395cbc:-7f7d">
+<foreign-key-description/>
+<foreign-key-figure>
+<fk-fig-target-terminal x="311" y="85"/>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="USER_ID" referenced-key-column-name="USER_ID"/>
 </foreign-key>
 </foreign-key-list>
 <index-list/>
 </table>
-<table alias="" name="USER" remarks="" uid="3e4e0197:11f83d834a8:-7fee">
-<table-description/>
-<table-figure-bounds height="-1" width="-1" x="61" y="238"/>
-<column-list>
-<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="ID" remarks="" uid="3e4e0197:11f83d834a8:-7fea">
-<column-description/>
-<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
-<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
-<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
-</data-type>
-</column>
-</column-list>
-<primary-key alias="" name="PK_USER" remarks="" uid="3e4e0197:11f83d834a8:-7fed">
-<primary-key-description/>
-<primary-key-column name="ID"/>
-</primary-key>
-<unique-key-list/>
-<foreign-key-list/>
-<index-list/>
-</table>
-<table alias="" name="USER_METADATA" remarks="" uid="3e4e0197:11f83d834a8:-7eb4">
+<table alias="" name="USER" remarks="" uid="3e4e0197:11f83d834a8:-7eb4">
 <table-description/>
 <table-figure-bounds height="-1" width="-1" x="205" y="43"/>
 <column-list>
@@ -181,33 +185,68 @@
 <variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
 </data-type>
 </column>
-<column alias="" auto-increment="false" column-size="256" decimal-digits="0" default-value="" mandatory="true" name="FULL_NAME" remarks="" uid="3e4e0197:11f83d834a8:-7e67">
+<column alias="" auto-increment="false" column-size="128" decimal-digits="0" default-value="" mandatory="true" name="LOCAL_USERNAME" remarks="" uid="6222fb87:11fa8395cbc:-7fef">
 <column-description/>
 <data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
 <variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
 <variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
 </data-type>
 </column>
-<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" domain="GENDER" mandatory="true" name="GENDER" remarks="" uid="3e4e0197:11f83d834a8:-7cb7">
+<column alias="" auto-increment="false" column-size="128" decimal-digits="0" default-value="" mandatory="true" name="PASSWORD" remarks="" uid="6222fb87:11fa8395cbc:-7fee">
 <column-description/>
-<data-type jdbc-type="1111" literal-prefix="'" literal-suffix="'" name="ENUM" selected-variant-pattern="ENUM('male', 'female', 'unknown')">
-<variant type-name-pattern="ENUM('%1')"/>
-<variant type-name-pattern="ENUM('%1', '%2')"/>
-<variant type-name-pattern="ENUM('male', 'female', 'unknown')"/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="LOGGED_IN" remarks="" uid="6222fb87:11fa8395cbc:-7fed">
+<column-description/>
+<data-type jdbc-type="-7" name="BOOL" selected-variant-pattern="BOOL">
+<variant type-name-pattern="BOOL"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="false" name="USER_ROLES" remarks="" uid="6222fb87:11fa8395cbc:-7fdd">
+<column-description/>
+<data-type jdbc-type="1111" literal-prefix="'" literal-suffix="'" name="SET" selected-variant-pattern="SET('cp', 'subscriber', 'contributor')">
+<variant type-name-pattern="SET('%1')"/>
+<variant type-name-pattern="SET('%1', '%2')"/>
+<variant type-name-pattern="SET('cp', 'subscriber', 'contributor')"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="" uid="6222fb87:11fa8395cbc:-7fb8">
+<column-description/>
+<data-type jdbc-type="4" name="INTEGER" selected-variant-pattern="INTEGER">
+<variant type-name-pattern="INTEGER"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INTEGER(%n)"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INTEGER(%n) UNSIGNED"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INTEGER(%n) UNSIGNED ZEROFILL"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INTEGER(%n) ZEROFILL"/>
+<variant type-name-pattern="INTEGER UNSIGNED"/>
+<variant type-name-pattern="INTEGER UNSIGNED ZEROFILL"/>
+<variant type-name-pattern="INTEGER ZEROFILL"/>
 </data-type>
 </column>
 </column-list>
-<primary-key alias="" name="PK_USER_METADATA" remarks="" uid="3e4e0197:11f83d834a8:-7eb3">
+<primary-key alias="" name="PK_USER" remarks="" uid="3e4e0197:11f83d834a8:-7eb3">
 <primary-key-description/>
 <primary-key-column name="USER_ID"/>
 </primary-key>
 <unique-key-list/>
-<foreign-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_USER_METADATA" on-delete="" on-update="" referenced-key="PK_USER_METADATA" referenced-table="USER_METADATA" referenced-table-schema="DEUS" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="" uid="6222fb87:11fa8395cbc:-7f3b">
+<foreign-key-description/>
+<foreign-key-figure>
+<fk-fig-source-terminal x="21" y="101"/>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="USER_ID" referenced-key-column-name="USER_ID"/>
+</foreign-key>
+</foreign-key-list>
 <index-list/>
 </table>
-<table alias="" name="DIGITAL_CARD" remarks="" uid="3e4e0197:11f83d834a8:-7ce0">
+<table alias="" name="PARTY_DIGITAL_CARD" remarks="" uid="3e4e0197:11f83d834a8:-7ce0">
 <table-description/>
-<table-figure-bounds height="-1" width="-1" x="28" y="487"/>
+<table-figure-bounds height="-1" width="-1" x="675" y="645"/>
 <column-list>
 <column alias="" auto-increment="false" column-size="512" decimal-digits="0" default-value="" mandatory="true" name="CONTRIBUTOR_GIVEN_NAME" remarks="" uid="3e4e0197:11f83d834a8:-7cc7">
 <column-description/>
@@ -216,13 +255,337 @@
 <variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
 </data-type>
 </column>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="CONCERNED_USER_ID" remarks="" uid="6222fb87:11fa8395cbc:-7f24">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="CONTRIBUTOR_USER_ID" remarks="" uid="6222fb87:11fa8395cbc:-7f23">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="VIEWER_USER_ID" remarks="" uid="6222fb87:11fa8395cbc:-7eba">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="true" name="PARTY_TYPE" remarks="" uid="6222fb87:11fa8395cbc:-7f0f">
+<column-description/>
+<data-type jdbc-type="1111" literal-prefix="'" literal-suffix="'" name="ENUM" selected-variant-pattern="ENUM('person', 'org')">
+<variant type-name-pattern="ENUM('%1')"/>
+<variant type-name-pattern="ENUM('%1', '%2')"/>
+<variant type-name-pattern="ENUM('person', 'org')"/>
+</data-type>
+</column>
 </column-list>
-<primary-key alias="" name="PK_DIGITAL_CARD" remarks="" uid="3e4e0197:11f83d834a8:-7cdf">
+<primary-key alias="" name="PK_PARTY_DIGITAL_CARD" remarks="" uid="3e4e0197:11f83d834a8:-7cdf">
 <primary-key-description/>
 <primary-key-column name="CONTRIBUTOR_GIVEN_NAME"/>
+<primary-key-column name="CONCERNED_USER_ID"/>
+<primary-key-column name="CONTRIBUTOR_USER_ID"/>
+<primary-key-column name="VIEWER_USER_ID"/>
 </primary-key>
 <unique-key-list/>
 <foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="USER_METADATA" remarks="" uid="6222fb87:11fa8395cbc:-7f56">
+<table-description/>
+<table-figure-bounds height="-1" width="-1" x="24" y="281"/>
+<column-list>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="USER_ID" remarks="" uid="6222fb87:11fa8395cbc:-7f46">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="256" decimal-digits="0" default-value="" mandatory="true" name="FULL_NAME" remarks="" uid="6222fb87:11fa8395cbc:-7f4b">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" domain="GENDER" mandatory="true" name="GENDER" remarks="" uid="6222fb87:11fa8395cbc:-7f50">
+<column-description/>
+<data-type jdbc-type="1111" literal-prefix="'" literal-suffix="'" name="ENUM" selected-variant-pattern="ENUM('male', 'female', 'unknown')">
+<variant type-name-pattern="ENUM('male', 'female', 'unknown')"/>
+<variant type-name-pattern="ENUM('%1')"/>
+<variant type-name-pattern="ENUM('%1', '%2')"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_USER_METADATA" remarks="" uid="6222fb87:11fa8395cbc:-7f55">
+<primary-key-description/>
+<primary-key-column name="USER_ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="LOS_ENTRY" remarks="" uid="6222fb87:11fa8395cbc:-7f0e">
+<table-description/>
+<table-figure-bounds height="-1" width="-1" x="11" y="525"/>
+<column-list>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="PUBLISHER_ID" remarks="ID of the publisher owning the LoS" uid="6222fb87:11fa8395cbc:-7f08">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="SUBSCRIBER_ID" remarks="" uid="6222fb87:11fa8395cbc:-7f07">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="PUBLISHER_METADATA" remarks="" uid="6222fb87:11fa8395cbc:-7f00">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="true" name="SUBSCRIPTION_STATE" remarks="" uid="6222fb87:11fa8395cbc:-7ec4">
+<column-description/>
+<data-type jdbc-type="1111" literal-prefix="'" literal-suffix="'" name="ENUM" selected-variant-pattern="ENUM('offered', 'granted')">
+<variant type-name-pattern="ENUM('%1')"/>
+<variant type-name-pattern="ENUM('%1', '%2')"/>
+<variant type-name-pattern="ENUM('offered', 'granted')"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_LOS_ENTRY" remarks="" uid="6222fb87:11fa8395cbc:-7f0d">
+<primary-key-description/>
+<primary-key-column name="PUBLISHER_ID"/>
+<primary-key-column name="SUBSCRIBER_ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_LOS_USER_METADATA" on-delete="" on-update="" referenced-key="PK_USER_METADATA" referenced-table="USER_METADATA" referenced-table-schema="DEUS" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="" uid="6222fb87:11fa8395cbc:-7f01">
+<foreign-key-description/>
+<foreign-key-figure>
+<fk-fig-source-terminal x="160" y="21"/>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="PUBLISHER_METADATA" referenced-key-column-name="USER_ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="LOP_ENTRY" remarks="" uid="6222fb87:11fa8395cbc:-7eee">
+<table-description/>
+<table-figure-bounds height="-1" width="-1" x="135" y="632"/>
+<column-list>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="SUBSCRIBER_ID" remarks="ID of the subscriber owning the LoP" uid="6222fb87:11fa8395cbc:-7eeb">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="PUBLISHER_ID" remarks="" uid="6222fb87:11fa8395cbc:-7eec">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="SUBSCRIBER_METADATA" remarks="" uid="6222fb87:11fa8395cbc:-7eea">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="true" name="SUBSCRIPTION_STATE" remarks="" uid="6222fb87:11fa8395cbc:-7ec1">
+<column-description/>
+<data-type jdbc-type="1111" literal-prefix="'" literal-suffix="'" name="ENUM" selected-variant-pattern="ENUM('requested','granted')">
+<variant type-name-pattern="ENUM('%1')"/>
+<variant type-name-pattern="ENUM('%1', '%2')"/>
+<variant type-name-pattern="ENUM('requested','granted')"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_LOP_ENTRY" remarks="" uid="6222fb87:11fa8395cbc:-7ee9">
+<primary-key-description/>
+<primary-key-column name="PUBLISHER_ID"/>
+<primary-key-column name="SUBSCRIBER_ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_LOP_USER_METADATA" on-delete="" on-update="" referenced-key="PK_USER_METADATA" referenced-table="USER_METADATA" referenced-table-schema="DEUS" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="" uid="6222fb87:11fa8395cbc:-7eda">
+<foreign-key-description/>
+<foreign-key-figure>
+<fk-fig-source-terminal x="292" y="11"/>
+<fk-fig-target-terminal x="224" y="28"/>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="SUBSCRIBER_METADATA" referenced-key-column-name="USER_ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="ADDRESS" remarks="" uid="6222fb87:11fa8395cbc:-7eb9">
+<table-description/>
+<table-figure-bounds height="-1" width="-1" x="522" y="906"/>
+<column-list>
+<column alias="" auto-increment="false" column-size="512" decimal-digits="0" default-value="" mandatory="true" name="CONTRIBUTOR_GIVEN_NAME" remarks="" uid="6222fb87:11fa8395cbc:-7e94">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="CONCERNED_USER_ID" remarks="" uid="6222fb87:11fa8395cbc:-7e93">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="CONTRIBUTOR_USER_ID" remarks="" uid="6222fb87:11fa8395cbc:-7e92">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="1024" decimal-digits="0" default-value="" domain="USER_ID_TYPE" mandatory="true" name="VIEWER_USER_ID" remarks="" uid="6222fb87:11fa8395cbc:-7e4d">
+<column-description/>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="true" name="TYPE" remarks="" uid="6222fb87:11fa8395cbc:-7ea7">
+<column-description/>
+<data-type jdbc-type="1111" literal-prefix="'" literal-suffix="'" name="ENUM" selected-variant-pattern="ENUM('street', 'pob')">
+<variant type-name-pattern="ENUM('%1')"/>
+<variant type-name-pattern="ENUM('%1', '%2')"/>
+<variant type-name-pattern="ENUM('street', 'pob')"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="false" name="COUNTRY" remarks="" uid="6222fb87:11fa8395cbc:-7eb1">
+<column-description/>
+<data-type jdbc-type="1" literal-prefix="'" literal-suffix="'" name="CHAR" selected-variant-pattern="CHAR(%n)">
+<variant type-name-pattern="CHAR"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n)"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="false" name="REGION" remarks="" uid="6222fb87:11fa8395cbc:-7eb0">
+<column-description/>
+<data-type jdbc-type="1" literal-prefix="'" literal-suffix="'" name="CHAR" selected-variant-pattern="CHAR(%n)">
+<variant type-name-pattern="CHAR"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n)"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="false" name="LOCALITY" remarks="" uid="6222fb87:11fa8395cbc:-7eaf">
+<column-description/>
+<data-type jdbc-type="1" literal-prefix="'" literal-suffix="'" name="CHAR" selected-variant-pattern="CHAR(%n)">
+<variant type-name-pattern="CHAR"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n)"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="false" name="ZIP" remarks="" uid="6222fb87:11fa8395cbc:-7eae">
+<column-description/>
+<data-type jdbc-type="1" literal-prefix="'" literal-suffix="'" name="CHAR" selected-variant-pattern="CHAR(%n)">
+<variant type-name-pattern="CHAR"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n)"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="false" name="POP" remarks="" uid="6222fb87:11fa8395cbc:-7eab">
+<column-description/>
+<data-type jdbc-type="1" literal-prefix="'" literal-suffix="'" name="CHAR" selected-variant-pattern="CHAR(%n)">
+<variant type-name-pattern="CHAR"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n)"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="false" name="STREET" remarks="" uid="6222fb87:11fa8395cbc:-7eaa">
+<column-description/>
+<data-type jdbc-type="1" literal-prefix="'" literal-suffix="'" name="CHAR" selected-variant-pattern="CHAR(%n)">
+<variant type-name-pattern="CHAR"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n)"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="false" name="EXTENSION" remarks="" uid="6222fb87:11fa8395cbc:-7ea9">
+<column-description/>
+<data-type jdbc-type="1" literal-prefix="'" literal-suffix="'" name="CHAR" selected-variant-pattern="CHAR(%n)">
+<variant type-name-pattern="CHAR"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n)"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="false" name="LABEL" remarks="" uid="6222fb87:11fa8395cbc:-7e48">
+<column-description/>
+<data-type jdbc-type="1" literal-prefix="'" literal-suffix="'" name="CHAR" selected-variant-pattern="CHAR(%n)">
+<variant type-name-pattern="CHAR"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n)"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="PROF_FLAG" remarks="" uid="6222fb87:11fa8395cbc:-7e47">
+<column-description/>
+<data-type jdbc-type="-7" name="BOOL" selected-variant-pattern="BOOL">
+<variant type-name-pattern="BOOL"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="PERSONAL_FLAG" remarks="" uid="6222fb87:11fa8395cbc:-7e46">
+<column-description/>
+<data-type jdbc-type="-7" name="BOOL" selected-variant-pattern="BOOL">
+<variant type-name-pattern="BOOL"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="PRIORITY" remarks="" uid="6222fb87:11fa8395cbc:-7e45">
+<column-description/>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n)"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) UNSIGNED"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) UNSIGNED ZEROFILL"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) ZEROFILL"/>
+<variant type-name-pattern="INT UNSIGNED"/>
+<variant type-name-pattern="INT UNSIGNED ZEROFILL"/>
+<variant type-name-pattern="INT ZEROFILL"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_ADDRESS" remarks="" uid="6222fb87:11fa8395cbc:-7eb8">
+<primary-key-description/>
+<primary-key-column name="CONTRIBUTOR_GIVEN_NAME"/>
+<primary-key-column name="CONCERNED_USER_ID"/>
+<primary-key-column name="CONTRIBUTOR_USER_ID"/>
+<primary-key-column name="VIEWER_USER_ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_PERSON" on-delete="" on-update="" referenced-key="PK_PARTY_DIGITAL_CARD" referenced-table="PARTY_DIGITAL_CARD" referenced-table-schema="DEUS" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="" uid="6222fb87:11fa8395cbc:-7e95">
+<foreign-key-description/>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="CONTRIBUTOR_GIVEN_NAME" referenced-key-column-name="CONTRIBUTOR_GIVEN_NAME"/>
+<foreign-key-column column-name="CONCERNED_USER_ID" referenced-key-column-name="CONCERNED_USER_ID"/>
+<foreign-key-column column-name="CONTRIBUTOR_USER_ID" referenced-key-column-name="CONTRIBUTOR_USER_ID"/>
+<foreign-key-column column-name="VIEWER_USER_ID" referenced-key-column-name="VIEWER_USER_ID"/>
+</foreign-key>
+</foreign-key-list>
 <index-list/>
 </table>
 </table-list>

@@ -22,7 +22,7 @@
 	
 	<osgi:reference id="attentionDao" interface="deus.core.access.storage.api.attention.AttentionDao"/>
 	
-	<osgi:reference id="pubDao" interface="deus.core.access.storage.api.sub.api.SubDao"/>
+	<osgi:reference id="pubDao" interface="deus.core.access.storage.api.sub.api.LopEntryDao"/>
 	
 	<osgi:reference id="subDao" interface="deus.core.access.storage.api.pub.api.PubDao"/>
 	
