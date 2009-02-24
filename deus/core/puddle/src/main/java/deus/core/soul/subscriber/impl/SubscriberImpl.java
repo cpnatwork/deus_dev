@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.sub.api.DifDoRep;
-import deus.core.access.storage.api.sub.api.FifDoRep;
-import deus.core.access.storage.api.sub.api.LopDoRep;
-import deus.core.access.storage.api.sub.api.LopEntryDoRep;
+import deus.core.access.storage.api.sub.DifDoRep;
+import deus.core.access.storage.api.sub.FifDoRep;
+import deus.core.access.storage.api.sub.LopDoRep;
+import deus.core.access.storage.api.sub.LopEntryDoRep;
 import deus.core.access.storage.api.user.api.UserDao;
 import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.common.InformationFileUpdateStrategy;

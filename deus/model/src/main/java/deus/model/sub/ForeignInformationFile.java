@@ -24,8 +24,8 @@ public class ForeignInformationFile extends InformationFile {
 
 	private final UserMetadata publisherMetadata;
 
-	public ForeignInformationFile(UserId ownerId, UserId publisherId, UserMetadata publisherMetadata, Set<DigitalCard> digitalCards) {
-		super(ownerId, digitalCards);
+	public ForeignInformationFile(UserId publisherId, UserMetadata publisherMetadata, Set<DigitalCard> digitalCards) {
+		super(digitalCards);
 		this.publisherId = publisherId;
 		this.publisherMetadata = publisherMetadata;
 	}

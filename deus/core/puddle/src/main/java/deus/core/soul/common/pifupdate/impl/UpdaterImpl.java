@@ -5,7 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.dossier.api.DossierDao;
+import deus.core.access.storage.api.pie.PifDoRep;
 import deus.core.soul.common.InformationFileUpdateStrategy;
 import deus.core.soul.common.pifupdate.Updater;
 import deus.model.dossier.DigitalCard;
@@ -19,16 +19,17 @@ public class UpdaterImpl implements Updater {
 	private InformationFileUpdateStrategy personalInformationFileUpdateStrategy;
 
 	@Autowired
-	private DossierDao dossierDao;
+	private PifDoRep pifDoRep;
 
 
 	@Override
 	public void commit(UserId cpId, DigitalCard digitalCard) {
-		PersonalInformationFile personalInformationFile = dossierDao.getByNaturalId(cpId);
+		PersonalInformationFile personalInformationFile = pifDoRep.getByNaturalId(cpId);
 
 		personalInformationFileUpdateStrategy.update(personalInformationFile, digitalCard);
 
-		dossierDao.store(personalInformationFile);
+		pifDoRep.updateEntity(cpId, personalInformationFile);
 	}
-
+	
 }
+

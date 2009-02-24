@@ -11,25 +11,15 @@ import deus.model.user.id.UserId;
 public class DistributedInformationFolderImpl implements
 		DistributedInformationFolder {
 
-	private final UserId ownerId;
-	
 	protected Map<UserId, ForeignInformationFile> foreignInformationFiles;
 
 	
 	
-	public DistributedInformationFolderImpl(UserId ownerId) {
+	public DistributedInformationFolderImpl() {
 		super();
-		this.ownerId = ownerId;
 		this.foreignInformationFiles = new HashMap<UserId, ForeignInformationFile>();
 	}
 
-
-	@Override
-	public UserId getOwnerId() {
-		return ownerId;
-	}
-	
-	
 	@Override
 	public InformationFile getForeignInformationFile(UserId publisherId) {
 		if (!foreignInformationFiles.containsKey(publisherId))

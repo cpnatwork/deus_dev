@@ -1,4 +1,4 @@
-package deus.core.access.storage.api.sub.api;
+package deus.core.access.storage.api.sub;
 
 import deus.model.sub.LopEntry;
 import deus.model.user.id.UserId;

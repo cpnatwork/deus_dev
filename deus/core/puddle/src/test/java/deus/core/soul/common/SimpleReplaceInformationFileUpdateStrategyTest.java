@@ -38,9 +38,9 @@ public class SimpleReplaceInformationFileUpdateStrategyTest {
 		strategy = new SimpleReplaceInformationFileUpdateStrategy();
 
 		digitalCards = new HashSet<DigitalCard>();
-		informationFile = new PersonalInformationFile(userId, digitalCards);
+		informationFile = new PersonalInformationFile(digitalCards);
 
-		dc = new MyPartyInformationDC(new UserUrl("alice", "deus.org"));
+		dc = new MyPartyInformationDC(userId);
 
 		Party party = new Person();
 		party.setId(userId);

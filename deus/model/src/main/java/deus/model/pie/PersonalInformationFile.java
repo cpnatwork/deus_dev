@@ -4,7 +4,6 @@ import java.util.Set;
 
 import deus.model.dossier.DigitalCard;
 import deus.model.dossier.InformationFile;
-import deus.model.user.id.UserId;
 
 
 /**
@@ -17,9 +16,8 @@ import deus.model.user.id.UserId;
  */
 public class PersonalInformationFile extends InformationFile {
 	
-	public PersonalInformationFile(UserId ownerId, Set<DigitalCard> digitalCards) {
-		super(ownerId, digitalCards);
+	public PersonalInformationFile(Set<DigitalCard> digitalCards) {
+		super(digitalCards);
 	}
 	
-
 }

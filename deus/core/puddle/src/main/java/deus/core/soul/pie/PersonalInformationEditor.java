@@ -12,7 +12,7 @@ public interface PersonalInformationEditor {
 	 * @param userId
 	 * @param personalInformationFile
 	 */
-	public void updatePersonalInformationFile(UserId userId, PersonalInformationFile personalInformationFile);
+	public void updatePersonalInformationFile(UserId cpId, PersonalInformationFile personalInformationFile);
 
 
 	/**
@@ -24,9 +24,9 @@ public interface PersonalInformationEditor {
 	 * 
 	 * @param contributedDigitalCard the digital card to contribute to the PIF.
 	 */
-	public void contributeDigitalCard(UserId userId, DigitalCard digitalCard);
+	public void contributeDigitalCard(UserId cpId, DigitalCard digitalCard);
 
 
-	public PersonalInformationFile getPersonalInformationFile(UserId userId);
+	public PersonalInformationFile getPersonalInformationFile(UserId cpId);
 
 }

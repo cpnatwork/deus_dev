@@ -21,14 +21,6 @@ import deus.model.user.id.UserId;
  */
 public interface DistributedInformationFolder {
 
-	/**
-	 * Returns the id of the owner of this distributed information folder.
-	 * 
-	 * @return
-	 */
-	public UserId getOwnerId();
-
-
 	public InformationFile getForeignInformationFile(UserId publisherId);
 
 

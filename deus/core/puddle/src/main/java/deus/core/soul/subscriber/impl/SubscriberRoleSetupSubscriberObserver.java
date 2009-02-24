@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.sub.api.LopDoRep;
+import deus.core.access.storage.api.sub.LopDoRep;
 import deus.core.soul.common.AbstractUserRoleSetupObserver;
 import deus.core.soul.subscriber.SubscriberExportedToClient;
 import deus.model.sub.ListOfPublishers;
