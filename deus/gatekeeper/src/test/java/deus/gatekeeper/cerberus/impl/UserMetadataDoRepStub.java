@@ -3,7 +3,7 @@ package deus.gatekeeper.cerberus.impl;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
-public class UserMetadataDoRep implements deus.core.access.storage.api.user.UserMetadataDoRep {
+public class UserMetadataDoRepStub implements deus.core.access.storage.api.user.UserMetadataDoRep {
 
 	@Override
 	public void addNewEntity(UserId userId, UserMetadata userMetadata) {

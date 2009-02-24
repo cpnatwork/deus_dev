@@ -4,7 +4,7 @@
 
 	<bean id="accountDoRep" class="deus.gatekeeper.cerberus.impl.AccountDoRepStub"/>
 
-	<bean id="userMetadataDoRep" class="deus.gatekeeper.cerberus.impl.UserMetadataDoRep"/>
+	<bean id="userMetadataDoRep" class="deus.gatekeeper.cerberus.impl.UserMetadataDoRepStub"/>
 
 
 </beans>
