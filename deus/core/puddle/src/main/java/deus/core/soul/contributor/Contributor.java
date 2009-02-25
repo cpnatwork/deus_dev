@@ -1,5 +1,7 @@
 package deus.core.soul.contributor;
 
-public class Contributor {
 
+public interface Contributor extends ContributorExportedToClient, ContributorExportedToPeer {
+
+	
 }

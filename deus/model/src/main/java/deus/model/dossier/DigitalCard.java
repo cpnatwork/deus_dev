@@ -1,41 +1,27 @@
 package deus.model.dossier;
 
-import deus.model.user.id.UserId;
 
 public abstract class DigitalCard {
 
-	private final UserId contributorId;
-	private final UserId cpId;
-	private final String nameOfDcInLodEhr;
+	private final DigitalCardId digitalCardId;
 
 	private String label;
 
+
 	// TODO: add dates (creation date? but what about merge operations when adding it to a PIF/FIF)
 
-	public DigitalCard(UserId contributorId, UserId cpId, String nameOfDcInLodEhr) {
+
+	public DigitalCard(DigitalCardId digitalCardId) {
 		super();
-		this.contributorId = contributorId;
-		this.cpId = cpId;
-		this.nameOfDcInLodEhr = nameOfDcInLodEhr;
+		this.digitalCardId = digitalCardId;
 	}
 
 
-	public UserId getContributorId() {
-		return contributorId;
+	public DigitalCardId getDigitalCardId() {
+		return digitalCardId;
 	}
 
 
-	public UserId getCpId() {
-		return cpId;
-	}
-
-
-	public String getNameOfDcInLodEhr() {
-		return nameOfDcInLodEhr;
-	}
-
-
-	
 	public String getLabel() {
 		return label;
 	}
@@ -44,17 +30,14 @@ public abstract class DigitalCard {
 	public void setLabel(String label) {
 		this.label = label;
 	}
-	
-	
 
+	
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((contributorId == null) ? 0 : contributorId.hashCode());
-		result = prime * result + ((cpId == null) ? 0 : cpId.hashCode());
-		result = prime * result + ((nameOfDcInLodEhr == null) ? 0 : nameOfDcInLodEhr.hashCode());
+		result = prime * result + ((digitalCardId == null) ? 0 : digitalCardId.hashCode());
 		return result;
 	}
 
@@ -68,23 +51,11 @@ public abstract class DigitalCard {
 		if (getClass() != obj.getClass())
 			return false;
 		DigitalCard other = (DigitalCard) obj;
-		if (contributorId == null) {
-			if (other.contributorId != null)
+		if (digitalCardId == null) {
+			if (other.digitalCardId != null)
 				return false;
 		}
-		else if (!contributorId.equals(other.contributorId))
-			return false;
-		if (cpId == null) {
-			if (other.cpId != null)
-				return false;
-		}
-		else if (!cpId.equals(other.cpId))
-			return false;
-		if (nameOfDcInLodEhr == null) {
-			if (other.nameOfDcInLodEhr != null)
-				return false;
-		}
-		else if (!nameOfDcInLodEhr.equals(other.nameOfDcInLodEhr))
+		else if (!digitalCardId.equals(other.digitalCardId))
 			return false;
 		return true;
 	}

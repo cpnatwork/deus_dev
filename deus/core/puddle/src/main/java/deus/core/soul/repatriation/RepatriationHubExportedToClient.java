@@ -1,23 +1,12 @@
-package deus.core.soul.contributionhub;
+package deus.core.soul.repatriation;
 
 import deus.model.dossier.DigitalCard;
 import deus.model.user.id.UserId;
 
+public interface RepatriationHubExportedToClient {
 
-/**
- * This system interface is responsible for receiving contributed digital cards (either from the user itself or from
- * another user) to be committed into the PIF.
- * 
- * The passed ID of the contributor must match the ID of the contributor in the digital card!
- * 
- * The ID of the user, to which this contribution counter belongs must match the ID of the CP in the digital card!
- * 
- * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
- * 
- */
-public interface ContributionHub { // extends ContributionHubExportedToPeer, ContributionHubExportedToClient {
-
-
+	// TODO: think about this method
+	// FIXME: edit javadoc
 	/**
 	 * This method is used to contribute a digital card to a foreign PIF, i.e. the contributor is not the owner of the
 	 * PIF and the contribution is checked by adding an attention element to the barker. Only after the decision to
@@ -31,7 +20,7 @@ public interface ContributionHub { // extends ContributionHubExportedToPeer, Con
 	 * @param contributedDigitalCard	the digital card to contribute
 	 * @param contributorId		the user ID of the contributor
 	 */
-	public abstract void contributeOther(UserId userId, DigitalCard contributedDigitalCard, UserId contributorId);
+	public abstract void fireAndForgetAccept(UserId cpId, DigitalCard contributedDigitalCard);
 
 	
 }

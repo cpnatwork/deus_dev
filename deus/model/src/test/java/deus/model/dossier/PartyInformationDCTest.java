@@ -13,20 +13,22 @@ import deus.model.user.id.UserUrl;
 public class PartyInformationDCTest {
 
 	private PartyInformationDC dc;
-	
+
 	private Person person;
-	
+
+
 	@Before
 	public void setUp() throws Exception {
-		dc = new PartyInformationDC(
+		dc = new PartyInformationDC(new DigitalCardId(
 				new UserUrl("higgins", "deus.org"),
 				new UserUrl("alice", "deus.org"),
-				"party information from Higgins about Alice");
-		
+				"party information from Higgins about Alice"));
+
 		person = new Person();
 		person.setId(new UserUrl("alice", "deus.org"));
 		dc.setPartyInformation(person);
 	}
+
 
 	@Test
 	public void testGetPartyInformation() {
@@ -42,7 +44,8 @@ public class PartyInformationDCTest {
 			dc.setPartyInformation(otherPerson);
 			fail("could set party information with different ID than the one of the digital card");
 		}
-		catch(IllegalArgumentException e) {}
+		catch (IllegalArgumentException e) {
+		}
 	}
 
 }

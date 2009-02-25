@@ -1,11 +1,14 @@
-package deus.core.soul.contributionhub;
+package deus.core.soul.repatriation;
 
 import deus.model.dossier.DigitalCard;
 import deus.model.user.id.UserId;
 
-@Deprecated
-public interface ContributionHubExportedToPeer {
+//FIXME: edit javadoc
+public interface RepatriationHubExportedToPeer {
 
+	
+	// TODO: add to javadoc: a acknowledgement is sent
+	
 	/**
 	 * This method is used to contribute a digital card to a foreign PIF, i.e. the contributor is not the owner of the
 	 * PIF and the contribution is checked by adding an attention element to the barker. Only after the decision to
@@ -19,6 +22,6 @@ public interface ContributionHubExportedToPeer {
 	 * @param contributedDigitalCard	the digital card to contribute
 	 * @param contributorId		the user ID of the contributor
 	 */
-	public abstract void contributeOther(UserId userId, DigitalCard contributedDigitalCard, UserId contributorId);
+	public abstract void accept(UserId cpId, DigitalCard contributedDigitalCard, UserId contributorId);
 
 }

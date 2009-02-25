@@ -12,6 +12,7 @@ import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.messages.UpdateMessage;
 import deus.core.access.transport.core.sending.command.PublisherCommandSender;
 import deus.model.dossier.DigitalCard;
+import deus.model.dossier.DigitalCardId;
 import deus.model.dossier.PartyInformationDC;
 import deus.model.user.id.UserUrl;
 
@@ -22,19 +23,21 @@ public class TransportPublisherCommandSenderTest extends AbstractCommandSenderTe
 	@Autowired
 	private PublisherCommandSender transportPublisherCommandSender;
 
+
 	@Test
 	public void testUpdate() {
-		DigitalCard digitalCard = new PartyInformationDC(new UserUrl("higgins", "deus.org"), new UserUrl("alice", "deus.org"), "surgery1");
-		
+		DigitalCard digitalCard = new PartyInformationDC(new DigitalCardId(new UserUrl("higgins", "deus.org"),
+				new UserUrl("alice", "deus.org"), "surgery1"));
+
 		transportPublisherCommandSender.update(subscriberId, publisherId, digitalCard);
 
 		TransportMessage expectedMessage = new UpdateMessage(digitalCard);
 		setTids(expectedMessage, publisherId, subscriberId);
-		
+
 		testEqualsMessage(expectedMessage, lastSentTransportMessage);
-		
-		assertEquals(digitalCard, ((UpdateMessage)lastSentTransportMessage).getDigitalCard());
+
+		assertEquals(digitalCard, ((UpdateMessage) lastSentTransportMessage).getDigitalCard());
 	}
 
-	
+
 }

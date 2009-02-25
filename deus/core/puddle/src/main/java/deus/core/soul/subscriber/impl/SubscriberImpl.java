@@ -71,7 +71,7 @@ public class SubscriberImpl implements Subscriber {
 
 	@Override
 	public void update(UserId subscriberId, UserId publisherId, DigitalCard digitalCard) {
-		if(!digitalCard.getCpId().equals(publisherId))
+		if(!digitalCard.getDigitalCardId().getCpId().equals(publisherId))
 			throw new IllegalArgumentException("ID of publisher does not match CP ID in passed digital card");
 		
 		logger.trace("in subscriber {}: updating the DIF for publisher {}", subscriberId, publisherId);

@@ -27,6 +27,4 @@ public interface PersonalInformationEditor {
 	public void contributeDigitalCard(UserId cpId, DigitalCard digitalCard);
 
 
-	public PersonalInformationFile getPersonalInformationFile(UserId cpId);
-
 }
