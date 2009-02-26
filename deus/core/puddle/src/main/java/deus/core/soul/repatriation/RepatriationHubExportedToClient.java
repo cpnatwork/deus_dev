@@ -5,7 +5,7 @@ import deus.model.user.id.UserId;
 
 public interface RepatriationHubExportedToClient {
 
-	// TODO: think about this method
+	// TODO: remove this method (since a deus user id is required, a subsystem at contr
 	// FIXME: edit javadoc
 	/**
 	 * This method is used to contribute a digital card to a foreign PIF, i.e. the contributor is not the owner of the

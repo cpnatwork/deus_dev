@@ -12,7 +12,9 @@ public interface FifDoRep {
 
 	public ForeignInformationFile getByNaturalId(UserId publisherId, UserId subscriberId);
 
+
 	public List<DigitalCardId> getDigitalCardsInFif(UserId subscriberId, UserId publisherId);
+
 
 	public DigitalCard getDigitalCardInFif(UserId subscriberId, DigitalCardId digitalCardId);
 
