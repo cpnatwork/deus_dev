@@ -28,22 +28,11 @@ public interface PublisherExportedToClient {
 	 */
 	public abstract void notifySubscribers(UserId publisherId, DigitalCard digitalCard);
 
+	
+	public abstract void notifySubscriber(UserId publisherId, UserId subscriberId, DigitalCard digitalCard);
 
-	public ListOfSubscribers getListOfSubscribers(UserId publisherId);
+	
 
+	public abstract ListOfSubscribers getListOfSubscribers(UserId publisherId);
 
-	/**
-	 * Clears the observer list so that this object no longer has any observers.
-	 */
-	@Deprecated
-	public abstract void deleteSubscribers(UserId publisherId);
-
-
-	/**
-	 * Returns the number of observers of this <tt>Observable</tt> object.
-	 * 
-	 * @return the number of observers of this object.
-	 */
-	@Deprecated
-	public abstract int countSubscribers(UserId publisherId);
 }

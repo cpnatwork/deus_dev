@@ -20,6 +20,7 @@ public interface RepatriationHubExportedToClient {
 	 * @param contributedDigitalCard	the digital card to contribute
 	 * @param contributorId		the user ID of the contributor
 	 */
+	@Deprecated
 	public abstract void fireAndForgetAccept(UserId cpId, DigitalCard contributedDigitalCard);
 
 	

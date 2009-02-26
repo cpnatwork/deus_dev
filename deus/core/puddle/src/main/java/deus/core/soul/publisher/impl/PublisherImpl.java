@@ -64,19 +64,16 @@ public class PublisherImpl implements Publisher {
 	}
 
 
-	@Override
-	public synchronized void deleteSubscribers(UserId publisherId) {
-		logger.trace("removing all subscribers");
-
-		ListOfSubscribers listOfSubscribers = losDoRep.deleteAllEntities(publisherId);
-	}
-
 
 	@Override
-	public synchronized int countSubscribers(UserId publisherId) {
-		return losDoRep.getSubscriberCount(publisherId);
+	public synchronized void notifySubscriber(UserId publisherId, UserId subscriberId, DigitalCard digitalCard) {
+		logger.trace("notifying subscribers of change {}", digitalCard);
+		
+		LosEntry losEntry = losEntryDoRep.getByNaturalId(subscriberId, publisherId);
+		
+		publisherCommandSender.update(losEntry.getSubscriberId(), publisherId, digitalCard);
 	}
-
+	
 
 	@Override
 	public void notifySubscribers(UserId publisherId, DigitalCard digitalCard) {
@@ -102,11 +99,10 @@ public class PublisherImpl implements Publisher {
 
 		for (int i = arrLocal.length - 1; i >= 0; i--) {
 			// TODO: think about publishing using multiple threads
-			UserId subscriberId = (UserId) arrLocal[i];
+			LosEntry losEntry = (LosEntry) arrLocal[i];
 
-			publisherCommandSender.update(subscriberId, publisherId, digitalCard);
+			publisherCommandSender.update(losEntry.getSubscriberId(), publisherId, digitalCard);
 		}
 	}
-
 
 }

@@ -13,9 +13,9 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 /**
- * Delegates all methods of <code>PublisherExportedToPeer</code> to a delegate of type <code>PublisherExportedToPeer</code>,
- * the rest of the methods of <code>Publisher</code> are delegated to the second delegate, which is of type
- * <code>Publisher</code>.
+ * Delegates all methods of <code>PublisherExportedToPeer</code> to a delegate of type
+ * <code>PublisherExportedToPeer</code>, the rest of the methods of <code>Publisher</code> are delegated to the second
+ * delegate, which is of type <code>Publisher</code>.
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
@@ -25,15 +25,14 @@ public class ProxiedPublisherAdapter implements Publisher {
 
 	@Autowired
 	private PublisherExportedToClient publisherExportedToClient;
-	
+
 	@Autowired
 	@Qualifier("proxy")
 	private PublisherExportedToPeer publisherExportedToPeer;
 
 
+	// +++ METHODS OF PUBLISHER EXPORTED TO PEER ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-//	+++ METHODS OF REMOTE CALLED PUBLISHER ++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	
 	@Override
 	public void addSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
 		publisherExportedToPeer.addSubscriber(publisherId, subscriberId, subscriberMetadata);
@@ -45,18 +44,8 @@ public class ProxiedPublisherAdapter implements Publisher {
 		publisherExportedToPeer.deleteSubscriber(publisherId, subscriberId);
 	}
 
-//	+++ METHODS OF PUBLISHER ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	
-	@Override
-	public int countSubscribers(UserId publisherId) {
-		return publisherExportedToClient.countSubscribers(publisherId);
-	}
 
-
-	@Override
-	public void deleteSubscribers(UserId publisherId) {
-		publisherExportedToClient.deleteSubscribers(publisherId);
-	}
+	// +++ METHODS OF PUBLISHER EXPORTED TO CLIENT ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 	@Override
@@ -66,8 +55,15 @@ public class ProxiedPublisherAdapter implements Publisher {
 
 
 	@Override
+	public void notifySubscriber(UserId publisherId, UserId subscriberId, DigitalCard digitalCard) {
+		publisherExportedToClient.notifySubscriber(publisherId, subscriberId, digitalCard);
+	}
+
+
+	@Override
 	public void notifySubscribers(UserId publisherId, DigitalCard digitalCard) {
 		publisherExportedToClient.notifySubscribers(publisherId, digitalCard);
 	}
+
 
 }

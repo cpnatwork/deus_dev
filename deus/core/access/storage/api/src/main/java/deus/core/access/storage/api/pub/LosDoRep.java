@@ -9,6 +9,4 @@ public interface LosDoRep {
 
 	public ListOfSubscribers deleteAllEntities(UserId publisherId);
 
-	public int getSubscriberCount(UserId publisherId);
-
 }

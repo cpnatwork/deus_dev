@@ -1,5 +1,7 @@
 package deus.core.soul.subscriber.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -17,8 +19,8 @@ import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.common.InformationFileUpdateStrategy;
 import deus.core.soul.subscriber.Subscriber;
 import deus.model.dossier.DigitalCard;
+import deus.model.dossier.DigitalCardId;
 import deus.model.dossier.InformationFile;
-import deus.model.sub.DistributedInformationFolder;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.LopEntry;
 import deus.model.sub.RequestedSubscriptionState;
@@ -33,33 +35,46 @@ public class SubscriberImpl implements Subscriber {
 
 	@Autowired
 	private UserMetadataDoRep userMetadataDoRep;
-	
+
 	@Autowired
 	private LopEntryDoRep lopEntryDoRep;
-	
+
 	@Autowired
 	private LopDoRep lopDoRep;
-	
+
 	@Autowired
 	private FifDoRep fifDoRep;
-	
+
 	@Autowired
 	private DifDoRep difDoRep;
-	
 
-	@Resource(name="foreignInformationFileUpdateStrategy")
+
+	@Resource(name = "foreignInformationFileUpdateStrategy")
 	private InformationFileUpdateStrategy foreignInformationFileUpdateStrategy;
 
 	@Autowired
 	private SubscriberCommandSender subscriberCommandSender;
 
+	
 
-	// FIXME: think about returning a DTO to the frontend here
 	@Override
-	public DistributedInformationFolder getDistributedInformationFolder(UserId subscriberId) {
-		DistributedInformationFolder distributedInformationFolder = difDoRep.getByNaturalId(subscriberId);
-		return distributedInformationFolder;
+	public List<UserId> getPublishersInDif(UserId subscriberId) {
+		return difDoRep.getPublishersInDif(subscriberId);
 	}
+
+
+	@Override
+	public List<DigitalCardId> getDigitalCardIdsInFif(UserId subscriberId, UserId publisherId) {
+		return fifDoRep.getDigitalCardsInFif(subscriberId, publisherId);
+	}
+
+
+	@Override
+	public DigitalCard getDigitalCardInFif(UserId subscriberId, DigitalCardId digitalCardId) {
+		return fifDoRep.getDigitalCardInFif(subscriberId, digitalCardId);
+	}
+
+	
 
 	// FIXME: think about returning a DTO to the frontend here
 	@Override
@@ -71,18 +86,18 @@ public class SubscriberImpl implements Subscriber {
 
 	@Override
 	public void update(UserId subscriberId, UserId publisherId, DigitalCard digitalCard) {
-		if(!digitalCard.getDigitalCardId().getCpId().equals(publisherId))
+		if (!digitalCard.getDigitalCardId().getCpId().equals(publisherId))
 			throw new IllegalArgumentException("ID of publisher does not match CP ID in passed digital card");
-		
+
 		logger.trace("in subscriber {}: updating the DIF for publisher {}", subscriberId, publisherId);
-		
+
 		if (!lopEntryDoRep.containsEntity(publisherId, subscriberId))
 			// FIXME: how to handle this??
 			;
-		
+
 		InformationFile fif = fifDoRep.getByNaturalId(publisherId, subscriberId);
 		foreignInformationFileUpdateStrategy.update(fif, digitalCard);
-		
+
 		// FIXME: store FIF by using dao.store():
 	}
 
@@ -93,7 +108,7 @@ public class SubscriberImpl implements Subscriber {
 
 		LopEntry entry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
 		entry.setSubscriptionState(RequestedSubscriptionState.granted);
-		
+
 		lopEntryDoRep.updateEntity(subscriberId, entry);
 	}
 
@@ -119,7 +134,7 @@ public class SubscriberImpl implements Subscriber {
 		lopEntryDoRep.addNewEntity(subscriberId, entry);
 
 		UserMetadata subscriberMetadata = userMetadataDoRep.getByNaturalId(subscriberId);
-		
+
 		subscriberCommandSender.subscribe(subscriberId, publisherId, subscriberMetadata);
 	}
 
@@ -133,7 +148,7 @@ public class SubscriberImpl implements Subscriber {
 		logger.trace("in subscriber {}: unsubscribing from publisher {}", subscriberId, publisherId);
 
 		lopEntryDoRep.deleteByNaturalId(publisherId, subscriberId);
-		
+
 		subscriberCommandSender.unsubscribe(subscriberId, publisherId);
 	}
 
