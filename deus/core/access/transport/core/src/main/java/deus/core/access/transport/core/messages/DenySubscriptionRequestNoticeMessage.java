@@ -6,6 +6,6 @@ package deus.core.access.transport.core.messages;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  *
  */
-public final class DenySubscriptionMessage extends SubscribeMessage {
+public final class DenySubscriptionRequestNoticeMessage extends SubscribeMessage {
 
 }

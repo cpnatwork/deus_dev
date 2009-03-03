@@ -16,5 +16,14 @@ public interface PublisherCommandSender {
 	public void offerSubscription(UserId publisherId, UserId subscriberId, UserMetadata publisherMetadata);
 
 	public void cancelSubscription(UserId publisherId, UserId subscriberId);
+
+	
+
+	// USE CASE: subscriber initiated connection (used, when in role publisher)
+	
+	public void grantSubscriptionRequest(UserId publisherId, UserId subscriberId);
+
+
+	public void denySubscriptionRequest(UserId publisherId, UserId subscriberId);
 	
 }

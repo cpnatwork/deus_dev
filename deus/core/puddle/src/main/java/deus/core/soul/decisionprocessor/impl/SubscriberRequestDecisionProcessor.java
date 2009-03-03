@@ -32,12 +32,12 @@ public class SubscriberRequestDecisionProcessor implements GenericDecisionProces
 		if (subscriberRequest.isDecisionPositive()) {
 			publisher.addSubscriber(userId, subscriberRequest.getSubscriberId(), subscriberMetadata);
 	
-			barkerCommandSender.grantSubscription(userId, subscriberRequest.getSubscriberId());
+			barkerCommandSender.grantSubscriptionRequest(userId, subscriberRequest.getSubscriberId());
 		}
 		else {
 			// do not add observer
 			
-			barkerCommandSender.denySubscription(userId, subscriberRequest.getSubscriberId());
+			barkerCommandSender.denySubscriptionRequest(userId, subscriberRequest.getSubscriberId());
 		}
 	}
 

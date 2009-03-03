@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.transport.core.messages.CancelSubscriptionMessage;
+import deus.core.access.transport.core.messages.DenySubscriptionRequestNoticeMessage;
+import deus.core.access.transport.core.messages.GrantSubscriptionRequestNoticeMessage;
 import deus.core.access.transport.core.messages.OfferSubscriptionMessage;
 import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.messages.UpdateMessage;
@@ -37,5 +39,24 @@ public class TransportPublisherCommandSender implements PublisherCommandSender {
 		TransportMessage transportMessage = new CancelSubscriptionMessage();
 		transportMessageSenderHelper.send(subscriberId, publisherId, transportMessage);
 	}
+	
+	
+
+
+
+	@Override
+	public void grantSubscriptionRequest(UserId publisherId, UserId subscriberId) {
+		TransportMessage transportMessage = new GrantSubscriptionRequestNoticeMessage();
+		transportMessageSenderHelper.send(subscriberId, publisherId, transportMessage);
+	}
+
+	
+	@Override
+	public void denySubscriptionRequest(UserId publisherId, UserId subscriberId) {
+		TransportMessage transportMessage = new DenySubscriptionRequestNoticeMessage();
+		transportMessageSenderHelper.send(subscriberId, publisherId, transportMessage);
+	}
+
+
 
 }

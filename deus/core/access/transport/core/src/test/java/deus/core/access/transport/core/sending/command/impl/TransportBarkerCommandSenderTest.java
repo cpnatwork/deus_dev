@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.access.transport.core.messages.DenySubscriptionMessage;
-import deus.core.access.transport.core.messages.GrantSubscriptionMessage;
+import deus.core.access.transport.core.messages.DenySubscriptionRequestNoticeMessage;
+import deus.core.access.transport.core.messages.GrantSubscriptionRequestNoticeMessage;
 import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.sending.command.BarkerCommandSender;
 
@@ -21,9 +21,9 @@ public class TransportBarkerCommandSenderTest extends AbstractCommandSenderTest 
 
 	@Test
 	public void testDenySubscription() {
-		transportBarkerCommandSender.grantSubscription(subscriberId, publisherId);
+		transportBarkerCommandSender.grantSubscriptionRequest(subscriberId, publisherId);
 
-		TransportMessage expectedMessage = new GrantSubscriptionMessage();
+		TransportMessage expectedMessage = new GrantSubscriptionRequestNoticeMessage();
 		setTids(expectedMessage, publisherId, subscriberId);
 
 		testEqualsMessage(expectedMessage, lastSentTransportMessage);
@@ -32,9 +32,9 @@ public class TransportBarkerCommandSenderTest extends AbstractCommandSenderTest 
 
 	@Test
 	public void testGrantSubscription() {
-		transportBarkerCommandSender.denySubscription(subscriberId, publisherId);
+		transportBarkerCommandSender.denySubscriptionRequest(subscriberId, publisherId);
 
-		TransportMessage expectedMessage = new DenySubscriptionMessage();
+		TransportMessage expectedMessage = new DenySubscriptionRequestNoticeMessage();
 		setTids(expectedMessage, publisherId, subscriberId);
 
 		testEqualsMessage(expectedMessage, lastSentTransportMessage);

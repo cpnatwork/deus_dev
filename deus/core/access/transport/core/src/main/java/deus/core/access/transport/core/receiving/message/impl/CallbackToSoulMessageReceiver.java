@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 import deus.core.access.transport.core.messages.AbstainSubscriptionMessage;
 import deus.core.access.transport.core.messages.CancelSubscriptionMessage;
 import deus.core.access.transport.core.messages.ConfirmSubscriptionMessage;
-import deus.core.access.transport.core.messages.DenySubscriptionMessage;
-import deus.core.access.transport.core.messages.GrantSubscriptionMessage;
+import deus.core.access.transport.core.messages.DenySubscriptionRequestNoticeMessage;
+import deus.core.access.transport.core.messages.GrantSubscriptionRequestNoticeMessage;
 import deus.core.access.transport.core.messages.InviteSubscriberMessage;
 import deus.core.access.transport.core.messages.OfferSubscriptionMessage;
 import deus.core.access.transport.core.messages.RequestSubscriptionMessage;
@@ -46,9 +46,9 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 				publisher.addSubscriber(receiverId, senderId, senderMetadata);
 			}
 			// here: role subscriber
-			else if (message instanceof GrantSubscriptionMessage)
+			else if (message instanceof GrantSubscriptionRequestNoticeMessage)
 				subscriber.subscriptionGranted(receiverId, senderId);
-			else if (message instanceof DenySubscriptionMessage)
+			else if (message instanceof DenySubscriptionRequestNoticeMessage)
 				subscriber.subscriptionDenied(receiverId, senderId);
 			else
 				throw new IllegalArgumentException("cannot handle command " + message);

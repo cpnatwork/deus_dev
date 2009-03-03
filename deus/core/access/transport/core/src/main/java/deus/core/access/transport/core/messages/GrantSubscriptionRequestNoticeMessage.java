@@ -7,6 +7,6 @@ package deus.core.access.transport.core.messages;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  *
  */
-public final class GrantSubscriptionMessage extends SubscribeMessage {
+public final class GrantSubscriptionRequestNoticeMessage extends SubscribeMessage {
 
 }

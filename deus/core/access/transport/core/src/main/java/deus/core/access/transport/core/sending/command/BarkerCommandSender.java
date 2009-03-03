@@ -4,14 +4,6 @@ import deus.model.user.id.UserId;
 
 public interface BarkerCommandSender {
 
-	// USE CASE: subscriber initiated connection (used, when in role publisher)
-	
-	public void grantSubscription(UserId publisherId, UserId subscriberId);
-
-
-	public void denySubscription(UserId publisherId, UserId subscriberId);
-
-
 	// USE CASE: publisher initiated connection (used, when in role subscriber)
 	
 	// FIXME: rename to confirm

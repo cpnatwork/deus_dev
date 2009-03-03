@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.transport.core.messages.AbstainSubscriptionMessage;
 import deus.core.access.transport.core.messages.ConfirmSubscriptionMessage;
-import deus.core.access.transport.core.messages.DenySubscriptionMessage;
-import deus.core.access.transport.core.messages.GrantSubscriptionMessage;
+import deus.core.access.transport.core.messages.DenySubscriptionRequestNoticeMessage;
+import deus.core.access.transport.core.messages.GrantSubscriptionRequestNoticeMessage;
 import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.sending.command.BarkerCommandSender;
 import deus.model.user.id.UserId;
@@ -16,22 +16,6 @@ public class TransportBarkerCommandSender implements BarkerCommandSender {
 
 	@Autowired
 	private TransportMessageSenderHelper transportMessageSenderHelper;
-
-
-
-	@Override
-	public void grantSubscription(UserId publisherId, UserId subscriberId) {
-		TransportMessage transportMessage = new GrantSubscriptionMessage();
-		transportMessageSenderHelper.send(subscriberId, publisherId, transportMessage);
-	}
-
-	
-	@Override
-	public void denySubscription(UserId publisherId, UserId subscriberId) {
-		TransportMessage transportMessage = new DenySubscriptionMessage();
-		transportMessageSenderHelper.send(subscriberId, publisherId, transportMessage);
-	}
-
 
 	
 

@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.transport.core.connectionstate.ConnectionStateRegistry;
-import deus.core.access.transport.core.messages.DenySubscriptionMessage;
-import deus.core.access.transport.core.messages.GrantSubscriptionMessage;
+import deus.core.access.transport.core.messages.DenySubscriptionRequestNoticeMessage;
+import deus.core.access.transport.core.messages.GrantSubscriptionRequestNoticeMessage;
 import deus.core.access.transport.core.messages.RequestSubscriptionMessage;
 import deus.core.access.transport.core.messages.SubscribeMessage;
 import deus.core.access.transport.core.messages.TransportMessage;
@@ -51,10 +51,10 @@ public class XmppMessageSender implements MessageSender {
 				presencePacket.setProperty(xmppConfiguration.getXmppPropertyReceiverId(), message.getReceiverId());
 				xmppConversation.sendPacket(presencePacket, receiverJid);
 			}
-			else if(message instanceof GrantSubscriptionMessage) {
+			else if(message instanceof GrantSubscriptionRequestNoticeMessage) {
 				// TODO: implement
 			}
-			else if(message instanceof DenySubscriptionMessage) {
+			else if(message instanceof DenySubscriptionRequestNoticeMessage) {
 				// TODO: implement
 			}
 			else 
