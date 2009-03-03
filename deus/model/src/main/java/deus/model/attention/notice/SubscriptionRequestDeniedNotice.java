@@ -2,9 +2,9 @@ package deus.model.attention.notice;
 
 import deus.model.user.UserMetadata;
 
-public class SubscriptionDeniedNotice extends SubscriberInitiatedConnectionNotice {
+public class SubscriptionRequestDeniedNotice extends SubscriberInitiatedConnectionNotice {
 
-	public SubscriptionDeniedNotice(UserMetadata publisherMetadata) {
+	public SubscriptionRequestDeniedNotice(UserMetadata publisherMetadata) {
 		super(publisherMetadata);
 	}
 

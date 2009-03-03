@@ -81,7 +81,7 @@ public class SubscribeTest extends AbstractUseCaseTest {
 //
 //		AttentionElement ae = bob.getBarker().getUnnoticedAttentionList().get(0);
 //		testDateNow(ae.getCreationDate());
-//		SubscriptionGrantedNotice notice = (SubscriptionGrantedNotice) ae;
+//		SubscriptionRequestGrantedNotice notice = (SubscriptionRequestGrantedNotice) ae;
 //
 //		assertEquals(alice.getUserMetadata(), notice.getPublisherMetadata());
 //
@@ -126,7 +126,7 @@ public class SubscribeTest extends AbstractUseCaseTest {
 //
 //		AttentionElement ae = bob.getBarker().getUnnoticedAttentionList().get(0);
 //		assertEquals((new Date()).getTime(), ae.getCreationDate().getTime(), 500);
-//		SubscriptionDeniedNotice notice = (SubscriptionDeniedNotice) ae;
+//		SubscriptionRequestDeniedNotice notice = (SubscriptionRequestDeniedNotice) ae;
 //
 //		assertEquals(alice.getUserMetadata(), notice.getPublisherMetadata());
 //

@@ -24,10 +24,10 @@ public interface SubscriberExportedToPeer {
 	
 	// USE CASE: subscriber initiated connection
 
-	public void subscriptionGranted(UserId subscriberId, UserId publisherId);
+	public void noticeSubscriptionRequestGranted(UserId subscriberId, UserId publisherId);
 
 
-	public void subscriptionDenied(UserId subscriberId, UserId publisherId);
+	public void noticeSubscriptionRequestDenied(UserId subscriberId, UserId publisherId);
 	
 
 	

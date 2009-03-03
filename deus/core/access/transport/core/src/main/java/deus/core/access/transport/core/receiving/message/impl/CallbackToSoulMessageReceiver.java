@@ -3,9 +3,9 @@ package deus.core.access.transport.core.receiving.message.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transport.core.messages.AbstainSubscriptionMessage;
+import deus.core.access.transport.core.messages.RepelSubscriptionOfferNoticeMessage;
 import deus.core.access.transport.core.messages.CancelSubscriptionMessage;
-import deus.core.access.transport.core.messages.ConfirmSubscriptionMessage;
+import deus.core.access.transport.core.messages.ConfirmSubscriptionOfferNoticeMessage;
 import deus.core.access.transport.core.messages.DenySubscriptionRequestNoticeMessage;
 import deus.core.access.transport.core.messages.GrantSubscriptionRequestNoticeMessage;
 import deus.core.access.transport.core.messages.InviteSubscriberMessage;
@@ -47,9 +47,9 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 			}
 			// here: role subscriber
 			else if (message instanceof GrantSubscriptionRequestNoticeMessage)
-				subscriber.subscriptionGranted(receiverId, senderId);
+				subscriber.noticeSubscriptionRequestGranted(receiverId, senderId);
 			else if (message instanceof DenySubscriptionRequestNoticeMessage)
-				subscriber.subscriptionDenied(receiverId, senderId);
+				subscriber.noticeSubscriptionRequestDenied(receiverId, senderId);
 			else
 				throw new IllegalArgumentException("cannot handle command " + message);
 		}
@@ -62,9 +62,9 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 				subscriber.addPublisher(receiverId, senderId, senderMetadata);
 			}
 			// here: role publisher
-			else if (message instanceof ConfirmSubscriptionMessage)
+			else if (message instanceof ConfirmSubscriptionOfferNoticeMessage)
 				publisher.subscriptionConfirmed(receiverId, senderId);
-			else if (message instanceof AbstainSubscriptionMessage)
+			else if (message instanceof RepelSubscriptionOfferNoticeMessage)
 				publisher.subscriptionAbstained(receiverId, senderId);
 			else
 				throw new IllegalArgumentException("cannot handle command " + message);

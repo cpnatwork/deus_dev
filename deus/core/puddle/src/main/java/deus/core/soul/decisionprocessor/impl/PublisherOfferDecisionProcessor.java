@@ -32,12 +32,12 @@ public class PublisherOfferDecisionProcessor implements GenericDecisionProcessor
 		if (publisherOffer.isDecisionPositive()) {
 			subscriber.addPublisher(userId, publisherOffer.getPublisherId(), publisherMetadata);
 
-			barkerCommandSender.confirmSubscription(userId, publisherOffer.getPublisherId());
+			barkerCommandSender.confirmSubscriptionOffer(userId, publisherOffer.getPublisherId());
 		}
 		else {
 			// do not add observer
 
-			barkerCommandSender.abstainSubscription(userId, publisherOffer.getPublisherId());
+			barkerCommandSender.repelSubscriptionOffer(userId, publisherOffer.getPublisherId());
 		}
 	}
 

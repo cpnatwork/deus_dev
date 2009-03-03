@@ -20,7 +20,7 @@ public interface SubscriberExportedToClient {
 
 	// USE CASE: subscriber initiated connection/termination
 	
-	public void subscribe(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata);
+	public void subscribeToPublisher(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata);
 
 
 	public void unsubscribe(UserId subscriberId, UserId publisherId);

@@ -21,4 +21,14 @@ public interface SubscriberCommandSender {
 	// FIXME: rename to requestSubscription, since use case is called like this
 	public void unsubscribe(UserId subscriberId, UserId publisherId);
 	
+	
+	
+
+	// USE CASE: publisher initiated connection (used, when in role subscriber)
+	
+	public void confirmSubscriptionOffer(UserId subscriberId, UserId publisherId);
+
+
+	public void repelSubscriptionOffer(UserId subscriberId, UserId publisherId);
+	
 }

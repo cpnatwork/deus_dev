@@ -13,8 +13,8 @@ import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.PublisherOffer;
 import deus.model.attention.notice.Notice;
 import deus.model.attention.notice.PublisherInitiatedTerminationNotice;
-import deus.model.attention.notice.SubscriptionDeniedNotice;
-import deus.model.attention.notice.SubscriptionGrantedNotice;
+import deus.model.attention.notice.SubscriptionRequestDeniedNotice;
+import deus.model.attention.notice.SubscriptionRequestGrantedNotice;
 import deus.model.attention.notice.UpdateNotice;
 import deus.model.dossier.DigitalCard;
 import deus.model.sub.LopEntry;
@@ -39,36 +39,36 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 
 
 	@Override
-	public void subscriptionGranted(UserId subscriberId, UserId publisherId) {
+	public void noticeSubscriptionRequestGranted(UserId subscriberId, UserId publisherId) {
 		logger.debug("proxying call to acknowledgeSubscription");
 
 		LopEntry lopEntry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
 
 		// get publisher metadata out of LoP
 		UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
-		Notice notice = new SubscriptionGrantedNotice(publisherMetadata);
+		Notice notice = new SubscriptionRequestGrantedNotice(publisherMetadata);
 		barker.addUnnoticedAttentionElement(subscriberId, notice);
 
 		logger.debug("added {} to barker", notice);
 		
-		proxiedSubscriber.subscriptionGranted(subscriberId, publisherId);
+		proxiedSubscriber.noticeSubscriptionRequestGranted(subscriberId, publisherId);
 	}
 
 
 	@Override
-	public void subscriptionDenied(UserId subscriberId, UserId publisherId) {
+	public void noticeSubscriptionRequestDenied(UserId subscriberId, UserId publisherId) {
 		logger.debug("proxying call to denySubscription");
 
 		LopEntry lopEntry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
 
 		// get publisher metadata out of LoP
 		UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
-		Notice notice = new SubscriptionDeniedNotice(publisherMetadata);
+		Notice notice = new SubscriptionRequestDeniedNotice(publisherMetadata);
 		barker.addUnnoticedAttentionElement(subscriberId, notice);
 
 		logger.debug("added {} to barker", notice);
 		
-		proxiedSubscriber.subscriptionDenied(subscriberId, publisherId);
+		proxiedSubscriber.noticeSubscriptionRequestDenied(subscriberId, publisherId);
 	}
 
 

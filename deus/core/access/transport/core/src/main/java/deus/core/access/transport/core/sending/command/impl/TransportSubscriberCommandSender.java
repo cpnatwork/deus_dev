@@ -3,6 +3,8 @@ package deus.core.access.transport.core.sending.command.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.transport.core.messages.RepelSubscriptionOfferNoticeMessage;
+import deus.core.access.transport.core.messages.ConfirmSubscriptionOfferNoticeMessage;
 import deus.core.access.transport.core.messages.RequestSubscriptionMessage;
 import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.messages.UnsubscribeMessage;
@@ -30,4 +32,19 @@ public class TransportSubscriberCommandSender implements SubscriberCommandSender
 		transportMessageSenderHelper.send(publisherId, subscriberId, transportMessage);
 	}
 
+	
+
+	@Override
+	public void confirmSubscriptionOffer(UserId subscriberId, UserId publisherId) {
+		TransportMessage transportMessage = new ConfirmSubscriptionOfferNoticeMessage();
+		transportMessageSenderHelper.send(publisherId, subscriberId, transportMessage);
+	}
+	
+	
+	@Override
+	public void repelSubscriptionOffer(UserId subscriberId, UserId publisherId) {
+		TransportMessage transportMessage = new RepelSubscriptionOfferNoticeMessage();
+		transportMessageSenderHelper.send(publisherId, subscriberId, transportMessage);
+	}
+	
 }

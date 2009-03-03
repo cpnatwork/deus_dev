@@ -23,7 +23,6 @@ import deus.model.dossier.DigitalCardId;
 import deus.model.dossier.InformationFile;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.LopEntry;
-import deus.model.sub.SubscriberSideSubscriptionState;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -60,7 +59,7 @@ public class SubscriberImpl implements Subscriber {
 
 
 	@Override
-	public void subscriptionGranted(UserId subscriberId, UserId publisherId) {
+	public void noticeSubscriptionRequestGranted(UserId subscriberId, UserId publisherId) {
 		logger.trace("in subscriber of {}: publisher {} acknowledged subscription", subscriberId, publisherId);
 
 		LopEntry entry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
@@ -71,7 +70,7 @@ public class SubscriberImpl implements Subscriber {
 
 
 	@Override
-	public void subscriptionDenied(UserId subscriberId, UserId publisherId) {
+	public void noticeSubscriptionRequestDenied(UserId subscriberId, UserId publisherId) {
 		logger.trace("in subscriber of {}: publisher {} denied subscription", subscriberId, publisherId);
 
 		lopEntryDoRep.deleteByNaturalId(publisherId, subscriberId);
@@ -146,7 +145,7 @@ public class SubscriberImpl implements Subscriber {
 
 
 	@Override
-	public void subscribe(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata) {
+	public void subscribeToPublisher(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata) {
 		if (lopEntryDoRep.containsEntity(publisherId, subscriberId))
 			throw new IllegalArgumentException("cannot subscribe to publisher (" + publisherId + ") again!");
 

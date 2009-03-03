@@ -38,14 +38,14 @@ public class ProxiedSubscriberAdapter implements Subscriber {
 	// +++ METHODS SUBSCRIBER EXPORTED TO PEER ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
-	public void subscriptionGranted(UserId subscriberId, UserId publisherId) {
-		subscriberExportedToPeer.subscriptionGranted(subscriberId, publisherId);
+	public void noticeSubscriptionRequestGranted(UserId subscriberId, UserId publisherId) {
+		subscriberExportedToPeer.noticeSubscriptionRequestGranted(subscriberId, publisherId);
 	}
 
 
 	@Override
-	public void subscriptionDenied(UserId subscriberId, UserId publisherId) {
-		subscriberExportedToPeer.subscriptionDenied(subscriberId, publisherId);
+	public void noticeSubscriptionRequestDenied(UserId subscriberId, UserId publisherId) {
+		subscriberExportedToPeer.noticeSubscriptionRequestDenied(subscriberId, publisherId);
 	}
 
 
@@ -71,8 +71,8 @@ public class ProxiedSubscriberAdapter implements Subscriber {
 
 
 	@Override
-	public void subscribe(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata) {
-		subscriberExportedToClient.subscribe(subscriberId, publisherId, publisherMetadata);
+	public void subscribeToPublisher(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata) {
+		subscriberExportedToClient.subscribeToPublisher(subscriberId, publisherId, publisherMetadata);
 	}
 
 
