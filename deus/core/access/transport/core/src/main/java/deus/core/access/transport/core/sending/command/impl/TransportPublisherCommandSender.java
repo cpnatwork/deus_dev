@@ -3,6 +3,8 @@ package deus.core.access.transport.core.sending.command.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.transport.core.messages.CancelSubscriptionMessage;
+import deus.core.access.transport.core.messages.OfferSubscriptionMessage;
 import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.messages.UpdateMessage;
 import deus.core.access.transport.core.sending.command.PublisherCommandSender;

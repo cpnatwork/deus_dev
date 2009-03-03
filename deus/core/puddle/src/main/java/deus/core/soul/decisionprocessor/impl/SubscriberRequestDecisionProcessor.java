@@ -17,6 +17,7 @@ public class SubscriberRequestDecisionProcessor implements GenericDecisionProces
 	@Qualifier("target")
 	private PublisherExportedToPeer publisher;
 	
+	// FIXME: change to publisherCommandSender
 	@Autowired
 	private BarkerCommandSender barkerCommandSender;
 

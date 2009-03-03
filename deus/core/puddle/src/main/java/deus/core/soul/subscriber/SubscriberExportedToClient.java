@@ -28,6 +28,8 @@ public interface SubscriberExportedToClient {
 	
 	// DATA MODEL RETRIEVING (TO BE MOVED TO ANOTHER SUBSYSTEM)
 	
+	// DATA MODEL RETRIEVING (TO BE MOVED TO ANOTHER SUBSYSTEM)
+	
 	public List<UserId> getPublishersInDif(UserId subscriberId);
 	
 

@@ -3,8 +3,13 @@ package deus.core.access.transport.core.receiving.message.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.transport.core.messages.AbstainSubscriptionMessage;
+import deus.core.access.transport.core.messages.CancelSubscriptionMessage;
+import deus.core.access.transport.core.messages.ConfirmSubscriptionMessage;
 import deus.core.access.transport.core.messages.DenySubscriptionMessage;
 import deus.core.access.transport.core.messages.GrantSubscriptionMessage;
+import deus.core.access.transport.core.messages.InviteSubscriberMessage;
+import deus.core.access.transport.core.messages.OfferSubscriptionMessage;
 import deus.core.access.transport.core.messages.RequestSubscriptionMessage;
 import deus.core.access.transport.core.messages.SubscribeMessage;
 import deus.core.access.transport.core.messages.TransportMessage;
@@ -29,25 +34,49 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 		UserId senderId = message.getSenderId();
 		UserId receiverId = message.getReceiverId();
 
-		PublisherExportedToPeer publisherCommandReceiver = registry.getPublisher();
-		SubscriberExportedToPeer subscriberCommandReceiver = registry.getSubscriber();
+		PublisherExportedToPeer publisher = registry.getPublisher();
+		SubscriberExportedToPeer subscriber = registry.getSubscriber();
 
 		// USE CASE: SUBSCRIBE
 		if (message instanceof SubscribeMessage) {
+			// here: role publisher
 			if (message instanceof RequestSubscriptionMessage) {
 				UserMetadata senderMetadata = ((RequestSubscriptionMessage) message).getSubscriberMetadata();
-				publisherCommandReceiver.addSubscriber(receiverId, senderId, senderMetadata);
+				// USE CASE: accept subscription
+				publisher.addSubscriber(receiverId, senderId, senderMetadata);
 			}
+			// here: role subscriber
 			else if (message instanceof GrantSubscriptionMessage)
-				subscriberCommandReceiver.subscriptionGranted(receiverId, senderId);
+				subscriber.subscriptionGranted(receiverId, senderId);
 			else if (message instanceof DenySubscriptionMessage)
-				subscriberCommandReceiver.subscriptionDenied(receiverId, senderId);
+				subscriber.subscriptionDenied(receiverId, senderId);
+			else
+				throw new IllegalArgumentException("cannot handle command " + message);
+		}
+		// USE CASE: INVITE SUBSCRIBER
+		else if(message instanceof InviteSubscriberMessage) {
+			// here: role subscriber
+			if (message instanceof OfferSubscriptionMessage) {
+				UserMetadata senderMetadata = ((OfferSubscriptionMessage) message).getPublisherMetadata();
+				// USE CASE: confirm subscription
+				subscriber.addPublisher(receiverId, senderId, senderMetadata);
+			}
+			// here: role publisher
+			else if (message instanceof ConfirmSubscriptionMessage)
+				publisher.subscriptionConfirmed(receiverId, senderId);
+			else if (message instanceof AbstainSubscriptionMessage)
+				publisher.subscriptionAbstained(receiverId, senderId);
 			else
 				throw new IllegalArgumentException("cannot handle command " + message);
 		}
 		// USE CASE: UNSUBSCRIBE
+		// here: role publisher
 		else if (message instanceof UnsubscribeMessage)
-			publisherCommandReceiver.deleteSubscriber(receiverId, senderId);
+			publisher.deleteSubscriber(receiverId, senderId);
+		// USE CASE: CANCEL SUBSCRIPTION
+		else if (message instanceof CancelSubscriptionMessage)
+			// FIXME: impleemnt
+			;
 		else
 			throw new IllegalArgumentException("cannot handle command " + message);
 	}

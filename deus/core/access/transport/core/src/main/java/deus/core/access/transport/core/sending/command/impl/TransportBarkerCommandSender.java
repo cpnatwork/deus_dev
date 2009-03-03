@@ -3,6 +3,8 @@ package deus.core.access.transport.core.sending.command.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.transport.core.messages.AbstainSubscriptionMessage;
+import deus.core.access.transport.core.messages.ConfirmSubscriptionMessage;
 import deus.core.access.transport.core.messages.DenySubscriptionMessage;
 import deus.core.access.transport.core.messages.GrantSubscriptionMessage;
 import deus.core.access.transport.core.messages.TransportMessage;

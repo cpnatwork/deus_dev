@@ -3,6 +3,7 @@ package deus.model.attention.decision;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
+// FIXME: rename it to OfferSubscriptionPlea
 public class PublisherOffer extends ConnectionDecisionToMake {
 
 	private final UserId publisherId;

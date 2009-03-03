@@ -15,8 +15,6 @@ import deus.model.dossier.DigitalCard;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.LosEntry;
 import deus.model.pub.PublisherSideSubscriptionState;
-import deus.model.sub.LopEntry;
-import deus.model.sub.SubscriberSideSubscriptionState;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -58,7 +56,8 @@ public class PublisherImpl implements Publisher {
 
 		LosEntry entry = new LosEntry(publisherId);
 		entry.setSubscriberMetadata(subscriberMetadata);
-
+		entry.setSubscriptionState(PublisherSideSubscriptionState.established);
+		
 		losEntryDoRep.addNewEntity(publisherId, entry);
 	}
 
