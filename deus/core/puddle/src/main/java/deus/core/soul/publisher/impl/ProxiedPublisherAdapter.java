@@ -31,7 +31,7 @@ public class ProxiedPublisherAdapter implements Publisher {
 	private PublisherExportedToPeer publisherExportedToPeer;
 
 
-	// +++ METHODS OF PUBLISHER EXPORTED TO PEER ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	// +++ exported to PEER +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
 	public void addSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
@@ -45,7 +45,19 @@ public class ProxiedPublisherAdapter implements Publisher {
 	}
 
 
-	// +++ METHODS OF PUBLISHER EXPORTED TO CLIENT ++++++++++++++++++++++++++++++++++++++++++++++++++++
+	@Override
+	public void subscriptionAbstained(UserId publisherId, UserId subscriberId) {
+		publisherExportedToPeer.subscriptionAbstained(publisherId, subscriberId);
+	}
+
+
+	@Override
+	public void subscriptionConfirmed(UserId publisherId, UserId subscriberId) {
+		publisherExportedToPeer.subscriptionConfirmed(publisherId, subscriberId);
+	}
+
+
+	// +++ exported to CLIENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 	@Override
@@ -65,5 +77,16 @@ public class ProxiedPublisherAdapter implements Publisher {
 		publisherExportedToClient.notifySubscribers(publisherId, digitalCard);
 	}
 
+
+	@Override
+	public void cancelSubscription(UserId publisherId, UserId subscriberId) {
+		publisherExportedToClient.cancelSubscription(publisherId, subscriberId);
+	}
+
+
+	@Override
+	public void inviteSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
+		publisherExportedToClient.inviteSubscriber(publisherId, subscriberId, subscriberMetadata);
+	}
 
 }

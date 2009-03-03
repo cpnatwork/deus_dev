@@ -2,6 +2,7 @@ package deus.core.soul.publisher;
 
 import deus.model.dossier.DigitalCard;
 import deus.model.pub.ListOfSubscribers;
+import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 /**
@@ -14,6 +15,8 @@ import deus.model.user.id.UserId;
  */
 public interface PublisherExportedToClient {
 
+	// USE CASE: update
+	
 	/**
 	 * If this object has changed, as indicated by the <code>hasChanged</code> method, then notify all of its observers
 	 * and then call the <code>clearChanged</code> method to indicate that this object has no longer changed.
@@ -30,9 +33,19 @@ public interface PublisherExportedToClient {
 
 	
 	public abstract void notifySubscriber(UserId publisherId, UserId subscriberId, DigitalCard digitalCard);
-
+	
+	
+	
+	// USE CASE: publisher initiated connection/termination
+	
+	public abstract void inviteSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata);
+	
+	public abstract void cancelSubscription(UserId publisherId, UserId subscriberId);
 	
 
+	
+	// DATA MODEL RETRIEVING
+	
 	public abstract ListOfSubscribers getListOfSubscribers(UserId publisherId);
 
 }

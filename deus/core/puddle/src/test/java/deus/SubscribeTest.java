@@ -37,7 +37,7 @@ public class SubscribeTest extends AbstractUseCaseTest {
 //
 //		assertEquals(1, bob.getListOfPublishers().size());
 //		assertTrue(bob.getListOfPublishers().containsKey(alice.getUserMetadata()));
-//		assertEquals(RequestedSubscriptionState.requested, bob.getListOfPublishers().get(alice.getUserMetadata()));
+//		assertEquals(SubscriberSideSubscriptionState.requested, bob.getListOfPublishers().get(alice.getUserMetadata()));
 //		assertEquals(0, alice.getListOfSubscribers().size());
 //
 //		testAttentionList(alice, 1, 0);
@@ -73,7 +73,7 @@ public class SubscribeTest extends AbstractUseCaseTest {
 //
 //		assertEquals(1, bob.getListOfPublishers().size());
 //		assertTrue(bob.getListOfPublishers().containsKey(alice.getUserMetadata()));
-//		assertEquals(RequestedSubscriptionState.granted, bob.getListOfPublishers().get(alice.getUserMetadata()));
+//		assertEquals(SubscriberSideSubscriptionState.established, bob.getListOfPublishers().get(alice.getUserMetadata()));
 //
 //		// check for notice in bobs attention list
 //		testAttentionList(bob, 1, 0);

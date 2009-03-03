@@ -5,20 +5,21 @@ import deus.model.user.id.UserId;
 
 public class LopEntry {
 
-	private UserId publisherId;
+	private final UserId publisherId;
 	private UserMetadata publisherMetadata;
 
-	private RequestedSubscriptionState requestedSubscriptionState;
+	private SubscriberSideSubscriptionState subscriberSideSubscriptionState;
+
+
+	public LopEntry(UserId publisherId) {
+		super();
+		this.publisherId = publisherId;
+	}
 
 
 	public UserId getPublisherId() {
 		return publisherId;
-		
-	}
 
-
-	public void setPublisherId(UserId publisherId) {
-		this.publisherId = publisherId;
 	}
 
 
@@ -32,13 +33,13 @@ public class LopEntry {
 	}
 
 
-	public RequestedSubscriptionState getSubscriptionState() {
-		return requestedSubscriptionState;
+	public SubscriberSideSubscriptionState getSubscriptionState() {
+		return subscriberSideSubscriptionState;
 	}
 
 
-	public void setSubscriptionState(RequestedSubscriptionState requestedSubscriptionState) {
-		this.requestedSubscriptionState = requestedSubscriptionState;
+	public void setSubscriptionState(SubscriberSideSubscriptionState subscriberSideSubscriptionState) {
+		this.subscriberSideSubscriptionState = subscriberSideSubscriptionState;
 	}
 
 }

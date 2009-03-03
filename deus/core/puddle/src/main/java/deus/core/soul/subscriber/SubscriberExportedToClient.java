@@ -18,13 +18,15 @@ import deus.model.user.id.UserId;
  */
 public interface SubscriberExportedToClient {
 
+	// USE CASE: subscriber initiated connection/termination
+	
 	public void subscribe(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata);
 
 
 	public void unsubscribe(UserId subscriberId, UserId publisherId);
 
 	
-	
+	// DATA MODEL RETRIEVING (TO BE MOVED TO ANOTHER SUBSYSTEM)
 	
 	public List<UserId> getPublishersInDif(UserId subscriberId);
 	
@@ -35,7 +37,7 @@ public interface SubscriberExportedToClient {
 	public DigitalCard getDigitalCardInFif(UserId subscriberId, DigitalCardId digitalCardId);
 
 
-
+	// DATA MODEL RETRIEVING
 	
 	public ListOfPublishers getListOfPublishers(UserId subscriberId);
 

@@ -16,6 +16,8 @@ import deus.model.user.id.UserId;
  */
 public interface PublisherExportedToPeer {
 
+	// USE CASE: subscriber initiated connection
+	
 	/**
 	 * Adds an observer to the set of observers for this object, provided that it is not the same as some observer
 	 * already in the set. The order in which notifications will be delivered to multiple observers is not specified.
@@ -26,6 +28,8 @@ public interface PublisherExportedToPeer {
 	public abstract void addSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata);
 
 
+	// USE CASE: subscriber initiated termination
+	
 	/**
 	 * Deletes an observer from the set of observers of this object. Passing <CODE>null</CODE> to this method will have
 	 * no effect.
@@ -34,4 +38,12 @@ public interface PublisherExportedToPeer {
 	 */
 	public abstract void deleteSubscriber(UserId publisherId, UserId subscriberId);
 
+	
+	
+	
+	// USE CASE: publisher initiated connection
+	
+	public abstract void subscriptionConfirmed(UserId publisherId, UserId subscriberId);
+	
+	public abstract void subscriptionAbstained(UserId publisherId, UserId subscriberId);
 }

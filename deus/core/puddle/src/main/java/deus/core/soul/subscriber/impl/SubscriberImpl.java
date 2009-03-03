@@ -23,7 +23,7 @@ import deus.model.dossier.DigitalCardId;
 import deus.model.dossier.InformationFile;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.LopEntry;
-import deus.model.sub.RequestedSubscriptionState;
+import deus.model.sub.SubscriberSideSubscriptionState;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -55,32 +55,26 @@ public class SubscriberImpl implements Subscriber {
 	@Autowired
 	private SubscriberCommandSender subscriberCommandSender;
 
-	
+
+	// +++ exported to PEER +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
 	@Override
-	public List<UserId> getPublishersInDif(UserId subscriberId) {
-		return difDoRep.getPublishersInDif(subscriberId);
+	public void subscriptionGranted(UserId subscriberId, UserId publisherId) {
+		logger.trace("in subscriber of {}: publisher {} acknowledged subscription", subscriberId, publisherId);
+
+		LopEntry entry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
+		entry.setSubscriptionState(SubscriberSideSubscriptionState.established);
+
+		lopEntryDoRep.updateEntity(subscriberId, entry);
 	}
 
 
 	@Override
-	public List<DigitalCardId> getDigitalCardIdsInFif(UserId subscriberId, UserId publisherId) {
-		return fifDoRep.getDigitalCardsInFif(subscriberId, publisherId);
-	}
+	public void subscriptionDenied(UserId subscriberId, UserId publisherId) {
+		logger.trace("in subscriber of {}: publisher {} denied subscription", subscriberId, publisherId);
 
-
-	@Override
-	public DigitalCard getDigitalCardInFif(UserId subscriberId, DigitalCardId digitalCardId) {
-		return fifDoRep.getDigitalCardInFif(subscriberId, digitalCardId);
-	}
-
-	
-
-	// FIXME: think about returning a DTO to the frontend here
-	@Override
-	public ListOfPublishers getListOfPublishers(UserId subscriberId) {
-		ListOfPublishers listOfPublishers = lopDoRep.getByNaturalId(subscriberId);
-		return listOfPublishers;
+		lopEntryDoRep.deleteByNaturalId(publisherId, subscriberId);
 	}
 
 
@@ -100,24 +94,54 @@ public class SubscriberImpl implements Subscriber {
 
 		// FIXME: store FIF by using dao.store():
 	}
-
-
+	
+	
 	@Override
-	public void acknowledgeSubscription(UserId subscriberId, UserId publisherId) {
-		logger.trace("in subscriber of {}: publisher {} acknowledged subscription", subscriberId, publisherId);
+	public void addPublisher(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata) {
+		logger.trace("in subscriber of {}: publisher {} added", subscriberId, publisherId);
 
-		LopEntry entry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
-		entry.setSubscriptionState(RequestedSubscriptionState.granted);
+		LopEntry entry = new LopEntry(publisherId);
+		entry.setPublisherMetadata(publisherMetadata);
+		entry.setSubscriptionState(SubscriberSideSubscriptionState.established);
 
-		lopEntryDoRep.updateEntity(subscriberId, entry);
+		lopEntryDoRep.addNewEntity(subscriberId, entry);
 	}
 
 
 	@Override
-	public void denySubscription(UserId subscriberId, UserId publisherId) {
-		logger.trace("in subscriber of {}: publisher {} denied subscription", subscriberId, publisherId);
+	public void deletePublisher(UserId subscriberId, UserId publisherId) {
+		logger.trace("in subscriber of {}: publisher {} deleted", subscriberId, publisherId);
 
 		lopEntryDoRep.deleteByNaturalId(publisherId, subscriberId);
+	}
+
+	
+
+	// +++ exported to CLIENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	@Override
+	public List<UserId> getPublishersInDif(UserId subscriberId) {
+		return difDoRep.getPublishersInDif(subscriberId);
+	}
+
+
+	@Override
+	public List<DigitalCardId> getDigitalCardIdsInFif(UserId subscriberId, UserId publisherId) {
+		return fifDoRep.getDigitalCardsInFif(subscriberId, publisherId);
+	}
+
+
+	@Override
+	public DigitalCard getDigitalCardInFif(UserId subscriberId, DigitalCardId digitalCardId) {
+		return fifDoRep.getDigitalCardInFif(subscriberId, digitalCardId);
+	}
+
+
+	// FIXME: think about returning a DTO to the frontend here
+	@Override
+	public ListOfPublishers getListOfPublishers(UserId subscriberId) {
+		ListOfPublishers listOfPublishers = lopDoRep.getByNaturalId(subscriberId);
+		return listOfPublishers;
 	}
 
 
@@ -128,9 +152,9 @@ public class SubscriberImpl implements Subscriber {
 
 		logger.trace("in subscriber {}: subscribing to publisher {}", subscriberId, publisherId);
 
-		LopEntry entry = new LopEntry();
+		LopEntry entry = new LopEntry(publisherId);
 		entry.setPublisherMetadata(publisherMetadata);
-		entry.setSubscriptionState(RequestedSubscriptionState.requested);
+		entry.setSubscriptionState(SubscriberSideSubscriptionState.requested);
 		lopEntryDoRep.addNewEntity(subscriberId, entry);
 
 		UserMetadata subscriberMetadata = userMetadataDoRep.getByNaturalId(subscriberId);

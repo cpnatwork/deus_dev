@@ -1,6 +1,7 @@
 package deus.core.access.transport.core.receiving.soulcallback;
 
 import deus.model.dossier.DigitalCard;
+import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 /**
@@ -15,13 +16,27 @@ import deus.model.user.id.UserId;
  * 
  */
 public interface SubscriberExportedToPeer {
+	
+	// USE CASE: update
 
 	public void update(UserId subscriberId, UserId publisherId, DigitalCard digitalCard);
 
+	
+	// USE CASE: subscriber initiated connection
 
-	public void acknowledgeSubscription(UserId subscriberId, UserId publisherId);
+	public void subscriptionGranted(UserId subscriberId, UserId publisherId);
 
 
-	public void denySubscription(UserId subscriberId, UserId publisherId);
+	public void subscriptionDenied(UserId subscriberId, UserId publisherId);
+	
+
+	
+	
+	// USE CASE: publisher initiated connection
+	
+	public void addPublisher(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata);
+	
+	
+	public void deletePublisher(UserId subscriberId, UserId publisherId);
 
 }

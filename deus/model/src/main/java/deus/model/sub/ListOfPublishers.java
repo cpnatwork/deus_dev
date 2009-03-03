@@ -8,6 +8,6 @@ public interface ListOfPublishers extends Map<UserId, LopEntry> {
 
 	public UserId getOwnerId();
 	
-	public void changeState(UserId publisherId, RequestedSubscriptionState requestedSubscriptionState);
+	public void changeState(UserId publisherId, SubscriberSideSubscriptionState subscriberSideSubscriptionState);
 
 }

@@ -9,7 +9,10 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.sub.LopEntryDoRep;
 import deus.core.access.transport.core.receiving.soulcallback.SubscriberExportedToPeer;
 import deus.core.soul.barker.BarkerExportedToSubsystems;
+import deus.model.attention.decision.BinaryDecisionToMake;
+import deus.model.attention.decision.PublisherOffer;
 import deus.model.attention.notice.Notice;
+import deus.model.attention.notice.PublisherInitiatedTerminationNotice;
 import deus.model.attention.notice.SubscriptionDeniedNotice;
 import deus.model.attention.notice.SubscriptionGrantedNotice;
 import deus.model.attention.notice.UpdateNotice;
@@ -36,10 +39,8 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 
 
 	@Override
-	public void acknowledgeSubscription(UserId subscriberId, UserId publisherId) {
+	public void subscriptionGranted(UserId subscriberId, UserId publisherId) {
 		logger.debug("proxying call to acknowledgeSubscription");
-
-		proxiedSubscriber.acknowledgeSubscription(subscriberId, publisherId);
 
 		LopEntry lopEntry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
 
@@ -49,14 +50,14 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 		barker.addUnnoticedAttentionElement(subscriberId, notice);
 
 		logger.debug("added {} to barker", notice);
+		
+		proxiedSubscriber.subscriptionGranted(subscriberId, publisherId);
 	}
 
 
 	@Override
-	public void denySubscription(UserId subscriberId, UserId publisherId) {
+	public void subscriptionDenied(UserId subscriberId, UserId publisherId) {
 		logger.debug("proxying call to denySubscription");
-
-		proxiedSubscriber.denySubscription(subscriberId, publisherId);
 
 		LopEntry lopEntry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
 
@@ -66,6 +67,8 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 		barker.addUnnoticedAttentionElement(subscriberId, notice);
 
 		logger.debug("added {} to barker", notice);
+		
+		proxiedSubscriber.subscriptionDenied(subscriberId, publisherId);
 	}
 
 
@@ -80,6 +83,36 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 		barker.addUnnoticedAttentionElement(subscriberId, notice);
 
 		logger.debug("added {} to barker", notice);
+	}
+
+
+	@Override
+	public void addPublisher(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata) {
+		logger.debug("proxying call to addPublisher");
+
+		// PLACE PUBLISHER REQUEST
+		BinaryDecisionToMake decision = new PublisherOffer(subscriberId, publisherMetadata);
+		barker.addUnnoticedAttentionElement(publisherId, decision);
+		
+		logger.trace("added {} to barker", decision);
+	}
+
+
+	@Override
+	public void deletePublisher(UserId subscriberId, UserId publisherId) {
+		logger.debug("proxying call to deletePublisher");
+		
+		// DELETE PUBLISHER
+		proxiedSubscriber.deletePublisher(publisherId, subscriberId);
+
+		LopEntry lopEntry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
+		
+		// PLACE NOTICE
+		UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
+		Notice notice = new PublisherInitiatedTerminationNotice(publisherMetadata);
+		barker.addUnnoticedAttentionElement(publisherId, notice);
+		
+		logger.trace("added {} to barker", notice);
 	}
 
 }

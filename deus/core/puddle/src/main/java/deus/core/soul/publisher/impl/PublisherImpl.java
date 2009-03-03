@@ -8,11 +8,15 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.pub.LosDoRep;
 import deus.core.access.storage.api.pub.LosEntryDoRep;
+import deus.core.access.storage.api.user.UserMetadataDoRep;
 import deus.core.access.transport.core.sending.command.PublisherCommandSender;
 import deus.core.soul.publisher.Publisher;
 import deus.model.dossier.DigitalCard;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.LosEntry;
+import deus.model.pub.PublisherSideSubscriptionState;
+import deus.model.sub.LopEntry;
+import deus.model.sub.SubscriberSideSubscriptionState;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -22,8 +26,12 @@ public class PublisherImpl implements Publisher {
 
 	private final Logger logger = LoggerFactory.getLogger(PublisherImpl.class);
 
+
 	@Autowired
 	private PublisherCommandSender publisherCommandSender;
+
+	@Autowired
+	private UserMetadataDoRep userMetadataDoRep;
 
 	@Autowired
 	private LosEntryDoRep losEntryDoRep;
@@ -38,6 +46,8 @@ public class PublisherImpl implements Publisher {
 		return losDoRep.getByNaturalId(publisherId);
 	}
 
+
+	// +++ exported to PEER +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
 	public synchronized void addSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
@@ -64,16 +74,36 @@ public class PublisherImpl implements Publisher {
 	}
 
 
+	@Override
+	public void subscriptionConfirmed(UserId publisherId, UserId subscriberId) {
+		logger.trace("in publisher of {}: subscriber {} confirmed subscription", subscriberId, publisherId);
+
+		LosEntry entry = losEntryDoRep.getByNaturalId(subscriberId, publisherId);
+		entry.setSubscriptionState(PublisherSideSubscriptionState.established);
+
+		losEntryDoRep.updateEntity(publisherId, entry);
+	}
+
+
+	@Override
+	public void subscriptionAbstained(UserId publisherId, UserId subscriberId) {
+		logger.trace("in publisher of {}: subscriber {} abstained subscription", subscriberId, publisherId);
+
+		losEntryDoRep.deleteByNaturalId(subscriberId, publisherId);
+	}
+
+
+	// +++ exported to CLIENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
 	public synchronized void notifySubscriber(UserId publisherId, UserId subscriberId, DigitalCard digitalCard) {
 		logger.trace("notifying subscribers of change {}", digitalCard);
-		
+
 		LosEntry losEntry = losEntryDoRep.getByNaturalId(subscriberId, publisherId);
-		
+
 		publisherCommandSender.update(losEntry.getSubscriberId(), publisherId, digitalCard);
 	}
-	
+
 
 	@Override
 	public void notifySubscribers(UserId publisherId, DigitalCard digitalCard) {
@@ -104,5 +134,38 @@ public class PublisherImpl implements Publisher {
 			publisherCommandSender.update(losEntry.getSubscriberId(), publisherId, digitalCard);
 		}
 	}
+
+
+	@Override
+	public void inviteSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
+		if (losEntryDoRep.containsEntity(subscriberId, publisherId))
+			throw new IllegalArgumentException("cannot offer subscription to subscriber (" + subscriberId + ") again!");
+
+		logger.trace("in publisher {}: offering subscription to subscriber {}", publisherId, subscriberId);
+
+		LosEntry entry = new LosEntry(subscriberId);
+		entry.setSubscriberMetadata(subscriberMetadata);
+		entry.setSubscriptionState(PublisherSideSubscriptionState.offered);
+		losEntryDoRep.addNewEntity(publisherId, entry);
+
+		UserMetadata publisherMetadata = userMetadataDoRep.getByNaturalId(publisherId);
+
+		publisherCommandSender.offerSubscription(publisherId, subscriberId, publisherMetadata);
+	}
+
+
+	@Override
+	public void cancelSubscription(UserId publisherId, UserId subscriberId) {
+		if (losEntryDoRep.containsEntity(subscriberId, publisherId))
+			throw new IllegalArgumentException("cannot cancel a subscription of subscriber (" + subscriberId
+					+ "), that has not been added yet!");
+
+		logger.trace("in publisher {}: canceling subscription to subscriber {}", publisherId, subscriberId);
+
+		losEntryDoRep.deleteByNaturalId(subscriberId, publisherId);
+		
+		publisherCommandSender.cancelSubscription(publisherId, subscriberId);
+	}
+
 
 }

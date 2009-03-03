@@ -2,7 +2,7 @@ package deus.model.attention.notice;
 
 import deus.model.user.UserMetadata;
 
-public class SubscriptionGrantedNotice extends PublisherSentNotice {
+public class SubscriptionGrantedNotice extends SubscriberInitiatedConnectionNotice {
 
 	public SubscriptionGrantedNotice(UserMetadata publisherMetadata) {
 		super(publisherMetadata);
@@ -11,7 +11,7 @@ public class SubscriptionGrantedNotice extends PublisherSentNotice {
 	@Override
 	public String getCatchphare() {
 		//I18N
-		return "Your subscription request to "+getPublisherMetadata().getFullName()+" has been granted";
+		return "Your subscription request to "+getPublisherMetadata().getFullName()+" has been established";
 	}
 
 

@@ -12,7 +12,7 @@ import deus.core.soul.barker.BarkerExportedToSubsystems;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.model.attention.notice.Notice;
-import deus.model.attention.notice.SubscribedProfileDeletedNotice;
+import deus.model.attention.notice.SubscriberInitiatedTerminationNotice;
 import deus.model.pub.LosEntry;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
@@ -57,10 +57,44 @@ public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPe
 		
 		// PLACE NOTICE
 		UserMetadata subscriberMetadata = losEntry.getSubscriberMetadata();
-		Notice notice = new SubscribedProfileDeletedNotice(subscriberMetadata);
+		Notice notice = new SubscriberInitiatedTerminationNotice(subscriberMetadata);
 		barker.addUnnoticedAttentionElement(publisherId, notice);
 		
 		logger.trace("added {} to barker", notice);
+	}
+
+	
+	@Override
+	public void subscriptionConfirmed(UserId publisherId, UserId subscriberId) {
+		logger.debug("proxying call to subscriptionConfirmed");
+	
+		LosEntry losEntry = losEntryDoRep.getByNaturalId(subscriberId, publisherId);
+
+		// get publisher metadata out of LoP
+		UserMetadata subscriberMetadata = losEntry.getSubscriberMetadata();
+		Notice notice = new SubscriptionConfirmedNotice(subscriberMetadata);
+		barker.addUnnoticedAttentionElement(publisherId, notice);
+
+		logger.debug("added {} to barker", notice);
+		
+		proxiedPublisher.subscriptionConfirmed(publisherId, subscriberId);
+	}
+	
+
+	@Override
+	public void subscriptionAbstained(UserId publisherId, UserId subscriberId) {
+		logger.debug("proxying call to subscriptionAbstained");
+
+		LosEntry losEntry = losEntryDoRep.getByNaturalId(subscriberId, publisherId);
+
+		// get publisher metadata out of LoP
+		UserMetadata subscriberMetadata = losEntry.getSubscriberMetadata();
+		Notice notice = new SubscriptionAbstainedNotice(subscriberMetadata);
+		barker.addUnnoticedAttentionElement(publisherId, notice);
+
+		logger.debug("added {} to barker", notice);
+		
+		proxiedPublisher.subscriptionAbstained(publisherId, subscriberId);
 	}
 
 }

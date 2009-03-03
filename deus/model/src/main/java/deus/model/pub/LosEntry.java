@@ -10,7 +10,7 @@ public class LosEntry {
 	private UserId subscriberId;
 	private UserMetadata subscriberMetadata;
 
-	private OfferedSubscriptionState offeredSubscriptionState;
+	private PublisherSideSubscriptionState publisherSideSubscriptionState;
 
 
 	// TODO: insert SHARE SET here!
@@ -50,13 +50,13 @@ public class LosEntry {
 	}
 
 
-	public OfferedSubscriptionState getOfferedSubscriptionState() {
-		return offeredSubscriptionState;
+	public PublisherSideSubscriptionState getSubscriptionState() {
+		return publisherSideSubscriptionState;
 	}
 
 
-	public void setOfferedSubscriptionState(OfferedSubscriptionState offeredSubscriptionState) {
-		this.offeredSubscriptionState = offeredSubscriptionState;
+	public void setSubscriptionState(PublisherSideSubscriptionState publisherSideSubscriptionState) {
+		this.publisherSideSubscriptionState = publisherSideSubscriptionState;
 	}
 
 }

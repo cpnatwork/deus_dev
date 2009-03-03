@@ -15,17 +15,35 @@ public class TransportBarkerCommandSender implements BarkerCommandSender {
 	@Autowired
 	private TransportMessageSenderHelper transportMessageSenderHelper;
 
+
+
 	@Override
-	public void denySubscription(UserId subscriberId, UserId publisherId) {
+	public void grantSubscription(UserId publisherId, UserId subscriberId) {
+		TransportMessage transportMessage = new GrantSubscriptionMessage();
+		transportMessageSenderHelper.send(subscriberId, publisherId, transportMessage);
+	}
+
+	
+	@Override
+	public void denySubscription(UserId publisherId, UserId subscriberId) {
 		TransportMessage transportMessage = new DenySubscriptionMessage();
 		transportMessageSenderHelper.send(subscriberId, publisherId, transportMessage);
 	}
 
 
+	
+
 	@Override
-	public void grantSubscription(UserId subscriberId, UserId publisherId) {
-		TransportMessage transportMessage = new GrantSubscriptionMessage();
-		transportMessageSenderHelper.send(subscriberId, publisherId, transportMessage);
+	public void confirmSubscription(UserId subscriberId, UserId publisherId) {
+		TransportMessage transportMessage = new ConfirmSubscriptionMessage();
+		transportMessageSenderHelper.send(publisherId, subscriberId, transportMessage);
+	}
+	
+	
+	@Override
+	public void abstainSubscription(UserId subscriberId, UserId publisherId) {
+		TransportMessage transportMessage = new AbstainSubscriptionMessage();
+		transportMessageSenderHelper.send(publisherId, subscriberId, transportMessage);
 	}
 
 }

@@ -11,7 +11,6 @@ import deus.core.soul.subscriber.Subscriber;
 import deus.core.soul.subscriber.SubscriberExportedToClient;
 import deus.model.dossier.DigitalCard;
 import deus.model.dossier.DigitalCardId;
-import deus.model.sub.DistributedInformationFolder;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
@@ -39,20 +38,32 @@ public class ProxiedSubscriberAdapter implements Subscriber {
 	// +++ METHODS SUBSCRIBER EXPORTED TO PEER ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
-	public void acknowledgeSubscription(UserId subscriberId, UserId publisherId) {
-		subscriberExportedToPeer.acknowledgeSubscription(subscriberId, publisherId);
+	public void subscriptionGranted(UserId subscriberId, UserId publisherId) {
+		subscriberExportedToPeer.subscriptionGranted(subscriberId, publisherId);
 	}
 
 
 	@Override
-	public void denySubscription(UserId subscriberId, UserId publisherId) {
-		subscriberExportedToPeer.denySubscription(subscriberId, publisherId);
+	public void subscriptionDenied(UserId subscriberId, UserId publisherId) {
+		subscriberExportedToPeer.subscriptionDenied(subscriberId, publisherId);
 	}
 
 
 	@Override
 	public void update(UserId subscriberId, UserId publisherId, DigitalCard digitalCard) {
 		subscriberExportedToPeer.update(subscriberId, publisherId, digitalCard);
+	}
+
+
+	@Override
+	public void addPublisher(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata) {
+		subscriberExportedToPeer.addPublisher(subscriberId, publisherId, publisherMetadata);
+	}
+
+
+	@Override
+	public void deletePublisher(UserId subscriberId, UserId publisherId) {
+		subscriberExportedToPeer.deletePublisher(subscriberId, publisherId);
 	}
 
 
@@ -93,5 +104,6 @@ public class ProxiedSubscriberAdapter implements Subscriber {
 	public DigitalCard getDigitalCardInFif(UserId subscriberId, DigitalCardId digitalCardId) {
 		return subscriberExportedToClient.getDigitalCardInFif(subscriberId, digitalCardId);
 	}
+
 
 }

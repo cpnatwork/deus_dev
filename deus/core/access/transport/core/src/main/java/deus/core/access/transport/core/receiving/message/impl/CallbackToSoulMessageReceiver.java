@@ -39,9 +39,9 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 				publisherCommandReceiver.addSubscriber(receiverId, senderId, senderMetadata);
 			}
 			else if (message instanceof GrantSubscriptionMessage)
-				subscriberCommandReceiver.acknowledgeSubscription(receiverId, senderId);
+				subscriberCommandReceiver.subscriptionGranted(receiverId, senderId);
 			else if (message instanceof DenySubscriptionMessage)
-				subscriberCommandReceiver.denySubscription(receiverId, senderId);
+				subscriberCommandReceiver.subscriptionDenied(receiverId, senderId);
 			else
 				throw new IllegalArgumentException("cannot handle command " + message);
 		}

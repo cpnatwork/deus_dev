@@ -27,7 +27,7 @@ public class UnsubscribeTest extends AbstractUseCaseTest {
 	public void testUnsubscribeGrantedSubscription() {
 //		LopEntry lopEntry = new LopEntry();
 //		lopEntry.setPublisherMetadata(alice.getUserMetadata());
-//		lopEntry.setSubscriptionState(RequestedSubscriptionState.granted);
+//		lopEntry.setSubscriptionState(SubscriberSideSubscriptionState.established);
 //		bob.getListOfPublishers().put(alice.getUserId(), lopEntry);
 //		
 //		LosEntry losEntry = new LosEntry();
@@ -54,7 +54,7 @@ public class UnsubscribeTest extends AbstractUseCaseTest {
 	@Test
 	public void testUnsubscribeRequestedSubscription() {
 		/*
-		bob.getListOfPublishers().put(alice.getUserMetadata(), RequestedSubscriptionState.requested);
+		bob.getListOfPublishers().put(alice.getUserMetadata(), SubscriberSideSubscriptionState.requested);
 		
 		testAttentionList(bob, 0, 0);
 		testAttentionList(alice, 0, 0);
