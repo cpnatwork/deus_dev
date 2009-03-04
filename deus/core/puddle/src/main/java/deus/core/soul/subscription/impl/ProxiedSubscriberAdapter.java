@@ -1,7 +1,5 @@
 package deus.core.soul.subscription.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -10,7 +8,6 @@ import deus.core.access.transport.core.receiving.soulcallback.SubscriberExported
 import deus.core.soul.subscription.Subscriber;
 import deus.core.soul.subscription.SubscriberExportedToClient;
 import deus.model.dossier.DigitalCard;
-import deus.model.dossier.DigitalCardId;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
@@ -85,24 +82,6 @@ public class ProxiedSubscriberAdapter implements Subscriber {
 	@Override
 	public ListOfPublishers getListOfPublishers(UserId subscriberId) {
 		return subscriberExportedToClient.getListOfPublishers(subscriberId);
-	}
-
-
-	@Override
-	public List<UserId> getPublishersInDif(UserId subscriberId) {
-		return subscriberExportedToClient.getPublishersInDif(subscriberId);
-	}
-
-
-	@Override
-	public List<DigitalCardId> getDigitalCardIdsInFif(UserId subscriberId, UserId publisherId) {
-		return subscriberExportedToClient.getDigitalCardIdsInFif(subscriberId, publisherId);
-	}
-
-
-	@Override
-	public DigitalCard getDigitalCardInFif(UserId subscriberId, DigitalCardId digitalCardId) {
-		return subscriberExportedToClient.getDigitalCardInFif(subscriberId, digitalCardId);
 	}
 
 

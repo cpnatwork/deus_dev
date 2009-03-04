@@ -1,21 +1,19 @@
 package deus.core.soul.difgoverning;
 
+import java.util.List;
+
 import deus.model.dossier.DigitalCard;
 import deus.model.dossier.DigitalCardId;
-import deus.model.sub.DistributedInformationFolder;
-import deus.model.sub.ForeignInformationFile;
 import deus.model.user.id.UserId;
 
 public interface DifGovernorExportedToClient {
+	
+	public List<UserId> getPublishersInDif(UserId subscriberId);
+	
 
-	// FIXME: replace this by list of FIF IDs
-	public abstract DistributedInformationFolder getDistributedInformationFolder(UserId residentId);
+	public List<DigitalCardId> getDigitalCardIdsInFif(UserId subscriberId, UserId publisherId);
 
-
-	// FIXME: replace this by list of DC IDs
-	public abstract ForeignInformationFile getForeignInformationFile(UserId residentId, UserId cpId);
-
-
-	public abstract DigitalCard getDigitalCard(UserId residentId, DigitalCardId digitalCardId);
+	
+	public DigitalCard getDigitalCardInFif(UserId subscriberId, DigitalCardId digitalCardId);
 
 }

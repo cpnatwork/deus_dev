@@ -1,5 +1,7 @@
 package deus.core.soul.difgoverning.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,6 @@ import deus.core.soul.common.InformationFileUpdateStrategy;
 import deus.core.soul.difgoverning.DifGovernor;
 import deus.model.dossier.DigitalCard;
 import deus.model.dossier.DigitalCardId;
-import deus.model.sub.DistributedInformationFolder;
 import deus.model.sub.ForeignInformationFile;
 import deus.model.user.id.UserId;
 
@@ -29,8 +30,8 @@ public class DifGovernorImpl implements DifGovernor {
 
 	@Autowired
 	private FifDoRep fifDoRep;
-	
-	
+
+
 	@Override
 	public void assimilatePublishedDigitalCard(UserId residentId, UserId cpId, DigitalCard digitalCard) {
 		ForeignInformationFile foreignInformationFile = fifDoRep.getByNaturalId(cpId, residentId);
@@ -42,20 +43,20 @@ public class DifGovernorImpl implements DifGovernor {
 
 
 	@Override
-	public DigitalCard getDigitalCard(UserId residentId, DigitalCardId digitalCardId) {
-		return fifDoRep.getDigitalCardInFif(residentId, digitalCardId);
+	public List<UserId> getPublishersInDif(UserId subscriberId) {
+		return difDoRep.getPublishersInDif(subscriberId);
 	}
 
 
 	@Override
-	public DistributedInformationFolder getDistributedInformationFolder(UserId residentId) {
-		return difDoRep.getByNaturalId(residentId);
+	public List<DigitalCardId> getDigitalCardIdsInFif(UserId subscriberId, UserId publisherId) {
+		return fifDoRep.getDigitalCardsInFif(subscriberId, publisherId);
 	}
 
 
 	@Override
-	public ForeignInformationFile getForeignInformationFile(UserId residentId, UserId cpId) {
-		return fifDoRep.getByNaturalId(cpId, residentId);
+	public DigitalCard getDigitalCardInFif(UserId subscriberId, DigitalCardId digitalCardId) {
+		return fifDoRep.getDigitalCardInFif(subscriberId, digitalCardId);
 	}
 
 }

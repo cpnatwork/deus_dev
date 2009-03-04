@@ -1,7 +1,5 @@
 package deus.core.soul.subscription.impl;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -10,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.sub.DifDoRep;
 import deus.core.access.storage.api.sub.FifDoRep;
 import deus.core.access.storage.api.sub.LopDoRep;
 import deus.core.access.storage.api.sub.LopEntryDoRep;
@@ -19,7 +16,6 @@ import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.common.InformationFileUpdateStrategy;
 import deus.core.soul.subscription.Subscriber;
 import deus.model.dossier.DigitalCard;
-import deus.model.dossier.DigitalCardId;
 import deus.model.dossier.InformationFile;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.LopEntry;
@@ -44,9 +40,6 @@ public class SubscriberImpl implements Subscriber {
 
 	@Autowired
 	private FifDoRep fifDoRep;
-
-	@Autowired
-	private DifDoRep difDoRep;
 
 
 	@Resource(name = "foreignInformationFileUpdateStrategy")
@@ -118,23 +111,6 @@ public class SubscriberImpl implements Subscriber {
 	
 
 	// +++ exported to CLIENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-	@Override
-	public List<UserId> getPublishersInDif(UserId subscriberId) {
-		return difDoRep.getPublishersInDif(subscriberId);
-	}
-
-
-	@Override
-	public List<DigitalCardId> getDigitalCardIdsInFif(UserId subscriberId, UserId publisherId) {
-		return fifDoRep.getDigitalCardsInFif(subscriberId, publisherId);
-	}
-
-
-	@Override
-	public DigitalCard getDigitalCardInFif(UserId subscriberId, DigitalCardId digitalCardId) {
-		return fifDoRep.getDigitalCardInFif(subscriberId, digitalCardId);
-	}
 
 
 	// FIXME: think about returning a DTO to the frontend here

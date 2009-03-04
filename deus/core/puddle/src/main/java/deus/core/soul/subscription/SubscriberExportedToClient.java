@@ -1,9 +1,5 @@
 package deus.core.soul.subscription;
 
-import java.util.List;
-
-import deus.model.dossier.DigitalCard;
-import deus.model.dossier.DigitalCardId;
 import deus.model.sub.ListOfPublishers;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
@@ -26,19 +22,6 @@ public interface SubscriberExportedToClient {
 	public void unsubscribe(UserId subscriberId, UserId publisherId);
 
 	
-	// DATA MODEL RETRIEVING (TO BE MOVED TO ANOTHER SUBSYSTEM)
-	
-	// DATA MODEL RETRIEVING (TO BE MOVED TO ANOTHER SUBSYSTEM)
-	
-	public List<UserId> getPublishersInDif(UserId subscriberId);
-	
-
-	public List<DigitalCardId> getDigitalCardIdsInFif(UserId subscriberId, UserId publisherId);
-
-	
-	public DigitalCard getDigitalCardInFif(UserId subscriberId, DigitalCardId digitalCardId);
-
-
 	// DATA MODEL RETRIEVING
 	
 	public ListOfPublishers getListOfPublishers(UserId subscriberId);
