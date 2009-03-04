@@ -1,4 +1,4 @@
-package deus.core.soul.decisionprocessor;
+package deus.core.soul.common.decisionprocessor;
 
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.user.id.UserId;

@@ -3,8 +3,8 @@ package deus.core.soul.repatriation.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.soul.common.decisionprocessor.GenericDecisionProcessor;
 import deus.core.soul.common.pifupdate.Updater;
-import deus.core.soul.decisionprocessor.GenericDecisionProcessor;
 import deus.model.attention.decision.Contribution;
 import deus.model.user.id.UserId;
 

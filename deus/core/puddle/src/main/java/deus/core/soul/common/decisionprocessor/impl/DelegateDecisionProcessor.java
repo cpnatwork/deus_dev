@@ -1,12 +1,12 @@
-package deus.core.soul.decisionprocessor.impl;
+package deus.core.soul.common.decisionprocessor.impl;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import deus.core.soul.decisionprocessor.DecisionProcessor;
-import deus.core.soul.decisionprocessor.GenericDecisionProcessor;
+import deus.core.soul.common.decisionprocessor.DecisionProcessor;
+import deus.core.soul.common.decisionprocessor.GenericDecisionProcessor;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.DecisionType;
 import deus.model.user.id.UserId;
@@ -24,7 +24,7 @@ public class DelegateDecisionProcessor implements DecisionProcessor {
 
 
 	/* (non-Javadoc)
-	 * @see deus.core.soul.decisionprocessor.impl.DecisionProcessor#process(deus.model.attention.decision.BinaryDecisionToMake)
+	 * @see deus.core.soul.common.decisionprocessor.impl.DecisionProcessor#process(deus.model.attention.decision.BinaryDecisionToMake)
 	 */
 	@SuppressWarnings("unchecked")
 	@Override

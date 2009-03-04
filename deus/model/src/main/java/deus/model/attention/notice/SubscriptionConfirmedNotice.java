@@ -1,6 +1,5 @@
-package deus.core.soul.publisher.impl;
+package deus.model.attention.notice;
 
-import deus.model.attention.notice.PublisherInitiatedConnectionNotice;
 import deus.model.user.UserMetadata;
 
 public class SubscriptionConfirmedNotice extends PublisherInitiatedConnectionNotice {

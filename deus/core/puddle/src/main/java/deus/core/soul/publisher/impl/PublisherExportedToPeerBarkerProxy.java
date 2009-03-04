@@ -13,6 +13,8 @@ import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.model.attention.notice.Notice;
 import deus.model.attention.notice.SubscriberInitiatedTerminationNotice;
+import deus.model.attention.notice.SubscriptionAbstainedNotice;
+import deus.model.attention.notice.SubscriptionConfirmedNotice;
 import deus.model.pub.LosEntry;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
