@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import deus.core.access.transport.core.receiving.soulcallback.SubscriberExportedToPeer;
-import deus.core.access.transport.core.sending.command.BarkerCommandSender;
+import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
 import deus.model.attention.decision.PublisherOffer;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
@@ -17,9 +17,8 @@ public class PublisherOfferDecisionProcessor implements GenericDecisionProcessor
 	private SubscriberExportedToPeer subscriber;
 
 	
-	// FIXME: change to use subscriberCommandSender
 	@Autowired
-	private BarkerCommandSender barkerCommandSender;
+	private SubscriberCommandSender subscriberCommandSender;
 
 
 	@Override
@@ -32,12 +31,12 @@ public class PublisherOfferDecisionProcessor implements GenericDecisionProcessor
 		if (publisherOffer.isDecisionPositive()) {
 			subscriber.addPublisher(userId, publisherOffer.getPublisherId(), publisherMetadata);
 
-			barkerCommandSender.confirmSubscriptionOffer(userId, publisherOffer.getPublisherId());
+			subscriberCommandSender.confirmSubscriptionOffer(userId, publisherOffer.getPublisherId());
 		}
 		else {
 			// do not add observer
 
-			barkerCommandSender.repelSubscriptionOffer(userId, publisherOffer.getPublisherId());
+			subscriberCommandSender.repelSubscriptionOffer(userId, publisherOffer.getPublisherId());
 		}
 	}
 
