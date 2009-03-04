@@ -1,4 +1,4 @@
-package deus.core.soul.decisionprocessor.impl;
+package deus.core.soul.publisher.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.transport.core.receiving.soulcallback.PublisherExportedToPeer;
 import deus.core.access.transport.core.sending.command.PublisherCommandSender;
+import deus.core.soul.decisionprocessor.GenericDecisionProcessor;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;

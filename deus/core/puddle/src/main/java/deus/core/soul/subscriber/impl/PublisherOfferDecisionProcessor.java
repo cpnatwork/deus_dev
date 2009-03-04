@@ -1,10 +1,11 @@
-package deus.core.soul.decisionprocessor.impl;
+package deus.core.soul.subscriber.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import deus.core.access.transport.core.receiving.soulcallback.SubscriberExportedToPeer;
 import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
+import deus.core.soul.decisionprocessor.GenericDecisionProcessor;
 import deus.model.attention.decision.PublisherOffer;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;

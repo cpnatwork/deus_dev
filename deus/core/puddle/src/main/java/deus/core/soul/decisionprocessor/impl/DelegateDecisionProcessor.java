@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 
 import deus.core.soul.decisionprocessor.DecisionProcessor;
+import deus.core.soul.decisionprocessor.GenericDecisionProcessor;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.DecisionType;
 import deus.model.user.id.UserId;
