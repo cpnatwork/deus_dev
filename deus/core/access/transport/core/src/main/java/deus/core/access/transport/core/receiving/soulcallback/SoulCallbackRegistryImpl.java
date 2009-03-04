@@ -2,6 +2,9 @@ package deus.core.access.transport.core.receiving.soulcallback;
 
 import org.springframework.stereotype.Component;
 
+import deus.core.access.transport.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
+import deus.core.access.transport.core.receiving.soulcallback.subscription.SubscriberExportedToPeer;
+
 
 @Component("soulCallbackRegistry")
 public class SoulCallbackRegistryImpl implements SoulCallbackRegistry {

@@ -1,10 +1,9 @@
-package deus.core.soul.contribution;
+package deus.core.access.transport.core.receiving.soulcallback.contribution;
 
 import deus.model.dossier.DigitalCardId;
 import deus.model.user.id.UserId;
 
 
-// FIXME: move to transport module
 public interface ContributorExportedToPeer {
 
 	public void acknowledgeContribution(UserId contributorId, DigitalCardId digitalCardId);

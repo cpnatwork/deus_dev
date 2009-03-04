@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transport.core.receiving.soulcallback.PublisherExportedToPeer;
+import deus.core.access.transport.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
 import deus.core.soul.publication.Publisher;
 import deus.core.soul.publication.PublisherExportedToClient;
 import deus.model.dossier.DigitalCard;

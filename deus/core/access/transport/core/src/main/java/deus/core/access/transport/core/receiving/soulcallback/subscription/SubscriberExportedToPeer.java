@@ -1,4 +1,4 @@
-package deus.core.access.transport.core.receiving.soulcallback;
+package deus.core.access.transport.core.receiving.soulcallback.subscription;
 
 import deus.model.dossier.DigitalCard;
 import deus.model.user.UserMetadata;

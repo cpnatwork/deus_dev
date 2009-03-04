@@ -1,5 +1,7 @@
 package deus.core.soul.repatriationhub;
 
+import deus.core.access.transport.core.receiving.soulcallback.repatriationhub.RepatriationHubExportedToPeer;
+
 
 
 // FIXME: edit javadoc

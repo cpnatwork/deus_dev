@@ -15,9 +15,9 @@ import deus.core.access.transport.core.messages.SubscribeMessage;
 import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.messages.UnsubscribeMessage;
 import deus.core.access.transport.core.receiving.message.MessageReceiver;
-import deus.core.access.transport.core.receiving.soulcallback.PublisherExportedToPeer;
 import deus.core.access.transport.core.receiving.soulcallback.SoulCallbackRegistry;
-import deus.core.access.transport.core.receiving.soulcallback.SubscriberExportedToPeer;
+import deus.core.access.transport.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
+import deus.core.access.transport.core.receiving.soulcallback.subscription.SubscriberExportedToPeer;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 

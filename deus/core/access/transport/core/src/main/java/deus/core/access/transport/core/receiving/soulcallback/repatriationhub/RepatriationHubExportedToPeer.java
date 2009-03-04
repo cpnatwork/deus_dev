@@ -1,10 +1,9 @@
-package deus.core.soul.repatriationhub;
+package deus.core.access.transport.core.receiving.soulcallback.repatriationhub;
 
 import deus.model.dossier.DigitalCard;
 import deus.model.user.id.UserId;
 
 // FIXME: edit javadoc
-// FIXME: move to transport core module
 public interface RepatriationHubExportedToPeer {
 
 	
