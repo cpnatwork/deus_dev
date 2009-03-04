@@ -1,22 +1,18 @@
 package deus.core.soul.subscription.impl;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.sub.FifDoRep;
 import deus.core.access.storage.api.sub.LopDoRep;
 import deus.core.access.storage.api.sub.LopEntryDoRep;
 import deus.core.access.storage.api.user.UserMetadataDoRep;
 import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
-import deus.core.soul.common.InformationFileUpdateStrategy;
+import deus.core.soul.difgoverning.DifGovernor;
 import deus.core.soul.subscription.Subscriber;
 import deus.model.dossier.DigitalCard;
-import deus.model.dossier.InformationFile;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.LopEntry;
 import deus.model.sub.SubscriberSideSubscriptionState;
@@ -39,11 +35,7 @@ public class SubscriberImpl implements Subscriber {
 	private LopDoRep lopDoRep;
 
 	@Autowired
-	private FifDoRep fifDoRep;
-
-
-	@Resource(name = "foreignInformationFileUpdateStrategy")
-	private InformationFileUpdateStrategy foreignInformationFileUpdateStrategy;
+	private DifGovernor difGovernor;
 
 	@Autowired
 	private SubscriberCommandSender subscriberCommandSender;
@@ -82,10 +74,7 @@ public class SubscriberImpl implements Subscriber {
 			// FIXME: how to handle this??
 			;
 
-		InformationFile fif = fifDoRep.getByNaturalId(publisherId, subscriberId);
-		foreignInformationFileUpdateStrategy.update(fif, digitalCard);
-
-		// FIXME: store FIF by using dao.store():
+		difGovernor.assimilatePublishedDigitalCard(subscriberId, publisherId, digitalCard);
 	}
 	
 	
