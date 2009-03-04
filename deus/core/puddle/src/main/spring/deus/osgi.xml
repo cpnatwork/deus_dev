@@ -9,9 +9,9 @@
 
 	<!-- UI -->
 	
-	<osgi:service id="subscriberOsgiService" ref="subscriber" interface="deus.core.soul.subscriber.SubscriberExportedToClient" />
+	<osgi:service id="subscriberOsgiService" ref="subscriber" interface="deus.core.soul.subscription.SubscriberExportedToClient" />
 	
-	<osgi:service id="publisherOsgiService" ref="publisher" interface="deus.core.soul.publisher.PublisherExportedToClient" />
+	<osgi:service id="publisherOsgiService" ref="publisher" interface="deus.core.soul.publication.PublisherExportedToClient" />
 
 	<osgi:service id="barkerOsgiService" ref="barker" interface="deus.core.soul.barker.BarkerExportedToClient" />
 	

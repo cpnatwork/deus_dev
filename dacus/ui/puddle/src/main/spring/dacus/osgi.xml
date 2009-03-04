@@ -19,9 +19,9 @@
 
 	<!-- FROM SOUL -->
 	
-	<osgi:reference id="subscriber" interface="deus.core.soul.subscriber.SubscriberExportedToClient" />	
+	<osgi:reference id="subscriber" interface="deus.core.soul.subscription.SubscriberExportedToClient" />	
 	
-	<osgi:reference id="publisher" interface="deus.core.soul.publisher.PublisherExportedToClient" />
+	<osgi:reference id="publisher" interface="deus.core.soul.publication.PublisherExportedToClient" />
 
 	<osgi:reference id="barker" interface="deus.core.soul.barker.BarkerExportedToClient" />
 	
