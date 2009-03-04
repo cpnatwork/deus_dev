@@ -18,4 +18,7 @@ public interface FifDoRep {
 
 	public DigitalCard getDigitalCardInFif(UserId subscriberId, DigitalCardId digitalCardId);
 
+
+	public void updateEntity(UserId residentId, UserId cpId, ForeignInformationFile foreignInformationFile);
+
 }
