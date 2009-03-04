@@ -1,4 +1,4 @@
-package deus.core.soul.subscriber.impl;
+package deus.core.soul.publisher.rolesetup;
 
 import java.util.Map;
 
@@ -6,23 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.sub.LopDoRep;
+import deus.core.access.storage.api.pub.LosDoRep;
 import deus.core.soul.common.AbstractUserRoleSetupObserver;
-import deus.core.soul.subscriber.SubscriberExportedToClient;
-import deus.model.sub.ListOfPublishers;
-import deus.model.sub.LopEntry;
+import deus.core.soul.publisher.PublisherExportedToClient;
+import deus.model.pub.ListOfSubscribers;
+import deus.model.pub.LosEntry;
 import deus.model.user.UserRole;
 import deus.model.user.id.UserId;
 
 @Component
-public class SubscriberRoleSetupSubscriberObserver extends AbstractUserRoleSetupObserver {
-	
+public class CpRoleSetupPublisherObserver extends AbstractUserRoleSetupObserver {
+
 	@Autowired
-	private LopDoRep lopDoRep;
+	private LosDoRep losDoRep;
 
 	@Autowired
 	@Qualifier("target")
-	private SubscriberExportedToClient subscriber;
+	private PublisherExportedToClient publisher;
 
 
 	@Override
@@ -33,18 +33,19 @@ public class SubscriberRoleSetupSubscriberObserver extends AbstractUserRoleSetup
 
 	@Override
 	public void tearDownRole(UserId userId) {
-		ListOfPublishers lop = lopDoRep.getByNaturalId(userId);
-		for (Map.Entry<UserId, LopEntry> entry : lop.entrySet()) {
-			subscriber.unsubscribe(userId, entry.getKey());
+		ListOfSubscribers los = losDoRep.getByNaturalId(userId);
+		for (Map.Entry<UserId, LosEntry> entry : los.entrySet()) {
+			// FIXME: implement removing of all subscribers
+			// publisher.
 		}
-		
+
 		// FUTURE: destroy data objects in database for subsystem Subscriber here!
 	}
 
 
 	@Override
 	protected UserRole getUserRole() {
-		return UserRole.subscriber;
+		return UserRole.cp;
 	}
 
 }

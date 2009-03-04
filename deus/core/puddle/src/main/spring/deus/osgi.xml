@@ -15,7 +15,7 @@
 
 	<osgi:service id="barkerOsgiService" ref="barker" interface="deus.core.soul.barker.BarkerExportedToClient" />
 	
-	<osgi:service id="personalInformationEditorOsgiService" ref="personalInformationEditor" interface="deus.core.soul.pie.PersonalInformationEditor" />
+	<osgi:service id="personalInformationEditorOsgiService" ref="personalInformationEditor" interface="deus.core.soul.pifgoverning.PifGovernor" />
 		
 	
 	<!-- DAOs -->

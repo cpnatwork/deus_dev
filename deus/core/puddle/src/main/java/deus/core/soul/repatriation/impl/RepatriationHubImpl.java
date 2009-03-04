@@ -3,14 +3,12 @@ package deus.core.soul.repatriation.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.pie.PifDoRep;
 import deus.core.soul.barker.BarkerExportedToSubsystems;
-import deus.core.soul.common.pifupdate.Updater;
+import deus.core.soul.pifgoverning.PifGovernor;
 import deus.core.soul.repatriation.RepatriationHub;
 import deus.model.attention.decision.BinaryDecisionToMake;
 import deus.model.attention.decision.Contribution;
 import deus.model.dossier.DigitalCard;
-import deus.model.pie.PersonalInformationFile;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -18,11 +16,7 @@ import deus.model.user.id.UserId;
 public class RepatriationHubImpl implements RepatriationHub {
 
 	@Autowired
-	private PifDoRep pifDoRep;
-
-
-	@Autowired
-	private Updater updater;
+	private PifGovernor pifGovernor;
 
 
 	@Autowired
@@ -30,18 +24,18 @@ public class RepatriationHubImpl implements RepatriationHub {
 
 
 	@Override
-	public void accept(UserId cpId, DigitalCard contributedDigitalCard, UserId contributorId) {
-		if (!cpId.equals(contributedDigitalCard.getDigitalCardId().getCpId()))
+	public void accept(UserId cpId, DigitalCard repatriatedDigitalCard, UserId contributorId) {
+		if (!cpId.equals(repatriatedDigitalCard.getDigitalCardId().getCpId()))
 			throw new IllegalArgumentException(
-					"ID of the CP is not the ID of the user, that is handled in this contribution counter");
+					"ID of the CP is not the ID of the user, that is handled in this repatriation hub");
 
-		if (!contributorId.equals(contributedDigitalCard.getDigitalCardId().getContributorId()))
+		if (!contributorId.equals(repatriatedDigitalCard.getDigitalCardId().getContributorId()))
 			throw new IllegalArgumentException("ID of the contributor does not match the id in the digital card!");
 
 
 		if (cpId.equals(contributorId)) {
 			// if 'I' am the contributor
-			updater.commit(cpId, contributedDigitalCard);
+			pifGovernor.assimilateRepatriatedDigitalCard(cpId, repatriatedDigitalCard);
 		}
 		else {
 			// if the contributor is another person
@@ -52,20 +46,14 @@ public class RepatriationHubImpl implements RepatriationHub {
 
 			UserMetadata contributorMetadata = null;
 
-			BinaryDecisionToMake decision = new Contribution(contributorMetadata, contributedDigitalCard);
+			BinaryDecisionToMake decision = new Contribution(contributorMetadata, repatriatedDigitalCard);
 			barker.addUnnoticedAttentionElement(cpId, decision);
 		}
 	}
 
 
 	@Override
-	public PersonalInformationFile getPersonalInformationFile(UserId cpId) {
-		return pifDoRep.getByNaturalId(cpId);
-	}
-
-
-	@Override
-	public void fireAndForgetAccept(UserId cpId, DigitalCard contributedDigitalCard) {
+	public void fireAndForgetAccept(UserId cpId, DigitalCard repatriatedDigitalCard) {
 		// FIXME: implement
 		throw new UnsupportedOperationException("fireAndForgetAccept is not implemented yet");
 	}

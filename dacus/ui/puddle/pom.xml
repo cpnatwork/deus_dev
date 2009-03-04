@@ -25,7 +25,7 @@
 		deus.model.user,
 		
 		deus.core.soul, deus.core.soul.subscriber, deus.core.soul.publisher, deus.core.soul.barker,
-		deus.core.soul.pie,
+		deus.core.soul.pifgoverning,
 		
 		deus.gatekeeper.registrator, deus.gatekeeper, deus.gatekeeper.cerberus, deus.gatekeeper.registrator,
 		deus.gatekeeper.account, deus.gatekeeper.puddle,

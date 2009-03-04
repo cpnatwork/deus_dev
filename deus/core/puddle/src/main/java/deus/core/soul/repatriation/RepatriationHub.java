@@ -1,7 +1,5 @@
 package deus.core.soul.repatriation;
 
-import deus.model.pie.PersonalInformationFile;
-import deus.model.user.id.UserId;
 
 
 // FIXME: edit javadoc
@@ -17,8 +15,5 @@ import deus.model.user.id.UserId;
  * 
  */
 public interface RepatriationHub extends RepatriationHubExportedToClient, RepatriationHubExportedToPeer {
-
-	// FIXME: replace this by list of DigitalCard IDs
-	public PersonalInformationFile getPersonalInformationFile(UserId cpId);
 	
 }

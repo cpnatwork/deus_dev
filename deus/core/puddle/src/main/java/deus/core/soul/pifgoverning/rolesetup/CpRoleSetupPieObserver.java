@@ -1,4 +1,4 @@
-package deus.core.soul.pie.impl;
+package deus.core.soul.pifgoverning.rolesetup;
 
 import org.springframework.stereotype.Component;
 

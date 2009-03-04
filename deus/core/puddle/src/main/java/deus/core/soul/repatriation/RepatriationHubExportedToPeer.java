@@ -3,11 +3,12 @@ package deus.core.soul.repatriation;
 import deus.model.dossier.DigitalCard;
 import deus.model.user.id.UserId;
 
-//FIXME: edit javadoc
+// FIXME: edit javadoc
+// FIXME: move to transport core module
 public interface RepatriationHubExportedToPeer {
 
 	
-	// TODO: add to javadoc: a acknowledgement is sent
+	// TODO: add to javadoc: an acknowledgement is sent
 	
 	/**
 	 * This method is used to contribute a digital card to a foreign PIF, i.e. the contributor is not the owner of the
@@ -19,9 +20,9 @@ public interface RepatriationHubExportedToPeer {
 	 *             card, or if the ID of the contributor does not match the contributor ID in the passed digital card.
 	
 	 * 
-	 * @param contributedDigitalCard	the digital card to contribute
+	 * @param repatriatedDigitalCard	the digital card to contribute
 	 * @param contributorId		the user ID of the contributor
 	 */
-	public abstract void accept(UserId cpId, DigitalCard contributedDigitalCard, UserId contributorId);
+	public abstract void accept(UserId cpId, DigitalCard repatriatedDigitalCard, UserId contributorId);
 
 }

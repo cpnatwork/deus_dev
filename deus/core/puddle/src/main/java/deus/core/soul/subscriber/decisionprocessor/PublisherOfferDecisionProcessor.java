@@ -1,16 +1,16 @@
-package deus.core.soul.subscriber.impl;
+package deus.core.soul.subscriber.decisionprocessor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import deus.core.access.transport.core.receiving.soulcallback.SubscriberExportedToPeer;
 import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
-import deus.core.soul.common.decisionprocessor.GenericDecisionProcessor;
+import deus.core.soul.common.decisionprocessor.impl.AbstractGenericDecisionProcessor;
 import deus.model.attention.decision.PublisherOffer;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
-public class PublisherOfferDecisionProcessor implements GenericDecisionProcessor<PublisherOffer> {
+public class PublisherOfferDecisionProcessor extends AbstractGenericDecisionProcessor<PublisherOffer> {
 
 
 	@Autowired
@@ -23,10 +23,7 @@ public class PublisherOfferDecisionProcessor implements GenericDecisionProcessor
 
 
 	@Override
-	public void process(UserId userId, PublisherOffer publisherOffer) {
-		if (!publisherOffer.isDecisionMade())
-			throw new IllegalStateException("decision (" + publisherOffer + ") is not made yet");
-
+	protected void processImpl(UserId userId, PublisherOffer publisherOffer) {
 		UserMetadata publisherMetadata = publisherOffer.getPublisherMetadata();
 
 		if (publisherOffer.isDecisionPositive()) {

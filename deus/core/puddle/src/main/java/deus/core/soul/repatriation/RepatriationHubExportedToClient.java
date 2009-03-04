@@ -17,11 +17,11 @@ public interface RepatriationHubExportedToClient {
 	 *             card, or if the ID of the contributor does not match the contributor ID in the passed digital card.
 	
 	 * 
-	 * @param contributedDigitalCard	the digital card to contribute
+	 * @param repatriatedDigitalCard	the digital card to contribute
 	 * @param contributorId		the user ID of the contributor
 	 */
 	@Deprecated
-	public abstract void fireAndForgetAccept(UserId cpId, DigitalCard contributedDigitalCard);
+	public abstract void fireAndForgetAccept(UserId cpId, DigitalCard repatriatedDigitalCard);
 
 	
 }

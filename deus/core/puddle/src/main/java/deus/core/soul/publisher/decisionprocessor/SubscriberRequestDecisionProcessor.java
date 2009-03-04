@@ -1,4 +1,4 @@
-package deus.core.soul.publisher.impl;
+package deus.core.soul.publisher.decisionprocessor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.transport.core.receiving.soulcallback.PublisherExportedToPeer;
 import deus.core.access.transport.core.sending.command.PublisherCommandSender;
-import deus.core.soul.common.decisionprocessor.GenericDecisionProcessor;
+import deus.core.soul.common.decisionprocessor.impl.AbstractGenericDecisionProcessor;
 import deus.model.attention.decision.SubscriberRequest;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 @Component
-public class SubscriberRequestDecisionProcessor implements GenericDecisionProcessor<SubscriberRequest> {
+public class SubscriberRequestDecisionProcessor extends AbstractGenericDecisionProcessor<SubscriberRequest> {
 
 	@Autowired
 	@Qualifier("target")
@@ -23,10 +23,7 @@ public class SubscriberRequestDecisionProcessor implements GenericDecisionProces
 
 
 	@Override
-	public void process(UserId userId, SubscriberRequest subscriberRequest) {
-		if (!subscriberRequest.isDecisionMade())
-			throw new IllegalStateException("decision (" + subscriberRequest + ") is not made yet");
-		
+	protected void processImpl(UserId userId, SubscriberRequest subscriberRequest) {
 		UserMetadata subscriberMetadata = subscriberRequest.getSubscriberMetadata();
 				
 		if (subscriberRequest.isDecisionPositive()) {
