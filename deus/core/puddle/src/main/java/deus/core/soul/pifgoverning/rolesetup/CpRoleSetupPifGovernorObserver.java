@@ -7,7 +7,7 @@ import deus.model.user.UserRole;
 import deus.model.user.id.UserId;
 
 @Component
-public class CpRoleSetupPieObserver extends AbstractUserRoleSetupObserver {
+public class CpRoleSetupPifGovernorObserver extends AbstractUserRoleSetupObserver {
 
 	@Override
 	protected UserRole getUserRole() {
