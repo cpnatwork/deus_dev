@@ -23,6 +23,7 @@ import deus.model.dossier.DigitalCardId;
 import deus.model.dossier.InformationFile;
 import deus.model.sub.ListOfPublishers;
 import deus.model.sub.LopEntry;
+import deus.model.sub.SubscriberSideSubscriptionState;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
