@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.access.transport.core.messages.TransportMessage;
-import deus.core.access.transport.core.soul.discovery.TransportProtocolDiscoveryStrategy;
+import deus.core.access.transport.core.soul.discovery.TransportProtocolNegotiationStrategy;
 import deus.core.access.transport.core.soul.mapper.UserIdMapper;
 import deus.core.access.transport.core.soul.protocol.MessageSender;
 import deus.core.access.transport.core.soul.protocol.TransportId;
@@ -21,7 +21,7 @@ import deus.model.user.id.UserUrl;
 public abstract class AbstractCommandSenderTest {
 
 	@Autowired
-	protected TransportProtocolDiscoveryStrategy transportProtocolDiscoveryStrategy;
+	protected TransportProtocolNegotiationStrategy transportProtocolNegotiationStrategy;
 	
 	@Autowired
 	private ExportedTransportProtocolRegistry transportProtocolRegistry;

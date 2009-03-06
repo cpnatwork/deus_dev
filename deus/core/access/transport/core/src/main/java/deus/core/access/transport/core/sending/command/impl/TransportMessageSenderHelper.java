@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.transport.core.messages.TransportMessage;
 import deus.core.access.transport.core.sending.message.MessageSenderRegistry;
-import deus.core.access.transport.core.soul.discovery.TransportProtocolDiscoveryStrategy;
+import deus.core.access.transport.core.soul.discovery.TransportProtocolNegotiationStrategy;
 import deus.core.access.transport.core.soul.mapper.UserIdMapper;
 import deus.core.access.transport.core.soul.protocol.MessageSender;
 import deus.core.access.transport.core.soul.protocolregistry.TransportProtocolRegistry;
@@ -15,7 +15,7 @@ import deus.model.user.id.UserId;
 public class TransportMessageSenderHelper {
 
 	@Autowired
-	private TransportProtocolDiscoveryStrategy transportProtocolDiscoveryStrategy;
+	private TransportProtocolNegotiationStrategy transportProtocolNegotiationStrategy;
 
 	@Autowired
 	private TransportProtocolRegistry transportProtocolRegistry;
@@ -26,7 +26,7 @@ public class TransportMessageSenderHelper {
 
 	public void send(UserId receiverId, UserId senderId, TransportMessage transportMessage) {
 		// agree on transport protocol
-		String transportProtocolId = transportProtocolDiscoveryStrategy.agreeOnTransportProtocol(receiverId);
+		String transportProtocolId = transportProtocolNegotiationStrategy.negotiateTransportProtocol(receiverId);
 
 		UserIdMapper userIdMapper = transportProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId).getUserIdMapper();
 		
