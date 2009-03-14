@@ -1,5 +1,6 @@
-package deus.core.access.transport.core.messages;
+package deus.core.access.transport.core.messages.publication;
 
+import deus.core.access.transport.core.messages.TransportMessage;
 import deus.model.dossier.DigitalCard;
 
 /**

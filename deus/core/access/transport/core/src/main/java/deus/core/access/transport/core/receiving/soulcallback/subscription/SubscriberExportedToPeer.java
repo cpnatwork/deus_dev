@@ -24,9 +24,10 @@ public interface SubscriberExportedToPeer {
 	
 	// USE CASE: subscriber initiated connection
 
+	// FIXME: rename this to subscriptionRequestGranted
 	public void noticeSubscriptionRequestGranted(UserId subscriberId, UserId publisherId);
 
-
+	// FIXME: rename this to subscriptionRequestDenied
 	public void noticeSubscriptionRequestDenied(UserId subscriberId, UserId publisherId);
 	
 

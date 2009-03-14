@@ -1,4 +1,4 @@
-package deus.core.access.transport.core.messages;
+package deus.core.access.transport.core.messages.connection.establishment.subscribe;
 
 import deus.model.user.UserMetadata;
 
@@ -8,7 +8,7 @@ import deus.model.user.UserMetadata;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-public final class RequestSubscriptionMessage extends SubscribeMessage {
+public final class RequestSubscriptionMessage extends SubscribeToPublisherMessage {
 
 	private final UserMetadata subscriberMetadata;
 

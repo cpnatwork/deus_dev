@@ -43,7 +43,9 @@ public interface PublisherExportedToPeer {
 	
 	// USE CASE: publisher initiated connection
 	
+	// FIXME: rename this to subscriptionOfferConfirmed
 	public abstract void subscriptionConfirmed(UserId publisherId, UserId subscriberId);
 	
+	// FIXME: rename this to subscriptionOfferRepelled
 	public abstract void subscriptionAbstained(UserId publisherId, UserId subscriberId);
 }

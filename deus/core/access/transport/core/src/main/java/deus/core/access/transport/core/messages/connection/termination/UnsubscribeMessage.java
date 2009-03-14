@@ -1,4 +1,6 @@
-package deus.core.access.transport.core.messages;
+package deus.core.access.transport.core.messages.connection.termination;
+
+import deus.core.access.transport.core.messages.TransportMessage;
 
 
 /**

@@ -3,17 +3,17 @@ package deus.core.access.transport.core.receiving.message.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transport.core.messages.RepelSubscriptionOfferNoticeMessage;
-import deus.core.access.transport.core.messages.CancelSubscriptionMessage;
-import deus.core.access.transport.core.messages.ConfirmSubscriptionOfferNoticeMessage;
-import deus.core.access.transport.core.messages.DenySubscriptionRequestNoticeMessage;
-import deus.core.access.transport.core.messages.GrantSubscriptionRequestNoticeMessage;
-import deus.core.access.transport.core.messages.InviteSubscriberMessage;
-import deus.core.access.transport.core.messages.OfferSubscriptionMessage;
-import deus.core.access.transport.core.messages.RequestSubscriptionMessage;
-import deus.core.access.transport.core.messages.SubscribeMessage;
 import deus.core.access.transport.core.messages.TransportMessage;
-import deus.core.access.transport.core.messages.UnsubscribeMessage;
+import deus.core.access.transport.core.messages.connection.establishment.invite.ConfirmSubscriptionOfferNoticeMessage;
+import deus.core.access.transport.core.messages.connection.establishment.invite.InviteSubscriberMessage;
+import deus.core.access.transport.core.messages.connection.establishment.invite.OfferSubscriptionMessage;
+import deus.core.access.transport.core.messages.connection.establishment.invite.RepelSubscriptionOfferNoticeMessage;
+import deus.core.access.transport.core.messages.connection.establishment.subscribe.DenySubscriptionRequestNoticeMessage;
+import deus.core.access.transport.core.messages.connection.establishment.subscribe.GrantSubscriptionRequestNoticeMessage;
+import deus.core.access.transport.core.messages.connection.establishment.subscribe.RequestSubscriptionMessage;
+import deus.core.access.transport.core.messages.connection.establishment.subscribe.SubscribeToPublisherMessage;
+import deus.core.access.transport.core.messages.connection.termination.CancelSubscriptionMessage;
+import deus.core.access.transport.core.messages.connection.termination.UnsubscribeMessage;
 import deus.core.access.transport.core.receiving.message.MessageReceiver;
 import deus.core.access.transport.core.receiving.soulcallback.SoulCallbackRegistry;
 import deus.core.access.transport.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
@@ -38,7 +38,7 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 		SubscriberExportedToPeer subscriber = registry.getSubscriber();
 
 		// USE CASE: SUBSCRIBE
-		if (message instanceof SubscribeMessage) {
+		if (message instanceof SubscribeToPublisherMessage) {
 			// here: role publisher
 			if (message instanceof RequestSubscriptionMessage) {
 				UserMetadata senderMetadata = ((RequestSubscriptionMessage) message).getSubscriberMetadata();

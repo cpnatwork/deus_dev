@@ -3,12 +3,12 @@ package deus.core.access.transport.core.sending.command.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transport.core.messages.CancelSubscriptionMessage;
-import deus.core.access.transport.core.messages.DenySubscriptionRequestNoticeMessage;
-import deus.core.access.transport.core.messages.GrantSubscriptionRequestNoticeMessage;
-import deus.core.access.transport.core.messages.OfferSubscriptionMessage;
 import deus.core.access.transport.core.messages.TransportMessage;
-import deus.core.access.transport.core.messages.UpdateMessage;
+import deus.core.access.transport.core.messages.connection.establishment.invite.OfferSubscriptionMessage;
+import deus.core.access.transport.core.messages.connection.establishment.subscribe.DenySubscriptionRequestNoticeMessage;
+import deus.core.access.transport.core.messages.connection.establishment.subscribe.GrantSubscriptionRequestNoticeMessage;
+import deus.core.access.transport.core.messages.connection.termination.CancelSubscriptionMessage;
+import deus.core.access.transport.core.messages.publication.UpdateMessage;
 import deus.core.access.transport.core.sending.command.PublisherCommandSender;
 import deus.model.dossier.DigitalCard;
 import deus.model.user.UserMetadata;

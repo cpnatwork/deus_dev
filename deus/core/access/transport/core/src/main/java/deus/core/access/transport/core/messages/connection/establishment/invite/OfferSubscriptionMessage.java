@@ -1,4 +1,4 @@
-package deus.core.access.transport.core.messages;
+package deus.core.access.transport.core.messages.connection.establishment.invite;
 
 import deus.model.user.UserMetadata;
 

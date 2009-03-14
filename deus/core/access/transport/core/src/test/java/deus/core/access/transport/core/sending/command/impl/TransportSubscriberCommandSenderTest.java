@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.access.transport.core.messages.RequestSubscriptionMessage;
 import deus.core.access.transport.core.messages.TransportMessage;
-import deus.core.access.transport.core.messages.UnsubscribeMessage;
+import deus.core.access.transport.core.messages.connection.establishment.subscribe.RequestSubscriptionMessage;
+import deus.core.access.transport.core.messages.connection.termination.UnsubscribeMessage;
 import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
 import deus.model.dossier.proj.party.Gender;
 import deus.model.user.UserMetadata;
