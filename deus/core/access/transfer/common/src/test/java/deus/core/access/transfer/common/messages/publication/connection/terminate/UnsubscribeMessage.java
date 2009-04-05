@@ -1,6 +1,6 @@
-package deus.core.access.transfer.core.messages.publication.connection.terminate;
+package deus.core.access.transfer.common.messages.publication.connection.terminate;
 
-import deus.core.access.transfer.core.messages.TransferMessage;
+import deus.core.access.transfer.common.messages.TransferMessage;
 
 
 /**

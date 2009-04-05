@@ -3,11 +3,11 @@ package deus.core.access.transfer.core.sending.command.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.messages.TransferMessage;
-import deus.core.access.transfer.core.messages.publication.connection.establish.invite.ConfirmSubscriptionOfferNoticeMessage;
-import deus.core.access.transfer.core.messages.publication.connection.establish.invite.RepelSubscriptionOfferNoticeMessage;
-import deus.core.access.transfer.core.messages.publication.connection.establish.subscribe.RequestSubscriptionMessage;
-import deus.core.access.transfer.core.messages.publication.connection.terminate.UnsubscribeMessage;
+import deus.core.access.transfer.common.messages.TransferMessage;
+import deus.core.access.transfer.common.messages.publication.connection.establish.invite.ConfirmSubscriptionOfferNoticeMessage;
+import deus.core.access.transfer.common.messages.publication.connection.establish.invite.RepelSubscriptionOfferNoticeMessage;
+import deus.core.access.transfer.common.messages.publication.connection.establish.subscribe.RequestSubscriptionMessage;
+import deus.core.access.transfer.common.messages.publication.connection.terminate.UnsubscribeMessage;
 import deus.core.access.transfer.core.sending.command.SubscriberCommandSender;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;

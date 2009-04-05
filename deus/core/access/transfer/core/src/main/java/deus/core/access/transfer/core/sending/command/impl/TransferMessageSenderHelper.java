@@ -3,7 +3,7 @@ package deus.core.access.transfer.core.sending.command.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.messages.TransferMessage;
+import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.core.access.transfer.core.sending.message.MessageSenderRegistry;
 import deus.core.access.transfer.core.soul.discovery.TransferProtocolNegotiationStrategy;
 import deus.core.access.transfer.core.soul.mapper.UserIdMapper;

@@ -5,7 +5,7 @@ import org.jivesoftware.smack.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.messages.TransferMessage;
+import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransferId;
 import deus.core.access.transfer.plugins.xmpp.receiving.XmppMessageReceiver;
 

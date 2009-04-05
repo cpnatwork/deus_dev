@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.access.transfer.core.messages.TransferMessage;
+import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
 import deus.core.access.transfer.core.soul.protocol.MessageSender;
 import deus.core.access.transfer.core.soul.protocol.TransferId;

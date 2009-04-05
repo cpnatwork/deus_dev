@@ -1,4 +1,4 @@
-package deus.core.access.transfer.core.messages;
+package deus.core.access.transfer.common.messages;
 
 import deus.core.access.transfer.core.soul.protocol.TransferId;
 import deus.model.user.id.UserId;

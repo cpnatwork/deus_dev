@@ -1,4 +1,4 @@
-package deus.core.access.transfer.core.messages.publication.connection.establish.subscribe;
+package deus.core.access.transfer.common.messages.publication.connection.establish.subscribe;
 
 /**
  * Command, issued by the publisher to deny a subscription request.

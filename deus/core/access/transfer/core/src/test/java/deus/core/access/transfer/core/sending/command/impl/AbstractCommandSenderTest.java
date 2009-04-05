@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import deus.core.access.transfer.core.messages.TransferMessage;
+import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.core.access.transfer.core.soul.discovery.TransferProtocolNegotiationStrategy;
 import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
 import deus.core.access.transfer.core.soul.protocol.MessageSender;

@@ -1,6 +1,6 @@
-package deus.core.access.transfer.core.messages.publication;
+package deus.core.access.transfer.common.messages.publication;
 
-import deus.core.access.transfer.core.messages.TransferMessage;
+import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.model.dossier.DigitalCard;
 
 /**

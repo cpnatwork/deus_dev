@@ -1,6 +1,6 @@
-package deus.core.access.transfer.core.messages.publication.connection.establish.subscribe;
+package deus.core.access.transfer.common.messages.publication.connection.establish.subscribe;
 
-import deus.core.access.transfer.core.messages.TransferMessage;
+import deus.core.access.transfer.common.messages.TransferMessage;
 
 /**
  * Superclass of all commands, belonging to the "subscribe" use case.

@@ -1,6 +1,6 @@
 package deus.core.access.transfer.core.receiving.message;
 
-import deus.core.access.transfer.core.messages.TransferMessage;
+import deus.core.access.transfer.common.messages.TransferMessage;
 
 public interface MessageReceiver {
 
