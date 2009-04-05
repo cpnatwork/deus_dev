@@ -116,6 +116,14 @@
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
+			
+			
+			<dependency>
+				<groupId>inf6.promed</groupId>
+				<artifactId>deus-core-soul-barker</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
 		
 			<dependency>
 				<groupId>inf6.promed</groupId>
