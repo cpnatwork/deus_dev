@@ -7,7 +7,7 @@ import org.jivesoftware.smack.packet.Packet;
 
 import deus.core.access.transfer.core.messages.TransferMessage;
 import deus.core.access.transfer.core.messages.publication.UpdateMessage;
-import deus.core.access.transfer.plugins.xmpp.FIFChange;
+import deus.core.access.transfer.plugins.xmpp.PatchPacket;
 import deus.core.access.transfer.plugins.xmpp.receiving.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
 import deus.core.access.transfer.plugins.xmpp.util.PacketPrinter;
 import deus.model.dossier.DigitalCard;
@@ -16,7 +16,7 @@ public class UpdatePacketListener extends UserMetadataParsingFilteredPacketListe
 
 	@Override
 	public PacketFilter getFilter() {
-		return new PacketTypeFilter(FIFChange.class);
+		return new PacketTypeFilter(PatchPacket.class);
 	}
 
 
@@ -30,7 +30,7 @@ public class UpdatePacketListener extends UserMetadataParsingFilteredPacketListe
 		
 		IQ iq = (IQ) packet;
 		// TODO: do checks
-		FIFChange fifChange = (FIFChange) iq;
+		PatchPacket fifChange = (PatchPacket) iq;
 		String xml = fifChange.getChildElementXML();
 
 		DigitalCard digitalCard = null;

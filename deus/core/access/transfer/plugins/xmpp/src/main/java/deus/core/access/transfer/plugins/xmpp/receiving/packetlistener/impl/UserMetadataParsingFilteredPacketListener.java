@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.transfer.core.messages.TransferMessage;
-import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransportId;
+import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransferId;
 import deus.core.access.transfer.plugins.xmpp.receiving.XmppMessageReceiver;
 
 @Component
@@ -16,20 +16,20 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 	protected XmppMessageReceiver messageReceiver;
 
 
-	protected XmppTransportId parseXmppTransportId(String xmppTransportId) {
+	protected XmppTransferId parseXmppTransportId(String xmppTransportId) {
 		if(xmppTransportId.isEmpty())
 			throw new IllegalStateException("xmpp transport id to parse is empty");
 		String username = StringUtils.parseName(xmppTransportId);
 		String server = StringUtils.parseServer(xmppTransportId);
-		return new XmppTransportId(username, server);
+		return new XmppTransferId(username, server);
 	}
 	
 	
 	protected void receiveCommand(TransferMessage command, Packet packet) {
 		//UserMetadata senderMetadata = parseFromUserMetadata(packet);
 		
-		XmppTransportId senderJid = parseXmppTransportId(packet.getFrom());
-		XmppTransportId receiverJid = parseXmppTransportId(packet.getTo());
+		XmppTransferId senderJid = parseXmppTransportId(packet.getFrom());
+		XmppTransferId receiverJid = parseXmppTransportId(packet.getTo());
 		
 		// FIXME: add sender ID here
 		// FIXME: add receiver ID here

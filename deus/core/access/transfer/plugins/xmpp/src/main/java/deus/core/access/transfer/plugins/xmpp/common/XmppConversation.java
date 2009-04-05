@@ -5,7 +5,7 @@ import org.jivesoftware.smack.Roster;
 import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.packet.Packet;
 
-import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransportId;
+import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransferId;
 
 
 public interface XmppConversation {
@@ -31,7 +31,7 @@ public interface XmppConversation {
 	public abstract void clearRoster();
 
 
-	public abstract void sendPacket(Packet packet, XmppTransportId receiver);
+	public abstract void sendPacket(Packet packet, XmppTransferId receiver);
 
 
 	public abstract void addPacketListener(PacketListener packetListener, PacketFilter packetFilter);

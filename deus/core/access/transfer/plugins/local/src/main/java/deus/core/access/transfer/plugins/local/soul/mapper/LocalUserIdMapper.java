@@ -2,7 +2,7 @@ package deus.core.access.transfer.plugins.local.soul.mapper;
 
 import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
 import deus.core.access.transfer.core.soul.protocol.TransferId;
-import deus.core.access.transfer.plugins.local.soul.protocol.LocalTransportId;
+import deus.core.access.transfer.plugins.local.soul.protocol.LocalTransferId;
 import deus.model.user.id.UserId;
 
 /**
@@ -15,7 +15,7 @@ public class LocalUserIdMapper implements UserIdMapper {
 
 	@Override
 	public TransferId resolveLocal(UserId userId) {
-		return new LocalTransportId(userId.getUsername() + "/local");
+		return new LocalTransferId(userId.getUsername() + "/local");
 	}
 
 
@@ -24,7 +24,7 @@ public class LocalUserIdMapper implements UserIdMapper {
 		// FIXME: Implement this by using discovery
 		// it should stay here, but maybe use discovery helper classes from transport-core
 		
-		return new LocalTransportId(userId.getUsername() + "/local");
+		return new LocalTransferId(userId.getUsername() + "/local");
 	}
 
 }

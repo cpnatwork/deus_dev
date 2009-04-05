@@ -1,4 +1,4 @@
-package deus.core.access.transfer.plugins.xmpp.core;
+package deus.core.access.transfer.plugins.local.soul;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -10,24 +10,24 @@ import deus.core.access.transfer.core.soul.protocol.TransferProtocol;
 import deus.core.access.transfer.core.soul.protocolregistry.ExportedTransferProtocolRegistry;
 
 @Component
-public class RegisterTransportProtocol {
+public class RegisterTransferProtocol {
 
 	@Autowired
-	private ExportedTransferProtocolRegistry transportProtocolRegistry;
+	private ExportedTransferProtocolRegistry registry;
 
 	@Autowired
-	private TransferProtocol transferProtocol;
+	private TransferProtocol loopbackProtocol;
 
 	
 	@PostConstruct
 	public void register() {
-		transportProtocolRegistry.registerTransportProtocol(transferProtocol);
+		registry.registerTransportProtocol(loopbackProtocol);
 	}
 
 
 	@PreDestroy
 	public void unregister() {
-		transportProtocolRegistry.unregisterTransportProtocol(transferProtocol.getId());
+		registry.unregisterTransportProtocol(loopbackProtocol.getId());
 	}
 
 }

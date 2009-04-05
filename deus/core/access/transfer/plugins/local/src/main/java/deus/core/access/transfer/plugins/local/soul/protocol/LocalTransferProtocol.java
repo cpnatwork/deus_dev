@@ -4,14 +4,14 @@ import javax.annotation.Resource;
 
 import deus.core.access.transfer.core.soul.protocol.AbstractTransferProtocol;
 
-public class LocalTransportProtocol extends AbstractTransferProtocol {
+public class LocalTransferProtocol extends AbstractTransferProtocol {
 
-	@Resource(name="transportProtocolId")
-	private String transportProtocolId;
+	@Resource(name="transferProtocolId")
+	private String transferProtocolId;
 	
 	@Override
 	public String getId() {
-		return transportProtocolId;
+		return transferProtocolId;
 	}
 
 }

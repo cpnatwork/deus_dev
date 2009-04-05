@@ -2,17 +2,17 @@ package deus.core.access.transfer.plugins.xmpp.core.protocol;
 
 import deus.core.access.transfer.core.soul.protocol.TransferId;
 
-public class XmppTransportId implements TransferId {
+public class XmppTransferId implements TransferId {
 
 	private String xmppUsername;
 	private String xmppServer;
 
 
-	public XmppTransportId() {
+	public XmppTransferId() {
 	}
 
 
-	public XmppTransportId(String xmppUsername, String xmppServer) {
+	public XmppTransferId(String xmppUsername, String xmppServer) {
 		super();
 		this.xmppUsername = xmppUsername;
 		this.xmppServer = xmppServer;
@@ -70,7 +70,7 @@ public class XmppTransportId implements TransferId {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		XmppTransportId other = (XmppTransportId) obj;
+		XmppTransferId other = (XmppTransferId) obj;
 		if (xmppServer == null) {
 			if (other.xmppServer != null)
 				return false;

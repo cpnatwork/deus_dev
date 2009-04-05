@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
 import deus.core.access.transfer.core.soul.protocol.TransferId;
 import deus.core.access.transfer.plugins.xmpp.common.XmppServerConnectionConfiguration;
-import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransportId;
+import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransferId;
 import deus.model.user.id.UserId;
 
 public class XmppUserIdMapper implements UserIdMapper {
@@ -15,7 +15,7 @@ public class XmppUserIdMapper implements UserIdMapper {
 	
 	@Override
 	public TransferId resolveLocal(UserId userId) {
-		return new XmppTransportId(userId.getUsername(), xmppServerConnectionConfiguration.getLocalXmppServerAddress());
+		return new XmppTransferId(userId.getUsername(), xmppServerConnectionConfiguration.getLocalXmppServerAddress());
 	}
 
 

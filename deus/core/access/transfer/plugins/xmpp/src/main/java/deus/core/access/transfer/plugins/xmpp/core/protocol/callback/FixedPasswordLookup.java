@@ -1,6 +1,6 @@
 package deus.core.access.transfer.plugins.xmpp.core.protocol.callback;
 
-import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransportId;
+import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransferId;
 
 public class FixedPasswordLookup implements XmppPasswordLookup {
 
@@ -14,7 +14,7 @@ public class FixedPasswordLookup implements XmppPasswordLookup {
 
 
 	@Override
-	public String getPassword(XmppTransportId transportId) {
+	public String getPassword(XmppTransferId transportId) {
 		return password;
 	}
 

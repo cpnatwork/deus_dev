@@ -15,7 +15,7 @@ import deus.core.access.transfer.core.soul.protocol.MessageSender;
 import deus.core.access.transfer.plugins.xmpp.common.XmppConfiguration;
 import deus.core.access.transfer.plugins.xmpp.common.XmppConversation;
 import deus.core.access.transfer.plugins.xmpp.connectionstate.XmppConnectionState;
-import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransportId;
+import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransferId;
 
 @Component
 public class XmppMessageSender implements MessageSender {
@@ -28,8 +28,8 @@ public class XmppMessageSender implements MessageSender {
 	
 	@Override
 	public void send(TransferMessage message) {
-		XmppTransportId senderJid = (XmppTransportId)message.getSenderTid();
-		XmppTransportId receiverJid = (XmppTransportId)message.getReceiverTid();
+		XmppTransferId senderJid = (XmppTransferId)message.getSenderTid();
+		XmppTransferId receiverJid = (XmppTransferId)message.getReceiverTid();
 		
 		XmppConnectionState state = (XmppConnectionState)connectionStateRegistry.getConnectionState(senderJid);
 		if(!state.isConnectionEstablished())

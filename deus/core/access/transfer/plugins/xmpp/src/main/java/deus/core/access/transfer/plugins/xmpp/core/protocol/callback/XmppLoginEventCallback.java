@@ -9,7 +9,7 @@ import deus.core.access.transfer.plugins.xmpp.common.FilteredPacketListener;
 import deus.core.access.transfer.plugins.xmpp.common.XmppConversation;
 import deus.core.access.transfer.plugins.xmpp.common.XmppNetwork;
 import deus.core.access.transfer.plugins.xmpp.connectionstate.XmppConnectionState;
-import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransportId;
+import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransferId;
 import deus.core.access.transfer.plugins.xmpp.receiving.packetlistener.SubscribePacketListener;
 import deus.core.access.transfer.plugins.xmpp.receiving.packetlistener.UnsubscribePacketListener;
 import deus.core.access.transfer.plugins.xmpp.receiving.packetlistener.UpdatePacketListener;
@@ -28,8 +28,8 @@ public class XmppLoginEventCallback implements LoginEventCallback {
 
 	@Override
 	public void loggedIn(TransferId transferId) {
-		String password = xmppPasswordLookup.getPassword((XmppTransportId)transferId);
-		XmppConversation xmppConversation = xmppNetwork.createConversation((XmppTransportId)transferId, password);
+		String password = xmppPasswordLookup.getPassword((XmppTransferId)transferId);
+		XmppConversation xmppConversation = xmppNetwork.createConversation((XmppTransferId)transferId, password);
 
 		// CONNECT
 		xmppConversation.connect();

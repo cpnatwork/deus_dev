@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.transfer.plugins.xmpp.common.impl.XmppConversationImpl;
-import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransportId;
+import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransferId;
 
 
 /**
@@ -23,16 +23,16 @@ public class XmppNetwork {
 	private XmppServerConnectionConfiguration configuration;
 
 
-	public XmppConversation createConversation(XmppTransportId xmppTransportId, String password) {
+	public XmppConversation createConversation(XmppTransferId xmppTransferId, String password) {
 		// connect to the XMPP account of the informationConsumer.
-		ConnectionConfiguration connectionConfiguration = new ConnectionConfiguration(xmppTransportId.getXmppServer());
+		ConnectionConfiguration connectionConfiguration = new ConnectionConfiguration(xmppTransferId.getXmppServer());
 		connectionConfiguration.setCompressionEnabled(configuration.isCompression());
 		connectionConfiguration.setSASLAuthenticationEnabled(configuration.isSaslAuthentication());
 		connectionConfiguration.setSecurityMode(configuration.getSecurityMode());
 
 		XMPPConnection connection = new XMPPConnection(connectionConfiguration);
 
-		XmppConversation xmppConversation = new XmppConversationImpl(connection, xmppTransportId, password);
+		XmppConversation xmppConversation = new XmppConversationImpl(connection, xmppTransferId, password);
 		return xmppConversation;
 	}
 

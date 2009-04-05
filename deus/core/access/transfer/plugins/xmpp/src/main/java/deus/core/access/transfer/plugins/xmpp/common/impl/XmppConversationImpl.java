@@ -11,21 +11,21 @@ import org.jivesoftware.smack.packet.Packet;
 
 import deus.core.access.transfer.plugins.xmpp.common.FilteredPacketListener;
 import deus.core.access.transfer.plugins.xmpp.common.XmppConversation;
-import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransportId;
+import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransferId;
 
 // TODO: think about synchronization issues (e.g. with adding/removing of packet listeners)
 public class XmppConversationImpl implements XmppConversation {
 
 	private final XMPPConnection connection;
-	private final XmppTransportId xmppTransportId;
+	private final XmppTransferId xmppTransferId;
 	private final String password;
 
 	private PacketListenerManager packetListenerManager;
 
 
-	public XmppConversationImpl(XMPPConnection connection, XmppTransportId xmppTransportId, String password) {
+	public XmppConversationImpl(XMPPConnection connection, XmppTransferId xmppTransferId, String password) {
 		this.connection = connection;
-		this.xmppTransportId = xmppTransportId;
+		this.xmppTransferId = xmppTransferId;
 		this.password = password;
 
 		this.packetListenerManager = new PacketListenerManager(connection);
@@ -39,7 +39,7 @@ public class XmppConversationImpl implements XmppConversation {
 		}
 		catch (XMPPException e) {
 			// if the informationConsumer XMPP server is not available, something fatal went wrong!
-			throw new RuntimeException("the local XMPP server of the user " + xmppTransportId + " is not available", e);
+			throw new RuntimeException("the local XMPP server of the user " + xmppTransferId + " is not available", e);
 		}
 	}
 
@@ -52,7 +52,7 @@ public class XmppConversationImpl implements XmppConversation {
 
 	private void assertIsConnected() throws IllegalStateException {
 		if (!isConnected())
-			throw new IllegalStateException("Not connected to XMPP account " + xmppTransportId + " yet!");
+			throw new IllegalStateException("Not connected to XMPP account " + xmppTransferId + " yet!");
 	}
 
 
@@ -61,14 +61,14 @@ public class XmppConversationImpl implements XmppConversation {
 		assertIsConnected();
 
 		try {
-			connection.login(xmppTransportId.getXmppUsername(), password);
+			connection.login(xmppTransferId.getXmppUsername(), password);
 
 			// TODO: remove again and think about a better place for this (roster, subscriptionmode)
 			getRoster().setSubscriptionMode(SubscriptionMode.manual);
 		}
 		catch (XMPPException e) {
 			// if the the user cannot be logged in his local XMPP server, something fatal went wrong!
-			throw new RuntimeException("the XMPP user " + xmppTransportId
+			throw new RuntimeException("the XMPP user " + xmppTransferId
 					+ " cannot be logged in his local XMPP server", e);
 		}
 	}
@@ -82,7 +82,7 @@ public class XmppConversationImpl implements XmppConversation {
 
 	private void assertIsLoggedIn() throws IllegalStateException {
 		if (!isLoggedIn())
-			throw new IllegalStateException("Not logged into XMPP account " + xmppTransportId + " yet!");
+			throw new IllegalStateException("Not logged into XMPP account " + xmppTransferId + " yet!");
 	}
 
 
@@ -140,11 +140,11 @@ public class XmppConversationImpl implements XmppConversation {
 	 * deus.core.access.storage.api.user.model.id.XmppUserId)
 	 */
 	@Override
-	public void sendPacket(Packet packet, XmppTransportId receiver) {
+	public void sendPacket(Packet packet, XmppTransferId receiver) {
 		assertIsLoggedIn();
 
 		packet.setTo(receiver.toString());
-		packet.setFrom(xmppTransportId.toString());
+		packet.setFrom(xmppTransferId.toString());
 		connection.sendPacket(packet);
 	}
 
