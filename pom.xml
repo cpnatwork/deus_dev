@@ -5,7 +5,7 @@
 	<artifactId>prototype-pom</artifactId>
 	<version>0.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>DEUS/DACUS prototype pom</name>
+	<name>DEUS root pom</name>
 
 
 	<modules>
@@ -35,6 +35,8 @@
 			<id>siflramp</id>
 			<name>Florian Rampp</name>
 			<email>Florian.Rampp@informatik.stud.uni-erlangen.de</email>
+			<organization>Uni Erlangen - Informatik 6</organization>
+			<organizationUrl>http://www6.informatik.uni-erlangen.de/</organizationUrl>
 		</developer>
 	</developers>
 
@@ -121,6 +123,7 @@
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
+	
 	
 	
 			<dependency>
@@ -268,6 +271,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.6</version>
 				<configuration>
 					<wtpversion>2.0</wtpversion>
 					<additionalProjectFacets>
@@ -275,15 +279,9 @@
 					</additionalProjectFacets>
 					<additionalBuildcommands>
 						<buildcommand>org.eclipse.wst.common.project.facet.core.builder</buildcommand>
-						<!--
-							since mvn eclipse:m2eclipse which should add m2eclipse support to eclipse project ignores all other natures and
-							builders, we just use mvn eclipse:eclipse and add m2eclipse nature and builder manually here
-						-->
-						<buildcommand>org.maven.ide.eclipse.maven2Builder</buildcommand>
 						<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
 					</additionalBuildcommands>
 					<additionalProjectnatures>
-						<projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
 						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
 						<projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
 						<projectnature>com.springsource.server.ide.facet.core.bundlenature</projectnature>
@@ -338,6 +336,7 @@
 						<!-- add additional package imports -->
 						<Import-Package>${osgi.additionalPackageImports},*</Import-Package>
 
+						<!-- Spring DM server configuration for the level of trace output -->
 						<Application-TraceLevels>${application.traceLevels}</Application-TraceLevels>
 					</instructions>
 				</configuration>
