@@ -1,8 +1,8 @@
 package deus.core.access.transfer.plugins.testTP.protocol;
 
-import deus.core.access.transfer.core.soul.protocol.TransportId;
+import deus.core.access.transfer.core.soul.protocol.TransferId;
 
-public class TestTransportId implements TransportId {
+public class TestTransportId implements TransferId {
 
 	private final String username;
 

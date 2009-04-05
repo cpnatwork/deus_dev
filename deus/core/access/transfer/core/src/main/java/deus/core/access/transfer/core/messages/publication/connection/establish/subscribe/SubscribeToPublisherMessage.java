@@ -1,6 +1,6 @@
 package deus.core.access.transfer.core.messages.publication.connection.establish.subscribe;
 
-import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.TransferMessage;
 
 /**
  * Superclass of all commands, belonging to the "subscribe" use case.
@@ -8,6 +8,6 @@ import deus.core.access.transfer.core.messages.TransportMessage;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  *
  */
-public abstract class SubscribeToPublisherMessage extends TransportMessage {
+public abstract class SubscribeToPublisherMessage extends TransferMessage {
 
 }

@@ -1,11 +1,11 @@
 package deus.core.access.transfer.core.soul.protocol.callback;
 
-import deus.core.access.transfer.core.soul.protocol.TransportId;
+import deus.core.access.transfer.core.soul.protocol.TransferId;
 
 public interface LoginEventCallback {
 
-	public void loggedIn(TransportId transportId);
+	public void loggedIn(TransferId transferId);
 	
-	public void loggedOut(TransportId transportId);
+	public void loggedOut(TransferId transferId);
 	
 }

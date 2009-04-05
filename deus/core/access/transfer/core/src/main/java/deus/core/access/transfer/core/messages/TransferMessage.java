@@ -1,18 +1,18 @@
 package deus.core.access.transfer.core.messages;
 
-import deus.core.access.transfer.core.soul.protocol.TransportId;
+import deus.core.access.transfer.core.soul.protocol.TransferId;
 import deus.model.user.id.UserId;
 
-public abstract class TransportMessage {
+public abstract class TransferMessage {
 
 	private UserId senderId;
 	private UserId receiverId;
 
-	private TransportId senderTid;
-	private TransportId receiverTid;
+	private TransferId senderTid;
+	private TransferId receiverTid;
 
 
-	public TransportMessage() {
+	public TransferMessage() {
 		super();
 	}
 
@@ -37,22 +37,22 @@ public abstract class TransportMessage {
 	}
 
 
-	public TransportId getSenderTid() {
+	public TransferId getSenderTid() {
 		return senderTid;
 	}
 
 
-	public void setSenderTid(TransportId senderTid) {
+	public void setSenderTid(TransferId senderTid) {
 		this.senderTid = senderTid;
 	}
 
 
-	public TransportId getReceiverTid() {
+	public TransferId getReceiverTid() {
 		return receiverTid;
 	}
 
 
-	public void setReceiverTid(TransportId receiverTid) {
+	public void setReceiverTid(TransferId receiverTid) {
 		this.receiverTid = receiverTid;
 	}
 

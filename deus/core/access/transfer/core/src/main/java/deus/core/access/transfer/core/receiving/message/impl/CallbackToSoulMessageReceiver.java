@@ -3,7 +3,7 @@ package deus.core.access.transfer.core.receiving.message.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.TransferMessage;
 import deus.core.access.transfer.core.messages.publication.connection.establish.invite.ConfirmSubscriptionOfferNoticeMessage;
 import deus.core.access.transfer.core.messages.publication.connection.establish.invite.InviteSubscriberMessage;
 import deus.core.access.transfer.core.messages.publication.connection.establish.invite.OfferSubscriptionMessage;
@@ -30,7 +30,7 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 
 	// TODO: refactor (introduce more receive methods and dispatch in this one)
 	@Override
-	public void receive(TransportMessage message) {
+	public void receive(TransferMessage message) {
 		UserId senderId = message.getSenderId();
 		UserId receiverId = message.getReceiverId();
 

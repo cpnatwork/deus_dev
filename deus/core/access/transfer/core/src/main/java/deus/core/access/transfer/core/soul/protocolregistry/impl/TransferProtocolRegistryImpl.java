@@ -6,34 +6,34 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.soul.protocol.TransportProtocol;
-import deus.core.access.transfer.core.soul.protocolregistry.TransportProtocolRegistry;
+import deus.core.access.transfer.core.soul.protocol.TransferProtocol;
+import deus.core.access.transfer.core.soul.protocolregistry.TransferProtocolRegistry;
 
 @Component("transportProtocolRegistry")
-public class TransportProtocolRegistryImpl implements TransportProtocolRegistry {
+public class TransferProtocolRegistryImpl implements TransferProtocolRegistry {
 
-	private final Map<String, TransportProtocol> registeredTransportProtocols;
+	private final Map<String, TransferProtocol> registeredTransportProtocols;
 
 
-	public TransportProtocolRegistryImpl() {
+	public TransferProtocolRegistryImpl() {
 		super();
-		this.registeredTransportProtocols = new HashMap<String, TransportProtocol>();
+		this.registeredTransportProtocols = new HashMap<String, TransferProtocol>();
 	}
 
 
 	@Override
-	public TransportProtocol getRegisteredTransportProtocol(String transportProtocolId) {
+	public TransferProtocol getRegisteredTransportProtocol(String transportProtocolId) {
 		return registeredTransportProtocols.get(transportProtocolId);
 	}
 
 
 	@Override
-	public void registerTransportProtocol(TransportProtocol transportProtocol) {
-		if (registeredTransportProtocols.containsKey(transportProtocol.getId()))
-			throw new IllegalArgumentException("transport protocol " + transportProtocol
+	public void registerTransportProtocol(TransferProtocol transferProtocol) {
+		if (registeredTransportProtocols.containsKey(transferProtocol.getId()))
+			throw new IllegalArgumentException("transport protocol " + transferProtocol
 					+ " has already been registered!");
 
-		registeredTransportProtocols.put(transportProtocol.getId(), transportProtocol);
+		registeredTransportProtocols.put(transferProtocol.getId(), transferProtocol);
 	}
 
 

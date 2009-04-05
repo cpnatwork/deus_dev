@@ -1,6 +1,6 @@
 package deus.core.access.transfer.core.soul.protocol;
 
-public interface TransportId {
+public interface TransferId {
 
 	public int hashCode();
 

@@ -1,14 +1,14 @@
 package deus.core.access.transfer.core.soul.discovery.impl;
 
-import deus.core.access.transfer.core.soul.discovery.TransportProtocolNegotiationStrategy;
+import deus.core.access.transfer.core.soul.discovery.TransferProtocolNegotiationStrategy;
 import deus.model.user.id.UserId;
 
-public class FixedTransportProtocolNegotiationStrategy implements TransportProtocolNegotiationStrategy {
+public class FixedTransferProtocolNegotiationStrategy implements TransferProtocolNegotiationStrategy {
 
 	private final String transportProtocolId;
 
 
-	public FixedTransportProtocolNegotiationStrategy(String transportProtocolId) {
+	public FixedTransferProtocolNegotiationStrategy(String transportProtocolId) {
 		super();
 		this.transportProtocolId = transportProtocolId;
 	}

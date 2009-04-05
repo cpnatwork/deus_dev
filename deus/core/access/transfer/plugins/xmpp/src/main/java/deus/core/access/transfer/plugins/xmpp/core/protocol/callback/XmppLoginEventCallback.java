@@ -3,7 +3,7 @@ package deus.core.access.transfer.plugins.xmpp.core.protocol.callback;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.access.transfer.core.connectionstate.ConnectionStateRegistry;
-import deus.core.access.transfer.core.soul.protocol.TransportId;
+import deus.core.access.transfer.core.soul.protocol.TransferId;
 import deus.core.access.transfer.core.soul.protocol.callback.LoginEventCallback;
 import deus.core.access.transfer.plugins.xmpp.common.FilteredPacketListener;
 import deus.core.access.transfer.plugins.xmpp.common.XmppConversation;
@@ -27,9 +27,9 @@ public class XmppLoginEventCallback implements LoginEventCallback {
 
 
 	@Override
-	public void loggedIn(TransportId transportId) {
-		String password = xmppPasswordLookup.getPassword((XmppTransportId)transportId);
-		XmppConversation xmppConversation = xmppNetwork.createConversation((XmppTransportId)transportId, password);
+	public void loggedIn(TransferId transferId) {
+		String password = xmppPasswordLookup.getPassword((XmppTransportId)transferId);
+		XmppConversation xmppConversation = xmppNetwork.createConversation((XmppTransportId)transferId, password);
 
 		// CONNECT
 		xmppConversation.connect();
@@ -41,7 +41,7 @@ public class XmppLoginEventCallback implements LoginEventCallback {
 
 		XmppConnectionState xmppConnectionState = new XmppConnectionState(xmppConversation);
 
-		connectionStateRegistry.addConnectionState(transportId, xmppConnectionState);
+		connectionStateRegistry.addConnectionState(transferId, xmppConnectionState);
 	}
 
 
@@ -60,8 +60,8 @@ public class XmppLoginEventCallback implements LoginEventCallback {
 
 
 	@Override
-	public void loggedOut(TransportId transportId) {
-		XmppConnectionState xmppConnectionState = (XmppConnectionState) connectionStateRegistry.getConnectionState(transportId);
+	public void loggedOut(TransferId transferId) {
+		XmppConnectionState xmppConnectionState = (XmppConnectionState) connectionStateRegistry.getConnectionState(transferId);
 
 		XmppConversation xmppConversation = xmppConnectionState.getXmppConversation();
 		
@@ -70,7 +70,7 @@ public class XmppLoginEventCallback implements LoginEventCallback {
 		// TODO: think whether packages can be lost between removing packet listeners and this call for end()
 		xmppConversation.end();
 		
-		connectionStateRegistry.removeConnectionState(transportId);
+		connectionStateRegistry.removeConnectionState(transferId);
 	}
 
 }

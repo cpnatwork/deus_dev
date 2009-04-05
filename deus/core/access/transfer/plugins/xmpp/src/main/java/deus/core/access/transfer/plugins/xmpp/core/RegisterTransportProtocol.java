@@ -6,28 +6,28 @@ import javax.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.soul.protocol.TransportProtocol;
-import deus.core.access.transfer.core.soul.protocolregistry.ExportedTransportProtocolRegistry;
+import deus.core.access.transfer.core.soul.protocol.TransferProtocol;
+import deus.core.access.transfer.core.soul.protocolregistry.ExportedTransferProtocolRegistry;
 
 @Component
 public class RegisterTransportProtocol {
 
 	@Autowired
-	private ExportedTransportProtocolRegistry transportProtocolRegistry;
+	private ExportedTransferProtocolRegistry transportProtocolRegistry;
 
 	@Autowired
-	private TransportProtocol transportProtocol;
+	private TransferProtocol transferProtocol;
 
 	
 	@PostConstruct
 	public void register() {
-		transportProtocolRegistry.registerTransportProtocol(transportProtocol);
+		transportProtocolRegistry.registerTransportProtocol(transferProtocol);
 	}
 
 
 	@PreDestroy
 	public void unregister() {
-		transportProtocolRegistry.unregisterTransportProtocol(transportProtocol.getId());
+		transportProtocolRegistry.unregisterTransportProtocol(transferProtocol.getId());
 	}
 
 }

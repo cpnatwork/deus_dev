@@ -1,8 +1,8 @@
 package deus.core.access.transfer.plugins.local.soul.protocol;
 
-import deus.core.access.transfer.core.soul.protocol.TransportId;
+import deus.core.access.transfer.core.soul.protocol.TransferId;
 
-public class LocalTransportId implements TransportId {
+public class LocalTransportId implements TransferId {
 
 	private final String username;
 

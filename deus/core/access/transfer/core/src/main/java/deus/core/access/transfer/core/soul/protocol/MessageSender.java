@@ -1,9 +1,9 @@
 package deus.core.access.transfer.core.soul.protocol;
 
-import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.TransferMessage;
 
 public interface MessageSender {
 
-	public void send(TransportMessage transportMessage);
+	public void send(TransferMessage transferMessage);
 	
 }

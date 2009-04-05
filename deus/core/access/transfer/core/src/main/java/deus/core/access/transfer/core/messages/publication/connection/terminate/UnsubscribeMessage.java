@@ -1,6 +1,6 @@
 package deus.core.access.transfer.core.messages.publication.connection.terminate;
 
-import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.TransferMessage;
 
 
 /**
@@ -9,6 +9,6 @@ import deus.core.access.transfer.core.messages.TransportMessage;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  *
  */
-public final class UnsubscribeMessage extends TransportMessage {
+public final class UnsubscribeMessage extends TransferMessage {
 
 }

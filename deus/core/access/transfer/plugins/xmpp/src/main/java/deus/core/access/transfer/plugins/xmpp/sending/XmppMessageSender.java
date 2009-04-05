@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.transfer.core.connectionstate.ConnectionStateRegistry;
-import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.TransferMessage;
 import deus.core.access.transfer.core.messages.publication.connection.establish.subscribe.DenySubscriptionRequestNoticeMessage;
 import deus.core.access.transfer.core.messages.publication.connection.establish.subscribe.GrantSubscriptionRequestNoticeMessage;
 import deus.core.access.transfer.core.messages.publication.connection.establish.subscribe.RequestSubscriptionMessage;
@@ -27,7 +27,7 @@ public class XmppMessageSender implements MessageSender {
 	private XmppConfiguration xmppConfiguration;
 	
 	@Override
-	public void send(TransportMessage message) {
+	public void send(TransferMessage message) {
 		XmppTransportId senderJid = (XmppTransportId)message.getSenderTid();
 		XmppTransportId receiverJid = (XmppTransportId)message.getReceiverTid();
 		

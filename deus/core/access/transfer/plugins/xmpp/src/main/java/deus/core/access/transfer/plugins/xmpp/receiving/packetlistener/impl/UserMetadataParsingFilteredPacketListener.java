@@ -5,7 +5,7 @@ import org.jivesoftware.smack.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.TransferMessage;
 import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransportId;
 import deus.core.access.transfer.plugins.xmpp.receiving.XmppMessageReceiver;
 
@@ -25,7 +25,7 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 	}
 	
 	
-	protected void receiveCommand(TransportMessage command, Packet packet) {
+	protected void receiveCommand(TransferMessage command, Packet packet) {
 		//UserMetadata senderMetadata = parseFromUserMetadata(packet);
 		
 		XmppTransportId senderJid = parseXmppTransportId(packet.getFrom());

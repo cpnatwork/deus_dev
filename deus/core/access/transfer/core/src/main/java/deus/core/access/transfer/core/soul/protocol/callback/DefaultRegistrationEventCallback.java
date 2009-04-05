@@ -1,17 +1,17 @@
 package deus.core.access.transfer.core.soul.protocol.callback;
 
-import deus.core.access.transfer.core.soul.protocol.TransportId;
+import deus.core.access.transfer.core.soul.protocol.TransferId;
 
 public class DefaultRegistrationEventCallback implements RegistrationEventCallback {
 
 	@Override
-	public void registered(@SuppressWarnings("unused") TransportId transportId) {
+	public void registered(@SuppressWarnings("unused") TransferId transferId) {
 		// DO NOTHING
 	}
 
 
 	@Override
-	public void unregistered(@SuppressWarnings("unused") TransportId transportId) {
+	public void unregistered(@SuppressWarnings("unused") TransferId transferId) {
 		// DO NOTHING
 	}
 

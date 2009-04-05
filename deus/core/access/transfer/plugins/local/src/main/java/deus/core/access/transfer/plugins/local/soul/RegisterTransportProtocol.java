@@ -6,17 +6,17 @@ import javax.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.soul.protocol.TransportProtocol;
-import deus.core.access.transfer.core.soul.protocolregistry.ExportedTransportProtocolRegistry;
+import deus.core.access.transfer.core.soul.protocol.TransferProtocol;
+import deus.core.access.transfer.core.soul.protocolregistry.ExportedTransferProtocolRegistry;
 
 @Component
 public class RegisterTransportProtocol {
 
 	@Autowired
-	private ExportedTransportProtocolRegistry registry;
+	private ExportedTransferProtocolRegistry registry;
 
 	@Autowired
-	private TransportProtocol loopbackProtocol;
+	private TransferProtocol loopbackProtocol;
 
 	
 	@PostConstruct

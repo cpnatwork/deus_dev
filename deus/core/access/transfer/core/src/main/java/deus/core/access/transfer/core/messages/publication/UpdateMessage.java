@@ -1,6 +1,6 @@
 package deus.core.access.transfer.core.messages.publication;
 
-import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.TransferMessage;
 import deus.model.dossier.DigitalCard;
 
 /**
@@ -9,7 +9,7 @@ import deus.model.dossier.DigitalCard;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-public class UpdateMessage extends TransportMessage {
+public class UpdateMessage extends TransferMessage {
 
 	private final DigitalCard digitalCard;
 

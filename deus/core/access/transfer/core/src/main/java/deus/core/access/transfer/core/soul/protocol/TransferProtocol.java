@@ -5,7 +5,7 @@ import deus.core.access.transfer.core.soul.protocol.callback.LoginEventCallback;
 import deus.core.access.transfer.core.soul.protocol.callback.RegistrationEventCallback;
 
 
-public interface TransportProtocol {
+public interface TransferProtocol {
 
 	public abstract MessageSender getMessageSender();
 

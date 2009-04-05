@@ -1,18 +1,18 @@
 package deus.core.access.transfer.core.connectionstate;
 
-import deus.core.access.transfer.core.soul.protocol.TransportId;
+import deus.core.access.transfer.core.soul.protocol.TransferId;
 
 public interface ConnectionStateRegistry {
 
-	public abstract boolean hasConnectionState(TransportId transportId);
+	public abstract boolean hasConnectionState(TransferId transferId);
 
 
-	public abstract void addConnectionState(TransportId transportId, ConnectionState ConnectionState);
+	public abstract void addConnectionState(TransferId transferId, ConnectionState ConnectionState);
 
 
-	public abstract ConnectionState getConnectionState(TransportId transportId);
+	public abstract ConnectionState getConnectionState(TransferId transferId);
 
 
-	public abstract void removeConnectionState(TransportId transportId);
+	public abstract void removeConnectionState(TransferId transferId);
 
 }

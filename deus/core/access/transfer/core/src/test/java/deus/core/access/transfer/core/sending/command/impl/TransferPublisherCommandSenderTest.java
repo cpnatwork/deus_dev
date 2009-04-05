@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.TransferMessage;
 import deus.core.access.transfer.core.messages.publication.UpdateMessage;
 import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
 import deus.model.dossier.DigitalCard;
@@ -18,7 +18,7 @@ import deus.model.user.id.UserUrl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transport/core/test.xml" })
-public class TransportPublisherCommandSenderTest extends AbstractCommandSenderTest {
+public class TransferPublisherCommandSenderTest extends AbstractCommandSenderTest {
 
 	@Autowired
 	private PublisherCommandSender transportPublisherCommandSender;
@@ -31,7 +31,7 @@ public class TransportPublisherCommandSenderTest extends AbstractCommandSenderTe
 
 		transportPublisherCommandSender.update(subscriberId, publisherId, digitalCard);
 
-		TransportMessage expectedMessage = new UpdateMessage(digitalCard);
+		TransferMessage expectedMessage = new UpdateMessage(digitalCard);
 		setTids(expectedMessage, publisherId, subscriberId);
 
 		testEqualsMessage(expectedMessage, lastSentTransportMessage);

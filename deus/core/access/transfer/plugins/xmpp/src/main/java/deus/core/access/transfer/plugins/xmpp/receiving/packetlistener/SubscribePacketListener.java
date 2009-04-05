@@ -7,7 +7,7 @@ import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.packet.Presence.Type;
 
-import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.TransferMessage;
 import deus.core.access.transfer.core.messages.publication.connection.establish.subscribe.RequestSubscriptionMessage;
 import deus.core.access.transfer.plugins.xmpp.receiving.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
 import deus.core.access.transfer.plugins.xmpp.util.PacketPrinter;
@@ -44,7 +44,7 @@ public class SubscribePacketListener extends UserMetadataParsingFilteredPacketLi
 		UserMetadata subscriberMetadata = new UserMetadata();
 		// FIXME: fill subscriberMetadata
 		
-		TransportMessage command = new RequestSubscriptionMessage(subscriberMetadata);
+		TransferMessage command = new RequestSubscriptionMessage(subscriberMetadata);
 		receiveCommand(command, packet);
 	}
 	

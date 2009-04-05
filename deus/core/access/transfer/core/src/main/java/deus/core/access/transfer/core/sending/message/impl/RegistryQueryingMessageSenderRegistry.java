@@ -5,13 +5,13 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.transfer.core.sending.message.MessageSenderRegistry;
 import deus.core.access.transfer.core.soul.protocol.MessageSender;
-import deus.core.access.transfer.core.soul.protocolregistry.TransportProtocolRegistry;
+import deus.core.access.transfer.core.soul.protocolregistry.TransferProtocolRegistry;
 
 @Component
 public class RegistryQueryingMessageSenderRegistry implements MessageSenderRegistry {
 
 	@Autowired
-	private TransportProtocolRegistry registry;
+	private TransferProtocolRegistry registry;
 	
 	@Override
 	public MessageSender getMessageSender(String transportProtocolId) {

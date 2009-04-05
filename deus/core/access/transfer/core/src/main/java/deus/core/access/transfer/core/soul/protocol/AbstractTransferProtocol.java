@@ -4,7 +4,7 @@ import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
 import deus.core.access.transfer.core.soul.protocol.callback.LoginEventCallback;
 import deus.core.access.transfer.core.soul.protocol.callback.RegistrationEventCallback;
 
-public abstract class AbstractTransportProtocol implements TransportProtocol {
+public abstract class AbstractTransferProtocol implements TransferProtocol {
 
 	private MessageSender messageSender;
 

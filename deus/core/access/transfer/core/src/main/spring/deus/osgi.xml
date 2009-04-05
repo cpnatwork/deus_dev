@@ -10,7 +10,7 @@
 	<!-- CORE -->
 	
 	<!-- service for registration of transport protocols -->
-	<osgi:service id="transportProtocolRegistryOsgiService" ref="transportProtocolRegistry" interface="deus.core.access.transfer.core.soul.protocolregistry.ExportedTransportProtocolRegistry" />
+	<osgi:service id="transportProtocolRegistryOsgiService" ref="transportProtocolRegistry" interface="deus.core.access.transfer.core.soul.protocolregistry.ExportedTransferProtocolRegistry" />
 	
 	
 	

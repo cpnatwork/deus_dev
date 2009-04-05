@@ -3,51 +3,51 @@ package deus.core.access.transfer.core.connectionstate;
 import java.util.HashMap;
 import java.util.Map;
 
-import deus.core.access.transfer.core.soul.protocol.TransportId;
+import deus.core.access.transfer.core.soul.protocol.TransferId;
 
 public class DefaultConnectionStateRegistry implements ConnectionStateRegistry {
 
-	private final Map<TransportId, ConnectionState> connectionStates;
+	private final Map<TransferId, ConnectionState> connectionStates;
 
 
 	public DefaultConnectionStateRegistry() {
-		this.connectionStates = new HashMap<TransportId, ConnectionState>();
+		this.connectionStates = new HashMap<TransferId, ConnectionState>();
 	}
 
 
 	@Override
-	public void addConnectionState(TransportId transportId, ConnectionState connectionState) {
-		if (hasConnectionState(transportId))
-			throw new IllegalStateException("cannot add connection state for transport id " + transportId
+	public void addConnectionState(TransferId transferId, ConnectionState connectionState) {
+		if (hasConnectionState(transferId))
+			throw new IllegalStateException("cannot add connection state for transport id " + transferId
 					+ ", there already is a connection state for this transport id");
 		
-		connectionStates.put(transportId, connectionState);
+		connectionStates.put(transferId, connectionState);
 	}
 
 
 	@Override
-	public ConnectionState getConnectionState(TransportId transportId) {
-		if (!hasConnectionState(transportId))
-			throw new IllegalStateException("cannot get connection state for transport id " + transportId
+	public ConnectionState getConnectionState(TransferId transferId) {
+		if (!hasConnectionState(transferId))
+			throw new IllegalStateException("cannot get connection state for transport id " + transferId
 					+ ", there is no connection state for this transport id");
 
-		return connectionStates.get(transportId);
+		return connectionStates.get(transferId);
 	}
 
 
 	@Override
-	public boolean hasConnectionState(TransportId transportId) {
-		return connectionStates.containsKey(transportId);
+	public boolean hasConnectionState(TransferId transferId) {
+		return connectionStates.containsKey(transferId);
 	}
 
 
 	@Override
-	public void removeConnectionState(TransportId transportId) {
-		if (!hasConnectionState(transportId))
-			throw new IllegalStateException("cannot remove connection state for transport id " + transportId
+	public void removeConnectionState(TransferId transferId) {
+		if (!hasConnectionState(transferId))
+			throw new IllegalStateException("cannot remove connection state for transport id " + transferId
 					+ ", there is no connection state for this transport id");
 
-		connectionStates.remove(transportId);
+		connectionStates.remove(transferId);
 	}
 
 }

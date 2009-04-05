@@ -13,24 +13,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.TransferMessage;
 import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
 import deus.core.access.transfer.core.soul.protocol.MessageSender;
-import deus.core.access.transfer.core.soul.protocol.TransportId;
-import deus.core.access.transfer.core.soul.protocolregistry.TransportProtocolRegistry;
+import deus.core.access.transfer.core.soul.protocol.TransferId;
+import deus.core.access.transfer.core.soul.protocolregistry.TransferProtocolRegistry;
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransportId;
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransportProtocol;
 import deus.model.user.id.UserId;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transport/core/test.xml" })
-public class TransportProtocolRegistryImplTest {
+public class TransferProtocolRegistryImplTest {
 	
 	private TestTransportProtocol tp;
 
 
 	@Autowired
-	private TransportProtocolRegistry registry;
+	private TransferProtocolRegistry registry;
 
 	private String testProtocolId;
 
@@ -43,12 +43,12 @@ public class TransportProtocolRegistryImplTest {
 		UserIdMapper userIdMapper = new UserIdMapper() {
 
 			@Override
-			public TransportId resolveLocal(UserId userId) {
+			public TransferId resolveLocal(UserId userId) {
 				return new TestTransportId(userId.toString());
 			}
 
 			@Override
-			public TransportId resolveRemote(UserId userId) {
+			public TransferId resolveRemote(UserId userId) {
 				return new TestTransportId(userId.toString());
 			}
 
@@ -60,7 +60,7 @@ public class TransportProtocolRegistryImplTest {
 		tp.setMessageSender(new MessageSender() {
 
 			@Override
-			public void send(@SuppressWarnings("unused") TransportMessage message) {
+			public void send(@SuppressWarnings("unused") TransferMessage message) {
 				System.out.println("sending");
 			}
 

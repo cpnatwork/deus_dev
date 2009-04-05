@@ -6,12 +6,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import deus.core.access.transfer.core.messages.TransportMessage;
-import deus.core.access.transfer.core.soul.discovery.TransportProtocolNegotiationStrategy;
+import deus.core.access.transfer.core.messages.TransferMessage;
+import deus.core.access.transfer.core.soul.discovery.TransferProtocolNegotiationStrategy;
 import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
 import deus.core.access.transfer.core.soul.protocol.MessageSender;
-import deus.core.access.transfer.core.soul.protocol.TransportId;
-import deus.core.access.transfer.core.soul.protocolregistry.ExportedTransportProtocolRegistry;
+import deus.core.access.transfer.core.soul.protocol.TransferId;
+import deus.core.access.transfer.core.soul.protocolregistry.ExportedTransferProtocolRegistry;
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransportId;
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransportProtocol;
 import deus.model.user.id.UserId;
@@ -21,13 +21,13 @@ import deus.model.user.id.UserUrl;
 public abstract class AbstractCommandSenderTest {
 
 	@Autowired
-	protected TransportProtocolNegotiationStrategy transportProtocolNegotiationStrategy;
+	protected TransferProtocolNegotiationStrategy transferProtocolNegotiationStrategy;
 	
 	@Autowired
-	private ExportedTransportProtocolRegistry transportProtocolRegistry;
+	private ExportedTransferProtocolRegistry transportProtocolRegistry;
 	
 	
-	protected TransportMessage lastSentTransportMessage;
+	protected TransferMessage lastSentTransportMessage;
 	private TestTransportProtocol tp;
 	protected UserIdMapper userIdMapper;
 
@@ -55,12 +55,12 @@ public abstract class AbstractCommandSenderTest {
 		userIdMapper = new UserIdMapper() {
 
 			@Override
-			public TransportId resolveLocal(UserId userId) {
+			public TransferId resolveLocal(UserId userId) {
 				return new TestTransportId(userId.toString());
 			}
 
 			@Override
-			public TransportId resolveRemote(UserId userId) {
+			public TransferId resolveRemote(UserId userId) {
 				return new TestTransportId(userId.toString());
 			}
 
@@ -72,7 +72,7 @@ public abstract class AbstractCommandSenderTest {
 		tp.setMessageSender(new MessageSender() {
 
 			@Override
-			public void send(TransportMessage command) {
+			public void send(TransferMessage command) {
 				lastSentTransportMessage = command;
 			}
 
@@ -90,7 +90,7 @@ public abstract class AbstractCommandSenderTest {
 	}
 
 
-	protected void testEqualsMessage(TransportMessage expected, TransportMessage actual) {
+	protected void testEqualsMessage(TransferMessage expected, TransferMessage actual) {
 		assertEquals(expected.getClass(), actual.getClass());
 		
 		assertEquals(expected.getSenderId(), actual.getSenderId());
@@ -101,7 +101,7 @@ public abstract class AbstractCommandSenderTest {
 	}
 
 
-	protected void setTids(TransportMessage expectedMessage, UserId senderId, UserId receiverId) {
+	protected void setTids(TransferMessage expectedMessage, UserId senderId, UserId receiverId) {
 		expectedMessage.setSenderId(senderId);
 		expectedMessage.setReceiverId(receiverId);
 		expectedMessage.setReceiverTid(userIdMapper.resolveRemote(receiverId));

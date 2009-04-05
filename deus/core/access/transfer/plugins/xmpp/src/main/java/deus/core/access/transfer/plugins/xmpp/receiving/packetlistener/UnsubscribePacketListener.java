@@ -7,7 +7,7 @@ import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.packet.Presence.Type;
 
-import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.TransferMessage;
 import deus.core.access.transfer.core.messages.publication.connection.terminate.UnsubscribeMessage;
 import deus.core.access.transfer.plugins.xmpp.receiving.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
 import deus.core.access.transfer.plugins.xmpp.util.PacketPrinter;
@@ -39,7 +39,7 @@ public class UnsubscribePacketListener extends UserMetadataParsingFilteredPacket
 		System.out.println("SubscribePacketListener: processing packet:");
 		System.out.println(printer.printPacket(packet));
 
-		TransportMessage command = new UnsubscribeMessage();
+		TransferMessage command = new UnsubscribeMessage();
 		receiveCommand(command, packet);
 	}
 

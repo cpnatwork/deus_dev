@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.TransferMessage;
 import deus.core.access.transfer.core.messages.publication.connection.establish.subscribe.RequestSubscriptionMessage;
 import deus.core.access.transfer.core.messages.publication.connection.terminate.UnsubscribeMessage;
 import deus.core.access.transfer.core.sending.command.SubscriberCommandSender;
@@ -17,7 +17,7 @@ import deus.model.user.UserMetadata;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transport/core/test.xml" })
-public class TransportSubscriberCommandSenderTest extends AbstractCommandSenderTest {
+public class TransferSubscriberCommandSenderTest extends AbstractCommandSenderTest {
 
 	@Autowired
 	private SubscriberCommandSender transportSubscriberCommandSender;
@@ -29,7 +29,7 @@ public class TransportSubscriberCommandSenderTest extends AbstractCommandSenderT
 
 		transportSubscriberCommandSender.subscribe(subscriberId, publisherId, subscriberMetadata);
 
-		TransportMessage expectedMessage = new RequestSubscriptionMessage(subscriberMetadata);
+		TransferMessage expectedMessage = new RequestSubscriptionMessage(subscriberMetadata);
 		setTids(expectedMessage, subscriberId, publisherId);
 
 		testEqualsMessage(expectedMessage, lastSentTransportMessage);
@@ -43,7 +43,7 @@ public class TransportSubscriberCommandSenderTest extends AbstractCommandSenderT
 	public void testUnsubscribe() {
 		transportSubscriberCommandSender.unsubscribe(subscriberId, publisherId);
 
-		TransportMessage expectedMessage = new UnsubscribeMessage();
+		TransferMessage expectedMessage = new UnsubscribeMessage();
 		setTids(expectedMessage, subscriberId, publisherId);
 
 		testEqualsMessage(expectedMessage, lastSentTransportMessage);

@@ -5,7 +5,7 @@ import org.jivesoftware.smack.filter.PacketTypeFilter;
 import org.jivesoftware.smack.packet.IQ;
 import org.jivesoftware.smack.packet.Packet;
 
-import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.TransferMessage;
 import deus.core.access.transfer.core.messages.publication.UpdateMessage;
 import deus.core.access.transfer.plugins.xmpp.FIFChange;
 import deus.core.access.transfer.plugins.xmpp.receiving.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
@@ -37,7 +37,7 @@ public class UpdatePacketListener extends UserMetadataParsingFilteredPacketListe
 		// TODO: do XML to object binding
 		// digitalCard = xmltoobjectbind(xml);
 
-		TransportMessage command = new UpdateMessage(digitalCard);
+		TransferMessage command = new UpdateMessage(digitalCard);
 		receiveCommand(command, packet);
 	}
 
