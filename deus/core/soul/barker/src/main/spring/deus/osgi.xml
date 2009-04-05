@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/osgi  
+		http://www.springframework.org/schema/osgi/spring-osgi.xsd"
+		osgi:default-timeout="10000">
+
+	<!-- UI -->
+	<osgi:service id="barkerOsgiServiceToClient" ref="barker" interface="deus.core.soul.barker.BarkerExportedToClient" />
+
+
+	<!-- TO SUBSYSTEMS -->	
+	<osgi:service id="barkerOsgiServiceToSubsystems" ref="bark" interface="deus.core.soul.barker.BarkerExportedToSubsystems" />
+	
+	
+
+	<!-- DAOs -->
+	
+	<osgi:reference id="attentionDao" interface="deus.core.access.storage.api.attention.AttentionDao"/>
+	
+	<osgi:reference id="pubDao" interface="deus.core.access.storage.api.sub.LopEntryDoRep"/>
+	
+	<osgi:reference id="subDao" interface="deus.core.access.storage.api.pub.api.PubDao"/>
+	
+	<osgi:reference id="userDao" interface="deus.core.access.storage.api.user.UserMetadataDoRep"/>
+	
+	<osgi:reference id="dossierDao" interface="deus.core.access.storage.api.dossier.api.DossierDao"/>
+
+
+</beans>
