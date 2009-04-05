@@ -7,6 +7,6 @@ public interface TransferProtocolNegotiationStrategy {
 
 	// TODO: maybe, TpID resolution can be done during TP negotiation	
 	
-	public String negotiateTransportProtocol(UserId receiverId);
+	public String negotiateTransferProtocol(UserId receiverId);
 
 }

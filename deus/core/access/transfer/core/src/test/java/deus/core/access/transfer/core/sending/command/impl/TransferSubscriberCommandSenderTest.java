@@ -16,37 +16,37 @@ import deus.model.dossier.proj.party.Gender;
 import deus.model.user.UserMetadata;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transport/core/test.xml" })
+@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transfer/core/test.xml" })
 public class TransferSubscriberCommandSenderTest extends AbstractCommandSenderTest {
 
 	@Autowired
-	private SubscriberCommandSender transportSubscriberCommandSender;
+	private SubscriberCommandSender transferSubscriberCommandSender;
 
 
 	@Test
 	public void testSubscribe() {
 		UserMetadata subscriberMetadata = new UserMetadata("Bob", Gender.male);
 
-		transportSubscriberCommandSender.subscribe(subscriberId, publisherId, subscriberMetadata);
+		transferSubscriberCommandSender.subscribe(subscriberId, publisherId, subscriberMetadata);
 
 		TransferMessage expectedMessage = new RequestSubscriptionMessage(subscriberMetadata);
 		setTids(expectedMessage, subscriberId, publisherId);
 
-		testEqualsMessage(expectedMessage, lastSentTransportMessage);
+		testEqualsMessage(expectedMessage, lastSentTransferMessage);
 
-		assertEquals(subscriberMetadata, ((RequestSubscriptionMessage) lastSentTransportMessage)
+		assertEquals(subscriberMetadata, ((RequestSubscriptionMessage) lastSentTransferMessage)
 				.getSubscriberMetadata());
 	}
 
 
 	@Test
 	public void testUnsubscribe() {
-		transportSubscriberCommandSender.unsubscribe(subscriberId, publisherId);
+		transferSubscriberCommandSender.unsubscribe(subscriberId, publisherId);
 
 		TransferMessage expectedMessage = new UnsubscribeMessage();
 		setTids(expectedMessage, subscriberId, publisherId);
 
-		testEqualsMessage(expectedMessage, lastSentTransportMessage);
+		testEqualsMessage(expectedMessage, lastSentTransferMessage);
 	}
 
 }

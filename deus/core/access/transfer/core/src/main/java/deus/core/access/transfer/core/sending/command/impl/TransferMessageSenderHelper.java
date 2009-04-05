@@ -25,10 +25,10 @@ public class TransferMessageSenderHelper {
 
 
 	public void send(UserId receiverId, UserId senderId, TransferMessage transferMessage) {
-		// agree on transport protocol
-		String transportProtocolId = transferProtocolNegotiationStrategy.negotiateTransportProtocol(receiverId);
+		// agree on transfer protocol
+		String transferProtocolId = transferProtocolNegotiationStrategy.negotiateTransferProtocol(receiverId);
 
-		UserIdMapper userIdMapper = transferProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId).getUserIdMapper();
+		UserIdMapper userIdMapper = transferProtocolRegistry.getRegisteredTransferProtocol(transferProtocolId).getUserIdMapper();
 		
 		// set IDs of sender and receiver
 		transferMessage.setSenderId(senderId);
@@ -39,7 +39,7 @@ public class TransferMessageSenderHelper {
 		transferMessage.setSenderTid(userIdMapper.resolveLocal(senderId));
 
 		// send msg
-		MessageSender messageSender = messageSenderRegistry.getMessageSender(transportProtocolId);
+		MessageSender messageSender = messageSenderRegistry.getMessageSender(transferProtocolId);
 		messageSender.send(transferMessage);
 	}
 }

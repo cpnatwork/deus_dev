@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-	<bean id="transportProtocol" class="deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransferProtocol">
+	<bean id="transferProtocol" class="deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransferProtocol">
 		<property name="loginEventCallback">
 			<bean class="deus.core.access.transfer.plugins.xmpp.core.protocol.callback.XmppLoginEventCallback" />
 		</property>
@@ -16,7 +16,7 @@
 		</property>
 	</bean>
 
-	<bean id="transportProtocolId" class="java.lang.String">
+	<bean id="transferProtocolId" class="java.lang.String">
 		<constructor-arg value="xmpp" />
 	</bean>
 

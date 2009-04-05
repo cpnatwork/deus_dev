@@ -15,13 +15,13 @@ public class ContributorImpl implements Contributor {
 
 	@Override
 	public void contributionAcknowledged(UserId contributorId, DigitalCardId digitalCardId) {
-		// FIXME: implement (is called by transport to acknowledge the contribution, add a notice to barker)
+		// FIXME: implement (is called by transfer to acknowledge the contribution, add a notice to barker)
 	}
 
 
 	@Override
 	public void contributionDenied(UserId contributorId, DigitalCardId digitalCardId) {
-		// FIXME: implement (is called by transport to tell the denial of the contribution, add a notice to barker)
+		// FIXME: implement (is called by transfer to tell the denial of the contribution, add a notice to barker)
 	}
 
 }

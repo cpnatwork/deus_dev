@@ -13,7 +13,7 @@ import deus.core.access.transfer.core.soul.protocolregistry.ExportedTransferProt
 public class RegisterTransferProtocol {
 
 	@Autowired
-	private ExportedTransferProtocolRegistry transportProtocolRegistry;
+	private ExportedTransferProtocolRegistry transferProtocolRegistry;
 
 	@Autowired
 	private TransferProtocol transferProtocol;
@@ -21,13 +21,13 @@ public class RegisterTransferProtocol {
 	
 	@PostConstruct
 	public void register() {
-		transportProtocolRegistry.registerTransportProtocol(transferProtocol);
+		transferProtocolRegistry.registerTransferProtocol(transferProtocol);
 	}
 
 
 	@PreDestroy
 	public void unregister() {
-		transportProtocolRegistry.unregisterTransportProtocol(transferProtocol.getId());
+		transferProtocolRegistry.unregisterTransferProtocol(transferProtocol.getId());
 	}
 
 }

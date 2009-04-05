@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.sub.LopDoRep;
 import deus.core.access.storage.api.sub.LopEntryDoRep;
 import deus.core.access.storage.api.user.UserMetadataDoRep;
-import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
+import deus.core.access.transfer.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.difgoverning.DifGovernor;
 import deus.core.soul.subscription.Subscriber;
 import deus.model.dossier.DigitalCard;

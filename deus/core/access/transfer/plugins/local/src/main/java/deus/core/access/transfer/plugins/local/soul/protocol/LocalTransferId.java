@@ -19,7 +19,7 @@ public class LocalTransferId implements TransferId {
 
 
 	@Override
-	public String getTransportProtocolId() {
+	public String getTransferProtocolId() {
 		return "local";
 	}
 

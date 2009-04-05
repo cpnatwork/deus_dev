@@ -37,9 +37,9 @@
 	
 	
 	
-	<!-- TRANSPORT -->
+	<!-- TRANSFER -->
 
-	<!-- references to send commands, should be provided by core-transport bundle -->
+	<!-- references to send commands, should be provided by core-transfer bundle -->
 	
 	<osgi:reference id="barkerCommandSender" interface="deus.core.access.transfer.core.sending.command.BarkerCommandSender"/>
 
@@ -48,7 +48,7 @@
 	<osgi:reference id="subscriberCommandSender" interface="deus.core.access.transfer.core.sending.command.SubscriberCommandSender"/>
 	
 	
-	<!-- services to receive commands, should be used by core-transport bundle -->
+	<!-- services to receive commands, should be used by core-transfer bundle -->
 	
 	<osgi:reference id="soulCallbackRegistry" interface="deus.core.access.transfer.core.receiving.soulcallback.ExportedSoulCallbackRegistry"/>
 

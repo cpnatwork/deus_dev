@@ -17,11 +17,11 @@ import deus.model.dossier.PartyInformationDC;
 import deus.model.user.id.UserUrl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transport/core/test.xml" })
+@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transfer/core/test.xml" })
 public class TransferPublisherCommandSenderTest extends AbstractCommandSenderTest {
 
 	@Autowired
-	private PublisherCommandSender transportPublisherCommandSender;
+	private PublisherCommandSender transferPublisherCommandSender;
 
 
 	@Test
@@ -29,14 +29,14 @@ public class TransferPublisherCommandSenderTest extends AbstractCommandSenderTes
 		DigitalCard digitalCard = new PartyInformationDC(new DigitalCardId(new UserUrl("higgins", "deus.org"),
 				new UserUrl("alice", "deus.org"), "surgery1"));
 
-		transportPublisherCommandSender.update(subscriberId, publisherId, digitalCard);
+		transferPublisherCommandSender.update(subscriberId, publisherId, digitalCard);
 
 		TransferMessage expectedMessage = new UpdateMessage(digitalCard);
 		setTids(expectedMessage, publisherId, subscriberId);
 
-		testEqualsMessage(expectedMessage, lastSentTransportMessage);
+		testEqualsMessage(expectedMessage, lastSentTransferMessage);
 
-		assertEquals(digitalCard, ((UpdateMessage) lastSentTransportMessage).getDigitalCard());
+		assertEquals(digitalCard, ((UpdateMessage) lastSentTransferMessage).getDigitalCard());
 	}
 
 

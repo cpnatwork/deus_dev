@@ -14,8 +14,8 @@ public class RegistryQueryingMessageSenderRegistry implements MessageSenderRegis
 	private TransferProtocolRegistry registry;
 	
 	@Override
-	public MessageSender getMessageSender(String transportProtocolId) {
-		return registry.getRegisteredTransportProtocol(transportProtocolId).getMessageSender();
+	public MessageSender getMessageSender(String transferProtocolId) {
+		return registry.getRegisteredTransferProtocol(transferProtocolId).getMessageSender();
 	}
 
 }

@@ -22,7 +22,7 @@ public class XmppUserIdMapper implements UserIdMapper {
 	@Override
 	public TransferId resolveRemote(UserId userId) {
 		// FIXME: Implement this by using discovery
-		// it should stay here, but maybe use discovery helper classes from transport-core
+		// it should stay here, but maybe use discovery helper classes from transfer-core
 
 		return null;
 	}

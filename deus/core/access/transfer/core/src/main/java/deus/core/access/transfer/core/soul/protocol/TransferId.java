@@ -11,6 +11,6 @@ public interface TransferId {
 	public String toString();
 
 
-	public String getTransportProtocolId();
+	public String getTransferProtocolId();
 
 }

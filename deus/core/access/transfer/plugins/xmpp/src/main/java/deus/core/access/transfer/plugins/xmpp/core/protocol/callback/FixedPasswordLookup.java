@@ -14,7 +14,7 @@ public class FixedPasswordLookup implements XmppPasswordLookup {
 
 
 	@Override
-	public String getPassword(XmppTransferId transportId) {
+	public String getPassword(XmppTransferId transferId) {
 		return password;
 	}
 

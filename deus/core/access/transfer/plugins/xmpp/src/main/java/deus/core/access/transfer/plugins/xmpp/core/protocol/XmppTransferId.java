@@ -47,7 +47,7 @@ public class XmppTransferId implements TransferId {
 
 
 	@Override
-	public String getTransportProtocolId() {
+	public String getTransferProtocolId() {
 		return "xmpp";
 	}
 	

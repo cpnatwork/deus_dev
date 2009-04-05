@@ -9,7 +9,7 @@
 
 	<!-- CORE -->
 
-	<osgi:reference id="transportProtocolRegistry" interface="deus.core.access.transfer.core.soul.protocolregistry.ExportedTransferProtocolRegistry"/>
+	<osgi:reference id="transferProtocolRegistry" interface="deus.core.access.transfer.core.soul.protocolregistry.ExportedTransferProtocolRegistry"/>
 	
 	<!-- RECEIVING -->
 	

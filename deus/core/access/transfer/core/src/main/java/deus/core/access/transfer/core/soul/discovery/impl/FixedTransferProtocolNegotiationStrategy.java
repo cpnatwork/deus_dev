@@ -5,18 +5,18 @@ import deus.model.user.id.UserId;
 
 public class FixedTransferProtocolNegotiationStrategy implements TransferProtocolNegotiationStrategy {
 
-	private final String transportProtocolId;
+	private final String transferProtocolId;
 
 
-	public FixedTransferProtocolNegotiationStrategy(String transportProtocolId) {
+	public FixedTransferProtocolNegotiationStrategy(String transferProtocolId) {
 		super();
-		this.transportProtocolId = transportProtocolId;
+		this.transferProtocolId = transferProtocolId;
 	}
 
 
 	@Override
-	public String negotiateTransportProtocol(@SuppressWarnings("unused") UserId receiverId) {
-		return transportProtocolId;
+	public String negotiateTransferProtocol(@SuppressWarnings("unused") UserId receiverId) {
+		return transferProtocolId;
 	}
 
 }

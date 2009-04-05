@@ -19,8 +19,8 @@ public class TransferProtocolRegisterUserRegistrationStateObserver implements Us
 	
 	@Override
 	public void registered(UserId userId) {
-		for (String transportProtocolId : transferProtocolRegistry.getAllRegisteredTransportProtocolIds()) {
-			TransferProtocol tp = transferProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId);
+		for (String transferProtocolId : transferProtocolRegistry.getAllRegisteredTransferProtocolIds()) {
+			TransferProtocol tp = transferProtocolRegistry.getRegisteredTransferProtocol(transferProtocolId);
 			UserIdMapper userIdMapper = tp.getUserIdMapper();
 			TransferId transferId = userIdMapper.resolveLocal(userId);
 			tp.getRegistrationEventCallback().registered(transferId);
@@ -30,8 +30,8 @@ public class TransferProtocolRegisterUserRegistrationStateObserver implements Us
 
 	@Override
 	public void unregistered(UserId userId) {
-		for (String transportProtocolId : transferProtocolRegistry.getAllRegisteredTransportProtocolIds()) {
-			TransferProtocol tp = transferProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId);
+		for (String transferProtocolId : transferProtocolRegistry.getAllRegisteredTransferProtocolIds()) {
+			TransferProtocol tp = transferProtocolRegistry.getRegisteredTransferProtocol(transferProtocolId);
 			UserIdMapper userIdMapper = tp.getUserIdMapper();
 			TransferId transferId = userIdMapper.resolveLocal(userId);
 			tp.getRegistrationEventCallback().unregistered(transferId);

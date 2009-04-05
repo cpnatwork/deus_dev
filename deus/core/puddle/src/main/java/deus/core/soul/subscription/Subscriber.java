@@ -1,6 +1,6 @@
 package deus.core.soul.subscription;
 
-import deus.core.access.transport.core.receiving.soulcallback.subscription.SubscriberExportedToPeer;
+import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeer;
 
 
 /**

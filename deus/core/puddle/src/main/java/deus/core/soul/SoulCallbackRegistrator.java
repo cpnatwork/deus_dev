@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transport.core.receiving.soulcallback.ExportedSoulCallbackRegistry;
-import deus.core.access.transport.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
-import deus.core.access.transport.core.receiving.soulcallback.subscription.SubscriberExportedToPeer;
+import deus.core.access.transfer.core.receiving.soulcallback.ExportedSoulCallbackRegistry;
+import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
+import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeer;
 
 @Component
 public class SoulCallbackRegistrator {

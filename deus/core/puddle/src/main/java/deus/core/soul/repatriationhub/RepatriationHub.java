@@ -1,6 +1,6 @@
 package deus.core.soul.repatriationhub;
 
-import deus.core.access.transport.core.receiving.soulcallback.repatriationhub.RepatriationHubExportedToPeer;
+import deus.core.access.transfer.core.receiving.soulcallback.repatriationhub.RepatriationHubExportedToPeer;
 
 
 

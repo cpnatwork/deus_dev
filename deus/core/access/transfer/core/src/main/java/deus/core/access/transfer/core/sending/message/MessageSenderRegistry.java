@@ -4,6 +4,6 @@ import deus.core.access.transfer.core.soul.protocol.MessageSender;
 
 public interface MessageSenderRegistry {
 
-	MessageSender getMessageSender(String transportProtocolId);
+	MessageSender getMessageSender(String transferProtocolId);
 
 }

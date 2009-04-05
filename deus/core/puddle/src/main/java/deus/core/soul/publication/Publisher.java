@@ -1,6 +1,6 @@
 package deus.core.soul.publication;
 
-import deus.core.access.transport.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
+import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
 
 
 /**

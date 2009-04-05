@@ -3,8 +3,8 @@ package deus.core.soul.subscription.decisionprocessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import deus.core.access.transport.core.receiving.soulcallback.subscription.SubscriberExportedToPeer;
-import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
+import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeer;
+import deus.core.access.transfer.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.common.decisionprocessor.impl.AbstractGenericDecisionProcessor;
 import deus.model.attention.publication.connection.establish.pubinit.PublisherOffer;
 import deus.model.user.UserMetadata;

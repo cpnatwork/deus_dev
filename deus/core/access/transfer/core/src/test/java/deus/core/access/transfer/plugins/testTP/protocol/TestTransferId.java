@@ -2,12 +2,12 @@ package deus.core.access.transfer.plugins.testTP.protocol;
 
 import deus.core.access.transfer.core.soul.protocol.TransferId;
 
-public class TestTransportId implements TransferId {
+public class TestTransferId implements TransferId {
 
 	private final String username;
 
 
-	public TestTransportId(String username) {
+	public TestTransferId(String username) {
 		super();
 		this.username = username;
 	}
@@ -41,7 +41,7 @@ public class TestTransportId implements TransferId {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		TestTransportId other = (TestTransportId) obj;
+		TestTransferId other = (TestTransferId) obj;
 		if (username == null) {
 			if (other.username != null)
 				return false;
@@ -53,7 +53,7 @@ public class TestTransportId implements TransferId {
 
 
 	@Override
-	public String getTransportProtocolId() {
+	public String getTransferProtocolId() {
 		return "testProtocol";
 	}
 

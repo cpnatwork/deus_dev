@@ -2,7 +2,7 @@ package deus.core.access.transfer.plugins.testTP.protocol;
 
 import deus.core.access.transfer.core.soul.protocol.AbstractTransferProtocol;
 
-public class TestTransportProtocol extends AbstractTransferProtocol {
+public class TestTransferProtocol extends AbstractTransferProtocol {
 
 	@Override
 	public String getId() {

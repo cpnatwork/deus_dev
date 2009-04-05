@@ -6,9 +6,9 @@ import deus.core.access.transfer.core.soul.protocol.TransferProtocol;
 
 public interface TransferProtocolRegistry extends ExportedTransferProtocolRegistry {
 
-	public TransferProtocol getRegisteredTransportProtocol(String transportProtocolId);
+	public TransferProtocol getRegisteredTransferProtocol(String transferProtocolId);
 
 
-	public Collection<String> getAllRegisteredTransportProtocolIds();
+	public Collection<String> getAllRegisteredTransferProtocolIds();
 	
 }

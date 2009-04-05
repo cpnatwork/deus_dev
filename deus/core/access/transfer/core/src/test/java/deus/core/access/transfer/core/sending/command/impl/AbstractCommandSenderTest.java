@@ -12,8 +12,8 @@ import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
 import deus.core.access.transfer.core.soul.protocol.MessageSender;
 import deus.core.access.transfer.core.soul.protocol.TransferId;
 import deus.core.access.transfer.core.soul.protocolregistry.ExportedTransferProtocolRegistry;
-import deus.core.access.transfer.plugins.testTP.protocol.TestTransportId;
-import deus.core.access.transfer.plugins.testTP.protocol.TestTransportProtocol;
+import deus.core.access.transfer.plugins.testTP.protocol.TestTransferId;
+import deus.core.access.transfer.plugins.testTP.protocol.TestTransferProtocol;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
 
@@ -24,18 +24,18 @@ public abstract class AbstractCommandSenderTest {
 	protected TransferProtocolNegotiationStrategy transferProtocolNegotiationStrategy;
 	
 	@Autowired
-	private ExportedTransferProtocolRegistry transportProtocolRegistry;
+	private ExportedTransferProtocolRegistry transferProtocolRegistry;
 	
 	
-	protected TransferMessage lastSentTransportMessage;
-	private TestTransportProtocol tp;
+	protected TransferMessage lastSentTransferMessage;
+	private TestTransferProtocol tp;
 	protected UserIdMapper userIdMapper;
 
 	
 	protected UserId subscriberId;	
 	protected UserId publisherId;
 
-	private String testTransportProtocolId;
+	private String testTransferProtocolId;
 
 
 	public AbstractCommandSenderTest() {
@@ -48,7 +48,7 @@ public abstract class AbstractCommandSenderTest {
 		subscriberId = new UserUrl("bob", "deus.org");
 		publisherId = new UserUrl("alice", "deus.org");
 
-		tp = new TestTransportProtocol();
+		tp = new TestTransferProtocol();
 		tp.setLoginEventCallback(null); // we don't need login for this test
 		tp.setRegistrationEventCallback(null); // we don't need registration for this test
 		
@@ -56,12 +56,12 @@ public abstract class AbstractCommandSenderTest {
 
 			@Override
 			public TransferId resolveLocal(UserId userId) {
-				return new TestTransportId(userId.toString());
+				return new TestTransferId(userId.toString());
 			}
 
 			@Override
 			public TransferId resolveRemote(UserId userId) {
-				return new TestTransportId(userId.toString());
+				return new TestTransferId(userId.toString());
 			}
 
 		};
@@ -73,20 +73,20 @@ public abstract class AbstractCommandSenderTest {
 
 			@Override
 			public void send(TransferMessage command) {
-				lastSentTransportMessage = command;
+				lastSentTransferMessage = command;
 			}
 
 		});
 		
-		testTransportProtocolId = tp.getId();
+		testTransferProtocolId = tp.getId();
 
-		transportProtocolRegistry.registerTransportProtocol(tp);
+		transferProtocolRegistry.registerTransferProtocol(tp);
 	}
 
 
 	@After
 	public void tearDown() throws Exception {
-		transportProtocolRegistry.unregisterTransportProtocol(testTransportProtocolId);
+		transferProtocolRegistry.unregisterTransferProtocol(testTransferProtocolId);
 	}
 
 

@@ -21,13 +21,13 @@ public class RegisterTransferProtocol {
 	
 	@PostConstruct
 	public void register() {
-		registry.registerTransportProtocol(loopbackProtocol);
+		registry.registerTransferProtocol(loopbackProtocol);
 	}
 
 
 	@PreDestroy
 	public void unregister() {
-		registry.unregisterTransportProtocol(loopbackProtocol.getId());
+		registry.unregisterTransferProtocol(loopbackProtocol.getId());
 	}
 
 }

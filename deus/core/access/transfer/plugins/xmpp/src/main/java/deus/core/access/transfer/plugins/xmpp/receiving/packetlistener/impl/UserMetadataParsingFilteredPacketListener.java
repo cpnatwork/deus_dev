@@ -16,11 +16,11 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 	protected XmppMessageReceiver messageReceiver;
 
 
-	protected XmppTransferId parseXmppTransportId(String xmppTransportId) {
-		if(xmppTransportId.isEmpty())
-			throw new IllegalStateException("xmpp transport id to parse is empty");
-		String username = StringUtils.parseName(xmppTransportId);
-		String server = StringUtils.parseServer(xmppTransportId);
+	protected XmppTransferId parseXmppTransferId(String xmppTransferId) {
+		if(xmppTransferId.isEmpty())
+			throw new IllegalStateException("xmpp transfer id to parse is empty");
+		String username = StringUtils.parseName(xmppTransferId);
+		String server = StringUtils.parseServer(xmppTransferId);
 		return new XmppTransferId(username, server);
 	}
 	
@@ -28,8 +28,8 @@ public abstract class UserMetadataParsingFilteredPacketListener extends Abstract
 	protected void receiveCommand(TransferMessage command, Packet packet) {
 		//UserMetadata senderMetadata = parseFromUserMetadata(packet);
 		
-		XmppTransferId senderJid = parseXmppTransportId(packet.getFrom());
-		XmppTransferId receiverJid = parseXmppTransportId(packet.getTo());
+		XmppTransferId senderJid = parseXmppTransferId(packet.getFrom());
+		XmppTransferId receiverJid = parseXmppTransferId(packet.getTo());
 		
 		// FIXME: add sender ID here
 		// FIXME: add receiver ID here

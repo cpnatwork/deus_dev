@@ -18,8 +18,8 @@ public class TransferProtocolLoginUserLoginStateObserver implements UserLoginSta
 	
 	@Override
 	public void loggedIn(UserId userId) {
-		for (String transportProtocolId : transferProtocolRegistry.getAllRegisteredTransportProtocolIds()) {
-			TransferProtocol tp = transferProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId);
+		for (String transferProtocolId : transferProtocolRegistry.getAllRegisteredTransferProtocolIds()) {
+			TransferProtocol tp = transferProtocolRegistry.getRegisteredTransferProtocol(transferProtocolId);
 			UserIdMapper userIdMapper = tp.getUserIdMapper();
 			TransferId transferId = userIdMapper.resolveLocal(userId);
 			tp.getLoginEventCallback().loggedIn(transferId);
@@ -29,8 +29,8 @@ public class TransferProtocolLoginUserLoginStateObserver implements UserLoginSta
 
 	@Override
 	public void loggedOut(UserId userId) {
-		for (String transportProtocolId : transferProtocolRegistry.getAllRegisteredTransportProtocolIds()) {
-			TransferProtocol tp = transferProtocolRegistry.getRegisteredTransportProtocol(transportProtocolId);
+		for (String transferProtocolId : transferProtocolRegistry.getAllRegisteredTransferProtocolIds()) {
+			TransferProtocol tp = transferProtocolRegistry.getRegisteredTransferProtocol(transferProtocolId);
 			UserIdMapper userIdMapper = tp.getUserIdMapper();
 			TransferId transferId = userIdMapper.resolveLocal(userId);
 			tp.getLoginEventCallback().loggedOut(transferId);

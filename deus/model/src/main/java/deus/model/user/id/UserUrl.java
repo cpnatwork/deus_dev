@@ -1,7 +1,7 @@
 package deus.model.user.id;
 
 
-// TODO: think about only injecting username, etc into constructor, no more setters. Also for Transport ids
+// TODO: think about only injecting username, etc into constructor, no more setters. Also for Transfer ids
 
 // FIXME: REMOVE HIBERNATE STUFF!
 //@SuppressWarnings("serial")

@@ -61,7 +61,7 @@ public abstract class AbstractTransferProtocol implements TransferProtocol {
 
 
 	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.protocol.TransportProtocol#getTransportProtocolId()
+	 * @see deus.core.access.transfer.protocol.TransferProtocol#getTransferProtocolId()
 	 */
 	@Override
 	public abstract String getId();
