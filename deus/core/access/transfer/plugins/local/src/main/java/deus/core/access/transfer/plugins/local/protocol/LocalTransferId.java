@@ -1,6 +1,6 @@
-package deus.core.access.transfer.plugins.local.soul.protocol;
+package deus.core.access.transfer.plugins.local.protocol;
 
-import deus.core.access.transfer.core.soul.protocol.TransferId;
+import deus.core.access.transfer.common.protocol.TransferId;
 
 public class LocalTransferId implements TransferId {
 

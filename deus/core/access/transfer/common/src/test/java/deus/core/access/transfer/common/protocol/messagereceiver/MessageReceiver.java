@@ -1,4 +1,4 @@
-package deus.core.access.transfer.core.receiving.message;
+package deus.core.access.transfer.common.protocol.messagereceiver;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
 

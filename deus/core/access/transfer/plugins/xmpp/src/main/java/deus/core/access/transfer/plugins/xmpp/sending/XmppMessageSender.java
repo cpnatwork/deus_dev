@@ -4,14 +4,14 @@ import org.jivesoftware.smack.packet.Presence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.transfer.common.connectionstate.ConnectionStateRegistry;
 import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.core.access.transfer.common.messages.publication.connection.establish.subscribe.DenySubscriptionRequestNoticeMessage;
 import deus.core.access.transfer.common.messages.publication.connection.establish.subscribe.GrantSubscriptionRequestNoticeMessage;
 import deus.core.access.transfer.common.messages.publication.connection.establish.subscribe.RequestSubscriptionMessage;
 import deus.core.access.transfer.common.messages.publication.connection.establish.subscribe.SubscribeToPublisherMessage;
 import deus.core.access.transfer.common.messages.publication.connection.terminate.UnsubscribeMessage;
-import deus.core.access.transfer.core.connectionstate.ConnectionStateRegistry;
-import deus.core.access.transfer.core.soul.protocol.MessageSender;
+import deus.core.access.transfer.common.protocol.messagesender.MessageSender;
 import deus.core.access.transfer.plugins.xmpp.common.XmppConfiguration;
 import deus.core.access.transfer.plugins.xmpp.common.XmppConversation;
 import deus.core.access.transfer.plugins.xmpp.connectionstate.XmppConnectionState;

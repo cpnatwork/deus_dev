@@ -3,10 +3,10 @@ package deus.core.access.transfer.core.soul.observers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
-import deus.core.access.transfer.core.soul.protocol.TransferId;
-import deus.core.access.transfer.core.soul.protocol.TransferProtocol;
-import deus.core.access.transfer.core.soul.protocolregistry.TransferProtocolRegistry;
+import deus.core.access.transfer.common.protocol.TransferId;
+import deus.core.access.transfer.common.protocol.TransferProtocol;
+import deus.core.access.transfer.common.protocol.mapper.UserIdMapper;
+import deus.core.access.transfer.core.soul.protocolregistry.QueriableTransferProtocolRegistry;
 import deus.gatekeeper.cerberus.UserLoginStateObserver;
 import deus.model.user.id.UserId;
 
@@ -14,7 +14,7 @@ import deus.model.user.id.UserId;
 public class TransferProtocolLoginUserLoginStateObserver implements UserLoginStateObserver {
 
 	@Autowired
-	private TransferProtocolRegistry transferProtocolRegistry;
+	private QueriableTransferProtocolRegistry transferProtocolRegistry;
 	
 	@Override
 	public void loggedIn(UserId userId) {

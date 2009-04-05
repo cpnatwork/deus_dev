@@ -32,7 +32,13 @@
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	
 	<dependencies>
-        <!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+       	<!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+		<dependency>
+			<groupId>inf6.promed</groupId>
+			<artifactId>deus-core-access-transfer-common</artifactId>
+			<type>bundle</type>
+		</dependency>
+	
 		<dependency>
 			<groupId>inf6.promed</groupId>
 			<artifactId>deus-model</artifactId>

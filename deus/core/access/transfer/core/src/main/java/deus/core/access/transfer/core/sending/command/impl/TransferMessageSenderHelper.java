@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
+import deus.core.access.transfer.common.protocol.mapper.UserIdMapper;
+import deus.core.access.transfer.common.protocol.messagesender.MessageSender;
 import deus.core.access.transfer.core.sending.message.MessageSenderRegistry;
 import deus.core.access.transfer.core.soul.discovery.TransferProtocolNegotiationStrategy;
-import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
-import deus.core.access.transfer.core.soul.protocol.MessageSender;
-import deus.core.access.transfer.core.soul.protocolregistry.TransferProtocolRegistry;
+import deus.core.access.transfer.core.soul.protocolregistry.QueriableTransferProtocolRegistry;
 import deus.model.user.id.UserId;
 
 @Component
@@ -18,7 +18,7 @@ public class TransferMessageSenderHelper {
 	private TransferProtocolNegotiationStrategy transferProtocolNegotiationStrategy;
 
 	@Autowired
-	private TransferProtocolRegistry transferProtocolRegistry;
+	private QueriableTransferProtocolRegistry transferProtocolRegistry;
 
 	@Autowired
 	private MessageSenderRegistry messageSenderRegistry;

@@ -1,6 +1,6 @@
 package deus.core.access.transfer.plugins.xmpp.core.protocol;
 
-import deus.core.access.transfer.core.soul.protocol.TransferId;
+import deus.core.access.transfer.common.protocol.TransferId;
 
 public class XmppTransferId implements TransferId {
 

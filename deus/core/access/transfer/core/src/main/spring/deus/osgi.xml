@@ -10,7 +10,7 @@
 	<!-- CORE -->
 	
 	<!-- service for registration of transfer protocols -->
-	<osgi:service id="transferProtocolRegistryOsgiService" ref="transferProtocolRegistry" interface="deus.core.access.transfer.core.soul.protocolregistry.ExportedTransferProtocolRegistry" />
+	<osgi:service id="transferProtocolRegistryOsgiService" ref="transferProtocolRegistry" interface="deus.core.access.transfer.common.protocolregistry.TransferProtocolRegistry" />
 	
 	
 	
@@ -26,7 +26,7 @@
 	<!-- RECEIVING -->
 
 	<!-- service for receiving transfer messages -->
-	<osgi:service id="messageReceiverOsgiService" ref="messageReceiver" interface="deus.core.access.transfer.core.receiving.message.MessageReceiver"/>
+	<osgi:service id="messageReceiverOsgiService" ref="messageReceiver" interface="deus.core.access.transfer.common.protocol.messagereceiver.MessageReceiver"/>
 	
 	
 	<!-- callback to soul registry -->

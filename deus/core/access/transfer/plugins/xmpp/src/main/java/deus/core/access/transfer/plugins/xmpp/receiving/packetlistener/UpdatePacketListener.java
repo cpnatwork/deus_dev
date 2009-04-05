@@ -6,7 +6,7 @@ import org.jivesoftware.smack.packet.IQ;
 import org.jivesoftware.smack.packet.Packet;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
-import deus.core.access.transfer.core.messages.publication.UpdateMessage;
+import deus.core.access.transfer.common.messages.publication.UpdateMessage;
 import deus.core.access.transfer.plugins.xmpp.PatchPacket;
 import deus.core.access.transfer.plugins.xmpp.receiving.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
 import deus.core.access.transfer.plugins.xmpp.util.PacketPrinter;

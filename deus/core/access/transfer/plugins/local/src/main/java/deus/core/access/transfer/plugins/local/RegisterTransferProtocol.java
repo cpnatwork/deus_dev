@@ -1,4 +1,4 @@
-package deus.core.access.transfer.plugins.local.soul;
+package deus.core.access.transfer.plugins.local;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -6,14 +6,14 @@ import javax.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.soul.protocol.TransferProtocol;
-import deus.core.access.transfer.core.soul.protocolregistry.ExportedTransferProtocolRegistry;
+import deus.core.access.transfer.common.protocol.TransferProtocol;
+import deus.core.access.transfer.common.protocolregistry.TransferProtocolRegistry;
 
 @Component
 public class RegisterTransferProtocol {
 
 	@Autowired
-	private ExportedTransferProtocolRegistry registry;
+	private TransferProtocolRegistry registry;
 
 	@Autowired
 	private TransferProtocol loopbackProtocol;
@@ -27,7 +27,7 @@ public class RegisterTransferProtocol {
 
 	@PreDestroy
 	public void unregister() {
-		registry.unregisterTransferProtocol(loopbackProtocol.getId());
+		registry.unregisterTransferProtocol(loopbackProtocol.getProtocolId());
 	}
 
 }

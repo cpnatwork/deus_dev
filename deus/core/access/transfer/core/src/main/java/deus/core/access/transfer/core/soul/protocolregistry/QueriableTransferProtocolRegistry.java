@@ -2,9 +2,10 @@ package deus.core.access.transfer.core.soul.protocolregistry;
 
 import java.util.Collection;
 
-import deus.core.access.transfer.core.soul.protocol.TransferProtocol;
+import deus.core.access.transfer.common.protocol.TransferProtocol;
+import deus.core.access.transfer.common.protocolregistry.TransferProtocolRegistry;
 
-public interface TransferProtocolRegistry extends ExportedTransferProtocolRegistry {
+public interface QueriableTransferProtocolRegistry extends TransferProtocolRegistry {
 
 	public TransferProtocol getRegisteredTransferProtocol(String transferProtocolId);
 

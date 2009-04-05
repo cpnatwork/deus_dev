@@ -1,4 +1,4 @@
-package deus.core.access.transfer.core.connectionstate;
+package deus.core.access.transfer.common.connectionstate;
 
 public interface ConnectionState {
 	

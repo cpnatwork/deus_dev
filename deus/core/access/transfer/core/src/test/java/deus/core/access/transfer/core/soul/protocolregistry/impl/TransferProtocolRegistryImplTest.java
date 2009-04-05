@@ -14,10 +14,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
-import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
-import deus.core.access.transfer.core.soul.protocol.MessageSender;
-import deus.core.access.transfer.core.soul.protocol.TransferId;
-import deus.core.access.transfer.core.soul.protocolregistry.TransferProtocolRegistry;
+import deus.core.access.transfer.common.protocol.TransferId;
+import deus.core.access.transfer.common.protocol.mapper.UserIdMapper;
+import deus.core.access.transfer.common.protocol.messagesender.MessageSender;
+import deus.core.access.transfer.common.protocol.registry.TransferProtocolRegistry;
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransferId;
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransferProtocol;
 import deus.model.user.id.UserId;

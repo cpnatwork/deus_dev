@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
-import deus.core.access.transfer.core.receiving.message.MessageReceiver;
+import deus.core.access.transfer.common.protocol.messagereceiver.MessageReceiver;
 
 @Component
 public class XmppMessageReceiver {

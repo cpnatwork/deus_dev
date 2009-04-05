@@ -6,11 +6,11 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.soul.protocol.TransferProtocol;
-import deus.core.access.transfer.core.soul.protocolregistry.TransferProtocolRegistry;
+import deus.core.access.transfer.common.protocol.TransferProtocol;
+import deus.core.access.transfer.core.soul.protocolregistry.QueriableTransferProtocolRegistry;
 
 @Component("transferProtocolRegistry")
-public class TransferProtocolRegistryImpl implements TransferProtocolRegistry {
+public class TransferProtocolRegistryImpl implements QueriableTransferProtocolRegistry {
 
 	private final Map<String, TransferProtocol> registeredTransferProtocols;
 
@@ -29,11 +29,11 @@ public class TransferProtocolRegistryImpl implements TransferProtocolRegistry {
 
 	@Override
 	public void registerTransferProtocol(TransferProtocol transferProtocol) {
-		if (registeredTransferProtocols.containsKey(transferProtocol.getId()))
+		if (registeredTransferProtocols.containsKey(transferProtocol.getProtocolId()))
 			throw new IllegalArgumentException("transfer protocol " + transferProtocol
 					+ " has already been registered!");
 
-		registeredTransferProtocols.put(transferProtocol.getId(), transferProtocol);
+		registeredTransferProtocols.put(transferProtocol.getProtocolId(), transferProtocol);
 	}
 
 

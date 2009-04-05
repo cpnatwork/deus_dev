@@ -1,6 +1,6 @@
-package deus.core.access.transfer.core.soul.protocol.callback;
+package deus.core.access.transfer.common.protocol.callback;
 
-import deus.core.access.transfer.core.soul.protocol.TransferId;
+import deus.core.access.transfer.common.protocol.TransferId;
 
 public class DefaultRegistrationEventCallback implements RegistrationEventCallback {
 

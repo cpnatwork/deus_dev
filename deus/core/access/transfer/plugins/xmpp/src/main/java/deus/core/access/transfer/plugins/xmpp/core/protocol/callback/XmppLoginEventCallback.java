@@ -2,9 +2,9 @@ package deus.core.access.transfer.plugins.xmpp.core.protocol.callback;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import deus.core.access.transfer.core.connectionstate.ConnectionStateRegistry;
-import deus.core.access.transfer.core.soul.protocol.TransferId;
-import deus.core.access.transfer.core.soul.protocol.callback.LoginEventCallback;
+import deus.core.access.transfer.common.connectionstate.ConnectionStateRegistry;
+import deus.core.access.transfer.common.protocol.TransferId;
+import deus.core.access.transfer.common.protocol.callback.LoginEventCallback;
 import deus.core.access.transfer.plugins.xmpp.common.FilteredPacketListener;
 import deus.core.access.transfer.plugins.xmpp.common.XmppConversation;
 import deus.core.access.transfer.plugins.xmpp.common.XmppNetwork;

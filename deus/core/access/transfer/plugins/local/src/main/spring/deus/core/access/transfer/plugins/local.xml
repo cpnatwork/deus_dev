@@ -14,7 +14,7 @@
 		</property>
 		<property name="messageSender" ref="localMessageSender"/>
 		<property name="userIdMapper">
-			<bean class="deus.core.access.transfer.plugins.local.soul.mapperLocalUserIdMapper"/>
+			<bean class="deus.core.access.transfer.plugins.local.protocol.mapperpperLocalUserIdMapper"/>
 		</property>
 
 	</bean>

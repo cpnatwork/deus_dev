@@ -1,8 +1,8 @@
-package deus.core.access.transfer.plugins.local.soul.mapper;
+package deus.core.access.transfer.plugins.local.protocol.mapper;
 
-import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
-import deus.core.access.transfer.core.soul.protocol.TransferId;
-import deus.core.access.transfer.plugins.local.soul.protocol.LocalTransferId;
+import deus.core.access.transfer.common.protocol.TransferId;
+import deus.core.access.transfer.common.protocol.mapper.UserIdMapper;
+import deus.core.access.transfer.plugins.local.protocol.LocalTransferId;
 import deus.model.user.id.UserId;
 
 /**

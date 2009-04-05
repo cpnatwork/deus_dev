@@ -1,6 +1,6 @@
 package deus.core.access.transfer.plugins.testTP.protocol;
 
-import deus.core.access.transfer.core.soul.protocol.TransferId;
+import deus.core.access.transfer.common.protocol.TransferId;
 
 public class TestTransferId implements TransferId {
 

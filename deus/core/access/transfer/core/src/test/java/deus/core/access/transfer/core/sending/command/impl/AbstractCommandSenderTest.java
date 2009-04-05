@@ -7,11 +7,11 @@ import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
+import deus.core.access.transfer.common.protocol.TransferId;
+import deus.core.access.transfer.common.protocol.mapper.UserIdMapper;
+import deus.core.access.transfer.common.protocol.messagesender.MessageSender;
+import deus.core.access.transfer.common.protocolregistry.ExportedTransferProtocolRegistry;
 import deus.core.access.transfer.core.soul.discovery.TransferProtocolNegotiationStrategy;
-import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
-import deus.core.access.transfer.core.soul.protocol.MessageSender;
-import deus.core.access.transfer.core.soul.protocol.TransferId;
-import deus.core.access.transfer.core.soul.protocolregistry.ExportedTransferProtocolRegistry;
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransferId;
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransferProtocol;
 import deus.model.user.id.UserId;

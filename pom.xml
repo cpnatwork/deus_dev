@@ -88,6 +88,13 @@
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
+
+			<dependency>
+				<groupId>inf6.promed</groupId>
+				<artifactId>deus-core-access-transfer-common</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
 			
 			<dependency>
 				<groupId>inf6.promed</groupId>

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
-import deus.core.access.transfer.core.soul.protocol.MessageSender;
+import deus.core.access.transfer.common.protocol.messagesender.MessageSender;
 import deus.core.access.transfer.plugins.local.receiving.LocalMessageForwarder;
 
 @Component

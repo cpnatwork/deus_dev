@@ -1,10 +1,14 @@
-package deus.core.access.transfer.core.soul.protocol;
+package deus.core.access.transfer.common.protocol;
 
-import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
-import deus.core.access.transfer.core.soul.protocol.callback.LoginEventCallback;
-import deus.core.access.transfer.core.soul.protocol.callback.RegistrationEventCallback;
+import deus.core.access.transfer.common.protocol.callback.LoginEventCallback;
+import deus.core.access.transfer.common.protocol.callback.RegistrationEventCallback;
+import deus.core.access.transfer.common.protocol.mapper.UserIdMapper;
+import deus.core.access.transfer.common.protocol.messagesender.MessageSender;
 
-public abstract class AbstractTransferProtocol implements TransferProtocol {
+public final class TransferProtocolImpl implements TransferProtocol {
+
+	private String protocolId;
+
 
 	private MessageSender messageSender;
 
@@ -12,8 +16,17 @@ public abstract class AbstractTransferProtocol implements TransferProtocol {
 
 	private RegistrationEventCallback registrationEventCallback;
 
-	
 	private UserIdMapper userIdMapper;
+
+
+	public String getProtocolId() {
+		return protocolId;
+	}
+
+
+	public void setProtocolId(String protocolId) {
+		this.protocolId = protocolId;
+	}
 
 
 	@Override
@@ -60,15 +73,8 @@ public abstract class AbstractTransferProtocol implements TransferProtocol {
 	}
 
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.protocol.TransferProtocol#getTransferProtocolId()
-	 */
-	@Override
-	public abstract String getId();
-	
-	
 	public String toString() {
-		return getId();
+		return getProtocolId();
 	}
-	
+
 }

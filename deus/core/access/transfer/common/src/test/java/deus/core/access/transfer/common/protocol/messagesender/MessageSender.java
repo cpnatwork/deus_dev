@@ -1,4 +1,4 @@
-package deus.core.access.transfer.core.soul.protocol;
+package deus.core.access.transfer.common.protocol.messagesender;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
 

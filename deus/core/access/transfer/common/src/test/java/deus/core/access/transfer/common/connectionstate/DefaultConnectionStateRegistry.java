@@ -1,9 +1,9 @@
-package deus.core.access.transfer.core.connectionstate;
+package deus.core.access.transfer.common.connectionstate;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import deus.core.access.transfer.core.soul.protocol.TransferId;
+import deus.core.access.transfer.common.protocol.TransferId;
 
 public class DefaultConnectionStateRegistry implements ConnectionStateRegistry {
 

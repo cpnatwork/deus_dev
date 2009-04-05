@@ -1,4 +1,4 @@
-package deus.core.access.transfer.core.receiving.message.impl;
+package deus.core.access.transfer.core.receiving;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,7 +14,7 @@ import deus.core.access.transfer.common.messages.publication.connection.establis
 import deus.core.access.transfer.common.messages.publication.connection.establish.subscribe.SubscribeToPublisherMessage;
 import deus.core.access.transfer.common.messages.publication.connection.terminate.CancelSubscriptionMessage;
 import deus.core.access.transfer.common.messages.publication.connection.terminate.UnsubscribeMessage;
-import deus.core.access.transfer.core.receiving.message.MessageReceiver;
+import deus.core.access.transfer.common.protocol.messagereceiver.MessageReceiver;
 import deus.core.access.transfer.core.receiving.soulcallback.SoulCallbackRegistry;
 import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeer;

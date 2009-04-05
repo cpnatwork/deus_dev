@@ -1,4 +1,4 @@
-package deus.core.access.transfer.core.soul.protocol;
+package deus.core.access.transfer.common.protocol;
 
 public interface TransferId {
 
