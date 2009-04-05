@@ -4,16 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.transport.core.messages.TransportMessage;
-import deus.core.access.transport.core.messages.connection.establishment.invite.ConfirmSubscriptionOfferNoticeMessage;
-import deus.core.access.transport.core.messages.connection.establishment.invite.InviteSubscriberMessage;
-import deus.core.access.transport.core.messages.connection.establishment.invite.OfferSubscriptionMessage;
-import deus.core.access.transport.core.messages.connection.establishment.invite.RepelSubscriptionOfferNoticeMessage;
-import deus.core.access.transport.core.messages.connection.establishment.subscribe.DenySubscriptionRequestNoticeMessage;
-import deus.core.access.transport.core.messages.connection.establishment.subscribe.GrantSubscriptionRequestNoticeMessage;
-import deus.core.access.transport.core.messages.connection.establishment.subscribe.RequestSubscriptionMessage;
-import deus.core.access.transport.core.messages.connection.establishment.subscribe.SubscribeToPublisherMessage;
-import deus.core.access.transport.core.messages.connection.termination.CancelSubscriptionMessage;
-import deus.core.access.transport.core.messages.connection.termination.UnsubscribeMessage;
+import deus.core.access.transport.core.messages.publication.connection.establish.invite.ConfirmSubscriptionOfferNoticeMessage;
+import deus.core.access.transport.core.messages.publication.connection.establish.invite.InviteSubscriberMessage;
+import deus.core.access.transport.core.messages.publication.connection.establish.invite.OfferSubscriptionMessage;
+import deus.core.access.transport.core.messages.publication.connection.establish.invite.RepelSubscriptionOfferNoticeMessage;
+import deus.core.access.transport.core.messages.publication.connection.establish.subscribe.DenySubscriptionRequestNoticeMessage;
+import deus.core.access.transport.core.messages.publication.connection.establish.subscribe.GrantSubscriptionRequestNoticeMessage;
+import deus.core.access.transport.core.messages.publication.connection.establish.subscribe.RequestSubscriptionMessage;
+import deus.core.access.transport.core.messages.publication.connection.establish.subscribe.SubscribeToPublisherMessage;
+import deus.core.access.transport.core.messages.publication.connection.terminate.CancelSubscriptionMessage;
+import deus.core.access.transport.core.messages.publication.connection.terminate.UnsubscribeMessage;
 import deus.core.access.transport.core.receiving.message.MessageReceiver;
 import deus.core.access.transport.core.receiving.soulcallback.SoulCallbackRegistry;
 import deus.core.access.transport.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
@@ -45,7 +45,7 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 				// USE CASE: accept subscription
 				publisher.addSubscriber(receiverId, senderId, senderMetadata);
 			}
-			// here: role subscriber
+			// here: role informationConsumer
 			else if (message instanceof GrantSubscriptionRequestNoticeMessage)
 				subscriber.noticeSubscriptionRequestGranted(receiverId, senderId);
 			else if (message instanceof DenySubscriptionRequestNoticeMessage)
@@ -55,7 +55,7 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 		}
 		// USE CASE: INVITE SUBSCRIBER
 		else if(message instanceof InviteSubscriberMessage) {
-			// here: role subscriber
+			// here: role informationConsumer
 			if (message instanceof OfferSubscriptionMessage) {
 				UserMetadata senderMetadata = ((OfferSubscriptionMessage) message).getPublisherMetadata();
 				// USE CASE: confirm subscription
@@ -75,7 +75,7 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 			publisher.deleteSubscriber(receiverId, senderId);
 		// USE CASE: CANCEL SUBSCRIPTION
 		else if (message instanceof CancelSubscriptionMessage)
-			// FIXME: impleemnt
+			// FIXME: implement
 			;
 		else
 			throw new IllegalArgumentException("cannot handle command " + message);

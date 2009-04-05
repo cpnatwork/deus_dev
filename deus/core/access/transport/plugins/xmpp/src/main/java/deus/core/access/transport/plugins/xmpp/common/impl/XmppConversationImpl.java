@@ -38,7 +38,7 @@ public class XmppConversationImpl implements XmppConversation {
 			connection.connect();
 		}
 		catch (XMPPException e) {
-			// if the subscriber XMPP server is not available, something fatal went wrong!
+			// if the informationConsumer XMPP server is not available, something fatal went wrong!
 			throw new RuntimeException("the local XMPP server of the user " + xmppTransportId + " is not available", e);
 		}
 	}

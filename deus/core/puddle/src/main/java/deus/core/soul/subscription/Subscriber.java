@@ -4,10 +4,10 @@ import deus.core.access.transport.core.receiving.soulcallback.subscription.Subsc
 
 
 /**
- * Central facade of the subscriber subsystem.
+ * Central facade of the informationConsumer subsystem.
  * 
- * Methods from the interface <code>SubscriberExportedToPeer</code> are called remotely on this subscriber. The other
- * methods of this interface are methods to retrieve information about the subscriber subsystem locally.
+ * Methods from the interface <code>SubscriberExportedToPeer</code> are called remotely on this informationConsumer. The other
+ * methods of this interface are methods to retrieve information about the informationConsumer subsystem locally.
  * 
  * @see SubscriberExportedToPeer
  * 

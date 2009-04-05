@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.pub.LosEntryDoRep;
 import deus.core.access.transport.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
 import deus.core.soul.barker.BarkerExportedToSubsystems;
-import deus.model.attention.decision.BinaryDecisionToMake;
-import deus.model.attention.decision.SubscriberRequest;
-import deus.model.attention.notice.Notice;
-import deus.model.attention.notice.SubscriberInitiatedTerminationNotice;
-import deus.model.attention.notice.SubscriptionAbstainedNotice;
-import deus.model.attention.notice.SubscriptionConfirmedNotice;
+import deus.model.attention.BinaryDecisionToMake;
+import deus.model.attention.Notice;
+import deus.model.attention.publication.connection.establish.pubinit.SubscriptionRepelNotice;
+import deus.model.attention.publication.connection.establish.pubinit.SubscriptionConfirmedNotice;
+import deus.model.attention.publication.connection.establish.subinit.SubscriptionRequest;
+import deus.model.attention.publication.connection.terminate.SubscriberInitiatedTerminationNotice;
 import deus.model.pub.LosEntry;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
@@ -41,7 +41,7 @@ public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPe
 		logger.trace("proxying call to addObserver");
 		
 		// PLACE SUBSCRIBER REQUEST
-		BinaryDecisionToMake decision = new SubscriberRequest(subscriberId, subscriberMetadata);
+		BinaryDecisionToMake decision = new SubscriptionRequest(subscriberId, subscriberMetadata);
 		barker.addUnnoticedAttentionElement(publisherId, decision);
 		
 		logger.trace("added {} to barker", decision);
@@ -91,7 +91,7 @@ public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPe
 
 		// get publisher metadata out of LoP
 		UserMetadata subscriberMetadata = losEntry.getSubscriberMetadata();
-		Notice notice = new SubscriptionAbstainedNotice(subscriberMetadata);
+		Notice notice = new SubscriptionRepelNotice(subscriberMetadata);
 		barker.addUnnoticedAttentionElement(publisherId, notice);
 
 		logger.debug("added {} to barker", notice);

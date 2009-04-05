@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.sub.DifDoRep;
 import deus.core.access.storage.api.sub.FifDoRep;
-import deus.core.soul.common.InformationFileUpdateStrategy;
 import deus.core.soul.difgoverning.DifGovernor;
+import deus.core.soul.pifgoverning.AssimilationStrategy;
 import deus.model.dossier.DigitalCard;
 import deus.model.dossier.DigitalCardId;
 import deus.model.sub.ForeignInformationFile;
@@ -20,8 +20,9 @@ import deus.model.user.id.UserId;
 public class DifGovernorImpl implements DifGovernor {
 
 
+	// FIXME: use patchStrategy here
 	@Resource(name = "foreignInformationFileUpdateStrategy")
-	private InformationFileUpdateStrategy foreignInformationFileUpdateStrategy;
+	private PatchStrategy foreignInformationFileUpdateStrategy;
 
 
 	@Autowired
@@ -33,7 +34,7 @@ public class DifGovernorImpl implements DifGovernor {
 
 
 	@Override
-	public void assimilatePublishedDigitalCard(UserId residentId, UserId cpId, DigitalCard digitalCard) {
+	public void applyPatch(UserId residentId, UserId cpId, DigitalCard digitalCard) {
 		ForeignInformationFile foreignInformationFile = fifDoRep.getByNaturalId(cpId, residentId);
 
 		foreignInformationFileUpdateStrategy.update(foreignInformationFile, digitalCard);

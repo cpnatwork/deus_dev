@@ -6,8 +6,8 @@ import deus.model.user.id.UserId;
 
 public interface ContributorExportedToPeer {
 
-	public void acknowledgeContribution(UserId contributorId, DigitalCardId digitalCardId);
+	public void contributionAcknowledged(UserId contributorId, DigitalCardId digitalCardId);
 	
-	public void denyContribution(UserId contributorId, DigitalCardId digitalCardId);
+	public void contributionDenied(UserId contributorId, DigitalCardId digitalCardId);
 	
 }

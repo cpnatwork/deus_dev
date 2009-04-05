@@ -2,7 +2,7 @@ package deus.model.account;
 
 import java.util.Set;
 
-import deus.model.user.UserRole;
+import deus.model.user.DistributionRole;
 import deus.model.user.id.UserId;
 
 
@@ -15,15 +15,15 @@ public class Account {
 	// FIXME: think about whether we really want to store logged in state in Account object
 	private boolean loggedIn;
 
-	private final Set<UserRole> userRoles;
+	private final Set<DistributionRole> distributionRoles;
 
 
-	public Account(String localUsername, String password, UserId userId, Set<UserRole> userRoles) {
+	public Account(String localUsername, String password, UserId userId, Set<DistributionRole> distributionRoles) {
 		super();
 		this.localUsername = localUsername;
 		this.password = password;
 		this.userId = userId;
-		this.userRoles = userRoles;
+		this.distributionRoles = distributionRoles;
 	}
 
 
@@ -57,8 +57,8 @@ public class Account {
 	}
 
 
-	public Set<UserRole> getUserRoles() {
-		return userRoles;
+	public Set<DistributionRole> getUserRoles() {
+		return distributionRoles;
 	}
 
 

@@ -9,7 +9,7 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 /**
- * The view of a personal information file (PIF), that resides on the subscriber side. This file is sent by the
+ * The view of a personal information file (PIF), that resides on the informationConsumer side. This file is sent by the
  * publisher to its subscribers.
  * 
  * Abbreviation: FIF

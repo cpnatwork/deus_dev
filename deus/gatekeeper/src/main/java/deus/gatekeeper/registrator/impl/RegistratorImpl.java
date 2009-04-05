@@ -12,9 +12,9 @@ import deus.gatekeeper.puddle.RegistrationInformation;
 import deus.gatekeeper.registrator.Registrator;
 import deus.gatekeeper.registrator.UserIdGenerator;
 import deus.gatekeeper.registrator.UserRegistrationStateObserver;
-import deus.gatekeeper.rolesetup.UserRoleSetup;
+import deus.gatekeeper.rolesetup.DistributionRoleSetup;
 import deus.model.account.Account;
-import deus.model.user.UserRole;
+import deus.model.user.DistributionRole;
 import deus.model.user.id.UserId;
 
 @Component("registrator")
@@ -29,7 +29,7 @@ public class RegistratorImpl implements Registrator {
 	private UserMetadataDoRep userMetadataDoRep;
 	
 	@Autowired
-	private UserRoleSetup userRoleSetup;
+	private DistributionRoleSetup distributionRoleSetup;
 
 
 	@Autowired
@@ -91,8 +91,8 @@ public class RegistratorImpl implements Registrator {
 		// FUTURE: init data objects in database for subsystem Barker here!
 		
 		// INITIALIZING ROLE DATA ELEMENTS
-		for (UserRole userRole : account.getUserRoles())
-			userRoleSetup.setUpRole(userRole, account.getUserId());
+		for (DistributionRole distributionRole : account.getUserRoles())
+			distributionRoleSetup.setUpRole(distributionRole, account.getUserId());
 	}
 
 
@@ -113,8 +113,8 @@ public class RegistratorImpl implements Registrator {
 		// FUTURE: destroy data objects in database for subsystem Barker here!
 		
 		// DESTROYING ROLE DATA ELEMENTS
-		for (UserRole userRole : account.getUserRoles())
-			userRoleSetup.tearDownRole(userRole, userId);
+		for (DistributionRole distributionRole : account.getUserRoles())
+			distributionRoleSetup.tearDownRole(distributionRole, userId);
 	}
 
 

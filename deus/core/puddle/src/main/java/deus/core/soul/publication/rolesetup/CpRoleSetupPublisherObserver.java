@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.pub.LosDoRep;
-import deus.core.soul.common.AbstractUserRoleSetupObserver;
+import deus.core.soul.common.AbstractDistributionRoleSetupObserver;
 import deus.core.soul.publication.PublisherExportedToClient;
 import deus.model.pub.ListOfSubscribers;
 import deus.model.pub.LosEntry;
-import deus.model.user.UserRole;
+import deus.model.user.DistributionRole;
 import deus.model.user.id.UserId;
 
 @Component
-public class CpRoleSetupPublisherObserver extends AbstractUserRoleSetupObserver {
+public class CpRoleSetupPublisherObserver extends AbstractDistributionRoleSetupObserver {
 
 	@Autowired
 	private LosDoRep losDoRep;
@@ -44,8 +44,8 @@ public class CpRoleSetupPublisherObserver extends AbstractUserRoleSetupObserver 
 
 
 	@Override
-	protected UserRole getUserRole() {
-		return UserRole.cp;
+	protected DistributionRole getUserRole() {
+		return DistributionRole.concernedPerson;
 	}
 
 }

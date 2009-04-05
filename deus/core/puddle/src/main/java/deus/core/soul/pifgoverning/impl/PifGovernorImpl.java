@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.pie.PifDoRep;
-import deus.core.soul.common.InformationFileUpdateStrategy;
+import deus.core.soul.pifgoverning.AssimilationStrategy;
 import deus.core.soul.pifgoverning.PifGovernor;
 import deus.model.dossier.DigitalCard;
 import deus.model.pie.PersonalInformationFile;
@@ -17,7 +17,7 @@ public class PifGovernorImpl implements PifGovernor {
 
 
 	@Resource(name = "personalInformationFileUpdateStrategy")
-	private InformationFileUpdateStrategy personalInformationFileUpdateStrategy;
+	private AssimilationStrategy personalInformationFileUpdateStrategy;
 
 
 	@Autowired

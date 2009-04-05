@@ -1,7 +1,7 @@
 package deus.core.soul.common.decisionprocessor.impl;
 
 import deus.core.soul.common.decisionprocessor.GenericDecisionProcessor;
-import deus.model.attention.decision.BinaryDecisionToMake;
+import deus.model.attention.BinaryDecisionToMake;
 import deus.model.user.id.UserId;
 
 public abstract class AbstractGenericDecisionProcessor<DecisionT extends BinaryDecisionToMake> implements

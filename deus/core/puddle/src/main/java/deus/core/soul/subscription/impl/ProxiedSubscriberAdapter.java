@@ -20,7 +20,7 @@ import deus.model.user.id.UserId;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-@Component("subscriber")
+@Component("informationConsumer")
 public class ProxiedSubscriberAdapter implements Subscriber {
 
 	@Autowired

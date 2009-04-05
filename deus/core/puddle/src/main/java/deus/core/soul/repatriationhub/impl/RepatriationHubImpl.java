@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 import deus.core.soul.barker.BarkerExportedToSubsystems;
 import deus.core.soul.pifgoverning.PifGovernor;
 import deus.core.soul.repatriationhub.RepatriationHub;
-import deus.model.attention.decision.BinaryDecisionToMake;
-import deus.model.attention.decision.Contribution;
+import deus.model.attention.BinaryDecisionToMake;
+import deus.model.attention.repatriation.Repatriation;
 import deus.model.dossier.DigitalCard;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
@@ -30,15 +30,15 @@ public class RepatriationHubImpl implements RepatriationHub {
 					"ID of the CP is not the ID of the user, that is handled in this repatriation hub");
 
 		if (!contributorId.equals(repatriatedDigitalCard.getDigitalCardId().getContributorId()))
-			throw new IllegalArgumentException("ID of the contributor does not match the id in the digital card!");
+			throw new IllegalArgumentException("ID of the informationProvider does not match the id in the digital card!");
 
 
 		if (cpId.equals(contributorId)) {
-			// if 'I' am the contributor
+			// if 'I' am the informationProvider
 			pifGovernor.assimilateRepatriatedDigitalCard(cpId, repatriatedDigitalCard);
 		}
 		else {
-			// if the contributor is another person
+			// if the informationProvider is another person
 			
 			// FIXME: do contributors need to register before contributing????
 			// if not, than a UserMetadata of should be passed to contribute()
@@ -46,9 +46,10 @@ public class RepatriationHubImpl implements RepatriationHub {
 
 			UserMetadata contributorMetadata = null;
 
-			BinaryDecisionToMake decision = new Contribution(contributorMetadata, repatriatedDigitalCard);
+			BinaryDecisionToMake decision = new Repatriation(contributorMetadata, repatriatedDigitalCard);
 			barker.addUnnoticedAttentionElement(cpId, decision);
 		}
+		
 	}
 
 

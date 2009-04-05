@@ -7,8 +7,7 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-import deus.model.attention.decision.BinaryDecisionToMake;
-import deus.model.attention.decision.PublisherOffer;
+import deus.model.attention.publication.connection.establish.pubinit.PublisherOffer;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserUrl;
 

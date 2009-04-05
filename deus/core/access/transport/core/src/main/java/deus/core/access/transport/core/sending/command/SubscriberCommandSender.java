@@ -9,9 +9,10 @@ import deus.model.user.id.UserId;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  *
  */
+//FIXME: rename to subscriptionCommandSender in order to reflect subsystem
 public interface SubscriberCommandSender {
 
-	// USE CASE: subscriber initiated connection/termination
+	// USE CASE: informationConsumer initiated connection/termination
 	
 	
 	// FIXME: rename to requestSubscription, since use case is called like this
@@ -24,7 +25,7 @@ public interface SubscriberCommandSender {
 	
 	
 
-	// USE CASE: publisher initiated connection (used, when in role subscriber)
+	// USE CASE: publisher initiated connection (used, when in role informationConsumer)
 	
 	public void confirmSubscriptionOffer(UserId subscriberId, UserId publisherId);
 

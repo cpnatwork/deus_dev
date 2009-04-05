@@ -9,6 +9,7 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
+import deus.core.soul.pifgoverning.SimpleReplaceAssimilationStrategy;
 import deus.model.dossier.DigitalCard;
 import deus.model.dossier.InformationFile;
 import deus.model.dossier.MyPartyInformationDC;
@@ -22,7 +23,7 @@ import deus.model.user.id.UserUrl;
 
 public class SimpleReplaceInformationFileUpdateStrategyTest {
 
-	private SimpleReplaceInformationFileUpdateStrategy strategy;
+	private SimpleReplaceAssimilationStrategy strategy;
 
 	private InformationFile informationFile;
 
@@ -35,7 +36,7 @@ public class SimpleReplaceInformationFileUpdateStrategyTest {
 	public void setUp() throws Exception {
 		UserId userId = new UserUrl("alice", "deus.org");
 		
-		strategy = new SimpleReplaceInformationFileUpdateStrategy();
+		strategy = new SimpleReplaceAssimilationStrategy();
 
 		digitalCards = new HashSet<DigitalCard>();
 		informationFile = new PersonalInformationFile(digitalCards);

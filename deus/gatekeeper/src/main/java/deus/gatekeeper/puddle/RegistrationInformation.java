@@ -3,7 +3,7 @@ package deus.gatekeeper.puddle;
 import java.util.Set;
 
 import deus.model.user.UserMetadata;
-import deus.model.user.UserRole;
+import deus.model.user.DistributionRole;
 import deus.model.user.id.UserIdType;
 
 public class RegistrationInformation {
@@ -15,17 +15,17 @@ public class RegistrationInformation {
 
 	private final UserIdType desiredUserIdType;
 
-	private final Set<UserRole> userRoles;
+	private final Set<DistributionRole> distributionRoles;
 
 
 	public RegistrationInformation(String localUsername, String password, UserMetadata userMetadata,
-			UserIdType desiredUserIdType, Set<UserRole> userRoles) {
+			UserIdType desiredUserIdType, Set<DistributionRole> distributionRoles) {
 		super();
 		this.localUsername = localUsername;
 		this.password = password;
 		this.userMetadata = userMetadata;
 		this.desiredUserIdType = desiredUserIdType;
-		this.userRoles = userRoles;
+		this.distributionRoles = distributionRoles;
 	}
 
 
@@ -49,8 +49,8 @@ public class RegistrationInformation {
 	}
 
 
-	public Set<UserRole> getUserRoles() {
-		return userRoles;
+	public Set<DistributionRole> getUserRoles() {
+		return distributionRoles;
 	}
 
 }

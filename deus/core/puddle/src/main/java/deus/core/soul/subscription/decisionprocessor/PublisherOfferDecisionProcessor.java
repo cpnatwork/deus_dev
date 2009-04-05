@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import deus.core.access.transport.core.receiving.soulcallback.subscription.SubscriberExportedToPeer;
 import deus.core.access.transport.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.common.decisionprocessor.impl.AbstractGenericDecisionProcessor;
-import deus.model.attention.decision.PublisherOffer;
+import deus.model.attention.publication.connection.establish.pubinit.PublisherOffer;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
+// FIXME: rename it to SubscriptionOfferDec...
 public class PublisherOfferDecisionProcessor extends AbstractGenericDecisionProcessor<PublisherOffer> {
 
 

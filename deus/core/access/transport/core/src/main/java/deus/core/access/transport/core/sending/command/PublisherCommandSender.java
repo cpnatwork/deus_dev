@@ -4,6 +4,7 @@ import deus.model.dossier.DigitalCard;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
+// FIXME: rename to publicationCommandSender in order to reflect subsystem
 public interface PublisherCommandSender {
 
 	// USE CASE: update
@@ -19,7 +20,7 @@ public interface PublisherCommandSender {
 
 	
 
-	// USE CASE: subscriber initiated connection (used, when in role publisher)
+	// USE CASE: informationConsumer initiated connection (used, when in role publisher)
 	
 	public void grantSubscriptionRequest(UserId publisherId, UserId subscriberId);
 

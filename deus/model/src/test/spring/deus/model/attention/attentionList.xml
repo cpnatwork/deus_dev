@@ -17,12 +17,12 @@
 		<idref local="subscriptionCanceledNotice"/>
 	</util:list>
 
-	<bean id="publisherOffer" class="deus.model.attention.decision.PublisherOffer">
+	<bean id="publisherOffer" class="deus.model.attention.publication.connection.establish.pubinit.PublisherOffer">
 		<constructor-arg ref="publisherMetadata" />
 		<property name="creationDate" value="1970/01/01 00:01" />
 	</bean>
 
-	<bean id="subscriberRequest" class="deus.model.attention.decision.SubscriberRequest">
+	<bean id="subscriberRequest" class="deus.model.attention.publication.connection.establish.subinit.SubscriptionRequest">
 		<constructor-arg ref="subscriberMetadata" />
 		<property name="creationDate" value="1970/01/01 01:01" />
 	</bean>

@@ -1,0 +1,59 @@
+package deus.gatekeeper.rolesetup.impl;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Component;
+
+import deus.gatekeeper.rolesetup.DistributionRoleSetup;
+import deus.gatekeeper.rolesetup.DistributionRoleSetupObserver;
+import deus.model.user.DistributionRole;
+import deus.model.user.id.UserId;
+
+@Component("distributionRoleSetup")
+public class DistributionRoleSetupImpl implements DistributionRoleSetup {
+
+	private final Map<DistributionRole, List<DistributionRoleSetupObserver>> observers;
+
+
+	public DistributionRoleSetupImpl() {
+		observers = new HashMap<DistributionRole, List<DistributionRoleSetupObserver>>();
+		for (DistributionRole distributionRole : DistributionRole.values())
+			observers.put(distributionRole, new LinkedList<DistributionRoleSetupObserver>());
+	}
+
+
+	@Override
+	public void addRoleSetupObserver(DistributionRole distributionRole, DistributionRoleSetupObserver observer) {
+		observers.get(distributionRole).add(observer);
+	}
+
+
+	@Override
+	public void removeRoleSetupObserver(DistributionRole distributionRole, DistributionRoleSetupObserver observer) {
+		List<DistributionRoleSetupObserver> list = observers.get(distributionRole);
+		if (!list.contains(observer))
+			throw new IllegalArgumentException("observer " + observer + " cannot be removed, it has not been added");
+
+		observers.get(distributionRole).remove(observer);
+	}
+
+
+	@Override
+	public void setUpRole(DistributionRole distributionRole, UserId userId) {
+		List<DistributionRoleSetupObserver> list = observers.get(distributionRole);
+		for (DistributionRoleSetupObserver observer : list)
+			observer.setUpRole(distributionRole, userId);
+	}
+
+
+	@Override
+	public void tearDownRole(DistributionRole distributionRole, UserId userId) {
+		List<DistributionRoleSetupObserver> list = observers.get(distributionRole);
+		for (DistributionRoleSetupObserver observer : list)
+			observer.tearDownRole(distributionRole, userId);
+	}
+
+}

@@ -29,9 +29,10 @@ public interface PublisherExportedToClient {
 	 * @see java.util.Observable#hasChanged()
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.ForeignInformationFile)
 	 */
+	// FIXME: replace DC parameter by Patch parameter
 	public abstract void notifySubscribers(UserId publisherId, DigitalCard digitalCard);
 
-	
+	// FIXME: replace DC parameter by Patch parameter
 	public abstract void notifySubscriber(UserId publisherId, UserId subscriberId, DigitalCard digitalCard);
 	
 	

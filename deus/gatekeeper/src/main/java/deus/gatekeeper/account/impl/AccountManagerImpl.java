@@ -5,9 +5,10 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.account.AccountDoRep;
 import deus.gatekeeper.account.AccountManager;
-import deus.gatekeeper.rolesetup.UserRoleSetup;
+import deus.gatekeeper.rolesetup.DistributionRoleSetup;
 import deus.model.account.Account;
-import deus.model.user.UserRole;
+import deus.model.user.DistributionRole;
+import deus.model.user.UserMetadata;
 
 @Component("accountManager")
 public class AccountManagerImpl implements AccountManager {
@@ -16,7 +17,7 @@ public class AccountManagerImpl implements AccountManager {
 	private AccountDoRep accountDoRep;
 	
 	@Autowired
-	private UserRoleSetup userRoleSetup;
+	private DistributionRoleSetup distributionRoleSetup;
 
 
 	@Override
@@ -28,32 +29,41 @@ public class AccountManagerImpl implements AccountManager {
 		accountDoRep.updateEntity(account);
 	}
 
-
+	
 	@Override
-	public void addRole(String localUsername, UserRole userRole) {
+	public void addRole(String localUsername, DistributionRole distributionRole) {
 		Account account = accountDoRep.getByNaturalId(localUsername);
 
-		if (account.getUserRoles().add(userRole) == false)
-			throw new IllegalArgumentException("account " + account + " already contains role " + userRole);
+		if (account.getUserRoles().add(distributionRole) == false)
+			throw new IllegalArgumentException("account " + account + " already contains role " + distributionRole);
 
 		accountDoRep.updateEntity(account);
 		
-		userRoleSetup.setUpRole(userRole, account.getUserId());
+		distributionRoleSetup.setUpRole(distributionRole, account.getUserId());
 	}
 
 
 	@Override
-	public void removeRole(String localUsername, UserRole userRole) {
+	public void removeRole(String localUsername, DistributionRole distributionRole) {
 		Account account = accountDoRep.getByNaturalId(localUsername);
 
-		if (!account.getUserRoles().contains(userRole))
-			throw new IllegalArgumentException("account " + account + " does not contain role " + userRole);
+		if (!account.getUserRoles().contains(distributionRole))
+			throw new IllegalArgumentException("account " + account + " does not contain role " + distributionRole);
 
-		account.getUserRoles().remove(userRole);
+		account.getUserRoles().remove(distributionRole);
 
 		accountDoRep.updateEntity(account);
 		
-		userRoleSetup.tearDownRole(userRole, account.getUserId());
+		distributionRoleSetup.tearDownRole(distributionRole, account.getUserId());
 	}
+
+
+	// FIXME: implement
+	@Override
+	public void changeUserMetadata(String localUsername, UserMetadata userMetadata) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

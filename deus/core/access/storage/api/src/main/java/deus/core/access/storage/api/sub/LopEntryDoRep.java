@@ -11,7 +11,7 @@ public interface LopEntryDoRep {
 	public void deleteByNaturalId(UserId publisherId, UserId subscriberId);
 
 
-	public void updateEntity(UserId publisherId, LopEntry entry);
+	public void updateEntity(UserId subscriberId, LopEntry entry);
 
 
 	public LopEntry getByNaturalId(UserId publisherId, UserId subscriberId);

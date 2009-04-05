@@ -15,7 +15,7 @@ public class LocalUserIdMapper implements UserIdMapper {
 
 	@Override
 	public TransportId resolveLocal(UserId userId) {
-		return new LocalTransportId(userId.getUsername());
+		return new LocalTransportId(userId.getUsername() + "/local");
 	}
 
 
@@ -24,7 +24,7 @@ public class LocalUserIdMapper implements UserIdMapper {
 		// FIXME: Implement this by using discovery
 		// it should stay here, but maybe use discovery helper classes from transport-core
 		
-		return new LocalTransportId(userId.getUsername());
+		return new LocalTransportId(userId.getUsername() + "/local");
 	}
 
 }

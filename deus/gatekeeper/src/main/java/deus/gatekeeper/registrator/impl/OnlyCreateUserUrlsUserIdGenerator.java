@@ -12,6 +12,7 @@ import deus.model.user.id.UserUrl;
 @Component("userIdGenerator")
 public class OnlyCreateUserUrlsUserIdGenerator implements UserIdGenerator {
 
+	// FIXME: rename this to serverBaseUrl (as in UserUrl)
 	@Resource(name="hostname")
 	private String hostname;
 	

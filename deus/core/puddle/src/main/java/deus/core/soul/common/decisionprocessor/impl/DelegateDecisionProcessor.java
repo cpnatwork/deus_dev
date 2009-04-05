@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 import deus.core.soul.common.decisionprocessor.DecisionProcessor;
 import deus.core.soul.common.decisionprocessor.GenericDecisionProcessor;
-import deus.model.attention.decision.BinaryDecisionToMake;
-import deus.model.attention.decision.DecisionType;
+import deus.model.attention.BinaryDecisionToMake;
+import deus.model.attention.DecisionType;
 import deus.model.user.id.UserId;
 
 @Component

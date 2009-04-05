@@ -50,7 +50,7 @@ public class UnsubscribeTest extends AbstractUseCaseTest {
 	}
 	
 	
-	// FIXME: test is not working, since subscriber is not in LoS on publisher side and thus cannot be removed
+	// FIXME: test is not working, since informationConsumer is not in LoS on publisher side and thus cannot be removed
 	@Test
 	public void testUnsubscribeRequestedSubscription() {
 		/*

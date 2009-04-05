@@ -18,7 +18,7 @@ public interface SubscriberExportedToClient {
 	
 	public void subscribeToPublisher(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata);
 
-
+	// FIXME: rename to unsubscribeFromPublisher
 	public void unsubscribe(UserId subscriberId, UserId publisherId);
 
 	

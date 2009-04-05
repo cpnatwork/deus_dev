@@ -15,6 +15,7 @@ public interface PifGovernor extends PifGovernorExportedToClient {
 
 
 	// FIXME: think about whether this goes to its own interface PifGovernorExportedToSubsystems
+	// FIXME: return a Patch
 	public void assimilateRepatriatedDigitalCard(UserId cpId, DigitalCard digitalCard);
 	
 }

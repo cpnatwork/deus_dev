@@ -5,9 +5,9 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 /**
- * Groups methods of the interface <code>Subscriber</code>, that are called remotely on the subscriber subsystem. These
+ * Groups methods of the interface <code>Subscriber</code>, that are called remotely on the informationConsumer subsystem. These
  * methods are e.g. called from an instance of the class <code>XmppSubscriberSkeleton</code>, which is the part of the
- * stub-skeleton pair, that resides on the subscriber side.
+ * stub-skeleton pair, that resides on the informationConsumer side.
  * 
  * 
  * @see Subscriber
@@ -34,7 +34,7 @@ public interface SubscriberExportedToPeer {
 	
 	
 	// USE CASE: publisher initiated connection
-	
+	// FIXME: think about renaming this to "offerSubscription"
 	public void addPublisher(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata);
 	
 	

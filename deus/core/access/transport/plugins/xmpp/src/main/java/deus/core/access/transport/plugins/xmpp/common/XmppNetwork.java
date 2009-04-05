@@ -24,7 +24,7 @@ public class XmppNetwork {
 
 
 	public XmppConversation createConversation(XmppTransportId xmppTransportId, String password) {
-		// connect to the XMPP account of the subscriber.
+		// connect to the XMPP account of the informationConsumer.
 		ConnectionConfiguration connectionConfiguration = new ConnectionConfiguration(xmppTransportId.getXmppServer());
 		connectionConfiguration.setCompressionEnabled(configuration.isCompression());
 		connectionConfiguration.setSASLAuthenticationEnabled(configuration.isSaslAuthentication());

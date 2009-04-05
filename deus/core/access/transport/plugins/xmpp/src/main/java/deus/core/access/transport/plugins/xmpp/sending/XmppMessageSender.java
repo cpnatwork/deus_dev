@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.transport.core.connectionstate.ConnectionStateRegistry;
 import deus.core.access.transport.core.messages.TransportMessage;
-import deus.core.access.transport.core.messages.connection.establishment.subscribe.DenySubscriptionRequestNoticeMessage;
-import deus.core.access.transport.core.messages.connection.establishment.subscribe.GrantSubscriptionRequestNoticeMessage;
-import deus.core.access.transport.core.messages.connection.establishment.subscribe.RequestSubscriptionMessage;
-import deus.core.access.transport.core.messages.connection.establishment.subscribe.SubscribeToPublisherMessage;
-import deus.core.access.transport.core.messages.connection.termination.UnsubscribeMessage;
+import deus.core.access.transport.core.messages.publication.connection.establish.subscribe.DenySubscriptionRequestNoticeMessage;
+import deus.core.access.transport.core.messages.publication.connection.establish.subscribe.GrantSubscriptionRequestNoticeMessage;
+import deus.core.access.transport.core.messages.publication.connection.establish.subscribe.RequestSubscriptionMessage;
+import deus.core.access.transport.core.messages.publication.connection.establish.subscribe.SubscribeToPublisherMessage;
+import deus.core.access.transport.core.messages.publication.connection.terminate.UnsubscribeMessage;
 import deus.core.access.transport.core.soul.protocol.MessageSender;
 import deus.core.access.transport.plugins.xmpp.common.XmppConfiguration;
 import deus.core.access.transport.plugins.xmpp.common.XmppConversation;

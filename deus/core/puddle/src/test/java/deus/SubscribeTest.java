@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import deus.model.attention.decision.SubscriberRequest;
+import deus.model.attention.publication.connection.establish.subinit.SubscriptionRequest;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/soul.xml" })
@@ -28,7 +28,7 @@ public class SubscribeTest extends AbstractUseCaseTest {
 	}
 
 
-	private SubscriberRequest testRequestSubscription() {
+	private SubscriptionRequest testRequestSubscription() {
 //		// REQUEST SUBSCRIPTION
 //		assertEquals(0, bob.getListOfPublishers().size());
 //		assertEquals(0, alice.getListOfSubscribers().size());
@@ -48,7 +48,7 @@ public class SubscribeTest extends AbstractUseCaseTest {
 //		BinaryDecisionToMake decision = (BinaryDecisionToMake) ae;
 //		assertEquals(DecisionType.subscriberRequest, decision.getType());
 //
-//		SubscriberRequest request = (SubscriberRequest) decision;
+//		SubscriptionRequest request = (SubscriptionRequest) decision;
 //		assertEquals(bob.getUserMetadata(), request.getSubscriberMetadata());
 //
 //		return request;
@@ -57,7 +57,7 @@ public class SubscribeTest extends AbstractUseCaseTest {
 
 
 
-	private void testAcceptRequest(SubscriberRequest request) {
+	private void testAcceptRequest(SubscriptionRequest request) {
 //		// ACCEPT REQUEST
 //		testAttentionList(bob, 0, 0);
 //
@@ -94,7 +94,7 @@ public class SubscribeTest extends AbstractUseCaseTest {
 	// TODO: REENABLE
 	@Test
 	public void testRequestSubscriptionAccept() {
-//		SubscriberRequest request = testRequestSubscription();
+//		SubscriptionRequest request = testRequestSubscription();
 //
 //		testAcceptRequest(request);
 	}
@@ -103,13 +103,13 @@ public class SubscribeTest extends AbstractUseCaseTest {
 	// TODO: REENABLE
 	@Test
 	public void testRequestSubscriptionDeny() {
-//		SubscriberRequest request = testRequestSubscription();
+//		SubscriptionRequest request = testRequestSubscription();
 //
 //		testDenyRequest(request);
 	}
 
 
-	private void testDenyRequest(SubscriberRequest request) {
+	private void testDenyRequest(SubscriptionRequest request) {
 //		// DENY REQUEST
 //		assertFalse(request.isDecisionMade());
 //		request.setDecisionNegative();

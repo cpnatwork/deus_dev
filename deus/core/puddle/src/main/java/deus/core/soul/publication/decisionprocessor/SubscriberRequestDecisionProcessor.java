@@ -7,12 +7,13 @@ import org.springframework.stereotype.Component;
 import deus.core.access.transport.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
 import deus.core.access.transport.core.sending.command.PublisherCommandSender;
 import deus.core.soul.common.decisionprocessor.impl.AbstractGenericDecisionProcessor;
-import deus.model.attention.decision.SubscriberRequest;
+import deus.model.attention.publication.connection.establish.subinit.SubscriptionRequest;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
+// FIXME: rename it to SubscriptionRequestDec...
 @Component
-public class SubscriberRequestDecisionProcessor extends AbstractGenericDecisionProcessor<SubscriberRequest> {
+public class SubscriberRequestDecisionProcessor extends AbstractGenericDecisionProcessor<SubscriptionRequest> {
 
 	@Autowired
 	@Qualifier("target")
@@ -23,18 +24,22 @@ public class SubscriberRequestDecisionProcessor extends AbstractGenericDecisionP
 
 
 	@Override
-	protected void processImpl(UserId userId, SubscriberRequest subscriberRequest) {
-		UserMetadata subscriberMetadata = subscriberRequest.getSubscriberMetadata();
+	protected void processImpl(UserId userId, SubscriptionRequest subscriptionRequest) {
+		UserMetadata subscriberMetadata = subscriptionRequest.getSubscriberMetadata();
 				
-		if (subscriberRequest.isDecisionPositive()) {
-			publisher.addSubscriber(userId, subscriberRequest.getSubscriberId(), subscriberMetadata);
+		if (subscriptionRequest.isDecisionPositive()) {
+			// FIXME: add this as method to PublisherExportedToDecisionProcessor
+			
+			publisher.addSubscriber(userId, subscriptionRequest.getSubscriberId(), subscriberMetadata);
 	
-			publisherCommandSender.grantSubscriptionRequest(userId, subscriberRequest.getSubscriberId());
+			publisherCommandSender.grantSubscriptionRequest(userId, subscriptionRequest.getSubscriberId());
 		}
 		else {
+			// FIXME: add this as method to PublisherExportedToDecisionProcessor
+			
 			// do not add observer
 			
-			publisherCommandSender.denySubscriptionRequest(userId, subscriberRequest.getSubscriberId());
+			publisherCommandSender.denySubscriptionRequest(userId, subscriptionRequest.getSubscriberId());
 		}
 	}
 

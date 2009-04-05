@@ -6,6 +6,7 @@ import deus.model.user.id.UserId;
 public interface DifGovernor extends DifGovernorExportedToClient {
 
 	// FIXME: think about whether this goes to its own interface DifGovernorExportedToSubsystems
-	public void assimilatePublishedDigitalCard(UserId residentId, UserId cpId, DigitalCard digitalCard);
+	// FIXME: change parameter DC to Patch
+	public void applyPatch(UserId residentId, UserId cpId, DigitalCard digitalCard);
 	
 }

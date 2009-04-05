@@ -49,10 +49,10 @@ public class PublisherImpl implements Publisher {
 
 	@Override
 	public synchronized void addSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
-		logger.trace("adding subscriber {}", subscriberId);
+		logger.trace("adding informationConsumer {}", subscriberId);
 
 		if (losEntryDoRep.containsEntity(subscriberId, publisherId))
-			throw new IllegalArgumentException("cannot add subscriber, it has already been added!");
+			throw new IllegalArgumentException("cannot add informationConsumer, it has already been added!");
 
 		LosEntry entry = new LosEntry(publisherId);
 		entry.setSubscriberMetadata(subscriberMetadata);
@@ -64,10 +64,10 @@ public class PublisherImpl implements Publisher {
 
 	@Override
 	public synchronized void deleteSubscriber(UserId publisherId, UserId subscriberId) {
-		logger.trace("removing subscriber {}", subscriberId);
+		logger.trace("removing informationConsumer {}", subscriberId);
 
 		if (!losEntryDoRep.containsEntity(subscriberId, publisherId))
-			throw new IllegalArgumentException("cannot remove subscriber, that has not been added yet!");
+			throw new IllegalArgumentException("cannot remove informationConsumer, that has not been added yet!");
 
 		losEntryDoRep.deleteByNaturalId(subscriberId, publisherId);
 	}
@@ -75,7 +75,7 @@ public class PublisherImpl implements Publisher {
 
 	@Override
 	public void subscriptionConfirmed(UserId publisherId, UserId subscriberId) {
-		logger.trace("in publisher of {}: subscriber {} confirmed subscription", subscriberId, publisherId);
+		logger.trace("in publisher of {}: informationConsumer {} confirmed subscription", subscriberId, publisherId);
 
 		LosEntry entry = losEntryDoRep.getByNaturalId(subscriberId, publisherId);
 		entry.setSubscriptionState(PublisherSideSubscriptionState.established);
@@ -86,7 +86,7 @@ public class PublisherImpl implements Publisher {
 
 	@Override
 	public void subscriptionAbstained(UserId publisherId, UserId subscriberId) {
-		logger.trace("in publisher of {}: subscriber {} abstained subscription", subscriberId, publisherId);
+		logger.trace("in publisher of {}: informationConsumer {} abstained subscription", subscriberId, publisherId);
 
 		losEntryDoRep.deleteByNaturalId(subscriberId, publisherId);
 	}
@@ -138,9 +138,9 @@ public class PublisherImpl implements Publisher {
 	@Override
 	public void inviteSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
 		if (losEntryDoRep.containsEntity(subscriberId, publisherId))
-			throw new IllegalArgumentException("cannot offer subscription to subscriber (" + subscriberId + ") again!");
+			throw new IllegalArgumentException("cannot offer subscription to informationConsumer (" + subscriberId + ") again!");
 
-		logger.trace("in publisher {}: offering subscription to subscriber {}", publisherId, subscriberId);
+		logger.trace("in publisher {}: offering subscription to informationConsumer {}", publisherId, subscriberId);
 
 		LosEntry entry = new LosEntry(subscriberId);
 		entry.setSubscriberMetadata(subscriberMetadata);
@@ -156,10 +156,10 @@ public class PublisherImpl implements Publisher {
 	@Override
 	public void cancelSubscription(UserId publisherId, UserId subscriberId) {
 		if (losEntryDoRep.containsEntity(subscriberId, publisherId))
-			throw new IllegalArgumentException("cannot cancel a subscription of subscriber (" + subscriberId
+			throw new IllegalArgumentException("cannot cancel a subscription of informationConsumer (" + subscriberId
 					+ "), that has not been added yet!");
 
-		logger.trace("in publisher {}: canceling subscription to subscriber {}", publisherId, subscriberId);
+		logger.trace("in publisher {}: canceling subscription to informationConsumer {}", publisherId, subscriberId);
 
 		losEntryDoRep.deleteByNaturalId(subscriberId, publisherId);
 		

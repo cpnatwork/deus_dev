@@ -33,7 +33,7 @@
 
 	<!-- GATEKEEPER -->
 
-	<osgi:reference id="userRoleSetup" interface="deus.gatekeeper.rolesetup.UserRoleSetup"/>
+	<osgi:reference id="userRoleSetup" interface="deus.gatekeeper.rolesetup.DistributionRoleSetup"/>
 	
 	
 	

@@ -13,21 +13,21 @@ import deus.core.access.transport.core.soul.protocolregistry.ExportedTransportPr
 public class RegisterTransportProtocol {
 
 	@Autowired
-	private ExportedTransportProtocolRegistry transportProtocolRegistry;
+	private ExportedTransportProtocolRegistry registry;
 
 	@Autowired
-	private TransportProtocol transportProtocol;
+	private TransportProtocol loopbackProtocol;
 
 	
 	@PostConstruct
 	public void register() {
-		transportProtocolRegistry.registerTransportProtocol(transportProtocol);
+		registry.registerTransportProtocol(loopbackProtocol);
 	}
 
 
 	@PreDestroy
 	public void unregister() {
-		transportProtocolRegistry.unregisterTransportProtocol(transportProtocol.getId());
+		registry.unregisterTransportProtocol(loopbackProtocol.getId());
 	}
 
 }

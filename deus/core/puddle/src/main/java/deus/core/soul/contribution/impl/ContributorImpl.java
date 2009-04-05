@@ -14,13 +14,13 @@ public class ContributorImpl implements Contributor {
 
 
 	@Override
-	public void acknowledgeContribution(UserId contributorId, DigitalCardId digitalCardId) {
+	public void contributionAcknowledged(UserId contributorId, DigitalCardId digitalCardId) {
 		// FIXME: implement (is called by transport to acknowledge the contribution, add a notice to barker)
 	}
 
 
 	@Override
-	public void denyContribution(UserId contributorId, DigitalCardId digitalCardId) {
+	public void contributionDenied(UserId contributorId, DigitalCardId digitalCardId) {
 		// FIXME: implement (is called by transport to tell the denial of the contribution, add a notice to barker)
 	}
 

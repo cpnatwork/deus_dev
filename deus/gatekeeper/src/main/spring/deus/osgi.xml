@@ -19,7 +19,7 @@
 	
 	<!-- to soul -->
 	
-	<osgi:service id="userRoleSetupOsgiService" ref="userRoleSetup" interface="deus.gatekeeper.rolesetup.UserRoleSetup" />
+	<osgi:service id="distributionRoleSetupOsgiService" ref="distributionRoleSetup" interface="deus.gatekeeper.rolesetup.DistributionRoleSetup" />
 	
 	
 	<!-- DAOs -->
