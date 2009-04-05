@@ -5,22 +5,18 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 			
-	<bean id="localTransferProtocol" class="deus.core.access.transfer.plugins.local.soul.protocolLocalTransferProtocol">
+	<bean id="localTransferProtocol" class="deus.core.access.transfer.common.protocol.TransferProtocolImpl">
 		<property name="loginEventCallback">
-			<bean class="deus.core.access.transfer.core.soul.protocol.callback.DefaultLoginEventCallback" />
+			<bean class="deus.core.access.transfer.common.protocol.callback.DefaultLoginEventCallback" />
 		</property>
 		<property name="registrationEventCallback">
-			<bean class="deus.core.access.transfer.core.soul.protocol.callback.DefaultRegistrationEventCallback" />
+			<bean class="deus.core.access.transfer.common.protocol.callback.DefaultRegistrationEventCallback" />
 		</property>
 		<property name="messageSender" ref="localMessageSender"/>
 		<property name="userIdMapper">
-			<bean class="deus.core.access.transfer.plugins.local.protocol.mapperpperLocalUserIdMapper"/>
+			<bean class="deus.core.access.transfer.plugins.local.protocol.mapper.LocalUserIdMapper"/>
 		</property>
-
-	</bean>
-	
-	<bean id="transferProtocolId" class="java.lang.String">
-		<constructor-arg value="local"/>
+		<property name="protocolId" value="local"/>
 	</bean>
 
 </beans>

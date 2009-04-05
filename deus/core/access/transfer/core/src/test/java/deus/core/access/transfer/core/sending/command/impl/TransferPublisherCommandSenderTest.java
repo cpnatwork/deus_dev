@@ -9,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
-import deus.core.access.transfer.core.messages.publication.UpdateMessage;
+import deus.core.access.transfer.common.messages.publication.UpdateMessage;
 import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
 import deus.model.dossier.DigitalCard;
 import deus.model.dossier.DigitalCardId;

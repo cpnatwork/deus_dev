@@ -15,28 +15,28 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.core.access.transfer.common.protocol.TransferId;
+import deus.core.access.transfer.common.protocol.TransferProtocolImpl;
 import deus.core.access.transfer.common.protocol.mapper.UserIdMapper;
 import deus.core.access.transfer.common.protocol.messagesender.MessageSender;
-import deus.core.access.transfer.common.protocol.registry.TransferProtocolRegistry;
+import deus.core.access.transfer.core.soul.protocolregistry.QueriableTransferProtocolRegistry;
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransferId;
-import deus.core.access.transfer.plugins.testTP.protocol.TestTransferProtocol;
 import deus.model.user.id.UserId;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transfer/core/test.xml" })
 public class TransferProtocolRegistryImplTest {
 	
-	private TestTransferProtocol tp;
+	private TransferProtocolImpl tp;
 
 
 	@Autowired
-	private TransferProtocolRegistry registry;
+	private QueriableTransferProtocolRegistry registry;
 
 	private String testProtocolId;
 
 	@Before
 	public void setUp() throws Exception {
-		tp = new TestTransferProtocol();
+		tp = new TransferProtocolImpl();
 		tp.setLoginEventCallback(null); // we don't need login for this test
 		tp.setRegistrationEventCallback(null); // we don't need registration for this test
 				
@@ -66,7 +66,7 @@ public class TransferProtocolRegistryImplTest {
 
 		});
 		
-		testProtocolId = tp.getId();
+		testProtocolId = tp.getProtocolId();
 	}
 
 

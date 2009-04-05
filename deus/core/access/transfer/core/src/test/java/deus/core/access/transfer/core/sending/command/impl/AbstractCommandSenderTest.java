@@ -8,12 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.core.access.transfer.common.protocol.TransferId;
+import deus.core.access.transfer.common.protocol.TransferProtocol;
+import deus.core.access.transfer.common.protocol.TransferProtocolImpl;
 import deus.core.access.transfer.common.protocol.mapper.UserIdMapper;
 import deus.core.access.transfer.common.protocol.messagesender.MessageSender;
-import deus.core.access.transfer.common.protocolregistry.ExportedTransferProtocolRegistry;
+import deus.core.access.transfer.common.protocolregistry.TransferProtocolRegistry;
 import deus.core.access.transfer.core.soul.discovery.TransferProtocolNegotiationStrategy;
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransferId;
-import deus.core.access.transfer.plugins.testTP.protocol.TestTransferProtocol;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
 
@@ -24,11 +25,11 @@ public abstract class AbstractCommandSenderTest {
 	protected TransferProtocolNegotiationStrategy transferProtocolNegotiationStrategy;
 	
 	@Autowired
-	private ExportedTransferProtocolRegistry transferProtocolRegistry;
+	private TransferProtocolRegistry transferProtocolRegistry;
 	
 	
 	protected TransferMessage lastSentTransferMessage;
-	private TestTransferProtocol tp;
+	private TransferProtocolImpl tp;
 	protected UserIdMapper userIdMapper;
 
 	
@@ -48,7 +49,8 @@ public abstract class AbstractCommandSenderTest {
 		subscriberId = new UserUrl("bob", "deus.org");
 		publisherId = new UserUrl("alice", "deus.org");
 
-		tp = new TestTransferProtocol();
+		tp = new TransferProtocolImpl();
+		tp.setProtocolId("testProtocol");
 		tp.setLoginEventCallback(null); // we don't need login for this test
 		tp.setRegistrationEventCallback(null); // we don't need registration for this test
 		
@@ -78,7 +80,7 @@ public abstract class AbstractCommandSenderTest {
 
 		});
 		
-		testTransferProtocolId = tp.getId();
+		testTransferProtocolId = tp.getProtocolId();
 
 		transferProtocolRegistry.registerTransferProtocol(tp);
 	}
