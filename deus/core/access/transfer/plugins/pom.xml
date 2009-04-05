@@ -3,13 +3,13 @@
 
 	<parent>
 		<groupId>inf6.promed</groupId>
-		<artifactId>deus-core-access-transport</artifactId>
+		<artifactId>deus-core-access-transfer</artifactId>
 		<version>0.3-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>deus-core-access-transport-plugins</artifactId>
+	<artifactId>deus-core-access-transfer-plugins</artifactId>
 	<packaging>pom</packaging>
-	<name>DEUS core access transport plugins</name>
+	<name>DEUS core access transfer plugins</name>
 	
 	<modules>
 		<module>local</module>

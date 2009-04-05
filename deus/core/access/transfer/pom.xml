@@ -7,9 +7,9 @@
 		<version>0.3-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>deus-core-access-transport</artifactId>
+	<artifactId>deus-core-access-transfer</artifactId>
 	<packaging>pom</packaging>
-	<name>DEUS core access transport</name>
+	<name>DEUS core access transfer</name>
 	
 	<modules>
 		<module>core</module>

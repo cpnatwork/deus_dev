@@ -84,21 +84,21 @@
 			
 			<dependency>
 				<groupId>inf6.promed</groupId>
-				<artifactId>deus-core-access-transport-core</artifactId>
+				<artifactId>deus-core-access-transfer-core</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
 			
 			<dependency>
 				<groupId>inf6.promed</groupId>
-				<artifactId>deus-core-access-transport-plugins-local</artifactId>
+				<artifactId>deus-core-access-transfer-plugins-local</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
 			
 			<dependency>
 				<groupId>inf6.promed</groupId>
-				<artifactId>deus-core-access-transport-plugins-xmpp</artifactId>
+				<artifactId>deus-core-access-transfer-plugins-xmpp</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>

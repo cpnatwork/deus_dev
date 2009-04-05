@@ -13,7 +13,7 @@
 	
 	<modules>
 		<module>storage</module>
-		<module>transport</module>
+		<module>transfer</module>
 	</modules>
 	
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
