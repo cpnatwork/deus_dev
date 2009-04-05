@@ -2,10 +2,10 @@ package deus.core.access.transfer.plugins.xmpp.core.mapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
+import deus.core.access.transfer.core.soul.protocol.TransportId;
 import deus.core.access.transfer.plugins.xmpp.common.XmppServerConnectionConfiguration;
 import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransportId;
-import deus.core.access.transport.core.soul.mapper.UserIdMapper;
-import deus.core.access.transport.core.soul.protocol.TransportId;
 import deus.model.user.id.UserId;
 
 public class XmppUserIdMapper implements UserIdMapper {

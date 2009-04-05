@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import deus.core.access.transport.core.messages.TransportMessage;
-import deus.core.access.transport.core.messages.publication.UpdateMessage;
-import deus.core.access.transport.core.sending.command.PublisherCommandSender;
+import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.publication.UpdateMessage;
+import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
 import deus.model.dossier.DigitalCard;
 import deus.model.dossier.DigitalCardId;
 import deus.model.dossier.PartyInformationDC;

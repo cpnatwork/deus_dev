@@ -7,10 +7,10 @@ import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.packet.Presence.Type;
 
+import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.publication.connection.establish.subscribe.RequestSubscriptionMessage;
 import deus.core.access.transfer.plugins.xmpp.receiving.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
 import deus.core.access.transfer.plugins.xmpp.util.PacketPrinter;
-import deus.core.access.transport.core.messages.TransportMessage;
-import deus.core.access.transport.core.messages.publication.connection.establish.subscribe.RequestSubscriptionMessage;
 import deus.model.user.UserMetadata;
 
 

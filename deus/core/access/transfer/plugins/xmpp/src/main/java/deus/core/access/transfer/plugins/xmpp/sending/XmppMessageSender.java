@@ -4,18 +4,18 @@ import org.jivesoftware.smack.packet.Presence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.transfer.core.connectionstate.ConnectionStateRegistry;
+import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.messages.publication.connection.establish.subscribe.DenySubscriptionRequestNoticeMessage;
+import deus.core.access.transfer.core.messages.publication.connection.establish.subscribe.GrantSubscriptionRequestNoticeMessage;
+import deus.core.access.transfer.core.messages.publication.connection.establish.subscribe.RequestSubscriptionMessage;
+import deus.core.access.transfer.core.messages.publication.connection.establish.subscribe.SubscribeToPublisherMessage;
+import deus.core.access.transfer.core.messages.publication.connection.terminate.UnsubscribeMessage;
+import deus.core.access.transfer.core.soul.protocol.MessageSender;
 import deus.core.access.transfer.plugins.xmpp.common.XmppConfiguration;
 import deus.core.access.transfer.plugins.xmpp.common.XmppConversation;
 import deus.core.access.transfer.plugins.xmpp.connectionstate.XmppConnectionState;
 import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransportId;
-import deus.core.access.transport.core.connectionstate.ConnectionStateRegistry;
-import deus.core.access.transport.core.messages.TransportMessage;
-import deus.core.access.transport.core.messages.publication.connection.establish.subscribe.DenySubscriptionRequestNoticeMessage;
-import deus.core.access.transport.core.messages.publication.connection.establish.subscribe.GrantSubscriptionRequestNoticeMessage;
-import deus.core.access.transport.core.messages.publication.connection.establish.subscribe.RequestSubscriptionMessage;
-import deus.core.access.transport.core.messages.publication.connection.establish.subscribe.SubscribeToPublisherMessage;
-import deus.core.access.transport.core.messages.publication.connection.terminate.UnsubscribeMessage;
-import deus.core.access.transport.core.soul.protocol.MessageSender;
 
 @Component
 public class XmppMessageSender implements MessageSender {

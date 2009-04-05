@@ -5,9 +5,9 @@ import org.jivesoftware.smack.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.transfer.core.messages.TransportMessage;
 import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransportId;
 import deus.core.access.transfer.plugins.xmpp.receiving.XmppMessageReceiver;
-import deus.core.access.transport.core.messages.TransportMessage;
 
 @Component
 public abstract class UserMetadataParsingFilteredPacketListener extends AbstractFilteredPacketListener {

@@ -13,13 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import deus.core.access.transfer.core.messages.TransportMessage;
+import deus.core.access.transfer.core.soul.mapper.UserIdMapper;
+import deus.core.access.transfer.core.soul.protocol.MessageSender;
+import deus.core.access.transfer.core.soul.protocol.TransportId;
+import deus.core.access.transfer.core.soul.protocolregistry.TransportProtocolRegistry;
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransportId;
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransportProtocol;
-import deus.core.access.transport.core.messages.TransportMessage;
-import deus.core.access.transport.core.soul.mapper.UserIdMapper;
-import deus.core.access.transport.core.soul.protocol.MessageSender;
-import deus.core.access.transport.core.soul.protocol.TransportId;
-import deus.core.access.transport.core.soul.protocolregistry.TransportProtocolRegistry;
 import deus.model.user.id.UserId;
 
 @RunWith(SpringJUnit4ClassRunner.class)
