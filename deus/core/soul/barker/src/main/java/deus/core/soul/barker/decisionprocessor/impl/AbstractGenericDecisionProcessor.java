@@ -1,6 +1,6 @@
-package deus.core.soul.common.decisionprocessor.impl;
+package deus.core.soul.barker.decisionprocessor.impl;
 
-import deus.core.soul.common.decisionprocessor.GenericDecisionProcessor;
+import deus.core.soul.barker.decisionprocessor.GenericDecisionProcessor;
 import deus.model.attention.BinaryDecisionToMake;
 import deus.model.user.id.UserId;
 

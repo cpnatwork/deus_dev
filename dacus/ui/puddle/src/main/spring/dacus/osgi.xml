@@ -23,7 +23,7 @@
 	
 	<osgi:reference id="publisher" interface="deus.core.soul.publication.PublisherExportedToClient" />
 
-	<osgi:reference id="barker" interface="deus.core.soul.barker.BarkerExportedToClient" />
+	<osgi:reference id="barker" interface="deus.core.soul.barker.barker.BarkerExportedToClient" />
 	
 	<osgi:reference id="personalInformationEditor" interface="deus.core.soul.pifgoverning.PifGovernor" />
 

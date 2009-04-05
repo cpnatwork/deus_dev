@@ -1,12 +1,12 @@
-package deus.core.soul.common.decisionprocessor.impl;
+package deus.core.soul.barker.decisionprocessor.impl;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import deus.core.soul.common.decisionprocessor.DecisionProcessor;
-import deus.core.soul.common.decisionprocessor.GenericDecisionProcessor;
+import deus.core.soul.barker.decisionprocessor.DecisionProcessor;
+import deus.core.soul.barker.decisionprocessor.GenericDecisionProcessor;
 import deus.model.attention.BinaryDecisionToMake;
 import deus.model.attention.DecisionType;
 import deus.model.user.id.UserId;

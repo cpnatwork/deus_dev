@@ -3,7 +3,7 @@ package deus.core.soul.repatriationhub.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.soul.barker.BarkerExportedToSubsystems;
+import deus.core.soul.barker.barker.BarkerExportedToSubsystems;
 import deus.core.soul.pifgoverning.PifGovernor;
 import deus.core.soul.repatriationhub.RepatriationHub;
 import deus.model.attention.BinaryDecisionToMake;

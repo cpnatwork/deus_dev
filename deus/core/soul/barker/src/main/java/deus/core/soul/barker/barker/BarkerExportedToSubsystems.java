@@ -1,4 +1,4 @@
-package deus.core.soul.barker;
+package deus.core.soul.barker.barker;
 
 import deus.model.attention.AttentionElement;
 import deus.model.user.id.UserId;

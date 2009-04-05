@@ -1,4 +1,4 @@
-package deus.core.soul.barker.impl;
+package deus.core.soul.barker.barker.impl;
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.attention.AttentionElementDoRep;
 import deus.core.access.storage.api.attention.AttentionListDoRep;
-import deus.core.soul.barker.Barker;
+import deus.core.soul.barker.barker.Barker;
 import deus.model.attention.AttentionElement;
 import deus.model.attention.AttentionList;
 import deus.model.user.id.UserId;

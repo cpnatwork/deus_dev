@@ -35,7 +35,7 @@
 	
 	
 	<!-- BARKER -->
-	<osgi:reference id="barker" interface="deus.core.soul.barker.BarkerExportedToSubsystems" />
+	<osgi:reference id="barker" interface="deus.core.soul.barker.barker.BarkerExportedToSubsystems" />
 	
 	
 	

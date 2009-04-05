@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.pub.LosEntryDoRep;
 import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
-import deus.core.soul.barker.BarkerExportedToSubsystems;
+import deus.core.soul.barker.barker.BarkerExportedToSubsystems;
 import deus.model.attention.BinaryDecisionToMake;
 import deus.model.attention.Notice;
 import deus.model.attention.publication.connection.establish.pubinit.SubscriptionRepelNotice;
