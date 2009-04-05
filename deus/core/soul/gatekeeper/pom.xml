@@ -3,13 +3,13 @@
 
 	<parent>
 		<groupId>inf6.promed</groupId>
-		<artifactId>deus</artifactId>
+		<artifactId>deus-core-soul</artifactId>
 		<version>0.3-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>deus-gatekeeper</artifactId>
+	<artifactId>deus-core-soul-gatekeeper</artifactId>
 	<packaging>bundle</packaging>
-	<name>DEUS gatekeeper</name>
+	<name>DEUS core soul gatekeeper</name>
 	
 	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
