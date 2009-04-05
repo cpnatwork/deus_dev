@@ -41,16 +41,16 @@
 
 	<!-- references to send commands, should be provided by core-transport bundle -->
 	
-	<osgi:reference id="barkerCommandSender" interface="deus.core.access.transport.core.sending.command.BarkerCommandSender"/>
+	<osgi:reference id="barkerCommandSender" interface="deus.core.access.transfer.core.sending.command.BarkerCommandSender"/>
 
-	<osgi:reference id="publisherCommandSender" interface="deus.core.access.transport.core.sending.command.PublisherCommandSender"/>
+	<osgi:reference id="publisherCommandSender" interface="deus.core.access.transfer.core.sending.command.PublisherCommandSender"/>
 	
-	<osgi:reference id="subscriberCommandSender" interface="deus.core.access.transport.core.sending.command.SubscriberCommandSender"/>
+	<osgi:reference id="subscriberCommandSender" interface="deus.core.access.transfer.core.sending.command.SubscriberCommandSender"/>
 	
 	
 	<!-- services to receive commands, should be used by core-transport bundle -->
 	
-	<osgi:reference id="soulCallbackRegistry" interface="deus.core.access.transport.core.receiving.soulcallback.ExportedSoulCallbackRegistry"/>
+	<osgi:reference id="soulCallbackRegistry" interface="deus.core.access.transfer.core.receiving.soulcallback.ExportedSoulCallbackRegistry"/>
 
 	
 </beans>

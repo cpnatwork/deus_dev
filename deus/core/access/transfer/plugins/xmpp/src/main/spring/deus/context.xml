@@ -38,6 +38,6 @@
 	
 	more help: http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-classpath-scanning
 	 -->
-	<context:component-scan base-package="deus.core.access.transport.plugins.xmpp"/>
+	<context:component-scan base-package="deus.core.access.transfer.plugins.xmpp"/>
 	
 </beans>

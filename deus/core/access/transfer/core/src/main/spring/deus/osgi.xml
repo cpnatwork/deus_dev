@@ -10,27 +10,27 @@
 	<!-- CORE -->
 	
 	<!-- service for registration of transport protocols -->
-	<osgi:service id="transportProtocolRegistryOsgiService" ref="transportProtocolRegistry" interface="deus.core.access.transport.core.soul.protocolregistry.ExportedTransportProtocolRegistry" />
+	<osgi:service id="transportProtocolRegistryOsgiService" ref="transportProtocolRegistry" interface="deus.core.access.transfer.core.soul.protocolregistry.ExportedTransportProtocolRegistry" />
 	
 	
 	
 	<!-- SENDING -->
 	
 	<!-- services for sending commands, should be used by core package -->
-	<osgi:service id="publisherCommandSenderOsgiService" ref="publisherCommandSender" interface="deus.core.access.transport.core.sending.command.PublisherCommandSender"/>
+	<osgi:service id="publisherCommandSenderOsgiService" ref="publisherCommandSender" interface="deus.core.access.transfer.core.sending.command.PublisherCommandSender"/>
 	
-	<osgi:service id="subscriberCommandSenderOsgiService" ref="subscriberCommandSender" interface="deus.core.access.transport.core.sending.command.SubscriberCommandSender"/>
+	<osgi:service id="subscriberCommandSenderOsgiService" ref="subscriberCommandSender" interface="deus.core.access.transfer.core.sending.command.SubscriberCommandSender"/>
 	
 
 
 	<!-- RECEIVING -->
 
 	<!-- service for receiving transport messages -->
-	<osgi:service id="messageReceiverOsgiService" ref="messageReceiver" interface="deus.core.access.transport.core.receiving.message.MessageReceiver"/>
+	<osgi:service id="messageReceiverOsgiService" ref="messageReceiver" interface="deus.core.access.transfer.core.receiving.message.MessageReceiver"/>
 	
 	
 	<!-- callback to soul registry -->
-	<osgi:service id="soulCallbackRegistryOsgiService" ref="soulCallbackRegistry" interface="deus.core.access.transport.core.receiving.soulcallback.ExportedSoulCallbackRegistry"/>
+	<osgi:service id="soulCallbackRegistryOsgiService" ref="soulCallbackRegistry" interface="deus.core.access.transfer.core.receiving.soulcallback.ExportedSoulCallbackRegistry"/>
 
 
 </beans>
