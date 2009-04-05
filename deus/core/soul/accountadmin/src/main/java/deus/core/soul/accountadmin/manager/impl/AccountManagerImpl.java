@@ -1,11 +1,11 @@
-package deus.gatekeeper.account.impl;
+package deus.core.soul.accountadmin.manager.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.account.AccountDoRep;
-import deus.gatekeeper.account.AccountManager;
-import deus.gatekeeper.rolesetup.DistributionRoleSetup;
+import deus.core.soul.accountadmin.manager.AccountManager;
+import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup;
 import deus.model.account.Account;
 import deus.model.user.DistributionRole;
 import deus.model.user.UserMetadata;

@@ -1,4 +1,4 @@
-package deus.gatekeeper.account;
+package deus.core.soul.accountadmin.manager;
 
 import deus.model.user.DistributionRole;
 import deus.model.user.UserMetadata;

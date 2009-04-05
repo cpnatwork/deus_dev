@@ -1,6 +1,6 @@
-package deus.gatekeeper.registrator;
+package deus.core.soul.accountadmin.registrator;
 
-import deus.gatekeeper.puddle.RegistrationInformation;
+import deus.core.soul.accountadmin.model.RegistrationInformation;
 
 
 public interface Registrator {

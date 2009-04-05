@@ -1,4 +1,4 @@
-package deus.gatekeeper.rolesetup.impl;
+package deus.core.soul.accountadmin.rolesetup.impl;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -7,8 +7,8 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import deus.gatekeeper.rolesetup.DistributionRoleSetup;
-import deus.gatekeeper.rolesetup.DistributionRoleSetupObserver;
+import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup;
+import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetupObserver;
 import deus.model.user.DistributionRole;
 import deus.model.user.id.UserId;
 

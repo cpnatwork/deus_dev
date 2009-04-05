@@ -1,4 +1,4 @@
-package deus.gatekeeper.registrator;
+package deus.core.soul.accountadmin.registrator;
 
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserIdType;

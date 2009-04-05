@@ -1,4 +1,4 @@
-package deus.gatekeeper.registrator.impl;
+package deus.core.soul.accountadmin.registrator.impl;
 
 import java.util.List;
 import java.util.Vector;
@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.account.AccountDoRep;
 import deus.core.access.storage.api.user.UserMetadataDoRep;
-import deus.gatekeeper.puddle.RegistrationInformation;
-import deus.gatekeeper.registrator.Registrator;
-import deus.gatekeeper.registrator.UserIdGenerator;
-import deus.gatekeeper.registrator.UserRegistrationStateObserver;
-import deus.gatekeeper.rolesetup.DistributionRoleSetup;
+import deus.core.soul.accountadmin.model.RegistrationInformation;
+import deus.core.soul.accountadmin.registrator.Registrator;
+import deus.core.soul.accountadmin.registrator.UserIdGenerator;
+import deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver;
+import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup;
 import deus.model.account.Account;
 import deus.model.user.DistributionRole;
 import deus.model.user.id.UserId;

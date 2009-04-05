@@ -9,17 +9,17 @@
 
 	<osgi:service id="cerberusOsgiService" ref="cerberus" interface="deus.gatekeeper.cerberus.Cerberus" />
 	
-	<osgi:service id="registratorOsgiService" ref="registrator" interface="deus.gatekeeper.registrator.Registrator" />
+	<osgi:service id="registratorOsgiService" ref="registrator" interface="deus.core.soul.accountadmin.registrator.Registrator" />
 	
 	<!-- for previewing the userId while registration, userRoleSetupOsgiService can  also be used in the UI -->
-	<osgi:service id="userIdGeneratorOsgiService" ref="userIdGenerator" interface="deus.gatekeeper.registrator.UserIdGenerator" />
+	<osgi:service id="userIdGeneratorOsgiService" ref="userIdGenerator" interface="deus.core.soul.accountadmin.registrator.UserIdGenerator" />
 
-	<osgi:service id="accountManagerOsgiService" ref="accountManager" interface="deus.gatekeeper.account.AccountManager" />
+	<osgi:service id="accountManagerOsgiService" ref="accountManager" interface="deus.core.soul.accountadmin.manager.AccountManager" />
 	
 	
 	<!-- to soul -->
 	
-	<osgi:service id="distributionRoleSetupOsgiService" ref="distributionRoleSetup" interface="deus.gatekeeper.rolesetup.DistributionRoleSetup" />
+	<osgi:service id="distributionRoleSetupOsgiService" ref="distributionRoleSetup" interface="deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup" />
 	
 	
 	<!-- DAOs -->

@@ -1,4 +1,4 @@
-package deus.gatekeeper.rolesetup;
+package deus.core.soul.accountadmin.rolesetup;
 
 import deus.model.user.DistributionRole;
 import deus.model.user.id.UserId;

@@ -13,6 +13,7 @@
 	
 	<modules>
 		<module>barker</module>
+		<module>accountadmin</module>
 		<module>gatekeeper</module>
 	</modules>
 	

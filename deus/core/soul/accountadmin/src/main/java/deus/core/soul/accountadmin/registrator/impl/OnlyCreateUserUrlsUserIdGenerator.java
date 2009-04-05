@@ -1,10 +1,10 @@
-package deus.gatekeeper.registrator.impl;
+package deus.core.soul.accountadmin.registrator.impl;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
 
-import deus.gatekeeper.registrator.UserIdGenerator;
+import deus.core.soul.accountadmin.registrator.UserIdGenerator;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserIdType;
 import deus.model.user.id.UserUrl;

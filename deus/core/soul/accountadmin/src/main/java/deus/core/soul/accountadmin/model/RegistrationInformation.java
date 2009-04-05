@@ -1,4 +1,4 @@
-package deus.gatekeeper.puddle;
+package deus.core.soul.accountadmin.model;
 
 import java.util.Set;
 
