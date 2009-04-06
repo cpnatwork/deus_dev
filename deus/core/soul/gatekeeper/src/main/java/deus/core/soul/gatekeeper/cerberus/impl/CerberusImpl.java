@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.account.AccountDoRep;
-import deus.core.soul.gatekeeper.cerberus.Cerberus;
 import deus.core.soul.gatekeeper.cerberus.LoginCredentialChecker;
 import deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver;
 import deus.model.accountadmin.Account;

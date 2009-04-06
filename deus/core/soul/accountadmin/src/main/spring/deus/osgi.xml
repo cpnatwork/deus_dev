@@ -7,16 +7,23 @@
 
 	<!-- to UI -->
 
-	<osgi:service id="registratorOsgiService" ref="registrator" interface="deus.core.soul.accountadmin.registrator.Registrator" />
+	<osgi:service id="registratorOsgiServiceExportedToClient" ref="registrator" interface="deus.core.soul.accountadmin.registrator.RegistratorExportedToClient" />
+
+	
 	
 	<!-- for previewing the userId while registration, userRoleSetupOsgiService can  also be used in the UI -->
 	<osgi:service id="userIdGeneratorOsgiService" ref="userIdGenerator" interface="deus.core.soul.accountadmin.registrator.UserIdGenerator" />
 
 	<osgi:service id="accountManagerOsgiService" ref="accountManager" interface="deus.core.soul.accountadmin.manager.AccountManager" />
 	
+		
+	
+	<!-- to SUBSYSTEMS -->
+
+	<!-- to transfer core -->
+	<osgi:service id="registratorOsgiServiceExportedToSubsystems" ref="registrator" interface="deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems" />
 	
 	<!-- to soul -->
-	
 	<osgi:service id="distributionRoleSetupOsgiService" ref="distributionRoleSetup" interface="deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup" />
 	
 	

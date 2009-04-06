@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.account.AccountDoRep;
 import deus.core.access.storage.api.user.UserMetadataDoRep;
 import deus.core.soul.accountadmin.model.RegistrationInformation;
-import deus.core.soul.accountadmin.registrator.Registrator;
 import deus.core.soul.accountadmin.registrator.UserIdGenerator;
 import deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver;
 import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup;

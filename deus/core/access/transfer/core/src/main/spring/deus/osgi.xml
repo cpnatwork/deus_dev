@@ -33,4 +33,11 @@
 	<osgi:service id="soulCallbackRegistryOsgiService" ref="soulCallbackRegistry" interface="deus.core.access.transfer.core.receiving.soulcallback.ExportedSoulCallbackRegistry"/>
 
 
+	<!-- GATEKEEPER -->
+	<osgi:reference id="cerberus" interface="deus.core.soul.gatekeeper.cerberus.CerberusExportedToSubsystems"/>
+	
+	<!-- REGISTRATOR -->
+	<osgi:reference id="registrator" interface="deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems"/>
+
+
 </beans>
