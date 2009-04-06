@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeer;
+import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 import deus.core.soul.subscription.Subscriber;
 import deus.core.soul.subscription.SubscriberExportedToClient;
 import deus.model.dossier.DigitalCard;
@@ -13,8 +13,8 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 /**
- * Delegates all methods of <code>SubscriberExportedToPeer</code> to a delegate of type
- * <code>SubscriberExportedToPeer</code>, the rest of the methods of <code>Subscriber</code> are delegated to the second
+ * Delegates all methods of <code>SubscriberExportedToPeers</code> to a delegate of type
+ * <code>SubscriberExportedToPeers</code>, the rest of the methods of <code>Subscriber</code> are delegated to the second
  * delegate, which is of type <code>Subscriber</code>.
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
@@ -29,38 +29,38 @@ public class ProxiedSubscriberAdapter implements Subscriber {
 
 	@Autowired
 	@Qualifier("proxy")
-	private SubscriberExportedToPeer subscriberExportedToPeer;
+	private SubscriberExportedToPeers subscriberExportedToPeers;
 
 
 	// +++ METHODS SUBSCRIBER EXPORTED TO PEER ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
 	public void noticeSubscriptionRequestGranted(UserId subscriberId, UserId publisherId) {
-		subscriberExportedToPeer.noticeSubscriptionRequestGranted(subscriberId, publisherId);
+		subscriberExportedToPeers.noticeSubscriptionRequestGranted(subscriberId, publisherId);
 	}
 
 
 	@Override
 	public void noticeSubscriptionRequestDenied(UserId subscriberId, UserId publisherId) {
-		subscriberExportedToPeer.noticeSubscriptionRequestDenied(subscriberId, publisherId);
+		subscriberExportedToPeers.noticeSubscriptionRequestDenied(subscriberId, publisherId);
 	}
 
 
 	@Override
 	public void update(UserId subscriberId, UserId publisherId, DigitalCard digitalCard) {
-		subscriberExportedToPeer.update(subscriberId, publisherId, digitalCard);
+		subscriberExportedToPeers.update(subscriberId, publisherId, digitalCard);
 	}
 
 
 	@Override
 	public void addPublisher(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata) {
-		subscriberExportedToPeer.addPublisher(subscriberId, publisherId, publisherMetadata);
+		subscriberExportedToPeers.addPublisher(subscriberId, publisherId, publisherMetadata);
 	}
 
 
 	@Override
 	public void deletePublisher(UserId subscriberId, UserId publisherId) {
-		subscriberExportedToPeer.deletePublisher(subscriberId, publisherId);
+		subscriberExportedToPeers.deletePublisher(subscriberId, publisherId);
 	}
 
 

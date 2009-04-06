@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.pub.LosEntryDoRep;
-import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
+import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeers;
 import deus.core.soul.barker.barker.BarkerExportedToSubsystems;
 import deus.model.attention.BinaryDecisionToMake;
 import deus.model.attention.Notice;
@@ -21,13 +21,13 @@ import deus.model.user.id.UserId;
 
 @Component
 @Qualifier("proxy")
-public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPeer {
+public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPeers {
 
 	private final Logger logger = LoggerFactory.getLogger(PublisherExportedToPeerBarkerProxy.class);
 	
 	@Autowired
 	@Qualifier("target")
-	private PublisherExportedToPeer proxiedPublisher;
+	private PublisherExportedToPeers proxiedPublisher;
 	
 	@Autowired
 	private BarkerExportedToSubsystems barker;

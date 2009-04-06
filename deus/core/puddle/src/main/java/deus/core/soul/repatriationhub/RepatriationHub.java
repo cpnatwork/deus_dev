@@ -1,6 +1,6 @@
 package deus.core.soul.repatriationhub;
 
-import deus.core.access.transfer.core.receiving.soulcallback.repatriationhub.RepatriationHubExportedToPeer;
+import deus.core.access.transfer.core.receiving.soulcallback.repatriationhub.RepatriationHubExportedToPeers;
 
 
 
@@ -16,6 +16,6 @@ import deus.core.access.transfer.core.receiving.soulcallback.repatriationhub.Rep
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-public interface RepatriationHub extends RepatriationHubExportedToClient, RepatriationHubExportedToPeer {
+public interface RepatriationHub extends RepatriationHubExportedToClient, RepatriationHubExportedToPeers {
 	
 }

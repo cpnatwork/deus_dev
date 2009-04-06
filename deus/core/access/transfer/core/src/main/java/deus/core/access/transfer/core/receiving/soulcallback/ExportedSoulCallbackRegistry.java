@@ -1,14 +1,14 @@
 package deus.core.access.transfer.core.receiving.soulcallback;
 
-import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
-import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeer;
+import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeers;
+import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 
 
 public interface ExportedSoulCallbackRegistry {
 
-	public abstract void registerPublisher(PublisherExportedToPeer publisher);
+	public abstract void registerPublisher(PublisherExportedToPeers publisher);
 
 
-	public abstract void registerSubscriber(SubscriberExportedToPeer subscriber);
+	public abstract void registerSubscriber(SubscriberExportedToPeers subscriber);
 
 }

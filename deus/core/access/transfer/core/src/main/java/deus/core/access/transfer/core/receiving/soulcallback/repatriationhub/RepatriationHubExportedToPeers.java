@@ -4,7 +4,7 @@ import deus.model.dossier.DigitalCard;
 import deus.model.user.id.UserId;
 
 // FIXME: edit javadoc
-public interface RepatriationHubExportedToPeer {
+public interface RepatriationHubExportedToPeers {
 
 	
 	// TODO: add to javadoc: an acknowledgement is sent

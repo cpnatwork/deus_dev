@@ -2,38 +2,38 @@ package deus.core.access.transfer.core.receiving.soulcallback;
 
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
-import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeer;
+import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeers;
+import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 
 
 @Component("soulCallbackRegistry")
 public class SoulCallbackRegistryImpl implements SoulCallbackRegistry {
 
-	private PublisherExportedToPeer publisher;
+	private PublisherExportedToPeers publisher;
 
-	private SubscriberExportedToPeer subscriber;
+	private SubscriberExportedToPeers subscriber;
 
 
 	@Override
-	public PublisherExportedToPeer getPublisher() {
+	public PublisherExportedToPeers getPublisher() {
 		return publisher;
 	}
 
 
 	@Override
-	public SubscriberExportedToPeer getSubscriber() {
+	public SubscriberExportedToPeers getSubscriber() {
 		return subscriber;
 	}
 
 
 	@Override
-	public void registerPublisher(PublisherExportedToPeer publisher) {
+	public void registerPublisher(PublisherExportedToPeers publisher) {
 		this.publisher = publisher;
 	}
 
 
 	@Override
-	public void registerSubscriber(SubscriberExportedToPeer subscriber) {
+	public void registerSubscriber(SubscriberExportedToPeers subscriber) {
 		this.subscriber = subscriber;
 	}
 	

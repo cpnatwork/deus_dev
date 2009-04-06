@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
+import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeers;
 import deus.core.soul.publication.Publisher;
 import deus.core.soul.publication.PublisherExportedToClient;
 import deus.model.dossier.DigitalCard;
@@ -13,8 +13,8 @@ import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
 /**
- * Delegates all methods of <code>PublisherExportedToPeer</code> to a delegate of type
- * <code>PublisherExportedToPeer</code>, the rest of the methods of <code>Publisher</code> are delegated to the second
+ * Delegates all methods of <code>PublisherExportedToPeers</code> to a delegate of type
+ * <code>PublisherExportedToPeers</code>, the rest of the methods of <code>Publisher</code> are delegated to the second
  * delegate, which is of type <code>Publisher</code>.
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
@@ -28,32 +28,32 @@ public class ProxiedPublisherAdapter implements Publisher {
 
 	@Autowired
 	@Qualifier("proxy")
-	private PublisherExportedToPeer publisherExportedToPeer;
+	private PublisherExportedToPeers publisherExportedToPeers;
 
 
 	// +++ exported to PEER +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
 	public void addSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
-		publisherExportedToPeer.addSubscriber(publisherId, subscriberId, subscriberMetadata);
+		publisherExportedToPeers.addSubscriber(publisherId, subscriberId, subscriberMetadata);
 	}
 
 
 	@Override
 	public void deleteSubscriber(UserId publisherId, UserId subscriberId) {
-		publisherExportedToPeer.deleteSubscriber(publisherId, subscriberId);
+		publisherExportedToPeers.deleteSubscriber(publisherId, subscriberId);
 	}
 
 
 	@Override
 	public void subscriptionAbstained(UserId publisherId, UserId subscriberId) {
-		publisherExportedToPeer.subscriptionAbstained(publisherId, subscriberId);
+		publisherExportedToPeers.subscriptionAbstained(publisherId, subscriberId);
 	}
 
 
 	@Override
 	public void subscriptionConfirmed(UserId publisherId, UserId subscriberId) {
-		publisherExportedToPeer.subscriptionConfirmed(publisherId, subscriberId);
+		publisherExportedToPeers.subscriptionConfirmed(publisherId, subscriberId);
 	}
 
 

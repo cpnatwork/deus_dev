@@ -4,7 +4,7 @@ import deus.model.dossier.DigitalCardId;
 import deus.model.user.id.UserId;
 
 
-public interface ContributorExportedToPeer {
+public interface ContributorExportedToPeers {
 
 	public void contributionAcknowledged(UserId contributorId, DigitalCardId digitalCardId);
 	

@@ -16,8 +16,8 @@ import deus.core.access.transfer.common.messages.publication.connection.terminat
 import deus.core.access.transfer.common.messages.publication.connection.terminate.UnsubscribeMessage;
 import deus.core.access.transfer.common.protocol.messagereceiver.MessageReceiver;
 import deus.core.access.transfer.core.receiving.soulcallback.SoulCallbackRegistry;
-import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeer;
-import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeer;
+import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeers;
+import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -34,8 +34,8 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 		UserId senderId = message.getSenderId();
 		UserId receiverId = message.getReceiverId();
 
-		PublisherExportedToPeer publisher = registry.getPublisher();
-		SubscriberExportedToPeer subscriber = registry.getSubscriber();
+		PublisherExportedToPeers publisher = registry.getPublisher();
+		SubscriberExportedToPeers subscriber = registry.getSubscriber();
 
 		// USE CASE: SUBSCRIBE
 		if (message instanceof SubscribeToPublisherMessage) {
