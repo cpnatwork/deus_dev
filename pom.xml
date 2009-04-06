@@ -134,7 +134,7 @@
 	
 			<dependency>
 				<groupId>inf6.promed</groupId>
-				<artifactId>deus-gatekeeper</artifactId>
+				<artifactId>deus-core-soul-gatekeeper</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>

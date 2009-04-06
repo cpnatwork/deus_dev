@@ -57,7 +57,7 @@
 				
 		<dependency>
 			<groupId>inf6.promed</groupId>
-			<artifactId>deus-gatekeeper</artifactId>
+			<artifactId>deus-core-soul-gatekeeper</artifactId>
 			<type>bundle</type>
 		</dependency>
 		

@@ -6,8 +6,8 @@ import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import deus.gatekeeper.rolesetup.DistributionRoleSetup;
-import deus.gatekeeper.rolesetup.DistributionRoleSetupObserver;
+import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup;
+import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetupObserver;
 import deus.model.user.DistributionRole;
 import deus.model.user.id.UserId;
 
