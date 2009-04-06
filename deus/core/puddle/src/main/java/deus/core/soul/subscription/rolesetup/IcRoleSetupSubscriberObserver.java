@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.sub.LopDoRep;
-import deus.core.soul.common.AbstractDistributionRoleSetupObserver;
+import deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver;
 import deus.core.soul.subscription.SubscriberExportedToClient;
 import deus.model.subscription.ListOfPublishers;
 import deus.model.subscription.LopEntry;
@@ -43,7 +43,7 @@ public class IcRoleSetupSubscriberObserver extends AbstractDistributionRoleSetup
 
 
 	@Override
-	protected DistributionRole getUserRole() {
+	protected DistributionRole getDistributionRole() {
 		return DistributionRole.informationConsumer;
 	}
 

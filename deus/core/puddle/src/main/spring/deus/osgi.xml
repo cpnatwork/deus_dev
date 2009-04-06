@@ -31,7 +31,7 @@
 
 	<!-- GATEKEEPER -->
 
-	<osgi:reference id="userRoleSetup" interface="deus.gatekeeper.rolesetup.DistributionRoleSetup"/>
+	<osgi:reference id="distributionRoleSetup" interface="deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup"/>
 	
 	
 	<!-- BARKER -->

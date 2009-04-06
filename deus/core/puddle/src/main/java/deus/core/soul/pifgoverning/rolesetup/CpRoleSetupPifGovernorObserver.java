@@ -2,15 +2,15 @@ package deus.core.soul.pifgoverning.rolesetup;
 
 import org.springframework.stereotype.Component;
 
-import deus.core.soul.common.AbstractDistributionRoleSetupObserver;
+import deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver;
 import deus.model.user.DistributionRole;
 import deus.model.user.id.UserId;
 
 @Component
 public class CpRoleSetupPifGovernorObserver extends AbstractDistributionRoleSetupObserver {
-
+	
 	@Override
-	protected DistributionRole getUserRole() {
+	protected DistributionRole getDistributionRole() {
 		return DistributionRole.concernedPerson;
 	}
 

@@ -1,4 +1,4 @@
-package deus.core.soul.common;
+package deus.core.soul.accountadmin.rolesetup;
 
 
 import javax.annotation.PostConstruct;
@@ -6,40 +6,34 @@ import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup;
-import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetupObserver;
 import deus.model.user.DistributionRole;
 import deus.model.user.id.UserId;
 
-// FIXME: move this to gatekeeper bundle
 public abstract class AbstractDistributionRoleSetupObserver implements DistributionRoleSetupObserver {
 
 	@Autowired
 	private DistributionRoleSetup distributionRoleSetup;
 
 
-	public AbstractDistributionRoleSetupObserver() {
-		super();
-	}
-
-
 	@PostConstruct
-	public void addObserver() {
-		distributionRoleSetup.addRoleSetupObserver(getUserRole(), this);
+	@SuppressWarnings("unused")
+	private void addObserver() {
+		distributionRoleSetup.addRoleSetupObserver(getDistributionRole(), this);
 	}
 
 
 	@PreDestroy
-	public void removeObserver() {
-		distributionRoleSetup.removeRoleSetupObserver(getUserRole(), this);
+	@SuppressWarnings("unused")
+	private void removeObserver() {
+		distributionRoleSetup.removeRoleSetupObserver(getDistributionRole(), this);
 	}
 
 
 	@Override
 	public void setUpRole(DistributionRole distributionRole, UserId userId) {
-		if (!distributionRole.equals(getUserRole()))
+		if (!distributionRole.equals(getDistributionRole()))
 			throw new RuntimeException("received notification for set up of user role " + distributionRole
-					+ " while only listening for set up of role " + getUserRole());
+					+ " while only listening for set up of role " + getDistributionRole());
 		setUpRole(userId);
 	}
 
@@ -49,10 +43,10 @@ public abstract class AbstractDistributionRoleSetupObserver implements Distribut
 
 	@Override
 	public void tearDownRole(DistributionRole distributionRole, UserId userId) {
-		if (!distributionRole.equals(getUserRole()))
+		if (!distributionRole.equals(getDistributionRole()))
 			throw new RuntimeException("received notification for tear down of user role " + distributionRole
-					+ " while only listening for tear down of role " + getUserRole());
-		
+					+ " while only listening for tear down of role " + getDistributionRole());
+
 		tearDownRole(userId);
 	}
 
@@ -61,10 +55,10 @@ public abstract class AbstractDistributionRoleSetupObserver implements Distribut
 
 
 	/**
-	 * Returns the user role, this observer should listen to
+	 * Returns the distribution role, this observer should setup
 	 * 
 	 * @return
 	 */
-	protected abstract DistributionRole getUserRole();
+	protected abstract DistributionRole getDistributionRole();
 
 }

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.pub.LosDoRep;
-import deus.core.soul.common.AbstractDistributionRoleSetupObserver;
+import deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver;
 import deus.core.soul.publication.PublisherExportedToClient;
 import deus.model.publication.ListOfSubscribers;
 import deus.model.publication.LosEntry;
@@ -44,7 +44,7 @@ public class CpRoleSetupPublisherObserver extends AbstractDistributionRoleSetupO
 
 
 	@Override
-	protected DistributionRole getUserRole() {
+	protected DistributionRole getDistributionRole() {
 		return DistributionRole.concernedPerson;
 	}
 
