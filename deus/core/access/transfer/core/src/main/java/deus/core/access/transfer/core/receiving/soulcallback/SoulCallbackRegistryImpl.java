@@ -2,7 +2,7 @@ package deus.core.access.transfer.core.receiving.soulcallback;
 
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeers;
+import deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 
 

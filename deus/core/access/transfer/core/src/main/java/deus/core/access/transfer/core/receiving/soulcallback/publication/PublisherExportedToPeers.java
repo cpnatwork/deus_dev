@@ -1,4 +1,4 @@
-package deus.core.access.transfer.core.receiving.soulcallback.publishing;
+package deus.core.access.transfer.core.receiving.soulcallback.publication;
 
 
 import deus.model.user.UserMetadata;

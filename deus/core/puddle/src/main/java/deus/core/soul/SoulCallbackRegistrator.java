@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.transfer.core.receiving.soulcallback.ExportedSoulCallbackRegistry;
-import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeers;
+import deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 
 @Component

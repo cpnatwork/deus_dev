@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.transfer.core.receiving.soulcallback.publishing.PublisherExportedToPeers;
+import deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers;
 import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
 import deus.core.soul.barker.decisionprocessor.impl.AbstractGenericDecisionProcessor;
 import deus.model.attention.publication.connection.establish.subinit.SubscriptionRequest;
