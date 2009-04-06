@@ -7,7 +7,7 @@
 
 	<!-- to UI -->
 
-	<osgi:service id="cerberusOsgiService" ref="cerberus" interface="deus.gatekeeper.cerberus.Cerberus" />
+	<osgi:service id="cerberusOsgiService" ref="cerberus" interface="deus.core.soul.gatekeeper.cerberus.Cerberus" />
 	
 	
 	<!-- DAOs -->

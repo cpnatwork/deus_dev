@@ -1,4 +1,4 @@
-package deus.gatekeeper.cerberus.prep;
+package deus.core.soul.gatekeeper.cerberus.prep;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;

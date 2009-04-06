@@ -27,7 +27,7 @@
 		deus.core.soul, deus.core.soul.subscription, deus.core.soul.publication, deus.core.soul.barker,
 		deus.core.soul.pifgoverning,
 		
-		deus.gatekeeper.registrator, deus.gatekeeper, deus.gatekeeper.cerberus, deus.gatekeeper.registrator,
+		deus.gatekeeper.registrator, deus.gatekeeper, deus.core.soul.gatekeeper.cerberus, deus.gatekeeper.registrator,
 		deus.gatekeeper.account, deus.gatekeeper.puddle,
 		
 		org.springframework.web.servlet.view, org.springframework.orm.jpa.support

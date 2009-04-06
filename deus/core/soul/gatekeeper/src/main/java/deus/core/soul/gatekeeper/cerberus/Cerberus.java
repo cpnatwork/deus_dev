@@ -1,4 +1,4 @@
-package deus.gatekeeper.cerberus;
+package deus.core.soul.gatekeeper.cerberus;
 
 import deus.model.gatekeeper.LoginCredentials;
 import deus.model.user.id.UserId;

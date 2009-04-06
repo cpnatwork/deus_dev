@@ -8,7 +8,7 @@
 
 	<!-- FROM GATEKEEPER -->
 
-	<osgi:reference id="cerberus" interface="deus.gatekeeper.cerberus.Cerberus" />
+	<osgi:reference id="cerberus" interface="deus.core.soul.gatekeeper.cerberus.Cerberus" />
 	
 	<osgi:reference id="registrator" interface="deus.gatekeeper.registrator.Registrator" />
 	

@@ -1,4 +1,4 @@
-package deus.gatekeeper.cerberus.impl;
+package deus.core.soul.gatekeeper.cerberus.impl;
 
 import java.util.List;
 import java.util.Vector;
@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.account.AccountDoRep;
-import deus.gatekeeper.cerberus.Cerberus;
-import deus.gatekeeper.cerberus.LoginCredentialChecker;
-import deus.gatekeeper.cerberus.UserLoginStateObserver;
+import deus.core.soul.gatekeeper.cerberus.Cerberus;
+import deus.core.soul.gatekeeper.cerberus.LoginCredentialChecker;
+import deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver;
 import deus.model.accountadmin.Account;
 import deus.model.gatekeeper.LoginCredentials;
 import deus.model.user.id.UserId;

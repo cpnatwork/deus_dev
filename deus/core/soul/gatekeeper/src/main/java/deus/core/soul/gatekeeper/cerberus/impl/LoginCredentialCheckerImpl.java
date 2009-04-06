@@ -1,8 +1,8 @@
-package deus.gatekeeper.cerberus.impl;
+package deus.core.soul.gatekeeper.cerberus.impl;
 
 import org.springframework.stereotype.Component;
 
-import deus.gatekeeper.cerberus.LoginCredentialChecker;
+import deus.core.soul.gatekeeper.cerberus.LoginCredentialChecker;
 import deus.model.gatekeeper.LoginCredentials;
 
 @Component
