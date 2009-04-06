@@ -1,4 +1,4 @@
-package deus.gatekeeper.cerberus.impl;
+package deus.core.soul.gatekeeper.cerberus.impl;
 
 import deus.core.access.storage.api.account.AccountDoRep;
 import deus.model.accountadmin.Account;

@@ -1,4 +1,4 @@
-package deus.gatekeeper.cerberus.impl;
+package deus.core.soul.gatekeeper.cerberus.impl;
 
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
