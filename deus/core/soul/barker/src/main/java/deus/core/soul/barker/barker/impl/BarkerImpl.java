@@ -39,8 +39,8 @@ public class BarkerImpl implements Barker {
 
 	@Override
 	public void noticeAttentionElement(UserId userId, AttentionElement attentionElement) {
-		// FIXME: do check
-		// assertIsUnnoticed(attentionElement);
+		if(attentionElement.isNoticed())
+			throw new RuntimeException("cannot notice attention element " + attentionElement + ", it is already noticed");			
 
 		logger.trace("noticing attention element {}", attentionElement);
 
