@@ -8,7 +8,7 @@ import deus.core.soul.pifgoverning.PifGovernor;
 import deus.core.soul.repatriationhub.RepatriationHub;
 import deus.model.attention.BinaryDecisionToMake;
 import deus.model.attention.repatriation.Repatriation;
-import deus.model.dossier.DigitalCard;
+import deus.model.dc.DigitalCard;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 

@@ -1,20 +1,20 @@
 package deus.model.attention.publication;
 
 import deus.model.attention.Notice;
-import deus.model.dossier.DigitalCard;
+import deus.model.dossier.Patch;
 import deus.model.user.UserMetadata;
 
 public class UpdateNotice extends Notice {
 
 	private final UserMetadata publisherMetadata;
 
-	private final DigitalCard newDigitalCard;
+	private final Patch patch;
 
 
-	public UpdateNotice(UserMetadata publisherMetadata, DigitalCard newDigitalCard) {
+	public UpdateNotice(UserMetadata publisherMetadata, Patch patch) {
 		super();
 		this.publisherMetadata = publisherMetadata;
-		this.newDigitalCard = newDigitalCard;
+		this.patch = patch;
 	}
 
 
@@ -23,8 +23,8 @@ public class UpdateNotice extends Notice {
 	}
 
 
-	public DigitalCard getNewDigitalCard() {
-		return newDigitalCard;
+	public Patch getPatch() {
+		return patch;
 	}
 
 

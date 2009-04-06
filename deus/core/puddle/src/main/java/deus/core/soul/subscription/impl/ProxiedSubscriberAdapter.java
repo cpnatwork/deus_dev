@@ -7,8 +7,9 @@ import org.springframework.stereotype.Component;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 import deus.core.soul.subscription.Subscriber;
 import deus.core.soul.subscription.SubscriberExportedToClient;
-import deus.model.dossier.DigitalCard;
-import deus.model.sub.ListOfPublishers;
+import deus.model.dc.DigitalCard;
+import deus.model.dossier.Patch;
+import deus.model.subscription.ListOfPublishers;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -47,8 +48,8 @@ public class ProxiedSubscriberAdapter implements Subscriber {
 
 
 	@Override
-	public void update(UserId subscriberId, UserId publisherId, DigitalCard digitalCard) {
-		subscriberExportedToPeers.update(subscriberId, publisherId, digitalCard);
+	public void update(UserId subscriberId, UserId publisherId, Patch patch) {
+		subscriberExportedToPeers.update(subscriberId, publisherId, patch);
 	}
 
 

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.core.access.transfer.common.protocol.TransferId;
-import deus.core.access.transfer.common.protocol.TransferProtocol;
 import deus.core.access.transfer.common.protocol.TransferProtocolImpl;
 import deus.core.access.transfer.common.protocol.mapper.UserIdMapper;
 import deus.core.access.transfer.common.protocol.messagesender.MessageSender;

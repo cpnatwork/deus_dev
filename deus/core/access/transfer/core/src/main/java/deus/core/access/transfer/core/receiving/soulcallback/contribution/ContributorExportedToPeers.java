@@ -1,6 +1,6 @@
 package deus.core.access.transfer.core.receiving.soulcallback.contribution;
 
-import deus.model.dossier.DigitalCardId;
+import deus.model.dc.DigitalCardId;
 import deus.model.user.id.UserId;
 
 

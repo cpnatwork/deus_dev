@@ -1,7 +1,7 @@
 package deus.gatekeeper.cerberus.impl;
 
 import deus.core.access.storage.api.account.AccountDoRep;
-import deus.model.account.Account;
+import deus.model.accountadmin.Account;
 import deus.model.user.id.UserUrl;
 
 public class AccountDoRepStub implements AccountDoRep {

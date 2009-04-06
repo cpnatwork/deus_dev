@@ -10,14 +10,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import deus.core.soul.pifgoverning.SimpleReplaceAssimilationStrategy;
-import deus.model.dossier.DigitalCard;
+import deus.model.dc.DigitalCard;
+import deus.model.dc.MyPartyInformationDC;
+import deus.model.dc.PartyInformationDC;
 import deus.model.dossier.InformationFile;
-import deus.model.dossier.MyPartyInformationDC;
-import deus.model.dossier.PartyInformationDC;
-import deus.model.dossier.proj.party.Gender;
-import deus.model.dossier.proj.party.Party;
-import deus.model.dossier.proj.party.Person;
-import deus.model.pie.PersonalInformationFile;
+import deus.model.party.Gender;
+import deus.model.party.Party;
+import deus.model.party.Person;
+import deus.model.pifgoverning.PersonalInformationFile;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
 

@@ -1,6 +1,6 @@
 package deus.core.access.transfer.core.sending.command;
 
-import deus.model.dossier.DigitalCard;
+import deus.model.dc.DigitalCard;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 

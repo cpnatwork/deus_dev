@@ -12,8 +12,8 @@ import deus.core.access.storage.api.account.AccountDoRep;
 import deus.gatekeeper.cerberus.Cerberus;
 import deus.gatekeeper.cerberus.LoginCredentialChecker;
 import deus.gatekeeper.cerberus.UserLoginStateObserver;
-import deus.gatekeeper.puddle.LoginCredentials;
-import deus.model.account.Account;
+import deus.model.accountadmin.Account;
+import deus.model.gatekeeper.LoginCredentials;
 import deus.model.user.id.UserId;
 
 @Component("cerberus")

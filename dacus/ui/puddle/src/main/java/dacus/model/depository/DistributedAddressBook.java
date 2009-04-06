@@ -1,6 +1,6 @@
 package dacus.model.depository;
 
-import deus.model.sub.DistributedInformationFolder;
+import deus.model.difgoverning.DistributedInformationFolder;
 
 public interface DistributedAddressBook extends DistributedInformationFolder {
 

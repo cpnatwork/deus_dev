@@ -1,6 +1,6 @@
 package deus.gatekeeper.cerberus;
 
-import deus.gatekeeper.puddle.LoginCredentials;
+import deus.model.gatekeeper.LoginCredentials;
 
 public interface LoginCredentialChecker {
 

@@ -12,10 +12,10 @@ import deus.core.access.storage.api.user.UserMetadataDoRep;
 import deus.core.access.transfer.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.difgoverning.DifGovernor;
 import deus.core.soul.subscription.Subscriber;
-import deus.model.dossier.DigitalCard;
-import deus.model.sub.ListOfPublishers;
-import deus.model.sub.LopEntry;
-import deus.model.sub.SubscriberSideSubscriptionState;
+import deus.model.dossier.Patch;
+import deus.model.subscription.ListOfPublishers;
+import deus.model.subscription.LopEntry;
+import deus.model.subscription.SubscriberSideSubscriptionState;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -64,8 +64,8 @@ public class SubscriberImpl implements Subscriber {
 
 
 	@Override
-	public void update(UserId subscriberId, UserId publisherId, DigitalCard digitalCard) {
-		if (!digitalCard.getDigitalCardId().getCpId().equals(publisherId))
+	public void update(UserId subscriberId, UserId publisherId, Patch patch) {
+		if (!patch.getCpId().equals(publisherId))
 			throw new IllegalArgumentException("ID of publisher does not match CP ID in passed digital card");
 
 		logger.trace("in informationConsumer {}: updating the DIF for publisher {}", subscriberId, publisherId);
@@ -74,7 +74,7 @@ public class SubscriberImpl implements Subscriber {
 			// FIXME: how to handle this??
 			;
 
-		difGovernor.applyPatch(subscriberId, publisherId, digitalCard);
+		difGovernor.applyPatch(subscriberId, publisherId, patch);
 	}
 	
 	

@@ -2,8 +2,8 @@ package dacus.model.dossier;
 
 import java.util.Set;
 
-import deus.model.dossier.DigitalCard;
-import deus.model.sub.ForeignInformationFile;
+import deus.model.dc.DigitalCard;
+import deus.model.difgoverning.ForeignInformationFile;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 

@@ -2,7 +2,7 @@ package deus.core.soul.pifgoverning;
 
 import java.util.Set;
 
-import deus.model.dossier.DigitalCard;
+import deus.model.dc.DigitalCard;
 import deus.model.dossier.InformationFile;
 
 // FIXME: rename to SimpleAppend...

@@ -2,9 +2,9 @@ package deus.core.access.storage.api.sub;
 
 import java.util.List;
 
-import deus.model.dossier.DigitalCard;
-import deus.model.dossier.DigitalCardId;
-import deus.model.sub.ForeignInformationFile;
+import deus.model.dc.DigitalCard;
+import deus.model.dc.DigitalCardId;
+import deus.model.difgoverning.ForeignInformationFile;
 import deus.model.user.id.UserId;
 
 

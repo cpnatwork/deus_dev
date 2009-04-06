@@ -15,7 +15,7 @@ import deus.model.attention.publication.connection.establish.pubinit.Subscriptio
 import deus.model.attention.publication.connection.establish.pubinit.SubscriptionConfirmedNotice;
 import deus.model.attention.publication.connection.establish.subinit.SubscriptionRequest;
 import deus.model.attention.publication.connection.terminate.SubscriberInitiatedTerminationNotice;
-import deus.model.pub.LosEntry;
+import deus.model.publication.LosEntry;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 

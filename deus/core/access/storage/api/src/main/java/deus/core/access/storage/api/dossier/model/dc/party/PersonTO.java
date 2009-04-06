@@ -3,18 +3,18 @@ package deus.core.access.storage.api.dossier.model.dc.party;
 import java.util.List;
 import java.util.UUID;
 
-import deus.model.dossier.proj.party.Address;
-import deus.model.dossier.proj.party.Email;
-import deus.model.dossier.proj.party.ImAccount;
-import deus.model.dossier.proj.party.Occupation;
-import deus.model.dossier.proj.party.Phone;
-import deus.model.dossier.proj.party.RelatedPerson;
-import deus.model.dossier.proj.party.WebPresence;
+import deus.model.party.Address;
+import deus.model.party.Email;
+import deus.model.party.ImAccount;
+import deus.model.party.Occupation;
+import deus.model.party.Phone;
+import deus.model.party.RelatedPerson;
+import deus.model.party.WebPresence;
 import deus.model.user.id.UserId;
 
 // FIXME: REMOVE HIBERNATE STUFF FROM THIS CLASS
 //@Entity
-public class PersonTO extends deus.model.dossier.proj.party.Person {
+public class PersonTO extends deus.model.party.Person {
 
 	private UUID uuid;
 

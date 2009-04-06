@@ -2,7 +2,7 @@ package deus.model.attention.repatriation;
 
 import deus.model.attention.BinaryDecisionToMake;
 import deus.model.attention.DecisionType;
-import deus.model.dossier.DigitalCard;
+import deus.model.dc.DigitalCard;
 import deus.model.user.UserMetadata;
 
 public class Repatriation extends BinaryDecisionToMake {

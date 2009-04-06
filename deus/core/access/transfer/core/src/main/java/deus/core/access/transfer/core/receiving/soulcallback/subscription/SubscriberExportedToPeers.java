@@ -1,6 +1,6 @@
 package deus.core.access.transfer.core.receiving.soulcallback.subscription;
 
-import deus.model.dossier.DigitalCard;
+import deus.model.dossier.Patch;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -19,7 +19,7 @@ public interface SubscriberExportedToPeers {
 	
 	// USE CASE: update
 
-	public void update(UserId subscriberId, UserId publisherId, DigitalCard digitalCard);
+	public void update(UserId subscriberId, UserId publisherId, Patch patch);
 
 	
 	// USE CASE: subscriber initiated connection

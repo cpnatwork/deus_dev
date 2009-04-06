@@ -1,6 +1,6 @@
 package deus.core.access.storage.api.pub;
 
-import deus.model.pub.LosEntry;
+import deus.model.publication.LosEntry;
 import deus.model.user.id.UserId;
 
 public interface LosEntryDoRep {

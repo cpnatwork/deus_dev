@@ -10,7 +10,7 @@ import deus.core.access.transfer.common.messages.publication.UpdateMessage;
 import deus.core.access.transfer.plugins.xmpp.PatchPacket;
 import deus.core.access.transfer.plugins.xmpp.receiving.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
 import deus.core.access.transfer.plugins.xmpp.util.PacketPrinter;
-import deus.model.dossier.DigitalCard;
+import deus.model.dc.DigitalCard;
 
 public class UpdatePacketListener extends UserMetadataParsingFilteredPacketListener {
 

@@ -1,6 +1,6 @@
 package deus.core.soul.pifgoverning;
 
-import deus.model.dossier.DigitalCard;
+import deus.model.dc.DigitalCard;
 import deus.model.dossier.InformationFile;
 
 /**

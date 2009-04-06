@@ -13,7 +13,7 @@ import deus.core.soul.accountadmin.registrator.Registrator;
 import deus.core.soul.accountadmin.registrator.UserIdGenerator;
 import deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver;
 import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup;
-import deus.model.account.Account;
+import deus.model.accountadmin.Account;
 import deus.model.user.DistributionRole;
 import deus.model.user.id.UserId;
 

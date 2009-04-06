@@ -6,8 +6,9 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-import deus.model.dossier.PartyInformationDC;
-import deus.model.dossier.proj.party.Person;
+import deus.model.dc.DigitalCardId;
+import deus.model.dc.PartyInformationDC;
+import deus.model.party.Person;
 import deus.model.user.id.UserUrl;
 
 public class PartyInformationDCTest {

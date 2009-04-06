@@ -10,10 +10,11 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.sub.DifDoRep;
 import deus.core.access.storage.api.sub.FifDoRep;
 import deus.core.soul.difgoverning.DifGovernor;
-import deus.core.soul.pifgoverning.AssimilationStrategy;
-import deus.model.dossier.DigitalCard;
-import deus.model.dossier.DigitalCardId;
-import deus.model.sub.ForeignInformationFile;
+import deus.core.soul.difgoverning.PatchStrategy;
+import deus.model.dc.DigitalCard;
+import deus.model.dc.DigitalCardId;
+import deus.model.difgoverning.ForeignInformationFile;
+import deus.model.dossier.Patch;
 import deus.model.user.id.UserId;
 
 @Component("difGovernor")
@@ -21,8 +22,8 @@ public class DifGovernorImpl implements DifGovernor {
 
 
 	// FIXME: use patchStrategy here
-	@Resource(name = "foreignInformationFileUpdateStrategy")
-	private PatchStrategy foreignInformationFileUpdateStrategy;
+	@Resource(name = "patchStrategy")
+	private PatchStrategy patchStrategy;
 
 
 	@Autowired
@@ -34,10 +35,10 @@ public class DifGovernorImpl implements DifGovernor {
 
 
 	@Override
-	public void applyPatch(UserId residentId, UserId cpId, DigitalCard digitalCard) {
+	public void applyPatch(UserId residentId, UserId cpId, Patch patch) {
 		ForeignInformationFile foreignInformationFile = fifDoRep.getByNaturalId(cpId, residentId);
 
-		foreignInformationFileUpdateStrategy.update(foreignInformationFile, digitalCard);
+		patchStrategy.patch(foreignInformationFile, patch);
 
 		fifDoRep.updateEntity(residentId, cpId, foreignInformationFile);
 	}

@@ -10,7 +10,7 @@ import deus.core.access.transfer.common.messages.publication.connection.establis
 import deus.core.access.transfer.common.messages.publication.connection.establish.subscribe.GrantSubscriptionRequestNoticeMessage;
 import deus.core.access.transfer.common.messages.publication.connection.terminate.CancelSubscriptionMessage;
 import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
-import deus.model.dossier.DigitalCard;
+import deus.model.dc.DigitalCard;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 

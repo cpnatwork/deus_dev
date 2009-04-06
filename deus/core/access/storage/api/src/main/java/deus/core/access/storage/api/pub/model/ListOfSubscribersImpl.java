@@ -2,8 +2,8 @@ package deus.core.access.storage.api.pub.model;
 
 import java.util.HashMap;
 
-import deus.model.pub.ListOfSubscribers;
-import deus.model.pub.LosEntry;
+import deus.model.publication.ListOfSubscribers;
+import deus.model.publication.LosEntry;
 import deus.model.user.id.UserId;
 
 //TODO: think about thread safety! (before, this was implemented using a Vector!)

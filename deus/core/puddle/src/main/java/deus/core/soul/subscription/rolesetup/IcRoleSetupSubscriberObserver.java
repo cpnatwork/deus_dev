@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.sub.LopDoRep;
 import deus.core.soul.common.AbstractDistributionRoleSetupObserver;
 import deus.core.soul.subscription.SubscriberExportedToClient;
-import deus.model.sub.ListOfPublishers;
-import deus.model.sub.LopEntry;
+import deus.model.subscription.ListOfPublishers;
+import deus.model.subscription.LopEntry;
 import deus.model.user.DistributionRole;
 import deus.model.user.id.UserId;
 

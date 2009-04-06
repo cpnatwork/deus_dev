@@ -1,6 +1,6 @@
 package deus.core.soul.pifgoverning;
 
-import deus.model.pie.PersonalInformationFile;
+import deus.model.pifgoverning.PersonalInformationFile;
 import deus.model.user.id.UserId;
 
 

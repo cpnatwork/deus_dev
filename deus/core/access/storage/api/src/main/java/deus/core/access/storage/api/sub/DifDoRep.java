@@ -2,7 +2,7 @@ package deus.core.access.storage.api.sub;
 
 import java.util.List;
 
-import deus.model.sub.DistributedInformationFolder;
+import deus.model.difgoverning.DistributedInformationFolder;
 import deus.model.user.id.UserId;
 
 

@@ -16,8 +16,9 @@ import deus.model.attention.publication.connection.establish.pubinit.PublisherOf
 import deus.model.attention.publication.connection.establish.subinit.SubscriptionRequestDeniedNotice;
 import deus.model.attention.publication.connection.establish.subinit.SubscriptionRequestGrantedNotice;
 import deus.model.attention.publication.connection.terminate.PublisherInitiatedTerminationNotice;
-import deus.model.dossier.DigitalCard;
-import deus.model.sub.LopEntry;
+import deus.model.dc.DigitalCard;
+import deus.model.dossier.Patch;
+import deus.model.subscription.LopEntry;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
@@ -73,13 +74,13 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 
 
 	@Override
-	public void update(UserId subscriberId, UserId publisherId, DigitalCard digitalCard) {
+	public void update(UserId subscriberId, UserId publisherId, Patch patch) {
 		logger.debug("proxying call to update");
 
-		proxiedSubscriber.update(subscriberId, publisherId, digitalCard);
+		proxiedSubscriber.update(subscriberId, publisherId, patch);
 
 		LopEntry lopEntry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
-		Notice notice = new UpdateNotice(lopEntry.getPublisherMetadata(), digitalCard);
+		Notice notice = new UpdateNotice(lopEntry.getPublisherMetadata(), patch);
 		barker.addUnnoticedAttentionElement(subscriberId, notice);
 
 		logger.debug("added {} to barker", notice);

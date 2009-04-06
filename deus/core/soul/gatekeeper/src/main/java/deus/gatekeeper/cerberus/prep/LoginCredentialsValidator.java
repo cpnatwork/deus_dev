@@ -4,7 +4,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import deus.gatekeeper.puddle.LoginCredentials;
+import deus.model.gatekeeper.LoginCredentials;
 
 public class LoginCredentialsValidator implements Validator {
 

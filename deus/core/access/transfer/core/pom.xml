@@ -56,12 +56,7 @@
 			<artifactId>deus-core-soul-accountadmin</artifactId>
 			<type>bundle</type>
 		</dependency>
-		
-		<dependency>
-			<groupId>inf6.promed</groupId>
-			<artifactId>deus-core-soul-accountadmin</artifactId>
-			<type>bundle</type>
-		</dependency>
+
                 
 	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	    

@@ -2,8 +2,8 @@ package deus.core.soul.difgoverning;
 
 import java.util.List;
 
-import deus.model.dossier.DigitalCard;
-import deus.model.dossier.DigitalCardId;
+import deus.model.dc.DigitalCard;
+import deus.model.dc.DigitalCardId;
 import deus.model.user.id.UserId;
 
 public interface DifGovernorExportedToClient {

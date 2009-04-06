@@ -1,7 +1,7 @@
 package deus.core.soul.publication;
 
-import deus.model.dossier.DigitalCard;
-import deus.model.pub.ListOfSubscribers;
+import deus.model.dc.DigitalCard;
+import deus.model.publication.ListOfSubscribers;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 

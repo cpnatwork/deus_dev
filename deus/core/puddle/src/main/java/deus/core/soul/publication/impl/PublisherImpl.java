@@ -11,10 +11,10 @@ import deus.core.access.storage.api.pub.LosEntryDoRep;
 import deus.core.access.storage.api.user.UserMetadataDoRep;
 import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
 import deus.core.soul.publication.Publisher;
-import deus.model.dossier.DigitalCard;
-import deus.model.pub.ListOfSubscribers;
-import deus.model.pub.LosEntry;
-import deus.model.pub.PublisherSideSubscriptionState;
+import deus.model.dc.DigitalCard;
+import deus.model.publication.ListOfSubscribers;
+import deus.model.publication.LosEntry;
+import deus.model.publication.PublisherSideSubscriptionState;
 import deus.model.user.UserMetadata;
 import deus.model.user.id.UserId;
 
