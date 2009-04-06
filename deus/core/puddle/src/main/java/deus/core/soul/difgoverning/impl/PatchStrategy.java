@@ -1,11 +1,10 @@
-package deus.core.soul.difgoverning;
+package deus.core.soul.difgoverning.impl;
 
 import deus.model.difgoverning.ForeignInformationFile;
 import deus.model.dossier.Patch;
 
 public interface PatchStrategy {
 
-	// FIXME: introduce Patch
 	void patch(ForeignInformationFile fif, Patch patch);
 	
 }

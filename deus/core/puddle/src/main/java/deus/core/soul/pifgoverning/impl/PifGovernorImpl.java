@@ -1,7 +1,5 @@
 package deus.core.soul.pifgoverning.impl;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,15 +7,15 @@ import deus.core.access.storage.api.pie.PifDoRep;
 import deus.core.soul.pifgoverning.AssimilationStrategy;
 import deus.core.soul.pifgoverning.PifGovernor;
 import deus.model.dc.DigitalCard;
+import deus.model.dossier.Patch;
 import deus.model.pifgoverning.PersonalInformationFile;
 import deus.model.user.id.UserId;
 
 @Component("pifGovernor")
 public class PifGovernorImpl implements PifGovernor {
 
-
-	@Resource(name = "personalInformationFileUpdateStrategy")
-	private AssimilationStrategy personalInformationFileUpdateStrategy;
+	@Autowired
+	private AssimilationStrategy assimilationStrategy;
 
 
 	@Autowired
@@ -25,12 +23,14 @@ public class PifGovernorImpl implements PifGovernor {
 	
 
 	@Override
-	public void assimilateRepatriatedDigitalCard(UserId cpId, DigitalCard digitalCard) {
+	public Patch assimilateRepatriatedDigitalCard(UserId cpId, DigitalCard digitalCard) {
 		PersonalInformationFile personalInformationFile = pifDoRep.getByNaturalId(cpId);
 
-		personalInformationFileUpdateStrategy.update(personalInformationFile, digitalCard);
+		Patch patch = assimilationStrategy.update(personalInformationFile, digitalCard);
 
 		pifDoRep.updateEntity(cpId, personalInformationFile);
+		
+		return patch;
 	}
 
 

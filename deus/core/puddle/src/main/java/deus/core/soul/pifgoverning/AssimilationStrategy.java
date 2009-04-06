@@ -2,6 +2,7 @@ package deus.core.soul.pifgoverning;
 
 import deus.model.dc.DigitalCard;
 import deus.model.dossier.InformationFile;
+import deus.model.dossier.Patch;
 
 /**
  * Implementations of this strategy realize different update semantics, when a digital card for a given
@@ -17,7 +18,6 @@ import deus.model.dossier.InformationFile;
  */
 public interface AssimilationStrategy {
 
-	// FIXME: make method return a Patch
-	void update(InformationFile fif, DigitalCard digitalCard);
+	public Patch update(InformationFile fif, DigitalCard digitalCard);
 
 }

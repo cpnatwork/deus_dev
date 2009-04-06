@@ -1,6 +1,7 @@
 package deus.core.soul.pifgoverning;
 
 import deus.model.dc.DigitalCard;
+import deus.model.dossier.Patch;
 import deus.model.user.id.UserId;
 
 public interface PifGovernor extends PifGovernorExportedToClient {
@@ -15,7 +16,6 @@ public interface PifGovernor extends PifGovernorExportedToClient {
 
 
 	// FIXME: think about whether this goes to its own interface PifGovernorExportedToSubsystems
-	// FIXME: return a Patch
-	public void assimilateRepatriatedDigitalCard(UserId cpId, DigitalCard digitalCard);
+	public Patch assimilateRepatriatedDigitalCard(UserId cpId, DigitalCard digitalCard);
 	
 }

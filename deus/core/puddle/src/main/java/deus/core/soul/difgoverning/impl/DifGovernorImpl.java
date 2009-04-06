@@ -2,15 +2,12 @@ package deus.core.soul.difgoverning.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.sub.DifDoRep;
 import deus.core.access.storage.api.sub.FifDoRep;
 import deus.core.soul.difgoverning.DifGovernor;
-import deus.core.soul.difgoverning.PatchStrategy;
 import deus.model.dc.DigitalCard;
 import deus.model.dc.DigitalCardId;
 import deus.model.difgoverning.ForeignInformationFile;
@@ -20,9 +17,7 @@ import deus.model.user.id.UserId;
 @Component("difGovernor")
 public class DifGovernorImpl implements DifGovernor {
 
-
-	// FIXME: use patchStrategy here
-	@Resource(name = "patchStrategy")
+	@Autowired
 	private PatchStrategy patchStrategy;
 
 

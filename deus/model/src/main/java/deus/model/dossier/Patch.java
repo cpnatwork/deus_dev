@@ -1,10 +1,9 @@
 package deus.model.dossier;
 
-public class Patch {
+import deus.model.user.id.UserId;
 
-	public Object getCpId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+public interface Patch {
+
+	public UserId getCpId();
 
 }

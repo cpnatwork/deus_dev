@@ -3,21 +3,22 @@ package deus.core.soul.pifgoverning;
 import java.util.Set;
 
 import deus.model.dc.DigitalCard;
+import deus.model.dossier.AppendDigitalCardPatch;
 import deus.model.dossier.InformationFile;
+import deus.model.dossier.Patch;
 
-// FIXME: rename to SimpleAppend...
-public class SimpleReplaceAssimilationStrategy implements AssimilationStrategy {
-
+public class SimpleAppendAssimilationStrategy implements AssimilationStrategy {
 	
 	@Override
-	public void update(InformationFile fif, DigitalCard digitalCard) {
+	public Patch update(InformationFile fif, DigitalCard digitalCard) {
 		Set<DigitalCard> digitalCards = fif.getDigitalCards();
 		
 		if(digitalCards.contains(digitalCard))
-			// FIXME: rather throw an exception here? => should result in calling contrib.Denied of Contributor!
-			replace(fif, digitalCard);
+			// FIXME: which exception to throw here?
+			throw new RuntimeException();
+			//replace(fif, digitalCard);
 		else
-			append(fif, digitalCard);
+			return append(fif, digitalCard);
 	}
 
 
@@ -33,9 +34,14 @@ public class SimpleReplaceAssimilationStrategy implements AssimilationStrategy {
 	}
 	
 
-	private void append(InformationFile fif, DigitalCard digitalCard) {
+	private Patch append(InformationFile fif, DigitalCard digitalCard) {
 		Set<DigitalCard> digitalCards = fif.getDigitalCards();
 		digitalCards.add(digitalCard);
+		
+		// create patch
+		AppendDigitalCardPatch patch = new AppendDigitalCardPatch(digitalCard.getDigitalCardId().getCpId());
+		patch.setDigitalCardToAppend(digitalCard);
+		return patch;
 	}
 
 }
