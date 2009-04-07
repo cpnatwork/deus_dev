@@ -11,8 +11,8 @@ import deus.core.access.transfer.core.receiving.soulcallback.publication.Publish
 import deus.core.soul.barker.barker.BarkerExportedToSubsystems;
 import deus.model.attention.BinaryDecisionToMake;
 import deus.model.attention.Notice;
-import deus.model.attention.publication.connection.establish.pubinit.SubscriptionRepelNotice;
 import deus.model.attention.publication.connection.establish.pubinit.SubscriptionConfirmedNotice;
+import deus.model.attention.publication.connection.establish.pubinit.SubscriptionRepelNotice;
 import deus.model.attention.publication.connection.establish.subinit.SubscriptionRequest;
 import deus.model.attention.publication.connection.terminate.SubscriberInitiatedTerminationNotice;
 import deus.model.publication.LosEntry;

@@ -6,5 +6,9 @@
 	<bean id="testTransferProtocolDiscoveryStrategy" class="deus.core.access.transfer.core.soul.discovery.impl.FixedTransferProtocolNegotiationStrategy">
 		<constructor-arg value="testProtocol"/>
 	</bean>
+	
+	<bean id="cerberusStub" class="deus.core.soul.gatekeeper.cerberus.CerberusStub" />
+	
+	<bean id="RegistratorStub" class="deus.core.soul.accountadmin.registrator.RegistratorStub" />
 
 </beans>

@@ -39,5 +39,4 @@ public class TransferPublisherCommandSenderTest extends AbstractCommandSenderTes
 		assertEquals(digitalCard, ((UpdateMessage) lastSentTransferMessage).getDigitalCard());
 	}
 
-
 }

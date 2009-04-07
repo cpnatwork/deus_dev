@@ -1,4 +1,4 @@
-package deus.core.soul.common;
+package deus.core.soul.pifgoverning;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -9,21 +9,19 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
-import deus.core.soul.pifgoverning.SimpleAppendAssimilationStrategy;
 import deus.model.dc.DigitalCard;
 import deus.model.dc.MyPartyInformationDC;
 import deus.model.dc.PartyInformationDC;
 import deus.model.dossier.InformationFile;
-import deus.model.party.Gender;
 import deus.model.party.Party;
 import deus.model.party.Person;
 import deus.model.pifgoverning.PersonalInformationFile;
 import deus.model.user.id.UserId;
 import deus.model.user.id.UserUrl;
 
-public class SimpleReplaceInformationFileUpdateStrategyTest {
+public class SimpleAppendAssimilationStrategyTest {
 
-	private SimpleAppendAssimilationStrategy strategy;
+	private AssimilationStrategy strategy;
 
 	private InformationFile informationFile;
 
@@ -59,7 +57,7 @@ public class SimpleReplaceInformationFileUpdateStrategyTest {
 	}
 
 
-	@Test
+	/*@Test
 	public void testReplace() {
 		// add normal DC
 		informationFile.getDigitalCards().add(dc);
@@ -83,6 +81,6 @@ public class SimpleReplaceInformationFileUpdateStrategyTest {
 		Person personOutOfIf = (Person) ((PartyInformationDC) dcOutOfIf).getPartyInformation();
 		assertEquals(Gender.male, personOutOfIf.getGender());
 		assertEquals("alices full name", personOutOfIf.getFullName());
-	}
+	}*/
 
 }

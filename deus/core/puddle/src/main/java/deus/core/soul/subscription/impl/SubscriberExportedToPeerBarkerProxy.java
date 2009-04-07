@@ -16,7 +16,6 @@ import deus.model.attention.publication.connection.establish.pubinit.PublisherOf
 import deus.model.attention.publication.connection.establish.subinit.SubscriptionRequestDeniedNotice;
 import deus.model.attention.publication.connection.establish.subinit.SubscriptionRequestGrantedNotice;
 import deus.model.attention.publication.connection.terminate.PublisherInitiatedTerminationNotice;
-import deus.model.dc.DigitalCard;
 import deus.model.dossier.Patch;
 import deus.model.subscription.LopEntry;
 import deus.model.user.UserMetadata;

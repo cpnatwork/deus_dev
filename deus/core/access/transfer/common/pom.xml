@@ -9,7 +9,7 @@
 
 	<artifactId>deus-core-access-transfer-common</artifactId>
 	<packaging>bundle</packaging>
-	<name>DEUS core access transfer comon</name>
+	<name>DEUS core access transfer common</name>
 
 
 	<!-- don't remove properties, even if they are empty!!! -->
