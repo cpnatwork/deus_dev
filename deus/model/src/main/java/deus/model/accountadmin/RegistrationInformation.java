@@ -2,7 +2,7 @@ package deus.model.accountadmin;
 
 import java.util.Set;
 
-import deus.model.common.user.DistributionRole;
+import deus.model.common.account.DistributionRole;
 import deus.model.common.user.UserMetadata;
 import deus.model.common.user.id.UserIdType;
 

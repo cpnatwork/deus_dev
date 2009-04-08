@@ -1,4 +1,4 @@
-package deus.model.common.user;
+package deus.model.common.account;
 
 /**
  * Defines which roles a user can have (he can have multiple roles!)

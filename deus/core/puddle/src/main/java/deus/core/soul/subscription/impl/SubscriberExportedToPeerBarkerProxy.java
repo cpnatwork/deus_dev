@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.sub.LopEntryDoRep;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
-import deus.core.soul.barker.barker.BarkerExportedToSubsystems;
+import deus.core.soul.hci.barker.BarkerExportedToSubsystems;
 import deus.model.common.dossier.Patch;
 import deus.model.common.user.UserMetadata;
 import deus.model.common.user.id.UserId;

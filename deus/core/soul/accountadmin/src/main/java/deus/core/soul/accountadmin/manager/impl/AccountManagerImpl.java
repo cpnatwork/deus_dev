@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.account.AccountDoRep;
 import deus.core.soul.accountadmin.manager.AccountManager;
 import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup;
-import deus.model.common.user.Account;
-import deus.model.common.user.DistributionRole;
+import deus.model.common.account.Account;
+import deus.model.common.account.DistributionRole;
 import deus.model.common.user.UserMetadata;
 
 @Component("accountManager")

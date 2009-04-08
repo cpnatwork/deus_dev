@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup;
 import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetupObserver;
-import deus.model.common.user.DistributionRole;
+import deus.model.common.account.DistributionRole;
 import deus.model.common.user.id.UserId;
 
 @Component("distributionRoleSetup")

@@ -3,7 +3,7 @@ package deus.core.soul.repatriationhub.decisionprocessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.soul.barker.decisionprocessor.impl.AbstractGenericDecisionProcessor;
+import deus.core.soul.hci.decisionprocessor.impl.AbstractGenericDecisionProcessor;
 import deus.core.soul.pifgoverning.PifGovernor;
 import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.repatriation.Repatriation;

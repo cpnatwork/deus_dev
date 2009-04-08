@@ -1,4 +1,4 @@
-package deus.model.common.user;
+package deus.model.common.account;
 
 import java.util.Set;
 

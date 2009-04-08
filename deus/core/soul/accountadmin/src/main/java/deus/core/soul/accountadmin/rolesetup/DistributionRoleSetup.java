@@ -1,6 +1,6 @@
 package deus.core.soul.accountadmin.rolesetup;
 
-import deus.model.common.user.DistributionRole;
+import deus.model.common.account.DistributionRole;
 import deus.model.common.user.id.UserId;
 
 public interface DistributionRoleSetup {

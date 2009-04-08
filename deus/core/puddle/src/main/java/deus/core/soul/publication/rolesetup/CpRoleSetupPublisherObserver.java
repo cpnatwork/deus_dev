@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.pub.LosDoRep;
 import deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver;
 import deus.core.soul.publication.PublisherExportedToClient;
-import deus.model.common.user.DistributionRole;
+import deus.model.common.account.DistributionRole;
 import deus.model.common.user.id.UserId;
 import deus.model.publication.ListOfSubscribers;
 import deus.model.publication.LosEntry;

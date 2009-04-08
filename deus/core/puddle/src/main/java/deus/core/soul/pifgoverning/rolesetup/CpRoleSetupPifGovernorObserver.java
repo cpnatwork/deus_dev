@@ -3,7 +3,7 @@ package deus.core.soul.pifgoverning.rolesetup;
 import org.springframework.stereotype.Component;
 
 import deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver;
-import deus.model.common.user.DistributionRole;
+import deus.model.common.account.DistributionRole;
 import deus.model.common.user.id.UserId;
 
 @Component

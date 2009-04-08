@@ -12,8 +12,8 @@ import deus.core.soul.accountadmin.registrator.UserIdGenerator;
 import deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver;
 import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup;
 import deus.model.accountadmin.RegistrationInformation;
-import deus.model.common.user.Account;
-import deus.model.common.user.DistributionRole;
+import deus.model.common.account.Account;
+import deus.model.common.account.DistributionRole;
 import deus.model.common.user.id.UserId;
 
 @Component("registrator")

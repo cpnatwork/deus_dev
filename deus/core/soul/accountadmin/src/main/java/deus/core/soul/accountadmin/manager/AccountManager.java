@@ -1,6 +1,6 @@
 package deus.core.soul.accountadmin.manager;
 
-import deus.model.common.user.DistributionRole;
+import deus.model.common.account.DistributionRole;
 import deus.model.common.user.UserMetadata;
 
 public interface AccountManager {
