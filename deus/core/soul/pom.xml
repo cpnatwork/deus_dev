@@ -12,7 +12,7 @@
 	<name>DEUS core soul</name>
 	
 	<modules>
-		<module>barker</module>
+		<module>hci</module>
 		<module>accountadmin</module>
 		<module>gatekeeper</module>
 	</modules>

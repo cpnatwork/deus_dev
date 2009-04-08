@@ -62,7 +62,7 @@
 		
 		<dependency>
 			<groupId>inf6.promed</groupId>
-			<artifactId>deus-core-soul-barker</artifactId>
+			<artifactId>deus-core-soul-hci</artifactId>
 			<type>bundle</type>
 		</dependency>
 
