@@ -11,6 +11,12 @@ abstract public class UserId implements Serializable {
 	private String username = null;
 
 
+	public UserId(String username) {
+		super();
+		this.username = username;
+	}
+
+
 	/**
 	 * The essential user name.
 	 * 
@@ -21,15 +27,34 @@ abstract public class UserId implements Serializable {
 	}
 
 
-	public void setUsername(String username) {
-		this.username = username;
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		return result;
 	}
 
 
-	abstract public int hashCode();
-
-
-	abstract public boolean equals(Object obj);
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserId other = (UserId) obj;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		}
+		else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
 
 
 	/**

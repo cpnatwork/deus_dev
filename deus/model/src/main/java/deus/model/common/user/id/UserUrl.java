@@ -1,5 +1,8 @@
 package deus.model.common.user.id;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 
 // TODO: think about only injecting username, etc into constructor, no more setters. Also for Transfer ids
 
@@ -8,12 +11,21 @@ package deus.model.common.user.id;
 //@Entity
 public class UserUrl extends UserId {
 
-	private String serverBaseUrl = null;
+	private URL serverBaseUrl = null;
 
 	public UserUrl(String username, String serverBaseUrl) {
-		super();
-		setServerBaseUrl(serverBaseUrl);
-		setUsername(username);
+		super(username);
+		try {
+			this.serverBaseUrl = new URL(serverBaseUrl);
+		}
+		catch (MalformedURLException e) {
+			throw new RuntimeException("cannot create user URL", e);
+		}
+	}
+	
+	public UserUrl(String username, URL serverBaseUrl) {
+		super(username);
+		this.serverBaseUrl = serverBaseUrl;
 	}
 
 	@Override
@@ -21,25 +33,26 @@ public class UserUrl extends UserId {
 		return UserIdType.url;
 	}
 
-	public String getServerBaseUrl() {
+	public URL getServerBaseUrl() {
 		return serverBaseUrl;
 	}
 
 
-	public void setServerBaseUrl(String serverBaseUrl) {
-		// FIXME: do check for valid URL, without trailing '/'
-		this.serverBaseUrl = serverBaseUrl;
+	public URL getUrl() {
+		try {
+			return new URL(serverBaseUrl, getUsername());
+		}
+		catch (MalformedURLException e) {
+			throw new RuntimeException("cannot return user URL", e);
+		}
 	}
-
-
-	public String getUrl() {
-		return serverBaseUrl + "/" + getUsername();
-	}
+	
 	
 	@Override
 	public String getId() {
-		return getUrl();
+		return getUrl().toString();
 	}
+	
 	
 	@Override
 	public String toString() {
