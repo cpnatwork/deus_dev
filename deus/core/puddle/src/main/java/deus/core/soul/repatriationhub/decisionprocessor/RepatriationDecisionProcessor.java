@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 import deus.core.soul.barker.decisionprocessor.impl.AbstractGenericDecisionProcessor;
 import deus.core.soul.pifgoverning.PifGovernor;
-import deus.model.barker.attention.repatriation.Repatriation;
 import deus.model.common.user.id.UserId;
+import deus.model.hci.attention.repatriation.Repatriation;
 
 @Component
 public class RepatriationDecisionProcessor extends AbstractGenericDecisionProcessor<Repatriation> {

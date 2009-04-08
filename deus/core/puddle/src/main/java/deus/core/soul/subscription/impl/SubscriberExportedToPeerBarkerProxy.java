@@ -9,16 +9,16 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.sub.LopEntryDoRep;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 import deus.core.soul.barker.barker.BarkerExportedToSubsystems;
-import deus.model.barker.attention.BinaryDecisionToMake;
-import deus.model.barker.attention.Notice;
-import deus.model.barker.attention.publication.UpdateNotice;
-import deus.model.barker.attention.publication.connection.establish.pubinit.PublisherOffer;
-import deus.model.barker.attention.publication.connection.establish.subinit.SubscriptionRequestDeniedNotice;
-import deus.model.barker.attention.publication.connection.establish.subinit.SubscriptionRequestGrantedNotice;
-import deus.model.barker.attention.publication.connection.terminate.PublisherInitiatedTerminationNotice;
 import deus.model.common.dossier.Patch;
 import deus.model.common.user.UserMetadata;
 import deus.model.common.user.id.UserId;
+import deus.model.hci.attention.BinaryDecisionToMake;
+import deus.model.hci.attention.Notice;
+import deus.model.hci.attention.publication.UpdateNotice;
+import deus.model.hci.attention.publication.connection.establish.pubinit.PublisherOffer;
+import deus.model.hci.attention.publication.connection.establish.subinit.SubscriptionRequestDeniedNotice;
+import deus.model.hci.attention.publication.connection.establish.subinit.SubscriptionRequestGrantedNotice;
+import deus.model.hci.attention.publication.connection.terminate.PublisherInitiatedTerminationNotice;
 import deus.model.subscription.LopEntry;
 
 @Component

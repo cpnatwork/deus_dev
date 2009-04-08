@@ -7,14 +7,14 @@
 		<version>0.3-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>deus-core-soul-barker</artifactId>
+	<artifactId>deus-core-soul-hci</artifactId>
 	<packaging>bundle</packaging>
-	<name>DEUS core soul barker</name>
+	<name>DEUS core soul Human-Computer-Interaction</name>
 
 
 	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
-		<osgi.rootPackage>deus.core.soul.*,deus.core.prep.*</osgi.rootPackage>
+		<osgi.rootPackage>deus.core.soul.hci.*</osgi.rootPackage>
 		<!--
 			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
 			PersistantAnnotationBeanPostProcessor which is in the given package.

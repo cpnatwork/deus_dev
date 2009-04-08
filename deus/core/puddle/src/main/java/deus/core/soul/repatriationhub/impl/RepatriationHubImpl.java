@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 import deus.core.soul.barker.barker.BarkerExportedToSubsystems;
 import deus.core.soul.pifgoverning.PifGovernor;
 import deus.core.soul.repatriationhub.RepatriationHub;
-import deus.model.barker.attention.BinaryDecisionToMake;
-import deus.model.barker.attention.repatriation.Repatriation;
 import deus.model.common.dossier.DigitalCard;
 import deus.model.common.user.UserMetadata;
 import deus.model.common.user.id.UserId;
+import deus.model.hci.attention.BinaryDecisionToMake;
+import deus.model.hci.attention.repatriation.Repatriation;
 
 @Component("repatriationHub")
 public class RepatriationHubImpl implements RepatriationHub {

@@ -7,27 +7,27 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 
 	
-	<bean id="unnoticedAttentionList" class="deus.model.barker.attention.impl.AttentionListImpl">
+	<bean id="unnoticedAttentionList" class="deus.model.hci.attention.impl.AttentionListImpl">
 		<constructor-arg ref="attentionListBase" />
 	</bean>
 
-	<util:list id="attentionListBase" value-type="deus.model.barker.attention.AttentionElement">
+	<util:list id="attentionListBase" value-type="deus.model.hci.attention.AttentionElement">
 		<idref local="publisherOffer"/>
 		<idref local="subscriberRequest"/>
 		<idref local="subscriptionCanceledNotice"/>
 	</util:list>
 
-	<bean id="publisherOffer" class="deus.model.barker.attention.publication.connection.establish.pubinit.PublisherOffer">
+	<bean id="publisherOffer" class="deus.model.hci.attention.publication.connection.establish.pubinit.PublisherOffer">
 		<constructor-arg ref="publisherMetadata" />
 		<property name="creationDate" value="1970/01/01 00:01" />
 	</bean>
 
-	<bean id="subscriberRequest" class="deus.model.barker.attention.publication.connection.establish.subinit.SubscriptionRequest">
+	<bean id="subscriberRequest" class="deus.model.hci.attention.publication.connection.establish.subinit.SubscriptionRequest">
 		<constructor-arg ref="subscriberMetadata" />
 		<property name="creationDate" value="1970/01/01 01:01" />
 	</bean>
 
-	<bean id="subscriptionCanceledNotice" class="deus.model.barker.attention.notice.SubscriptionCanceledNotice">
+	<bean id="subscriptionCanceledNotice" class="deus.model.hci.attention.notice.SubscriptionCanceledNotice">
 		<constructor-arg ref="subscriberMetadata" />
 		<property name="creationDate" value="1970/01/01 02:01" />
 	</bean>

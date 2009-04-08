@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 import deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers;
 import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
 import deus.core.soul.barker.decisionprocessor.impl.AbstractGenericDecisionProcessor;
-import deus.model.barker.attention.publication.connection.establish.subinit.SubscriptionRequest;
 import deus.model.common.user.UserMetadata;
 import deus.model.common.user.id.UserId;
+import deus.model.hci.attention.publication.connection.establish.subinit.SubscriptionRequest;
 
 // FIXME: rename it to SubscriptionRequestDec...
 @Component

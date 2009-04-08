@@ -1,7 +1,7 @@
 package deus.core.access.storage.api.attention;
 
-import deus.model.barker.attention.AttentionElement;
 import deus.model.common.user.id.UserId;
+import deus.model.hci.attention.AttentionElement;
 
 public interface AttentionElementDoRep {
 
