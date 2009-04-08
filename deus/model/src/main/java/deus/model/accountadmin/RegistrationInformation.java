@@ -1,4 +1,4 @@
-package deus.core.soul.accountadmin.model;
+package deus.model.accountadmin;
 
 import java.util.Set;
 

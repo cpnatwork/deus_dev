@@ -1,6 +1,6 @@
 package deus.core.soul.accountadmin.registrator;
 
-import deus.core.soul.accountadmin.model.RegistrationInformation;
+import deus.model.accountadmin.RegistrationInformation;
 
 
 public interface RegistratorExportedToClient {

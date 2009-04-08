@@ -1,8 +1,7 @@
-package deus.model.accountadmin;
+package deus.model.common.user;
 
 import java.util.Set;
 
-import deus.model.common.user.DistributionRole;
 import deus.model.common.user.id.UserId;
 
 

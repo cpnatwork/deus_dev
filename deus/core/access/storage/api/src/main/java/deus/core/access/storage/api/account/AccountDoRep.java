@@ -1,6 +1,6 @@
 package deus.core.access.storage.api.account;
 
-import deus.model.accountadmin.Account;
+import deus.model.common.user.Account;
 
 public interface AccountDoRep {
 
