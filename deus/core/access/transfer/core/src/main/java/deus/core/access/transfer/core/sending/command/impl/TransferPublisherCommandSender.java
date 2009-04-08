@@ -10,9 +10,9 @@ import deus.core.access.transfer.common.messages.publication.connection.establis
 import deus.core.access.transfer.common.messages.publication.connection.establish.subscribe.GrantSubscriptionRequestNoticeMessage;
 import deus.core.access.transfer.common.messages.publication.connection.terminate.CancelSubscriptionMessage;
 import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
-import deus.model.dc.DigitalCard;
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
+import deus.model.common.dossier.DigitalCard;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 
 @Component("publisherCommandSender")
 // FIXME: Rename to transfer

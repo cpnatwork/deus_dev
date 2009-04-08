@@ -1,7 +1,7 @@
 package deus.core.access.storage.api.user;
 
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 
 /**
  * The DAO for Entity Type UserId. The primary key is the full-fledged String ID of a UserID

@@ -1,6 +1,6 @@
 package deus.core.soul.pifgoverning;
 
-import deus.model.dc.DigitalCardId;
+import deus.model.common.dossier.DigitalCardId;
 
 public class IllegalUpdateInPlaceException extends RuntimeException {
 

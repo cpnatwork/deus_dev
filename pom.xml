@@ -189,6 +189,8 @@
 				<version>${spring.version}</version>
 			</dependency>
 	
+			<!-- this is only a test scoped dependency, since Spring DM server provides spring-agent.jar! -->
+			<!-- Additionally, the surefire plugin needs to be configured to pass -javaagent:<PATH-TO-spring.jar> as command line argument to java.exe -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-agent</artifactId>
@@ -237,6 +239,7 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>com.springsource.ch.qos.logback.classic</artifactId>
 			<version>0.9.9</version>
+			<!-- TODO: why test?? maybe it should be "provided" -->
 			<scope>test</scope>
 		</dependency>
 		
@@ -289,6 +292,22 @@
 
 		<plugins>
 
+			<!--<plugin>
+				<groupId>com.springsource.bundlor</groupId>
+				<artifactId>com.springsource.bundlor.maven</artifactId>
+				<version>1.0.0.M2</version>
+				<executions>
+					<execution>
+						<id>bundlor</id>
+						<goals>
+							<goal>transform</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>-->
+
+
+
 			<!-- MAVEN PROJECT FILE GENERATION -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -338,6 +357,10 @@
 				<version>1.4.3</version>
 				<extensions>true</extensions>
 				<configuration>
+					<!-- The following instructions are delegated to the BND tool of Peter Kriens
+					- Options with capital letter are directly inserted into Manifest as Headers
+					- options starting with _ ...?
+					 -->
 					<instructions>
 						<!--
 							export all packages below the root package (except non exported packages), and don't reimport them! more on
@@ -381,6 +404,7 @@
 				</configuration>
 			</plugin>
 
+
 			<!-- COMPILING -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -421,6 +445,7 @@
 								<if>
 									<equals arg1="${project.packaging}" arg2="bundle" />
 									<then>
+										<!-- property springdmserver.location should be defined in ~/.m2/settings.xml -->
 										<copy file="${project.build.directory}/${project.build.finalName}.jar" todir="${springdmserver.location}/pickup" />
 									</then>
 									<else>
@@ -443,7 +468,7 @@
 				</dependencies>
 			</plugin>
 
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>maven-jetty-plugin</artifactId>
 				<configuration>
@@ -454,7 +479,7 @@
 						</connector>
 					</connectors>
 				</configuration>
-			</plugin>
+			</plugin> -->
 
 		</plugins>
 
@@ -484,6 +509,7 @@
 					<include>**/*.xml</include>
 				</includes>
 			</testResource>
+			<!-- this will potentially overwrite spring config from src/main/spring! -->
 			<testResource>
 				<filtering>false</filtering>
 				<directory>${basedir}/src/test/spring</directory>
@@ -494,6 +520,8 @@
 		</testResources>
 
 	</build>
+
+
 
 	<!--+++ REPOSITORIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 

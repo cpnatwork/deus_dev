@@ -2,7 +2,7 @@ package deus.model.publication;
 
 import java.util.Map;
 
-import deus.model.user.id.UserId;
+import deus.model.common.user.id.UserId;
 
 
 public interface ListOfSubscribers extends Map<UserId, LosEntry> {

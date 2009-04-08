@@ -13,8 +13,8 @@ import deus.core.soul.gatekeeper.cerberus.InvalidLoginCredentialsException;
 import deus.core.soul.gatekeeper.cerberus.LoginCredentialChecker;
 import deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver;
 import deus.model.accountadmin.Account;
+import deus.model.common.user.id.UserId;
 import deus.model.gatekeeper.LoginCredentials;
-import deus.model.user.id.UserId;
 
 @Component("cerberus")
 public class CerberusImpl implements Cerberus {

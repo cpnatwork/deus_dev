@@ -2,7 +2,7 @@ package deus.core.access.storage.api.dossier.model.dc.party;
 
 import java.util.UUID;
 
-public abstract class AddressPO extends deus.model.party.Address {
+public abstract class AddressPO extends deus.model.dccontent.party.Address {
 
 	private UUID uuid;
 	

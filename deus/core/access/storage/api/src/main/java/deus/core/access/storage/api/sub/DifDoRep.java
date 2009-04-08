@@ -2,8 +2,8 @@ package deus.core.access.storage.api.sub;
 
 import java.util.List;
 
+import deus.model.common.user.id.UserId;
 import deus.model.difgoverning.DistributedInformationFolder;
-import deus.model.user.id.UserId;
 
 
 public interface DifDoRep {

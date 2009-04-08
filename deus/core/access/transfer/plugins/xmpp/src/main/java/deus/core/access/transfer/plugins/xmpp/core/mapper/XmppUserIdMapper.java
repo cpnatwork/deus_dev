@@ -6,7 +6,7 @@ import deus.core.access.transfer.common.protocol.TransferId;
 import deus.core.access.transfer.common.protocol.mapper.UserIdMapper;
 import deus.core.access.transfer.plugins.xmpp.common.XmppServerConnectionConfiguration;
 import deus.core.access.transfer.plugins.xmpp.core.protocol.XmppTransferId;
-import deus.model.user.id.UserId;
+import deus.model.common.user.id.UserId;
 
 public class XmppUserIdMapper implements UserIdMapper {
 

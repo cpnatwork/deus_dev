@@ -2,10 +2,10 @@ package deus.core.access.storage.api.sub;
 
 import java.util.List;
 
-import deus.model.dc.DigitalCard;
-import deus.model.dc.DigitalCardId;
+import deus.model.common.dossier.DigitalCard;
+import deus.model.common.dossier.DigitalCardId;
+import deus.model.common.user.id.UserId;
 import deus.model.difgoverning.ForeignInformationFile;
-import deus.model.user.id.UserId;
 
 
 public interface FifDoRep {

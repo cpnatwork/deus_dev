@@ -1,9 +1,9 @@
 package deus.core.soul.publication;
 
-import deus.model.dc.DigitalCard;
+import deus.model.common.dossier.DigitalCard;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 import deus.model.publication.ListOfSubscribers;
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
 
 /**
  * Groups methods of the interface <code>Publisher</code> that trigger remote calls. These methods are implemented using

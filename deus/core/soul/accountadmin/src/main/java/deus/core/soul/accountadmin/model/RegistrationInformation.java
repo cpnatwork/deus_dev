@@ -2,9 +2,9 @@ package deus.core.soul.accountadmin.model;
 
 import java.util.Set;
 
-import deus.model.user.UserMetadata;
-import deus.model.user.DistributionRole;
-import deus.model.user.id.UserIdType;
+import deus.model.common.user.DistributionRole;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserIdType;
 
 public class RegistrationInformation {
 

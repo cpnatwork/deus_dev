@@ -1,7 +1,7 @@
 package deus.core.access.transfer.core.receiving.soulcallback.repatriationhub;
 
-import deus.model.dc.DigitalCard;
-import deus.model.user.id.UserId;
+import deus.model.common.dossier.DigitalCard;
+import deus.model.common.user.id.UserId;
 
 // FIXME: edit javadoc
 public interface RepatriationHubExportedToPeers {

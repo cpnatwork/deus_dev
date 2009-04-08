@@ -9,15 +9,15 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.pub.LosEntryDoRep;
 import deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers;
 import deus.core.soul.barker.barker.BarkerExportedToSubsystems;
-import deus.model.attention.BinaryDecisionToMake;
-import deus.model.attention.Notice;
-import deus.model.attention.publication.connection.establish.pubinit.SubscriptionConfirmedNotice;
-import deus.model.attention.publication.connection.establish.pubinit.SubscriptionRepelNotice;
-import deus.model.attention.publication.connection.establish.subinit.SubscriptionRequest;
-import deus.model.attention.publication.connection.terminate.SubscriberInitiatedTerminationNotice;
+import deus.model.barker.attention.BinaryDecisionToMake;
+import deus.model.barker.attention.Notice;
+import deus.model.barker.attention.publication.connection.establish.pubinit.SubscriptionConfirmedNotice;
+import deus.model.barker.attention.publication.connection.establish.pubinit.SubscriptionRepelNotice;
+import deus.model.barker.attention.publication.connection.establish.subinit.SubscriptionRequest;
+import deus.model.barker.attention.publication.connection.terminate.SubscriberInitiatedTerminationNotice;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 import deus.model.publication.LosEntry;
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
 
 @Component
 @Qualifier("proxy")

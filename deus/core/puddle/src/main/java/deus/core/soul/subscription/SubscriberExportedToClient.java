@@ -1,8 +1,8 @@
 package deus.core.soul.subscription;
 
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 import deus.model.subscription.ListOfPublishers;
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
 
 /**
  * Groups methods of the interface <code>Subscriber</code> that trigger remote calls. These methods are implemented

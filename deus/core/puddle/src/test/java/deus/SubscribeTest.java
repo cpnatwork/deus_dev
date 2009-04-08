@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import deus.model.attention.publication.connection.establish.subinit.SubscriptionRequest;
+import deus.model.barker.attention.publication.connection.establish.subinit.SubscriptionRequest;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/soul.xml" })

@@ -11,10 +11,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.core.access.transfer.common.messages.publication.UpdateMessage;
 import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
-import deus.model.dc.DigitalCard;
-import deus.model.dc.DigitalCardId;
-import deus.model.dc.PartyInformationDC;
-import deus.model.user.id.UserUrl;
+import deus.model.common.dossier.DigitalCard;
+import deus.model.common.dossier.DigitalCardId;
+import deus.model.common.user.id.UserUrl;
+import deus.model.dccontent.PartyInformationDC;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transfer/core/test.xml" })

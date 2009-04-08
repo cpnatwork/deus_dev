@@ -1,7 +1,7 @@
 package deus.core.access.transfer.common.messages.publication;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
-import deus.model.dc.DigitalCard;
+import deus.model.common.dossier.DigitalCard;
 
 /**
  * Command, issued by the publisher to inform registered subscribers about an update.

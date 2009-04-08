@@ -1,7 +1,7 @@
 package deus.core.soul.barker.barker;
 
-import deus.model.attention.AttentionElement;
-import deus.model.user.id.UserId;
+import deus.model.barker.attention.AttentionElement;
+import deus.model.common.user.id.UserId;
 
 
 public interface BarkerExportedToSubsystems {

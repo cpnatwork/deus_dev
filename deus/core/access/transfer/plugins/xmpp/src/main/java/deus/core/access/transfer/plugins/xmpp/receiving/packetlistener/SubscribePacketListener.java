@@ -11,7 +11,7 @@ import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.core.access.transfer.common.messages.publication.connection.establish.subscribe.RequestSubscriptionMessage;
 import deus.core.access.transfer.plugins.xmpp.receiving.packetlistener.impl.UserMetadataParsingFilteredPacketListener;
 import deus.core.access.transfer.plugins.xmpp.util.PacketPrinter;
-import deus.model.user.UserMetadata;
+import deus.model.common.user.UserMetadata;
 
 
 public class SubscribePacketListener extends UserMetadataParsingFilteredPacketListener {

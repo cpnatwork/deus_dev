@@ -9,8 +9,8 @@ import deus.core.access.transfer.common.messages.publication.connection.establis
 import deus.core.access.transfer.common.messages.publication.connection.establish.subscribe.RequestSubscriptionMessage;
 import deus.core.access.transfer.common.messages.publication.connection.terminate.UnsubscribeMessage;
 import deus.core.access.transfer.core.sending.command.SubscriberCommandSender;
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 
 @Component("subscriberCommandSender")
 public class TransferSubscriberCommandSender implements SubscriberCommandSender {

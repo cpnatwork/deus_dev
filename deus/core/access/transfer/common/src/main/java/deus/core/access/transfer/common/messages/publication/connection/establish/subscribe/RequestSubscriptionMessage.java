@@ -1,6 +1,6 @@
 package deus.core.access.transfer.common.messages.publication.connection.establish.subscribe;
 
-import deus.model.user.UserMetadata;
+import deus.model.common.user.UserMetadata;
 
 /**
  * Command, issued by the informationConsumer to initiate a request for a subscription.

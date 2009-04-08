@@ -2,11 +2,11 @@ package deus.model.difgoverning;
 
 import java.util.Set;
 
-import deus.model.dc.DigitalCard;
-import deus.model.dossier.InformationFile;
+import deus.model.common.dossier.DigitalCard;
+import deus.model.common.dossier.InformationFile;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 import deus.model.pifgoverning.PersonalInformationFile;
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
 
 /**
  * The view of a personal information file (PIF), that resides on the informationConsumer side. This file is sent by the

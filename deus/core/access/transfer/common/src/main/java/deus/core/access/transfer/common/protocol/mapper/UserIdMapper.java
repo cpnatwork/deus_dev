@@ -1,7 +1,7 @@
 package deus.core.access.transfer.common.protocol.mapper;
 
 import deus.core.access.transfer.common.protocol.TransferId;
-import deus.model.user.id.UserId;
+import deus.model.common.user.id.UserId;
 
 public interface UserIdMapper {
 

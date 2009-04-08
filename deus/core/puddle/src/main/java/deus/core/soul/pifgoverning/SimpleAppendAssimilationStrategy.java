@@ -2,10 +2,10 @@ package deus.core.soul.pifgoverning;
 
 import java.util.Set;
 
-import deus.model.dc.DigitalCard;
-import deus.model.dossier.AppendDigitalCardPatch;
-import deus.model.dossier.InformationFile;
-import deus.model.dossier.Patch;
+import deus.model.common.dossier.AppendDigitalCardPatch;
+import deus.model.common.dossier.DigitalCard;
+import deus.model.common.dossier.InformationFile;
+import deus.model.common.dossier.Patch;
 
 public class SimpleAppendAssimilationStrategy implements AssimilationStrategy {
 

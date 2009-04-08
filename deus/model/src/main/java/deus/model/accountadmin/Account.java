@@ -2,8 +2,8 @@ package deus.model.accountadmin;
 
 import java.util.Set;
 
-import deus.model.user.DistributionRole;
-import deus.model.user.id.UserId;
+import deus.model.common.user.DistributionRole;
+import deus.model.common.user.id.UserId;
 
 
 public class Account {

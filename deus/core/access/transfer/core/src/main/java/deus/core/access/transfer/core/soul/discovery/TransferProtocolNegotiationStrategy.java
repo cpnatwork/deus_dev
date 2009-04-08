@@ -1,6 +1,6 @@
 package deus.core.access.transfer.core.soul.discovery;
 
-import deus.model.user.id.UserId;
+import deus.model.common.user.id.UserId;
 
 
 public interface TransferProtocolNegotiationStrategy {

@@ -2,9 +2,9 @@ package deus.core.soul.difgoverning.impl;
 
 import org.springframework.stereotype.Component;
 
+import deus.model.common.dossier.AppendDigitalCardPatch;
+import deus.model.common.dossier.Patch;
 import deus.model.difgoverning.ForeignInformationFile;
-import deus.model.dossier.AppendDigitalCardPatch;
-import deus.model.dossier.Patch;
 
 /**
  * This strategy only handles patches of type <code>AppendDigitalCardPatch</code>.

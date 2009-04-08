@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.pie.PifDoRep;
 import deus.core.soul.pifgoverning.AssimilationStrategy;
 import deus.core.soul.pifgoverning.PifGovernor;
-import deus.model.dc.DigitalCard;
-import deus.model.dossier.Patch;
+import deus.model.common.dossier.DigitalCard;
+import deus.model.common.dossier.Patch;
+import deus.model.common.user.id.UserId;
 import deus.model.pifgoverning.PersonalInformationFile;
-import deus.model.user.id.UserId;
 
 @Component("pifGovernor")
 public class PifGovernorImpl implements PifGovernor {

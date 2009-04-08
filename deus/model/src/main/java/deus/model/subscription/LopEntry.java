@@ -1,7 +1,7 @@
 package deus.model.subscription;
 
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 
 public class LopEntry {
 

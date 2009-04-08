@@ -2,8 +2,8 @@ package deus.core.access.storage.api.user.model;
 
 import java.util.UUID;
 
-import deus.model.party.Gender;
-import deus.model.user.UserMetadata;
+import deus.model.common.user.Gender;
+import deus.model.common.user.UserMetadata;
 
 
 // FIXME: REMOVE HIBERNATE STUFF FROM THIS CLASS

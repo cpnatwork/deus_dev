@@ -9,7 +9,7 @@ import deus.core.access.transfer.common.protocol.messagesender.MessageSender;
 import deus.core.access.transfer.core.sending.message.MessageSenderRegistry;
 import deus.core.access.transfer.core.soul.discovery.TransferProtocolNegotiationStrategy;
 import deus.core.access.transfer.core.soul.protocolregistry.QueriableTransferProtocolRegistry;
-import deus.model.user.id.UserId;
+import deus.model.common.user.id.UserId;
 
 @Component
 public class TransferMessageSenderHelper {

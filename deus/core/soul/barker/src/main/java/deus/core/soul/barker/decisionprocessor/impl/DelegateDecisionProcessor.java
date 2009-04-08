@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 
 import deus.core.soul.barker.decisionprocessor.DecisionProcessor;
 import deus.core.soul.barker.decisionprocessor.GenericDecisionProcessor;
-import deus.model.attention.BinaryDecisionToMake;
-import deus.model.attention.DecisionType;
-import deus.model.user.id.UserId;
+import deus.model.barker.attention.BinaryDecisionToMake;
+import deus.model.barker.attention.DecisionType;
+import deus.model.common.user.id.UserId;
 
 @Component
 public class DelegateDecisionProcessor implements DecisionProcessor {
@@ -24,7 +24,7 @@ public class DelegateDecisionProcessor implements DecisionProcessor {
 
 
 	/* (non-Javadoc)
-	 * @see deus.core.soul.common.decisionprocessor.impl.DecisionProcessor#process(deus.model.attention.decision.BinaryDecisionToMake)
+	 * @see deus.core.soul.common.decisionprocessor.impl.DecisionProcessor#process(deus.model.barker.attention.decision.BinaryDecisionToMake)
 	 */
 	@SuppressWarnings("unchecked")
 	@Override

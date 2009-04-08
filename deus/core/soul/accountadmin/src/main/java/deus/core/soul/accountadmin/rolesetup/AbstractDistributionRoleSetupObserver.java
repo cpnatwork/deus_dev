@@ -6,8 +6,8 @@ import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import deus.model.user.DistributionRole;
-import deus.model.user.id.UserId;
+import deus.model.common.user.DistributionRole;
+import deus.model.common.user.id.UserId;
 
 public abstract class AbstractDistributionRoleSetupObserver implements DistributionRoleSetupObserver {
 

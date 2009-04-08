@@ -2,7 +2,7 @@ package deus.core.access.storage.api.dossier.model.dc.party;
 
 import java.util.UUID;
 
-public class Phone extends deus.model.party.Phone {
+public class Phone extends deus.model.dccontent.party.Phone {
 
 	private UUID id;
 

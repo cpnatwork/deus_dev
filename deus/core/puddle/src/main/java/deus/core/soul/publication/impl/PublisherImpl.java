@@ -11,12 +11,12 @@ import deus.core.access.storage.api.pub.LosEntryDoRep;
 import deus.core.access.storage.api.user.UserMetadataDoRep;
 import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
 import deus.core.soul.publication.Publisher;
-import deus.model.dc.DigitalCard;
+import deus.model.common.dossier.DigitalCard;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 import deus.model.publication.ListOfSubscribers;
 import deus.model.publication.LosEntry;
 import deus.model.publication.PublisherSideSubscriptionState;
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
 
 @Component
 @Qualifier("target")

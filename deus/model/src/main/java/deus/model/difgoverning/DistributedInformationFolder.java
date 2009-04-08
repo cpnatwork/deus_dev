@@ -1,7 +1,7 @@
 package deus.model.difgoverning;
 
-import deus.model.dossier.InformationFile;
-import deus.model.user.id.UserId;
+import deus.model.common.dossier.InformationFile;
+import deus.model.common.user.id.UserId;
 
 /**
  * <code>DistributedInformationFolder</code> (DIF) represents a collection of Foreign Information Files (FIFs).

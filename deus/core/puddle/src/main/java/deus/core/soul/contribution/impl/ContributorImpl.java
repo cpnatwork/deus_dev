@@ -1,9 +1,9 @@
 package deus.core.soul.contribution.impl;
 
 import deus.core.soul.contribution.Contributor;
-import deus.model.dc.DigitalCard;
-import deus.model.dc.DigitalCardId;
-import deus.model.user.id.UserId;
+import deus.model.common.dossier.DigitalCard;
+import deus.model.common.dossier.DigitalCardId;
+import deus.model.common.user.id.UserId;
 
 public class ContributorImpl implements Contributor {
 

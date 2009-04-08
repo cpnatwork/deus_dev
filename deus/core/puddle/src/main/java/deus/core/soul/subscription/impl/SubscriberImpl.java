@@ -12,12 +12,12 @@ import deus.core.access.storage.api.user.UserMetadataDoRep;
 import deus.core.access.transfer.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.difgoverning.DifGovernor;
 import deus.core.soul.subscription.Subscriber;
-import deus.model.dossier.Patch;
+import deus.model.common.dossier.Patch;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 import deus.model.subscription.ListOfPublishers;
 import deus.model.subscription.LopEntry;
 import deus.model.subscription.SubscriberSideSubscriptionState;
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
 
 @Component
 @Qualifier("target")

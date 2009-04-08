@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.attention.AttentionElementDoRep;
 import deus.core.access.storage.api.attention.AttentionListDoRep;
 import deus.core.soul.barker.barker.Barker;
-import deus.model.attention.AttentionElement;
-import deus.model.attention.AttentionList;
-import deus.model.user.id.UserId;
+import deus.model.barker.attention.AttentionElement;
+import deus.model.barker.attention.AttentionList;
+import deus.model.common.user.id.UserId;
 
 @Component("barker")
 public class BarkerImpl implements Barker {

@@ -3,7 +3,7 @@ package deus.core.access.transfer.plugins.local.protocol.mapper;
 import deus.core.access.transfer.common.protocol.TransferId;
 import deus.core.access.transfer.common.protocol.mapper.UserIdMapper;
 import deus.core.access.transfer.plugins.local.protocol.LocalTransferId;
-import deus.model.user.id.UserId;
+import deus.model.common.user.id.UserId;
 
 /**
  * Returns local transfer IDs, where the username is just taken from the UserId.

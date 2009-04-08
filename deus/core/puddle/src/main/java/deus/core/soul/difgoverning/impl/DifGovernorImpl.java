@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.sub.DifDoRep;
 import deus.core.access.storage.api.sub.FifDoRep;
 import deus.core.soul.difgoverning.DifGovernor;
-import deus.model.dc.DigitalCard;
-import deus.model.dc.DigitalCardId;
+import deus.model.common.dossier.DigitalCard;
+import deus.model.common.dossier.DigitalCardId;
+import deus.model.common.dossier.Patch;
+import deus.model.common.user.id.UserId;
 import deus.model.difgoverning.ForeignInformationFile;
-import deus.model.dossier.Patch;
-import deus.model.user.id.UserId;
 
 @Component("difGovernor")
 public class DifGovernorImpl implements DifGovernor {

@@ -1,8 +1,8 @@
 package deus.core.soul.barker.decisionprocessor.impl;
 
 import deus.core.soul.barker.decisionprocessor.GenericDecisionProcessor;
-import deus.model.attention.BinaryDecisionToMake;
-import deus.model.user.id.UserId;
+import deus.model.barker.attention.BinaryDecisionToMake;
+import deus.model.common.user.id.UserId;
 
 public abstract class AbstractGenericDecisionProcessor<DecisionT extends BinaryDecisionToMake> implements
 		GenericDecisionProcessor<DecisionT> {

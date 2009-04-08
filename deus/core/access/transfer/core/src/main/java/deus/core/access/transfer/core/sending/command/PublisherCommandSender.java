@@ -1,8 +1,8 @@
 package deus.core.access.transfer.core.sending.command;
 
-import deus.model.dc.DigitalCard;
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
+import deus.model.common.dossier.DigitalCard;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 
 // FIXME: rename to publicationCommandSender in order to reflect subsystem
 public interface PublisherCommandSender {

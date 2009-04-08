@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 import deus.core.soul.subscription.Subscriber;
 import deus.core.soul.subscription.SubscriberExportedToClient;
-import deus.model.dossier.Patch;
+import deus.model.common.dossier.Patch;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 import deus.model.subscription.ListOfPublishers;
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
 
 /**
  * Delegates all methods of <code>SubscriberExportedToPeers</code> to a delegate of type

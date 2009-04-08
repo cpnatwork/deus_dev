@@ -7,8 +7,8 @@ import deus.core.access.storage.api.account.AccountDoRep;
 import deus.core.soul.accountadmin.manager.AccountManager;
 import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup;
 import deus.model.accountadmin.Account;
-import deus.model.user.DistributionRole;
-import deus.model.user.UserMetadata;
+import deus.model.common.user.DistributionRole;
+import deus.model.common.user.UserMetadata;
 
 @Component("accountManager")
 public class AccountManagerImpl implements AccountManager {

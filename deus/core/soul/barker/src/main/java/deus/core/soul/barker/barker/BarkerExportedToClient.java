@@ -1,8 +1,8 @@
 package deus.core.soul.barker.barker;
 
-import deus.model.attention.AttentionElement;
-import deus.model.attention.AttentionList;
-import deus.model.user.id.UserId;
+import deus.model.barker.attention.AttentionElement;
+import deus.model.barker.attention.AttentionList;
+import deus.model.common.user.id.UserId;
 
 
 public interface BarkerExportedToClient {

@@ -12,7 +12,7 @@ import deus.core.access.transfer.common.protocol.mapper.UserIdMapper;
 import deus.core.access.transfer.core.soul.protocolregistry.QueriableTransferProtocolRegistry;
 import deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems;
 import deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver;
-import deus.model.user.id.UserId;
+import deus.model.common.user.id.UserId;
 
 @Component
 public class TransferProtocolRegisterUserRegistrationStateObserver implements UserRegistrationStateObserver {

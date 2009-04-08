@@ -5,9 +5,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 import deus.core.soul.accountadmin.registrator.UserIdGenerator;
-import deus.model.user.id.UserId;
-import deus.model.user.id.UserIdType;
-import deus.model.user.id.UserUrl;
+import deus.model.common.user.id.UserId;
+import deus.model.common.user.id.UserIdType;
+import deus.model.common.user.id.UserUrl;
 
 @Component("userIdGenerator")
 public class OnlyCreateUserUrlsUserIdGenerator implements UserIdGenerator {

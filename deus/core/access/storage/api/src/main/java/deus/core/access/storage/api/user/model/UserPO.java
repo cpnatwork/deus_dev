@@ -3,7 +3,7 @@ package deus.core.access.storage.api.user.model;
 import java.io.Serializable;
 import java.util.UUID;
 
-import deus.model.user.id.UserId;
+import deus.model.common.user.id.UserId;
 
 @SuppressWarnings("serial")
 // FIXME: REMOVE HIBERNATE STUFF FROM THIS CLASS

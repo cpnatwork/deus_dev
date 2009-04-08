@@ -1,7 +1,7 @@
 package deus.core.access.storage.api.sub;
 
+import deus.model.common.user.id.UserId;
 import deus.model.subscription.LopEntry;
-import deus.model.user.id.UserId;
 
 public interface LopEntryDoRep {
 

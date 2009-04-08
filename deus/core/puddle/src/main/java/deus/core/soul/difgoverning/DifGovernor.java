@@ -1,7 +1,7 @@
 package deus.core.soul.difgoverning;
 
-import deus.model.dossier.Patch;
-import deus.model.user.id.UserId;
+import deus.model.common.dossier.Patch;
+import deus.model.common.user.id.UserId;
 
 public interface DifGovernor extends DifGovernorExportedToClient {
 

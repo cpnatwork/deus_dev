@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 import deus.core.access.storage.api.sub.LopDoRep;
 import deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver;
 import deus.core.soul.subscription.SubscriberExportedToClient;
+import deus.model.common.user.DistributionRole;
+import deus.model.common.user.id.UserId;
 import deus.model.subscription.ListOfPublishers;
 import deus.model.subscription.LopEntry;
-import deus.model.user.DistributionRole;
-import deus.model.user.id.UserId;
 
 @Component
 public class IcRoleSetupSubscriberObserver extends AbstractDistributionRoleSetupObserver {

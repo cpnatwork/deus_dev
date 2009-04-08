@@ -1,8 +1,8 @@
 package deus.core.soul.pifgoverning;
 
-import deus.model.dc.DigitalCard;
-import deus.model.dossier.Patch;
-import deus.model.user.id.UserId;
+import deus.model.common.dossier.DigitalCard;
+import deus.model.common.dossier.Patch;
+import deus.model.common.user.id.UserId;
 
 public interface PifGovernor extends PifGovernorExportedToClient {
 

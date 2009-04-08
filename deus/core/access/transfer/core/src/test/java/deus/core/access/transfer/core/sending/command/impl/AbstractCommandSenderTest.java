@@ -14,8 +14,8 @@ import deus.core.access.transfer.common.protocol.messagesender.MessageSender;
 import deus.core.access.transfer.common.protocolregistry.TransferProtocolRegistry;
 import deus.core.access.transfer.core.soul.discovery.TransferProtocolNegotiationStrategy;
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransferId;
-import deus.model.user.id.UserId;
-import deus.model.user.id.UserUrl;
+import deus.model.common.user.id.UserId;
+import deus.model.common.user.id.UserUrl;
 
 
 public abstract class AbstractCommandSenderTest {

@@ -1,8 +1,8 @@
 package deus.core.access.transfer.core.receiving.soulcallback.publication;
 
 
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 
 /**
  * Groups methods of the interface <code>Publisher</code>, that are called remotely. These methods are e.g. called from

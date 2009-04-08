@@ -7,40 +7,40 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 
 	
-	<bean id="unnoticedAttentionList" class="deus.model.attention.impl.AttentionListImpl">
+	<bean id="unnoticedAttentionList" class="deus.model.barker.attention.impl.AttentionListImpl">
 		<constructor-arg ref="attentionListBase" />
 	</bean>
 
-	<util:list id="attentionListBase" value-type="deus.model.attention.AttentionElement">
+	<util:list id="attentionListBase" value-type="deus.model.barker.attention.AttentionElement">
 		<idref local="publisherOffer"/>
 		<idref local="subscriberRequest"/>
 		<idref local="subscriptionCanceledNotice"/>
 	</util:list>
 
-	<bean id="publisherOffer" class="deus.model.attention.publication.connection.establish.pubinit.PublisherOffer">
+	<bean id="publisherOffer" class="deus.model.barker.attention.publication.connection.establish.pubinit.PublisherOffer">
 		<constructor-arg ref="publisherMetadata" />
 		<property name="creationDate" value="1970/01/01 00:01" />
 	</bean>
 
-	<bean id="subscriberRequest" class="deus.model.attention.publication.connection.establish.subinit.SubscriptionRequest">
+	<bean id="subscriberRequest" class="deus.model.barker.attention.publication.connection.establish.subinit.SubscriptionRequest">
 		<constructor-arg ref="subscriberMetadata" />
 		<property name="creationDate" value="1970/01/01 01:01" />
 	</bean>
 
-	<bean id="subscriptionCanceledNotice" class="deus.model.attention.notice.SubscriptionCanceledNotice">
+	<bean id="subscriptionCanceledNotice" class="deus.model.barker.attention.notice.SubscriptionCanceledNotice">
 		<constructor-arg ref="subscriberMetadata" />
 		<property name="creationDate" value="1970/01/01 02:01" />
 	</bean>
 
 
-	<bean id="publisherUserId" class="deus.model.user.id.UserUrl">
+	<bean id="publisherUserId" class="deus.model.common.user.id.UserUrl">
 		<property name="username" value="alice" />
 		<property name="serverBaseUrl" value="deus.org" />
 		<property name="transferIds">
 			<util:map>
 				<entry>
-					<key><util:constant static-field="deus.model.user.transferid.TransferIdType.xmpp"/></key>
-					<bean class="deus.model.user.transferid.XmppTransferId">
+					<key><util:constant static-field="deus.model.common.user.transferid.TransferIdType.xmpp"/></key>
+					<bean class="deus.model.common.user.transferid.XmppTransferId">
 						<property name="xmppUsername" value="alice" />
 						<property name="xmppServer" value="faui6p15" />
 					</bean>
@@ -50,21 +50,21 @@
 	</bean>
 
 
-	<bean id="publisherMetadata" class="deus.model.user.UserMetadata">
+	<bean id="publisherMetadata" class="deus.model.common.user.UserMetadata">
 		<property name="userId" ref="publisherUserId"/>
 		<property name="fullName" value="Alice" />
 	</bean>
 
 
 	
-	<bean id="subscriberUserId" class="deus.model.user.id.UserUrl">
+	<bean id="subscriberUserId" class="deus.model.common.user.id.UserUrl">
 		<property name="username" value="bob" />
 		<property name="serverBaseUrl" value="deus.org" />
 		<property name="transferIds">
 			<util:map>
 				<entry>
-					<key><util:constant static-field="deus.model.user.transferid.TransferIdType.xmpp"/></key>
-					<bean class="deus.model.user.transferid.XmppTransferId">
+					<key><util:constant static-field="deus.model.common.user.transferid.TransferIdType.xmpp"/></key>
+					<bean class="deus.model.common.user.transferid.XmppTransferId">
 						<property name="xmppUsername" value="bob" />
 						<property name="xmppServer" value="faui6p15" />
 					</bean>
@@ -73,7 +73,7 @@
 		</property>
 	</bean>
 
-	<bean id="subscriberMetadata" class="deus.model.user.UserMetadata">
+	<bean id="subscriberMetadata" class="deus.model.common.user.UserMetadata">
 		<property name="userId" ref="subscriberUserId"/>
 		<property name="fullName" value="Bob" />
 	</bean>

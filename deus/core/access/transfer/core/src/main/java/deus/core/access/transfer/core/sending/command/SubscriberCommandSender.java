@@ -1,7 +1,7 @@
 package deus.core.access.transfer.core.sending.command;
 
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 
 /**
  * Realizes use case "request subscription", "send cancel subscription use case".

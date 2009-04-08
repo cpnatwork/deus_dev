@@ -1,7 +1,7 @@
 package deus.core.access.storage.api.pie;
 
+import deus.model.common.user.id.UserId;
 import deus.model.pifgoverning.PersonalInformationFile;
-import deus.model.user.id.UserId;
 
 public interface PifDoRep {
 	

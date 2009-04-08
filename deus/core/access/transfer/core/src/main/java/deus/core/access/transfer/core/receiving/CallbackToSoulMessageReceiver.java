@@ -18,8 +18,8 @@ import deus.core.access.transfer.common.protocol.messagereceiver.MessageReceiver
 import deus.core.access.transfer.core.receiving.soulcallback.SoulCallbackRegistry;
 import deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 
 @Component("messageReceiver")
 public class CallbackToSoulMessageReceiver implements MessageReceiver {

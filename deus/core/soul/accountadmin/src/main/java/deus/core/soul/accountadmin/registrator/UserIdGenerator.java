@@ -1,7 +1,7 @@
 package deus.core.soul.accountadmin.registrator;
 
-import deus.model.user.id.UserId;
-import deus.model.user.id.UserIdType;
+import deus.model.common.user.id.UserId;
+import deus.model.common.user.id.UserIdType;
 
 public interface UserIdGenerator {
 

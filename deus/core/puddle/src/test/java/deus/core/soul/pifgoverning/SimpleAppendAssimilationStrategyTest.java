@@ -9,15 +9,15 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
-import deus.model.dc.DigitalCard;
-import deus.model.dc.MyPartyInformationDC;
-import deus.model.dc.PartyInformationDC;
-import deus.model.dossier.InformationFile;
-import deus.model.party.Party;
-import deus.model.party.Person;
+import deus.model.common.dossier.DigitalCard;
+import deus.model.common.dossier.InformationFile;
+import deus.model.common.user.id.UserId;
+import deus.model.common.user.id.UserUrl;
+import deus.model.dccontent.MyPartyInformationDC;
+import deus.model.dccontent.PartyInformationDC;
+import deus.model.dccontent.party.Party;
+import deus.model.dccontent.party.Person;
 import deus.model.pifgoverning.PersonalInformationFile;
-import deus.model.user.id.UserId;
-import deus.model.user.id.UserUrl;
 
 public class SimpleAppendAssimilationStrategyTest {
 

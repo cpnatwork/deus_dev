@@ -3,10 +3,10 @@ package deus.model.subscription.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import deus.model.common.dossier.InformationFile;
+import deus.model.common.user.id.UserId;
 import deus.model.difgoverning.DistributedInformationFolder;
 import deus.model.difgoverning.ForeignInformationFile;
-import deus.model.dossier.InformationFile;
-import deus.model.user.id.UserId;
 
 public class DistributedInformationFolderImpl implements
 		DistributedInformationFolder {

@@ -7,9 +7,10 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-import deus.model.attention.publication.connection.establish.pubinit.PublisherOffer;
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserUrl;
+import deus.model.barker.attention.BinaryDecisionToMake;
+import deus.model.barker.attention.publication.connection.establish.pubinit.PublisherOffer;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserUrl;
 
 public class PublisherOfferTest {
 

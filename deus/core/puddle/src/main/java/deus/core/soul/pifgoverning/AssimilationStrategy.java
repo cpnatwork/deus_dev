@@ -1,8 +1,8 @@
 package deus.core.soul.pifgoverning;
 
-import deus.model.dc.DigitalCard;
-import deus.model.dossier.InformationFile;
-import deus.model.dossier.Patch;
+import deus.model.common.dossier.DigitalCard;
+import deus.model.common.dossier.InformationFile;
+import deus.model.common.dossier.Patch;
 
 /**
  * Implementations of this strategy realize different update semantics, when a digital card for a given

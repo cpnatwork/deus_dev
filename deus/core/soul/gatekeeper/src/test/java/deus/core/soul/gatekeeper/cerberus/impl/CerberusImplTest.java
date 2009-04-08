@@ -11,8 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver;
 import deus.core.soul.gatekeeper.cerberus.impl.Cerberus;
+import deus.model.common.user.id.UserId;
 import deus.model.gatekeeper.LoginCredentials;
-import deus.model.user.id.UserId;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/context.xml" , "/deus/storage/daos.xml", "/deus/gatekeeper/gatekeeper.xml" })

@@ -20,7 +20,7 @@ import deus.core.access.transfer.common.protocol.mapper.UserIdMapper;
 import deus.core.access.transfer.common.protocol.messagesender.MessageSender;
 import deus.core.access.transfer.core.soul.protocolregistry.QueriableTransferProtocolRegistry;
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransferId;
-import deus.model.user.id.UserId;
+import deus.model.common.user.id.UserId;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transfer/core/test.xml" })

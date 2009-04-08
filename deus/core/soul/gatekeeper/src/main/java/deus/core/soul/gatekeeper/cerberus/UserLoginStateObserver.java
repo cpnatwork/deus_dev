@@ -1,6 +1,6 @@
 package deus.core.soul.gatekeeper.cerberus;
 
-import deus.model.user.id.UserId;
+import deus.model.common.user.id.UserId;
 
 public interface UserLoginStateObserver {
 

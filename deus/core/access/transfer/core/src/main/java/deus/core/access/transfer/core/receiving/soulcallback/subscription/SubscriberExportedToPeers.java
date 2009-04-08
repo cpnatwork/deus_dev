@@ -1,8 +1,8 @@
 package deus.core.access.transfer.core.receiving.soulcallback.subscription;
 
-import deus.model.dossier.Patch;
-import deus.model.user.UserMetadata;
-import deus.model.user.id.UserId;
+import deus.model.common.dossier.Patch;
+import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 
 /**
  * Groups methods of the interface <code>Subscriber</code>, that are called remotely on the informationConsumer subsystem. These

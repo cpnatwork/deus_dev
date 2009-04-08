@@ -1,6 +1,6 @@
 package deus.core.soul.accountadmin.registrator;
 
-import deus.model.user.id.UserId;
+import deus.model.common.user.id.UserId;
 
 public interface UserRegistrationStateObserver {
 	

@@ -2,10 +2,10 @@ package deus.core.access.storage.api.sub.model;
 
 import java.util.HashMap;
 
+import deus.model.common.user.id.UserId;
 import deus.model.subscription.ListOfPublishers;
 import deus.model.subscription.LopEntry;
 import deus.model.subscription.SubscriberSideSubscriptionState;
-import deus.model.user.id.UserId;
 
 // TODO: think about thread safety! (before, this was implemented using a Vector!)
 public class ListOfPublishersImpl extends HashMap<UserId, LopEntry> implements ListOfPublishers {
