@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 import deus.core.soul.subscription.Subscriber;
 import deus.core.soul.subscription.SubscriberExportedToClient;
-import deus.model.dc.DigitalCard;
 import deus.model.dossier.Patch;
 import deus.model.subscription.ListOfPublishers;
 import deus.model.user.UserMetadata;
@@ -21,7 +20,7 @@ import deus.model.user.id.UserId;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-@Component("informationConsumer")
+@Component("subscriber")
 public class ProxiedSubscriberAdapter implements Subscriber {
 
 	@Autowired

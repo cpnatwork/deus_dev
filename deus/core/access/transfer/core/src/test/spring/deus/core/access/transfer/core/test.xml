@@ -9,6 +9,6 @@
 	
 	<bean id="cerberusStub" class="deus.core.soul.gatekeeper.cerberus.CerberusStub" />
 	
-	<bean id="RegistratorStub" class="deus.core.soul.accountadmin.registrator.RegistratorStub" />
+	<bean id="registratorStub" class="deus.core.soul.accountadmin.registrator.RegistratorStub" />
 
 </beans>

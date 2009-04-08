@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.account.AccountDoRep;
+import deus.core.soul.gatekeeper.cerberus.InvalidLoginCredentialsException;
 import deus.core.soul.gatekeeper.cerberus.LoginCredentialChecker;
 import deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver;
 import deus.model.accountadmin.Account;
@@ -38,8 +39,7 @@ public class CerberusImpl implements Cerberus {
 	@Override
 	public UserId login(LoginCredentials credentials) {
 		if (!loginCredentialChecker.isValid(credentials))
-			// FIXME: think about what to do here
-			;
+			throw new InvalidLoginCredentialsException(credentials);
 
 		// TODO: do more login stuff, that is necessary
 		Account account = accountDoRep.getByNaturalId(credentials.getLocalUsername());

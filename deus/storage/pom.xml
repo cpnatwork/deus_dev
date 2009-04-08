@@ -8,7 +8,7 @@
 	</parent>
 
 	<artifactId>deus-storage</artifactId>
-	<packaging>bundle</packaging>
+	<packaging>jar</packaging>
 	<name>DEUS storage</name>
 
 	<!-- don't remove properties, even if they are empty!!! -->

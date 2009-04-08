@@ -71,7 +71,7 @@ public class SubscriberImpl implements Subscriber {
 		logger.trace("in informationConsumer {}: updating the DIF for publisher {}", subscriberId, publisherId);
 
 		if (!lopEntryDoRep.containsEntity(publisherId, subscriberId))
-			// FIXME: how to handle this??
+			// FIXME: how to handle this Exception??
 			;
 
 		difGovernor.applyPatch(subscriberId, publisherId, patch);

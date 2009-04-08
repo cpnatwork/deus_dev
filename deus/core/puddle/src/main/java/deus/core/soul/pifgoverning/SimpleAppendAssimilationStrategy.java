@@ -9,13 +9,16 @@ import deus.model.dossier.Patch;
 
 public class SimpleAppendAssimilationStrategy implements AssimilationStrategy {
 
+	
+	/**
+	 * @throws	IllegalUpdateInPlaceException
+	 */
 	@Override
 	public Patch update(InformationFile fif, DigitalCard digitalCard) {
 		Set<DigitalCard> digitalCards = fif.getDigitalCards();
 
 		if (digitalCards.contains(digitalCard))
-			// FIXME: which exception to throw here?
-			throw new RuntimeException();
+			throw new IllegalUpdateInPlaceException(digitalCard.getDigitalCardId());
 		else
 			return append(fif, digitalCard);
 	}
