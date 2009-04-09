@@ -2,10 +2,7 @@ package deus.model.common.user.id;
 
 import java.io.Serializable;
 
-// FIXME: REMOVE HIBERNATE STUFF!
-//@SuppressWarnings("serial")
-//@Entity
-//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@SuppressWarnings("serial")
 abstract public class UserId implements Serializable {
 
 	private String username = null;

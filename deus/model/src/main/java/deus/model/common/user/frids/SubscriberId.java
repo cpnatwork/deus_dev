@@ -1,5 +1,7 @@
 package deus.model.common.user.frids;
 
+import java.io.Serializable;
+
 import deus.model.common.user.id.UserId;
 
 
@@ -9,7 +11,8 @@ import deus.model.common.user.id.UserId;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  *
  */
-public class SubscriberId extends FunctionalRoleId {
+@SuppressWarnings("serial")
+public class SubscriberId extends FunctionalRoleId implements Serializable {
 
 	public SubscriberId(UserId userId) {
 		super(userId);
