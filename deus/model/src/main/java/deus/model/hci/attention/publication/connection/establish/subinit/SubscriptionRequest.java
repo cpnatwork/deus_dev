@@ -1,23 +1,23 @@
 package deus.model.hci.attention.publication.connection.establish.subinit;
 
 import deus.model.common.user.UserMetadata;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.SubscriberId;
 import deus.model.hci.attention.DecisionType;
 import deus.model.hci.attention.publication.connection.ConnectionDecisionToMake;
 
 public class SubscriptionRequest extends ConnectionDecisionToMake {
 
-	private final UserId subscriberId;
+	private final SubscriberId subscriberId;
 	private final UserMetadata subscriberMetadata;
 
 
-	public SubscriptionRequest(UserId subscriberId, UserMetadata subscriberMetadata) {
+	public SubscriptionRequest(SubscriberId subscriberId, UserMetadata subscriberMetadata) {
 		this.subscriberId = subscriberId;
 		this.subscriberMetadata = subscriberMetadata;
 	}
 
 
-	public UserId getSubscriberId() {
+	public SubscriberId getSubscriberId() {
 		return subscriberId;
 	}
 

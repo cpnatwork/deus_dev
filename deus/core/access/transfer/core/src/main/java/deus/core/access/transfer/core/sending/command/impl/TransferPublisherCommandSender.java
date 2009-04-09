@@ -12,10 +12,10 @@ import deus.core.access.transfer.common.messages.publication.connection.terminat
 import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
 import deus.model.common.dossier.DigitalCard;
 import deus.model.common.user.UserMetadata;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.PublisherId;
+import deus.model.common.user.frids.SubscriberId;
 
 @Component("publisherCommandSender")
-// FIXME: Rename to transfer
 public class TransferPublisherCommandSender implements PublisherCommandSender {
 	
 	@Autowired
@@ -23,22 +23,22 @@ public class TransferPublisherCommandSender implements PublisherCommandSender {
 
 
 	@Override
-	public void update(UserId subscriberId, UserId publisherId, DigitalCard digitalCard) {
+	public void update(PublisherId publisherId, SubscriberId subscriberId, DigitalCard digitalCard) {
 		TransferMessage transferMessage = new UpdateMessage(digitalCard);
-		transferMessageSenderHelper.send(subscriberId, publisherId, transferMessage);
+		transferMessageSenderHelper.send(subscriberId.getUserId(), publisherId.getUserId(), transferMessage);
 	}
 
 	
 	@Override
-	public void offerSubscription(UserId publisherId, UserId subscriberId, UserMetadata publisherMetadata) {
+	public void offerSubscription(PublisherId publisherId, SubscriberId subscriberId, UserMetadata publisherMetadata) {
 		TransferMessage transferMessage = new OfferSubscriptionMessage(publisherMetadata);
-		transferMessageSenderHelper.send(subscriberId, publisherId, transferMessage);
+		transferMessageSenderHelper.send(subscriberId.getUserId(), publisherId.getUserId(), transferMessage);
 	}
 
 	@Override
-	public void cancelSubscription(UserId publisherId, UserId subscriberId) {
+	public void cancelSubscription(PublisherId publisherId, SubscriberId subscriberId) {
 		TransferMessage transferMessage = new CancelSubscriptionMessage();
-		transferMessageSenderHelper.send(subscriberId, publisherId, transferMessage);
+		transferMessageSenderHelper.send(subscriberId.getUserId(), publisherId.getUserId(), transferMessage);
 	}
 	
 	
@@ -46,16 +46,16 @@ public class TransferPublisherCommandSender implements PublisherCommandSender {
 
 
 	@Override
-	public void grantSubscriptionRequest(UserId publisherId, UserId subscriberId) {
+	public void grantSubscriptionRequest(PublisherId publisherId, SubscriberId subscriberId) {
 		TransferMessage transferMessage = new GrantSubscriptionRequestNoticeMessage();
-		transferMessageSenderHelper.send(subscriberId, publisherId, transferMessage);
+		transferMessageSenderHelper.send(subscriberId.getUserId(), publisherId.getUserId(), transferMessage);
 	}
 
 	
 	@Override
-	public void denySubscriptionRequest(UserId publisherId, UserId subscriberId) {
+	public void denySubscriptionRequest(PublisherId publisherId, SubscriberId subscriberId) {
 		TransferMessage transferMessage = new DenySubscriptionRequestNoticeMessage();
-		transferMessageSenderHelper.send(subscriberId, publisherId, transferMessage);
+		transferMessageSenderHelper.send(subscriberId.getUserId(), publisherId.getUserId(), transferMessage);
 	}
 
 

@@ -6,6 +6,6 @@ import deus.model.hci.attention.AttentionElement;
 
 public interface BarkerExportedToSubsystems {
 
-	public abstract void addUnnoticedAttentionElement(UserId userId, AttentionElement attentionElement);
+	public abstract void addUnnoticedAttentionElement(UserId ownerUserId, AttentionElement attentionElement);
 
 }

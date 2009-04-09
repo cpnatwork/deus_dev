@@ -2,7 +2,8 @@ package deus.core.access.transfer.core.receiving.soulcallback.publication;
 
 
 import deus.model.common.user.UserMetadata;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.PublisherId;
+import deus.model.common.user.frids.SubscriberId;
 
 /**
  * Groups methods of the interface <code>Publisher</code>, that are called remotely. These methods are e.g. called from
@@ -25,7 +26,7 @@ public interface PublisherExportedToPeers {
 	 * 
 	 * @param subscriberMetadata an observer to be added.
 	 */
-	public abstract void addSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata);
+	public abstract void addSubscriber(PublisherId publisherId, SubscriberId subscriberId, UserMetadata subscriberMetadata);
 
 
 	// USE CASE: subscriber initiated termination
@@ -36,7 +37,7 @@ public interface PublisherExportedToPeers {
 	 * 
 	 * @param subscriberMetadata the observer to be deleted.
 	 */
-	public abstract void deleteSubscriber(UserId publisherId, UserId subscriberId);
+	public abstract void deleteSubscriber(PublisherId publisherId, SubscriberId subscriberId);
 
 	
 	
@@ -44,8 +45,8 @@ public interface PublisherExportedToPeers {
 	// USE CASE: publisher initiated connection
 	
 	// FIXME: rename this to subscriptionOfferConfirmed
-	public abstract void subscriptionConfirmed(UserId publisherId, UserId subscriberId);
+	public abstract void subscriptionConfirmed(PublisherId publisherId, SubscriberId subscriberId);
 	
 	// FIXME: rename this to subscriptionOfferRepelled
-	public abstract void subscriptionAbstained(UserId publisherId, UserId subscriberId);
+	public abstract void subscriptionAbstained(PublisherId publisherId, SubscriberId subscriberId);
 }

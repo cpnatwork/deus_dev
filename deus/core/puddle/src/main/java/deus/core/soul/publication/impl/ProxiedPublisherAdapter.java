@@ -9,7 +9,8 @@ import deus.core.soul.publication.Publisher;
 import deus.core.soul.publication.PublisherExportedToClient;
 import deus.model.common.dossier.DigitalCard;
 import deus.model.common.user.UserMetadata;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.PublisherId;
+import deus.model.common.user.frids.SubscriberId;
 import deus.model.publication.ListOfSubscribers;
 
 /**
@@ -34,25 +35,25 @@ public class ProxiedPublisherAdapter implements Publisher {
 	// +++ exported to PEER +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
-	public void addSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
+	public void addSubscriber(PublisherId publisherId, SubscriberId subscriberId, UserMetadata subscriberMetadata) {
 		publisherExportedToPeers.addSubscriber(publisherId, subscriberId, subscriberMetadata);
 	}
 
 
 	@Override
-	public void deleteSubscriber(UserId publisherId, UserId subscriberId) {
+	public void deleteSubscriber(PublisherId publisherId, SubscriberId subscriberId) {
 		publisherExportedToPeers.deleteSubscriber(publisherId, subscriberId);
 	}
 
 
 	@Override
-	public void subscriptionAbstained(UserId publisherId, UserId subscriberId) {
+	public void subscriptionAbstained(PublisherId publisherId, SubscriberId subscriberId) {
 		publisherExportedToPeers.subscriptionAbstained(publisherId, subscriberId);
 	}
 
 
 	@Override
-	public void subscriptionConfirmed(UserId publisherId, UserId subscriberId) {
+	public void subscriptionConfirmed(PublisherId publisherId, SubscriberId subscriberId) {
 		publisherExportedToPeers.subscriptionConfirmed(publisherId, subscriberId);
 	}
 
@@ -61,31 +62,31 @@ public class ProxiedPublisherAdapter implements Publisher {
 
 
 	@Override
-	public ListOfSubscribers getListOfSubscribers(UserId publisherId) {
+	public ListOfSubscribers getListOfSubscribers(PublisherId publisherId) {
 		return publisherExportedToClient.getListOfSubscribers(publisherId);
 	}
 
 
 	@Override
-	public void notifySubscriber(UserId publisherId, UserId subscriberId, DigitalCard digitalCard) {
+	public void notifySubscriber(PublisherId publisherId, SubscriberId subscriberId, DigitalCard digitalCard) {
 		publisherExportedToClient.notifySubscriber(publisherId, subscriberId, digitalCard);
 	}
 
 
 	@Override
-	public void notifySubscribers(UserId publisherId, DigitalCard digitalCard) {
+	public void notifySubscribers(PublisherId publisherId, DigitalCard digitalCard) {
 		publisherExportedToClient.notifySubscribers(publisherId, digitalCard);
 	}
 
 
 	@Override
-	public void cancelSubscription(UserId publisherId, UserId subscriberId) {
+	public void cancelSubscription(PublisherId publisherId, SubscriberId subscriberId) {
 		publisherExportedToClient.cancelSubscription(publisherId, subscriberId);
 	}
 
 
 	@Override
-	public void inviteSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
+	public void inviteSubscriber(PublisherId publisherId, SubscriberId subscriberId, UserMetadata subscriberMetadata) {
 		publisherExportedToClient.inviteSubscriber(publisherId, subscriberId, subscriberMetadata);
 	}
 

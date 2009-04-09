@@ -10,6 +10,7 @@ import deus.core.access.storage.api.pub.LosDoRep;
 import deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver;
 import deus.core.soul.publication.PublisherExportedToClient;
 import deus.model.common.account.DistributionRole;
+import deus.model.common.user.frids.PublisherId;
 import deus.model.common.user.id.UserId;
 import deus.model.publication.ListOfSubscribers;
 import deus.model.publication.LosEntry;
@@ -33,7 +34,9 @@ public class CpRoleSetupPublisherObserver extends AbstractDistributionRoleSetupO
 
 	@Override
 	public void tearDownRole(UserId userId) {
-		ListOfSubscribers los = losDoRep.getByNaturalId(userId);
+		PublisherId publisherId = new PublisherId(userId);		
+		
+		ListOfSubscribers los = losDoRep.getByNaturalId(publisherId);
 		for (Map.Entry<UserId, LosEntry> entry : los.entrySet()) {
 			// FIXME: implement removing of all subscribers
 			// publisher.

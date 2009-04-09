@@ -13,7 +13,8 @@ import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
 import deus.core.soul.publication.Publisher;
 import deus.model.common.dossier.DigitalCard;
 import deus.model.common.user.UserMetadata;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.PublisherId;
+import deus.model.common.user.frids.SubscriberId;
 import deus.model.publication.ListOfSubscribers;
 import deus.model.publication.LosEntry;
 import deus.model.publication.PublisherSideSubscriptionState;
@@ -40,7 +41,7 @@ public class PublisherImpl implements Publisher {
 
 	// FIXME: think about returning a DTO to the frontend here
 	@Override
-	public ListOfSubscribers getListOfSubscribers(UserId publisherId) {
+	public ListOfSubscribers getListOfSubscribers(PublisherId publisherId) {
 		return losDoRep.getByNaturalId(publisherId);
 	}
 
@@ -48,36 +49,37 @@ public class PublisherImpl implements Publisher {
 	// +++ exported to PEER +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
-	public synchronized void addSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
+	public synchronized void addSubscriber(PublisherId publisherId, SubscriberId subscriberId,
+			UserMetadata subscriberMetadata) {
 		logger.trace("adding informationConsumer {}", subscriberId);
 
-		if (losEntryDao.existsByNaturalId(subscriberId, publisherId))
+		if (losEntryDao.existsByNaturalId(publisherId, subscriberId))
 			throw new IllegalArgumentException("cannot add informationConsumer, it has already been added!");
 
-		LosEntry entry = new LosEntry(publisherId);
+		LosEntry entry = new LosEntry(subscriberId);
 		entry.setSubscriberMetadata(subscriberMetadata);
 		entry.setSubscriptionState(PublisherSideSubscriptionState.established);
-		
+
 		losEntryDao.addNewEntity(publisherId, entry);
 	}
 
 
 	@Override
-	public synchronized void deleteSubscriber(UserId publisherId, UserId subscriberId) {
+	public synchronized void deleteSubscriber(PublisherId publisherId, SubscriberId subscriberId) {
 		logger.trace("removing informationConsumer {}", subscriberId);
 
-		if (!losEntryDao.existsByNaturalId(subscriberId, publisherId))
+		if (!losEntryDao.existsByNaturalId(publisherId, subscriberId))
 			throw new IllegalArgumentException("cannot remove informationConsumer, that has not been added yet!");
 
-		losEntryDao.deleteByNaturalId(subscriberId, publisherId);
+		losEntryDao.deleteByNaturalId(publisherId, subscriberId);
 	}
 
 
 	@Override
-	public void subscriptionConfirmed(UserId publisherId, UserId subscriberId) {
+	public void subscriptionConfirmed(PublisherId publisherId, SubscriberId subscriberId) {
 		logger.trace("in publisher of {}: informationConsumer {} confirmed subscription", subscriberId, publisherId);
 
-		LosEntry entry = losEntryDao.getByNaturalId(subscriberId, publisherId);
+		LosEntry entry = losEntryDao.getByNaturalId(publisherId, subscriberId);
 		entry.setSubscriptionState(PublisherSideSubscriptionState.established);
 
 		losEntryDao.updateEntity(publisherId, entry);
@@ -85,27 +87,27 @@ public class PublisherImpl implements Publisher {
 
 
 	@Override
-	public void subscriptionAbstained(UserId publisherId, UserId subscriberId) {
+	public void subscriptionAbstained(PublisherId publisherId, SubscriberId subscriberId) {
 		logger.trace("in publisher of {}: informationConsumer {} abstained subscription", subscriberId, publisherId);
 
-		losEntryDao.deleteByNaturalId(subscriberId, publisherId);
+		losEntryDao.deleteByNaturalId(publisherId, subscriberId);
 	}
 
 
 	// +++ exported to CLIENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
-	public synchronized void notifySubscriber(UserId publisherId, UserId subscriberId, DigitalCard digitalCard) {
+	public synchronized void notifySubscriber(PublisherId publisherId, SubscriberId subscriberId, DigitalCard digitalCard) {
 		logger.trace("notifying subscribers of change {}", digitalCard);
 
-		LosEntry losEntry = losEntryDao.getByNaturalId(subscriberId, publisherId);
+		LosEntry losEntry = losEntryDao.getByNaturalId(publisherId, subscriberId);
 
-		publisherCommandSender.update(losEntry.getSubscriberId(), publisherId, digitalCard);
+		publisherCommandSender.update(publisherId, losEntry.getSubscriberId(), digitalCard);
 	}
 
 
 	@Override
-	public void notifySubscribers(UserId publisherId, DigitalCard digitalCard) {
+	public void notifySubscribers(PublisherId publisherId, DigitalCard digitalCard) {
 		logger.trace("notifying subscribers of change {}", digitalCard);
 
 		ListOfSubscribers listOfSubscribers = losDoRep.getByNaturalId(publisherId);
@@ -130,15 +132,16 @@ public class PublisherImpl implements Publisher {
 			// TODO: think about publishing using multiple threads
 			LosEntry losEntry = (LosEntry) arrLocal[i];
 
-			publisherCommandSender.update(losEntry.getSubscriberId(), publisherId, digitalCard);
+			publisherCommandSender.update(publisherId, losEntry.getSubscriberId(), digitalCard);
 		}
 	}
 
 
 	@Override
-	public void inviteSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
-		if (losEntryDao.existsByNaturalId(subscriberId, publisherId))
-			throw new IllegalArgumentException("cannot offer subscription to informationConsumer (" + subscriberId + ") again!");
+	public void inviteSubscriber(PublisherId publisherId, SubscriberId subscriberId, UserMetadata subscriberMetadata) {
+		if (losEntryDao.existsByNaturalId(publisherId, subscriberId))
+			throw new IllegalArgumentException("cannot offer subscription to informationConsumer (" + subscriberId
+					+ ") again!");
 
 		logger.trace("in publisher {}: offering subscription to informationConsumer {}", publisherId, subscriberId);
 
@@ -147,22 +150,22 @@ public class PublisherImpl implements Publisher {
 		entry.setSubscriptionState(PublisherSideSubscriptionState.offered);
 		losEntryDao.addNewEntity(publisherId, entry);
 
-		UserMetadata publisherMetadata = userMetadataDao.getByNaturalId(publisherId);
+		UserMetadata publisherMetadata = userMetadataDao.getByNaturalId(publisherId.getUserId());
 
 		publisherCommandSender.offerSubscription(publisherId, subscriberId, publisherMetadata);
 	}
 
 
 	@Override
-	public void cancelSubscription(UserId publisherId, UserId subscriberId) {
-		if (losEntryDao.existsByNaturalId(subscriberId, publisherId))
+	public void cancelSubscription(PublisherId publisherId, SubscriberId subscriberId) {
+		if (losEntryDao.existsByNaturalId(publisherId, subscriberId))
 			throw new IllegalArgumentException("cannot cancel a subscription of informationConsumer (" + subscriberId
 					+ "), that has not been added yet!");
 
 		logger.trace("in publisher {}: canceling subscription to informationConsumer {}", publisherId, subscriberId);
 
-		losEntryDao.deleteByNaturalId(subscriberId, publisherId);
-		
+		losEntryDao.deleteByNaturalId(publisherId, subscriberId);
+
 		publisherCommandSender.cancelSubscription(publisherId, subscriberId);
 	}
 

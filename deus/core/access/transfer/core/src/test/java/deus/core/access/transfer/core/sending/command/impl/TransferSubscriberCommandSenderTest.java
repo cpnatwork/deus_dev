@@ -30,7 +30,7 @@ public class TransferSubscriberCommandSenderTest extends AbstractCommandSenderTe
 		transferSubscriberCommandSender.subscribe(subscriberId, publisherId, subscriberMetadata);
 
 		TransferMessage expectedMessage = new RequestSubscriptionMessage(subscriberMetadata);
-		setTids(expectedMessage, subscriberId, publisherId);
+		setTids(expectedMessage, subscriberId.getUserId(), publisherId.getUserId());
 
 		testEqualsMessage(expectedMessage, lastSentTransferMessage);
 
@@ -44,7 +44,7 @@ public class TransferSubscriberCommandSenderTest extends AbstractCommandSenderTe
 		transferSubscriberCommandSender.unsubscribe(subscriberId, publisherId);
 
 		TransferMessage expectedMessage = new UnsubscribeMessage();
-		setTids(expectedMessage, subscriberId, publisherId);
+		setTids(expectedMessage, subscriberId.getUserId(), publisherId.getUserId());
 
 		testEqualsMessage(expectedMessage, lastSentTransferMessage);
 	}

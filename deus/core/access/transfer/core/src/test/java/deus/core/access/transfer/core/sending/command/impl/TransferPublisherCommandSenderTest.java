@@ -29,10 +29,10 @@ public class TransferPublisherCommandSenderTest extends AbstractCommandSenderTes
 		DigitalCard digitalCard = new PartyInformationDC(new DigitalCardId(new UserUrl("higgins", "deus.org"),
 				new UserUrl("alice", "deus.org"), "surgery1"));
 
-		transferPublisherCommandSender.update(subscriberId, publisherId, digitalCard);
+		transferPublisherCommandSender.update(publisherId, subscriberId, digitalCard);
 
 		TransferMessage expectedMessage = new UpdateMessage(digitalCard);
-		setTids(expectedMessage, publisherId, subscriberId);
+		setTids(expectedMessage, publisherId.getUserId(), subscriberId.getUserId());
 
 		testEqualsMessage(expectedMessage, lastSentTransferMessage);
 

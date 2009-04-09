@@ -2,7 +2,8 @@ package deus.core.soul.publication;
 
 import deus.model.common.dossier.DigitalCard;
 import deus.model.common.user.UserMetadata;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.PublisherId;
+import deus.model.common.user.frids.SubscriberId;
 import deus.model.publication.ListOfSubscribers;
 
 /**
@@ -30,23 +31,23 @@ public interface PublisherExportedToClient {
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.ForeignInformationFile)
 	 */
 	// FIXME: replace DC parameter by Patch parameter
-	public abstract void notifySubscribers(UserId publisherId, DigitalCard digitalCard);
+	public abstract void notifySubscribers(PublisherId publisherId, DigitalCard digitalCard);
 
 	// FIXME: replace DC parameter by Patch parameter
-	public abstract void notifySubscriber(UserId publisherId, UserId subscriberId, DigitalCard digitalCard);
+	public abstract void notifySubscriber(PublisherId publisherId, SubscriberId subscriberId, DigitalCard digitalCard);
 	
 	
 	
 	// USE CASE: publisher initiated connection/termination
 	
-	public abstract void inviteSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata);
+	public abstract void inviteSubscriber(PublisherId publisherId, SubscriberId subscriberId, UserMetadata subscriberMetadata);
 	
-	public abstract void cancelSubscription(UserId publisherId, UserId subscriberId);
+	public abstract void cancelSubscription(PublisherId publisherId, SubscriberId subscriberId);
 	
 
 	
 	// DATA MODEL RETRIEVING
 	
-	public abstract ListOfSubscribers getListOfSubscribers(UserId publisherId);
+	public abstract ListOfSubscribers getListOfSubscribers(PublisherId publisherId);
 
 }

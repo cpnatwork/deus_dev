@@ -1,22 +1,23 @@
 package deus.core.access.storage.api.publication;
 
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.PublisherId;
+import deus.model.common.user.frids.SubscriberId;
 import deus.model.publication.LosEntry;
 
 public interface LosEntryDao {
 
-	public LosEntry getByNaturalId(UserId subscriberId, UserId publisherId);
+	public LosEntry getByNaturalId(PublisherId publisherId, SubscriberId subscriberId);
 
 
-	public void deleteByNaturalId(UserId subscriberId, UserId publisherId);
+	public void deleteByNaturalId(PublisherId publisherId, SubscriberId subscriberId);
 
 
-	public void updateEntity(UserId publisherId, LosEntry entry);
+	public void updateEntity(PublisherId publisherId, LosEntry entry);
 
 
-	public void addNewEntity(UserId publisherId, LosEntry entry);
+	public void addNewEntity(PublisherId publisherId, LosEntry entry);
 
 
-	public boolean existsByNaturalId(UserId subscriberId, UserId publisherId);
+	public boolean existsByNaturalId(PublisherId publisherId, SubscriberId subscriberId);
 
 }

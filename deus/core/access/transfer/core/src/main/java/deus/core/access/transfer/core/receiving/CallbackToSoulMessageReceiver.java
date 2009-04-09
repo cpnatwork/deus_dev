@@ -19,6 +19,8 @@ import deus.core.access.transfer.core.receiving.soulcallback.SoulCallbackRegistr
 import deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 import deus.model.common.user.UserMetadata;
+import deus.model.common.user.frids.PublisherId;
+import deus.model.common.user.frids.SubscriberId;
 import deus.model.common.user.id.UserId;
 
 @Component("messageReceiver")
@@ -43,7 +45,7 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 			if (message instanceof RequestSubscriptionMessage) {
 				UserMetadata senderMetadata = ((RequestSubscriptionMessage) message).getSubscriberMetadata();
 				// USE CASE: accept subscription
-				publisher.addSubscriber(receiverId, senderId, senderMetadata);
+				publisher.addSubscriber(new PublisherId(receiverId), new SubscriberId(senderId), senderMetadata);
 			}
 			// here: role informationConsumer
 			else if (message instanceof GrantSubscriptionRequestNoticeMessage)
@@ -63,16 +65,16 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 			}
 			// here: role publisher
 			else if (message instanceof ConfirmSubscriptionOfferNoticeMessage)
-				publisher.subscriptionConfirmed(receiverId, senderId);
+				publisher.subscriptionConfirmed(new PublisherId(receiverId), new SubscriberId(senderId));
 			else if (message instanceof RepelSubscriptionOfferNoticeMessage)
-				publisher.subscriptionAbstained(receiverId, senderId);
+				publisher.subscriptionAbstained(new PublisherId(receiverId), new SubscriberId(senderId));
 			else
 				throw new IllegalArgumentException("cannot handle command " + message);
 		}
 		// USE CASE: UNSUBSCRIBE
 		// here: role publisher
 		else if (message instanceof UnsubscribeMessage)
-			publisher.deleteSubscriber(receiverId, senderId);
+			publisher.deleteSubscriber(new PublisherId(receiverId), new SubscriberId(senderId));
 		// USE CASE: CANCEL SUBSCRIPTION
 		else if (message instanceof CancelSubscriptionMessage)
 			// FIXME: implement

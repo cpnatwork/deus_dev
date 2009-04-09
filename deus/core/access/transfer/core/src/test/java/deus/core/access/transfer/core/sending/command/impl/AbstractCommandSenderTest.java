@@ -14,6 +14,8 @@ import deus.core.access.transfer.common.protocol.messagesender.MessageSender;
 import deus.core.access.transfer.common.protocolregistry.TransferProtocolRegistry;
 import deus.core.access.transfer.core.soul.discovery.TransferProtocolNegotiationStrategy;
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransferId;
+import deus.model.common.user.frids.PublisherId;
+import deus.model.common.user.frids.SubscriberId;
 import deus.model.common.user.id.UserId;
 import deus.model.common.user.id.UserUrl;
 
@@ -32,8 +34,8 @@ public abstract class AbstractCommandSenderTest {
 	protected UserIdMapper userIdMapper;
 
 	
-	protected UserId subscriberId;	
-	protected UserId publisherId;
+	protected SubscriberId subscriberId;	
+	protected PublisherId publisherId;
 
 	private String testTransferProtocolId;
 
@@ -45,8 +47,8 @@ public abstract class AbstractCommandSenderTest {
 
 	@Before
 	public void setUp() throws Exception {
-		subscriberId = new UserUrl("bob", "deus.org");
-		publisherId = new UserUrl("alice", "deus.org");
+		subscriberId = new SubscriberId(new UserUrl("bob", "deus.org"));
+		publisherId = new PublisherId(new UserUrl("alice", "deus.org"));
 
 		tp = new TransferProtocolImpl();
 		tp.setProtocolId("testProtocol");

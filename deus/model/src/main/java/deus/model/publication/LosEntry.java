@@ -1,42 +1,35 @@
 package deus.model.publication;
 
 import deus.model.common.user.UserMetadata;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.SubscriberId;
 
+/**
+ * An entry in the list of subscribers.
+ * 
+ * The primary key is the ID of the publisher who owns the list and the ID of the subscriber who is embodied by the list
+ * entry. Only the latter is included in the entity, since this is the discriminator of the weak entity.
+ * 
+ * 
+ * @see ListOfSubscribers
+ * 
+ * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
+ * 
+ */
 public class LosEntry {
 
-	private final UserId ownerId;
-
-	private UserId subscriberId;
+	private final SubscriberId subscriberId;
 	private UserMetadata subscriberMetadata;
 
 	private PublisherSideSubscriptionState publisherSideSubscriptionState;
 
 
-	// TODO: insert SHARE SET here!
-
-
-	public LosEntry(UserId ownerId) {
-		super();
-		this.ownerId = ownerId;
-	}
-
-
-	/**
-	 * Returns the ID of the owner of this LosEntry. The owner is the publisher owning the list of subscribers.
-	 */
-	public UserId getOwnerId() {
-		return ownerId;
-	}
-
-
-	public UserId getSubscriberId() {
-		return subscriberId;
-	}
-
-
-	public void setSubscriberId(UserId subscriberId) {
+	public LosEntry(SubscriberId subscriberId) {
 		this.subscriberId = subscriberId;
+	}
+
+
+	public SubscriberId getSubscriberId() {
+		return subscriberId;
 	}
 
 
