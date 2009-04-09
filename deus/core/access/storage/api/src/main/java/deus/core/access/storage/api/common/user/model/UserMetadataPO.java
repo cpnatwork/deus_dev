@@ -1,4 +1,4 @@
-package deus.core.access.storage.api.user.model;
+package deus.core.access.storage.api.common.user.model;
 
 import java.util.UUID;
 

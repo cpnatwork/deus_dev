@@ -1,4 +1,4 @@
-package deus.core.access.storage.api.user;
+package deus.core.access.storage.api.common.user;
 
 import deus.model.common.user.UserMetadata;
 import deus.model.common.user.id.UserId;
