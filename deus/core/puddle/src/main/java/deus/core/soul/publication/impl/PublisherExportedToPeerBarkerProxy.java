@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.pub.LosEntryDoRep;
+import deus.core.access.storage.api.publication.LosEntryDao;
 import deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers;
 import deus.core.soul.hci.barker.BarkerExportedToSubsystems;
 import deus.model.common.user.UserMetadata;
@@ -33,7 +33,7 @@ public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPe
 	private BarkerExportedToSubsystems barker;
 	
 	@Autowired
-	private LosEntryDoRep losEntryDoRep;
+	private LosEntryDao losEntryDao;
 
 	
 	@Override
@@ -55,7 +55,7 @@ public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPe
 		// DELETE OBSERVER
 		proxiedPublisher.deleteSubscriber(publisherId, subscriberId);
 
-		LosEntry losEntry = losEntryDoRep.getByNaturalId(subscriberId, publisherId);
+		LosEntry losEntry = losEntryDao.getByNaturalId(subscriberId, publisherId);
 		
 		// PLACE NOTICE
 		UserMetadata subscriberMetadata = losEntry.getSubscriberMetadata();
@@ -70,7 +70,7 @@ public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPe
 	public void subscriptionConfirmed(UserId publisherId, UserId subscriberId) {
 		logger.debug("proxying call to subscriptionConfirmed");
 	
-		LosEntry losEntry = losEntryDoRep.getByNaturalId(subscriberId, publisherId);
+		LosEntry losEntry = losEntryDao.getByNaturalId(subscriberId, publisherId);
 
 		// get publisher metadata out of LoP
 		UserMetadata subscriberMetadata = losEntry.getSubscriberMetadata();
@@ -87,7 +87,7 @@ public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPe
 	public void subscriptionAbstained(UserId publisherId, UserId subscriberId) {
 		logger.debug("proxying call to subscriptionAbstained");
 
-		LosEntry losEntry = losEntryDoRep.getByNaturalId(subscriberId, publisherId);
+		LosEntry losEntry = losEntryDao.getByNaturalId(subscriberId, publisherId);
 
 		// get publisher metadata out of LoP
 		UserMetadata subscriberMetadata = losEntry.getSubscriberMetadata();

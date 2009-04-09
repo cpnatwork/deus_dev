@@ -10,7 +10,7 @@ public interface AccountDao {
 
 	public void deleteByNaturalId(String localUsername);
 
-	public boolean existsEntity(String localUserName);
+	public boolean existsByNaturalId(String localUserName);
 
 	public void addNewEntity(Account account);
 

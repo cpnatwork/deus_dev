@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.common.user.UserMetadataDao;
 import deus.core.access.storage.api.pub.LosDoRep;
-import deus.core.access.storage.api.pub.LosEntryDoRep;
+import deus.core.access.storage.api.publication.LosEntryDao;
 import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
 import deus.core.soul.publication.Publisher;
 import deus.model.common.dossier.DigitalCard;
@@ -32,7 +32,7 @@ public class PublisherImpl implements Publisher {
 	private UserMetadataDao userMetadataDao;
 
 	@Autowired
-	private LosEntryDoRep losEntryDoRep;
+	private LosEntryDao losEntryDao;
 
 	@Autowired
 	private LosDoRep losDoRep;
@@ -51,14 +51,14 @@ public class PublisherImpl implements Publisher {
 	public synchronized void addSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
 		logger.trace("adding informationConsumer {}", subscriberId);
 
-		if (losEntryDoRep.containsEntity(subscriberId, publisherId))
+		if (losEntryDao.existsByNaturalId(subscriberId, publisherId))
 			throw new IllegalArgumentException("cannot add informationConsumer, it has already been added!");
 
 		LosEntry entry = new LosEntry(publisherId);
 		entry.setSubscriberMetadata(subscriberMetadata);
 		entry.setSubscriptionState(PublisherSideSubscriptionState.established);
 		
-		losEntryDoRep.addNewEntity(publisherId, entry);
+		losEntryDao.addNewEntity(publisherId, entry);
 	}
 
 
@@ -66,10 +66,10 @@ public class PublisherImpl implements Publisher {
 	public synchronized void deleteSubscriber(UserId publisherId, UserId subscriberId) {
 		logger.trace("removing informationConsumer {}", subscriberId);
 
-		if (!losEntryDoRep.containsEntity(subscriberId, publisherId))
+		if (!losEntryDao.existsByNaturalId(subscriberId, publisherId))
 			throw new IllegalArgumentException("cannot remove informationConsumer, that has not been added yet!");
 
-		losEntryDoRep.deleteByNaturalId(subscriberId, publisherId);
+		losEntryDao.deleteByNaturalId(subscriberId, publisherId);
 	}
 
 
@@ -77,10 +77,10 @@ public class PublisherImpl implements Publisher {
 	public void subscriptionConfirmed(UserId publisherId, UserId subscriberId) {
 		logger.trace("in publisher of {}: informationConsumer {} confirmed subscription", subscriberId, publisherId);
 
-		LosEntry entry = losEntryDoRep.getByNaturalId(subscriberId, publisherId);
+		LosEntry entry = losEntryDao.getByNaturalId(subscriberId, publisherId);
 		entry.setSubscriptionState(PublisherSideSubscriptionState.established);
 
-		losEntryDoRep.updateEntity(publisherId, entry);
+		losEntryDao.updateEntity(publisherId, entry);
 	}
 
 
@@ -88,7 +88,7 @@ public class PublisherImpl implements Publisher {
 	public void subscriptionAbstained(UserId publisherId, UserId subscriberId) {
 		logger.trace("in publisher of {}: informationConsumer {} abstained subscription", subscriberId, publisherId);
 
-		losEntryDoRep.deleteByNaturalId(subscriberId, publisherId);
+		losEntryDao.deleteByNaturalId(subscriberId, publisherId);
 	}
 
 
@@ -98,7 +98,7 @@ public class PublisherImpl implements Publisher {
 	public synchronized void notifySubscriber(UserId publisherId, UserId subscriberId, DigitalCard digitalCard) {
 		logger.trace("notifying subscribers of change {}", digitalCard);
 
-		LosEntry losEntry = losEntryDoRep.getByNaturalId(subscriberId, publisherId);
+		LosEntry losEntry = losEntryDao.getByNaturalId(subscriberId, publisherId);
 
 		publisherCommandSender.update(losEntry.getSubscriberId(), publisherId, digitalCard);
 	}
@@ -137,7 +137,7 @@ public class PublisherImpl implements Publisher {
 
 	@Override
 	public void inviteSubscriber(UserId publisherId, UserId subscriberId, UserMetadata subscriberMetadata) {
-		if (losEntryDoRep.containsEntity(subscriberId, publisherId))
+		if (losEntryDao.existsByNaturalId(subscriberId, publisherId))
 			throw new IllegalArgumentException("cannot offer subscription to informationConsumer (" + subscriberId + ") again!");
 
 		logger.trace("in publisher {}: offering subscription to informationConsumer {}", publisherId, subscriberId);
@@ -145,7 +145,7 @@ public class PublisherImpl implements Publisher {
 		LosEntry entry = new LosEntry(subscriberId);
 		entry.setSubscriberMetadata(subscriberMetadata);
 		entry.setSubscriptionState(PublisherSideSubscriptionState.offered);
-		losEntryDoRep.addNewEntity(publisherId, entry);
+		losEntryDao.addNewEntity(publisherId, entry);
 
 		UserMetadata publisherMetadata = userMetadataDao.getByNaturalId(publisherId);
 
@@ -155,13 +155,13 @@ public class PublisherImpl implements Publisher {
 
 	@Override
 	public void cancelSubscription(UserId publisherId, UserId subscriberId) {
-		if (losEntryDoRep.containsEntity(subscriberId, publisherId))
+		if (losEntryDao.existsByNaturalId(subscriberId, publisherId))
 			throw new IllegalArgumentException("cannot cancel a subscription of informationConsumer (" + subscriberId
 					+ "), that has not been added yet!");
 
 		logger.trace("in publisher {}: canceling subscription to informationConsumer {}", publisherId, subscriberId);
 
-		losEntryDoRep.deleteByNaturalId(subscriberId, publisherId);
+		losEntryDao.deleteByNaturalId(subscriberId, publisherId);
 		
 		publisherCommandSender.cancelSubscription(publisherId, subscriberId);
 	}

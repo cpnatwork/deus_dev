@@ -118,7 +118,7 @@ public class RegistratorImpl implements Registrator {
 
 
 	public boolean existsLocalUsername(String localUserName) {
-		return accountDao.existsEntity(localUserName);
+		return accountDao.existsByNaturalId(localUserName);
 	}
 
 

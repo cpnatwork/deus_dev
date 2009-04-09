@@ -34,7 +34,7 @@ public class AccountDaoStub implements AccountDao {
 
 
 	@Override
-	public boolean existsEntity(String localUserName) {
+	public boolean existsByNaturalId(String localUserName) {
 		// TODO Auto-generated method stub
 		return false;
 	}
