@@ -292,7 +292,8 @@
 
 		<plugins>
 
-			<!--<plugin>
+			<!-- SPRING BUNDLOR FOR TRANSFORMATION OF JAR FILE TO OSGi BUNDLE -->
+			<!-- <plugin>
 				<groupId>com.springsource.bundlor</groupId>
 				<artifactId>com.springsource.bundlor.maven</artifactId>
 				<version>1.0.0.M2</version>
@@ -302,10 +303,62 @@
 						<goals>
 							<goal>transform</goal>
 						</goals>
+						<configuration>
+							<failOnWarnings>true</failOnWarnings>	 fail if Bundlor generates warnings. Default: true 
+							<manifestHeaders>
+							<![CDATA[
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: ${project.groupId}.${project.artifactId}
+Bundle-Version: ${version}
+Bundle-Name: ${project.name}
+Application-TraceLevels: ${application.traceLevels}
+Import-Template: javax.*;version="0"
+								]]>
+							</manifestHeaders>
+						</configuration>
 					</execution>
 				</executions>
-			</plugin>-->
+			</plugin> -->
+			
+			
+			
+			<!-- BUNDLE MANIFEST GENERATION -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>1.4.3</version>
+				<extensions>true</extensions>
+				<configuration>
+					<!-- The following instructions are delegated to the BND tool of Peter Kriens
+					- Options with capital letter are directly inserted into Manifest as Headers
+					- options starting with _ ...?
+					 -->
+					<instructions>
+						<!--
+							export all packages below the root package (except non exported packages), and don't reimport them! more on
+							reimporting exported packages here: http://www.osgi.org/blog/2007/04/importance-of-exporting-nd-importing.html
+							If this behaviour is desired, add ;-noimport:=true at the end!
+						-->
+						<Export-Package>${osgi.nonExportedPackages},${osgi.rootPackage}.*</Export-Package>
+ 
+						<!--
+							include all other packages (also the non exported packages!) as private. Export-Package takes precedence over
+							Private-Package!
+						-->
+						<Private-Package>${osgi.rootPackage}.*;-split-package:=merge-first</Private-Package>
+ 
+						<!-- remove the BND internal header, that just states, which packages are ignored by BND -->
+						<_removeheaders>Ignore-Package</_removeheaders>
+ 
+						<!-- add additional package imports -->
+						<Import-Package>${osgi.additionalPackageImports},*</Import-Package>
 
+						<!-- Spring DM server configuration for the level of trace output -->
+						<Application-TraceLevels>${application.traceLevels}</Application-TraceLevels>
+					</instructions>
+				</configuration>
+			</plugin>
+			
 
 
 			<!-- MAVEN PROJECT FILE GENERATION -->
@@ -350,42 +403,7 @@
 			</plugin>
 
 
-			<!-- BUNDLE MANIFEST GENERATION -->
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<version>1.4.3</version>
-				<extensions>true</extensions>
-				<configuration>
-					<!-- The following instructions are delegated to the BND tool of Peter Kriens
-					- Options with capital letter are directly inserted into Manifest as Headers
-					- options starting with _ ...?
-					 -->
-					<instructions>
-						<!--
-							export all packages below the root package (except non exported packages), and don't reimport them! more on
-							reimporting exported packages here: http://www.osgi.org/blog/2007/04/importance-of-exporting-nd-importing.html
-							If this behaviour is desired, add ;-noimport:=true at the end!
-						-->
-						<Export-Package>${osgi.nonExportedPackages},${osgi.rootPackage}.*</Export-Package>
 
-						<!--
-							include all other packages (also the non exported packages!) as private. Export-Package takes precedence over
-							Private-Package!
-						-->
-						<Private-Package>${osgi.rootPackage}.*;-split-package:=merge-first</Private-Package>
-
-						<!-- remove the BND internal header, that just states, which packages are ignored by BND -->
-						<_removeheaders>Ignore-Package</_removeheaders>
-
-						<!-- add additional package imports -->
-						<Import-Package>${osgi.additionalPackageImports},*</Import-Package>
-
-						<!-- Spring DM server configuration for the level of trace output -->
-						<Application-TraceLevels>${application.traceLevels}</Application-TraceLevels>
-					</instructions>
-				</configuration>
-			</plugin>
 
 
 			<!-- DEPENDENCY COPYING -->
@@ -546,6 +564,17 @@
 			<name>SpringSource Enterprise Bundle Repository - External Library Releases</name>
 			<url>http://repository.springsource.com/maven/libraries/external</url>
 		</repository>
+		
 	</repositories>
+
+	<!-- this is used to get Bundlor -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>com.springsource.repository.bundles.milestone</id>
+			<name>SpringSource Enterprise Bundle Repository</name>
+			<url>http://repository.springsource.com/maven/bundles/milestone</url>
+		</pluginRepository>
+	</pluginRepositories>
+	
 
 </project>
