@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import deus.model.common.user.UserMetadata;
+import deus.model.common.user.frids.PublisherId;
 import deus.model.common.user.id.UserUrl;
 import deus.model.hci.attention.BinaryDecisionToMake;
 import deus.model.hci.attention.publication.connection.establish.pubinit.PublisherOffer;
@@ -18,7 +19,7 @@ public class PublisherOfferTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		dec = new PublisherOffer(new UserUrl("alice", "http://www.deus.org"), new UserMetadata());
+		dec = new PublisherOffer(new PublisherId(new UserUrl("alice", "http://www.deus.org")), new UserMetadata());
 	}
 
 

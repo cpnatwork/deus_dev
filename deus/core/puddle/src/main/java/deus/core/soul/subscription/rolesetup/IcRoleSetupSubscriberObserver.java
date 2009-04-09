@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.sub.LopDoRep;
+import deus.core.access.storage.api.subscription.LopDao;
 import deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver;
 import deus.core.soul.subscription.SubscriberExportedToClient;
 import deus.model.common.account.DistributionRole;
@@ -20,7 +20,7 @@ import deus.model.subscription.LopEntry;
 public class IcRoleSetupSubscriberObserver extends AbstractDistributionRoleSetupObserver {
 	
 	@Autowired
-	private LopDoRep lopDoRep;
+	private LopDao lopDao;
 
 	@Autowired
 	@Qualifier("target")
@@ -35,7 +35,7 @@ public class IcRoleSetupSubscriberObserver extends AbstractDistributionRoleSetup
 
 	@Override
 	public void tearDownRole(UserId userId) {
-		ListOfPublishers lop = lopDoRep.getByNaturalId(userId);
+		ListOfPublishers lop = lopDao.getByNaturalId(new SubscriberId(userId));
 		for (Map.Entry<UserId, LopEntry> entry : lop.entrySet()) {
 			subscriber.unsubscribe(new SubscriberId(userId), new PublisherId(entry.getKey()));
 		}
