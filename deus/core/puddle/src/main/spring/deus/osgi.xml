@@ -17,16 +17,24 @@
 		
 	
 	<!-- DAOs -->
+
+	<osgi:reference id="accountDao" interface="deus.core.access.storage.api.common.account.AccountDao" />
+
+	<osgi:reference id="digitalCardDao" interface="deus.core.access.storage.api.common.dossier.DigitalCardDao" />
 	
-	<osgi:reference id="attentionDao" interface="deus.core.access.storage.api.archive.attention.AttentionDao"/>
+	<osgi:reference id="userMetadataDao" interface="deus.core.access.storage.api.common.user.UserMetadataDao" />
+
+	<osgi:reference id="fifDao" interface="deus.core.access.storage.api.difgoverning.FifDao" />
 	
-	<osgi:reference id="pubDao" interface="deus.core.access.storage.api.sub.LopEntryDoRep"/>
+	<osgi:reference id="pifDao" interface="deus.core.access.storage.api.pifgoverning.PifDao" />
 	
-	<osgi:reference id="subDao" interface="deus.core.access.storage.api.pub.api.PubDao"/>
+	<osgi:reference id="losDao" interface="deus.core.access.storage.api.publication.LosDao" />
 	
-	<osgi:reference id="userDao" interface="deus.core.access.storage.api.common.user.UserMetadataDoRep"/>
+	<osgi:reference id="losEntryDao" interface="deus.core.access.storage.api.publication.LosEntryDao" />
+
+	<osgi:reference id="lopDao" interface="deus.core.access.storage.api.subscription.LopDao" />
 	
-	<osgi:reference id="dossierDao" interface="deus.core.access.storage.api.dossier.api.DossierDao"/>
+	<osgi:reference id="lopEntryDao" interface="deus.core.access.storage.api.subscription.LopEntryDao" />
 
 
 	<!-- GATEKEEPER -->
