@@ -10,7 +10,8 @@ import deus.core.access.transfer.common.messages.publication.connection.establis
 import deus.core.access.transfer.common.messages.publication.connection.terminate.UnsubscribeMessage;
 import deus.core.access.transfer.core.sending.command.SubscriberCommandSender;
 import deus.model.common.user.UserMetadata;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.PublisherId;
+import deus.model.common.user.frids.SubscriberId;
 
 @Component("subscriberCommandSender")
 public class TransferSubscriberCommandSender implements SubscriberCommandSender {
@@ -20,31 +21,31 @@ public class TransferSubscriberCommandSender implements SubscriberCommandSender 
 
 	
 	@Override
-	public void subscribe(UserId subscriberId, UserId publisherId, UserMetadata subscriberMetadata) {
+	public void subscribe(SubscriberId subscriberId, PublisherId publisherId, UserMetadata subscriberMetadata) {
 		TransferMessage transferMessage = new RequestSubscriptionMessage(subscriberMetadata);
-		transferMessageSenderHelper.send(publisherId, subscriberId, transferMessage);
+		transferMessageSenderHelper.send(publisherId.getUserId(), subscriberId.getUserId(), transferMessage);
 	}
 
 
 	@Override
-	public void unsubscribe(UserId subscriberId, UserId publisherId) {
+	public void unsubscribe(SubscriberId subscriberId, PublisherId publisherId) {
 		TransferMessage transferMessage = new UnsubscribeMessage();
-		transferMessageSenderHelper.send(publisherId, subscriberId, transferMessage);
+		transferMessageSenderHelper.send(publisherId.getUserId(), subscriberId.getUserId(), transferMessage);
 	}
 
 	
 
 	@Override
-	public void confirmSubscriptionOffer(UserId subscriberId, UserId publisherId) {
+	public void confirmSubscriptionOffer(SubscriberId subscriberId, PublisherId publisherId) {
 		TransferMessage transferMessage = new ConfirmSubscriptionOfferNoticeMessage();
-		transferMessageSenderHelper.send(publisherId, subscriberId, transferMessage);
+		transferMessageSenderHelper.send(publisherId.getUserId(), subscriberId.getUserId(), transferMessage);
 	}
 	
 	
 	@Override
-	public void repelSubscriptionOffer(UserId subscriberId, UserId publisherId) {
+	public void repelSubscriptionOffer(SubscriberId subscriberId, PublisherId publisherId) {
 		TransferMessage transferMessage = new RepelSubscriptionOfferNoticeMessage();
-		transferMessageSenderHelper.send(publisherId, subscriberId, transferMessage);
+		transferMessageSenderHelper.send(publisherId.getUserId(), subscriberId.getUserId(), transferMessage);
 	}
 	
 }

@@ -49,9 +49,9 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 			}
 			// here: role informationConsumer
 			else if (message instanceof GrantSubscriptionRequestNoticeMessage)
-				subscriber.noticeSubscriptionRequestGranted(receiverId, senderId);
+				subscriber.noticeSubscriptionRequestGranted(new SubscriberId(receiverId), new PublisherId(senderId));
 			else if (message instanceof DenySubscriptionRequestNoticeMessage)
-				subscriber.noticeSubscriptionRequestDenied(receiverId, senderId);
+				subscriber.noticeSubscriptionRequestDenied(new SubscriberId(receiverId), new PublisherId(senderId));
 			else
 				throw new IllegalArgumentException("cannot handle command " + message);
 		}
@@ -61,7 +61,7 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 			if (message instanceof OfferSubscriptionMessage) {
 				UserMetadata senderMetadata = ((OfferSubscriptionMessage) message).getPublisherMetadata();
 				// USE CASE: confirm subscription
-				subscriber.addPublisher(receiverId, senderId, senderMetadata);
+				subscriber.addPublisher(new SubscriberId(receiverId), new PublisherId(senderId), senderMetadata);
 			}
 			// here: role publisher
 			else if (message instanceof ConfirmSubscriptionOfferNoticeMessage)

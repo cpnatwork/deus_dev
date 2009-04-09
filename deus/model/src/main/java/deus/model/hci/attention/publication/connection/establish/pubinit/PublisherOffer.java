@@ -1,24 +1,24 @@
 package deus.model.hci.attention.publication.connection.establish.pubinit;
 
 import deus.model.common.user.UserMetadata;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.PublisherId;
 import deus.model.hci.attention.DecisionType;
 import deus.model.hci.attention.publication.connection.ConnectionDecisionToMake;
 
 // FIXME: rename it to OfferSubscriptionPlea
 public class PublisherOffer extends ConnectionDecisionToMake {
 
-	private final UserId publisherId;
+	private final PublisherId publisherId;
 	private final UserMetadata publisherMetadata;
 
 
-	public PublisherOffer(UserId publisherId, UserMetadata publisherMetadata) {
+	public PublisherOffer(PublisherId publisherId, UserMetadata publisherMetadata) {
 		this.publisherId = publisherId;
 		this.publisherMetadata = publisherMetadata;
 	}
 
 
-	public UserId getPublisherId() {
+	public PublisherId getPublisherId() {
 		return publisherId;
 	}
 

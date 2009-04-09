@@ -1,7 +1,8 @@
 package deus.core.access.transfer.core.sending.command;
 
 import deus.model.common.user.UserMetadata;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.PublisherId;
+import deus.model.common.user.frids.SubscriberId;
 
 /**
  * Realizes use case "request subscription", "send cancel subscription use case".
@@ -16,20 +17,20 @@ public interface SubscriberCommandSender {
 	
 	
 	// FIXME: rename to requestSubscription, since use case is called like this
-	public void subscribe(UserId subscriberId, UserId publisherId, UserMetadata subscriberMetadata);
+	public void subscribe(SubscriberId subscriberId, PublisherId publisherId, UserMetadata subscriberMetadata);
 
 
 	// FIXME: rename to requestSubscription, since use case is called like this
-	public void unsubscribe(UserId subscriberId, UserId publisherId);
+	public void unsubscribe(SubscriberId subscriberId, PublisherId publisherId);
 	
 	
 	
 
 	// USE CASE: publisher initiated connection (used, when in role informationConsumer)
 	
-	public void confirmSubscriptionOffer(UserId subscriberId, UserId publisherId);
+	public void confirmSubscriptionOffer(SubscriberId subscriberId, PublisherId publisherId);
 
 
-	public void repelSubscriptionOffer(UserId subscriberId, UserId publisherId);
+	public void repelSubscriptionOffer(SubscriberId subscriberId, PublisherId publisherId);
 	
 }

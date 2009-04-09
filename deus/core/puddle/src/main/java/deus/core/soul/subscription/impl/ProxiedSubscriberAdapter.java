@@ -9,7 +9,8 @@ import deus.core.soul.subscription.Subscriber;
 import deus.core.soul.subscription.SubscriberExportedToClient;
 import deus.model.common.dossier.Patch;
 import deus.model.common.user.UserMetadata;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.PublisherId;
+import deus.model.common.user.frids.SubscriberId;
 import deus.model.subscription.ListOfPublishers;
 
 /**
@@ -35,31 +36,31 @@ public class ProxiedSubscriberAdapter implements Subscriber {
 	// +++ METHODS SUBSCRIBER EXPORTED TO PEER ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	@Override
-	public void noticeSubscriptionRequestGranted(UserId subscriberId, UserId publisherId) {
+	public void noticeSubscriptionRequestGranted(SubscriberId subscriberId, PublisherId publisherId) {
 		subscriberExportedToPeers.noticeSubscriptionRequestGranted(subscriberId, publisherId);
 	}
 
 
 	@Override
-	public void noticeSubscriptionRequestDenied(UserId subscriberId, UserId publisherId) {
+	public void noticeSubscriptionRequestDenied(SubscriberId subscriberId, PublisherId publisherId) {
 		subscriberExportedToPeers.noticeSubscriptionRequestDenied(subscriberId, publisherId);
 	}
 
 
 	@Override
-	public void update(UserId subscriberId, UserId publisherId, Patch patch) {
+	public void update(SubscriberId subscriberId, PublisherId publisherId, Patch patch) {
 		subscriberExportedToPeers.update(subscriberId, publisherId, patch);
 	}
 
 
 	@Override
-	public void addPublisher(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata) {
+	public void addPublisher(SubscriberId subscriberId, PublisherId publisherId, UserMetadata publisherMetadata) {
 		subscriberExportedToPeers.addPublisher(subscriberId, publisherId, publisherMetadata);
 	}
 
 
 	@Override
-	public void deletePublisher(UserId subscriberId, UserId publisherId) {
+	public void deletePublisher(SubscriberId subscriberId, PublisherId publisherId) {
 		subscriberExportedToPeers.deletePublisher(subscriberId, publisherId);
 	}
 
@@ -68,19 +69,19 @@ public class ProxiedSubscriberAdapter implements Subscriber {
 
 
 	@Override
-	public void subscribeToPublisher(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata) {
+	public void subscribeToPublisher(SubscriberId subscriberId, PublisherId publisherId, UserMetadata publisherMetadata) {
 		subscriberExportedToClient.subscribeToPublisher(subscriberId, publisherId, publisherMetadata);
 	}
 
 
 	@Override
-	public void unsubscribe(UserId subscriberId, UserId publisherId) {
+	public void unsubscribe(SubscriberId subscriberId, PublisherId publisherId) {
 		subscriberExportedToClient.unsubscribe(subscriberId, publisherId);
 	}
 
 
 	@Override
-	public ListOfPublishers getListOfPublishers(UserId subscriberId) {
+	public ListOfPublishers getListOfPublishers(SubscriberId subscriberId) {
 		return subscriberExportedToClient.getListOfPublishers(subscriberId);
 	}
 

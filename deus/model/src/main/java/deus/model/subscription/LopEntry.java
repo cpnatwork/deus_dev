@@ -1,23 +1,23 @@
 package deus.model.subscription;
 
 import deus.model.common.user.UserMetadata;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.PublisherId;
 
 public class LopEntry {
 
-	private final UserId publisherId;
+	private final PublisherId publisherId;
 	private UserMetadata publisherMetadata;
 
 	private SubscriberSideSubscriptionState subscriberSideSubscriptionState;
 
 
-	public LopEntry(UserId publisherId) {
+	public LopEntry(PublisherId publisherId) {
 		super();
 		this.publisherId = publisherId;
 	}
 
 
-	public UserId getPublisherId() {
+	public PublisherId getPublisherId() {
 		return publisherId;
 
 	}

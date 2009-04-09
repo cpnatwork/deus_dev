@@ -7,6 +7,7 @@ import deus.core.access.transfer.core.receiving.soulcallback.subscription.Subscr
 import deus.core.access.transfer.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.hci.decisionprocessor.impl.AbstractGenericDecisionProcessor;
 import deus.model.common.user.UserMetadata;
+import deus.model.common.user.frids.SubscriberId;
 import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.publication.connection.establish.pubinit.PublisherOffer;
 
@@ -28,14 +29,14 @@ public class PublisherOfferDecisionProcessor extends AbstractGenericDecisionProc
 		UserMetadata publisherMetadata = publisherOffer.getPublisherMetadata();
 
 		if (publisherOffer.isDecisionPositive()) {
-			subscriber.addPublisher(userId, publisherOffer.getPublisherId(), publisherMetadata);
+			subscriber.addPublisher(new SubscriberId(userId), publisherOffer.getPublisherId(), publisherMetadata);
 
-			subscriberCommandSender.confirmSubscriptionOffer(userId, publisherOffer.getPublisherId());
+			subscriberCommandSender.confirmSubscriptionOffer(new SubscriberId(userId), publisherOffer.getPublisherId());
 		}
 		else {
 			// do not add observer
 
-			subscriberCommandSender.repelSubscriptionOffer(userId, publisherOffer.getPublisherId());
+			subscriberCommandSender.repelSubscriptionOffer(new SubscriberId(userId), publisherOffer.getPublisherId());
 		}
 	}
 

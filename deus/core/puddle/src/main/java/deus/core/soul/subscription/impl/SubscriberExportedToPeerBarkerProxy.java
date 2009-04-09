@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.sub.LopEntryDoRep;
+import deus.core.access.storage.api.subscription.LopEntryDao;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 import deus.core.soul.hci.barker.BarkerExportedToSubsystems;
 import deus.model.common.dossier.Patch;
 import deus.model.common.user.UserMetadata;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.PublisherId;
+import deus.model.common.user.frids.SubscriberId;
 import deus.model.hci.attention.BinaryDecisionToMake;
 import deus.model.hci.attention.Notice;
 import deus.model.hci.attention.publication.UpdateNotice;
@@ -35,19 +36,19 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 	private BarkerExportedToSubsystems barker;
 
 	@Autowired
-	private LopEntryDoRep lopEntryDoRep;
+	private LopEntryDao lopEntryDao;
 
 
 	@Override
-	public void noticeSubscriptionRequestGranted(UserId subscriberId, UserId publisherId) {
+	public void noticeSubscriptionRequestGranted(SubscriberId subscriberId, PublisherId publisherId) {
 		logger.debug("proxying call to acknowledgeSubscription");
 
-		LopEntry lopEntry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
+		LopEntry lopEntry = lopEntryDao.getByNaturalId(subscriberId, publisherId);
 
 		// get publisher metadata out of LoP
 		UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
 		Notice notice = new SubscriptionRequestGrantedNotice(publisherMetadata);
-		barker.addUnnoticedAttentionElement(subscriberId, notice);
+		barker.addUnnoticedAttentionElement(subscriberId.getUserId(), notice);
 
 		logger.debug("added {} to barker", notice);
 		
@@ -56,15 +57,15 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 
 
 	@Override
-	public void noticeSubscriptionRequestDenied(UserId subscriberId, UserId publisherId) {
+	public void noticeSubscriptionRequestDenied(SubscriberId subscriberId, PublisherId publisherId) {
 		logger.debug("proxying call to denySubscription");
 
-		LopEntry lopEntry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
+		LopEntry lopEntry = lopEntryDao.getByNaturalId(subscriberId, publisherId);
 
 		// get publisher metadata out of LoP
 		UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
 		Notice notice = new SubscriptionRequestDeniedNotice(publisherMetadata);
-		barker.addUnnoticedAttentionElement(subscriberId, notice);
+		barker.addUnnoticedAttentionElement(subscriberId.getUserId(), notice);
 
 		logger.debug("added {} to barker", notice);
 		
@@ -73,44 +74,44 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 
 
 	@Override
-	public void update(UserId subscriberId, UserId publisherId, Patch patch) {
+	public void update(SubscriberId subscriberId, PublisherId publisherId, Patch patch) {
 		logger.debug("proxying call to update");
 
 		proxiedSubscriber.update(subscriberId, publisherId, patch);
 
-		LopEntry lopEntry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
+		LopEntry lopEntry = lopEntryDao.getByNaturalId(subscriberId, publisherId);
 		Notice notice = new UpdateNotice(lopEntry.getPublisherMetadata(), patch);
-		barker.addUnnoticedAttentionElement(subscriberId, notice);
+		barker.addUnnoticedAttentionElement(subscriberId.getUserId(), notice);
 
 		logger.debug("added {} to barker", notice);
 	}
 
 
 	@Override
-	public void addPublisher(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata) {
+	public void addPublisher(SubscriberId subscriberId, PublisherId publisherId, UserMetadata publisherMetadata) {
 		logger.debug("proxying call to addPublisher");
 
 		// PLACE PUBLISHER REQUEST
-		BinaryDecisionToMake decision = new PublisherOffer(subscriberId, publisherMetadata);
-		barker.addUnnoticedAttentionElement(publisherId, decision);
+		BinaryDecisionToMake decision = new PublisherOffer(publisherId, publisherMetadata);
+		barker.addUnnoticedAttentionElement(subscriberId.getUserId(), decision);
 		
 		logger.trace("added {} to barker", decision);
 	}
 
 
 	@Override
-	public void deletePublisher(UserId subscriberId, UserId publisherId) {
+	public void deletePublisher(SubscriberId subscriberId, PublisherId publisherId) {
 		logger.debug("proxying call to deletePublisher");
 		
 		// DELETE PUBLISHER
-		proxiedSubscriber.deletePublisher(publisherId, subscriberId);
+		proxiedSubscriber.deletePublisher(subscriberId, publisherId);
 
-		LopEntry lopEntry = lopEntryDoRep.getByNaturalId(publisherId, subscriberId);
+		LopEntry lopEntry = lopEntryDao.getByNaturalId(subscriberId, publisherId);
 		
 		// PLACE NOTICE
 		UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
 		Notice notice = new PublisherInitiatedTerminationNotice(publisherMetadata);
-		barker.addUnnoticedAttentionElement(publisherId, notice);
+		barker.addUnnoticedAttentionElement(subscriberId.getUserId(), notice);
 		
 		logger.trace("added {} to barker", notice);
 	}

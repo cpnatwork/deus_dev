@@ -1,7 +1,8 @@
 package deus.core.soul.subscription;
 
 import deus.model.common.user.UserMetadata;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.PublisherId;
+import deus.model.common.user.frids.SubscriberId;
 import deus.model.subscription.ListOfPublishers;
 
 /**
@@ -16,14 +17,14 @@ public interface SubscriberExportedToClient {
 
 	// USE CASE: subscriber initiated connection/termination
 	
-	public void subscribeToPublisher(UserId subscriberId, UserId publisherId, UserMetadata publisherMetadata);
+	public void subscribeToPublisher(SubscriberId subscriberId, PublisherId publisherId, UserMetadata publisherMetadata);
 
 	// FIXME: rename to unsubscribeFromPublisher
-	public void unsubscribe(UserId subscriberId, UserId publisherId);
+	public void unsubscribe(SubscriberId subscriberId, PublisherId publisherId);
 
 	
 	// DATA MODEL RETRIEVING
 	
-	public ListOfPublishers getListOfPublishers(UserId subscriberId);
+	public ListOfPublishers getListOfPublishers(SubscriberId subscriberId);
 
 }
