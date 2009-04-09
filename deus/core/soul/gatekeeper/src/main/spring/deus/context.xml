@@ -23,7 +23,7 @@
 	more help: http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-annotation-config -->
 	<context:annotation-config />
 	
-	<!-- 
+	<!--
 	the aforementioned annotations require the bean to already be present in the application context. If you do not like
 	to instantiate the bean in XML using <bean>, use stereotype annotations to annotate the spring managed components:
 			

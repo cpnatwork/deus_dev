@@ -24,7 +24,7 @@
 	
 	<osgi:reference id="subDao" interface="deus.core.access.storage.api.pub.api.PubDao"/>
 	
-	<osgi:reference id="userDao" interface="deus.core.access.storage.api.user.UserMetadataDoRep"/>
+	<osgi:reference id="userDao" interface="deus.core.access.storage.api.common.user.UserMetadataDoRep"/>
 	
 	<osgi:reference id="dossierDao" interface="deus.core.access.storage.api.dossier.api.DossierDao"/>
 

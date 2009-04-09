@@ -3,18 +3,24 @@ package deus.core.soul.accountadmin.manager.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.account.AccountDoRep;
+import deus.core.access.storage.api.common.account.AccountDao;
+import deus.core.access.storage.api.common.user.UserMetadataDao;
 import deus.core.soul.accountadmin.manager.AccountManager;
 import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup;
 import deus.model.common.account.Account;
 import deus.model.common.account.DistributionRole;
 import deus.model.common.user.UserMetadata;
+import deus.model.common.user.id.UserId;
 
 @Component("accountManager")
 public class AccountManagerImpl implements AccountManager {
 
+	
 	@Autowired
-	private AccountDoRep accountDoRep;
+	private AccountDao accountDao;
+	
+	@Autowired
+	private UserMetadataDao userMetadataDao;
 	
 	@Autowired
 	private DistributionRoleSetup distributionRoleSetup;
@@ -22,22 +28,22 @@ public class AccountManagerImpl implements AccountManager {
 
 	@Override
 	public void changePassword(String localUsername, String newPassword) {
-		Account account = accountDoRep.getByNaturalId(localUsername);
-
+		Account account = accountDao.getByNaturalId(localUsername);
+		
 		account.setPassword(newPassword);
 
-		accountDoRep.updateEntity(account);
+		accountDao.updateEntity(account);
 	}
 
 	
 	@Override
 	public void addRole(String localUsername, DistributionRole distributionRole) {
-		Account account = accountDoRep.getByNaturalId(localUsername);
+		Account account = accountDao.getByNaturalId(localUsername);
 
 		if (account.getUserRoles().add(distributionRole) == false)
 			throw new IllegalArgumentException("account " + account + " already contains role " + distributionRole);
 
-		accountDoRep.updateEntity(account);
+		accountDao.updateEntity(account);
 		
 		distributionRoleSetup.setUpRole(distributionRole, account.getUserId());
 	}
@@ -45,24 +51,26 @@ public class AccountManagerImpl implements AccountManager {
 
 	@Override
 	public void removeRole(String localUsername, DistributionRole distributionRole) {
-		Account account = accountDoRep.getByNaturalId(localUsername);
+		Account account = accountDao.getByNaturalId(localUsername);
 
 		if (!account.getUserRoles().contains(distributionRole))
 			throw new IllegalArgumentException("account " + account + " does not contain role " + distributionRole);
 
 		account.getUserRoles().remove(distributionRole);
 
-		accountDoRep.updateEntity(account);
+		accountDao.updateEntity(account);
 		
 		distributionRoleSetup.tearDownRole(distributionRole, account.getUserId());
 	}
 
 
-	// FIXME: implement
 	@Override
 	public void changeUserMetadata(String localUsername, UserMetadata userMetadata) {
-		// TODO Auto-generated method stub
+		Account account = accountDao.getByNaturalId(localUsername);
 		
+		UserId userId = account.getUserId();
+		
+		userMetadataDao.updateEntity(userId, userMetadata);
 	}
 
 

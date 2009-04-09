@@ -13,6 +13,6 @@
 	
 	<osgi:service id="subDaoOsgiService" ref="subDao" interface="deus.core.access.storage.api.sub.LopEntryDoRep" />
 	
-	<osgi:service id="userDaoOsgiService" ref="userDao" interface="deus.core.access.storage.api.user.api.UserMetadataDao" />
+	<osgi:service id="userDaoOsgiService" ref="userDao" interface="deus.core.access.storage.api.common.user.api.UserMetadataDao" />
 
 </beans>

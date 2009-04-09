@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.user.model.UserPO;
+import deus.core.access.storage.api.common.user.model.UserPO;
 import deus.core.access.storage.common.hibernate.GenericInternalDaoImpl;
 
 @Component

@@ -6,7 +6,7 @@ package deus.core.access.storage.user.inmemory;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import deus.core.access.storage.api.user.UserMetadataDoRep;
+import deus.core.access.storage.api.common.user.UserMetadataDoRep;
 
 /**
  * @author cpn

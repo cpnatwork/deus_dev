@@ -29,9 +29,9 @@
 	
 	<!-- DAOs -->
 
-	<osgi:reference id="localUserDao" interface="deus.core.access.storage.api.user.api.LocalUserDao" />
+	<osgi:reference id="localUserDao" interface="deus.core.access.storage.api.common.user.api.LocalUserDao" />
 
-	<osgi:reference id="accountDao" interface="deus.core.access.storage.api.user.AccountDoRep" />
+	<osgi:reference id="accountDao" interface="deus.core.access.storage.api.common.user.AccountDoRep" />
 
 
 </beans>

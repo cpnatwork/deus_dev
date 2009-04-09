@@ -8,4 +8,10 @@ public interface AccountDao {
 
 	public void updateEntity(Account account);
 
+	public void deleteByNaturalId(String localUsername);
+
+	public boolean existsEntity(String localUserName);
+
+	public void addNewEntity(Account account);
+
 }

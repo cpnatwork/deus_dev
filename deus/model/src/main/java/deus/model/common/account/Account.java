@@ -4,7 +4,18 @@ import java.util.Set;
 
 import deus.model.common.user.id.UserId;
 
-
+/**
+ * A DEUS account of a user. An account is uniquely identified by a <code>localUsername</code>. While the
+ * <code>userId</code> also uniquely identifies an account, <code>localUsername</code> is used for loading and storing
+ * accounts using DAOs.
+ * 
+ * The logged in state of the user is stored using <code>loggedIn</code>.
+ * 
+ * Furthermore, a set of distribution roles, assumed by the account is stored.
+ * 
+ * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
+ * 
+ */
 public class Account {
 
 	private String localUsername;

@@ -18,7 +18,7 @@ public class PublisherOfferTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		dec = new PublisherOffer(new UserUrl("alice", "deus.org"), new UserMetadata());
+		dec = new PublisherOffer(new UserUrl("alice", "http://www.deus.org"), new UserMetadata());
 	}
 
 

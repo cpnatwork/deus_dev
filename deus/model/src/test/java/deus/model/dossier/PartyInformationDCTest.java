@@ -21,12 +21,12 @@ public class PartyInformationDCTest {
 	@Before
 	public void setUp() throws Exception {
 		dc = new PartyInformationDC(new DigitalCardId(
-				new UserUrl("higgins", "deus.org"),
-				new UserUrl("alice", "deus.org"),
+				new UserUrl("higgins", "http://www.deus.org"),
+				new UserUrl("alice", "http://www.deus.org"),
 				"party information from Higgins about Alice"));
 
 		person = new Person();
-		person.setId(new UserUrl("alice", "deus.org"));
+		person.setId(new UserUrl("alice", "http://www.deus.org"));
 		dc.setPartyInformation(person);
 	}
 
@@ -41,7 +41,7 @@ public class PartyInformationDCTest {
 	public void testSetPartyInformation() {
 		try {
 			Person otherPerson = new Person();
-			otherPerson.setId(new UserUrl("another alice", "deus.org"));
+			otherPerson.setId(new UserUrl("another alice", "http://www.deus.org"));
 			dc.setPartyInformation(otherPerson);
 			fail("could set party information with different ID than the one of the digital card");
 		}

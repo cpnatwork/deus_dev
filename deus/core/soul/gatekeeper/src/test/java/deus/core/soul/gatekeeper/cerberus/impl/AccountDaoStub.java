@@ -1,10 +1,10 @@
 package deus.core.soul.gatekeeper.cerberus.impl;
 
-import deus.core.access.storage.api.account.AccountDoRep;
+import deus.core.access.storage.api.common.account.AccountDao;
 import deus.model.common.account.Account;
 import deus.model.common.user.id.UserUrl;
 
-public class AccountDoRepStub implements AccountDoRep {
+public class AccountDaoStub implements AccountDao {
 
 	@Override
 	public void addNewEntity(Account account) {
@@ -21,13 +21,6 @@ public class AccountDoRepStub implements AccountDoRep {
 
 
 	@Override
-	public boolean existsAccount(String localUserName) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
 	public Account getByNaturalId(String localUsername) {
 		return new Account(localUsername, "", new UserUrl(localUsername, "deus.org"), null);
 	}
@@ -37,6 +30,13 @@ public class AccountDoRepStub implements AccountDoRep {
 	public void updateEntity(Account account) {
 		// TODO Auto-generated method stub
 
+	}
+
+
+	@Override
+	public boolean existsEntity(String localUserName) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 

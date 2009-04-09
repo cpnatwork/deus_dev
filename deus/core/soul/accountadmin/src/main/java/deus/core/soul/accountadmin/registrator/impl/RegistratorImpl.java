@@ -6,8 +6,8 @@ import java.util.Vector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.account.AccountDoRep;
-import deus.core.access.storage.api.user.UserMetadataDoRep;
+import deus.core.access.storage.api.common.account.AccountDao;
+import deus.core.access.storage.api.common.user.UserMetadataDao;
 import deus.core.soul.accountadmin.registrator.UserIdGenerator;
 import deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver;
 import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup;
@@ -22,10 +22,10 @@ public class RegistratorImpl implements Registrator {
 	private final List<UserRegistrationStateObserver> observers;
 
 	@Autowired
-	private AccountDoRep accountDoRep;
+	private AccountDao accountDao;
 
 	@Autowired
-	private UserMetadataDoRep userMetadataDoRep;
+	private UserMetadataDao userMetadataDao;
 	
 	@Autowired
 	private DistributionRoleSetup distributionRoleSetup;
@@ -77,7 +77,7 @@ public class RegistratorImpl implements Registrator {
 		Account account = new Account(registrationInformation.getLocalUsername(),
 				registrationInformation.getPassword(), userId, registrationInformation.getUserRoles());
 
-		userMetadataDoRep.addNewEntity(userId, registrationInformation.getUserMetadata());
+		userMetadataDao.addNewEntity(userId, registrationInformation.getUserMetadata());
 		
 		createAccount(account);
 
@@ -86,7 +86,7 @@ public class RegistratorImpl implements Registrator {
 
 
 	private void createAccount(Account account) {
-		accountDoRep.addNewEntity(account);
+		accountDao.addNewEntity(account);
 		// FUTURE: init data objects in database for subsystem Barker here!
 		
 		// INITIALIZING ROLE DATA ELEMENTS
@@ -97,7 +97,7 @@ public class RegistratorImpl implements Registrator {
 
 	@Override
 	public void unregister(String localUsername) {
-		Account account = accountDoRep.getByNaturalId(localUsername);
+		Account account = accountDao.getByNaturalId(localUsername);
 
 		destroyAccount(account);
 
@@ -108,7 +108,7 @@ public class RegistratorImpl implements Registrator {
 	private void destroyAccount(Account account) {
 		UserId userId = account.getUserId();
 
-		accountDoRep.deleteByNaturalId(account.getLocalUsername());
+		accountDao.deleteByNaturalId(account.getLocalUsername());
 		// FUTURE: destroy data objects in database for subsystem Barker here!
 		
 		// DESTROYING ROLE DATA ELEMENTS
@@ -118,7 +118,7 @@ public class RegistratorImpl implements Registrator {
 
 
 	public boolean existsLocalUsername(String localUserName) {
-		return accountDoRep.existsAccount(localUserName);
+		return accountDao.existsEntity(localUserName);
 	}
 
 

@@ -45,7 +45,7 @@ public class XmppLoginEventCallback implements LoginEventCallback {
 	}
 
 
-	// TODO: refactor
+	// TODO: add autowired FilteredPacketListener[] and inject this into xmppConversation
 	private void addPacketListeners(XmppConversation xmppConversation) {
 		FilteredPacketListener subscribePacketListener = new SubscribePacketListener();
 		xmppConversation.addFilteredPacketListener(subscribePacketListener);

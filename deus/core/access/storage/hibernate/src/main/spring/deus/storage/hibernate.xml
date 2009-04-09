@@ -83,11 +83,11 @@
 	</bean>
 
 	<bean id="userDao"
-		class="deus.core.access.storage.api.user.hibernate.UserDaoHibernateImpl">
+		class="deus.core.access.storage.api.common.user.hibernate.UserDaoHibernateImpl">
 	</bean>
 
 	<bean id="localUserDao"
-		class="deus.core.access.storage.api.user.hibernate.LocalUserDaoHibernateImpl">
+		class="deus.core.access.storage.api.common.user.hibernate.LocalUserDaoHibernateImpl">
 	</bean>
 
 </beans>

@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.storage.api.common.user.UserMetadataDao;
 import deus.core.access.storage.api.sub.LopDoRep;
 import deus.core.access.storage.api.sub.LopEntryDoRep;
-import deus.core.access.storage.api.user.UserMetadataDoRep;
 import deus.core.access.transfer.core.sending.command.SubscriberCommandSender;
 import deus.core.soul.difgoverning.DifGovernor;
 import deus.core.soul.subscription.Subscriber;
@@ -26,7 +26,7 @@ public class SubscriberImpl implements Subscriber {
 	private final Logger logger = LoggerFactory.getLogger(SubscriberImpl.class);
 
 	@Autowired
-	private UserMetadataDoRep userMetadataDoRep;
+	private UserMetadataDao userMetadataDao;
 
 	@Autowired
 	private LopEntryDoRep lopEntryDoRep;
@@ -122,7 +122,7 @@ public class SubscriberImpl implements Subscriber {
 		entry.setSubscriptionState(SubscriberSideSubscriptionState.requested);
 		lopEntryDoRep.addNewEntity(subscriberId, entry);
 
-		UserMetadata subscriberMetadata = userMetadataDoRep.getByNaturalId(subscriberId);
+		UserMetadata subscriberMetadata = userMetadataDao.getByNaturalId(subscriberId);
 
 		subscriberCommandSender.subscribe(subscriberId, publisherId, subscriberMetadata);
 	}

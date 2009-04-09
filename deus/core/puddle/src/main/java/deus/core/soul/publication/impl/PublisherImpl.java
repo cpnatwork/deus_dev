@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import deus.core.access.storage.api.common.user.UserMetadataDao;
 import deus.core.access.storage.api.pub.LosDoRep;
 import deus.core.access.storage.api.pub.LosEntryDoRep;
-import deus.core.access.storage.api.user.UserMetadataDoRep;
 import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
 import deus.core.soul.publication.Publisher;
 import deus.model.common.dossier.DigitalCard;
@@ -29,7 +29,7 @@ public class PublisherImpl implements Publisher {
 	private PublisherCommandSender publisherCommandSender;
 
 	@Autowired
-	private UserMetadataDoRep userMetadataDoRep;
+	private UserMetadataDao userMetadataDao;
 
 	@Autowired
 	private LosEntryDoRep losEntryDoRep;
@@ -147,7 +147,7 @@ public class PublisherImpl implements Publisher {
 		entry.setSubscriptionState(PublisherSideSubscriptionState.offered);
 		losEntryDoRep.addNewEntity(publisherId, entry);
 
-		UserMetadata publisherMetadata = userMetadataDoRep.getByNaturalId(publisherId);
+		UserMetadata publisherMetadata = userMetadataDao.getByNaturalId(publisherId);
 
 		publisherCommandSender.offerSubscription(publisherId, subscriberId, publisherMetadata);
 	}

@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.account.AccountDoRep;
+import deus.core.access.storage.api.common.account.AccountDao;
 import deus.core.soul.gatekeeper.cerberus.InvalidLoginCredentialsException;
 import deus.core.soul.gatekeeper.cerberus.LoginCredentialChecker;
 import deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver;
@@ -27,7 +27,7 @@ public class CerberusImpl implements Cerberus {
 	private LoginCredentialChecker loginCredentialChecker;
 
 	@Autowired
-	private AccountDoRep accountDoRep;
+	private AccountDao accountDao;
 
 
 	public CerberusImpl() {
@@ -42,14 +42,14 @@ public class CerberusImpl implements Cerberus {
 			throw new InvalidLoginCredentialsException(credentials);
 
 		// TODO: do more login stuff, that is necessary
-		Account account = accountDoRep.getByNaturalId(credentials.getLocalUsername());
+		Account account = accountDao.getByNaturalId(credentials.getLocalUsername());
 		UserId userId = account.getUserId();
 		
 		logger.debug("user with id {} logged in", userId);
 
 		account.setLoggedIn(true);
 		
-		accountDoRep.updateEntity(account);
+		accountDao.updateEntity(account);
 
 
 		// FIXME: implement thread safe notifying (see RegistratorImpl)
@@ -62,12 +62,12 @@ public class CerberusImpl implements Cerberus {
 
 	@Override
 	public void logout(String localUsername) {
-		Account account = accountDoRep.getByNaturalId(localUsername);
+		Account account = accountDao.getByNaturalId(localUsername);
 		UserId userId = account.getUserId();
 		
 		account.setLoggedIn(false);
 		
-		accountDoRep.updateEntity(account);
+		accountDao.updateEntity(account);
 
 
 		logger.debug("user with id {} logged out", userId);
