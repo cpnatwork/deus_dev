@@ -1,8 +1,8 @@
-package deus.core.access.storage.api.dccontent.party;
+package deus.core.access.storage.api.archive.party;
 
 import java.util.UUID;
 
-public class Email extends deus.model.dccontent.party.Email {
+public class Occupation extends deus.model.dccontent.party.Occupation {
 
 	private UUID id;
 
@@ -33,7 +33,7 @@ public class Email extends deus.model.dccontent.party.Email {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Email other = (Email) obj;
+		Occupation other = (Occupation) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

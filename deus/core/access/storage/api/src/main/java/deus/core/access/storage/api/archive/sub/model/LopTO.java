@@ -1,4 +1,4 @@
-package deus.core.access.storage.api.sub.model;
+package deus.core.access.storage.api.archive.sub.model;
 
 
 // FIXME: REMOVE

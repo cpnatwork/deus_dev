@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.attention.AttentionElementDoRep;
-import deus.core.access.storage.api.attention.AttentionListDoRep;
+import deus.core.access.storage.api.archive.attention.AttentionElementDoRep;
+import deus.core.access.storage.api.archive.attention.AttentionListDoRep;
 import deus.core.soul.hci.barker.Barker;
 import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.AttentionElement;

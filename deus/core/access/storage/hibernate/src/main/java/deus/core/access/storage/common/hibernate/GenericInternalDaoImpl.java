@@ -9,7 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import deus.core.access.storage.api.common.InternalDao;
+import deus.core.access.storage.api.archive.InternalDao;
 
 public class GenericInternalDaoImpl<TechEntityT, TechIdT extends Serializable, NaturalIdT extends Serializable> extends
 		HibernateDaoSupport implements InternalDao<TechEntityT, TechIdT, NaturalIdT> {

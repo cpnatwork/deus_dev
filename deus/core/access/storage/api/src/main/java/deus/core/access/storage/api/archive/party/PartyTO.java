@@ -1,4 +1,4 @@
-package deus.core.access.storage.api.dccontent.party;
+package deus.core.access.storage.api.archive.party;
 
 import deus.model.dccontent.party.Party;
 

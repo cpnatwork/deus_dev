@@ -1,8 +1,8 @@
-package deus.core.access.storage.api.dccontent.party;
+package deus.core.access.storage.api.archive.party;
 
 import java.util.UUID;
 
-public class ImAccount extends deus.model.dccontent.party.ImAccount {
+public class Phone extends deus.model.dccontent.party.Phone {
 
 	private UUID id;
 
@@ -34,7 +34,7 @@ public class ImAccount extends deus.model.dccontent.party.ImAccount {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ImAccount other = (ImAccount) obj;
+		Phone other = (Phone) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

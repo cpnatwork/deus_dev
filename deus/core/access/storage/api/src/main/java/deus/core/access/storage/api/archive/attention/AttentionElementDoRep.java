@@ -1,4 +1,4 @@
-package deus.core.access.storage.api.attention;
+package deus.core.access.storage.api.archive.attention;
 
 import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.AttentionElement;

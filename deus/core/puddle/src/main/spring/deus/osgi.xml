@@ -18,7 +18,7 @@
 	
 	<!-- DAOs -->
 	
-	<osgi:reference id="attentionDao" interface="deus.core.access.storage.api.attention.AttentionDao"/>
+	<osgi:reference id="attentionDao" interface="deus.core.access.storage.api.archive.attention.AttentionDao"/>
 	
 	<osgi:reference id="pubDao" interface="deus.core.access.storage.api.sub.LopEntryDoRep"/>
 	

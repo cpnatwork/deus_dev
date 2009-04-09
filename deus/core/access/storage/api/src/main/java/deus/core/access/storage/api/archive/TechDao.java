@@ -1,4 +1,4 @@
-package deus.core.access.storage.api.common;
+package deus.core.access.storage.api.archive;
 
 import java.io.Serializable;
 

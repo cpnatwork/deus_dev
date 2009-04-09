@@ -9,7 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import deus.core.access.storage.api.common.Dao;
+import deus.core.access.storage.api.archive.Dao;
 
 public class GenericuConcDaoImpl<EntityT, NaturalIdT extends Serializable> extends HibernateDaoSupport implements
 		Dao<EntityT, NaturalIdT> {

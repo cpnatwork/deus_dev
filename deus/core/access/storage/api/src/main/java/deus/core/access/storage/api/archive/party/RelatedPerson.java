@@ -1,11 +1,10 @@
-package deus.core.access.storage.api.dccontent.party;
+package deus.core.access.storage.api.archive.party;
 
 import java.util.UUID;
 
-public class WebPresence extends deus.model.dccontent.party.WebPresence {
+public class RelatedPerson extends deus.model.dccontent.party.RelatedPerson {
 
 	private UUID id;
-
 
 	public UUID getId() {
 		return id;
@@ -34,7 +33,7 @@ public class WebPresence extends deus.model.dccontent.party.WebPresence {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		WebPresence other = (WebPresence) obj;
+		RelatedPerson other = (RelatedPerson) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

@@ -1,4 +1,4 @@
-package deus.core.access.storage.api.pub.model;
+package deus.core.access.storage.api.archive.pub.model;
 
 
 public class LosTO extends ListOfSubscribersImpl {
