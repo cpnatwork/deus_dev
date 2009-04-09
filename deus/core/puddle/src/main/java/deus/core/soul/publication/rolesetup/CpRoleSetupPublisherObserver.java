@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.pub.LosDoRep;
+import deus.core.access.storage.api.publication.LosDao;
 import deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver;
 import deus.core.soul.publication.PublisherExportedToClient;
 import deus.model.common.account.DistributionRole;
@@ -19,7 +19,7 @@ import deus.model.publication.LosEntry;
 public class CpRoleSetupPublisherObserver extends AbstractDistributionRoleSetupObserver {
 
 	@Autowired
-	private LosDoRep losDoRep;
+	private LosDao losDao;
 
 	@Autowired
 	@Qualifier("target")
@@ -36,7 +36,7 @@ public class CpRoleSetupPublisherObserver extends AbstractDistributionRoleSetupO
 	public void tearDownRole(UserId userId) {
 		PublisherId publisherId = new PublisherId(userId);		
 		
-		ListOfSubscribers los = losDoRep.getByNaturalId(publisherId);
+		ListOfSubscribers los = losDao.getByNaturalId(publisherId);
 		for (Map.Entry<UserId, LosEntry> entry : los.entrySet()) {
 			// FIXME: implement removing of all subscribers
 			// publisher.
