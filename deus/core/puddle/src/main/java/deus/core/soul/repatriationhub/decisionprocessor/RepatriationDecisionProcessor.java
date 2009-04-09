@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import deus.core.soul.hci.decisionprocessor.impl.AbstractGenericDecisionProcessor;
 import deus.core.soul.pifgoverning.PifGovernor;
+import deus.model.common.user.frids.RepatriationAuthorityId;
 import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.repatriation.Repatriation;
 
@@ -18,7 +19,7 @@ public class RepatriationDecisionProcessor extends AbstractGenericDecisionProces
 	@Override
 	protected void processImpl(UserId userId, Repatriation contributionDecision) {
 		if (contributionDecision.isDecisionPositive()) {
-			pifGovernor.assimilateRepatriatedDigitalCard(userId, contributionDecision.getContributedDigitalCard());
+			pifGovernor.assimilateRepatriatedDigitalCard(new RepatriationAuthorityId(userId), contributionDecision.getContributedDigitalCard());
 			
 			// FIXME: call contrib.Acked on informationProvider
 		}

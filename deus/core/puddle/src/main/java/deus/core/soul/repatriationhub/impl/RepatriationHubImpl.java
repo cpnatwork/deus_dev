@@ -8,6 +8,8 @@ import deus.core.soul.pifgoverning.PifGovernor;
 import deus.core.soul.repatriationhub.RepatriationHub;
 import deus.model.common.dossier.DigitalCard;
 import deus.model.common.user.UserMetadata;
+import deus.model.common.user.frids.ContributorId;
+import deus.model.common.user.frids.RepatriationAuthorityId;
 import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.BinaryDecisionToMake;
 import deus.model.hci.attention.repatriation.Repatriation;
@@ -22,10 +24,9 @@ public class RepatriationHubImpl implements RepatriationHub {
 	@Autowired
 	private BarkerExportedToSubsystems barker;
 
-
 	@Override
-	public void accept(UserId cpId, DigitalCard repatriatedDigitalCard, UserId contributorId) {
-		if (!cpId.equals(repatriatedDigitalCard.getDigitalCardId().getCpId()))
+	public void accept(RepatriationAuthorityId repatriationAuthorityId, ContributorId contributorId, DigitalCard repatriatedDigitalCard) {
+		if (!repatriationAuthorityId.equals(repatriatedDigitalCard.getDigitalCardId().getCpId()))
 			throw new IllegalArgumentException(
 					"ID of the CP is not the ID of the user, that is handled in this repatriation hub");
 
@@ -33,9 +34,9 @@ public class RepatriationHubImpl implements RepatriationHub {
 			throw new IllegalArgumentException("ID of the informationProvider does not match the id in the digital card!");
 
 
-		if (cpId.equals(contributorId)) {
+		if (repatriationAuthorityId.equals(contributorId)) {
 			// if 'I' am the informationProvider
-			pifGovernor.assimilateRepatriatedDigitalCard(cpId, repatriatedDigitalCard);
+			pifGovernor.assimilateRepatriatedDigitalCard(repatriationAuthorityId, repatriatedDigitalCard);
 		}
 		else {
 			// if the informationProvider is another person
@@ -47,15 +48,16 @@ public class RepatriationHubImpl implements RepatriationHub {
 			UserMetadata contributorMetadata = null;
 
 			BinaryDecisionToMake decision = new Repatriation(contributorMetadata, repatriatedDigitalCard);
-			barker.addUnnoticedAttentionElement(cpId, decision);
+			barker.addUnnoticedAttentionElement(repatriationAuthorityId.getUserId(), decision);
 		}
 		
 	}
 
 
+	
 	@Override
+	@Deprecated
 	public void fireAndForgetAccept(UserId cpId, DigitalCard repatriatedDigitalCard) {
-		// FIXME: implement
 		throw new UnsupportedOperationException("fireAndForgetAccept is not implemented yet");
 	}
 

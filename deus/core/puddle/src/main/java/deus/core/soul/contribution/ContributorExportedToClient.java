@@ -1,10 +1,11 @@
 package deus.core.soul.contribution;
 
 import deus.model.common.dossier.DigitalCard;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.ContributorId;
+import deus.model.common.user.frids.RepatriationAuthorityId;
 
 public interface ContributorExportedToClient {
 
-	public void forwardToCp(UserId contributorId, UserId cpId, DigitalCard digitalCard);
+	public void forwardToCp(ContributorId contributorId, RepatriationAuthorityId repatriationAuthorityId, DigitalCard digitalCard);
 	
 }

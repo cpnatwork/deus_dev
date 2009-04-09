@@ -1,7 +1,8 @@
 package deus.core.access.transfer.core.receiving.soulcallback.repatriationhub;
 
 import deus.model.common.dossier.DigitalCard;
-import deus.model.common.user.id.UserId;
+import deus.model.common.user.frids.ContributorId;
+import deus.model.common.user.frids.RepatriationAuthorityId;
 
 // FIXME: edit javadoc
 public interface RepatriationHubExportedToPeers {
@@ -22,6 +23,6 @@ public interface RepatriationHubExportedToPeers {
 	 * @param repatriatedDigitalCard	the digital card to contribute
 	 * @param contributorId		the user ID of the informationProvider
 	 */
-	public abstract void accept(UserId cpId, DigitalCard repatriatedDigitalCard, UserId contributorId);
+	public abstract void accept(RepatriationAuthorityId repatriationAuthorityId, ContributorId contributorId, DigitalCard repatriatedDigitalCard);
 
 }

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.common.user.UserMetadataDao;
-import deus.core.access.storage.api.pub.LosDoRep;
+import deus.core.access.storage.api.publication.LosDao;
 import deus.core.access.storage.api.publication.LosEntryDao;
 import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
 import deus.core.soul.publication.Publisher;
@@ -36,13 +36,13 @@ public class PublisherImpl implements Publisher {
 	private LosEntryDao losEntryDao;
 
 	@Autowired
-	private LosDoRep losDoRep;
+	private LosDao losDao;
 
 
 	// FIXME: think about returning a DTO to the frontend here
 	@Override
 	public ListOfSubscribers getListOfSubscribers(PublisherId publisherId) {
-		return losDoRep.getByNaturalId(publisherId);
+		return losDao.getByNaturalId(publisherId);
 	}
 
 
@@ -110,7 +110,7 @@ public class PublisherImpl implements Publisher {
 	public void notifySubscribers(PublisherId publisherId, DigitalCard digitalCard) {
 		logger.trace("notifying subscribers of change {}", digitalCard);
 
-		ListOfSubscribers listOfSubscribers = losDoRep.getByNaturalId(publisherId);
+		ListOfSubscribers listOfSubscribers = losDao.getByNaturalId(publisherId);
 
 		/*
 		 * a temporary array buffer, used as a snapshot of the state of current Observers.
