@@ -1,8 +1,8 @@
-package deus.core.access.storage.api.dossier.model.dc.party;
+package deus.core.access.storage.api.dccontent.party;
 
 import java.util.UUID;
 
-public class WebPresence extends deus.model.dccontent.party.WebPresence {
+public class ImAccount extends deus.model.dccontent.party.ImAccount {
 
 	private UUID id;
 
@@ -34,7 +34,7 @@ public class WebPresence extends deus.model.dccontent.party.WebPresence {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		WebPresence other = (WebPresence) obj;
+		ImAccount other = (ImAccount) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

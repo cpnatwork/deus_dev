@@ -1,11 +1,10 @@
-package deus.core.access.storage.api.dossier.model.dc.party;
+package deus.core.access.storage.api.dccontent.party;
 
 import java.util.UUID;
 
-public class ImAccount extends deus.model.dccontent.party.ImAccount {
+public class Occupation extends deus.model.dccontent.party.Occupation {
 
 	private UUID id;
-
 
 	public UUID getId() {
 		return id;
@@ -34,7 +33,7 @@ public class ImAccount extends deus.model.dccontent.party.ImAccount {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ImAccount other = (ImAccount) obj;
+		Occupation other = (Occupation) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
