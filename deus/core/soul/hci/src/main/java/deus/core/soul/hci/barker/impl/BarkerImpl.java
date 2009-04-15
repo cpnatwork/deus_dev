@@ -7,9 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import deus.core.access.storage.api.archive.attention.AttentionElementDoRep;
-import deus.core.access.storage.api.archive.attention.AttentionListDoRep;
-import deus.core.soul.hci.barker.Barker;
+import deus.core.access.storage.api.hci.attention.AttentionElementDao;
+import deus.core.access.storage.api.hci.attention.AttentionListDao;
 import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.AttentionElement;
 import deus.model.hci.attention.AttentionList;
@@ -20,10 +19,10 @@ public class BarkerImpl implements Barker {
 	private final Logger logger = LoggerFactory.getLogger(BarkerImpl.class);
 
 	@Autowired
-	private AttentionElementDoRep attentionElementDoRep;
+	private AttentionElementDao attentionElementDao;
 
 	@Autowired
-	private AttentionListDoRep attentionListDoRep;
+	private AttentionListDao attentionListDao;
 
 
 	@Override
@@ -33,32 +32,33 @@ public class BarkerImpl implements Barker {
 		// set creation date
 		attentionElement.setCreationDate(new Date());
 
-		attentionElementDoRep.addNewEntity(userId, attentionElement);
+		attentionElementDao.addNewEntity(userId, attentionElement);
 	}
 
 
 	@Override
 	public void noticeAttentionElement(UserId userId, AttentionElement attentionElement) {
-		if(attentionElement.isNoticed())
-			throw new RuntimeException("cannot notice attention element " + attentionElement + ", it is already noticed");			
+		if (attentionElement.isNoticed())
+			throw new RuntimeException("cannot notice attention element " + attentionElement
+					+ ", it is already noticed");
 
 		logger.trace("noticing attention element {}", attentionElement);
 
 		attentionElement.setNoticed(true);
 
-		attentionElementDoRep.updateEntity(userId, attentionElement);
+		attentionElementDao.updateEntity(userId, attentionElement);
 	}
 
 
 	@Override
 	public AttentionList getUnnoticedAttentionList(UserId userId) {
-		return attentionListDoRep.getUnnoticedAttentionList(userId);
+		return attentionListDao.getUnnoticedAttentionList(userId);
 	}
 
 
 	@Override
 	public AttentionList getNoticedAttentionList(UserId userId) {
-		return attentionListDoRep.getUnnoticedAttentionList(userId);
+		return attentionListDao.getNoticedAttentionList(userId);
 	}
 
 }
