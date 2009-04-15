@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.hci.attention.AttentionElementDao;
 import deus.core.access.storage.api.hci.attention.AttentionListDao;
+import deus.core.soul.hci.barker.BarkerRuntimeException;
 import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.AttentionElement;
 import deus.model.hci.attention.AttentionList;
@@ -39,7 +40,7 @@ public class BarkerImpl implements Barker {
 	@Override
 	public void noticeAttentionElement(UserId userId, AttentionElement attentionElement) {
 		if (attentionElement.isNoticed())
-			throw new RuntimeException("cannot notice attention element " + attentionElement
+			throw new BarkerRuntimeException("cannot notice attention element " + attentionElement
 					+ ", it is already noticed");
 
 		logger.trace("noticing attention element {}", attentionElement);

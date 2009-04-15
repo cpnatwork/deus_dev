@@ -7,6 +7,13 @@ import deus.model.hci.attention.AttentionList;
 
 public interface BarkerExportedToClient {
 
+	/**
+	 * 
+	 * @param userId
+	 * @param attentionElement
+	 * 
+	 * @throws BarkerRuntimeException thrown if the passed <code>AttentionElement</code> is already noticed.
+	 */
 	public abstract void noticeAttentionElement(UserId userId, AttentionElement attentionElement);
 
 

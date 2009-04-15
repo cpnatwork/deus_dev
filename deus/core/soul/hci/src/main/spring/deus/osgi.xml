@@ -18,6 +18,8 @@
 
 	<!-- DAOs -->
 	
-	<osgi:reference id="attentionDao" interface="deus.core.access.storage.api.archive.attention.AttentionDao"/>
+	<osgi:reference id="attentionElementDao" interface="deus.core.access.storage.api.hci.attention.AttentionElementDao"/>
+	
+	<osgi:reference id="attentionListDao" interface="deus.core.access.storage.api.hci.attention.AttentionListDao"/>
 
 </beans>
