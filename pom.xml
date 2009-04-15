@@ -239,6 +239,14 @@
 		    <artifactId>easymock</artifactId>
 		    <version>2.4</version>
 		    <scope>test</scope>
+		</dependency>
+
+	
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymockclassextension</artifactId>
+			<version>2.4</version>
+		    <scope>test</scope>
 		</dependency> 
 
 	
@@ -516,6 +524,7 @@ Import-Template: javax.*;version="0"
 			<resource>
 				<directory>${basedir}/src/main/resources</directory>
 			</resource>
+			<!-- puts the spring configuration files from the normal configuration into /META-INF/spring -->
 			<resource>
 				<targetPath>META-INF/spring</targetPath>
 				<filtering>false</filtering>
@@ -529,17 +538,20 @@ Import-Template: javax.*;version="0"
 			<!--<testResource>
 				<directory>${basedir}/src/test/resources</directory>
 			</testResource>-->
+		
+			<!-- puts the spring configuration files from the test configuration into the root classpath folder,
+				overwrites the ones from the normal configuration!!! -->
 			<testResource>
 				<filtering>false</filtering>
-				<directory>${basedir}/src/main/spring</directory>
+				<directory>${basedir}/src/test/spring</directory>
 				<includes>
 					<include>**/*.xml</include>
 				</includes>
 			</testResource>
-			<!-- this will potentially overwrite spring config from src/main/spring! -->
+			<!-- puts the spring configuration files from the normal configuration into the root classpath folder -->
 			<testResource>
 				<filtering>false</filtering>
-				<directory>${basedir}/src/test/spring</directory>
+				<directory>${basedir}/src/main/spring</directory>
 				<includes>
 					<include>**/*.xml</include>
 				</includes>
