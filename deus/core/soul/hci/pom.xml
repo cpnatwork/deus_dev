@@ -46,6 +46,13 @@
 			<type>bundle</type>
 		</dependency>
 
+		<dependency>
+			<groupId>inf6.promed</groupId>
+			<artifactId>deus-commontest</artifactId>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+
                 
 	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	    

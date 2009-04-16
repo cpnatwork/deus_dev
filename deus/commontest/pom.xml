@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>inf6.promed</groupId>
+		<artifactId>deus</artifactId>
+		<version>0.3-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>deus-commontest</artifactId>
+	<packaging>jar</packaging>
+	<name>DEUS common test</name>
+
+	<!-- don't remove properties, even if they are empty!!! -->
+	<properties>
+		<osgi.rootPackage>deus.common</osgi.rootPackage>
+		<!--
+			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
+			PersistantAnnotationBeanPostProcessor which is in the given package.
+		-->
+		<osgi.additionalPackageImports />
+
+		<osgi.nonExportedPackages />
+	</properties>
+
+
+	<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++ DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+	<dependencies>
+		<!--+++ INTRA-PROJECT DEPENDENCIES++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+		<!--+++ INTER-PROJECT DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>org.springframework.context</artifactId>
+		</dependency>
+
+	</dependencies>
+
+
+	<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++ BUILD ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+
+	<build>
+
+		<plugins>
+
+		</plugins>
+
+	</build>
+
+
+</project>
