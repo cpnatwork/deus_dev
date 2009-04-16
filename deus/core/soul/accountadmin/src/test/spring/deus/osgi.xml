@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- overwrites normal osgi.xml and replaces service references with mocks -->
+	
+	<bean id="accountDao" class="deus.common.EasyMockFactoryBean">
+		<property name="type" value="deus.core.access.storage.api.common.account.AccountDao" />
+	</bean>
+	
+	<bean id="userMetadataDao" class="deus.common.EasyMockFactoryBean">
+		<property name="type" value="deus.core.access.storage.api.common.user.UserMetadataDao" />
+	</bean>
+	
+</beans>

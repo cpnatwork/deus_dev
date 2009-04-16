@@ -3,8 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<import resource="deus/context.xml"/>
-	<import resource="deus/osgi.xml"/>
-	<import resource="deus/core/soul/accountadmin.xml"/>
+
+	<bean id="serverBaseUrl" class="java.lang.String">
+		<constructor-arg value="http://www.deus.org/user/" />
+	</bean>
 
 </beans>

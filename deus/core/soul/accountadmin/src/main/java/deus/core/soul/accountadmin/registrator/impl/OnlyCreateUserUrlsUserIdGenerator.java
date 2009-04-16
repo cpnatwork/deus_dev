@@ -12,16 +12,15 @@ import deus.model.common.user.id.UserUrl;
 @Component("userIdGenerator")
 public class OnlyCreateUserUrlsUserIdGenerator implements UserIdGenerator {
 
-	// FIXME: rename this to serverBaseUrl (as in UserUrl)
-	@Resource(name="hostname")
-	private String hostname;
+	@Resource(name="serverBaseUrl")
+	private String serverBaseUrl;
 	
 	@Override
 	public UserId generateUserId(UserIdType userIdType, String localUserName) {
 		if(!userIdType.equals(UserIdType.url))
 			throw new IllegalArgumentException("can only create URLs, not " + userIdType);
 		
-		UserId userId = new UserUrl(localUserName, hostname);
+		UserId userId = new UserUrl(localUserName, serverBaseUrl);
 
 		return userId;
 	}

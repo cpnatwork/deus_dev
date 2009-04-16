@@ -7,29 +7,29 @@
 
 	<!-- to UI -->
 
-	<osgi:service id="registratorOsgiServiceExportedToClient" ref="registrator" interface="deus.core.soul.accountadmin.registrator.RegistratorExportedToClient" />
+	<osgi:service id="registratorOsgiServiceExportedToClient" ref="registrator" interface="deus.core.soul.registrator.RegistratorExportedToClient" />
 
 	
 	
 	<!-- for previewing the userId while registration, userRoleSetupOsgiService can  also be used in the UI -->
-	<osgi:service id="userIdGeneratorOsgiService" ref="userIdGenerator" interface="deus.core.soul.accountadmin.registrator.UserIdGenerator" />
+	<osgi:service id="userIdGeneratorOsgiService" ref="userIdGenerator" interface="deus.core.soul.registrator.UserIdGenerator" />
 
-	<osgi:service id="accountManagerOsgiService" ref="accountManager" interface="deus.core.soul.accountadmin.manager.AccountManager" />
+	<osgi:service id="accountManagerOsgiService" ref="accountManager" interface="deus.core.soul.manager.AccountManager" />
 	
 		
 	
 	<!-- to SUBSYSTEMS -->
 
 	<!-- to transfer core -->
-	<osgi:service id="registratorOsgiServiceExportedToSubsystems" ref="registrator" interface="deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems" />
+	<osgi:service id="registratorOsgiServiceExportedToSubsystems" ref="registrator" interface="deus.core.soul.registrator.RegistratorExportedToSubsystems" />
 	
 	<!-- to soul -->
-	<osgi:service id="distributionRoleSetupOsgiService" ref="distributionRoleSetup" interface="deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup" />
+	<osgi:service id="distributionRoleSetupOsgiService" ref="distributionRoleSetup" interface="deus.core.soul.rolesetup.DistributionRoleSetup" />
 	
 	
 	<!-- DAOs -->
 
-	<osgi:reference id="localUserDao" interface="deus.core.access.storage.api.common.user.api.LocalUserDao" />
+	<osgi:reference id="userMetadataDao" interface="deus.core.access.storage.api.common.user.UserMetadataDao" />
 
 	<osgi:reference id="accountDao" interface="deus.core.access.storage.api.common.user.AccountDoRep" />
 
