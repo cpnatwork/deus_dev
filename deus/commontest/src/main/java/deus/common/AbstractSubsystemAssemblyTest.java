@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/all.xml" })
-public abstract class AbstractSubsystemIntegrationTest {
+public abstract class AbstractSubsystemAssemblyTest {
 
 	@Autowired
 	private ApplicationContext context;
@@ -19,11 +19,11 @@ public abstract class AbstractSubsystemIntegrationTest {
 	private String subsystemBasePackage;
 
 
-	public AbstractSubsystemIntegrationTest() {
+	public AbstractSubsystemAssemblyTest() {
 		this.subsystemBasePackage = getClass().getPackage().getName().toString();
 	}
 	
-	public AbstractSubsystemIntegrationTest(String subsystemBasePackage) {
+	public AbstractSubsystemAssemblyTest(String subsystemBasePackage) {
 		this.subsystemBasePackage = subsystemBasePackage;
 	}
 
