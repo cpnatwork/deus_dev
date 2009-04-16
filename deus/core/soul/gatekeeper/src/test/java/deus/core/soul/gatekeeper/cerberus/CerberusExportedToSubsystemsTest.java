@@ -1,39 +1,34 @@
-package deus.core.soul.gatekeeper.cerberus.impl;
+package deus.core.soul.gatekeeper.cerberus;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver;
-import deus.core.soul.gatekeeper.cerberus.impl.Cerberus;
 import deus.model.common.user.id.UserId;
 import deus.model.gatekeeper.LoginCredentials;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml" , "/deus/storage/daos.xml", "/deus/gatekeeper/gatekeeper.xml" })
-public class CerberusImplTest {
-
-	@Autowired
-	private Cerberus cerberus;
-
-
+public class CerberusExportedToSubsystemsTest extends AbstractCerberusTest {
+	
 	private int loggedIn;
 	
 	private int loggedOut;
 	
-	
-	@Before
-	public void setUp() {
+	@Override
+	protected Object[] getFixtureMocks() {
+		return null;
+	}
+
+
+	@Override
+	protected void setUpFixture() {
 		loggedIn = 0;
 		loggedOut = 0;
 	}
+
 	
-	
+		
+	// FIXME: think about this test method...
 	@Test
 	public void testLoginLogout() {
 		LoginCredentials credentials = new LoginCredentials("alice", "password");
@@ -74,5 +69,4 @@ public class CerberusImplTest {
 		assertEquals(1, loggedIn);
 		assertEquals(1, loggedOut);		
 	}
-
 }

@@ -27,26 +27,32 @@ public abstract class DeusUnitTestCaseEasyMockTemplate extends DeusUnitTestCaseT
 
 
 	protected final void replayAllMocks() {
-		EasyMock.replay(getDependencyMocks());
-		EasyMock.replay(getFixtureMocks());
+		if(getDependencyMocks() != null)
+			EasyMock.replay(getDependencyMocks());
+		if(getFixtureMocks() != null)
+			EasyMock.replay(getFixtureMocks());
 	}
 
 
 	protected final void verifyAllMocks() {
-		EasyMock.verify(getDependencyMocks());
-		EasyMock.verify(getFixtureMocks());
+		if(getDependencyMocks() != null)
+			EasyMock.verify(getDependencyMocks());
+		if(getFixtureMocks() != null)
+			EasyMock.verify(getFixtureMocks());
 	}
 
 
 	@Override
 	protected final void tearDownDependencies() {
-		EasyMock.reset(getDependencyMocks());
+		if(getDependencyMocks() != null)
+			EasyMock.reset(getDependencyMocks());
 	}
 
 
 	@Override
 	protected final void tearDownFixture() {
-		EasyMock.reset(getFixtureMocks());
+		if(getFixtureMocks() != null)
+			EasyMock.reset(getFixtureMocks());
 	}
 
 }
