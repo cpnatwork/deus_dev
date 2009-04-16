@@ -19,4 +19,22 @@
 		<module>commontest</module>
 	</modules>
 	
+	
+	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++ DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<dependencies>
+		<!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	
+		<dependency>
+			<groupId>inf6.promed</groupId>
+			<artifactId>deus-commontest</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+			<type>jar</type>
+		</dependency>
+
+		<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	</dependencies>
+	
 </project>

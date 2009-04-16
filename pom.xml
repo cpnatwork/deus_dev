@@ -62,70 +62,70 @@
 			<!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 			
 			<dependency>
-				<groupId>inf6.promed</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>deus-core-access-storage-api</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
 			
 			<dependency>
-				<groupId>inf6.promed</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>deus-core-access-storage-inmemory</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
 			
 			<dependency>
-				<groupId>inf6.promed</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>deus-core-access-storage-hibernate</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
 			
 			<dependency>
-				<groupId>inf6.promed</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>deus-core-access-transfer-core</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
 
 			<dependency>
-				<groupId>inf6.promed</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>deus-core-access-transfer-common</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
 			
 			<dependency>
-				<groupId>inf6.promed</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>deus-core-access-transfer-plugins-local</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
 			
 			<dependency>
-				<groupId>inf6.promed</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>deus-core-access-transfer-plugins-xmpp</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
 			
 			<dependency>
-				<groupId>inf6.promed</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>deus-core-puddle</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
 			
 			<dependency>
-				<groupId>inf6.promed</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>deus-core-soul-hci</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
 	
 			<dependency>
-				<groupId>inf6.promed</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>deus-core-soul-accountadmin</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
@@ -133,14 +133,14 @@
 			
 	
 			<dependency>
-				<groupId>inf6.promed</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>deus-core-soul-gatekeeper</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
 			
 			<dependency>
-				<groupId>inf6.promed</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>deus-model</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
@@ -149,26 +149,17 @@
 	
 	
 			<dependency>
-				<groupId>inf6.promed</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>dacus-core-puddle</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
 			
 			<dependency>
-				<groupId>inf6.promed</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>dacus-ui-puddle</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
-			</dependency>
-
-
-			<dependency>
-				<groupId>inf6.promed</groupId>
-				<artifactId>deus-commontest</artifactId>
-				<version>${project.version}</version>
-				<scope>test</scope>
-				<type>jar</type>
 			</dependency>
 	
 	
