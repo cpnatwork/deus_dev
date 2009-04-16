@@ -28,8 +28,12 @@ public class BarkerImpl implements Barker {
 
 	@Override
 	public void addUnnoticedAttentionElement(UserId userId, AttentionElement attentionElement) {
+		if (attentionElement.isNoticed())
+			throw new BarkerRuntimeException("cannot add unnoticed attention element " + attentionElement
+					+ ", it is already noticed");
+		
 		logger.trace("adding unnoticed attention element {}", attentionElement);
-
+		
 		// set creation date
 		attentionElement.setCreationDate(new Date());
 
