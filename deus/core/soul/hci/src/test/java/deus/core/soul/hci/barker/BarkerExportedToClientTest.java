@@ -10,7 +10,6 @@ import org.junit.Test;
 import deus.model.hci.attention.AttentionList;
 
 public class BarkerExportedToClientTest extends AbstractBarkerTest {
-	
 
 	@Test
 	public void testNoticeAttentionElement_HappyPath() {
@@ -36,7 +35,7 @@ public class BarkerExportedToClientTest extends AbstractBarkerTest {
 		catch (BarkerRuntimeException e) {
 			// expected
 		}
-		
+
 		verifyAllMocks();
 	}
 
