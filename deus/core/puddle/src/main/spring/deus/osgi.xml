@@ -39,7 +39,7 @@
 
 	<!-- GATEKEEPER -->
 
-	<osgi:reference id="distributionRoleSetup" interface="deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup"/>
+	<osgi:reference id="distributionRoleSetup" interface="deus.core.soul.rolesetup.DistributionRoleSetup"/>
 	
 	
 	<!-- BARKER -->

@@ -37,7 +37,7 @@
 	<osgi:reference id="cerberus" interface="deus.core.soul.gatekeeper.cerberus.CerberusExportedToSubsystems"/>
 	
 	<!-- REGISTRATOR -->
-	<osgi:reference id="registrator" interface="deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems"/>
+	<osgi:reference id="registrator" interface="deus.core.soul.registrator.RegistratorExportedToSubsystems"/>
 
 
 </beans>
