@@ -18,6 +18,7 @@ import deus.model.common.user.id.UserId;
  */
 public class Account {
 
+	// Primary Key: localUsername
 	private String localUsername;
 	private String password;
 	private UserId userId;
