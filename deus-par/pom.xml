@@ -1,0 +1,88 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>inf6.promed</groupId>
+	<artifactId>deus-par</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<packaging>par</packaging>
+	<name>DEUS all</name>
+	
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--+++ DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	
+	<dependencies>
+        <!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+        
+	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+		<dependency>
+			<groupId>inf6.promed</groupId>
+			<artifactId>deus-core-puddle</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>inf6.promed</groupId>
+			<artifactId>deus-ui-puddle</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+		
+	
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--+++ BUILD +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	
+	<build>
+
+		<plugins>
+	
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-par-plugin</artifactId>
+				<version>0.2.0</version>
+				<configuration>
+					<fqn>true</fqn>
+					<applicationSymbolicName>com.steademy.service.infrastructure</applicationSymbolicName>
+					<applicationVersion>1.0.0</applicationVersion>
+					<applicationDescription>The db infrastructure</applicationDescription>
+					<applicationName>Application DB infrastructure</applicationName>
+				</configuration>
+			</plugin>
+
+			<!-- COPY ARTIFACT TO APP SERVER ON PHASE pre-integration-test -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>pre-integration-test</phase>
+						<configuration>
+							<tasks>
+								<copy file="${project.build.directory}/${project.build.finalName}.par" todir="${springdmserver.location}/pickup"/>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+	
+		</plugins>
+
+	</build>
+
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>steademy</id>
+			<name>Steademy repository</name>
+			<url>http://repo.steademy.com/beta/maven2</url>
+			<releases />
+			<snapshots />		
+		</pluginRepository>
+	</pluginRepositories>
+	
+	
+</project>
