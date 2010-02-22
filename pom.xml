@@ -409,7 +409,7 @@ Import-Template: javax.*;version="0"
 						<projectnature>com.springsource.server.ide.facet.core.bundlenature</projectnature>
 					</additionalProjectnatures>
 					<!-- added this, so that automatically, the spring dm server is the default runtime! -->
-					<additionalConfig>
+<!--					<additionalConfig>
 						<file>
 							<name>.settings/org.eclipse.wst.common.project.facet.core.xml</name>
 							<content>
@@ -423,6 +423,7 @@ Import-Template: javax.*;version="0"
 							</content>
 						</file>
 					</additionalConfig>
+-->
 					<classpathContainers>
 						<classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
 						<classpathContainer>com.springsource.server.ide.jdt.core.MANIFEST_CLASSPATH_CONTAINER</classpathContainer>
