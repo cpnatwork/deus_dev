@@ -2,8 +2,9 @@ package dacus.core;
 
 import org.springframework.stereotype.Component;
 
-import deus.model.user.id.UserId;
-import deus.model.user.id.UserUrl;
+import deus.model.common.user.id.UserId;
+import deus.model.common.user.id.UserUrl;
+
 
 @Component
 public class UserUrlParser {

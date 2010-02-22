@@ -2,7 +2,7 @@ package dacus.model.dossier;
 
 import java.util.Set;
 
-import deus.model.dc.DigitalCard;
+import deus.model.common.dossier.DigitalCard;
 import deus.model.pifgoverning.PersonalInformationFile;
 
 public class PersonalPartyFile extends PersonalInformationFile {

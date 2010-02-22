@@ -1,8 +1,7 @@
 
-<%@page import="deus.model.attention.AttentionElement"%>
-<%@page import="deus.model.attention.AttentionList"%>
-<%@page import="deus.model.attention.notice.SubscriptionCanceledNotice"%>
-<%@page import="deus.model.attention.publication.connection.establish.subinit.SubscriptionRequest"%>
+<%@page import="deus.model.hci.attention.AttentionElement"%>
+<%@page import="deus.model.hci.attention.AttentionList"%>
+<%@page import="deus.model.hci.attention.publication.connection.establish.subinit.SubscriptionRequest"%>
 <%@page import="java.util.Iterator"%>
 
 <div id="content">
