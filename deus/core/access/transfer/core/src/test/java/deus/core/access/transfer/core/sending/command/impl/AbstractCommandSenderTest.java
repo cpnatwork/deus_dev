@@ -47,8 +47,8 @@ public abstract class AbstractCommandSenderTest {
 
 	@Before
 	public void setUp() throws Exception {
-		subscriberId = new SubscriberId(new UserUrl("bob", "deus.org"));
-		publisherId = new PublisherId(new UserUrl("alice", "deus.org"));
+		subscriberId = new SubscriberId(new UserUrl("bob", "http://www.deus.org"));
+		publisherId = new PublisherId(new UserUrl("alice", "http://www.deus.org"));
 
 		tp = new TransferProtocolImpl();
 		tp.setProtocolId("testProtocol");

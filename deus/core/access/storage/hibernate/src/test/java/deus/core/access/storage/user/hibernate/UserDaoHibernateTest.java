@@ -6,7 +6,7 @@ package deus.core.access.storage.user.hibernate;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import deus.core.access.storage.api.common.user.UserMetadataDoRep;
+import deus.core.access.storage.api.common.user.UserMetadataDao;
 
 /**
  * @author cpn
@@ -17,7 +17,7 @@ import deus.core.access.storage.api.common.user.UserMetadataDoRep;
 public class UserDaoHibernateTest {
 
 	@Autowired
-	private UserMetadataDoRep sut;
+	private UserMetadataDao sut;
 
 
 	@Test

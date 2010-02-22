@@ -26,8 +26,8 @@ public class TransferPublisherCommandSenderTest extends AbstractCommandSenderTes
 
 	@Test
 	public void testUpdate() {
-		DigitalCard digitalCard = new PartyInformationDC(new DigitalCardId(new UserUrl("higgins", "deus.org"),
-				new UserUrl("alice", "deus.org"), "surgery1"));
+		DigitalCard digitalCard = new PartyInformationDC(new DigitalCardId(new UserUrl("higgins", "http://www.deus.org"),
+				new UserUrl("alice", "http://www.deus.org"), "surgery1"));
 
 		transferPublisherCommandSender.update(publisherId, subscriberId, digitalCard);
 

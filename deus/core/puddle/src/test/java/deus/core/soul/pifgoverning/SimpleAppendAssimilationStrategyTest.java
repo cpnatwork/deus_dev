@@ -32,7 +32,7 @@ public class SimpleAppendAssimilationStrategyTest {
 
 	@Before
 	public void setUp() throws Exception {
-		UserId userId = new UserUrl("alice", "deus.org");
+		UserId userId = new UserUrl("alice", "http://www.deus.org");
 		
 		strategy = new SimpleAppendAssimilationStrategy();
 

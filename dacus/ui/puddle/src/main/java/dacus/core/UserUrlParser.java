@@ -9,7 +9,7 @@ import deus.model.user.id.UserUrl;
 public class UserUrlParser {
 
 	public UserId parseUserUrl(String userUrlString) {
-		return new UserUrl("alice", "dacus.org");
+		return new UserUrl("alice", "http://www.dacus.org");
 	}
 	
 }
