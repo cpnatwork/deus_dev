@@ -3,7 +3,7 @@
 
 	<groupId>inf6.promed</groupId>
 	<artifactId>prototype-pom</artifactId>
-	<version>0.3</version>
+	<version>0.4-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>DEUS root pom</name>
 
@@ -41,9 +41,8 @@
 	</developers>
 
 	<scm>
-		<connection>scm:svn:https://svn.origo.ethz.ch/dacus/tags/dacus-0.3</connection>
-		<developerConnection>scm:svn:https://svn.origo.ethz.ch/dacus/tags/dacus-0.3</developerConnection>
-		<tag>HEAD</tag>
+		<connection>scm:svn:https://svn.origo.ethz.ch/dacus/tags/dacus-0.2</connection>
+		<developerConnection>scm:svn:https://svn.origo.ethz.ch/dacus/tags/dacus-0.2</developerConnection>
 	</scm>
 
 	<issueManagement>
