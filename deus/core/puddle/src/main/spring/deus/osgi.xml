@@ -13,8 +13,8 @@
 	
 	<osgi:service id="publisherOsgiService" ref="publisher" interface="deus.core.soul.publication.PublisherExportedToClient" />
 
-	<osgi:service id="personalInformationEditorOsgiService" ref="personalInformationEditor" interface="deus.core.soul.pifgoverning.PifGovernor" />
-		
+	<osgi:service id="pifGovernorOsgiService" ref="pifGovernor" interface="deus.core.soul.pifgoverning.PifGovernor" />
+	
 	
 	<!-- DAOs -->
 
@@ -51,11 +51,12 @@
 
 	<!-- references to send commands, should be provided by core-transfer bundle -->
 	
-	<osgi:reference id="barkerCommandSender" interface="deus.core.access.transfer.core.sending.command.BarkerCommandSender"/>
-
 	<osgi:reference id="publisherCommandSender" interface="deus.core.access.transfer.core.sending.command.PublisherCommandSender"/>
 	
 	<osgi:reference id="subscriberCommandSender" interface="deus.core.access.transfer.core.sending.command.SubscriberCommandSender"/>
+	
+	<osgi:reference id="contributionCommandSender" interface="deus.core.access.transfer.core.sending.command.ContributionCommandSender"/>
+	
 	
 	
 	<!-- services to receive commands, should be used by core-transfer bundle -->

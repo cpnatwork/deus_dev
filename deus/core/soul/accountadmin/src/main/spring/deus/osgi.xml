@@ -7,7 +7,7 @@
 
 	<!-- to UI -->
 
-	<osgi:service id="registratorOsgiServiceExportedToClient" ref="registrator" interface="deus.core.soul.registrator.RegistratorExportedToClient" />
+	<osgi:service id="registratorOsgiServiceExportedToClient" ref="registrator" interface="deus.core.soul.accountadmin.registrator.RegistratorExportedToClient" />
 
 	
 	
@@ -31,7 +31,7 @@
 
 	<osgi:reference id="userMetadataDao" interface="deus.core.access.storage.api.common.user.UserMetadataDao" />
 
-	<osgi:reference id="accountDao" interface="deus.core.access.storage.api.common.user.AccountDoRep" />
+	<osgi:reference id="accountDao" interface="deus.core.access.storage.api.common.account.AccountDao" />
 
 
 </beans>

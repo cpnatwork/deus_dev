@@ -3,6 +3,8 @@
  */
 package deus.core.access.storage.inmemory.subscription;
 
+import org.springframework.stereotype.Repository;
+
 import deus.core.access.storage.api.subscription.LopEntryDao;
 import deus.core.access.storage.inmemory.GenericTwofoldIdDaoImpl;
 import deus.model.common.user.frids.PublisherId;
@@ -13,6 +15,7 @@ import deus.model.subscription.LopEntry;
  * @author cpn
  *
  */
+@Repository("lopEntryDao")
 public class LopEntryDaoImpl extends GenericTwofoldIdDaoImpl<LopEntry, SubscriberId, PublisherId>implements LopEntryDao {
 
 	@Override

@@ -21,7 +21,7 @@
 	
 	<!-- DAOs -->
 
-	<osgi:reference id="accountDoRep" interface="deus.core.access.storage.api.account.AccountDoRep" />
+	<osgi:reference id="accountDao" interface="deus.core.access.storage.api.common.account.AccountDao" />
 
 
 </beans>
