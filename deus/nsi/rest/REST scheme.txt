@@ -1,0 +1,44 @@
+DEUS REST Scheme
+----------------
+
+http://www.deus.org/users/
+
+/alice/ip/contributions
+
+
+
+/alice/cp/pif/dcs/
+/alice/cp/pif/dcs/1 (1==discriminator)		GET
+
+/alice/cp/subscribers/
+/alice/cp/subscribers/1	(alice in role of IC, 1==userId of CP)		GET, POST/PUT, DELETE
+
+
+
+
+/alice/ic/dif
+/alice/ic/dif/fifs
+/alice/ic/dif/fifs/1	(1==userId of CP)	GET
+
+/alice/ic/publishers/
+/alice/ic/publishers/1	(alice in role of IC, 1==userId of CP)		GET, POST/PUT, DELETE
+
+
+
+
+
+DACUS REST Scheme
+-----------------
+
+0. Define domain specific names for main actors
+0.1. map these names to distribution roles
+
+e.g. AB-Publisher, AB-Subscriber
+
+
+1. adapt above scheme du DACUS Naming.
+
+2. Merge
+/alice/ip/contributions
+into
+
