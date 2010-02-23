@@ -14,12 +14,16 @@ import deus.core.access.transfer.common.messages.publication.connection.establis
 import deus.core.access.transfer.common.messages.publication.connection.establish.subscribe.SubscribeToPublisherMessage;
 import deus.core.access.transfer.common.messages.publication.connection.terminate.CancelSubscriptionMessage;
 import deus.core.access.transfer.common.messages.publication.connection.terminate.UnsubscribeMessage;
+import deus.core.access.transfer.common.messages.repatriation.ContributeMessage;
 import deus.core.access.transfer.common.protocol.messagereceiver.MessageReceiver;
 import deus.core.access.transfer.core.receiving.soulcallback.SoulCallbackRegistry;
 import deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers;
+import deus.core.access.transfer.core.receiving.soulcallback.repatriationhub.RepatriationHubExportedToPeers;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 import deus.model.common.user.UserMetadata;
+import deus.model.common.user.frids.ContributorId;
 import deus.model.common.user.frids.PublisherId;
+import deus.model.common.user.frids.RepatriationAuthorityId;
 import deus.model.common.user.frids.SubscriberId;
 import deus.model.common.user.id.UserId;
 
@@ -29,7 +33,6 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 	@Autowired
 	private SoulCallbackRegistry registry;
 
-
 	// TODO: refactor (introduce more receive methods and dispatch in this one)
 	@Override
 	public void receive(TransferMessage message) {
@@ -38,7 +41,11 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 
 		PublisherExportedToPeers publisher = registry.getPublisher();
 		SubscriberExportedToPeers subscriber = registry.getSubscriber();
+		
+		RepatriationHubExportedToPeers repatriationHub = registry.getRepatriationHub();
 
+		// +++ PUBLICATION COMM. +++
+		
 		// USE CASE: SUBSCRIBE
 		if (message instanceof SubscribeToPublisherMessage) {
 			// here: role publisher
@@ -79,8 +86,16 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 		else if (message instanceof CancelSubscriptionMessage)
 			// FIXME: implement
 			;
+		
+		// +++ REPATRIATION COMM. +++
+		
+		// USE CASE: CONTRIBUTE
+		else if (message instanceof ContributeMessage) {
+			repatriationHub.accept(
+					new RepatriationAuthorityId(receiverId), new ContributorId(senderId),
+					((ContributeMessage) message).getDcToContribute());
+		}
 		else
 			throw new IllegalArgumentException("cannot handle command " + message);
 	}
-
 }

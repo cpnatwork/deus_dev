@@ -34,6 +34,7 @@ public class RepatriationHubImpl implements RepatriationHub {
 			throw new IllegalArgumentException("ID of the informationProvider does not match the id in the digital card!");
 
 
+		// IMPORTANT SHORTCUT: always allow myself to contribute changes!
 		if (repatriationAuthorityId.equals(contributorId)) {
 			// if 'I' am the informationProvider
 			pifGovernor.assimilateRepatriatedDigitalCard(repatriationAuthorityId, repatriatedDigitalCard);

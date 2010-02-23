@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import deus.core.access.transfer.core.receiving.soulcallback.ExportedSoulCallbackRegistry;
 import deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers;
+import deus.core.access.transfer.core.receiving.soulcallback.repatriationhub.RepatriationHubExportedToPeers;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 
 @Component
@@ -23,12 +24,15 @@ public class SoulCallbackRegistrator {
 	@Autowired
 	@Qualifier("proxy")
 	private SubscriberExportedToPeers subscriber;
-
+	
+	@Autowired
+	private RepatriationHubExportedToPeers repatriationHub;
 
 	@PostConstruct
 	public void registerCommandReceivers() {
 		registry.registerPublisher(publisher);
 		registry.registerSubscriber(subscriber);
+		registry.registerRepatriationHub(repatriationHub);
 	}
 	
 }
