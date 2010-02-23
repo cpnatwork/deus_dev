@@ -1,5 +1,8 @@
 package deus.core.soul.contribution.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import deus.core.access.transfer.core.sending.command.ContributionCommandSender;
 import deus.core.soul.contribution.Contributor;
 import deus.model.common.dossier.DigitalCard;
 import deus.model.common.dossier.DigitalCardId;
@@ -8,9 +11,12 @@ import deus.model.common.user.frids.RepatriationAuthorityId;
 
 public class ContributorImpl implements Contributor {
 
+	@Autowired
+	private ContributionCommandSender contributionCommandSender;
+	
 	@Override
-	public void forwardToCp(ContributorId contributorId, RepatriationAuthorityId repatriationAuthorityId, DigitalCard digitalCard) {
-		// FIXME: implement (use command sender to repatriate the given digital card to the CP)
+	public void contributeCp(ContributorId contributorId, RepatriationAuthorityId repatriationAuthorityId, DigitalCard digitalCard) {
+		contributionCommandSender.forwardToCp(contributorId, repatriationAuthorityId, digitalCard);
 	}
 
 

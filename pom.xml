@@ -41,8 +41,8 @@
 	</developers>
 
 	<scm>
-		<connection>scm:svn:https://svn.origo.ethz.ch/dacus/tags/dacus-0.2</connection>
-		<developerConnection>scm:svn:https://svn.origo.ethz.ch/dacus/tags/dacus-0.2</developerConnection>
+		<connection>scm:svn:https://svn.origo.ethz.ch/dacus/src/tags/dacus-0.3</connection>
+		<developerConnection>scm:svn:https://svn.origo.ethz.ch/dacus/src/tags/dacus-0.3</developerConnection>
 	</scm>
 
 	<issueManagement>
@@ -570,43 +570,5 @@ Import-Template: javax.*;version="0"
 		</testResources>
 
 	</build>
-
-
-
-	<!--+++ REPOSITORIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-
-	<repositories>
-		<repository>
-			<id>com.springsource.repository.bundles.release</id>
-			<name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
-			<url>http://repository.springsource.com/maven/bundles/release</url>
-		</repository>
-		<repository>
-			<id>com.springsource.repository.bundles.external</id>
-			<name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
-			<url>http://repository.springsource.com/maven/bundles/external</url>
-		</repository>
-		<repository>
-			<id>com.springsource.repository.libraries.release</id>
-			<name>SpringSource Enterprise Bundle Repository - SpringSource Library Releases</name>
-			<url>http://repository.springsource.com/maven/libraries/release</url>
-		</repository>
-		<repository>
-			<id>com.springsource.repository.libraries.external</id>
-			<name>SpringSource Enterprise Bundle Repository - External Library Releases</name>
-			<url>http://repository.springsource.com/maven/libraries/external</url>
-		</repository>
-		
-	</repositories>
-
-	<!-- this is used to get Bundlor -->
-	<pluginRepositories>
-		<pluginRepository>
-			<id>com.springsource.repository.bundles.milestone</id>
-			<name>SpringSource Enterprise Bundle Repository</name>
-			<url>http://repository.springsource.com/maven/bundles/milestone</url>
-		</pluginRepository>
-	</pluginRepositories>
-	
 
 </project>

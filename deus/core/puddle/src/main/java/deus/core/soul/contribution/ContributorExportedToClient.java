@@ -6,6 +6,6 @@ import deus.model.common.user.frids.RepatriationAuthorityId;
 
 public interface ContributorExportedToClient {
 
-	public void forwardToCp(ContributorId contributorId, RepatriationAuthorityId repatriationAuthorityId, DigitalCard digitalCard);
+	public void contributeCp(ContributorId contributorId, RepatriationAuthorityId repatriationAuthorityId, DigitalCard digitalCard);
 	
 }
