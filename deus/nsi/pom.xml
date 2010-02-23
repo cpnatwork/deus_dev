@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>inf6.promed</groupId>
+		<artifactId>deus</artifactId>
+		<version>0.4-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>deus-nsi</artifactId>
+	<packaging>pom</packaging>
+	<name>DEUS Neighborhood System Interfaces</name>
+
+
+	<modules>
+		<module>rest</module>
+	</modules>
+
+	<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++ DEPENDENCIES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+
+	<dependencies>
+
+		<!-- we want to export the functionality of Soul! -->
+
+		<dependency>
+			<groupId>inf6.promed</groupId>
+			<artifactId>deus-core-puddle</artifactId>
+			<type>bundle</type>
+		</dependency>
+
+
+	</dependencies>
+
+</project>
