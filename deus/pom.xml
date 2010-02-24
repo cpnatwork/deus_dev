@@ -14,6 +14,7 @@
 	<modules>
 		<module>core</module>
 		<module>model</module>
+		<module>nsi</module>
 		<module>storage</module>
 
 		<module>commontest</module>

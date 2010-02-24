@@ -32,6 +32,12 @@
 			<type>bundle</type>
 		</dependency>
 
+		<dependency>
+			<groupId>inf6.promed</groupId>
+			<artifactId>deus-model</artifactId>
+			<type>bundle</type>
+		</dependency>
+
 
 	</dependencies>
 

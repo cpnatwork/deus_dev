@@ -34,17 +34,6 @@
 	
 	<dependencies>
         <!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-		<dependency>
-			<groupId>inf6.promed</groupId>
-			<artifactId>deus-model</artifactId>
-			<type>bundle</type>
-		</dependency>
-
-		<dependency>
-			<groupId>inf6.promed</groupId>
-			<artifactId>deus-core-access-storage-api</artifactId>
-			<type>bundle</type>
-		</dependency>
                 
 	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	    
