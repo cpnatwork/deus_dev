@@ -10,34 +10,35 @@
 	<!-- CORE -->
 	
 	<!-- service for registration of transfer protocols -->
-	<osgi:service id="transferProtocolRegistryOsgiService" ref="transferProtocolRegistry" interface="deus.core.access.transfer.common.protocolregistry.TransferProtocolRegistry" />
+	<osgi:service ref="transferProtocolRegistry" interface="deus.core.access.transfer.common.protocolregistry.TransferProtocolRegistry" />
 	
 	
 	
 	<!-- SENDING -->
 	
 	<!-- services for sending commands, should be used by core package -->
-	<osgi:service id="publisherCommandSenderOsgiService" ref="publisherCommandSender" interface="deus.core.access.transfer.core.sending.command.PublisherCommandSender"/>
+	<osgi:service ref="publisherCommandSender" interface="deus.core.access.transfer.core.sending.command.PublisherCommandSender"/>
 	
-	<osgi:service id="subscriberCommandSenderOsgiService" ref="subscriberCommandSender" interface="deus.core.access.transfer.core.sending.command.SubscriberCommandSender"/>
+	<osgi:service ref="subscriberCommandSender" interface="deus.core.access.transfer.core.sending.command.SubscriberCommandSender"/>
 	
+	<osgi:service ref="contributionCommandSender" interface="deus.core.access.transfer.core.sending.command.ContributionCommandSender"/>
 
 
 	<!-- RECEIVING -->
 
 	<!-- service for receiving transfer messages -->
-	<osgi:service id="messageReceiverOsgiService" ref="messageReceiver" interface="deus.core.access.transfer.common.protocol.messagereceiver.MessageReceiver"/>
+	<osgi:service ref="messageReceiver" interface="deus.core.access.transfer.common.protocol.messagereceiver.MessageReceiver"/>
 	
 	
 	<!-- callback to soul registry -->
-	<osgi:service id="soulCallbackRegistryOsgiService" ref="soulCallbackRegistry" interface="deus.core.access.transfer.core.receiving.soulcallback.ExportedSoulCallbackRegistry"/>
+	<osgi:service ref="soulCallbackRegistry" interface="deus.core.access.transfer.core.receiving.soulcallback.ExportedSoulCallbackRegistry"/>
 
 
 	<!-- GATEKEEPER -->
 	<osgi:reference id="cerberus" interface="deus.core.soul.gatekeeper.cerberus.CerberusExportedToSubsystems"/>
 	
 	<!-- REGISTRATOR -->
-	<osgi:reference id="registrator" interface="deus.core.soul.registrator.RegistratorExportedToSubsystems"/>
+	<osgi:reference id="registrator" interface="deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems"/>
 
 
 </beans>

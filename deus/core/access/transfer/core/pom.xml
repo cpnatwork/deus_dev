@@ -14,7 +14,7 @@
 
 	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
-		<osgi.rootPackage>deus.core.access.transfer</osgi.rootPackage>
+		<osgi.rootPackage>deus.core.access.transfer.core</osgi.rootPackage>
 		<!--
 			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
 			PersistantAnnotationBeanPostProcessor which is in the given package.
@@ -78,7 +78,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-					<argLine>-javaagent:${settings.localRepository}/org/springframework/spring-agent/${spring.agent.version}/spring-agent-${spring.agent.version}.jar</argLine>
+					<argLine>-javaagent:${settings.localRepository}/org/springframework/org.springframework.instrument/${spring.instrument.version}/org.springframework.instrument-${spring.instrument.version}.jar</argLine>
 				</configuration>
 			</plugin>
 			

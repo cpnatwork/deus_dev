@@ -7,14 +7,14 @@
 
 	<!-- to UI -->
 
-	<osgi:service id="cerberusOsgiServiceExportedToClient" ref="cerberus" interface="deus.core.soul.gatekeeper.cerberus.CerberusExportedToClient" />
+	<osgi:service ref="cerberus" interface="deus.core.soul.gatekeeper.cerberus.CerberusExportedToClient" />
 	
 	
 	
 	<!-- to SUBSYSTEMS -->
 	
 	<!-- to transfer core -->
-	<osgi:service id="cerberusOsgiServiceExportedToSubsystems" ref="cerberus" interface="deus.core.soul.gatekeeper.cerberus.CerberusExportedToSubsystems" />
+	<osgi:service ref="cerberus" interface="deus.core.soul.gatekeeper.cerberus.CerberusExportedToSubsystems" />
 
 
 	

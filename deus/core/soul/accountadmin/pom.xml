@@ -24,7 +24,7 @@
 			org.springframework.beans.factory.aspectj	
 		</osgi.additionalPackageImports>
 		
-		<osgi.nonExportedPackages />
+		<osgi.nonExportedPackages>!*.impl</osgi.nonExportedPackages>
 	</properties>
 
 
@@ -57,7 +57,7 @@
 
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-agent</artifactId>
+			<artifactId>org.springframework.instrument</artifactId>
 			<scope>test</scope>
 		</dependency>
 
@@ -81,7 +81,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-					<argLine>-javaagent:${settings.localRepository}/org/springframework/spring-agent/${spring.agent.version}/spring-agent-${spring.agent.version}.jar</argLine>
+					<argLine>-javaagent:${settings.localRepository}/org/springframework/org.springframework.instrument/${spring.instrument.version}/org.springframework.instrument-${spring.instrument.version}.jar</argLine>
 				</configuration>
 			</plugin>
 			

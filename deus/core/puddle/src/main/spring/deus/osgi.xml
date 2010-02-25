@@ -9,18 +9,18 @@
 
 	<!-- UI -->
 	
-	<osgi:service id="subscriberOsgiService" ref="subscriber" interface="deus.core.soul.subscription.SubscriberExportedToClient" />
+	<osgi:service ref="subscriber" interface="deus.core.soul.subscription.SubscriberExportedToClient" />
 	
-	<osgi:service id="publisherOsgiService" ref="publisher" interface="deus.core.soul.publication.PublisherExportedToClient" />
+	<osgi:service ref="publisher" interface="deus.core.soul.publication.PublisherExportedToClient" />
 
-	<osgi:service id="pifGovernorOsgiService" ref="pifGovernor" interface="deus.core.soul.pifgoverning.PifGovernor" />
+	<osgi:service ref="pifGovernor" interface="deus.core.soul.pifgoverning.PifGovernor" />
 	
 	
 	<!-- DAOs -->
 
 	<osgi:reference id="accountDao" interface="deus.core.access.storage.api.common.account.AccountDao" />
 
-	<osgi:reference id="digitalCardDao" interface="deus.core.access.storage.api.common.dossier.DigitalCardDao" />
+<!--	<osgi:reference id="digitalCardDao" interface="deus.core.access.storage.api.common.dossier.DigitalCardDao" />-->
 	
 	<osgi:reference id="userMetadataDao" interface="deus.core.access.storage.api.common.user.UserMetadataDao" />
 
@@ -39,11 +39,11 @@
 
 	<!-- GATEKEEPER -->
 
-	<osgi:reference id="distributionRoleSetup" interface="deus.core.soul.rolesetup.DistributionRoleSetup"/>
+	<osgi:reference id="distributionRoleSetup" interface="deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup"/>
 	
 	
 	<!-- BARKER -->
-	<osgi:reference id="barker" interface="deus.core.soul.barker.barker.BarkerExportedToSubsystems" />
+	<osgi:reference id="barker" interface="deus.core.soul.hci.barker.BarkerExportedToSubsystems" />
 	
 	
 	

@@ -5,8 +5,8 @@ import deus.model.hci.attention.AttentionElement;
 
 public interface AttentionElementDao {
 
-	void addNewEntity(UserId userId, AttentionElement attentionElement);
+	public void addNewEntity(UserId userId, AttentionElement attentionElement);
 
-	void updateEntity(UserId userId, AttentionElement attentionElement);
+	public void updateEntity(UserId userId, AttentionElement attentionElement);
 
 }

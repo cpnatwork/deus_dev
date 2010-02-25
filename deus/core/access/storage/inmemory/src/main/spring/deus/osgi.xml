@@ -5,24 +5,29 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/osgi  
 		http://www.springframework.org/schema/osgi/spring-osgi.xsd"
-		osgi:default-timeout="10000">
+	osgi:default-timeout="10000">
 
-	<osgi:service id="accountDaoOsgiService" ref="accountDao" interface="deus.core.access.storage.api.common.account.AccountDao" />
+	<osgi:service ref="accountDao" interface="deus.core.access.storage.api.common.account.AccountDao" />
 
-	<osgi:service id="digitalCardDaoOsgiService" ref="digitalCardDao" interface="deus.core.access.storage.api.common.dossier.DigitalCardDao" />
-	
-	<osgi:service id="userMetadataDaoOsgiService" ref="userMetadataDao" interface="deus.core.access.storage.api.common.user.UserMetadataDao" />
+	<osgi:service ref="digitalCardDao" interface="deus.core.access.storage.api.common.dossier.DigitalCardDao" />
 
-	<osgi:service id="fifDaoOsgiService" ref="fifDao" interface="deus.core.access.storage.api.difgoverning.FifDao" />
-	
-	<osgi:service id="pifDaoOsgiService" ref="pifDao" interface="deus.core.access.storage.api.pifgoverning.PifDao" />
-	
-	<osgi:service id="losDaoOsgiService" ref="losDao" interface="deus.core.access.storage.api.publication.LosDao" />
-	
-	<osgi:service id="losEntryDaoOsgiServce" ref="losEntryDao" interface="deus.core.access.storage.api.publication.LosEntryDao" />
+	<osgi:service ref="userMetadataDao" interface="deus.core.access.storage.api.common.user.UserMetadataDao" />
 
-	<osgi:service id="lopDaoOsgiService" ref="lopDao" interface="deus.core.access.storage.api.subscription.LopDao" />
-	
-	<osgi:service id="lopEntryDaoOsgiServce" ref="lopEntryDao" interface="deus.core.access.storage.api.subscription.LopEntryDao" />
+	<osgi:service ref="fifDao" interface="deus.core.access.storage.api.difgoverning.FifDao" />
+
+	<osgi:service ref="pifDao" interface="deus.core.access.storage.api.pifgoverning.PifDao" />
+
+	<osgi:service ref="losDao" interface="deus.core.access.storage.api.publication.LosDao" />
+
+	<osgi:service ref="losEntryDao" interface="deus.core.access.storage.api.publication.LosEntryDao" />
+
+	<osgi:service ref="lopDao" interface="deus.core.access.storage.api.subscription.LopDao" />
+
+	<osgi:service ref="lopEntryDao" interface="deus.core.access.storage.api.subscription.LopEntryDao" />
+
+	<osgi:service ref="attentionElementDao" interface="deus.core.access.storage.api.hci.attention.AttentionElementDao" />
+
+	<osgi:service ref="attentionListDao" interface="deus.core.access.storage.api.hci.attention.AttentionListDao" />
+
 
 </beans>

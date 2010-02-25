@@ -5,8 +5,8 @@ import deus.model.hci.attention.AttentionList;
 
 public interface AttentionListDao {
 
-	AttentionList getUnnoticedAttentionList(UserId userId);
+	public AttentionList getUnnoticedAttentionList(UserId userId);
 
-	AttentionList getNoticedAttentionList(UserId userId);
+	public AttentionList getNoticedAttentionList(UserId userId);
 
 }
