@@ -43,7 +43,6 @@ public class GenericTechDaoImpl<TechEntityT, TechIdT extends Serializable> exten
 	}
 
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public TechEntityT getByTechId(TechIdT techId) {
 		return (TechEntityT) getHibernateTemplate().get(entityPoType, techId);
