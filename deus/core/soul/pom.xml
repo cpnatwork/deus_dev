@@ -12,9 +12,15 @@
 	<name>DEUS core soul</name>
 	
 	<modules>
-		<module>hci</module>
 		<module>accountadmin</module>
+		<module>contribution</module>
+		<module>difgoverning</module>
 		<module>gatekeeper</module>
+		<module>hci</module>
+		<module>pifgoverning</module>
+		<module>publication</module>
+		<module>repatriationhub</module>
+		<module>subscription</module>
 	</modules>
 	
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
@@ -36,3 +42,4 @@
 	
 
 </project>
+
