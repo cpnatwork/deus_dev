@@ -124,7 +124,42 @@
 			
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>deus-core-puddle</artifactId>
+				<artifactId>deus-core-soul-contribution</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
+			
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>deus-core-soul-repatriationhub</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
+			
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>deus-core-soul-pifgoverning</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
+			
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>deus-core-soul-publication</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
+			
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>deus-core-soul-subscription</artifactId>
+				<version>${project.version}</version>
+				<type>bundle</type>
+			</dependency>
+			
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>deus-core-soul-difgoverning</artifactId>
 				<version>${project.version}</version>
 				<type>bundle</type>
 			</dependency>
