@@ -51,7 +51,7 @@
 
 		<dependency>
 			<groupId>inf6.promed</groupId>
-			<artifactId>deus-core-puddle</artifactId>
+			<artifactId>deus-core-soul-contribution</artifactId>
 			<type>bundle</type>
 		</dependency>
 				
