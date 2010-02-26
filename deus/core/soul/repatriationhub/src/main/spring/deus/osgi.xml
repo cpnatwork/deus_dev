@@ -9,7 +9,7 @@
 
 	<!-- PIF GOVERNOR -->
 
-	<osgi:reference id="pifgovernor" interface="deus.core.soul.pifgoverning.PifGovernor" />
+	<osgi:reference id="pifgovernor" interface="deus.core.soul.pifgoverning.PifGovernorExportedToSubsystems" />
 
 
 	<!-- BARKER -->

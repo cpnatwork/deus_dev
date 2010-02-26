@@ -9,7 +9,7 @@
 
 	<!-- UI -->
 	
-	<osgi:service ref="pifGovernor" interface="deus.core.soul.pifgoverning.PifGovernor" />
+	<osgi:service ref="pifGovernor" interface="deus.core.soul.pifgoverning.PifGovernorExportedToSubsystems" />
 	
 	
 	<!-- DAOs -->

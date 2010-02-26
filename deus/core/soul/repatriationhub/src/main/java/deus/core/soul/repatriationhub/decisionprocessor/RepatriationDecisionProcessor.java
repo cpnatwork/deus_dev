@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import deus.core.soul.hci.decisionprocessor.impl.AbstractGenericDecisionProcessor;
-import deus.core.soul.pifgoverning.PifGovernor;
+import deus.core.soul.pifgoverning.PifGovernorExportedToSubsystems;
 import deus.model.common.user.frids.RepatriationAuthorityId;
 import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.repatriation.Repatriation;
@@ -13,7 +13,7 @@ import deus.model.hci.attention.repatriation.Repatriation;
 public class RepatriationDecisionProcessor extends AbstractGenericDecisionProcessor<Repatriation> {
 
 	@Autowired
-	public PifGovernor pifGovernor;
+	public PifGovernorExportedToSubsystems pifGovernor;
 
 
 	@Override
