@@ -34,6 +34,12 @@
 	<dependencies>
         <!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
+		<dependency>
+			<groupId>inf6.promed</groupId>
+			<artifactId>deus-core-access-transfer-core</artifactId>
+			<type>bundle</type>
+		</dependency>
+		
                 
 	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	    
