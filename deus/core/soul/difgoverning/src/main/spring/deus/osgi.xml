@@ -7,9 +7,9 @@
 		http://www.springframework.org/schema/osgi/spring-osgi.xsd"
 		osgi:default-timeout="10000">
 
-	<!-- UI -->
+	<!-- SUBSYSTEMS -->
 	
-	<osgi:service ref="difGovernor" interface="deus.core.soul.difgoverning.DifGovernor" />
+	<osgi:service ref="difGovernor" interface="deus.core.soul.difgoverning.DifGovernorExportedToSubsystems" />
 	
 	<!-- DAOs -->
 

@@ -11,6 +11,11 @@
 	
 	<osgi:service ref="subscriber" interface="deus.core.soul.subscription.SubscriberExportedToClient" />
 		
+	<!-- DIF GOVERNOR -->
+
+	<osgi:reference id="difgovernor" interface="deus.core.soul.difgoverning.DifGovernorExportedToSubsystems" />
+
+		
 	<!-- DAOs -->
 
 	<osgi:reference id="lopDao" interface="deus.core.access.storage.api.subscription.LopDao" />

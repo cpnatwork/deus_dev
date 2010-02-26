@@ -10,7 +10,7 @@ import deus.core.access.storage.api.common.user.UserMetadataDao;
 import deus.core.access.storage.api.subscription.LopDao;
 import deus.core.access.storage.api.subscription.LopEntryDao;
 import deus.core.access.transfer.core.sending.command.SubscriberCommandSender;
-import deus.core.soul.difgoverning.DifGovernor;
+import deus.core.soul.difgoverning.DifGovernorExportedToSubsystems;
 import deus.core.soul.subscription.Subscriber;
 import deus.model.common.dossier.Patch;
 import deus.model.common.user.UserMetadata;
@@ -36,7 +36,7 @@ public class SubscriberImpl implements Subscriber {
 	private LopDao lopDao;
 
 	@Autowired
-	private DifGovernor difGovernor;
+	private DifGovernorExportedToSubsystems difGovernor;
 
 	@Autowired
 	private SubscriberCommandSender subscriberCommandSender;

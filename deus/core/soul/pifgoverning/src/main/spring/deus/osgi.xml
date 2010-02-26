@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/osgi/spring-osgi.xsd"
 		osgi:default-timeout="10000">
 
-	<!-- UI -->
+	<!-- SUBSYSTEMS -->
 	
 	<osgi:service ref="pifGovernor" interface="deus.core.soul.pifgoverning.PifGovernorExportedToSubsystems" />
 	
