@@ -9,59 +9,17 @@
 
 	<!-- UI -->
 	
-	<osgi:service ref="subscriber" interface="deus.core.soul.subscription.SubscriberExportedToClient" />
-	
-	<osgi:service ref="publisher" interface="deus.core.soul.publication.PublisherExportedToClient" />
-
 	<osgi:service ref="pifGovernor" interface="deus.core.soul.pifgoverning.PifGovernor" />
 	
 	
 	<!-- DAOs -->
 
-	<osgi:reference id="accountDao" interface="deus.core.access.storage.api.common.account.AccountDao" />
-
-<!--	<osgi:reference id="digitalCardDao" interface="deus.core.access.storage.api.common.dossier.DigitalCardDao" />-->
-	
-	<osgi:reference id="userMetadataDao" interface="deus.core.access.storage.api.common.user.UserMetadataDao" />
-
-	<osgi:reference id="fifDao" interface="deus.core.access.storage.api.difgoverning.FifDao" />
-	
 	<osgi:reference id="pifDao" interface="deus.core.access.storage.api.pifgoverning.PifDao" />
 	
-	<osgi:reference id="losDao" interface="deus.core.access.storage.api.publication.LosDao" />
 	
-	<osgi:reference id="losEntryDao" interface="deus.core.access.storage.api.publication.LosEntryDao" />
-
-	<osgi:reference id="lopDao" interface="deus.core.access.storage.api.subscription.LopDao" />
-	
-	<osgi:reference id="lopEntryDao" interface="deus.core.access.storage.api.subscription.LopEntryDao" />
-
-
 	<!-- GATEKEEPER -->
 
 	<osgi:reference id="distributionRoleSetup" interface="deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup"/>
 	
-	
-	<!-- BARKER -->
-	<osgi:reference id="barker" interface="deus.core.soul.hci.barker.BarkerExportedToSubsystems" />
-	
-	
-	
-	<!-- TRANSFER -->
-
-	<!-- references to send commands, should be provided by core-transfer bundle -->
-	
-	<osgi:reference id="publisherCommandSender" interface="deus.core.access.transfer.core.sending.command.PublisherCommandSender"/>
-	
-	<osgi:reference id="subscriberCommandSender" interface="deus.core.access.transfer.core.sending.command.SubscriberCommandSender"/>
-	
-	<osgi:reference id="contributionCommandSender" interface="deus.core.access.transfer.core.sending.command.ContributionCommandSender"/>
-	
-	
-	
-	<!-- services to receive commands, should be used by core-transfer bundle -->
-	
-	<osgi:reference id="soulCallbackRegistry" interface="deus.core.access.transfer.core.receiving.soulcallback.ExportedSoulCallbackRegistry"/>
-
 	
 </beans>

@@ -12,6 +12,7 @@ import deus.model.difgoverning.ForeignInformationFile;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  *
  */
+// TODO: configure this in spring xml
 @Component
 public class SimpleAppendPatchStrategy implements PatchStrategy {
 
