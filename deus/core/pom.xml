@@ -12,8 +12,6 @@
 	<name>DEUS core</name>
 	
 	<modules>
-		<module>puddle</module>
-
 		<module>access</module>
 		<module>soul</module>
 	</modules>

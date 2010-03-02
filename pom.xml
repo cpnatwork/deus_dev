@@ -44,8 +44,8 @@
 	</developers>
 
 	<scm>
-		<connection>scm:svn:https://svn.origo.ethz.ch/dacus/src/tags/dacus-0.3</connection>
-		<developerConnection>scm:svn:https://svn.origo.ethz.ch/dacus/src/tags/dacus-0.3</developerConnection>
+		<connection>scm:svn:https://svn.origo.ethz.ch/dacus/src/trunk</connection>
+		<developerConnection>scm:svn:https://svn.origo.ethz.ch/dacus/src/trunk</developerConnection>
 	</scm>
 
 	<issueManagement>
@@ -577,8 +577,8 @@ Import-Template: javax.*;version="0"
 			<!-- puts the spring configuration files from the normal configuration into /META-INF/spring -->
 			<resource>
 				<targetPath>META-INF/spring</targetPath>
-				<filtering>false</filtering>
 				<directory>${basedir}/src/main/spring</directory>
+				<filtering>true</filtering>
 				<includes>
 					<include>**/*.xml</include>
 				</includes>
@@ -588,20 +588,21 @@ Import-Template: javax.*;version="0"
 			<!--<testResource>
 				<directory>${basedir}/src/test/resources</directory>
 			</testResource>-->
-		
-			<!-- puts the spring configuration files from the test configuration into the root classpath folder,
-				overwrites the ones from the normal configuration!!! -->
+
+			<!-- puts the spring configuration files from the normal configuration into the root classpath folder -->
 			<testResource>
-				<filtering>false</filtering>
-				<directory>${basedir}/src/test/spring</directory>
+				<directory>${basedir}/src/main/spring</directory>
+				<filtering>true</filtering>
 				<includes>
 					<include>**/*.xml</include>
 				</includes>
 			</testResource>
-			<!-- puts the spring configuration files from the normal configuration into the root classpath folder -->
+	
+			<!-- puts the spring configuration files from the test configuration into the root classpath folder,
+				overwrites the ones from the normal configuration!!! -->
 			<testResource>
-				<filtering>false</filtering>
-				<directory>${basedir}/src/main/spring</directory>
+				<directory>${basedir}/src/test/spring</directory>
+				<filtering>true</filtering>
 				<includes>
 					<include>**/*.xml</include>
 				</includes>

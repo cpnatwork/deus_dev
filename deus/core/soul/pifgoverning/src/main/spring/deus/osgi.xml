@@ -11,6 +11,8 @@
 	
 	<osgi:service ref="pifGovernor" interface="deus.core.soul.pifgoverning.PifGovernorExportedToSubsystems" />
 	
+	<osgi:service ref="pifGovernor" interface="deus.core.soul.pifgoverning.PifGovernorExportedToClient" />
+	
 	
 	<!-- DAOs -->
 

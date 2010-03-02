@@ -14,7 +14,7 @@
 
 	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
-		<osgi.rootPackage>deus.nsi</osgi.rootPackage>
+		<osgi.rootPackage>deus.nsi.rest</osgi.rootPackage>
 		<!--
 			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
 			PersistantAnnotationBeanPostProcessor which is in the given package.
@@ -46,7 +46,17 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>org.springframework.web.servlet</artifactId>
-			<version>3.0.1.RELEASE-A</version>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>org.springframework.context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.osgi</groupId>
+			<artifactId>org.springframework.osgi-library</artifactId>
+			<type>libd</type>
 		</dependency>
 
 	</dependencies>
@@ -60,6 +70,8 @@
 	<build>
 
 		<plugins>
+
+
 
 		</plugins>
 

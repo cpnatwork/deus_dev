@@ -18,6 +18,8 @@
 	
 	<osgi:reference id="losEntryDao" interface="deus.core.access.storage.api.publication.LosEntryDao" />
 
+	<osgi:reference id="userMetadataDao" interface="deus.core.access.storage.api.common.user.UserMetadataDao" />
+
 
 
 	<!-- GATEKEEPER -->

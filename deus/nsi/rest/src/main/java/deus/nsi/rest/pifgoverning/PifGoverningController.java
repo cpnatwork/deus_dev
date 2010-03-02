@@ -2,6 +2,10 @@ package deus.nsi.rest.pifgoverning;
 
 import java.util.Set;
 
+import javax.annotation.PostConstruct;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,16 +25,26 @@ import deus.model.pifgoverning.PersonalInformationFile;
 @RequestMapping("/users/{userId}/cp/pif")
 public class PifGoverningController {
 
+	private final static Logger logger = LoggerFactory.getLogger(PifGoverningController.class);
+	
+	@PostConstruct
+	private void output() {
+		System.out.println("HALLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+		logger.error("HALLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+	}
+	
+	
 	@Autowired
 	private PifGovernorExportedToClient pifGovernor;
 
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public String getPif(@PathVariable("userId") String userId) {
+		return "TEST";
 		// FIXME: what to do if user does not exist?
 
-		return pifGovernor.getPersonalInformationFile(new RepatriationAuthorityId(new UserUrl(userId,
-				"http://localhost"))).toString();
+		//return pifGovernor.getPersonalInformationFile(new RepatriationAuthorityId(new UserUrl(userId,
+		//		"http://localhost"))).toString();
 	}
 
 	@RequestMapping(value = "dcs", method = RequestMethod.GET)
