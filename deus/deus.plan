@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plan name="deus.plan" version="0.4.0.SNAPSHOT" scoped="true" atomic="false"
+	xmlns="http://www.springsource.org/schema/dm-server/plan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+            http://www.springsource.org/schema/dm-server/plan 
+            http://www.springsource.org/schema/dm-server/plan/springsource-dm-server-plan.xsd">
+
+
+	<artifact type="bundle" name="inf6.promed.deus-model" version="0.4.0.SNAPSHOT" />
+
+	<artifact type="bundle" name="inf6.promed.deus-core-access-storage-api" version="0.4.0.SNAPSHOT" />
+	<artifact type="bundle" name="inf6.promed.deus-core-access-transfer-common" version="0.4.0.SNAPSHOT" />
+	<artifact type="bundle" name="inf6.promed.deus-core-access-storage-inmemory" version="0.4.0.SNAPSHOT" />
+
+	<artifact type="bundle" name="inf6.promed.deus-core-soul-gatekeeper" version="0.4.0.SNAPSHOT" />
+	<artifact type="bundle" name="inf6.promed.deus-core-soul-hci" version="0.4.0.SNAPSHOT" />
+	<artifact type="bundle" name="inf6.promed.deus-core-soul-accountadmin" version="0.4.0.SNAPSHOT" />
+
+	<artifact type="bundle" name="inf6.promed.deus-core-access-transfer-core" version="0.4.0.SNAPSHOT" />
+	<artifact type="bundle" name="inf6.promed.deus-core-access-transfer-plugins-local" version="0.4.0.SNAPSHOT" />
+
+	<artifact type="bundle" name="inf6.promed.deus-core-soul-difgoverning" version="0.4.0.SNAPSHOT" />
+	<artifact type="bundle" name="inf6.promed.deus-core-soul-subscription" version="0.4.0.SNAPSHOT" />
+	<artifact type="bundle" name="inf6.promed.deus-core-soul-publication" version="0.4.0.SNAPSHOT" />
+	<artifact type="bundle" name="inf6.promed.deus-core-soul-pifgoverning" version="0.4.0.SNAPSHOT" />
+	<artifact type="bundle" name="inf6.promed.deus-core-soul-repatriationhub" version="0.4.0.SNAPSHOT" />
+	<artifact type="bundle" name="inf6.promed.deus-core-soul-contribution" version="0.4.0.SNAPSHOT" />
+
+	<artifact type="bundle" name="inf6.promed.deus-nsi-rest" version="0.4.0.SNAPSHOT" />
+
+</plan>
