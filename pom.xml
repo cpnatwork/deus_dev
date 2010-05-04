@@ -14,7 +14,8 @@
 	</modules>
 
 	<properties>
-		<spring.version>3.0.0.RELEASE</spring.version>
+		<spring.version>3.0.2.RELEASE</spring.version>
+		<!--<spring.version>[3.0, 3.1)</spring.version>-->
 		<aspectj.version>1.6.1</aspectj.version>
 		<spring.instrument.version>3.0.1.RELEASE-A</spring.instrument.version>
 		<spring.osgi.version>1.1.2.B</spring.osgi.version>
