@@ -239,8 +239,10 @@
 			</dependency>
 	
 			<!-- this formerly was spring-agent.jar! -->
-			<!-- this is only a test scoped dependency, since Spring DM server provides spring-instrument.jar! -->
-			<!-- Additionally, the surefire plugin needs to be configured to pass -javaagent:<PATH-TO-spring-instrument.jar> as command line argument to java.exe -->
+			<!-- this is only a test scoped dependency, since Spring DM server provides spring-instrument.jar!
+-->
+			<!-- Additionally, the surefire plugin needs to be configured to pass -javaagent:<PATH-TO-spring-instrument.jar> as command line argument to java.exe
+-->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>org.springframework.instrument</artifactId>
@@ -311,7 +313,8 @@
 		</dependency>
 		
 <!--			 this is actually a transitive dependency (since it is a dep. of logback.classic), but-->
-<!--				we want it to appear, when executing mvn dependency:copy-dependencies -->
+<!--				we want it to appear, when executing mvn dependency:copy-dependencies
+-->
 <!--		<dependency>-->
 <!--			<groupId>ch.qos.logback</groupId>-->
 <!--			<artifactId>com.springsource.ch.qos.logback.core</artifactId>-->
@@ -325,7 +328,8 @@
 			<artifactId>com.springsource.slf4j.api</artifactId>
 			<version>1.5.0</version>
 		</dependency>
-		<!-- for libraries using apache commons logging: make loggers use the slf4j api -->
+		<!-- for libraries using apache commons logging: make loggers use the slf4j api
+-->
 <!--		<dependency>-->
 <!--			<groupId>org.slf4j</groupId>-->
 <!--			<artifactId>com.springsource.slf4j.org.apache.commons.logging</artifactId>-->
@@ -337,7 +341,8 @@
 <!--			<artifactId>com.springsource.slf4j.bridge</artifactId>-->
 <!--			<version>1.5.6</version>-->
 <!--		</dependency>-->
-		<!-- for libraries using log4j directly: make loggers use the slf4j api	("SLF4J Log4j Over SLF4J Binding") -->
+		<!-- for libraries using log4j directly: make loggers use the slf4j api	("SLF4J Log4j Over SLF4J Binding")
+-->
 <!--		<dependency>-->
 <!--			<groupId>org.slf4j</groupId>-->
 <!--			<artifactId>com.springsource.slf4j.org.apache.log4j</artifactId>-->
@@ -385,43 +390,54 @@ Import-Template: javax.*;version="0"
 						</configuration>
 					</execution>
 				</executions>
-			</plugin> -->
+			</plugin>
+-->
 			
-			
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<archive>
+<!--						 add the generated manifest to the war -->
+						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+					</archive>
+				</configuration>
+			</plugin>
 			
 			<!-- BUNDLE MANIFEST GENERATION -->
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
-				<version>1.4.3</version>
 				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<id>bundle-manifest</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>manifest</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
+
+				
+					<supportedProjectTypes>
+						<supportedProjectType>bundle</supportedProjectType>
+						<supportedProjectType>war</supportedProjectType>
+					</supportedProjectTypes>
+				
 					<!-- The following instructions are delegated to the BND tool of Peter Kriens
 					- Options with capital letter are directly inserted into Manifest as Headers
 					- options starting with _ ...?
 					 -->
 					<instructions>
-						<!--
-							export all packages below the root package (except non exported packages), and don't reimport them! more on
-							reimporting exported packages here: http://www.osgi.org/blog/2007/04/importance-of-exporting-nd-importing.html
-							If this behaviour is desired, add ;-noimport:=true at the end!
-						-->
-						<Export-Package>${osgi.nonExportedPackages},${osgi.rootPackage}.*</Export-Package>
- 
-						<!--
-							include all other packages (also the non exported packages!) as private. Export-Package takes precedence over
-							Private-Package!
-						-->
-						<Private-Package>${osgi.rootPackage}.*;-split-package:=merge-first</Private-Package>
- 
-						<!-- remove the BND internal header, that just states, which packages are ignored by BND -->
+
+						<!-- remove the BND internal header, that just states, which packages are ignored by BND
+-->
 						<_removeheaders>Ignore-Package</_removeheaders>
  
 						<!-- add additional package imports -->
 						<Import-Package>${osgi.additionalPackageImports},*</Import-Package>
 
-						<!-- Spring DM server configuration for the level of trace output -->
-						<Application-TraceLevels>${application.traceLevels}</Application-TraceLevels>
 					</instructions>
 				</configuration>
 			</plugin>
@@ -447,7 +463,8 @@ Import-Template: javax.*;version="0"
 						<projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
 						<projectnature>com.springsource.server.ide.facet.core.bundlenature</projectnature>
 					</additionalProjectnatures>
-					<!-- added this, so that automatically, the spring dm server is the default runtime! -->
+					<!-- added this, so that automatically, the spring dm server is the default runtime!
+-->
 <!--					<additionalConfig>
 						<file>
 							<name>.settings/org.eclipse.wst.common.project.facet.core.xml</name>
@@ -531,7 +548,8 @@ Import-Template: javax.*;version="0"
 								<if>
 									<equals arg1="${project.packaging}" arg2="bundle" />
 									<then>
-										<!-- property springdmserver.location should be defined in ~/.m2/settings.xml -->
+										<!-- property springdmserver.location should be defined in ~/.m2/settings.xml
+-->
 										<copy file="${project.build.directory}/${project.build.finalName}.jar" todir="${springdmserver.location}/pickup" />
 									</then>
 									<else>
@@ -565,7 +583,8 @@ Import-Template: javax.*;version="0"
 						</connector>
 					</connectors>
 				</configuration>
-			</plugin> -->
+			</plugin>
+-->
 
 		</plugins>
 
@@ -575,7 +594,8 @@ Import-Template: javax.*;version="0"
 			<resource>
 				<directory>${basedir}/src/main/resources</directory>
 			</resource>
-			<!-- puts the spring configuration files from the normal configuration into /META-INF/spring -->
+			<!-- puts the spring configuration files from the normal configuration into /META-INF/spring
+-->
 			<resource>
 				<targetPath>META-INF/spring</targetPath>
 				<directory>${basedir}/src/main/spring</directory>
@@ -590,7 +610,8 @@ Import-Template: javax.*;version="0"
 				<directory>${basedir}/src/test/resources</directory>
 			</testResource>-->
 
-			<!-- puts the spring configuration files from the normal configuration into the root classpath folder -->
+			<!-- puts the spring configuration files from the normal configuration into the root classpath folder
+-->
 			<testResource>
 				<directory>${basedir}/src/main/spring</directory>
 				<filtering>true</filtering>
@@ -600,7 +621,8 @@ Import-Template: javax.*;version="0"
 			</testResource>
 	
 			<!-- puts the spring configuration files from the test configuration into the root classpath folder,
-				overwrites the ones from the normal configuration!!! -->
+				overwrites the ones from the normal configuration!!!
+-->
 			<testResource>
 				<directory>${basedir}/src/test/spring</directory>
 				<filtering>true</filtering>

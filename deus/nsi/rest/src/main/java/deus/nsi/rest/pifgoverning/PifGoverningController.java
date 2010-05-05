@@ -10,14 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import deus.core.soul.pifgoverning.PifGovernorExportedToClient;
 import deus.model.common.dossier.DigitalCard;
 import deus.model.common.user.frids.RepatriationAuthorityId;
 import deus.model.common.user.id.UserUrl;
-import deus.model.pifgoverning.PersonalInformationFile;
 
 
 // FIXME: use MarshallingHttpMessageConverter to marshal model elements to XML
@@ -37,7 +35,7 @@ public class PifGoverningController {
 	@Autowired
 	private PifGovernorExportedToClient pifGovernor;
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping("/")
 	@ResponseBody
 	public String getPif(@PathVariable("userId") String userId) {
 		return "TEST";
@@ -47,7 +45,7 @@ public class PifGoverningController {
 		//		"http://localhost"))).toString();
 	}
 
-	@RequestMapping(value = "dcs", method = RequestMethod.GET)
+	@RequestMapping("/dcs")
 	@ResponseBody
 	public String getDcs(@PathVariable("userId") String userId) {
 		// FIXME: what to do if user does not exist?
@@ -56,7 +54,7 @@ public class PifGoverningController {
 				new RepatriationAuthorityId(new UserUrl(userId, "http://localhost"))).getDigitalCards().toString();
 	}
 
-	@RequestMapping(value = "dcs/{discriminator}", method = RequestMethod.GET)
+	@RequestMapping("/dcs/{discriminator}")
 	@ResponseBody
 	public String getDc(@PathVariable("userId") String userId,
 			@PathVariable("discriminator") String discriminator) {

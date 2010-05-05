@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>deus-nsi-rest</artifactId>
-	<packaging>bundle</packaging>
+	<packaging>war</packaging>
 	<name>DEUS REST interfaces</name>
 
 	<!-- don't remove properties, even if they are empty!!! -->
@@ -24,6 +24,7 @@
 		</osgi.additionalPackageImports>
 
 		<osgi.nonExportedPackages />
+
 	</properties>
 
 
@@ -66,12 +67,10 @@
 	<!--+++ BUILD ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
-
 	<build>
 
 		<plugins>
-
-
+	
 
 		</plugins>
 
