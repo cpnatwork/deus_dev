@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
@@ -13,6 +15,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = { "/all.xml" })
 public abstract class AbstractSubsystemAssemblyTest {
 
+	private final static Logger logger = LoggerFactory.getLogger(AbstractSubsystemAssemblyTest.class);
+	
 	@Autowired
 	private ApplicationContext context;
 
@@ -30,7 +34,7 @@ public abstract class AbstractSubsystemAssemblyTest {
 
 	@Test
 	public void testIntegration() {
-		System.out.println("loaded Spring beans: " + Arrays.toString(context.getBeanDefinitionNames()));
+		logger.info("loaded Spring beans: " + Arrays.toString(context.getBeanDefinitionNames()));
 
 
 		StringBuilder loadedDomainBeans = new StringBuilder();
@@ -46,7 +50,7 @@ public abstract class AbstractSubsystemAssemblyTest {
 		int l = loadedDomainBeans.length();
 		if (l > 0)
 			loadedDomainBeans.delete(l - 2, l);
-		System.out.println("loaded domain beans: [" + loadedDomainBeans.toString() + "]");
+		logger.info("loaded domain beans: [" + loadedDomainBeans.toString() + "]");
 	}
 
 }

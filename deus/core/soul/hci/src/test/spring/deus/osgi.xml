@@ -5,11 +5,11 @@
 
 	<!-- overwrites normal osgi.xml and replaces service references with mocks -->
 	
-	<bean id="attentionElementDaoMock" class="deus.common.EasyMockFactoryBean">
+	<bean id="attentionElementDaoMock" class="deus.common.MockitoFactoryBean">
 		<property name="type" value="deus.core.access.storage.api.hci.attention.AttentionElementDao" />
 	</bean>
 
-	<bean id="attentionListDaoMock" class="deus.common.EasyMockFactoryBean">
+	<bean id="attentionListDaoMock" class="deus.common.MockitoFactoryBean">
 		<property name="type" value="deus.core.access.storage.api.hci.attention.AttentionListDao" />
 	</bean>
 

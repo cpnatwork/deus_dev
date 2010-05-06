@@ -17,7 +17,7 @@ import org.springframework.beans.factory.FactoryBean;
  * 
  * @param <T>
  */
-public class EasyMockFactoryBean<T> implements FactoryBean {
+public class EasyMockFactoryBean<T> implements FactoryBean<T> {
 
 	private Class<T> type;// the created object type
 
@@ -28,7 +28,7 @@ public class EasyMockFactoryBean<T> implements FactoryBean {
 
 
 	@Override
-	public Object getObject() throws Exception {
+	public T getObject() throws Exception {
 		return EasyMock.createMock(type);
 	}
 
