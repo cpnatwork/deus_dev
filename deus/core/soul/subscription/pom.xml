@@ -12,9 +12,8 @@
 	<name>DEUS core soul subscription</name>
 
 
-	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
-		<osgi.rootPackage>deus.core.soul.subscription</osgi.rootPackage>
+		<bundle.rootPackage>deus.core.soul.subscription</bundle.rootPackage>
 		<!--
 			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
 			PersistantAnnotationBeanPostProcessor which is in the given package.
@@ -22,8 +21,6 @@
 		<osgi.additionalPackageImports>
 			org.springframework.orm.jpa.support
 		</osgi.additionalPackageImports>
-		
-		<osgi.nonExportedPackages>!*.impl</osgi.nonExportedPackages>
 	</properties>
 
 

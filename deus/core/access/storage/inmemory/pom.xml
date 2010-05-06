@@ -14,16 +14,11 @@
 
 	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
-		<osgi.rootPackage>deus.core.access.storage.inmemory</osgi.rootPackage>
-		<!--
-			org.springframework.orm.jpa.support: this is needed for
-			<context:component-scan />. This BeanPostProcessor requires
-			PersistantAnnotationBeanPostProcessor which is in the given package.
-		-->
+		<bundle.rootPackage>deus.core.access.storage.inmemory</bundle.rootPackage>
+		
 		<osgi.additionalPackageImports>
+			org.springframework.orm.jpa.support
 		</osgi.additionalPackageImports>
-
-		<osgi.nonExportedPackages>!*.impl</osgi.nonExportedPackages>
 	</properties>
 
 

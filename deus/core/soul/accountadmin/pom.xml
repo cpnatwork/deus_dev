@@ -12,9 +12,8 @@
 	<name>DEUS core soul accountadmin</name>
 
 
-	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
-		<osgi.rootPackage>deus.core.soul.accountadmin</osgi.rootPackage>
+		<bundle.rootPackage>deus.core.soul.accountadmin</bundle.rootPackage>
 		<!--
 			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
 			PersistantAnnotationBeanPostProcessor which is in the given package.
@@ -23,8 +22,6 @@
 			org.springframework.orm.jpa.support,
 			org.springframework.beans.factory.aspectj	
 		</osgi.additionalPackageImports>
-		
-		<osgi.nonExportedPackages>!*.impl</osgi.nonExportedPackages>
 	</properties>
 
 </project>

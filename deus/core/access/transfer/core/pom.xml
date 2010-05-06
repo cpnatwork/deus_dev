@@ -12,9 +12,8 @@
 	<name>DEUS core access transfer core</name>
 
 
-	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
-		<osgi.rootPackage>deus.core.access.transfer.core</osgi.rootPackage>
+		<bundle.rootPackage>deus.core.access.transfer.core</bundle.rootPackage>
 		<!--
 			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
 			PersistantAnnotationBeanPostProcessor which is in the given package.
@@ -22,8 +21,6 @@
 		<osgi.additionalPackageImports>
 			org.springframework.orm.jpa.support
 		</osgi.additionalPackageImports>
-		
-		<osgi.nonExportedPackages />
 	</properties>
 
 

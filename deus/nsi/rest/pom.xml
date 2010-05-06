@@ -12,9 +12,8 @@
 	<packaging>war</packaging>
 	<name>DEUS REST interfaces</name>
 
-	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
-		<osgi.rootPackage>deus.nsi.rest</osgi.rootPackage>
+		<bundle.rootPackage>deus.nsi.rest</bundle.rootPackage>
 		<!--
 			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
 			PersistantAnnotationBeanPostProcessor which is in the given package.
@@ -22,9 +21,6 @@
 		<osgi.additionalPackageImports>
 			org.springframework.orm.jpa.support,org.springframework.web.servlet,org.springframework.context.config,org.springframework.osgi.web.context.support
 		</osgi.additionalPackageImports>
-
-		<osgi.nonExportedPackages />
-
 	</properties>
 
 

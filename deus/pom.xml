@@ -18,7 +18,7 @@
 		<module>commontest</module>
 	</modules>
 
-
+	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
 		<spring.version>3.0.2.RELEASE</spring.version>
 		<!--<spring.version>[3.0, 3.1)</spring.version>-->
@@ -33,6 +33,13 @@
 		<application.traceLevels>*=warn,deus.*=verbose,dacus.*=verbose</application.traceLevels>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		
+		<!--
+			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
+			PersistantAnnotationBeanPostProcessor which is in the given package.
+		-->
+		<osgi.additionalPackageImports />		
 	</properties>
 
 
@@ -313,12 +320,12 @@
 
 		<!--+++ LOGGING +++-->
 		<!-- Logback ist used as logging backend! -->
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>com.springsource.ch.qos.logback.classic</artifactId>
-			<version>0.9.9</version>
-			<scope>provided</scope>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>ch.qos.logback</groupId>-->
+<!--			<artifactId>com.springsource.ch.qos.logback.classic</artifactId>-->
+<!--			<version>0.9.9</version>-->
+<!--			<scope>runtime</scope>-->
+<!--		</dependency>-->
 
 		<!-- Use slf4j simple for testing -->
 		<dependency>
@@ -412,8 +419,6 @@
 					</execution>
 				</executions>
 				<configuration>
-
-
 					<supportedProjectTypes>
 						<supportedProjectType>bundle</supportedProjectType>
 						<supportedProjectType>war</supportedProjectType>

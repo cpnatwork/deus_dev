@@ -12,9 +12,8 @@
 	<name>DEUS core access transfer common</name>
 
 
-	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
-		<osgi.rootPackage>deus.core.access.transfer.common</osgi.rootPackage>
+		<bundle.rootPackage>deus.core.access.transfer.common</bundle.rootPackage>
 		<!--
 			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
 			PersistantAnnotationBeanPostProcessor which is in the given package.
@@ -22,40 +21,8 @@
 		<osgi.additionalPackageImports>
 			org.springframework.orm.jpa.support
 		</osgi.additionalPackageImports>
-		
-		<osgi.nonExportedPackages />
+
 	</properties>
-
-
-<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-<!--+++ DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-	
-	<dependencies>
-        <!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-                
-	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-
-	</dependencies>
-	
-	
-<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-<!--+++ BUILD +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-
-	<build>
-		<plugins>
-			<!--
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<argLine>-javaagent:${settings.localRepository}/org/springframework/org.springframework.instrument/${spring.instrument.version}/org.springframework.instrument-${spring.instrument.version}.jar</argLine>
-				</configuration>
-			</plugin>
-			-->
-		</plugins>
-	</build>
 	
 
 </project>
