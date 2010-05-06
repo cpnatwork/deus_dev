@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context" xmlns:beans="http://www.springframework.org/schema/beans"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:beans="http://www.springframework.org/schema/beans"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 
 	<!--
-		this is needed for some annotations used to configure the application context to be recognized among are the following
-		annotations: Dependency Injection: @Required @Resource (JSR-250) @Autowired (with @Qualifier)
-
-		Initialization/Destruction callbacks: @PostConstruct @PreDestroy more help:
+		this is needed for some annotations used to configure the application
+		context to be recognized among are the following annotations:
+		Dependency Injection: @Required @Resource (JSR-250) @Autowired (with
+		@Qualifier) Initialization/Destruction callbacks: @PostConstruct
+		@PreDestroy more help:
 		http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-annotation-config
 	-->
 	<context:annotation-config />
 
 	<!--
-		the aforementioned annotations require the bean to already be present in the application context. If you do not like
-		to instantiate the bean in XML using <bean>, use stereotype annotations to annotate the spring managed components:
-
-		stereotypes for spring managed components: @Component @Controller @Service @Repository more help:
+		the aforementioned annotations require the bean to already be present
+		in the application context. If you do not like to instantiate the bean
+		in XML using <bean>, use stereotype annotations to annotate the spring
+		managed components: stereotypes for spring managed components:
+		@Component @Controller @Service @Repository more help:
 		http://static.springframework.org/spring/docs/2.5.x/reference/beans.html#beans-classpath-scanning
 	-->
 	<context:component-scan base-package="${osgi.rootPackage}" />

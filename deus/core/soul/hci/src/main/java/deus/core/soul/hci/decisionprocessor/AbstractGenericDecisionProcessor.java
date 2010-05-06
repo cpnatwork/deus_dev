@@ -1,6 +1,5 @@
-package deus.core.soul.hci.decisionprocessor.impl;
+package deus.core.soul.hci.decisionprocessor;
 
-import deus.core.soul.hci.decisionprocessor.GenericDecisionProcessor;
 import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.BinaryDecisionToMake;
 

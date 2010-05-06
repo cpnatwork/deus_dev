@@ -20,7 +20,7 @@
 			PersistantAnnotationBeanPostProcessor which is in the given package.
 		-->
 		<osgi.additionalPackageImports>
-			org.springframework.orm.jpa.support
+			org.springframework.orm.jpa.support,org.springframework.web.servlet,org.springframework.context.config,org.springframework.osgi.web.context.support
 		</osgi.additionalPackageImports>
 
 		<osgi.nonExportedPackages />
@@ -53,11 +53,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>org.springframework.context</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.osgi</groupId>
-			<artifactId>org.springframework.osgi-library</artifactId>
-			<type>libd</type>
 		</dependency>
 
 	</dependencies>

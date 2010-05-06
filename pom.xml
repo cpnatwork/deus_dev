@@ -18,7 +18,7 @@
 		<!--<spring.version>[3.0, 3.1)</spring.version>-->
 		<aspectj.version>1.6.1</aspectj.version>
 		<spring.instrument.version>3.0.1.RELEASE-A</spring.instrument.version>
-		<spring.osgi.version>1.1.2.B</spring.osgi.version>
+		<spring.osgi.version>1.2.1</spring.osgi.version>
 		<junit.version>4.7</junit.version>
 		<application.traceLevels>*=warn,deus.*=verbose,dacus.*=verbose</application.traceLevels>
 
@@ -224,13 +224,10 @@
 				
 			<dependency>
 				<groupId>org.springframework.osgi</groupId>
-				<artifactId>org.springframework.osgi-library</artifactId>
+				<artifactId>org.springframework.osgi.web</artifactId>
 				<version>${spring.osgi.version}</version>
-				<type>libd</type>
 				<scope>provided</scope>
 			</dependency>
-	
-			
 			
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -330,11 +327,11 @@
 		</dependency>
 		<!-- for libraries using apache commons logging: make loggers use the slf4j api
 -->
-<!--		<dependency>-->
-<!--			<groupId>org.slf4j</groupId>-->
-<!--			<artifactId>com.springsource.slf4j.org.apache.commons.logging</artifactId>-->
-<!--			<version>1.5.0</version>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>com.springsource.slf4j.org.apache.commons.logging</artifactId>
+			<version>1.5.0</version>
+		</dependency>
 		<!-- for libraries using java.util.logging: make JUL loggers use the slf4j api ("JUL to SLF4J bridge")-->
 <!--		<dependency>-->
 <!--			<groupId>org.slf4j</groupId>-->

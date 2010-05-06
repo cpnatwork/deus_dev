@@ -14,7 +14,7 @@
 	<modules>
 		<module>api</module>
 		<module>inmemory</module>
-		<module>hibernate</module>
+<!--		<module>hibernate</module>-->
 	</modules>
 	
 <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
