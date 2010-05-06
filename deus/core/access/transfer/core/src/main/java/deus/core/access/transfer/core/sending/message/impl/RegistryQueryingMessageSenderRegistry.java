@@ -1,16 +1,16 @@
 package deus.core.access.transfer.core.sending.message.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.transfer.common.protocol.messagesender.MessageSender;
 import deus.core.access.transfer.core.sending.message.MessageSenderRegistry;
 import deus.core.access.transfer.core.soul.protocolregistry.QueriableTransferProtocolRegistry;
 
-@Component
+@Named
 public class RegistryQueryingMessageSenderRegistry implements MessageSenderRegistry {
 
-	@Autowired
+	@Inject
 	private QueriableTransferProtocolRegistry registry;
 	
 	@Override

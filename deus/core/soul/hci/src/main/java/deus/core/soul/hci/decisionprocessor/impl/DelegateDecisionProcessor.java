@@ -3,7 +3,7 @@ package deus.core.soul.hci.decisionprocessor.impl;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.stereotype.Component;
+import javax.inject.Named;
 
 import deus.core.soul.hci.decisionprocessor.DecisionProcessor;
 import deus.core.soul.hci.decisionprocessor.GenericDecisionProcessor;
@@ -11,7 +11,7 @@ import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.BinaryDecisionToMake;
 import deus.model.hci.attention.DecisionType;
 
-@Component
+@Named
 public class DelegateDecisionProcessor implements DecisionProcessor {
 
 	private Map<DecisionType, GenericDecisionProcessor<? extends BinaryDecisionToMake>> genericDecisionProcessors;

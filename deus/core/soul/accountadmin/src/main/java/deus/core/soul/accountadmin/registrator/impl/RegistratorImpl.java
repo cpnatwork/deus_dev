@@ -3,8 +3,8 @@ package deus.core.soul.accountadmin.registrator.impl;
 import java.util.List;
 import java.util.Vector;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.storage.api.common.account.AccountDao;
 import deus.core.access.storage.api.common.user.UserMetadataDao;
@@ -16,22 +16,22 @@ import deus.model.common.account.Account;
 import deus.model.common.account.DistributionRole;
 import deus.model.common.user.id.UserId;
 
-@Component("registrator")
+@Named("registrator")
 public class RegistratorImpl implements Registrator {
 
 	private final List<UserRegistrationStateObserver> observers;
 
-	@Autowired
+	@Inject
 	private AccountDao accountDao;
 
-	@Autowired
+	@Inject
 	private UserMetadataDao userMetadataDao;
 	
-	@Autowired
+	@Inject
 	private DistributionRoleSetup distributionRoleSetup;
 
 
-	@Autowired
+	@Inject
 	private UserIdGenerator userIdGenerator;
 
 

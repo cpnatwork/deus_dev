@@ -1,7 +1,7 @@
 package deus.core.access.transfer.core.sending.command.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.core.access.transfer.common.messages.publication.connection.establish.invite.ConfirmSubscriptionOfferNoticeMessage;
@@ -13,10 +13,10 @@ import deus.model.common.user.UserMetadata;
 import deus.model.common.user.frids.PublisherId;
 import deus.model.common.user.frids.SubscriberId;
 
-@Component("subscriberCommandSender")
+@Named("subscriberCommandSender")
 public class TransferSubscriberCommandSender implements SubscriberCommandSender {
 
-	@Autowired
+	@Inject
 	private TransferMessageSenderHelper transferMessageSenderHelper;
 
 	

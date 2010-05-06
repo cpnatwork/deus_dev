@@ -3,10 +3,11 @@ package deus.core.soul.gatekeeper.cerberus.impl;
 import java.util.List;
 import java.util.Vector;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.common.account.AccountDao;
 import deus.core.soul.gatekeeper.cerberus.InvalidLoginCredentialsException;
@@ -16,17 +17,17 @@ import deus.model.common.account.Account;
 import deus.model.common.user.id.UserId;
 import deus.model.gatekeeper.LoginCredentials;
 
-@Component("cerberus")
+@Named("cerberus")
 public class CerberusImpl implements Cerberus {
 
 	private final Logger logger = LoggerFactory.getLogger(CerberusImpl.class);
 
 	private final List<UserLoginStateObserver> observers;
 
-	@Autowired
+	@Inject
 	private LoginCredentialChecker loginCredentialChecker;
 
-	@Autowired
+	@Inject
 	private AccountDao accountDao;
 
 

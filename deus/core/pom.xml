@@ -28,6 +28,14 @@
 			<artifactId>deus-model</artifactId>
 			<type>bundle</type>
 		</dependency>
+		
+		
+		<dependency>
+			<groupId>inf6.promed</groupId>
+			<artifactId>deus-commontest</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
         
 	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	

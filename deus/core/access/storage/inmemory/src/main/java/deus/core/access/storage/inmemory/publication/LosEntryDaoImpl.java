@@ -1,6 +1,6 @@
 package deus.core.access.storage.inmemory.publication;
 
-import org.springframework.stereotype.Repository;
+import javax.inject.Named;
 
 import deus.core.access.storage.api.publication.LosEntryDao;
 import deus.core.access.storage.inmemory.GenericTwofoldIdDaoImpl;
@@ -11,7 +11,7 @@ import deus.model.publication.LosEntry;
 /**
  * @author cpn
  */
-@Repository("losEntryDao")
+@Named("losEntryDao")
 public class LosEntryDaoImpl extends GenericTwofoldIdDaoImpl<LosEntry, PublisherId, SubscriberId> implements LosEntryDao {
 
 	@Override

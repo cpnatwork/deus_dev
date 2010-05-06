@@ -1,8 +1,7 @@
 package deus.core.soul.subscription.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 import deus.core.soul.subscription.Subscriber;
@@ -21,15 +20,15 @@ import deus.model.subscription.ListOfPublishers;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-@Component("subscriber")
+@Named("subscriber")
 public class ProxiedSubscriberAdapter implements Subscriber {
 
-	@Autowired
+	@Inject
 	private SubscriberExportedToClient subscriberExportedToClient;
 
 
-	@Autowired
-	@Qualifier("proxy")
+	@Inject
+	@Named("proxy")
 	private SubscriberExportedToPeers subscriberExportedToPeers;
 
 

@@ -6,9 +6,9 @@
 		 automatically depend on commontest, without commontest depending on itself. -->
 	<parent>
 		<groupId>inf6.promed</groupId>
-		<artifactId>prototype-pom</artifactId>
+		<artifactId>deus</artifactId>
 		<version>0.4-SNAPSHOT</version>
-		<relativePath>../../pom.xml</relativePath>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>deus-commontest</artifactId>
@@ -47,14 +47,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>org.springframework.test</artifactId>
 			<version>${spring.version}</version>
-		</dependency>
-
-		<!--+++ EASY MOCK +++-->
-		<dependency>
-		    <groupId>org.easymock</groupId>
-		    <artifactId>easymock</artifactId>
-		    <version>2.4</version>
-		    <scope>test</scope>
 		</dependency>
 
 		<!--+++ JUNIT +++-->

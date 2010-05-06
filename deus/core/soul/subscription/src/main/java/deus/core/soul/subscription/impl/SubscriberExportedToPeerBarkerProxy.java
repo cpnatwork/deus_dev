@@ -1,10 +1,10 @@
 package deus.core.soul.subscription.impl;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.subscription.LopEntryDao;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
@@ -22,20 +22,19 @@ import deus.model.hci.attention.publication.connection.establish.subinit.Subscri
 import deus.model.hci.attention.publication.connection.terminate.PublisherInitiatedTerminationNotice;
 import deus.model.subscription.LopEntry;
 
-@Component
-@Qualifier("proxy")
+@Named("SubscriberProxy")
 public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedToPeers {
 
 	private final Logger logger = LoggerFactory.getLogger(SubscriberExportedToPeerBarkerProxy.class);
 
-	@Autowired
-	@Qualifier("target")
+	@Inject
+	@Named("targetedSubscriber")
 	private SubscriberExportedToPeers proxiedSubscriber;
 
-	@Autowired
+	@Inject
 	private BarkerExportedToSubsystems barker;
 
-	@Autowired
+	@Inject
 	private LopEntryDao lopEntryDao;
 
 

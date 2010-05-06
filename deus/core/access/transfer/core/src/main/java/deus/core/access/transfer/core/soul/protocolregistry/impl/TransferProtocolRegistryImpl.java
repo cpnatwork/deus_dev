@@ -4,12 +4,12 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.stereotype.Component;
+import javax.inject.Named;
 
 import deus.core.access.transfer.common.protocol.TransferProtocol;
 import deus.core.access.transfer.core.soul.protocolregistry.QueriableTransferProtocolRegistry;
 
-@Component("transferProtocolRegistry")
+@Named("transferProtocolRegistry")
 public class TransferProtocolRegistryImpl implements QueriableTransferProtocolRegistry {
 
 	private final Map<String, TransferProtocol> registeredTransferProtocols;

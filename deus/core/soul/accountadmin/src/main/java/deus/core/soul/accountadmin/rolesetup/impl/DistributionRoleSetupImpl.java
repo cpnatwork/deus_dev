@@ -5,14 +5,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Component;
+import javax.inject.Named;
 
 import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup;
 import deus.core.soul.accountadmin.rolesetup.DistributionRoleSetupObserver;
 import deus.model.common.account.DistributionRole;
 import deus.model.common.user.id.UserId;
 
-@Component("distributionRoleSetup")
+@Named("distributionRoleSetup")
 public class DistributionRoleSetupImpl implements DistributionRoleSetup {
 
 	private final Map<DistributionRole, List<DistributionRoleSetupObserver>> observers;

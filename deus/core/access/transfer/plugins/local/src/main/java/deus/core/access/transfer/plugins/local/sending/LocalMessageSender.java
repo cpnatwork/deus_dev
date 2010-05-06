@@ -1,16 +1,16 @@
 package deus.core.access.transfer.plugins.local.sending;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.core.access.transfer.common.protocol.messagesender.MessageSender;
 import deus.core.access.transfer.plugins.local.receiving.LocalMessageForwarder;
 
-@Component
+@Named
 public class LocalMessageSender implements MessageSender {
 
-	@Autowired
+	@Inject
 	private LocalMessageForwarder localMessageForwarder;
 
 	@Override

@@ -1,6 +1,6 @@
 package deus.core.soul.difgoverning.impl;
 
-import org.springframework.stereotype.Component;
+import javax.inject.Named;
 
 import deus.model.common.dossier.AppendDigitalCardPatch;
 import deus.model.common.dossier.Patch;
@@ -13,7 +13,7 @@ import deus.model.difgoverning.ForeignInformationFile;
  *
  */
 // TODO: configure this in spring xml
-@Component
+@Named
 public class SimpleAppendPatchStrategy implements PatchStrategy {
 
 	@Override

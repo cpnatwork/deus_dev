@@ -2,9 +2,8 @@ package deus.core.soul.subscription.rolesetup;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.storage.api.subscription.LopDao;
 import deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver;
@@ -16,14 +15,14 @@ import deus.model.common.user.id.UserId;
 import deus.model.subscription.ListOfPublishers;
 import deus.model.subscription.LopEntry;
 
-@Component
+@Named
 public class IcRoleSetupSubscriberObserver extends AbstractDistributionRoleSetupObserver {
 	
-	@Autowired
+	@Inject
 	private LopDao lopDao;
 
-	@Autowired
-	@Qualifier("target")
+	@Inject
+	@Named("targetedSubscriber")
 	private SubscriberExportedToClient subscriber;
 
 

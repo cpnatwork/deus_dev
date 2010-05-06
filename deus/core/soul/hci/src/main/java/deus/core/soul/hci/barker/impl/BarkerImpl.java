@@ -2,10 +2,11 @@ package deus.core.soul.hci.barker.impl;
 
 import java.util.Date;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.hci.attention.AttentionElementDao;
 import deus.core.access.storage.api.hci.attention.AttentionListDao;
@@ -14,15 +15,15 @@ import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.AttentionElement;
 import deus.model.hci.attention.AttentionList;
 
-@Component("barker")
+@Named("barker")
 public class BarkerImpl implements Barker {
 
 	private final Logger logger = LoggerFactory.getLogger(BarkerImpl.class);
 
-	@Autowired
+	@Inject
 	private AttentionElementDao attentionElementDao;
 
-	@Autowired
+	@Inject
 	private AttentionListDao attentionListDao;
 
 

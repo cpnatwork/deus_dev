@@ -1,7 +1,7 @@
 package deus.core.access.transfer.core.receiving;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.core.access.transfer.common.messages.publication.connection.establish.invite.ConfirmSubscriptionOfferNoticeMessage;
@@ -27,10 +27,10 @@ import deus.model.common.user.frids.RepatriationAuthorityId;
 import deus.model.common.user.frids.SubscriberId;
 import deus.model.common.user.id.UserId;
 
-@Component("messageReceiver")
+@Named("messageReceiver")
 public class CallbackToSoulMessageReceiver implements MessageReceiver {
 
-	@Autowired
+	@Inject
 	private SoulCallbackRegistry registry;
 
 	// TODO: refactor (introduce more receive methods and dispatch in this one)

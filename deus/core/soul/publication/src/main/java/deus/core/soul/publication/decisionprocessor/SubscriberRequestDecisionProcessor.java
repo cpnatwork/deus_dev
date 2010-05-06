@@ -1,8 +1,7 @@
 package deus.core.soul.publication.decisionprocessor;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers;
 import deus.core.access.transfer.core.sending.command.PublisherCommandSender;
@@ -13,14 +12,14 @@ import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.publication.connection.establish.subinit.SubscriptionRequest;
 
 // FIXME: rename it to SubscriptionRequestDec...
-@Component
+@Named
 public class SubscriberRequestDecisionProcessor extends AbstractGenericDecisionProcessor<SubscriptionRequest> {
 
-	@Autowired
-	@Qualifier("target")
+	@Inject
+	@Named("targetedPublisher")
 	private PublisherExportedToPeers publisher;
 	
-	@Autowired
+	@Inject
 	private PublisherCommandSender publisherCommandSender;
 
 

@@ -1,10 +1,10 @@
 package deus.core.soul.subscription.impl;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.common.user.UserMetadataDao;
 import deus.core.access.storage.api.subscription.LopDao;
@@ -20,25 +20,24 @@ import deus.model.subscription.ListOfPublishers;
 import deus.model.subscription.LopEntry;
 import deus.model.subscription.SubscriberSideSubscriptionState;
 
-@Component
-@Qualifier("target")
+@Named("targetedSubscriber")
 public class SubscriberImpl implements Subscriber {
 
 	private final Logger logger = LoggerFactory.getLogger(SubscriberImpl.class);
 
-	@Autowired
+	@Inject
 	private UserMetadataDao userMetadataDao;
 
-	@Autowired
+	@Inject
 	private LopEntryDao lopEntryDao;
 
-	@Autowired
+	@Inject
 	private LopDao lopDao;
 
-	@Autowired
+	@Inject
 	private DifGovernorExportedToSubsystems difGovernor;
 
-	@Autowired
+	@Inject
 	private SubscriberCommandSender subscriberCommandSender;
 
 

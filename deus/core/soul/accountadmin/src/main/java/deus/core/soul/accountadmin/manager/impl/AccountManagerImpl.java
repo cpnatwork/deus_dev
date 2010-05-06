@@ -1,7 +1,7 @@
 package deus.core.soul.accountadmin.manager.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.storage.api.common.account.AccountDao;
 import deus.core.access.storage.api.common.user.UserMetadataDao;
@@ -12,17 +12,17 @@ import deus.model.common.account.DistributionRole;
 import deus.model.common.user.UserMetadata;
 import deus.model.common.user.id.UserId;
 
-@Component("accountManager")
+@Named("accountManager")
 public class AccountManagerImpl implements AccountManager {
 
 	
-	@Autowired
+	@Inject
 	private AccountDao accountDao;
 	
-	@Autowired
+	@Inject
 	private UserMetadataDao userMetadataDao;
 	
-	@Autowired
+	@Inject
 	private DistributionRoleSetup distributionRoleSetup;
 
 

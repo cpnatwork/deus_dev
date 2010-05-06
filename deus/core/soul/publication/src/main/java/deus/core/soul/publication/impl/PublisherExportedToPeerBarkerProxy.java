@@ -1,10 +1,10 @@
 package deus.core.soul.publication.impl;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.publication.LosEntryDao;
 import deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers;
@@ -20,20 +20,19 @@ import deus.model.hci.attention.publication.connection.establish.subinit.Subscri
 import deus.model.hci.attention.publication.connection.terminate.SubscriberInitiatedTerminationNotice;
 import deus.model.publication.LosEntry;
 
-@Component
-@Qualifier("proxy")
+@Named("publisherProxy")
 public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPeers {
 
 	private final Logger logger = LoggerFactory.getLogger(PublisherExportedToPeerBarkerProxy.class);
 	
-	@Autowired
-	@Qualifier("target")
+	@Inject
+	@Named("targetedPublisher")
 	private PublisherExportedToPeers proxiedPublisher;
 	
-	@Autowired
+	@Inject
 	private BarkerExportedToSubsystems barker;
 	
-	@Autowired
+	@Inject
 	private LosEntryDao losEntryDao;
 
 	

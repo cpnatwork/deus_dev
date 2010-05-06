@@ -1,6 +1,6 @@
 package deus.core.soul.contribution.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.inject.Inject;
 
 import deus.core.access.transfer.core.sending.command.ContributionCommandSender;
 import deus.core.soul.contribution.Contributor;
@@ -11,7 +11,7 @@ import deus.model.common.user.frids.RepatriationAuthorityId;
 
 public class ContributorImpl implements Contributor {
 
-	@Autowired
+	@Inject
 	private ContributionCommandSender contributionCommandSender;
 	
 	@Override

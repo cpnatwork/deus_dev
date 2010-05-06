@@ -229,7 +229,7 @@
 				<groupId>org.springframework</groupId>
 				<artifactId>org.springframework.context</artifactId>
 				<version>${spring.version}</version>
-				<scope>provided</scope>
+<!--				<scope>provided</scope>-->
 			</dependency>
 
 
@@ -275,15 +275,6 @@
 
 	<dependencies>
 		<!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-
-
-		<dependency>
-			<groupId>inf6.promed</groupId>
-			<artifactId>deus-commontest</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-			<type>jar</type>
-		</dependency>
 
 		<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
@@ -358,6 +349,13 @@
 		<!--			<scope>provided</scope>-->
 		<!--		</dependency>-->
 
+
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+		
 	</dependencies>
 
 

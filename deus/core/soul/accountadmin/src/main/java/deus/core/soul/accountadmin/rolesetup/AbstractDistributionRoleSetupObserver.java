@@ -3,15 +3,14 @@ package deus.core.soul.accountadmin.rolesetup;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.inject.Inject;
 
 import deus.model.common.account.DistributionRole;
 import deus.model.common.user.id.UserId;
 
 public abstract class AbstractDistributionRoleSetupObserver implements DistributionRoleSetupObserver {
 
-	@Autowired
+	@Inject
 	private DistributionRoleSetup distributionRoleSetup;
 
 

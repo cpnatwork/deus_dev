@@ -2,9 +2,8 @@ package deus.core.soul.publication.rolesetup;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.storage.api.publication.LosDao;
 import deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver;
@@ -15,14 +14,14 @@ import deus.model.common.user.id.UserId;
 import deus.model.publication.ListOfSubscribers;
 import deus.model.publication.LosEntry;
 
-@Component
+@Named
 public class CpRoleSetupPublisherObserver extends AbstractDistributionRoleSetupObserver {
 
-	@Autowired
+	@Inject
 	private LosDao losDao;
 
-	@Autowired
-	@Qualifier("target")
+	@Inject
+	@Named("targetedPublisher")
 	private PublisherExportedToClient publisher;
 
 

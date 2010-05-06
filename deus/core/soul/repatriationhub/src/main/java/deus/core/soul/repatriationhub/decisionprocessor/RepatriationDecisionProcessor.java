@@ -1,7 +1,7 @@
 package deus.core.soul.repatriationhub.decisionprocessor;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.soul.hci.decisionprocessor.AbstractGenericDecisionProcessor;
 import deus.core.soul.pifgoverning.PifGovernorExportedToSubsystems;
@@ -9,10 +9,10 @@ import deus.model.common.user.frids.RepatriationAuthorityId;
 import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.repatriation.Repatriation;
 
-@Component
+@Named
 public class RepatriationDecisionProcessor extends AbstractGenericDecisionProcessor<Repatriation> {
 
-	@Autowired
+	@Inject
 	public PifGovernorExportedToSubsystems pifGovernor;
 
 

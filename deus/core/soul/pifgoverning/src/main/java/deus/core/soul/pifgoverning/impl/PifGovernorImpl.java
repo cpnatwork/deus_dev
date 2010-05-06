@@ -1,7 +1,7 @@
 package deus.core.soul.pifgoverning.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.storage.api.pifgoverning.PifDao;
 import deus.core.soul.pifgoverning.AssimilationStrategy;
@@ -11,14 +11,14 @@ import deus.model.common.dossier.Patch;
 import deus.model.common.user.frids.RepatriationAuthorityId;
 import deus.model.pifgoverning.PersonalInformationFile;
 
-@Component("pifGovernor")
+@Named("pifGovernor")
 public class PifGovernorImpl implements PifGovernor {
 
-	@Autowired
+	@Inject
 	private AssimilationStrategy assimilationStrategy;
 
 
-	@Autowired
+	@Inject
 	private PifDao pifDao;
 	
 

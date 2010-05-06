@@ -2,20 +2,19 @@ package deus.core.access.transfer.plugins.local;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.transfer.common.protocol.TransferProtocol;
 import deus.core.access.transfer.common.protocolregistry.TransferProtocolRegistry;
 
-@Component
+@Named
 public class RegisterTransferProtocol {
 
-	@Autowired
+	@Inject
 	private TransferProtocolRegistry registry;
 
-	@Autowired
+	@Inject
 	private TransferProtocol loopbackProtocol;
 
 	

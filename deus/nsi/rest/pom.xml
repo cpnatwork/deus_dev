@@ -34,15 +34,9 @@
 
 
 	<dependencies>
-		<!--
-			+++ INTRA-PROJECT DEPENDENCIES
-			++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-		-->
+		<!--+++ INTRA-PROJECT DEPENDENCIES	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
-		<!--
-			+++ INTER-PROJECT DEPENDENCIES
-			++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-		-->
+		<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -50,26 +44,6 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.context</artifactId>
-		</dependency>
-
 	</dependencies>
-
-
-	<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-	<!--+++ BUILD ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-	<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-
-	<build>
-
-		<plugins>
-	
-
-		</plugins>
-
-	</build>
-
 
 </project>

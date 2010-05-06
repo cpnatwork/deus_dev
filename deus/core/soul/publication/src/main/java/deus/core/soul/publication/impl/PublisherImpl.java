@@ -1,10 +1,10 @@
 package deus.core.soul.publication.impl;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 import deus.core.access.storage.api.common.user.UserMetadataDao;
 import deus.core.access.storage.api.publication.LosDao;
@@ -19,23 +19,22 @@ import deus.model.publication.ListOfSubscribers;
 import deus.model.publication.LosEntry;
 import deus.model.publication.PublisherSideSubscriptionState;
 
-@Component
-@Qualifier("target")
+@Named("targetedPublisher")
 public class PublisherImpl implements Publisher {
 
 	private final Logger logger = LoggerFactory.getLogger(PublisherImpl.class);
 
-
-	@Autowired
+	
+	@Inject
 	private PublisherCommandSender publisherCommandSender;
 
-	@Autowired
+	@Inject
 	private UserMetadataDao userMetadataDao;
 
-	@Autowired
+	@Inject
 	private LosEntryDao losEntryDao;
 
-	@Autowired
+	@Inject
 	private LosDao losDao;
 
 

@@ -1,20 +1,19 @@
 package deus.core.soul.repatriationhub;
 
 import javax.annotation.PostConstruct;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.transfer.core.receiving.soulcallback.ExportedSoulCallbackRegistry;
 import deus.core.access.transfer.core.receiving.soulcallback.repatriationhub.RepatriationHubExportedToPeers;
 
-@Component
+@Named
 public class SoulCallbackRegistrator {
 
-	@Autowired
+	@Inject
 	private ExportedSoulCallbackRegistry registry;
 
-	@Autowired
+	@Inject
 	private RepatriationHubExportedToPeers repatriationHub;
 
 	@PostConstruct

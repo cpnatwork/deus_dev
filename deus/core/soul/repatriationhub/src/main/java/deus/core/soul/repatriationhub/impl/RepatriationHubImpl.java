@@ -1,7 +1,7 @@
 package deus.core.soul.repatriationhub.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.soul.hci.barker.BarkerExportedToSubsystems;
 import deus.core.soul.pifgoverning.PifGovernorExportedToSubsystems;
@@ -14,14 +14,14 @@ import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.BinaryDecisionToMake;
 import deus.model.hci.attention.repatriation.Repatriation;
 
-@Component("repatriationHub")
+@Named("repatriationHub")
 public class RepatriationHubImpl implements RepatriationHub {
 
-	@Autowired
+	@Inject
 	private PifGovernorExportedToSubsystems pifGovernor;
 
 
-	@Autowired
+	@Inject
 	private BarkerExportedToSubsystems barker;
 
 	@Override

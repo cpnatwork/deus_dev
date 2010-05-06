@@ -1,13 +1,13 @@
 package deus.core.access.transfer.core.receiving.soulcallback;
 
-import org.springframework.stereotype.Component;
+import javax.inject.Named;
 
 import deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers;
 import deus.core.access.transfer.core.receiving.soulcallback.repatriationhub.RepatriationHubExportedToPeers;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 
 
-@Component("soulCallbackRegistry")
+@Named("soulCallbackRegistry")
 public class SoulCallbackRegistryImpl implements SoulCallbackRegistry {
 
 	private PublisherExportedToPeers publisher;

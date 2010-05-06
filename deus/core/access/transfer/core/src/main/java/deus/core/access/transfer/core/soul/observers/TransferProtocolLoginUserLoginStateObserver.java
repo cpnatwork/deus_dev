@@ -2,9 +2,8 @@ package deus.core.access.transfer.core.soul.observers;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.transfer.common.protocol.TransferId;
 import deus.core.access.transfer.common.protocol.TransferProtocol;
@@ -14,13 +13,13 @@ import deus.core.soul.gatekeeper.cerberus.CerberusExportedToSubsystems;
 import deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver;
 import deus.model.common.user.id.UserId;
 
-@Component
+@Named
 public class TransferProtocolLoginUserLoginStateObserver implements UserLoginStateObserver {
 
-	@Autowired
+	@Inject
 	private QueriableTransferProtocolRegistry transferProtocolRegistry;
 	
-	@Autowired
+	@Inject
 	private CerberusExportedToSubsystems cerberus;
 	
 	

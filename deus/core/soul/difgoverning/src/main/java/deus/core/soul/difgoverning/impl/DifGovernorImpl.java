@@ -2,8 +2,8 @@ package deus.core.soul.difgoverning.impl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.storage.api.difgoverning.FifDao;
 import deus.core.soul.difgoverning.DifGovernor;
@@ -15,14 +15,14 @@ import deus.model.common.user.frids.SubscriberId;
 import deus.model.common.user.id.UserId;
 import deus.model.difgoverning.ForeignInformationFile;
 
-@Component("difGovernor")
+@Named("difGovernor")
 public class DifGovernorImpl implements DifGovernor {
 
-	@Autowired
+	@Inject
 	private PatchStrategy patchStrategy;
 
 
-	@Autowired
+	@Inject
 	private FifDao fifDao;
 
 

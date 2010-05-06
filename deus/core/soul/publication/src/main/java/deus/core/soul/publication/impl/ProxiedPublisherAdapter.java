@@ -1,8 +1,7 @@
 package deus.core.soul.publication.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers;
 import deus.core.soul.publication.Publisher;
@@ -21,14 +20,14 @@ import deus.model.publication.ListOfSubscribers;
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-@Component("publisher")
+@Named("publisher")
 public class ProxiedPublisherAdapter implements Publisher {
 
-	@Autowired
+	@Inject
 	private PublisherExportedToClient publisherExportedToClient;
 
-	@Autowired
-	@Qualifier("proxy")
+	@Inject
+	@Named("publisherProxy")
 	private PublisherExportedToPeers publisherExportedToPeers;
 
 

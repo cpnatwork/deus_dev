@@ -1,22 +1,20 @@
 package deus.core.soul.publication;
 
 import javax.annotation.PostConstruct;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.transfer.core.receiving.soulcallback.ExportedSoulCallbackRegistry;
 import deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers;
 
-@Component
+@Named
 public class SoulCallbackRegistrator {
 
-	@Autowired
+	@Inject
 	private ExportedSoulCallbackRegistry registry;
 
-	@Autowired
-	@Qualifier("proxy")
+	@Inject
+	@Named("publisherProxy")
 	private PublisherExportedToPeers publisher;
 
 	@PostConstruct

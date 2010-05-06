@@ -1,7 +1,7 @@
 package deus.core.access.transfer.core.sending.command.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.core.access.transfer.common.protocol.mapper.UserIdMapper;
@@ -11,16 +11,16 @@ import deus.core.access.transfer.core.soul.discovery.TransferProtocolNegotiation
 import deus.core.access.transfer.core.soul.protocolregistry.QueriableTransferProtocolRegistry;
 import deus.model.common.user.id.UserId;
 
-@Component
+@Named
 public class TransferMessageSenderHelper {
 
-	@Autowired
+	@Inject
 	private TransferProtocolNegotiationStrategy transferProtocolNegotiationStrategy;
 
-	@Autowired
+	@Inject
 	private QueriableTransferProtocolRegistry transferProtocolRegistry;
 
-	@Autowired
+	@Inject
 	private MessageSenderRegistry messageSenderRegistry;
 
 
