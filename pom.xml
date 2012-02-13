@@ -50,8 +50,8 @@
 	</scm>
 
 	<issueManagement>
-		<system>Redmine</system>
-		<url>faui6p15.informatik.uni-erlangen.de:3000</url>
+		<system>Origo</system>
+		<url>http://dacus.origo.ethz.ch/issues</url>
 	</issueManagement>
 
 	<reporting>
