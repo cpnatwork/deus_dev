@@ -21,8 +21,6 @@ package deus.core.soul.repatriationhub;
 
 import deus.core.access.transfer.core.receiving.soulcallback.repatriationhub.RepatriationHubExportedToPeers;
 
-
-
 // FIXME: edit javadoc
 /**
  * This system interface is responsible for receiving contributed digital cards
@@ -38,6 +36,7 @@ import deus.core.access.transfer.core.receiving.soulcallback.repatriationhub.Rep
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-public interface RepatriationHub extends RepatriationHubExportedToClient, RepatriationHubExportedToPeers {
-	
+public interface RepatriationHub extends RepatriationHubExportedToClient,
+		RepatriationHubExportedToPeers {
+
 }

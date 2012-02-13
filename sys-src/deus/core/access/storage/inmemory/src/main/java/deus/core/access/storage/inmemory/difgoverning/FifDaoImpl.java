@@ -33,6 +33,9 @@ import deus.model.difgoverning.ForeignInformationFile;
  * @author cpn
  */
 @Named("fifDao")
-public class FifDaoImpl extends GenericTwofoldIdDaoImpl<ForeignInformationFile, SubscriberId, PublisherId> implements FifDao {
+public class FifDaoImpl
+		extends
+		GenericTwofoldIdDaoImpl<ForeignInformationFile, SubscriberId, PublisherId>
+		implements FifDao {
 
 }

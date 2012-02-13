@@ -31,7 +31,7 @@ import deus.model.common.user.frids.SubscriberId;
 public interface PublisherCommandSender {
 
 	// USE CASE: update
-	
+
 	/**
 	 * Update.
 	 * 
@@ -42,9 +42,9 @@ public interface PublisherCommandSender {
 	 * @param digitalCard
 	 *            the digital card
 	 */
-	public void update(PublisherId publisherId, SubscriberId subscriberId, DigitalCard digitalCard);
+	public void update(PublisherId publisherId, SubscriberId subscriberId,
+			DigitalCard digitalCard);
 
-	
 	// USE CASE: publisher initiated connection/termination
 
 	/**
@@ -57,7 +57,8 @@ public interface PublisherCommandSender {
 	 * @param publisherMetadata
 	 *            the publisher metadata
 	 */
-	public void offerSubscription(PublisherId publisherId, SubscriberId subscriberId, UserMetadata publisherMetadata);
+	public void offerSubscription(PublisherId publisherId,
+			SubscriberId subscriberId, UserMetadata publisherMetadata);
 
 	/**
 	 * Cancel subscription.
@@ -67,12 +68,12 @@ public interface PublisherCommandSender {
 	 * @param subscriberId
 	 *            the subscriber id
 	 */
-	public void cancelSubscription(PublisherId publisherId, SubscriberId subscriberId);
+	public void cancelSubscription(PublisherId publisherId,
+			SubscriberId subscriberId);
 
-	
+	// USE CASE: informationConsumer initiated connection (used, when in role
+	// publisher)
 
-	// USE CASE: informationConsumer initiated connection (used, when in role publisher)
-	
 	/**
 	 * Grant subscription request.
 	 * 
@@ -81,8 +82,8 @@ public interface PublisherCommandSender {
 	 * @param subscriberId
 	 *            the subscriber id
 	 */
-	public void grantSubscriptionRequest(PublisherId publisherId, SubscriberId subscriberId);
-
+	public void grantSubscriptionRequest(PublisherId publisherId,
+			SubscriberId subscriberId);
 
 	/**
 	 * Deny subscription request.
@@ -92,6 +93,7 @@ public interface PublisherCommandSender {
 	 * @param subscriberId
 	 *            the subscriber id
 	 */
-	public void denySubscriptionRequest(PublisherId publisherId, SubscriberId subscriberId);
-	
+	public void denySubscriptionRequest(PublisherId publisherId,
+			SubscriberId subscriberId);
+
 }

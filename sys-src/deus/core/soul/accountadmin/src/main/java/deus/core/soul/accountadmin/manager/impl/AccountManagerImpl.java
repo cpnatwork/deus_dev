@@ -37,78 +37,96 @@ import deus.model.common.user.id.UserId;
 @Named("accountManager")
 public class AccountManagerImpl implements AccountManager {
 
-	
 	/** The account dao. */
 	@Inject
 	private AccountDao accountDao;
-	
+
 	/** The user metadata dao. */
 	@Inject
 	private UserMetadataDao userMetadataDao;
-	
+
 	/** The distribution role setup. */
 	@Inject
 	private DistributionRoleSetup distributionRoleSetup;
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.manager.AccountManager#changePassword(java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.manager.AccountManager#changePassword(java
+	 * .lang.String, java.lang.String)
 	 */
 	@Override
-	public void changePassword(String localUsername, String newPassword) {
-		Account account = accountDao.getByNaturalId(localUsername);
-		
+	public void changePassword(final String localUsername,
+			final String newPassword) {
+		final Account account = this.accountDao.getByNaturalId(localUsername);
+
 		account.setPassword(newPassword);
 
-		accountDao.updateEntity(account);
+		this.accountDao.updateEntity(account);
 	}
 
-	
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.manager.AccountManager#addRole(java.lang.String, deus.model.common.account.DistributionRole)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.manager.AccountManager#addRole(java.lang.
+	 * String, deus.model.common.account.DistributionRole)
 	 */
 	@Override
-	public void addRole(String localUsername, DistributionRole distributionRole) {
-		Account account = accountDao.getByNaturalId(localUsername);
+	public void addRole(final String localUsername,
+			final DistributionRole distributionRole) {
+		final Account account = this.accountDao.getByNaturalId(localUsername);
 
 		if (account.getUserRoles().add(distributionRole) == false)
-			throw new IllegalArgumentException("account " + account + " already contains role " + distributionRole);
+			throw new IllegalArgumentException("account " + account
+					+ " already contains role " + distributionRole);
 
-		accountDao.updateEntity(account);
-		
-		distributionRoleSetup.setUpRole(distributionRole, account.getUserId());
+		this.accountDao.updateEntity(account);
+
+		this.distributionRoleSetup.setUpRole(distributionRole,
+				account.getUserId());
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.manager.AccountManager#removeRole(java.lang.String, deus.model.common.account.DistributionRole)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.manager.AccountManager#removeRole(java.lang
+	 * .String, deus.model.common.account.DistributionRole)
 	 */
 	@Override
-	public void removeRole(String localUsername, DistributionRole distributionRole) {
-		Account account = accountDao.getByNaturalId(localUsername);
+	public void removeRole(final String localUsername,
+			final DistributionRole distributionRole) {
+		final Account account = this.accountDao.getByNaturalId(localUsername);
 
 		if (!account.getUserRoles().contains(distributionRole))
-			throw new IllegalArgumentException("account " + account + " does not contain role " + distributionRole);
+			throw new IllegalArgumentException("account " + account
+					+ " does not contain role " + distributionRole);
 
 		account.getUserRoles().remove(distributionRole);
 
-		accountDao.updateEntity(account);
-		
-		distributionRoleSetup.tearDownRole(distributionRole, account.getUserId());
+		this.accountDao.updateEntity(account);
+
+		this.distributionRoleSetup.tearDownRole(distributionRole,
+				account.getUserId());
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.manager.AccountManager#changeUserMetadata(java.lang.String, deus.model.common.user.UserMetadata)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.manager.AccountManager#changeUserMetadata
+	 * (java.lang.String, deus.model.common.user.UserMetadata)
 	 */
 	@Override
-	public void changeUserMetadata(String localUsername, UserMetadata userMetadata) {
-		Account account = accountDao.getByNaturalId(localUsername);
-		
-		UserId userId = account.getUserId();
-		
-		userMetadataDao.updateEntity(userId, userMetadata);
-	}
+	public void changeUserMetadata(final String localUsername,
+			final UserMetadata userMetadata) {
+		final Account account = this.accountDao.getByNaturalId(localUsername);
 
+		final UserId userId = account.getUserId();
+
+		this.userMetadataDao.updateEntity(userId, userMetadata);
+	}
 
 }

@@ -22,7 +22,6 @@ package deus.model.common.user.id;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-
 // TODO: think about only injecting username, etc into constructor, no more setters. Also for Transfer ids
 
 // FIXME: REMOVE HIBERNATE STUFF!
@@ -33,6 +32,10 @@ import java.net.URL;
  */
 public class UserUrl extends UserId {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1970885629065626601L;
 	/** The server base url. */
 	private URL serverBaseUrl = null;
 
@@ -44,16 +47,15 @@ public class UserUrl extends UserId {
 	 * @param serverBaseUrl
 	 *            the server base url
 	 */
-	public UserUrl(String username, String serverBaseUrl) {
+	public UserUrl(final String username, final String serverBaseUrl) {
 		super(username);
 		try {
 			this.serverBaseUrl = new URL(serverBaseUrl);
-		}
-		catch (MalformedURLException e) {
+		} catch (final MalformedURLException e) {
 			throw new RuntimeException("cannot create user URL", e);
 		}
 	}
-	
+
 	/**
 	 * Instantiates a new user url.
 	 * 
@@ -62,12 +64,14 @@ public class UserUrl extends UserId {
 	 * @param serverBaseUrl
 	 *            the server base url
 	 */
-	public UserUrl(String username, URL serverBaseUrl) {
+	public UserUrl(final String username, final URL serverBaseUrl) {
 		super(username);
 		this.serverBaseUrl = serverBaseUrl;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.common.user.id.UserId#getType()
 	 */
 	@Override
@@ -81,9 +85,8 @@ public class UserUrl extends UserId {
 	 * @return the server base url
 	 */
 	public URL getServerBaseUrl() {
-		return serverBaseUrl;
+		return this.serverBaseUrl;
 	}
-
 
 	/**
 	 * Gets the url.
@@ -92,71 +95,75 @@ public class UserUrl extends UserId {
 	 */
 	public URL getUrl() {
 		try {
-			return new URL(serverBaseUrl, getUsername());
-		}
-		catch (MalformedURLException e) {
+			return new URL(this.serverBaseUrl, this.getUsername());
+		} catch (final MalformedURLException e) {
 			throw new RuntimeException("cannot return user URL", e);
 		}
 	}
-	
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.common.user.id.UserId#getId()
 	 */
 	@Override
 	public String getId() {
-		return getUrl().toString();
+		return this.getUrl().toString();
 	}
-	
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return getId();
+		return this.getId();
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.common.user.id.UserId#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((serverBaseUrl == null) ? 0 : serverBaseUrl.hashCode());
-		result = prime * result + ((getUsername() == null) ? 0 : getUsername().hashCode());
+		result = (prime * result)
+				+ ((this.serverBaseUrl == null) ? 0 : this.serverBaseUrl
+						.hashCode());
+		result = (prime * result)
+				+ ((this.getUsername() == null) ? 0 : this.getUsername()
+						.hashCode());
 		return result;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.common.user.id.UserId#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (this.getClass() != obj.getClass())
 			return false;
-		UserUrl other = (UserUrl) obj;
-		if (serverBaseUrl == null) {
+		final UserUrl other = (UserUrl) obj;
+		if (this.serverBaseUrl == null) {
 			if (other.serverBaseUrl != null)
 				return false;
-		}
-		else if (!serverBaseUrl.equals(other.serverBaseUrl))
+		} else if (!this.serverBaseUrl.equals(other.serverBaseUrl))
 			return false;
-		if (getUsername() == null) {
+		if (this.getUsername() == null) {
 			if (other.getUsername() != null)
 				return false;
-		}
-		else if (!getUsername().equals(other.getUsername()))
+		} else if (!this.getUsername().equals(other.getUsername()))
 			return false;
 		return true;
 	}
-
 
 }

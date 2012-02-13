@@ -21,7 +21,6 @@ package deus.model.common.dossier;
 
 import java.util.Set;
 
-
 /**
  * The Class InformationFile.
  */
@@ -30,18 +29,16 @@ public abstract class InformationFile {
 	/** The digital cards. */
 	private final Set<DigitalCard> digitalCards;
 
-
 	/**
 	 * Instantiates a new information file.
 	 * 
 	 * @param digitalCards
 	 *            the digital cards
 	 */
-	public InformationFile(Set<DigitalCard> digitalCards) {
+	public InformationFile(final Set<DigitalCard> digitalCards) {
 		super();
 		this.digitalCards = digitalCards;
 	}
-
 
 	/**
 	 * Gets the digital cards.
@@ -49,7 +46,7 @@ public abstract class InformationFile {
 	 * @return the digital cards
 	 */
 	public Set<DigitalCard> getDigitalCards() {
-		return digitalCards;
+		return this.digitalCards;
 	}
 
 }

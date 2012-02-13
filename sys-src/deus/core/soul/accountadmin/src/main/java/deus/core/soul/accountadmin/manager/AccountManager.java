@@ -45,7 +45,8 @@ public interface AccountManager {
 	 * @param userMetadata
 	 *            the user metadata
 	 */
-	public void changeUserMetadata(String localUsername, UserMetadata userMetadata);
+	public void changeUserMetadata(String localUsername,
+			UserMetadata userMetadata);
 
 	/**
 	 * Adds the role.
@@ -65,7 +66,7 @@ public interface AccountManager {
 	 * @param distributionRole
 	 *            the distribution role
 	 */
-	public void removeRole(String localUsername, DistributionRole distributionRole);
+	public void removeRole(String localUsername,
+			DistributionRole distributionRole);
 
 }
- 

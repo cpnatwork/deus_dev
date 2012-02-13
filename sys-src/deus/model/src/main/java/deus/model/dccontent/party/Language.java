@@ -26,10 +26,9 @@ public class Language {
 
 	/** The language. */
 	private String language;
-	
+
 	/** The priority. */
 	private int priority;
-
 
 	/**
 	 * Gets the language.
@@ -37,9 +36,8 @@ public class Language {
 	 * @return the language
 	 */
 	public String getLanguage() {
-		return language;
+		return this.language;
 	}
-
 
 	/**
 	 * Sets the language.
@@ -47,10 +45,9 @@ public class Language {
 	 * @param language
 	 *            the new language
 	 */
-	public void setLanguage(String language) {
+	public void setLanguage(final String language) {
 		this.language = language;
 	}
-
 
 	/**
 	 * Gets the priority.
@@ -58,9 +55,8 @@ public class Language {
 	 * @return the priority
 	 */
 	public int getPriority() {
-		return priority;
+		return this.priority;
 	}
-
 
 	/**
 	 * Sets the priority.
@@ -68,7 +64,7 @@ public class Language {
 	 * @param priority
 	 *            the new priority
 	 */
-	public void setPriority(int priority) {
+	public void setPriority(final int priority) {
 		this.priority = priority;
 	}
 

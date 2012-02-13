@@ -32,11 +32,11 @@ import deus.core.access.transfer.core.soul.protocolregistry.QueriableTransferPro
  * The Class TransferProtocolRegistryImpl.
  */
 @Named("transferProtocolRegistry")
-public class TransferProtocolRegistryImpl implements QueriableTransferProtocolRegistry {
+public class TransferProtocolRegistryImpl implements
+		QueriableTransferProtocolRegistry {
 
 	/** The registered transfer protocols. */
 	private final Map<String, TransferProtocol> registeredTransferProtocols;
-
 
 	/**
 	 * Instantiates a new transfer protocol registry impl.
@@ -46,46 +46,62 @@ public class TransferProtocolRegistryImpl implements QueriableTransferProtocolRe
 		this.registeredTransferProtocols = new HashMap<String, TransferProtocol>();
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.soul.protocolregistry.QueriableTransferProtocolRegistry#getRegisteredTransferProtocol(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.soul.protocolregistry.
+	 * QueriableTransferProtocolRegistry
+	 * #getRegisteredTransferProtocol(java.lang.String)
 	 */
 	@Override
-	public TransferProtocol getRegisteredTransferProtocol(String transferProtocolId) {
-		return registeredTransferProtocols.get(transferProtocolId);
+	public TransferProtocol getRegisteredTransferProtocol(
+			final String transferProtocolId) {
+		return this.registeredTransferProtocols.get(transferProtocolId);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocolregistry.TransferProtocolRegistry#registerTransferProtocol(deus.core.access.transfer.common.protocol.TransferProtocol)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.common.protocolregistry.TransferProtocolRegistry
+	 * #registerTransferProtocol(deus.core.access.transfer.common.protocol.
+	 * TransferProtocol)
 	 */
 	@Override
-	public void registerTransferProtocol(TransferProtocol transferProtocol) {
-		if (registeredTransferProtocols.containsKey(transferProtocol.getProtocolId()))
-			throw new IllegalArgumentException("transfer protocol " + transferProtocol
-					+ " has already been registered!");
+	public void registerTransferProtocol(final TransferProtocol transferProtocol) {
+		if (this.registeredTransferProtocols.containsKey(transferProtocol
+				.getProtocolId()))
+			throw new IllegalArgumentException("transfer protocol "
+					+ transferProtocol + " has already been registered!");
 
-		registeredTransferProtocols.put(transferProtocol.getProtocolId(), transferProtocol);
+		this.registeredTransferProtocols.put(transferProtocol.getProtocolId(),
+				transferProtocol);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocolregistry.TransferProtocolRegistry#unregisterTransferProtocol(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.common.protocolregistry.TransferProtocolRegistry
+	 * #unregisterTransferProtocol(java.lang.String)
 	 */
 	@Override
-	public void unregisterTransferProtocol(String transferProtocolId) {
-		if (!registeredTransferProtocols.containsKey(transferProtocolId))
-			throw new IllegalArgumentException("transfer protocol " + transferProtocolId + " was not registered!");
-		registeredTransferProtocols.remove(transferProtocolId);
+	public void unregisterTransferProtocol(final String transferProtocolId) {
+		if (!this.registeredTransferProtocols.containsKey(transferProtocolId))
+			throw new IllegalArgumentException("transfer protocol "
+					+ transferProtocolId + " was not registered!");
+		this.registeredTransferProtocols.remove(transferProtocolId);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.soul.protocolregistry.QueriableTransferProtocolRegistry#getAllRegisteredTransferProtocolIds()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.soul.protocolregistry.
+	 * QueriableTransferProtocolRegistry#getAllRegisteredTransferProtocolIds()
 	 */
 	@Override
 	public Collection<String> getAllRegisteredTransferProtocolIds() {
-		return registeredTransferProtocols.keySet();
+		return this.registeredTransferProtocols.keySet();
 	}
 
 }

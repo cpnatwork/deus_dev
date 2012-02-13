@@ -33,10 +33,9 @@ public class WebPresence {
 
 	/** The type. */
 	private WebPresenceType type;
-	
+
 	/** The url. */
 	private URL url;
-
 
 	/**
 	 * Gets the entity tag.
@@ -44,9 +43,8 @@ public class WebPresence {
 	 * @return the entity tag
 	 */
 	public EntityTag getEntityTag() {
-		return entityTag;
+		return this.entityTag;
 	}
-
 
 	/**
 	 * Sets the entity tag.
@@ -54,10 +52,9 @@ public class WebPresence {
 	 * @param entityTag
 	 *            the new entity tag
 	 */
-	public void setEntityTag(EntityTag entityTag) {
+	public void setEntityTag(final EntityTag entityTag) {
 		this.entityTag = entityTag;
 	}
-
 
 	/**
 	 * Gets the type.
@@ -65,9 +62,8 @@ public class WebPresence {
 	 * @return the type
 	 */
 	public WebPresenceType getType() {
-		return type;
+		return this.type;
 	}
-
 
 	/**
 	 * Sets the type.
@@ -75,10 +71,9 @@ public class WebPresence {
 	 * @param type
 	 *            the new type
 	 */
-	public void setType(WebPresenceType type) {
+	public void setType(final WebPresenceType type) {
 		this.type = type;
 	}
-
 
 	/**
 	 * Gets the url.
@@ -86,9 +81,8 @@ public class WebPresence {
 	 * @return the url
 	 */
 	public URL getUrl() {
-		return url;
+		return this.url;
 	}
-
 
 	/**
 	 * Sets the url.
@@ -96,7 +90,7 @@ public class WebPresence {
 	 * @param url
 	 *            the new url
 	 */
-	public void setUrl(URL url) {
+	public void setUrl(final URL url) {
 		this.url = url;
 	}
 

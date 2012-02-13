@@ -44,7 +44,6 @@ public class EasyMockFactoryBean<T> implements FactoryBean<T> {
 	/** The type. */
 	private Class<T> type;// the created object type
 
-
 	/**
 	 * Sets the type.
 	 * 
@@ -55,31 +54,34 @@ public class EasyMockFactoryBean<T> implements FactoryBean<T> {
 		this.type = type;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.springframework.beans.factory.FactoryBean#getObject()
 	 */
 	@Override
 	public T getObject() throws Exception {
-		return EasyMock.createMock(type);
+		return EasyMock.createMock(this.type);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.springframework.beans.factory.FactoryBean#getObjectType()
 	 */
 	@Override
 	public Class<T> getObjectType() {
-		return type;
+		return this.type;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.springframework.beans.factory.FactoryBean#isSingleton()
 	 */
 	@Override
 	public boolean isSingleton() {
 		return true;
 	}
-	
+
 }

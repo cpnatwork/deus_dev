@@ -36,7 +36,6 @@ import deus.model.common.dossier.DigitalCard;
 import deus.model.common.user.frids.RepatriationAuthorityId;
 import deus.model.common.user.id.UserUrl;
 
-
 // FIXME: use MarshallingHttpMessageConverter to marshal model elements to XML
 /**
  * The Class PifGoverningController.
@@ -46,18 +45,20 @@ import deus.model.common.user.id.UserUrl;
 public class PifGoverningController {
 
 	/** The Constant logger. */
-	private final static Logger logger = LoggerFactory.getLogger(PifGoverningController.class);
-	
+	private final static Logger logger = LoggerFactory
+			.getLogger(PifGoverningController.class);
+
 	/**
 	 * Output.
 	 */
 	@PostConstruct
 	private void output() {
-		System.out.println("HALLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-		logger.error("HALLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+		System.out
+				.println("HALLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+		PifGoverningController.logger
+				.error("HALLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
 	}
-	
-	
+
 	/** The pif governor. */
 	@Autowired
 	private PifGovernorExportedToClient pifGovernor;
@@ -71,12 +72,13 @@ public class PifGoverningController {
 	 */
 	@RequestMapping("/")
 	@ResponseBody
-	public String getPif(@PathVariable("userId") String userId) {
+	public String getPif(@PathVariable("userId") final String userId) {
 		return "TEST";
 		// FIXME: what to do if user does not exist?
 
-		//return pifGovernor.getPersonalInformationFile(new RepatriationAuthorityId(new UserUrl(userId,
-		//		"http://localhost"))).toString();
+		// return pifGovernor.getPersonalInformationFile(new
+		// RepatriationAuthorityId(new UserUrl(userId,
+		// "http://localhost"))).toString();
 	}
 
 	/**
@@ -88,11 +90,14 @@ public class PifGoverningController {
 	 */
 	@RequestMapping("/dcs")
 	@ResponseBody
-	public String getDcs(@PathVariable("userId") String userId) {
+	public String getDcs(@PathVariable("userId") final String userId) {
 		// FIXME: what to do if user does not exist?
 
-		return pifGovernor.getPersonalInformationFile(
-				new RepatriationAuthorityId(new UserUrl(userId, "http://localhost"))).getDigitalCards().toString();
+		return this.pifGovernor
+				.getPersonalInformationFile(
+						new RepatriationAuthorityId(new UserUrl(userId,
+								"http://localhost"))).getDigitalCards()
+				.toString();
 	}
 
 	/**
@@ -106,10 +111,12 @@ public class PifGoverningController {
 	 */
 	@RequestMapping("/dcs/{discriminator}")
 	@ResponseBody
-	public String getDc(@PathVariable("userId") String userId,
-			@PathVariable("discriminator") String discriminator) {
-		Set<DigitalCard> dcs = pifGovernor.getPersonalInformationFile(
-				new RepatriationAuthorityId(new UserUrl(userId, "http://localhost"))).getDigitalCards();
+	public String getDc(@PathVariable("userId") final String userId,
+			@PathVariable("discriminator") final String discriminator) {
+		final Set<DigitalCard> dcs = this.pifGovernor
+				.getPersonalInformationFile(
+						new RepatriationAuthorityId(new UserUrl(userId,
+								"http://localhost"))).getDigitalCards();
 
 		// FIXME: this is not correct! when there are multiple DCs with the same
 		// discriminator, only the first
@@ -117,8 +124,9 @@ public class PifGoverningController {
 		// CP ID and the discriminator are
 		// used here, Contributor ID is omitted. See page 16 of diploma thesis!
 
-		for (DigitalCard dc : dcs) {
-			if (dc.getDigitalCardId().getContributorProvidedDiscriminator().equals(discriminator))
+		for (final DigitalCard dc : dcs) {
+			if (dc.getDigitalCardId().getContributorProvidedDiscriminator()
+					.equals(discriminator))
 				return dc.toString();
 		}
 

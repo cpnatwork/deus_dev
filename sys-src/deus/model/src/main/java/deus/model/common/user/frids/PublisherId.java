@@ -27,7 +27,7 @@ import deus.model.common.user.id.UserId;
  * Identifies a DEUS account assuming the functional role 'Publisher'.
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
- *
+ * 
  */
 @SuppressWarnings("serial")
 public class PublisherId extends FunctionalRoleId implements Serializable {
@@ -38,7 +38,7 @@ public class PublisherId extends FunctionalRoleId implements Serializable {
 	 * @param userId
 	 *            the user id
 	 */
-	public PublisherId(UserId userId) {
+	public PublisherId(final UserId userId) {
 		super(userId);
 	}
 

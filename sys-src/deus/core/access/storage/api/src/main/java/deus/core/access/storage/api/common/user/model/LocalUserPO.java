@@ -26,32 +26,30 @@ import java.util.UUID;
  * A local user. It requires a existing UserPO.
  * 
  * @author cpn
- *
+ * 
  */
 @SuppressWarnings("serial")
 // FIXME: REMOVE HIBERNATE STUFF HERE
-//@Entity
+// @Entity
 public class LocalUserPO implements Serializable {
 
 	/** The uuid. */
 	private UUID uuid;
-	
+
 	/** The user po. */
 	private UserPO userPO = null;
 
-
-//	@Id
-//	@GeneratedValue(generator = "system-uuid")
-//	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	// @Id
+	// @GeneratedValue(generator = "system-uuid")
+	// @GenericGenerator(name = "system-uuid", strategy = "uuid")
 	/**
- * Gets the uuid.
- * 
- * @return the uuid
- */
-public UUID getUuid() {
-		return uuid;
+	 * Gets the uuid.
+	 * 
+	 * @return the uuid
+	 */
+	public UUID getUuid() {
+		return this.uuid;
 	}
-
 
 	/**
 	 * Sets the uuid.
@@ -59,31 +57,30 @@ public UUID getUuid() {
 	 * @param uuid
 	 *            the new uuid
 	 */
-	public void setUuid(UUID uuid) {
+	public void setUuid(final UUID uuid) {
 		this.uuid = uuid;
 	}
 
-//	@NaturalId
+	// @NaturalId
 	/**
- * Gets the id.
- * 
- * @return the id
- */
-public String getId() {
-		return getUserPO().getUserId().getId();
+	 * Gets the id.
+	 * 
+	 * @return the id
+	 */
+	public String getId() {
+		return this.getUserPO().getUserId().getId();
 	}
 
-//	@OneToOne
-//	@PrimaryKeyJoinColumn
+	// @OneToOne
+	// @PrimaryKeyJoinColumn
 	/**
- * Gets the user po.
- * 
- * @return the user po
- */
-public UserPO getUserPO() {
-		return userPO;
+	 * Gets the user po.
+	 * 
+	 * @return the user po
+	 */
+	public UserPO getUserPO() {
+		return this.userPO;
 	}
-
 
 	/**
 	 * Sets the user po.
@@ -91,7 +88,7 @@ public UserPO getUserPO() {
 	 * @param userIdPO
 	 *            the new user po
 	 */
-	public void setUserPO(UserPO userIdPO) {
+	public void setUserPO(final UserPO userIdPO) {
 		this.userPO = userIdPO;
 	}
 

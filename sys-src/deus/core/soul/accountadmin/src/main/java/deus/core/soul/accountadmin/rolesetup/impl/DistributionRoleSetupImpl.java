@@ -40,58 +40,85 @@ public class DistributionRoleSetupImpl implements DistributionRoleSetup {
 	/** The observers. */
 	private final Map<DistributionRole, List<DistributionRoleSetupObserver>> observers;
 
-
 	/**
 	 * Instantiates a new distribution role setup impl.
 	 */
 	public DistributionRoleSetupImpl() {
-		observers = new HashMap<DistributionRole, List<DistributionRoleSetupObserver>>();
-		for (DistributionRole distributionRole : DistributionRole.values())
-			observers.put(distributionRole, new LinkedList<DistributionRoleSetupObserver>());
+		this.observers = new HashMap<DistributionRole, List<DistributionRoleSetupObserver>>();
+		for (final DistributionRole distributionRole : DistributionRole
+				.values()) {
+			this.observers.put(distributionRole,
+					new LinkedList<DistributionRoleSetupObserver>());
+		}
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup#addRoleSetupObserver(deus.model.common.account.DistributionRole, deus.core.soul.accountadmin.rolesetup.DistributionRoleSetupObserver)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup#
+	 * addRoleSetupObserver(deus.model.common.account.DistributionRole,
+	 * deus.core.soul.accountadmin.rolesetup.DistributionRoleSetupObserver)
 	 */
 	@Override
-	public void addRoleSetupObserver(DistributionRole distributionRole, DistributionRoleSetupObserver observer) {
-		observers.get(distributionRole).add(observer);
+	public void addRoleSetupObserver(final DistributionRole distributionRole,
+			final DistributionRoleSetupObserver observer) {
+		this.observers.get(distributionRole).add(observer);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup#removeRoleSetupObserver(deus.model.common.account.DistributionRole, deus.core.soul.accountadmin.rolesetup.DistributionRoleSetupObserver)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup#
+	 * removeRoleSetupObserver(deus.model.common.account.DistributionRole,
+	 * deus.core.soul.accountadmin.rolesetup.DistributionRoleSetupObserver)
 	 */
 	@Override
-	public void removeRoleSetupObserver(DistributionRole distributionRole, DistributionRoleSetupObserver observer) {
-		List<DistributionRoleSetupObserver> list = observers.get(distributionRole);
+	public void removeRoleSetupObserver(
+			final DistributionRole distributionRole,
+			final DistributionRoleSetupObserver observer) {
+		final List<DistributionRoleSetupObserver> list = this.observers
+				.get(distributionRole);
 		if (!list.contains(observer))
-			throw new IllegalArgumentException("observer " + observer + " cannot be removed, it has not been added");
+			throw new IllegalArgumentException("observer " + observer
+					+ " cannot be removed, it has not been added");
 
-		observers.get(distributionRole).remove(observer);
+		this.observers.get(distributionRole).remove(observer);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup#setUpRole(deus.model.common.account.DistributionRole, deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup#setUpRole
+	 * (deus.model.common.account.DistributionRole,
+	 * deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public void setUpRole(DistributionRole distributionRole, UserId userId) {
-		List<DistributionRoleSetupObserver> list = observers.get(distributionRole);
-		for (DistributionRoleSetupObserver observer : list)
+	public void setUpRole(final DistributionRole distributionRole,
+			final UserId userId) {
+		final List<DistributionRoleSetupObserver> list = this.observers
+				.get(distributionRole);
+		for (final DistributionRoleSetupObserver observer : list) {
 			observer.setUpRole(distributionRole, userId);
+		}
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup#tearDownRole(deus.model.common.account.DistributionRole, deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.rolesetup.DistributionRoleSetup#tearDownRole
+	 * (deus.model.common.account.DistributionRole,
+	 * deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public void tearDownRole(DistributionRole distributionRole, UserId userId) {
-		List<DistributionRoleSetupObserver> list = observers.get(distributionRole);
-		for (DistributionRoleSetupObserver observer : list)
+	public void tearDownRole(final DistributionRole distributionRole,
+			final UserId userId) {
+		final List<DistributionRoleSetupObserver> list = this.observers
+				.get(distributionRole);
+		for (final DistributionRoleSetupObserver observer : list) {
 			observer.tearDownRole(distributionRole, userId);
+		}
 	}
 
 }

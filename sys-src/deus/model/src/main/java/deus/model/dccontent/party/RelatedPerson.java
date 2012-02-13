@@ -33,16 +33,14 @@ public class RelatedPerson {
 	/** The type. */
 	private RelatedPersonType type;
 
-
 	/**
 	 * Gets the reference.
 	 * 
 	 * @return the reference
 	 */
 	public URL getReference() {
-		return reference;
+		return this.reference;
 	}
-
 
 	/**
 	 * Sets the reference.
@@ -50,10 +48,9 @@ public class RelatedPerson {
 	 * @param reference
 	 *            the new reference
 	 */
-	public void setReference(URL reference) {
+	public void setReference(final URL reference) {
 		this.reference = reference;
 	}
-
 
 	/**
 	 * Gets the type.
@@ -61,9 +58,8 @@ public class RelatedPerson {
 	 * @return the type
 	 */
 	public RelatedPersonType getType() {
-		return type;
+		return this.type;
 	}
-
 
 	/**
 	 * Sets the type.
@@ -71,7 +67,7 @@ public class RelatedPerson {
 	 * @param type
 	 *            the new type
 	 */
-	public void setType(RelatedPersonType type) {
+	public void setType(final RelatedPersonType type) {
 		this.type = type;
 	}
 

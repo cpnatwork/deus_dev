@@ -26,10 +26,9 @@ public class LoginCredentials {
 
 	/** The local username. */
 	private final String localUsername;
-	
+
 	/** The password. */
 	private final String password;
-
 
 	/**
 	 * Instantiates a new login credentials.
@@ -39,12 +38,11 @@ public class LoginCredentials {
 	 * @param password
 	 *            the password
 	 */
-	public LoginCredentials(String localUsername, String password) {
+	public LoginCredentials(final String localUsername, final String password) {
 		super();
 		this.localUsername = localUsername;
 		this.password = password;
 	}
-
 
 	/**
 	 * Gets the local username.
@@ -52,9 +50,8 @@ public class LoginCredentials {
 	 * @return the local username
 	 */
 	public String getLocalUsername() {
-		return localUsername;
+		return this.localUsername;
 	}
-
 
 	/**
 	 * Gets the password.
@@ -62,7 +59,7 @@ public class LoginCredentials {
 	 * @return the password
 	 */
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 }

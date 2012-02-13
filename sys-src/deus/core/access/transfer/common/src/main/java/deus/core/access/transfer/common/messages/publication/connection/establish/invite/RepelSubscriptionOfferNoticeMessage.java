@@ -19,10 +19,10 @@
  *************************************************************************/
 package deus.core.access.transfer.common.messages.publication.connection.establish.invite;
 
-
 /**
  * The Class RepelSubscriptionOfferNoticeMessage.
  */
-public class RepelSubscriptionOfferNoticeMessage extends InviteSubscriberMessage {
+public class RepelSubscriptionOfferNoticeMessage extends
+		InviteSubscriberMessage {
 
 }

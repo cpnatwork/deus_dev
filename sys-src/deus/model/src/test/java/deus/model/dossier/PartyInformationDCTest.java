@@ -19,9 +19,7 @@
  *************************************************************************/
 package deus.model.dossier;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,7 +39,6 @@ public class PartyInformationDCTest {
 	/** The person. */
 	private Person person;
 
-
 	/**
 	 * Sets the up.
 	 * 
@@ -50,25 +47,23 @@ public class PartyInformationDCTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		dc = new PartyInformationDC(new DigitalCardId(
-				new UserUrl("higgins", "http://www.deus.org"),
-				new UserUrl("alice", "http://www.deus.org"),
+		this.dc = new PartyInformationDC(new DigitalCardId(new UserUrl(
+				"higgins", "http://www.deus.org"), new UserUrl("alice",
+				"http://www.deus.org"),
 				"party information from Higgins about Alice"));
 
-		person = new Person();
-		person.setId(new UserUrl("alice", "http://www.deus.org"));
-		dc.setPartyInformation(person);
+		this.person = new Person();
+		this.person.setId(new UserUrl("alice", "http://www.deus.org"));
+		this.dc.setPartyInformation(this.person);
 	}
-
 
 	/**
 	 * Test get party information.
 	 */
 	@Test
 	public void testGetPartyInformation() {
-		assertEquals(person, dc.getPartyInformation());
+		Assert.assertEquals(this.person, this.dc.getPartyInformation());
 	}
-
 
 	/**
 	 * Test set party information.
@@ -76,12 +71,12 @@ public class PartyInformationDCTest {
 	@Test
 	public void testSetPartyInformation() {
 		try {
-			Person otherPerson = new Person();
-			otherPerson.setId(new UserUrl("another alice", "http://www.deus.org"));
-			dc.setPartyInformation(otherPerson);
-			fail("could set party information with different ID than the one of the digital card");
-		}
-		catch (IllegalArgumentException e) {
+			final Person otherPerson = new Person();
+			otherPerson.setId(new UserUrl("another alice",
+					"http://www.deus.org"));
+			this.dc.setPartyInformation(otherPerson);
+			Assert.fail("could set party information with different ID than the one of the digital card");
+		} catch (final IllegalArgumentException e) {
 		}
 	}
 

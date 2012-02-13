@@ -34,18 +34,24 @@ import deus.model.common.user.id.UserUrl;
 public class OnlyCreateUserUrlsUserIdGenerator implements UserIdGenerator {
 
 	/** The server base url. */
-	@Resource(name="serverBaseUrl")
+	@Resource(name = "serverBaseUrl")
 	private String serverBaseUrl;
-	
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.registrator.UserIdGenerator#generateUserId(deus.model.common.user.id.UserIdType, java.lang.String)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.registrator.UserIdGenerator#generateUserId
+	 * (deus.model.common.user.id.UserIdType, java.lang.String)
 	 */
 	@Override
-	public UserId generateUserId(UserIdType userIdType, String localUserName) {
-		if(!userIdType.equals(UserIdType.url))
-			throw new IllegalArgumentException("can only create URLs, not " + userIdType);
-		
-		UserId userId = new UserUrl(localUserName, serverBaseUrl);
+	public UserId generateUserId(final UserIdType userIdType,
+			final String localUserName) {
+		if (!userIdType.equals(UserIdType.url))
+			throw new IllegalArgumentException("can only create URLs, not "
+					+ userIdType);
+
+		final UserId userId = new UserUrl(localUserName, this.serverBaseUrl);
 
 		return userId;
 	}

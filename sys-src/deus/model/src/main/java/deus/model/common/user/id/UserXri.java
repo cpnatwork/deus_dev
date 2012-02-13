@@ -19,7 +19,6 @@
  *************************************************************************/
 package deus.model.common.user.id;
 
-
 //FIXME: REMOVE HIBERNATE STUFF!
 //@SuppressWarnings("serial")
 //@Entity
@@ -29,16 +28,20 @@ package deus.model.common.user.id;
 public class UserXri extends UserId {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4935773018199446807L;
+
+	/**
 	 * Instantiates a new user xri.
 	 * 
 	 * @param xri
 	 *            the xri
 	 */
-	public UserXri(String xri) {
+	public UserXri(final String xri) {
 		// FIXME: what is the username of an xri?
 		super(xri);
 	}
-
 
 	/**
 	 * Gets the xri.
@@ -46,11 +49,12 @@ public class UserXri extends UserId {
 	 * @return the xri
 	 */
 	public String getXri() {
-		return getUsername();
+		return this.getUsername();
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.common.user.id.UserId#getType()
 	 */
 	@Override
@@ -58,26 +62,29 @@ public class UserXri extends UserId {
 		return UserIdType.xri;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.common.user.id.UserId#getId()
 	 */
 	@Override
 	public String getId() {
-		return getXri();
+		return this.getXri();
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return getId();
+		return this.getId();
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.common.user.id.UserId#hashCode()
 	 */
 	@Override
@@ -85,17 +92,18 @@ public class UserXri extends UserId {
 		return super.hashCode();
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.common.user.id.UserId#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (this.getClass() != obj.getClass())
 			return false;
 		return true;
 	}

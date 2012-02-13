@@ -33,22 +33,32 @@ import deus.model.publication.LosEntry;
  * @author cpn
  */
 @Named("losEntryDao")
-public class LosEntryDaoImpl extends GenericTwofoldIdDaoImpl<LosEntry, PublisherId, SubscriberId> implements LosEntryDao {
+public class LosEntryDaoImpl extends
+		GenericTwofoldIdDaoImpl<LosEntry, PublisherId, SubscriberId> implements
+		LosEntryDao {
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.api.publication.LosEntryDao#addNewEntity(deus.model.common.user.frids.PublisherId, deus.model.publication.LosEntry)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.api.publication.LosEntryDao#addNewEntity(deus
+	 * .model.common.user.frids.PublisherId, deus.model.publication.LosEntry)
 	 */
 	@Override
-	public void addNewEntity(PublisherId publisherId, LosEntry entry) {
-		addNewEntity(publisherId, entry.getSubscriberId(), entry);
+	public void addNewEntity(final PublisherId publisherId, final LosEntry entry) {
+		this.addNewEntity(publisherId, entry.getSubscriberId(), entry);
 	}
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.api.publication.LosEntryDao#updateEntity(deus.model.common.user.frids.PublisherId, deus.model.publication.LosEntry)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.api.publication.LosEntryDao#updateEntity(deus
+	 * .model.common.user.frids.PublisherId, deus.model.publication.LosEntry)
 	 */
 	@Override
-	public void updateEntity(PublisherId publisherId, LosEntry entry) {
-		updateEntity(publisherId, entry.getSubscriberId(), entry);
+	public void updateEntity(final PublisherId publisherId, final LosEntry entry) {
+		this.updateEntity(publisherId, entry.getSubscriberId(), entry);
 	}
 
 }

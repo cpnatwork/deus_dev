@@ -19,8 +19,7 @@
  *************************************************************************/
 package deus.core.access.transfer.core.sending.command.impl;
 
-import static org.junit.Assert.assertEquals;
-
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,44 +37,51 @@ import deus.model.common.user.UserMetadata;
  * The Class TransferSubscriberCommandSenderTest.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transfer/core/test.xml" })
-public class TransferSubscriberCommandSenderTest extends AbstractCommandSenderTest {
+@ContextConfiguration(locations = { "/deus/context.xml",
+		"/deus/core/access/transfer/core/test.xml" })
+public class TransferSubscriberCommandSenderTest extends
+		AbstractCommandSenderTest {
 
 	/** The transfer subscriber command sender. */
 	@Autowired
 	private SubscriberCommandSender transferSubscriberCommandSender;
-
 
 	/**
 	 * Test subscribe.
 	 */
 	@Test
 	public void testSubscribe() {
-		UserMetadata subscriberMetadata = new UserMetadata("Bob", Gender.male);
+		final UserMetadata subscriberMetadata = new UserMetadata("Bob",
+				Gender.male);
 
-		transferSubscriberCommandSender.subscribe(subscriberId, publisherId, subscriberMetadata);
+		this.transferSubscriberCommandSender.subscribe(this.subscriberId,
+				this.publisherId, subscriberMetadata);
 
-		TransferMessage expectedMessage = new RequestSubscriptionMessage(subscriberMetadata);
-		setTids(expectedMessage, subscriberId.getUserId(), publisherId.getUserId());
+		final TransferMessage expectedMessage = new RequestSubscriptionMessage(
+				subscriberMetadata);
+		this.setTids(expectedMessage, this.subscriberId.getUserId(),
+				this.publisherId.getUserId());
 
-		testEqualsMessage(expectedMessage, lastSentTransferMessage);
+		this.testEqualsMessage(expectedMessage, this.lastSentTransferMessage);
 
-		assertEquals(subscriberMetadata, ((RequestSubscriptionMessage) lastSentTransferMessage)
-				.getSubscriberMetadata());
+		Assert.assertEquals(subscriberMetadata,
+				((RequestSubscriptionMessage) this.lastSentTransferMessage)
+						.getSubscriberMetadata());
 	}
-
 
 	/**
 	 * Test unsubscribe.
 	 */
 	@Test
 	public void testUnsubscribe() {
-		transferSubscriberCommandSender.unsubscribe(subscriberId, publisherId);
+		this.transferSubscriberCommandSender.unsubscribe(this.subscriberId,
+				this.publisherId);
 
-		TransferMessage expectedMessage = new UnsubscribeMessage();
-		setTids(expectedMessage, subscriberId.getUserId(), publisherId.getUserId());
+		final TransferMessage expectedMessage = new UnsubscribeMessage();
+		this.setTids(expectedMessage, this.subscriberId.getUserId(),
+				this.publisherId.getUserId());
 
-		testEqualsMessage(expectedMessage, lastSentTransferMessage);
+		this.testEqualsMessage(expectedMessage, this.lastSentTransferMessage);
 	}
 
 }

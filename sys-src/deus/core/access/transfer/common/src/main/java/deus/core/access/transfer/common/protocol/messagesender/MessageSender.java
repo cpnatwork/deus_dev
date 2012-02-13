@@ -33,5 +33,5 @@ public interface MessageSender {
 	 *            the transfer message
 	 */
 	public void send(TransferMessage transferMessage);
-	
+
 }

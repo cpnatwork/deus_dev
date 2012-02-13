@@ -24,7 +24,6 @@ import org.springframework.stereotype.Component;
 import deus.model.common.user.id.UserId;
 import deus.model.common.user.id.UserUrl;
 
-
 /**
  * The Class UserUrlParser.
  */
@@ -38,8 +37,8 @@ public class UserUrlParser {
 	 *            the user url string
 	 * @return the user id
 	 */
-	public UserId parseUserUrl(String userUrlString) {
+	public UserId parseUserUrl(final String userUrlString) {
 		return new UserUrl("alice", "http://www.dacus.org");
 	}
-	
+
 }

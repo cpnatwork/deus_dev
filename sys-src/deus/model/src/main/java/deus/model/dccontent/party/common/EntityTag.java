@@ -29,10 +29,9 @@ public class EntityTag {
 
 	/** The label. */
 	private String label;
-	
+
 	/** The priority. */
 	private int priority;
-
 
 	/**
 	 * Gets the pers prof tag.
@@ -40,9 +39,8 @@ public class EntityTag {
 	 * @return the pers prof tag
 	 */
 	public PersProfTag getPersProfTag() {
-		return persProfTag;
+		return this.persProfTag;
 	}
-
 
 	/**
 	 * Sets the pers prof tag.
@@ -50,10 +48,9 @@ public class EntityTag {
 	 * @param persProfTag
 	 *            the new pers prof tag
 	 */
-	public void setPersProfTag(PersProfTag persProfTag) {
+	public void setPersProfTag(final PersProfTag persProfTag) {
 		this.persProfTag = persProfTag;
 	}
-
 
 	/**
 	 * Gets the label.
@@ -61,9 +58,8 @@ public class EntityTag {
 	 * @return the label
 	 */
 	public String getLabel() {
-		return label;
+		return this.label;
 	}
-
 
 	/**
 	 * Sets the label.
@@ -71,10 +67,9 @@ public class EntityTag {
 	 * @param label
 	 *            the new label
 	 */
-	public void setLabel(String label) {
+	public void setLabel(final String label) {
 		this.label = label;
 	}
-
 
 	/**
 	 * Gets the priority.
@@ -82,9 +77,8 @@ public class EntityTag {
 	 * @return the priority
 	 */
 	public int getPriority() {
-		return priority;
+		return this.priority;
 	}
-
 
 	/**
 	 * Sets the priority.
@@ -92,9 +86,8 @@ public class EntityTag {
 	 * @param priority
 	 *            the new priority
 	 */
-	public void setPriority(int priority) {
+	public void setPriority(final int priority) {
 		this.priority = priority;
 	}
-
 
 }

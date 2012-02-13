@@ -28,28 +28,28 @@ public abstract class AddressPO extends deus.model.dccontent.party.Address {
 
 	/** The uuid. */
 	private UUID uuid;
-	
+
 	// FIXME: REMOVE
-//	@Id
-//	@GeneratedValue(generator = "system-uuid")
-//	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	// @Id
+	// @GeneratedValue(generator = "system-uuid")
+	// @GenericGenerator(name = "system-uuid", strategy = "uuid")
 	/**
 	 * Gets the uuid.
 	 * 
 	 * @return the uuid
 	 */
 	public UUID getUuid() {
-		return uuid;
+		return this.uuid;
 	}
-		
+
 	/**
 	 * Sets the uuid.
 	 * 
 	 * @param uuid
 	 *            the new uuid
 	 */
-	public void setUuid(UUID uuid) {
+	public void setUuid(final UUID uuid) {
 		this.uuid = uuid;
 	}
-	
+
 }

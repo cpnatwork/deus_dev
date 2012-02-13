@@ -22,7 +22,6 @@ package deus.core.soul.hci.barker;
 import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.AttentionElement;
 
-
 /**
  * The Interface BarkerExportedToSubsystems.
  */
@@ -36,6 +35,7 @@ public interface BarkerExportedToSubsystems {
 	 * @param attentionElement
 	 *            the attention element
 	 */
-	public abstract void addUnnoticedAttentionElement(UserId ownerUserId, AttentionElement attentionElement);
+	public abstract void addUnnoticedAttentionElement(UserId ownerUserId,
+			AttentionElement attentionElement);
 
 }

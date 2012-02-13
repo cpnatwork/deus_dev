@@ -37,7 +37,6 @@ public interface UserMetadataDao {
 	 */
 	public void updateEntity(UserId userId, UserMetadata userMetadata);
 
-
 	/**
 	 * Adds the new entity.
 	 * 
@@ -47,7 +46,6 @@ public interface UserMetadataDao {
 	 *            the user metadata
 	 */
 	public void addNewEntity(UserId userId, UserMetadata userMetadata);
-
 
 	/**
 	 * Gets the by natural id.

@@ -33,20 +33,31 @@ import deus.model.common.user.frids.RepatriationAuthorityId;
  * The Class TransferContributionCommandSender.
  */
 @Named("contributionCommandSender")
-public class TransferContributionCommandSender implements ContributionCommandSender {
+public class TransferContributionCommandSender implements
+		ContributionCommandSender {
 
 	/** The transfer message sender helper. */
 	@Inject
 	private TransferMessageSenderHelper transferMessageSenderHelper;
-	
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.sending.command.ContributionCommandSender#forwardToCp(deus.model.common.user.frids.ContributorId, deus.model.common.user.frids.RepatriationAuthorityId, deus.model.common.dossier.DigitalCard)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.core.sending.command.ContributionCommandSender
+	 * #forwardToCp(deus.model.common.user.frids.ContributorId,
+	 * deus.model.common.user.frids.RepatriationAuthorityId,
+	 * deus.model.common.dossier.DigitalCard)
 	 */
 	@Override
-	public void forwardToCp(ContributorId contributorId, RepatriationAuthorityId repatriationAuthorityId,
-			DigitalCard digitalCard) {
-		TransferMessage transferMessage = new ContributeMessage(digitalCard);
-		transferMessageSenderHelper.send(repatriationAuthorityId.getUserId(), contributorId.getUserId(), transferMessage);
+	public void forwardToCp(final ContributorId contributorId,
+			final RepatriationAuthorityId repatriationAuthorityId,
+			final DigitalCard digitalCard) {
+		final TransferMessage transferMessage = new ContributeMessage(
+				digitalCard);
+		this.transferMessageSenderHelper.send(
+				repatriationAuthorityId.getUserId(), contributorId.getUserId(),
+				transferMessage);
 	}
 
 }

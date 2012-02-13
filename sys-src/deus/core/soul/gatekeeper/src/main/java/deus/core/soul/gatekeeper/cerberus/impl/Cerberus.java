@@ -22,10 +22,10 @@ package deus.core.soul.gatekeeper.cerberus.impl;
 import deus.core.soul.gatekeeper.cerberus.CerberusExportedToClient;
 import deus.core.soul.gatekeeper.cerberus.CerberusExportedToSubsystems;
 
-
 /**
  * The Interface Cerberus.
  */
-public interface Cerberus extends CerberusExportedToSubsystems, CerberusExportedToClient {
-	
+public interface Cerberus extends CerberusExportedToSubsystems,
+		CerberusExportedToClient {
+
 }

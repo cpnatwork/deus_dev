@@ -47,7 +47,6 @@ public class PublisherImpl implements Publisher {
 	/** The logger. */
 	private final Logger logger = LoggerFactory.getLogger(PublisherImpl.class);
 
-	
 	/** The publisher command sender. */
 	@Inject
 	private PublisherCommandSender publisherCommandSender;
@@ -64,163 +63,235 @@ public class PublisherImpl implements Publisher {
 	@Inject
 	private LosDao losDao;
 
-
 	// FIXME: think about returning a DTO to the frontend here
-	/* (non-Javadoc)
-	 * @see deus.core.soul.publication.PublisherExportedToClient#getListOfSubscribers(deus.model.common.user.frids.PublisherId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.publication.PublisherExportedToClient#getListOfSubscribers
+	 * (deus.model.common.user.frids.PublisherId)
 	 */
 	@Override
-	public ListOfSubscribers getListOfSubscribers(PublisherId publisherId) {
-		return losDao.getByNaturalId(publisherId);
+	public ListOfSubscribers getListOfSubscribers(final PublisherId publisherId) {
+		return this.losDao.getByNaturalId(publisherId);
 	}
 
+	// +++ exported to PEER
+	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-	// +++ exported to PEER +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#addSubscriber(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId, deus.model.common.user.UserMetadata)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.
+	 * PublisherExportedToPeers
+	 * #addSubscriber(deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.UserMetadata)
 	 */
 	@Override
-	public synchronized void addSubscriber(PublisherId publisherId, SubscriberId subscriberId,
-			UserMetadata subscriberMetadata) {
-		logger.trace("adding informationConsumer {}", subscriberId);
+	public synchronized void addSubscriber(final PublisherId publisherId,
+			final SubscriberId subscriberId,
+			final UserMetadata subscriberMetadata) {
+		this.logger.trace("adding informationConsumer {}", subscriberId);
 
-		if (losEntryDao.existsByNaturalId(publisherId, subscriberId))
-			throw new IllegalArgumentException("cannot add informationConsumer, it has already been added!");
+		if (this.losEntryDao.existsByNaturalId(publisherId, subscriberId))
+			throw new IllegalArgumentException(
+					"cannot add informationConsumer, it has already been added!");
 
-		LosEntry entry = new LosEntry(subscriberId);
+		final LosEntry entry = new LosEntry(subscriberId);
 		entry.setSubscriberMetadata(subscriberMetadata);
 		entry.setSubscriptionState(PublisherSideSubscriptionState.established);
 
-		losEntryDao.addNewEntity(publisherId, entry);
+		this.losEntryDao.addNewEntity(publisherId, entry);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#deleteSubscriber(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.
+	 * PublisherExportedToPeers
+	 * #deleteSubscriber(deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.frids.SubscriberId)
 	 */
 	@Override
-	public synchronized void deleteSubscriber(PublisherId publisherId, SubscriberId subscriberId) {
-		logger.trace("removing informationConsumer {}", subscriberId);
+	public synchronized void deleteSubscriber(final PublisherId publisherId,
+			final SubscriberId subscriberId) {
+		this.logger.trace("removing informationConsumer {}", subscriberId);
 
-		if (!losEntryDao.existsByNaturalId(publisherId, subscriberId))
-			throw new IllegalArgumentException("cannot remove informationConsumer, that has not been added yet!");
+		if (!this.losEntryDao.existsByNaturalId(publisherId, subscriberId))
+			throw new IllegalArgumentException(
+					"cannot remove informationConsumer, that has not been added yet!");
 
-		losEntryDao.deleteByNaturalId(publisherId, subscriberId);
+		this.losEntryDao.deleteByNaturalId(publisherId, subscriberId);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#subscriptionConfirmed(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.
+	 * PublisherExportedToPeers
+	 * #subscriptionConfirmed(deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.frids.SubscriberId)
 	 */
 	@Override
-	public void subscriptionConfirmed(PublisherId publisherId, SubscriberId subscriberId) {
-		logger.trace("in publisher of {}: informationConsumer {} confirmed subscription", subscriberId, publisherId);
+	public void subscriptionConfirmed(final PublisherId publisherId,
+			final SubscriberId subscriberId) {
+		this.logger
+				.trace("in publisher of {}: informationConsumer {} confirmed subscription",
+						subscriberId, publisherId);
 
-		LosEntry entry = losEntryDao.getByNaturalId(publisherId, subscriberId);
+		final LosEntry entry = this.losEntryDao.getByNaturalId(publisherId,
+				subscriberId);
 		entry.setSubscriptionState(PublisherSideSubscriptionState.established);
 
-		losEntryDao.updateEntity(publisherId, entry);
+		this.losEntryDao.updateEntity(publisherId, entry);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#subscriptionAbstained(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.
+	 * PublisherExportedToPeers
+	 * #subscriptionAbstained(deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.frids.SubscriberId)
 	 */
 	@Override
-	public void subscriptionAbstained(PublisherId publisherId, SubscriberId subscriberId) {
-		logger.trace("in publisher of {}: informationConsumer {} abstained subscription", subscriberId, publisherId);
+	public void subscriptionAbstained(final PublisherId publisherId,
+			final SubscriberId subscriberId) {
+		this.logger
+				.trace("in publisher of {}: informationConsumer {} abstained subscription",
+						subscriberId, publisherId);
 
-		losEntryDao.deleteByNaturalId(publisherId, subscriberId);
+		this.losEntryDao.deleteByNaturalId(publisherId, subscriberId);
 	}
 
+	// +++ exported to CLIENT
+	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-	// +++ exported to CLIENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.publication.PublisherExportedToClient#notifySubscriber(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId, deus.model.common.dossier.DigitalCard)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.publication.PublisherExportedToClient#notifySubscriber
+	 * (deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.dossier.DigitalCard)
 	 */
 	@Override
-	public synchronized void notifySubscriber(PublisherId publisherId, SubscriberId subscriberId, DigitalCard digitalCard) {
-		logger.trace("notifying subscribers of change {}", digitalCard);
+	public synchronized void notifySubscriber(final PublisherId publisherId,
+			final SubscriberId subscriberId, final DigitalCard digitalCard) {
+		this.logger.trace("notifying subscribers of change {}", digitalCard);
 
-		LosEntry losEntry = losEntryDao.getByNaturalId(publisherId, subscriberId);
+		final LosEntry losEntry = this.losEntryDao.getByNaturalId(publisherId,
+				subscriberId);
 
-		publisherCommandSender.update(publisherId, losEntry.getSubscriberId(), digitalCard);
+		this.publisherCommandSender.update(publisherId,
+				losEntry.getSubscriberId(), digitalCard);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.publication.PublisherExportedToClient#notifySubscribers(deus.model.common.user.frids.PublisherId, deus.model.common.dossier.DigitalCard)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.publication.PublisherExportedToClient#notifySubscribers
+	 * (deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.dossier.DigitalCard)
 	 */
 	@Override
-	public void notifySubscribers(PublisherId publisherId, DigitalCard digitalCard) {
-		logger.trace("notifying subscribers of change {}", digitalCard);
+	public void notifySubscribers(final PublisherId publisherId,
+			final DigitalCard digitalCard) {
+		this.logger.trace("notifying subscribers of change {}", digitalCard);
 
-		ListOfSubscribers listOfSubscribers = losDao.getByNaturalId(publisherId);
+		final ListOfSubscribers listOfSubscribers = this.losDao
+				.getByNaturalId(publisherId);
 
 		/*
-		 * a temporary array buffer, used as a snapshot of the state of current Observers.
+		 * a temporary array buffer, used as a snapshot of the state of current
+		 * Observers.
 		 */
 		Object[] arrLocal;
 
 		synchronized (this) {
 			/*
-			 * We don't want the Observer doing callbacks into arbitrary code while holding its own Monitor. The code
-			 * where we extract each Observable from the Vector and store the state of the Observer needs
-			 * synchronization, but notifying observers does not (should not). The worst result of any potential
-			 * race-condition here is that: 1) a newly-added Observer will miss a notification in progress 2) a recently
-			 * unregistered Observer will be wrongly notified when it doesn't care
+			 * We don't want the Observer doing callbacks into arbitrary code
+			 * while holding its own Monitor. The code where we extract each
+			 * Observable from the Vector and store the state of the Observer
+			 * needs synchronization, but notifying observers does not (should
+			 * not). The worst result of any potential race-condition here is
+			 * that: 1) a newly-added Observer will miss a notification in
+			 * progress 2) a recently unregistered Observer will be wrongly
+			 * notified when it doesn't care
 			 */
 			arrLocal = listOfSubscribers.keySet().toArray();
 		}
 
 		for (int i = arrLocal.length - 1; i >= 0; i--) {
 			// TODO: think about publishing using multiple threads
-			LosEntry losEntry = (LosEntry) arrLocal[i];
+			final LosEntry losEntry = (LosEntry) arrLocal[i];
 
-			publisherCommandSender.update(publisherId, losEntry.getSubscriberId(), digitalCard);
+			this.publisherCommandSender.update(publisherId,
+					losEntry.getSubscriberId(), digitalCard);
 		}
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.publication.PublisherExportedToClient#inviteSubscriber(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId, deus.model.common.user.UserMetadata)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.publication.PublisherExportedToClient#inviteSubscriber
+	 * (deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.UserMetadata)
 	 */
 	@Override
-	public void inviteSubscriber(PublisherId publisherId, SubscriberId subscriberId, UserMetadata subscriberMetadata) {
-		if (losEntryDao.existsByNaturalId(publisherId, subscriberId))
-			throw new IllegalArgumentException("cannot offer subscription to informationConsumer (" + subscriberId
-					+ ") again!");
+	public void inviteSubscriber(final PublisherId publisherId,
+			final SubscriberId subscriberId,
+			final UserMetadata subscriberMetadata) {
+		if (this.losEntryDao.existsByNaturalId(publisherId, subscriberId))
+			throw new IllegalArgumentException(
+					"cannot offer subscription to informationConsumer ("
+							+ subscriberId + ") again!");
 
-		logger.trace("in publisher {}: offering subscription to informationConsumer {}", publisherId, subscriberId);
+		this.logger
+				.trace("in publisher {}: offering subscription to informationConsumer {}",
+						publisherId, subscriberId);
 
-		LosEntry entry = new LosEntry(subscriberId);
+		final LosEntry entry = new LosEntry(subscriberId);
 		entry.setSubscriberMetadata(subscriberMetadata);
 		entry.setSubscriptionState(PublisherSideSubscriptionState.offered);
-		losEntryDao.addNewEntity(publisherId, entry);
+		this.losEntryDao.addNewEntity(publisherId, entry);
 
-		UserMetadata publisherMetadata = userMetadataDao.getByNaturalId(publisherId.getUserId());
+		final UserMetadata publisherMetadata = this.userMetadataDao
+				.getByNaturalId(publisherId.getUserId());
 
-		publisherCommandSender.offerSubscription(publisherId, subscriberId, publisherMetadata);
+		this.publisherCommandSender.offerSubscription(publisherId,
+				subscriberId, publisherMetadata);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.publication.PublisherExportedToClient#cancelSubscription(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.publication.PublisherExportedToClient#cancelSubscription
+	 * (deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.frids.SubscriberId)
 	 */
 	@Override
-	public void cancelSubscription(PublisherId publisherId, SubscriberId subscriberId) {
-		if (losEntryDao.existsByNaturalId(publisherId, subscriberId))
-			throw new IllegalArgumentException("cannot cancel a subscription of informationConsumer (" + subscriberId
-					+ "), that has not been added yet!");
+	public void cancelSubscription(final PublisherId publisherId,
+			final SubscriberId subscriberId) {
+		if (this.losEntryDao.existsByNaturalId(publisherId, subscriberId))
+			throw new IllegalArgumentException(
+					"cannot cancel a subscription of informationConsumer ("
+							+ subscriberId + "), that has not been added yet!");
 
-		logger.trace("in publisher {}: canceling subscription to informationConsumer {}", publisherId, subscriberId);
+		this.logger
+				.trace("in publisher {}: canceling subscription to informationConsumer {}",
+						publisherId, subscriberId);
 
-		losEntryDao.deleteByNaturalId(publisherId, subscriberId);
+		this.losEntryDao.deleteByNaturalId(publisherId, subscriberId);
 
-		publisherCommandSender.cancelSubscription(publisherId, subscriberId);
+		this.publisherCommandSender.cancelSubscription(publisherId,
+				subscriberId);
 	}
-
 
 }

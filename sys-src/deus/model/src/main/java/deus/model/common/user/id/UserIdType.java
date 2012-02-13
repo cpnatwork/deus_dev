@@ -23,11 +23,11 @@ package deus.model.common.user.id;
  * The Enum UserIdType.
  */
 public enum UserIdType {
-	
+
 	// currently, xri is only for testing
 	/** The url. */
-	url, 
- /** The xri. */
- xri;
+	url,
+	/** The xri. */
+	xri;
 
 }

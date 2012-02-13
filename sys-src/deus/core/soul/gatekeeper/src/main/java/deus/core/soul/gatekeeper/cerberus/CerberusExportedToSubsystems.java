@@ -19,7 +19,6 @@
  *************************************************************************/
 package deus.core.soul.gatekeeper.cerberus;
 
-
 /**
  * The Interface CerberusExportedToSubsystems.
  */
@@ -31,8 +30,8 @@ public interface CerberusExportedToSubsystems {
 	 * @param observer
 	 *            the observer
 	 */
-	public abstract void addUserLoginStateObserver(UserLoginStateObserver observer);
-
+	public abstract void addUserLoginStateObserver(
+			UserLoginStateObserver observer);
 
 	/**
 	 * Removes the user login state observer.
@@ -40,6 +39,7 @@ public interface CerberusExportedToSubsystems {
 	 * @param observer
 	 *            the observer
 	 */
-	public abstract void removeUserLoginStateObserver(UserLoginStateObserver observer);
+	public abstract void removeUserLoginStateObserver(
+			UserLoginStateObserver observer);
 
 }

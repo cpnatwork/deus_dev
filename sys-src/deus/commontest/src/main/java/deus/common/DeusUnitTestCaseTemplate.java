@@ -25,8 +25,9 @@ import org.junit.Before;
 /**
  * This is a template for unit testing DEUS classes.
  * 
- * A single system is tested, being called "System Under Test" (SUT). This system has dependencies that are provided by
- * Mock objects, using EasyMock. Other objects being needed for testing are included in the "test fixture".
+ * A single system is tested, being called "System Under Test" (SUT). This
+ * system has dependencies that are provided by Mock objects, using EasyMock.
+ * Other objects being needed for testing are included in the "test fixture".
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
@@ -34,37 +35,42 @@ import org.junit.Before;
 public abstract class DeusUnitTestCaseTemplate {
 
 	/**
-	 * Sets up all dependencies of the SUT. Only the setup of the dependencies is done here. Injection of them into the
-	 * SUT is done in <code>setUpSUT</code>.
+	 * Sets up all dependencies of the SUT. Only the setup of the dependencies
+	 * is done here. Injection of them into the SUT is done in
+	 * <code>setUpSUT</code>.
 	 * 
-	 * Therefore, EasyMock may be used, instrumenting the static method <code>EasyMock.createMock()</code>.
+	 * Therefore, EasyMock may be used, instrumenting the static method
+	 * <code>EasyMock.createMock()</code>.
 	 * 
-	 * This method is called prior to every single test annotated with <code>@Test</code>.
+	 * This method is called prior to every single test annotated with
+	 * <code>@Test</code>.
 	 */
 	protected abstract void setUpDependencies();
 
-
 	/**
-	 * The SUT is set up in this method. All dependencies that are created by <code>setUpMocks</code> are injected into
-	 * the SUT in this method.
+	 * The SUT is set up in this method. All dependencies that are created by
+	 * <code>setUpMocks</code> are injected into the SUT in this method.
 	 * 
-	 * Private fields of the SUT that are autowired by Spring using <code>@Autowired</code> can be set using
-	 * <code>org.springframework.test.util.ReflectionTestUtils</code> from Spring Test Framework.
+	 * Private fields of the SUT that are autowired by Spring using
+	 * <code>@Autowired</code> can be set using
+	 * <code>org.springframework.test.util.ReflectionTestUtils</code> from
+	 * Spring Test Framework.
 	 * 
-	 * This method is called prior to every single test annotated with <code>@Test</code>.
+	 * This method is called prior to every single test annotated with
+	 * <code>@Test</code>.
 	 */
 	protected abstract void setUpSUT();
 
-
 	/**
-	 * Any domain objects or other objects that are not dependencies of the SUT, but needed for testing, are set up in
-	 * this method. This can also done by using EasyMock (<code>EasyMock.createMock()</code>, or
+	 * Any domain objects or other objects that are not dependencies of the SUT,
+	 * but needed for testing, are set up in this method. This can also done by
+	 * using EasyMock (<code>EasyMock.createMock()</code>, or
 	 * <code>EasyMock.createNiceMock()</code>.
 	 * 
-	 * This method is called prior to every single test annotated with <code>@Test</code>.
+	 * This method is called prior to every single test annotated with
+	 * <code>@Test</code>.
 	 */
 	protected abstract void setUpFixture();
-
 
 	/**
 	 * Sets the up.
@@ -74,39 +80,39 @@ public abstract class DeusUnitTestCaseTemplate {
 	 */
 	@Before
 	public final void setUp() throws Exception {
-		setUpDependencies();
+		this.setUpDependencies();
 
-		setUpSUT();
+		this.setUpSUT();
 
-		setUpFixture();
+		this.setUpFixture();
 	}
 
-
 	/**
-	 * All dependencies of the SUT are torn down here. This can be done using the static method
-	 * <code>EasyMock.reset()</code>.
+	 * All dependencies of the SUT are torn down here. This can be done using
+	 * the static method <code>EasyMock.reset()</code>.
 	 * 
-	 * This method is called prior to every single test annotated with <code>@Test</code>.
+	 * This method is called prior to every single test annotated with
+	 * <code>@Test</code>.
 	 */
 	protected abstract void tearDownDependencies();
-
 
 	/**
 	 * The SUT is torn down in this method.
 	 * 
-	 * This method is called prior to every single test annotated with <code>@Test</code>.
+	 * This method is called prior to every single test annotated with
+	 * <code>@Test</code>.
 	 */
 	protected abstract void tearDownSUT();
 
-
 	/**
-	 * All methods of the text fixture are torn down here. If they were created using EasyMock, the static method
-	 * <code>EasyMock.reset()</code> can be used.
+	 * All methods of the text fixture are torn down here. If they were created
+	 * using EasyMock, the static method <code>EasyMock.reset()</code> can be
+	 * used.
 	 * 
-	 * This method is called prior to every single test annotated with <code>@Test</code>.
+	 * This method is called prior to every single test annotated with
+	 * <code>@Test</code>.
 	 */
 	protected abstract void tearDownFixture();
-
 
 	/**
 	 * Tear down.
@@ -116,11 +122,11 @@ public abstract class DeusUnitTestCaseTemplate {
 	 */
 	@After
 	public final void tearDown() throws Exception {
-		tearDownDependencies();
+		this.tearDownDependencies();
 
-		tearDownSUT();
+		this.tearDownSUT();
 
-		tearDownFixture();
+		this.tearDownFixture();
 	}
 
 }

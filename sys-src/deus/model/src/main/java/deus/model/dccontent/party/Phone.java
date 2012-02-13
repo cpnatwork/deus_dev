@@ -32,10 +32,10 @@ public class Phone {
 	// capabilities
 	/** The voice. */
 	private boolean voice;
-	
+
 	/** The text. */
 	private boolean text;
-	
+
 	/** The video. */
 	private boolean video;
 
@@ -45,16 +45,14 @@ public class Phone {
 	/** The number. */
 	private String number;
 
-
 	/**
 	 * Gets the entity tag.
 	 * 
 	 * @return the entity tag
 	 */
 	public EntityTag getEntityTag() {
-		return entityTag;
+		return this.entityTag;
 	}
-
 
 	/**
 	 * Sets the entity tag.
@@ -62,10 +60,9 @@ public class Phone {
 	 * @param entityTag
 	 *            the new entity tag
 	 */
-	public void setEntityTag(EntityTag entityTag) {
+	public void setEntityTag(final EntityTag entityTag) {
 		this.entityTag = entityTag;
 	}
-
 
 	/**
 	 * Checks if is voice.
@@ -73,9 +70,8 @@ public class Phone {
 	 * @return true, if is voice
 	 */
 	public boolean isVoice() {
-		return voice;
+		return this.voice;
 	}
-
 
 	/**
 	 * Sets the voice.
@@ -83,10 +79,9 @@ public class Phone {
 	 * @param voice
 	 *            the new voice
 	 */
-	public void setVoice(boolean voice) {
+	public void setVoice(final boolean voice) {
 		this.voice = voice;
 	}
-
 
 	/**
 	 * Checks if is text.
@@ -94,9 +89,8 @@ public class Phone {
 	 * @return true, if is text
 	 */
 	public boolean isText() {
-		return text;
+		return this.text;
 	}
-
 
 	/**
 	 * Sets the text.
@@ -104,10 +98,9 @@ public class Phone {
 	 * @param text
 	 *            the new text
 	 */
-	public void setText(boolean text) {
+	public void setText(final boolean text) {
 		this.text = text;
 	}
-
 
 	/**
 	 * Checks if is video.
@@ -115,9 +108,8 @@ public class Phone {
 	 * @return true, if is video
 	 */
 	public boolean isVideo() {
-		return video;
+		return this.video;
 	}
-
 
 	/**
 	 * Sets the video.
@@ -125,10 +117,9 @@ public class Phone {
 	 * @param video
 	 *            the new video
 	 */
-	public void setVideo(boolean video) {
+	public void setVideo(final boolean video) {
 		this.video = video;
 	}
-
 
 	/**
 	 * Gets the type.
@@ -136,9 +127,8 @@ public class Phone {
 	 * @return the type
 	 */
 	public PhoneType getType() {
-		return type;
+		return this.type;
 	}
-
 
 	/**
 	 * Sets the type.
@@ -146,10 +136,9 @@ public class Phone {
 	 * @param type
 	 *            the new type
 	 */
-	public void setType(PhoneType type) {
+	public void setType(final PhoneType type) {
 		this.type = type;
 	}
-
 
 	/**
 	 * Gets the number.
@@ -157,9 +146,8 @@ public class Phone {
 	 * @return the number
 	 */
 	public String getNumber() {
-		return number;
+		return this.number;
 	}
-
 
 	/**
 	 * Sets the number.
@@ -167,7 +155,7 @@ public class Phone {
 	 * @param number
 	 *            the new number
 	 */
-	public void setNumber(String number) {
+	public void setNumber(final String number) {
 		this.number = number;
 	}
 

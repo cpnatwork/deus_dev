@@ -41,98 +41,125 @@ public class PersonTO extends deus.model.dccontent.party.Person {
 	/** The uuid. */
 	private UUID uuid;
 
-//	@Id
-//	@GeneratedValue(generator = "system-uuid")
-//	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	// @Id
+	// @GeneratedValue(generator = "system-uuid")
+	// @GenericGenerator(name = "system-uuid", strategy = "uuid")
 	/**
- * Gets the uuid.
- * 
- * @return the uuid
- */
-public UUID getUuid() {
-		return uuid;
+	 * Gets the uuid.
+	 * 
+	 * @return the uuid
+	 */
+	public UUID getUuid() {
+		return this.uuid;
 	}
-		
+
 	/**
 	 * Sets the uuid.
 	 * 
 	 * @param uuid
 	 *            the new uuid
 	 */
-	public void setUuid(UUID uuid) {
+	public void setUuid(final UUID uuid) {
 		this.uuid = uuid;
 	}
-	
-//	@NaturalId
-	/* (non-Javadoc)
- * @see deus.model.dccontent.party.Party#getId()
- */
-public UserId getId() {
-		return id;
+
+	// @NaturalId
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.model.dccontent.party.Party#getId()
+	 */
+	@Override
+	public UserId getId() {
+		return this.id;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.model.dccontent.party.Party#setId(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.model.dccontent.party.Party#setId(deus.model.common.user.id.UserId)
 	 */
-	public void setId(UserId id) {
+	@Override
+	public void setId(final UserId id) {
 		this.id = id;
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.dccontent.party.Person#getPhones()
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Phone> getPhones() {
-		return (List<Phone>) phones;
+		return (List<Phone>) this.phones;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.dccontent.party.Person#getEmails()
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Email> getEmails() {
-		return (List<Email>) emails;
+		return (List<Email>) this.emails;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.dccontent.party.Person#getWebPresences()
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<WebPresence> getWebPresences() {
-		return (List<WebPresence>) webPresences;
+		return (List<WebPresence>) this.webPresences;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.dccontent.party.Person#getImAccounts()
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<ImAccount> getImAccounts() {
-		return (List<ImAccount>) imAccounts;
+		return (List<ImAccount>) this.imAccounts;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.dccontent.party.Person#getAddresses()
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Address> getAddresses() {
-		return (List<Address>) addresses;
+		return (List<Address>) this.addresses;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.dccontent.party.Person#getOccupations()
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Occupation> getOccupations() {
-		return (List<Occupation>) occupations;
+		return (List<Occupation>) this.occupations;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.dccontent.party.Person#getRelatedPersons()
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<RelatedPerson> getRelatedPersons() {
-		return (List<RelatedPerson>) relatedPersons;
+		return (List<RelatedPerson>) this.relatedPersons;
 	}
 
 }

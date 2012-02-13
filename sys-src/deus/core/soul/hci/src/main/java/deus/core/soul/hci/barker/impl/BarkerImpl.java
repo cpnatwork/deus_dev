@@ -51,57 +51,74 @@ public class BarkerImpl implements Barker {
 	@Inject
 	private AttentionListDao attentionListDao;
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.hci.barker.BarkerExportedToSubsystems#addUnnoticedAttentionElement(deus.model.common.user.id.UserId, deus.model.hci.attention.AttentionElement)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.soul.hci.barker.BarkerExportedToSubsystems#
+	 * addUnnoticedAttentionElement(deus.model.common.user.id.UserId,
+	 * deus.model.hci.attention.AttentionElement)
 	 */
 	@Override
-	public void addUnnoticedAttentionElement(UserId userId, AttentionElement attentionElement) {
+	public void addUnnoticedAttentionElement(final UserId userId,
+			final AttentionElement attentionElement) {
 		if (attentionElement.isNoticed())
-			throw new BarkerRuntimeException("cannot add unnoticed attention element " + attentionElement
-					+ ", it is already noticed");
-		
-		logger.trace("adding unnoticed attention element {}", attentionElement);
-		
+			throw new BarkerRuntimeException(
+					"cannot add unnoticed attention element "
+							+ attentionElement + ", it is already noticed");
+
+		this.logger.trace("adding unnoticed attention element {}",
+				attentionElement);
+
 		// set creation date
 		attentionElement.setCreationDate(new Date());
 
-		attentionElementDao.addNewEntity(userId, attentionElement);
+		this.attentionElementDao.addNewEntity(userId, attentionElement);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.hci.barker.BarkerExportedToClient#noticeAttentionElement(deus.model.common.user.id.UserId, deus.model.hci.attention.AttentionElement)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.hci.barker.BarkerExportedToClient#noticeAttentionElement
+	 * (deus.model.common.user.id.UserId,
+	 * deus.model.hci.attention.AttentionElement)
 	 */
 	@Override
-	public void noticeAttentionElement(UserId userId, AttentionElement attentionElement) {
+	public void noticeAttentionElement(final UserId userId,
+			final AttentionElement attentionElement) {
 		if (attentionElement.isNoticed())
-			throw new BarkerRuntimeException("cannot notice attention element " + attentionElement
-					+ ", it is already noticed");
+			throw new BarkerRuntimeException("cannot notice attention element "
+					+ attentionElement + ", it is already noticed");
 
-		logger.trace("noticing attention element {}", attentionElement);
+		this.logger.trace("noticing attention element {}", attentionElement);
 
 		attentionElement.setNoticed(true);
 
-		attentionElementDao.updateEntity(userId, attentionElement);
+		this.attentionElementDao.updateEntity(userId, attentionElement);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.hci.barker.BarkerExportedToClient#getUnnoticedAttentionList(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.hci.barker.BarkerExportedToClient#getUnnoticedAttentionList
+	 * (deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public AttentionList getUnnoticedAttentionList(UserId userId) {
-		return attentionListDao.getUnnoticedAttentionList(userId);
+	public AttentionList getUnnoticedAttentionList(final UserId userId) {
+		return this.attentionListDao.getUnnoticedAttentionList(userId);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.hci.barker.BarkerExportedToClient#getNoticedAttentionList(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.hci.barker.BarkerExportedToClient#getNoticedAttentionList
+	 * (deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public AttentionList getNoticedAttentionList(UserId userId) {
-		return attentionListDao.getNoticedAttentionList(userId);
+	public AttentionList getNoticedAttentionList(final UserId userId) {
+		return this.attentionListDao.getNoticedAttentionList(userId);
 	}
 
 }

@@ -19,25 +19,32 @@
  *************************************************************************/
 package deus.core.soul.gatekeeper.cerberus;
 
-
 /**
  * The Class CerberusStub.
  */
 public class CerberusStub implements CerberusExportedToSubsystems {
 
-	/* (non-Javadoc)
-	 * @see deus.core.soul.gatekeeper.cerberus.CerberusExportedToSubsystems#addUserLoginStateObserver(deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.soul.gatekeeper.cerberus.CerberusExportedToSubsystems#
+	 * addUserLoginStateObserver
+	 * (deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver)
 	 */
 	@Override
-	public void addUserLoginStateObserver(UserLoginStateObserver observer) {
+	public void addUserLoginStateObserver(final UserLoginStateObserver observer) {
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.gatekeeper.cerberus.CerberusExportedToSubsystems#removeUserLoginStateObserver(deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.soul.gatekeeper.cerberus.CerberusExportedToSubsystems#
+	 * removeUserLoginStateObserver
+	 * (deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver)
 	 */
 	@Override
-	public void removeUserLoginStateObserver(UserLoginStateObserver observer) {
+	public void removeUserLoginStateObserver(
+			final UserLoginStateObserver observer) {
 	}
 
 }

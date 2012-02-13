@@ -25,9 +25,11 @@ import deus.model.common.user.frids.PublisherId;
 import deus.model.common.user.frids.SubscriberId;
 
 /**
- * Groups methods of the interface <code>Subscriber</code>, that are called remotely on the informationConsumer subsystem. These
- * methods are e.g. called from an instance of the class <code>XmppSubscriberSkeleton</code>, which is the part of the
- * stub-skeleton pair, that resides on the informationConsumer side.
+ * Groups methods of the interface <code>Subscriber</code>, that are called
+ * remotely on the informationConsumer subsystem. These methods are e.g. called
+ * from an instance of the class <code>XmppSubscriberSkeleton</code>, which is
+ * the part of the stub-skeleton pair, that resides on the informationConsumer
+ * side.
  * 
  * 
  * @see Subscriber
@@ -36,7 +38,7 @@ import deus.model.common.user.frids.SubscriberId;
  * 
  */
 public interface SubscriberExportedToPeers {
-	
+
 	// USE CASE: update
 
 	/**
@@ -49,9 +51,9 @@ public interface SubscriberExportedToPeers {
 	 * @param patch
 	 *            the patch
 	 */
-	public void update(SubscriberId subscriberId, PublisherId publisherId, Patch patch);
+	public void update(SubscriberId subscriberId, PublisherId publisherId,
+			Patch patch);
 
-	
 	// USE CASE: subscriber initiated connection
 
 	// FIXME: rename this to subscriptionRequestGranted
@@ -63,7 +65,8 @@ public interface SubscriberExportedToPeers {
 	 * @param publisherId
 	 *            the publisher id
 	 */
-	public void noticeSubscriptionRequestGranted(SubscriberId subscriberId, PublisherId publisherId);
+	public void noticeSubscriptionRequestGranted(SubscriberId subscriberId,
+			PublisherId publisherId);
 
 	// FIXME: rename this to subscriptionRequestDenied
 	/**
@@ -74,11 +77,9 @@ public interface SubscriberExportedToPeers {
 	 * @param publisherId
 	 *            the publisher id
 	 */
-	public void noticeSubscriptionRequestDenied(SubscriberId subscriberId, PublisherId publisherId);
-	
+	public void noticeSubscriptionRequestDenied(SubscriberId subscriberId,
+			PublisherId publisherId);
 
-	
-	
 	// USE CASE: publisher initiated connection
 	// FIXME: think about renaming this to "offerSubscription"
 	/**
@@ -91,9 +92,9 @@ public interface SubscriberExportedToPeers {
 	 * @param publisherMetadata
 	 *            the publisher metadata
 	 */
-	public void addPublisher(SubscriberId subscriberId, PublisherId publisherId, UserMetadata publisherMetadata);
-	
-	
+	public void addPublisher(SubscriberId subscriberId,
+			PublisherId publisherId, UserMetadata publisherMetadata);
+
 	/**
 	 * Delete publisher.
 	 * 
@@ -102,6 +103,7 @@ public interface SubscriberExportedToPeers {
 	 * @param publisherId
 	 *            the publisher id
 	 */
-	public void deletePublisher(SubscriberId subscriberId, PublisherId publisherId);
+	public void deletePublisher(SubscriberId subscriberId,
+			PublisherId publisherId);
 
 }

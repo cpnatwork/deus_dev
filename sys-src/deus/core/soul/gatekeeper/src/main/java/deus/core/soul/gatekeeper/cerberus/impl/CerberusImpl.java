@@ -56,7 +56,6 @@ public class CerberusImpl implements Cerberus {
 	@Inject
 	private AccountDao accountDao;
 
-
 	/**
 	 * Instantiates a new cerberus impl.
 	 */
@@ -65,70 +64,84 @@ public class CerberusImpl implements Cerberus {
 		this.observers = new Vector<UserLoginStateObserver>();
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.gatekeeper.cerberus.CerberusExportedToClient#login(deus.model.gatekeeper.LoginCredentials)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.gatekeeper.cerberus.CerberusExportedToClient#login(deus
+	 * .model.gatekeeper.LoginCredentials)
 	 */
 	@Override
-	public UserId login(LoginCredentials credentials) {
-		if (!loginCredentialChecker.isValid(credentials))
+	public UserId login(final LoginCredentials credentials) {
+		if (!this.loginCredentialChecker.isValid(credentials))
 			throw new InvalidLoginCredentialsException(credentials);
 
 		// TODO: do more login stuff, that is necessary
-		Account account = accountDao.getByNaturalId(credentials.getLocalUsername());
-		UserId userId = account.getUserId();
-		
-		logger.debug("user with id {} logged in", userId);
+		final Account account = this.accountDao.getByNaturalId(credentials
+				.getLocalUsername());
+		final UserId userId = account.getUserId();
+
+		this.logger.debug("user with id {} logged in", userId);
 
 		account.setLoggedIn(true);
-		
-		accountDao.updateEntity(account);
 
+		this.accountDao.updateEntity(account);
 
 		// FIXME: implement thread safe notifying (see RegistratorImpl)
-		for (UserLoginStateObserver observer : observers)
+		for (final UserLoginStateObserver observer : this.observers) {
 			observer.loggedIn(userId);
-		
+		}
+
 		return userId;
 	}
-	
 
-	/* (non-Javadoc)
-	 * @see deus.core.soul.gatekeeper.cerberus.CerberusExportedToClient#logout(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.gatekeeper.cerberus.CerberusExportedToClient#logout(java
+	 * .lang.String)
 	 */
 	@Override
-	public void logout(String localUsername) {
-		Account account = accountDao.getByNaturalId(localUsername);
-		UserId userId = account.getUserId();
-		
+	public void logout(final String localUsername) {
+		final Account account = this.accountDao.getByNaturalId(localUsername);
+		final UserId userId = account.getUserId();
+
 		account.setLoggedIn(false);
-		
-		accountDao.updateEntity(account);
 
+		this.accountDao.updateEntity(account);
 
-		logger.debug("user with id {} logged out", userId);
+		this.logger.debug("user with id {} logged out", userId);
 
 		// FIXME: implement thread safe notifying (see RegistratorImpl)
-		for (UserLoginStateObserver observer : observers)
+		for (final UserLoginStateObserver observer : this.observers) {
 			observer.loggedOut(userId);
+		}
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.gatekeeper.cerberus.CerberusExportedToSubsystems#addUserLoginStateObserver(deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.soul.gatekeeper.cerberus.CerberusExportedToSubsystems#
+	 * addUserLoginStateObserver
+	 * (deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver)
 	 */
 	@Override
-	public void addUserLoginStateObserver(UserLoginStateObserver observer) {
-		observers.add(observer);
+	public void addUserLoginStateObserver(final UserLoginStateObserver observer) {
+		this.observers.add(observer);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.gatekeeper.cerberus.CerberusExportedToSubsystems#removeUserLoginStateObserver(deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.soul.gatekeeper.cerberus.CerberusExportedToSubsystems#
+	 * removeUserLoginStateObserver
+	 * (deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver)
 	 */
 	@Override
-	public void removeUserLoginStateObserver(UserLoginStateObserver observer) {
-		if (observers.remove(observer) == false)
+	public void removeUserLoginStateObserver(
+			final UserLoginStateObserver observer) {
+		if (this.observers.remove(observer) == false)
 			throw new IllegalArgumentException("observer was not added!");
 	}
 

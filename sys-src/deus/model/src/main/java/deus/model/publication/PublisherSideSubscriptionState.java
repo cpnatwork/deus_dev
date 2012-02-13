@@ -26,6 +26,6 @@ public enum PublisherSideSubscriptionState {
 
 	/** The offered. */
 	offered, /** The established. */
- established;
-	
+	established;
+
 }

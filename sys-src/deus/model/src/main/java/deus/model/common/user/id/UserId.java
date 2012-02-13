@@ -30,18 +30,16 @@ abstract public class UserId implements Serializable {
 	/** The username. */
 	private String username = null;
 
-
 	/**
 	 * Instantiates a new user id.
 	 * 
 	 * @param username
 	 *            the username
 	 */
-	public UserId(String username) {
+	public UserId(final String username) {
 		super();
 		this.username = username;
 	}
-
 
 	/**
 	 * The essential user name.
@@ -49,45 +47,44 @@ abstract public class UserId implements Serializable {
 	 * @return the username
 	 */
 	public String getUsername() {
-		return username;
+		return this.username;
 	}
 
-
-
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		result = (prime * result)
+				+ ((this.username == null) ? 0 : this.username.hashCode());
 		return result;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (this.getClass() != obj.getClass())
 			return false;
-		UserId other = (UserId) obj;
-		if (username == null) {
+		final UserId other = (UserId) obj;
+		if (this.username == null) {
 			if (other.username != null)
 				return false;
-		}
-		else if (!username.equals(other.username))
+		} else if (!this.username.equals(other.username))
 			return false;
 		return true;
 	}
-
 
 	/**
 	 * The type of the User ID.
@@ -95,7 +92,6 @@ abstract public class UserId implements Serializable {
 	 * @return the type
 	 */
 	abstract public UserIdType getType();
-
 
 	/**
 	 * The full-fledged String representation of the User ID.

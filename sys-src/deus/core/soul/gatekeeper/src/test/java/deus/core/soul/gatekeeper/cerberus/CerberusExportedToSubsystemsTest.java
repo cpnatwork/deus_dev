@@ -19,12 +19,10 @@
  *************************************************************************/
 package deus.core.soul.gatekeeper.cerberus;
 
-import static org.junit.Assert.assertEquals;
-
 import org.easymock.EasyMock;
+import org.junit.Assert;
 import org.junit.Test;
 
-import deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver;
 import deus.model.common.user.id.UserId;
 import deus.model.gatekeeper.LoginCredentials;
 
@@ -32,14 +30,16 @@ import deus.model.gatekeeper.LoginCredentials;
  * The Class CerberusExportedToSubsystemsTest.
  */
 public class CerberusExportedToSubsystemsTest extends AbstractCerberusTest {
-	
+
 	/** The logged in. */
 	private int loggedIn;
-	
+
 	/** The logged out. */
 	private int loggedOut;
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.common.DeusUnitTestCaseEasyMockTemplate#getFixtureMocks()
 	 */
 	@Override
@@ -47,14 +47,15 @@ public class CerberusExportedToSubsystemsTest extends AbstractCerberusTest {
 		return null;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.common.DeusUnitTestCaseTemplate#setUpFixture()
 	 */
 	@Override
 	protected void setUpFixture() {
-		loggedIn = 0;
-		loggedOut = 0;
+		this.loggedIn = 0;
+		this.loggedOut = 0;
 	}
 
 	// TODO: remove
@@ -65,53 +66,54 @@ public class CerberusExportedToSubsystemsTest extends AbstractCerberusTest {
 	public void testStub() {
 	}
 
-		
 	// FIXME: think about this test method...
-	//@Test
+	// @Test
 	/**
 	 * Test login logout.
 	 */
 	public void testLoginLogout() {
-		LoginCredentials credentials = new LoginCredentials("alice", "password");
+		final LoginCredentials credentials = new LoginCredentials("alice",
+				"password");
 
-		EasyMock.expect(loginCredentialCheckerMock.isValid(credentials)).andStubReturn(true);
-		
-		replayAllMocks();
-		
-		UserLoginStateObserver obs = new UserLoginStateObserver() {
+		EasyMock.expect(this.loginCredentialCheckerMock.isValid(credentials))
+				.andStubReturn(true);
+
+		this.replayAllMocks();
+
+		final UserLoginStateObserver obs = new UserLoginStateObserver() {
 
 			@Override
-			public void loggedIn(UserId userId) {
-				loggedIn++;
+			public void loggedIn(final UserId userId) {
+				CerberusExportedToSubsystemsTest.this.loggedIn++;
 			}
 
 			@Override
-			public void loggedOut(UserId userId) {
-				loggedOut++;
+			public void loggedOut(final UserId userId) {
+				CerberusExportedToSubsystemsTest.this.loggedOut++;
 			}
-			
+
 		};
-		
-		cerberus.addUserLoginStateObserver(obs);
-		
-		assertEquals(0, loggedIn);
-		assertEquals(0, loggedOut);
+
+		this.cerberus.addUserLoginStateObserver(obs);
+
+		Assert.assertEquals(0, this.loggedIn);
+		Assert.assertEquals(0, this.loggedOut);
 		// LOGIN
-		cerberus.login(credentials);
-		assertEquals(1, loggedIn);
-		assertEquals(0, loggedOut);
-		
+		this.cerberus.login(credentials);
+		Assert.assertEquals(1, this.loggedIn);
+		Assert.assertEquals(0, this.loggedOut);
+
 		// LOGOUT
-		cerberus.logout(credentials.getLocalUsername());
-		
-		assertEquals(1, loggedIn);
-		assertEquals(1, loggedOut);
-		
-		cerberus.removeUserLoginStateObserver(obs);
-		
-		cerberus.login(credentials);
-		cerberus.logout(credentials.getLocalUsername());
-		assertEquals(1, loggedIn);
-		assertEquals(1, loggedOut);		
+		this.cerberus.logout(credentials.getLocalUsername());
+
+		Assert.assertEquals(1, this.loggedIn);
+		Assert.assertEquals(1, this.loggedOut);
+
+		this.cerberus.removeUserLoginStateObserver(obs);
+
+		this.cerberus.login(credentials);
+		this.cerberus.logout(credentials.getLocalUsername());
+		Assert.assertEquals(1, this.loggedIn);
+		Assert.assertEquals(1, this.loggedOut);
 	}
 }

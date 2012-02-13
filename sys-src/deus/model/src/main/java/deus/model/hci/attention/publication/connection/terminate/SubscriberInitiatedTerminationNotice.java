@@ -29,9 +29,12 @@ import deus.model.common.user.UserMetadata;
  */
 public class SubscriberInitiatedTerminationNotice extends TerminationNotice {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4413432655824904648L;
 	/** The subscriber metadata. */
 	private final UserMetadata subscriberMetadata;
-
 
 	/**
 	 * Instantiates a new subscriber initiated termination notice.
@@ -39,10 +42,10 @@ public class SubscriberInitiatedTerminationNotice extends TerminationNotice {
 	 * @param subscriberMetadata
 	 *            the subscriber metadata
 	 */
-	public SubscriberInitiatedTerminationNotice(UserMetadata subscriberMetadata) {
+	public SubscriberInitiatedTerminationNotice(
+			final UserMetadata subscriberMetadata) {
 		this.subscriberMetadata = subscriberMetadata;
 	}
-
 
 	/**
 	 * Gets the subscriber metadata.
@@ -50,16 +53,19 @@ public class SubscriberInitiatedTerminationNotice extends TerminationNotice {
 	 * @return the subscriber metadata
 	 */
 	public UserMetadata getSubscriberMetadata() {
-		return subscriberMetadata;
+		return this.subscriberMetadata;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.hci.attention.AttentionElement#getCatchphare()
 	 */
 	@Override
 	public String getCatchphare() {
-		return "Your informationConsumer "+getSubscriberMetadata().getFullName()+" shits on you (has deleted your file from ITS folder)";
+		return "Your informationConsumer "
+				+ this.getSubscriberMetadata().getFullName()
+				+ " shits on you (has deleted your file from ITS folder)";
 
 	}
 

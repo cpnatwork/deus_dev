@@ -30,54 +30,63 @@ import deus.core.soul.gatekeeper.cerberus.impl.CerberusImpl;
 /**
  * The Class AbstractCerberusTest.
  */
-public abstract class AbstractCerberusTest extends DeusUnitTestCaseEasyMockTemplate {
+public abstract class AbstractCerberusTest extends
+		DeusUnitTestCaseEasyMockTemplate {
 
 	/** The login credential checker mock. */
 	protected LoginCredentialChecker loginCredentialCheckerMock;
-	
+
 	/** The account dao mock. */
 	protected AccountDao accountDaoMock;
 
-	
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.common.DeusUnitTestCaseEasyMockTemplate#getDependencyMocks()
 	 */
 	@Override
 	protected Object[] getDependencyMocks() {
-		return new Object[] {loginCredentialCheckerMock, accountDaoMock};
+		return new Object[] { this.loginCredentialCheckerMock,
+				this.accountDaoMock };
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.common.DeusUnitTestCaseTemplate#setUpDependencies()
 	 */
 	@Override
 	protected void setUpDependencies() {
-		loginCredentialCheckerMock = EasyMock.createMock(LoginCredentialChecker.class);
-		accountDaoMock = EasyMock.createMock(AccountDao.class);
+		this.loginCredentialCheckerMock = EasyMock
+				.createMock(LoginCredentialChecker.class);
+		this.accountDaoMock = EasyMock.createMock(AccountDao.class);
 	}
 
-	
 	/** The cerberus. */
 	protected Cerberus cerberus;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.common.DeusUnitTestCaseTemplate#setUpSUT()
 	 */
 	@Override
 	protected void setUpSUT() {
-		cerberus = new CerberusImpl();
-		ReflectionTestUtils.setField(cerberus, "accountDao", accountDaoMock);
-		ReflectionTestUtils.setField(cerberus, "loginCredentialChecker", loginCredentialCheckerMock);
+		this.cerberus = new CerberusImpl();
+		ReflectionTestUtils.setField(this.cerberus, "accountDao",
+				this.accountDaoMock);
+		ReflectionTestUtils.setField(this.cerberus, "loginCredentialChecker",
+				this.loginCredentialCheckerMock);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.common.DeusUnitTestCaseTemplate#tearDownSUT()
 	 */
 	@Override
 	protected void tearDownSUT() {
-		cerberus = null;
+		this.cerberus = null;
 	}
 
 }

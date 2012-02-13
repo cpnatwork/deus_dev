@@ -25,8 +25,9 @@ import deus.model.common.user.frids.SubscriberId;
 /**
  * An entry in the list of subscribers.
  * 
- * The primary key is the ID of the publisher who owns the list and the ID of the subscriber who is embodied by the list
- * entry. Only the latter is included in the entity, since this is the discriminator of the weak entity.
+ * The primary key is the ID of the publisher who owns the list and the ID of
+ * the subscriber who is embodied by the list entry. Only the latter is included
+ * in the entity, since this is the discriminator of the weak entity.
  * 
  * 
  * @see ListOfSubscribers
@@ -38,13 +39,12 @@ public class LosEntry {
 
 	/** The subscriber id. */
 	private final SubscriberId subscriberId;
-	
+
 	/** The subscriber metadata. */
 	private UserMetadata subscriberMetadata;
 
 	/** The publisher side subscription state. */
 	private PublisherSideSubscriptionState publisherSideSubscriptionState;
-
 
 	/**
 	 * Instantiates a new los entry.
@@ -52,10 +52,9 @@ public class LosEntry {
 	 * @param subscriberId
 	 *            the subscriber id
 	 */
-	public LosEntry(SubscriberId subscriberId) {
+	public LosEntry(final SubscriberId subscriberId) {
 		this.subscriberId = subscriberId;
 	}
-
 
 	/**
 	 * Gets the subscriber id.
@@ -63,9 +62,8 @@ public class LosEntry {
 	 * @return the subscriber id
 	 */
 	public SubscriberId getSubscriberId() {
-		return subscriberId;
+		return this.subscriberId;
 	}
-
 
 	/**
 	 * Gets the subscriber metadata.
@@ -73,9 +71,8 @@ public class LosEntry {
 	 * @return the subscriber metadata
 	 */
 	public UserMetadata getSubscriberMetadata() {
-		return subscriberMetadata;
+		return this.subscriberMetadata;
 	}
-
 
 	/**
 	 * Sets the subscriber metadata.
@@ -83,10 +80,9 @@ public class LosEntry {
 	 * @param subscriberMetadata
 	 *            the new subscriber metadata
 	 */
-	public void setSubscriberMetadata(UserMetadata subscriberMetadata) {
+	public void setSubscriberMetadata(final UserMetadata subscriberMetadata) {
 		this.subscriberMetadata = subscriberMetadata;
 	}
-
 
 	/**
 	 * Gets the subscription state.
@@ -94,9 +90,8 @@ public class LosEntry {
 	 * @return the subscription state
 	 */
 	public PublisherSideSubscriptionState getSubscriptionState() {
-		return publisherSideSubscriptionState;
+		return this.publisherSideSubscriptionState;
 	}
-
 
 	/**
 	 * Sets the subscription state.
@@ -104,7 +99,8 @@ public class LosEntry {
 	 * @param publisherSideSubscriptionState
 	 *            the new subscription state
 	 */
-	public void setSubscriptionState(PublisherSideSubscriptionState publisherSideSubscriptionState) {
+	public void setSubscriptionState(
+			final PublisherSideSubscriptionState publisherSideSubscriptionState) {
 		this.publisherSideSubscriptionState = publisherSideSubscriptionState;
 	}
 

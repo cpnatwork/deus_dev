@@ -30,18 +30,24 @@ import deus.core.access.transfer.core.soul.protocolregistry.QueriableTransferPro
  * The Class RegistryQueryingMessageSenderRegistry.
  */
 @Named
-public class RegistryQueryingMessageSenderRegistry implements MessageSenderRegistry {
+public class RegistryQueryingMessageSenderRegistry implements
+		MessageSenderRegistry {
 
 	/** The registry. */
 	@Inject
 	private QueriableTransferProtocolRegistry registry;
-	
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.sending.message.MessageSenderRegistry#getMessageSender(java.lang.String)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.core.sending.message.MessageSenderRegistry#
+	 * getMessageSender(java.lang.String)
 	 */
 	@Override
-	public MessageSender getMessageSender(String transferProtocolId) {
-		return registry.getRegisteredTransferProtocol(transferProtocolId).getMessageSender();
+	public MessageSender getMessageSender(final String transferProtocolId) {
+		return this.registry.getRegisteredTransferProtocol(transferProtocolId)
+				.getMessageSender();
 	}
 
 }

@@ -19,10 +19,6 @@
  *************************************************************************/
 package deus.core.soul.hci.barker;
 
-
-import static org.easymock.classextension.EasyMock.createMock;
-import static org.easymock.classextension.EasyMock.createNiceMock;
-
 import org.easymock.classextension.EasyMock;
 import org.springframework.test.util.ReflectionTestUtils;
 
@@ -37,84 +33,93 @@ import deus.model.hci.attention.AttentionElement;
 /**
  * The Class AbstractBarkerTest.
  */
-public abstract class AbstractBarkerTest extends DeusUnitTestCaseEasyMockTemplate {
+public abstract class AbstractBarkerTest extends
+		DeusUnitTestCaseEasyMockTemplate {
 
 	/** The user id fix. */
 	protected UserId userIdFix;
-	
+
 	/** The attention element fix. */
 	protected AttentionElement attentionElementFix;
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.common.DeusUnitTestCaseTemplate#setUpFixture()
 	 */
 	@Override
 	protected final void setUpFixture() {
-		userIdFix = createMock(UserId.class);
-		attentionElementFix = createNiceMock(AttentionElement.class);
+		this.userIdFix = EasyMock.createMock(UserId.class);
+		this.attentionElementFix = EasyMock
+				.createNiceMock(AttentionElement.class);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.common.DeusUnitTestCaseEasyMockTemplate#getFixtureMocks()
 	 */
 	@Override
 	protected final Object[] getFixtureMocks() {
-		Object[] fix = { userIdFix, attentionElementFix };
+		final Object[] fix = { this.userIdFix, this.attentionElementFix };
 		return fix;
 	}
 
-
 	/** The attention element dao mock. */
 	protected AttentionElementDao attentionElementDaoMock;
-	
+
 	/** The attention list dao mock. */
 	protected AttentionListDao attentionListDaoMock;
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.common.DeusUnitTestCaseTemplate#setUpDependencies()
 	 */
 	@Override
 	protected final void setUpDependencies() {
-		attentionElementDaoMock = EasyMock.createMock(AttentionElementDao.class);
-		attentionListDaoMock = EasyMock.createMock(AttentionListDao.class);
+		this.attentionElementDaoMock = EasyMock
+				.createMock(AttentionElementDao.class);
+		this.attentionListDaoMock = EasyMock.createMock(AttentionListDao.class);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.common.DeusUnitTestCaseEasyMockTemplate#getDependencyMocks()
 	 */
 	@Override
 	protected final Object[] getDependencyMocks() {
-		Object[] deps = { attentionElementDaoMock, attentionListDaoMock };
+		final Object[] deps = { this.attentionElementDaoMock,
+				this.attentionListDaoMock };
 		return deps;
 	}
-
 
 	/** The barker sut. */
 	protected Barker barkerSUT;
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.common.DeusUnitTestCaseTemplate#setUpSUT()
 	 */
 	@Override
 	protected final void setUpSUT() {
-		barkerSUT = new BarkerImpl();
-		ReflectionTestUtils.setField(barkerSUT, "attentionElementDao", attentionElementDaoMock);
-		ReflectionTestUtils.setField(barkerSUT, "attentionListDao", attentionListDaoMock);
+		this.barkerSUT = new BarkerImpl();
+		ReflectionTestUtils.setField(this.barkerSUT, "attentionElementDao",
+				this.attentionElementDaoMock);
+		ReflectionTestUtils.setField(this.barkerSUT, "attentionListDao",
+				this.attentionListDaoMock);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.common.DeusUnitTestCaseTemplate#tearDownSUT()
 	 */
 	@Override
 	protected final void tearDownSUT() {
-		barkerSUT = null;
+		this.barkerSUT = null;
 	}
-
 
 }

@@ -26,10 +26,9 @@ public class PersProfTag {
 
 	/** The personal. */
 	private boolean personal;
-	
+
 	/** The professional. */
 	private boolean professional;
-
 
 	/**
 	 * Checks if is personal.
@@ -37,9 +36,8 @@ public class PersProfTag {
 	 * @return true, if is personal
 	 */
 	public boolean isPersonal() {
-		return personal;
+		return this.personal;
 	}
-
 
 	/**
 	 * Sets the personal.
@@ -47,10 +45,9 @@ public class PersProfTag {
 	 * @param personal
 	 *            the new personal
 	 */
-	public void setPersonal(boolean personal) {
+	public void setPersonal(final boolean personal) {
 		this.personal = personal;
 	}
-
 
 	/**
 	 * Checks if is professional.
@@ -58,9 +55,8 @@ public class PersProfTag {
 	 * @return true, if is professional
 	 */
 	public boolean isProfessional() {
-		return professional;
+		return this.professional;
 	}
-
 
 	/**
 	 * Sets the professional.
@@ -68,9 +64,8 @@ public class PersProfTag {
 	 * @param professional
 	 *            the new professional
 	 */
-	public void setProfessional(boolean professional) {
+	public void setProfessional(final boolean professional) {
 		this.professional = professional;
 	}
-
 
 }

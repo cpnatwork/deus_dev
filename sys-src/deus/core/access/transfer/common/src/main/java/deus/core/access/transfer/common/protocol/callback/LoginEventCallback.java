@@ -33,7 +33,7 @@ public interface LoginEventCallback {
 	 *            the transfer id
 	 */
 	public void loggedIn(TransferId transferId);
-	
+
 	/**
 	 * Logged out.
 	 * 
@@ -41,5 +41,5 @@ public interface LoginEventCallback {
 	 *            the transfer id
 	 */
 	public void loggedOut(TransferId transferId);
-	
+
 }

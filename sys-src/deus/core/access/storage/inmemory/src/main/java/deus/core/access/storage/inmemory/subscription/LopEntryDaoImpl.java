@@ -33,22 +33,34 @@ import deus.model.subscription.LopEntry;
  * @author cpn
  */
 @Named("lopEntryDao")
-public class LopEntryDaoImpl extends GenericTwofoldIdDaoImpl<LopEntry, SubscriberId, PublisherId>implements LopEntryDao {
+public class LopEntryDaoImpl extends
+		GenericTwofoldIdDaoImpl<LopEntry, SubscriberId, PublisherId> implements
+		LopEntryDao {
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.api.subscription.LopEntryDao#addNewEntity(deus.model.common.user.frids.SubscriberId, deus.model.subscription.LopEntry)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.api.subscription.LopEntryDao#addNewEntity(deus
+	 * .model.common.user.frids.SubscriberId, deus.model.subscription.LopEntry)
 	 */
 	@Override
-	public void addNewEntity(SubscriberId subscriberId, LopEntry entry) {
-		addNewEntity(subscriberId, entry.getPublisherId(), entry);
+	public void addNewEntity(final SubscriberId subscriberId,
+			final LopEntry entry) {
+		this.addNewEntity(subscriberId, entry.getPublisherId(), entry);
 	}
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.api.subscription.LopEntryDao#updateEntity(deus.model.common.user.frids.SubscriberId, deus.model.subscription.LopEntry)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.api.subscription.LopEntryDao#updateEntity(deus
+	 * .model.common.user.frids.SubscriberId, deus.model.subscription.LopEntry)
 	 */
 	@Override
-	public void updateEntity(SubscriberId subscriberId, LopEntry entry) {
-		updateEntity(subscriberId, entry.getPublisherId(), entry);
+	public void updateEntity(final SubscriberId subscriberId,
+			final LopEntry entry) {
+		this.updateEntity(subscriberId, entry.getPublisherId(), entry);
 	}
 
 }

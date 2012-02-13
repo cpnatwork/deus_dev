@@ -34,7 +34,7 @@ public class MyPartyInformationDC extends PartyInformationDC {
 	 * @param myUserId
 	 *            the my user id
 	 */
-	public MyPartyInformationDC(UserId myUserId) {
+	public MyPartyInformationDC(final UserId myUserId) {
 		super(new DigitalCardId(myUserId, myUserId, "my party information dc"));
 	}
 

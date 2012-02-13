@@ -38,7 +38,6 @@ public abstract class AttentionElement implements Serializable {
 
 	/** The noticed. */
 	private boolean noticed;
-	
 
 	/**
 	 * Gets the id.
@@ -46,9 +45,8 @@ public abstract class AttentionElement implements Serializable {
 	 * @return the id
 	 */
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
-
 
 	/**
 	 * Sets the id.
@@ -56,11 +54,9 @@ public abstract class AttentionElement implements Serializable {
 	 * @param id
 	 *            the new id
 	 */
-	public void setId(Integer id) {
+	public void setId(final Integer id) {
 		this.id = id;
 	}
-
-	
 
 	/**
 	 * Gets the creation date.
@@ -68,9 +64,8 @@ public abstract class AttentionElement implements Serializable {
 	 * @return the creation date
 	 */
 	public final Date getCreationDate() {
-		return creationDate;
+		return this.creationDate;
 	}
-
 
 	/**
 	 * Sets the creation date.
@@ -78,11 +73,9 @@ public abstract class AttentionElement implements Serializable {
 	 * @param creationDate
 	 *            the new creation date
 	 */
-	public final void setCreationDate(Date creationDate) {
+	public final void setCreationDate(final Date creationDate) {
 		this.creationDate = creationDate;
 	}
-
-	
 
 	/**
 	 * Checks if is noticed.
@@ -90,9 +83,8 @@ public abstract class AttentionElement implements Serializable {
 	 * @return true, if is noticed
 	 */
 	public boolean isNoticed() {
-		return noticed;
+		return this.noticed;
 	}
-
 
 	/**
 	 * Sets the noticed.
@@ -100,10 +92,9 @@ public abstract class AttentionElement implements Serializable {
 	 * @param noticed
 	 *            the new noticed
 	 */
-	public void setNoticed(boolean noticed) {
+	public void setNoticed(final boolean noticed) {
 		this.noticed = noticed;
 	}
-
 
 	/**
 	 * Gets the catchphare.

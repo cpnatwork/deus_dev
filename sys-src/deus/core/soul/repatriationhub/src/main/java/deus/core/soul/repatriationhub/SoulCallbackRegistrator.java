@@ -45,7 +45,7 @@ public class SoulCallbackRegistrator {
 	 */
 	@PostConstruct
 	public void registerCommandReceivers() {
-		registry.registerRepatriationHub(repatriationHub);
+		this.registry.registerRepatriationHub(this.repatriationHub);
 	}
-	
+
 }

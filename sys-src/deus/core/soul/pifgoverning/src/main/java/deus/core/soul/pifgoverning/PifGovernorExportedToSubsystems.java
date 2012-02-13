@@ -40,7 +40,8 @@ public interface PifGovernorExportedToSubsystems {
 	// public void updatePersonalInformationFile(UserId cpId,
 	// PersonalInformationFile personalInformationFile);
 
-	public Patch assimilateRepatriatedDigitalCard(RepatriationAuthorityId repatriationAuthorityId,
+	public Patch assimilateRepatriatedDigitalCard(
+			RepatriationAuthorityId repatriationAuthorityId,
 			DigitalCard digitalCard);
 
 }

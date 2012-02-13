@@ -28,13 +28,12 @@ public class DigitalCardId {
 
 	/** The contributor id. */
 	private final UserId contributorId;
-	
+
 	/** The cp id. */
 	private final UserId cpId;
 
 	/** The contributor provided discriminator. */
 	private final String contributorProvidedDiscriminator;
-
 
 	/**
 	 * Instantiates a new digital card id.
@@ -46,13 +45,13 @@ public class DigitalCardId {
 	 * @param contributorProvidedDiscriminator
 	 *            the contributor provided discriminator
 	 */
-	public DigitalCardId(UserId contributorId, UserId cpId, String contributorProvidedDiscriminator) {
+	public DigitalCardId(final UserId contributorId, final UserId cpId,
+			final String contributorProvidedDiscriminator) {
 		super();
 		this.contributorId = contributorId;
 		this.cpId = cpId;
 		this.contributorProvidedDiscriminator = contributorProvidedDiscriminator;
 	}
-
 
 	/**
 	 * Gets the contributor id.
@@ -60,9 +59,8 @@ public class DigitalCardId {
 	 * @return the contributor id
 	 */
 	public UserId getContributorId() {
-		return contributorId;
+		return this.contributorId;
 	}
-
 
 	/**
 	 * Gets the cp id.
@@ -70,9 +68,8 @@ public class DigitalCardId {
 	 * @return the cp id
 	 */
 	public UserId getCpId() {
-		return cpId;
+		return this.cpId;
 	}
-
 
 	/**
 	 * Gets the contributor provided discriminator.
@@ -80,56 +77,60 @@ public class DigitalCardId {
 	 * @return the contributor provided discriminator
 	 */
 	public String getContributorProvidedDiscriminator() {
-		return contributorProvidedDiscriminator;
+		return this.contributorProvidedDiscriminator;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((contributorId == null) ? 0 : contributorId.hashCode());
-		result = prime * result
-				+ ((contributorProvidedDiscriminator == null) ? 0 : contributorProvidedDiscriminator.hashCode());
-		result = prime * result + ((cpId == null) ? 0 : cpId.hashCode());
+		result = (prime * result)
+				+ ((this.contributorId == null) ? 0 : this.contributorId
+						.hashCode());
+		result = (prime * result)
+				+ ((this.contributorProvidedDiscriminator == null) ? 0
+						: this.contributorProvidedDiscriminator.hashCode());
+		result = (prime * result)
+				+ ((this.cpId == null) ? 0 : this.cpId.hashCode());
 		return result;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (this.getClass() != obj.getClass())
 			return false;
-		DigitalCardId other = (DigitalCardId) obj;
-		if (contributorId == null) {
+		final DigitalCardId other = (DigitalCardId) obj;
+		if (this.contributorId == null) {
 			if (other.contributorId != null)
 				return false;
-		}
-		else if (!contributorId.equals(other.contributorId))
+		} else if (!this.contributorId.equals(other.contributorId))
 			return false;
-		if (contributorProvidedDiscriminator == null) {
+		if (this.contributorProvidedDiscriminator == null) {
 			if (other.contributorProvidedDiscriminator != null)
 				return false;
-		}
-		else if (!contributorProvidedDiscriminator.equals(other.contributorProvidedDiscriminator))
+		} else if (!this.contributorProvidedDiscriminator
+				.equals(other.contributorProvidedDiscriminator))
 			return false;
-		if (cpId == null) {
+		if (this.cpId == null) {
 			if (other.cpId != null)
 				return false;
-		}
-		else if (!cpId.equals(other.cpId))
+		} else if (!this.cpId.equals(other.cpId))
 			return false;
 		return true;
 	}
-	
+
 }

@@ -19,7 +19,6 @@
  *************************************************************************/
 package deus.model.common.dossier;
 
-
 /**
  * The Class DigitalCard.
  */
@@ -31,9 +30,8 @@ public abstract class DigitalCard {
 	/** The label. */
 	private String label;
 
-
-	// TODO: add dates (creation date? but what about merge operations when adding it to a PIF/FIF)
-
+	// TODO: add dates (creation date? but what about merge operations when
+	// adding it to a PIF/FIF)
 
 	/**
 	 * Instantiates a new digital card.
@@ -41,11 +39,10 @@ public abstract class DigitalCard {
 	 * @param digitalCardId
 	 *            the digital card id
 	 */
-	public DigitalCard(DigitalCardId digitalCardId) {
+	public DigitalCard(final DigitalCardId digitalCardId) {
 		super();
 		this.digitalCardId = digitalCardId;
 	}
-
 
 	/**
 	 * Gets the digital card id.
@@ -53,9 +50,8 @@ public abstract class DigitalCard {
 	 * @return the digital card id
 	 */
 	public DigitalCardId getDigitalCardId() {
-		return digitalCardId;
+		return this.digitalCardId;
 	}
-
 
 	/**
 	 * Gets the label.
@@ -63,9 +59,8 @@ public abstract class DigitalCard {
 	 * @return the label
 	 */
 	public String getLabel() {
-		return label;
+		return this.label;
 	}
-
 
 	/**
 	 * Sets the label.
@@ -73,41 +68,43 @@ public abstract class DigitalCard {
 	 * @param label
 	 *            the new label
 	 */
-	public void setLabel(String label) {
+	public void setLabel(final String label) {
 		this.label = label;
 	}
 
-	
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((digitalCardId == null) ? 0 : digitalCardId.hashCode());
+		result = (prime * result)
+				+ ((this.digitalCardId == null) ? 0 : this.digitalCardId
+						.hashCode());
 		return result;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (this.getClass() != obj.getClass())
 			return false;
-		DigitalCard other = (DigitalCard) obj;
-		if (digitalCardId == null) {
+		final DigitalCard other = (DigitalCard) obj;
+		if (this.digitalCardId == null) {
 			if (other.digitalCardId != null)
 				return false;
-		}
-		else if (!digitalCardId.equals(other.digitalCardId))
+		} else if (!this.digitalCardId.equals(other.digitalCardId))
 			return false;
 		return true;
 	}

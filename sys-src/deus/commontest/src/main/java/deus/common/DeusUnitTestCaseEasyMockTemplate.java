@@ -22,23 +22,30 @@ package deus.common;
 import org.easymock.classextension.EasyMock;
 
 /**
- * This template provides support for using EasyMock for creating the dependencies of the SUT and the test fixture. The
- * dependencies are setup using <code>EasyMock.createMock()</code> in the method <code>setUpDependencies</code>. The
- * test fixture is setup using <code>EasyMock.createMock()</code> in the method <code>setUpTestFixture</code>.
+ * This template provides support for using EasyMock for creating the
+ * dependencies of the SUT and the test fixture. The dependencies are setup
+ * using <code>EasyMock.createMock()</code> in the method
+ * <code>setUpDependencies</code>. The test fixture is setup using
+ * <code>EasyMock.createMock()</code> in the method
+ * <code>setUpTestFixture</code>.
  * 
- * Teardown of all mocked dependencies as well as teardown of the test fixture is automated.
+ * Teardown of all mocked dependencies as well as teardown of the test fixture
+ * is automated.
  * 
- * The method <code>getDependencyMocks</code> must be implemented to return all dependencies that are created by using
- * mocks. The method <code>getFixtureMocks</code> must be implemented to return all fixture elements that are created by
- * using mocks.
+ * The method <code>getDependencyMocks</code> must be implemented to return all
+ * dependencies that are created by using mocks. The method
+ * <code>getFixtureMocks</code> must be implemented to return all fixture
+ * elements that are created by using mocks.
  * 
- * Furthermore, the method <code>replayAllMocks</code> replays all dependency and fixture mocks. The method
- * <code>verifyAllMocks</code> verifies all mocks after a test run.
+ * Furthermore, the method <code>replayAllMocks</code> replays all dependency
+ * and fixture mocks. The method <code>verifyAllMocks</code> verifies all mocks
+ * after a test run.
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-public abstract class DeusUnitTestCaseEasyMockTemplate extends DeusUnitTestCaseTemplate {
+public abstract class DeusUnitTestCaseEasyMockTemplate extends
+		DeusUnitTestCaseTemplate {
 
 	/**
 	 * Gets the dependency mocks.
@@ -54,46 +61,52 @@ public abstract class DeusUnitTestCaseEasyMockTemplate extends DeusUnitTestCaseT
 	 */
 	protected abstract Object[] getFixtureMocks();
 
-
 	/**
 	 * Replay all mocks.
 	 */
 	protected final void replayAllMocks() {
-		if(getDependencyMocks() != null)
-			EasyMock.replay(getDependencyMocks());
-		if(getFixtureMocks() != null)
-			EasyMock.replay(getFixtureMocks());
+		if (this.getDependencyMocks() != null) {
+			EasyMock.replay(this.getDependencyMocks());
+		}
+		if (this.getFixtureMocks() != null) {
+			EasyMock.replay(this.getFixtureMocks());
+		}
 	}
-
 
 	/**
 	 * Verify all mocks.
 	 */
 	protected final void verifyAllMocks() {
-		if(getDependencyMocks() != null)
-			EasyMock.verify(getDependencyMocks());
-		if(getFixtureMocks() != null)
-			EasyMock.verify(getFixtureMocks());
+		if (this.getDependencyMocks() != null) {
+			EasyMock.verify(this.getDependencyMocks());
+		}
+		if (this.getFixtureMocks() != null) {
+			EasyMock.verify(this.getFixtureMocks());
+		}
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.common.DeusUnitTestCaseTemplate#tearDownDependencies()
 	 */
 	@Override
 	protected final void tearDownDependencies() {
-		if(getDependencyMocks() != null)
-			EasyMock.reset(getDependencyMocks());
+		if (this.getDependencyMocks() != null) {
+			EasyMock.reset(this.getDependencyMocks());
+		}
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.common.DeusUnitTestCaseTemplate#tearDownFixture()
 	 */
 	@Override
 	protected final void tearDownFixture() {
-		if(getFixtureMocks() != null)
-			EasyMock.reset(getFixtureMocks());
+		if (this.getFixtureMocks() != null) {
+			EasyMock.reset(this.getFixtureMocks());
+		}
 	}
 
 }

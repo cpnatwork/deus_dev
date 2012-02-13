@@ -24,9 +24,10 @@ import java.util.Set;
 import deus.model.common.user.id.UserId;
 
 /**
- * A DEUS account of a user. An account is uniquely identified by a <code>localUsername</code>. While the
- * <code>userId</code> also uniquely identifies an account, <code>localUsername</code> is used for loading and storing
- * accounts using DAOs.
+ * A DEUS account of a user. An account is uniquely identified by a
+ * <code>localUsername</code>. While the <code>userId</code> also uniquely
+ * identifies an account, <code>localUsername</code> is used for loading and
+ * storing accounts using DAOs.
  * 
  * The logged in state of the user is stored using <code>loggedIn</code>.
  * 
@@ -40,20 +41,20 @@ public class Account {
 	// Primary Key: localUsername
 	/** The local username. */
 	private String localUsername;
-	
+
 	/** The password. */
 	private String password;
-	
+
 	/** The user id. */
 	private UserId userId;
 
-	// FIXME: think about whether we really want to store logged in state in Account object
+	// FIXME: think about whether we really want to store logged in state in
+	// Account object
 	/** The logged in. */
 	private boolean loggedIn;
 
 	/** The distribution roles. */
 	private final Set<DistributionRole> distributionRoles;
-
 
 	/**
 	 * Instantiates a new account.
@@ -67,7 +68,8 @@ public class Account {
 	 * @param distributionRoles
 	 *            the distribution roles
 	 */
-	public Account(String localUsername, String password, UserId userId, Set<DistributionRole> distributionRoles) {
+	public Account(final String localUsername, final String password,
+			final UserId userId, final Set<DistributionRole> distributionRoles) {
 		super();
 		this.localUsername = localUsername;
 		this.password = password;
@@ -75,16 +77,14 @@ public class Account {
 		this.distributionRoles = distributionRoles;
 	}
 
-
 	/**
 	 * Gets the local username.
 	 * 
 	 * @return the local username
 	 */
 	public String getLocalUsername() {
-		return localUsername;
+		return this.localUsername;
 	}
-
 
 	/**
 	 * Sets the local username.
@@ -92,10 +92,9 @@ public class Account {
 	 * @param localUsername
 	 *            the new local username
 	 */
-	public void setLocalUsername(String localUsername) {
+	public void setLocalUsername(final String localUsername) {
 		this.localUsername = localUsername;
 	}
-
 
 	/**
 	 * Gets the password.
@@ -103,9 +102,8 @@ public class Account {
 	 * @return the password
 	 */
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
-
 
 	/**
 	 * Sets the password.
@@ -113,10 +111,9 @@ public class Account {
 	 * @param password
 	 *            the new password
 	 */
-	public void setPassword(String password) {
+	public void setPassword(final String password) {
 		this.password = password;
 	}
-
 
 	/**
 	 * Gets the user id.
@@ -124,9 +121,8 @@ public class Account {
 	 * @return the user id
 	 */
 	public UserId getUserId() {
-		return userId;
+		return this.userId;
 	}
-
 
 	/**
 	 * Sets the user id.
@@ -134,10 +130,9 @@ public class Account {
 	 * @param userId
 	 *            the new user id
 	 */
-	public void setUserId(UserId userId) {
+	public void setUserId(final UserId userId) {
 		this.userId = userId;
 	}
-
 
 	/**
 	 * Gets the user roles.
@@ -145,9 +140,8 @@ public class Account {
 	 * @return the user roles
 	 */
 	public Set<DistributionRole> getUserRoles() {
-		return distributionRoles;
+		return this.distributionRoles;
 	}
-
 
 	/**
 	 * Checks if is logged in.
@@ -155,9 +149,8 @@ public class Account {
 	 * @return true, if is logged in
 	 */
 	public boolean isLoggedIn() {
-		return loggedIn;
+		return this.loggedIn;
 	}
-
 
 	/**
 	 * Sets the logged in.
@@ -165,7 +158,7 @@ public class Account {
 	 * @param loggedIn
 	 *            the new logged in
 	 */
-	public void setLoggedIn(boolean loggedIn) {
+	public void setLoggedIn(final boolean loggedIn) {
 		this.loggedIn = loggedIn;
 	}
 

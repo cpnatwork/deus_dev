@@ -39,63 +39,93 @@ import deus.model.common.user.frids.SubscriberId;
  */
 @Named("publisherCommandSender")
 public class TransferPublisherCommandSender implements PublisherCommandSender {
-	
+
 	/** The transfer message sender helper. */
 	@Inject
 	private TransferMessageSenderHelper transferMessageSenderHelper;
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.sending.command.PublisherCommandSender#update(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId, deus.model.common.dossier.DigitalCard)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.core.sending.command.PublisherCommandSender
+	 * #update(deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.dossier.DigitalCard)
 	 */
 	@Override
-	public void update(PublisherId publisherId, SubscriberId subscriberId, DigitalCard digitalCard) {
-		TransferMessage transferMessage = new UpdateMessage(digitalCard);
-		transferMessageSenderHelper.send(subscriberId.getUserId(), publisherId.getUserId(), transferMessage);
+	public void update(final PublisherId publisherId,
+			final SubscriberId subscriberId, final DigitalCard digitalCard) {
+		final TransferMessage transferMessage = new UpdateMessage(digitalCard);
+		this.transferMessageSenderHelper.send(subscriberId.getUserId(),
+				publisherId.getUserId(), transferMessage);
 	}
 
-	
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.sending.command.PublisherCommandSender#offerSubscription(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId, deus.model.common.user.UserMetadata)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.core.sending.command.PublisherCommandSender
+	 * #offerSubscription(deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.UserMetadata)
 	 */
 	@Override
-	public void offerSubscription(PublisherId publisherId, SubscriberId subscriberId, UserMetadata publisherMetadata) {
-		TransferMessage transferMessage = new OfferSubscriptionMessage(publisherMetadata);
-		transferMessageSenderHelper.send(subscriberId.getUserId(), publisherId.getUserId(), transferMessage);
+	public void offerSubscription(final PublisherId publisherId,
+			final SubscriberId subscriberId,
+			final UserMetadata publisherMetadata) {
+		final TransferMessage transferMessage = new OfferSubscriptionMessage(
+				publisherMetadata);
+		this.transferMessageSenderHelper.send(subscriberId.getUserId(),
+				publisherId.getUserId(), transferMessage);
 	}
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.sending.command.PublisherCommandSender#cancelSubscription(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.core.sending.command.PublisherCommandSender
+	 * #cancelSubscription(deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.frids.SubscriberId)
 	 */
 	@Override
-	public void cancelSubscription(PublisherId publisherId, SubscriberId subscriberId) {
-		TransferMessage transferMessage = new CancelSubscriptionMessage();
-		transferMessageSenderHelper.send(subscriberId.getUserId(), publisherId.getUserId(), transferMessage);
+	public void cancelSubscription(final PublisherId publisherId,
+			final SubscriberId subscriberId) {
+		final TransferMessage transferMessage = new CancelSubscriptionMessage();
+		this.transferMessageSenderHelper.send(subscriberId.getUserId(),
+				publisherId.getUserId(), transferMessage);
 	}
-	
-	
 
-
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.sending.command.PublisherCommandSender#grantSubscriptionRequest(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.core.sending.command.PublisherCommandSender
+	 * #grantSubscriptionRequest(deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.frids.SubscriberId)
 	 */
 	@Override
-	public void grantSubscriptionRequest(PublisherId publisherId, SubscriberId subscriberId) {
-		TransferMessage transferMessage = new GrantSubscriptionRequestNoticeMessage();
-		transferMessageSenderHelper.send(subscriberId.getUserId(), publisherId.getUserId(), transferMessage);
+	public void grantSubscriptionRequest(final PublisherId publisherId,
+			final SubscriberId subscriberId) {
+		final TransferMessage transferMessage = new GrantSubscriptionRequestNoticeMessage();
+		this.transferMessageSenderHelper.send(subscriberId.getUserId(),
+				publisherId.getUserId(), transferMessage);
 	}
 
-	
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.sending.command.PublisherCommandSender#denySubscriptionRequest(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.core.sending.command.PublisherCommandSender
+	 * #denySubscriptionRequest(deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.frids.SubscriberId)
 	 */
 	@Override
-	public void denySubscriptionRequest(PublisherId publisherId, SubscriberId subscriberId) {
-		TransferMessage transferMessage = new DenySubscriptionRequestNoticeMessage();
-		transferMessageSenderHelper.send(subscriberId.getUserId(), publisherId.getUserId(), transferMessage);
+	public void denySubscriptionRequest(final PublisherId publisherId,
+			final SubscriberId subscriberId) {
+		final TransferMessage transferMessage = new DenySubscriptionRequestNoticeMessage();
+		this.transferMessageSenderHelper.send(subscriberId.getUserId(),
+				publisherId.getUserId(), transferMessage);
 	}
-
-
 
 }

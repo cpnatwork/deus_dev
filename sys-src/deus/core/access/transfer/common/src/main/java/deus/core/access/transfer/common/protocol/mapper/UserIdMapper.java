@@ -36,7 +36,6 @@ public interface UserIdMapper {
 	 */
 	public TransferId resolveLocal(UserId userId);
 
-
 	/**
 	 * Resolve remote.
 	 * 
@@ -45,5 +44,5 @@ public interface UserIdMapper {
 	 * @return the transfer id
 	 */
 	public TransferId resolveRemote(UserId userId);
-	
+
 }

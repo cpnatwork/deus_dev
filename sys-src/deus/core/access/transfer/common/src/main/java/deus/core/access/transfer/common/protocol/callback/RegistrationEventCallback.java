@@ -33,7 +33,7 @@ public interface RegistrationEventCallback {
 	 *            the transfer id
 	 */
 	public void registered(TransferId transferId);
-	
+
 	/**
 	 * Unregistered.
 	 * 
@@ -41,5 +41,5 @@ public interface RegistrationEventCallback {
 	 *            the transfer id
 	 */
 	public void unregistered(TransferId transferId);
-	
+
 }

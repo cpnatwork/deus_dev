@@ -32,6 +32,7 @@ import deus.model.common.user.id.UserId;
  * @author cpn
  */
 @Named("userMetadataDao")
-public class UserMetadataDaoImpl extends GenericVanillaDaoImpl<UserMetadata, UserId>implements UserMetadataDao {
+public class UserMetadataDaoImpl extends
+		GenericVanillaDaoImpl<UserMetadata, UserId> implements UserMetadataDao {
 
 }

@@ -24,22 +24,32 @@ import deus.core.access.transfer.common.protocol.TransferId;
 /**
  * The Class DefaultRegistrationEventCallback.
  */
-public class DefaultRegistrationEventCallback implements RegistrationEventCallback {
+public class DefaultRegistrationEventCallback implements
+		RegistrationEventCallback {
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocol.callback.RegistrationEventCallback#registered(deus.core.access.transfer.common.protocol.TransferId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.common.protocol.callback.RegistrationEventCallback
+	 * #registered(deus.core.access.transfer.common.protocol.TransferId)
 	 */
 	@Override
-	public void registered(@SuppressWarnings("unused") TransferId transferId) {
+	public void registered(
+			@SuppressWarnings("unused") final TransferId transferId) {
 		// DO NOTHING
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocol.callback.RegistrationEventCallback#unregistered(deus.core.access.transfer.common.protocol.TransferId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.common.protocol.callback.RegistrationEventCallback
+	 * #unregistered(deus.core.access.transfer.common.protocol.TransferId)
 	 */
 	@Override
-	public void unregistered(@SuppressWarnings("unused") TransferId transferId) {
+	public void unregistered(
+			@SuppressWarnings("unused") final TransferId transferId) {
 		// DO NOTHING
 	}
 

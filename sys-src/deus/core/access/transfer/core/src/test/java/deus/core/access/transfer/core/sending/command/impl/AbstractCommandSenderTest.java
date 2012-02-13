@@ -19,9 +19,8 @@
  *************************************************************************/
 package deus.core.access.transfer.core.sending.command.impl;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -38,7 +37,6 @@ import deus.model.common.user.frids.SubscriberId;
 import deus.model.common.user.id.UserId;
 import deus.model.common.user.id.UserUrl;
 
-
 /**
  * The Class AbstractCommandSenderTest.
  */
@@ -47,31 +45,28 @@ public abstract class AbstractCommandSenderTest {
 	/** The transfer protocol negotiation strategy. */
 	@Autowired
 	protected TransferProtocolNegotiationStrategy transferProtocolNegotiationStrategy;
-	
+
 	/** The transfer protocol registry. */
 	@Autowired
 	private TransferProtocolRegistry transferProtocolRegistry;
-	
-	
+
 	/** The last sent transfer message. */
 	protected TransferMessage lastSentTransferMessage;
-	
+
 	/** The tp. */
 	private TransferProtocolImpl tp;
-	
+
 	/** The user id mapper. */
 	protected UserIdMapper userIdMapper;
 
-	
 	/** The subscriber id. */
-	protected SubscriberId subscriberId;	
-	
+	protected SubscriberId subscriberId;
+
 	/** The publisher id. */
 	protected PublisherId publisherId;
 
 	/** The test transfer protocol id. */
 	private String testTransferProtocolId;
-
 
 	/**
 	 * Instantiates a new abstract command sender test.
@@ -79,7 +74,6 @@ public abstract class AbstractCommandSenderTest {
 	public AbstractCommandSenderTest() {
 		super();
 	}
-
 
 	/**
 	 * Sets the up.
@@ -89,45 +83,47 @@ public abstract class AbstractCommandSenderTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		subscriberId = new SubscriberId(new UserUrl("bob", "http://www.deus.org"));
-		publisherId = new PublisherId(new UserUrl("alice", "http://www.deus.org"));
+		this.subscriberId = new SubscriberId(new UserUrl("bob",
+				"http://www.deus.org"));
+		this.publisherId = new PublisherId(new UserUrl("alice",
+				"http://www.deus.org"));
 
-		tp = new TransferProtocolImpl();
-		tp.setProtocolId("testProtocol");
-		tp.setLoginEventCallback(null); // we don't need login for this test
-		tp.setRegistrationEventCallback(null); // we don't need registration for this test
-		
-		userIdMapper = new UserIdMapper() {
+		this.tp = new TransferProtocolImpl();
+		this.tp.setProtocolId("testProtocol");
+		this.tp.setLoginEventCallback(null); // we don't need login for this
+												// test
+		this.tp.setRegistrationEventCallback(null); // we don't need
+													// registration for this
+													// test
+
+		this.userIdMapper = new UserIdMapper() {
 
 			@Override
-			public TransferId resolveLocal(UserId userId) {
+			public TransferId resolveLocal(final UserId userId) {
 				return new TestTransferId(userId.toString());
 			}
 
 			@Override
-			public TransferId resolveRemote(UserId userId) {
+			public TransferId resolveRemote(final UserId userId) {
 				return new TestTransferId(userId.toString());
 			}
 
 		};
-		tp.setUserIdMapper(userIdMapper);
-		
-		
-		
-		tp.setMessageSender(new MessageSender() {
+		this.tp.setUserIdMapper(this.userIdMapper);
+
+		this.tp.setMessageSender(new MessageSender() {
 
 			@Override
-			public void send(TransferMessage command) {
-				lastSentTransferMessage = command;
+			public void send(final TransferMessage command) {
+				AbstractCommandSenderTest.this.lastSentTransferMessage = command;
 			}
 
 		});
-		
-		testTransferProtocolId = tp.getProtocolId();
 
-		transferProtocolRegistry.registerTransferProtocol(tp);
+		this.testTransferProtocolId = this.tp.getProtocolId();
+
+		this.transferProtocolRegistry.registerTransferProtocol(this.tp);
 	}
-
 
 	/**
 	 * Tear down.
@@ -137,9 +133,9 @@ public abstract class AbstractCommandSenderTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
-		transferProtocolRegistry.unregisterTransferProtocol(testTransferProtocolId);
+		this.transferProtocolRegistry
+				.unregisterTransferProtocol(this.testTransferProtocolId);
 	}
-
 
 	/**
 	 * Test equals message.
@@ -149,16 +145,16 @@ public abstract class AbstractCommandSenderTest {
 	 * @param actual
 	 *            the actual
 	 */
-	protected void testEqualsMessage(TransferMessage expected, TransferMessage actual) {
-		assertEquals(expected.getClass(), actual.getClass());
-		
-		assertEquals(expected.getSenderId(), actual.getSenderId());
-		assertEquals(expected.getReceiverId(), actual.getReceiverId());
+	protected void testEqualsMessage(final TransferMessage expected,
+			final TransferMessage actual) {
+		Assert.assertEquals(expected.getClass(), actual.getClass());
 
-		assertEquals(expected.getSenderTid(), actual.getSenderTid());
-		assertEquals(expected.getReceiverTid(), actual.getReceiverTid());
+		Assert.assertEquals(expected.getSenderId(), actual.getSenderId());
+		Assert.assertEquals(expected.getReceiverId(), actual.getReceiverId());
+
+		Assert.assertEquals(expected.getSenderTid(), actual.getSenderTid());
+		Assert.assertEquals(expected.getReceiverTid(), actual.getReceiverTid());
 	}
-
 
 	/**
 	 * Sets the tids.
@@ -170,11 +166,13 @@ public abstract class AbstractCommandSenderTest {
 	 * @param receiverId
 	 *            the receiver id
 	 */
-	protected void setTids(TransferMessage expectedMessage, UserId senderId, UserId receiverId) {
+	protected void setTids(final TransferMessage expectedMessage,
+			final UserId senderId, final UserId receiverId) {
 		expectedMessage.setSenderId(senderId);
 		expectedMessage.setReceiverId(receiverId);
-		expectedMessage.setReceiverTid(userIdMapper.resolveRemote(receiverId));
-		expectedMessage.setSenderTid(userIdMapper.resolveLocal(senderId));
+		expectedMessage.setReceiverTid(this.userIdMapper
+				.resolveRemote(receiverId));
+		expectedMessage.setSenderTid(this.userIdMapper.resolveLocal(senderId));
 	}
-	
+
 }

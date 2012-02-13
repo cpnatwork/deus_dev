@@ -21,11 +21,10 @@ package deus.core.soul.contribution;
 
 import deus.core.access.transfer.core.receiving.soulcallback.contribution.ContributorExportedToPeers;
 
-
 /**
  * The Interface Contributor.
  */
-public interface Contributor extends ContributorExportedToClient, ContributorExportedToPeers {
+public interface Contributor extends ContributorExportedToClient,
+		ContributorExportedToPeers {
 
-	
 }

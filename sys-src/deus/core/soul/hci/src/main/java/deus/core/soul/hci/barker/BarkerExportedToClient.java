@@ -23,7 +23,6 @@ import deus.model.common.user.id.UserId;
 import deus.model.hci.attention.AttentionElement;
 import deus.model.hci.attention.AttentionList;
 
-
 /**
  * The Interface BarkerExportedToClient.
  */
@@ -37,8 +36,8 @@ public interface BarkerExportedToClient {
 	 * @param attentionElement
 	 *            the attention element
 	 */
-	public abstract void noticeAttentionElement(UserId userId, AttentionElement attentionElement);
-
+	public abstract void noticeAttentionElement(UserId userId,
+			AttentionElement attentionElement);
 
 	/**
 	 * Gets the unnoticed attention list.
@@ -48,7 +47,6 @@ public interface BarkerExportedToClient {
 	 * @return the unnoticed attention list
 	 */
 	public abstract AttentionList getUnnoticedAttentionList(UserId userId);
-
 
 	/**
 	 * Gets the noticed attention list.

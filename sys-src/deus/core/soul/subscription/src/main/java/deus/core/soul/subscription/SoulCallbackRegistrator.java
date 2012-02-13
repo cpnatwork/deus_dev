@@ -46,7 +46,7 @@ public class SoulCallbackRegistrator {
 	 */
 	@PostConstruct
 	public void registerCommandReceivers() {
-		registry.registerSubscriber(subscriber);
+		this.registry.registerSubscriber(this.subscriber);
 	}
-	
+
 }

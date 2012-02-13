@@ -28,10 +28,9 @@ public class DatePlace {
 
 	/** The date. */
 	private Date date;
-	
+
 	/** The place. */
 	private String place;
-
 
 	/**
 	 * Gets the date.
@@ -39,9 +38,8 @@ public class DatePlace {
 	 * @return the date
 	 */
 	public Date getDate() {
-		return date;
+		return this.date;
 	}
-
 
 	/**
 	 * Sets the date.
@@ -49,10 +47,9 @@ public class DatePlace {
 	 * @param date
 	 *            the new date
 	 */
-	public void setDate(Date date) {
+	public void setDate(final Date date) {
 		this.date = date;
 	}
-
 
 	/**
 	 * Gets the place.
@@ -60,9 +57,8 @@ public class DatePlace {
 	 * @return the place
 	 */
 	public String getPlace() {
-		return place;
+		return this.place;
 	}
-
 
 	/**
 	 * Sets the place.
@@ -70,7 +66,7 @@ public class DatePlace {
 	 * @param place
 	 *            the new place
 	 */
-	public void setPlace(String place) {
+	public void setPlace(final String place) {
 		this.place = place;
 	}
 

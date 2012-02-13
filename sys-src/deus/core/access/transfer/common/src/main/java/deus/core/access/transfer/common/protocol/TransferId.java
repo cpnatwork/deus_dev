@@ -29,8 +29,8 @@ public interface TransferId {
 	 * 
 	 * @return the int
 	 */
+	@Override
 	public int hashCode();
-
 
 	/**
 	 * Equals.
@@ -39,16 +39,16 @@ public interface TransferId {
 	 *            the obj
 	 * @return true, if successful
 	 */
+	@Override
 	public boolean equals(Object obj);
-
 
 	/**
 	 * To string.
 	 * 
 	 * @return the string
 	 */
+	@Override
 	public String toString();
-
 
 	/**
 	 * Gets the transfer protocol id.

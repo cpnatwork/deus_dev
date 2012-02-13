@@ -28,12 +28,16 @@ import deus.model.hci.attention.Notice;
  */
 public class UpdateNotice extends Notice {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5786205944582924302L;
+
 	/** The publisher metadata. */
 	private final UserMetadata publisherMetadata;
 
 	/** The patch. */
 	private final Patch patch;
-
 
 	/**
 	 * Instantiates a new update notice.
@@ -43,12 +47,11 @@ public class UpdateNotice extends Notice {
 	 * @param patch
 	 *            the patch
 	 */
-	public UpdateNotice(UserMetadata publisherMetadata, Patch patch) {
+	public UpdateNotice(final UserMetadata publisherMetadata, final Patch patch) {
 		super();
 		this.publisherMetadata = publisherMetadata;
 		this.patch = patch;
 	}
-
 
 	/**
 	 * Gets the publisher metadata.
@@ -56,9 +59,8 @@ public class UpdateNotice extends Notice {
 	 * @return the publisher metadata
 	 */
 	public UserMetadata getPublisherMetadata() {
-		return publisherMetadata;
+		return this.publisherMetadata;
 	}
-
 
 	/**
 	 * Gets the patch.
@@ -66,13 +68,15 @@ public class UpdateNotice extends Notice {
 	 * @return the patch
 	 */
 	public Patch getPatch() {
-		return patch;
+		return this.patch;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.hci.attention.AttentionElement#getCatchphare()
 	 */
+	@Override
 	public String getCatchphare() {
 		// TODO Auto-generated method stub
 		return null;

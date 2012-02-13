@@ -25,11 +25,11 @@ import deus.model.common.user.id.UserId;
 /**
  * The Class FixedTransferProtocolNegotiationStrategy.
  */
-public class FixedTransferProtocolNegotiationStrategy implements TransferProtocolNegotiationStrategy {
+public class FixedTransferProtocolNegotiationStrategy implements
+		TransferProtocolNegotiationStrategy {
 
 	/** The transfer protocol id. */
 	private final String transferProtocolId;
-
 
 	/**
 	 * Instantiates a new fixed transfer protocol negotiation strategy.
@@ -37,18 +37,23 @@ public class FixedTransferProtocolNegotiationStrategy implements TransferProtoco
 	 * @param transferProtocolId
 	 *            the transfer protocol id
 	 */
-	public FixedTransferProtocolNegotiationStrategy(String transferProtocolId) {
+	public FixedTransferProtocolNegotiationStrategy(
+			final String transferProtocolId) {
 		super();
 		this.transferProtocolId = transferProtocolId;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.soul.discovery.TransferProtocolNegotiationStrategy#negotiateTransferProtocol(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.soul.discovery.
+	 * TransferProtocolNegotiationStrategy
+	 * #negotiateTransferProtocol(deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public String negotiateTransferProtocol(@SuppressWarnings("unused") UserId receiverId) {
-		return transferProtocolId;
+	public String negotiateTransferProtocol(
+			@SuppressWarnings("unused") final UserId receiverId) {
+		return this.transferProtocolId;
 	}
 
 }

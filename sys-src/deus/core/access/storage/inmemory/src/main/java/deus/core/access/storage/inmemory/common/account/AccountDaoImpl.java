@@ -31,22 +31,31 @@ import deus.model.common.account.Account;
  * @author cpn
  */
 @Named("accountDao")
-public class AccountDaoImpl extends GenericVanillaDaoImpl<Account, String> implements AccountDao {
+public class AccountDaoImpl extends GenericVanillaDaoImpl<Account, String>
+		implements AccountDao {
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.api.common.account.AccountDao#addNewEntity(deus.model.common.account.Account)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.api.common.account.AccountDao#addNewEntity(deus
+	 * .model.common.account.Account)
 	 */
 	@Override
-	public void addNewEntity(Account account) {
-		addNewEntity(account.getLocalUsername(), account);
+	public void addNewEntity(final Account account) {
+		this.addNewEntity(account.getLocalUsername(), account);
 	}
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.api.common.account.AccountDao#updateEntity(deus.model.common.account.Account)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.api.common.account.AccountDao#updateEntity(deus
+	 * .model.common.account.Account)
 	 */
 	@Override
-	public void updateEntity(Account account) {
-		updateEntity(account.getLocalUsername(), account);
+	public void updateEntity(final Account account) {
+		this.updateEntity(account.getLocalUsername(), account);
 	}
 
 }

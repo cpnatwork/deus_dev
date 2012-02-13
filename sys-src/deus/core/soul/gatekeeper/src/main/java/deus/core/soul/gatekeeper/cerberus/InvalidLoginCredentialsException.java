@@ -32,18 +32,17 @@ public class InvalidLoginCredentialsException extends RuntimeException {
 	/** The login credentials. */
 	private final LoginCredentials loginCredentials;
 
-
 	/**
 	 * Instantiates a new invalid login credentials exception.
 	 * 
 	 * @param loginCredentials
 	 *            the login credentials
 	 */
-	public InvalidLoginCredentialsException(LoginCredentials loginCredentials) {
+	public InvalidLoginCredentialsException(
+			final LoginCredentials loginCredentials) {
 		super();
 		this.loginCredentials = loginCredentials;
 	}
-
 
 	/**
 	 * Gets the login credentials.
@@ -51,7 +50,7 @@ public class InvalidLoginCredentialsException extends RuntimeException {
 	 * @return the login credentials
 	 */
 	public LoginCredentials getLoginCredentials() {
-		return loginCredentials;
+		return this.loginCredentials;
 	}
 
 }

@@ -33,60 +33,81 @@ import deus.model.dccontent.party.WebPresence;
  */
 public class Person extends deus.model.dccontent.party.Person {
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.dccontent.party.Person#getPhones()
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Phone> getPhones() {
-		return (List<Phone>) phones;
+		return (List<Phone>) this.phones;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.dccontent.party.Person#getEmails()
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Email> getEmails() {
-		return (List<Email>) emails;
+		return (List<Email>) this.emails;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.dccontent.party.Person#getWebPresences()
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<WebPresence> getWebPresences() {
-		return (List<WebPresence>) webPresences;
+		return (List<WebPresence>) this.webPresences;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.dccontent.party.Person#getImAccounts()
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<ImAccount> getImAccounts() {
-		return (List<ImAccount>) imAccounts;
+		return (List<ImAccount>) this.imAccounts;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.dccontent.party.Person#getAddresses()
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<AddressPO> getAddresses() {
-		return (List<AddressPO>) addresses;
+		return (List<AddressPO>) this.addresses;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.dccontent.party.Person#getOccupations()
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Occupation> getOccupations() {
-		return (List<Occupation>) occupations;
+		return (List<Occupation>) this.occupations;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.dccontent.party.Person#getRelatedPersons()
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<RelatedPerson> getRelatedPersons() {
-		return (List<RelatedPerson>) relatedPersons;
+		return (List<RelatedPerson>) this.relatedPersons;
 	}
 
 }

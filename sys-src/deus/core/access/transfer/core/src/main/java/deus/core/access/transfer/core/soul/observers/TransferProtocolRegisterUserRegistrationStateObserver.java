@@ -38,28 +38,27 @@ import deus.model.common.user.id.UserId;
  * TransferProtocolRegisterUserRegistrationState is constructed.
  */
 @Named
-public class TransferProtocolRegisterUserRegistrationStateObserver implements UserRegistrationStateObserver {
+public class TransferProtocolRegisterUserRegistrationStateObserver implements
+		UserRegistrationStateObserver {
 
 	/** The transfer protocol registry. */
 	@Inject
 	private QueriableTransferProtocolRegistry transferProtocolRegistry;
-	
+
 	/** The registrator. */
 	@Inject
 	private RegistratorExportedToSubsystems registrator;
-	
-		
+
 	/**
 	 * This method is called when information about an
 	 * TransferProtocolRegisterUserRegistrationState which was previously
 	 * requested using an asynchronous interface becomes available.
 	 */
-	@PostConstruct	
+	@PostConstruct
 	@SuppressWarnings("unused")
 	private void addObserver() {
-		registrator.addUserRegistrationStateObserver(this);
+		this.registrator.addUserRegistrationStateObserver(this);
 	}
-	
 
 	/**
 	 * This method is called when information about an
@@ -69,34 +68,43 @@ public class TransferProtocolRegisterUserRegistrationStateObserver implements Us
 	@PreDestroy
 	@SuppressWarnings("unused")
 	private void removeObserver() {
-		registrator.removeUserRegistrationStateObserver(this);
+		this.registrator.removeUserRegistrationStateObserver(this);
 	}
-	
-	
-	
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver#registered(deus.model.common.user.id.UserId)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver
+	 * #registered(deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public void registered(UserId userId) {
-		for (String transferProtocolId : transferProtocolRegistry.getAllRegisteredTransferProtocolIds()) {
-			TransferProtocol tp = transferProtocolRegistry.getRegisteredTransferProtocol(transferProtocolId);
-			UserIdMapper userIdMapper = tp.getUserIdMapper();
-			TransferId transferId = userIdMapper.resolveLocal(userId);
+	public void registered(final UserId userId) {
+		for (final String transferProtocolId : this.transferProtocolRegistry
+				.getAllRegisteredTransferProtocolIds()) {
+			final TransferProtocol tp = this.transferProtocolRegistry
+					.getRegisteredTransferProtocol(transferProtocolId);
+			final UserIdMapper userIdMapper = tp.getUserIdMapper();
+			final TransferId transferId = userIdMapper.resolveLocal(userId);
 			tp.getRegistrationEventCallback().registered(transferId);
 		}
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver#unregistered(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver
+	 * #unregistered(deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public void unregistered(UserId userId) {
-		for (String transferProtocolId : transferProtocolRegistry.getAllRegisteredTransferProtocolIds()) {
-			TransferProtocol tp = transferProtocolRegistry.getRegisteredTransferProtocol(transferProtocolId);
-			UserIdMapper userIdMapper = tp.getUserIdMapper();
-			TransferId transferId = userIdMapper.resolveLocal(userId);
+	public void unregistered(final UserId userId) {
+		for (final String transferProtocolId : this.transferProtocolRegistry
+				.getAllRegisteredTransferProtocolIds()) {
+			final TransferProtocol tp = this.transferProtocolRegistry
+					.getRegisteredTransferProtocol(transferProtocolId);
+			final UserIdMapper userIdMapper = tp.getUserIdMapper();
+			final TransferId transferId = userIdMapper.resolveLocal(userId);
 			tp.getRegistrationEventCallback().unregistered(transferId);
 		}
 	}

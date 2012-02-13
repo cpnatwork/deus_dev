@@ -36,5 +36,5 @@ public interface PatchStrategy {
 	 *            the patch
 	 */
 	void patch(ForeignInformationFile fif, Patch patch);
-	
+
 }

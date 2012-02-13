@@ -26,7 +26,7 @@ public enum DecisionType {
 
 	/** The publisher offer. */
 	publisherOffer, /** The subscriber request. */
- subscriberRequest, /** The contribution. */
- contribution;
-	
+	subscriberRequest, /** The contribution. */
+	contribution;
+
 }

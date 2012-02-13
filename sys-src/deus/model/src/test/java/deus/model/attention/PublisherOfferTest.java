@@ -19,10 +19,7 @@
  *************************************************************************/
 package deus.model.attention;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,7 +36,7 @@ public class PublisherOfferTest {
 
 	/** The dec. */
 	BinaryDecisionToMake dec;
-	
+
 	/**
 	 * Sets the up.
 	 * 
@@ -48,51 +45,49 @@ public class PublisherOfferTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		dec = new PublisherOffer(new PublisherId(new UserUrl("alice", "http://www.deus.org")), new UserMetadata());
+		this.dec = new PublisherOffer(new PublisherId(new UserUrl("alice",
+				"http://www.deus.org")), new UserMetadata());
 	}
-
 
 	/**
 	 * Test set decision positive.
 	 */
 	@Test
 	public void testSetDecisionPositive() {
-		assertFalse(dec.isDecisionMade());
-		dec.setDecisionPositive();
-		assertTrue(dec.isDecisionMade());
-		assertTrue(dec.isDecisionPositive());
-		assertFalse(dec.isDecisionNegative());
+		Assert.assertFalse(this.dec.isDecisionMade());
+		this.dec.setDecisionPositive();
+		Assert.assertTrue(this.dec.isDecisionMade());
+		Assert.assertTrue(this.dec.isDecisionPositive());
+		Assert.assertFalse(this.dec.isDecisionNegative());
 	}
 
-	
 	/**
 	 * Test set decision negative.
 	 */
 	@Test
 	public void testSetDecisionNegative() {
-		assertFalse(dec.isDecisionMade());
-		dec.setDecisionNegative();
-		assertTrue(dec.isDecisionMade());
-		assertTrue(dec.isDecisionNegative());
-		assertFalse(dec.isDecisionPositive());
+		Assert.assertFalse(this.dec.isDecisionMade());
+		this.dec.setDecisionNegative();
+		Assert.assertTrue(this.dec.isDecisionMade());
+		Assert.assertTrue(this.dec.isDecisionNegative());
+		Assert.assertFalse(this.dec.isDecisionPositive());
 	}
-	
-	
+
 	/**
 	 * Test exception.
 	 */
 	@Test
 	public void testException() {
-		assertFalse(dec.isDecisionMade());
+		Assert.assertFalse(this.dec.isDecisionMade());
 		try {
-			dec.isDecisionPositive();
-			fail("exception not thrown");
+			this.dec.isDecisionPositive();
+			Assert.fail("exception not thrown");
+		} catch (final IllegalStateException e) {
 		}
-		catch(IllegalStateException e) {}
 		try {
-			dec.isDecisionNegative();
-			fail("exception not thrown");
+			this.dec.isDecisionNegative();
+			Assert.fail("exception not thrown");
+		} catch (final IllegalStateException e) {
 		}
-		catch(IllegalStateException e) {}
 	}
 }

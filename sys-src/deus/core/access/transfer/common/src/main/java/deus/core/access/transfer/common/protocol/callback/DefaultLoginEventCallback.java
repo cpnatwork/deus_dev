@@ -26,20 +26,28 @@ import deus.core.access.transfer.common.protocol.TransferId;
  */
 public class DefaultLoginEventCallback implements LoginEventCallback {
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocol.callback.LoginEventCallback#loggedIn(deus.core.access.transfer.common.protocol.TransferId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.common.protocol.callback.LoginEventCallback
+	 * #loggedIn(deus.core.access.transfer.common.protocol.TransferId)
 	 */
 	@Override
-	public void loggedIn(@SuppressWarnings("unused") TransferId transferId) {
+	public void loggedIn(@SuppressWarnings("unused") final TransferId transferId) {
 		// DO NOTHING
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocol.callback.LoginEventCallback#loggedOut(deus.core.access.transfer.common.protocol.TransferId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.common.protocol.callback.LoginEventCallback
+	 * #loggedOut(deus.core.access.transfer.common.protocol.TransferId)
 	 */
 	@Override
-	public void loggedOut(@SuppressWarnings("unused") TransferId transferId) {
+	public void loggedOut(
+			@SuppressWarnings("unused") final TransferId transferId) {
 		// DO NOTHING
 	}
 

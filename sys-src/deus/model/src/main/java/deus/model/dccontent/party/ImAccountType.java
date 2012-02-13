@@ -26,12 +26,12 @@ public enum ImAccountType {
 
 	/** The aol. */
 	aol, /** The msn. */
- msn, /** The icq. */
- icq, /** The skype. */
- skype, /** The gtalk. */
- gtalk, /** The jabber. */
- jabber, /** The yahoo. */
- yahoo, /** The irc. */
- irc;
-	
+	msn, /** The icq. */
+	icq, /** The skype. */
+	skype, /** The gtalk. */
+	gtalk, /** The jabber. */
+	jabber, /** The yahoo. */
+	yahoo, /** The irc. */
+	irc;
+
 }

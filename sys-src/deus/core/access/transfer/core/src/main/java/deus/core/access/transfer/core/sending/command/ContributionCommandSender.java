@@ -27,7 +27,7 @@ import deus.model.common.user.frids.RepatriationAuthorityId;
  * The Interface ContributionCommandSender.
  */
 public interface ContributionCommandSender {
-	
+
 	/**
 	 * Forward to cp.
 	 * 
@@ -38,7 +38,8 @@ public interface ContributionCommandSender {
 	 * @param digitalCard
 	 *            the digital card
 	 */
-	public void forwardToCp(ContributorId contributorId, RepatriationAuthorityId repatriationAuthorityId,
+	public void forwardToCp(ContributorId contributorId,
+			RepatriationAuthorityId repatriationAuthorityId,
 			DigitalCard digitalCard);
 
 }

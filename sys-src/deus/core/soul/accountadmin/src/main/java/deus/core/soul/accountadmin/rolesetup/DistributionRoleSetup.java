@@ -37,7 +37,6 @@ public interface DistributionRoleSetup {
 	 */
 	public void setUpRole(DistributionRole distributionRole, UserId userId);
 
-
 	/**
 	 * Tear down role.
 	 * 
@@ -48,7 +47,6 @@ public interface DistributionRoleSetup {
 	 */
 	public void tearDownRole(DistributionRole distributionRole, UserId userId);
 
-	
 	/**
 	 * Adds the role setup observer.
 	 * 
@@ -57,8 +55,9 @@ public interface DistributionRoleSetup {
 	 * @param observer
 	 *            the observer
 	 */
-	public void addRoleSetupObserver(DistributionRole distributionRole, DistributionRoleSetupObserver observer);
-	
+	public void addRoleSetupObserver(DistributionRole distributionRole,
+			DistributionRoleSetupObserver observer);
+
 	/**
 	 * Removes the role setup observer.
 	 * 
@@ -67,5 +66,6 @@ public interface DistributionRoleSetup {
 	 * @param observer
 	 *            the observer
 	 */
-	public void removeRoleSetupObserver(DistributionRole distributionRole, DistributionRoleSetupObserver observer);
+	public void removeRoleSetupObserver(DistributionRole distributionRole,
+			DistributionRoleSetupObserver observer);
 }

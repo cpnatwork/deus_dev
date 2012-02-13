@@ -31,12 +31,11 @@ import java.util.HashMap;
  *            the generic type
  * @author cpn
  */
-public class GenericVanillaDaoImpl<EntityT, NaturalIdT extends Serializable> implements
-		GenericVanillaDao<EntityT, NaturalIdT> {
+public class GenericVanillaDaoImpl<EntityT, NaturalIdT extends Serializable>
+		implements GenericVanillaDao<EntityT, NaturalIdT> {
 
 	/** The storage. */
 	protected HashMap<NaturalIdT, EntityT> storage = new HashMap<NaturalIdT, EntityT>();
-
 
 	/**
 	 * Gets the storage.
@@ -44,54 +43,68 @@ public class GenericVanillaDaoImpl<EntityT, NaturalIdT extends Serializable> imp
 	 * @return the storage
 	 */
 	protected HashMap<NaturalIdT, EntityT> getStorage() {
-		return storage;
+		return this.storage;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.inmemory.GenericVanillaDao#addNewEntity(java.io.Serializable, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.inmemory.GenericVanillaDao#addNewEntity(java
+	 * .io.Serializable, java.lang.Object)
 	 */
 	@Override
-	public void addNewEntity(NaturalIdT naturalId, EntityT entity) {
-		getStorage().put(naturalId, entity);
+	public void addNewEntity(final NaturalIdT naturalId, final EntityT entity) {
+		this.getStorage().put(naturalId, entity);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.inmemory.GenericVanillaDao#getByNaturalId(java.io.Serializable)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.inmemory.GenericVanillaDao#getByNaturalId(java
+	 * .io.Serializable)
 	 */
 	@Override
-	public EntityT getByNaturalId(NaturalIdT naturalId) {
-		return getStorage().get(naturalId);
+	public EntityT getByNaturalId(final NaturalIdT naturalId) {
+		return this.getStorage().get(naturalId);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.inmemory.GenericVanillaDao#updateEntity(java.io.Serializable, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.inmemory.GenericVanillaDao#updateEntity(java
+	 * .io.Serializable, java.lang.Object)
 	 */
 	@Override
-	public void updateEntity(NaturalIdT naturalId, EntityT entity) {
-		getStorage().put(naturalId, entity);
+	public void updateEntity(final NaturalIdT naturalId, final EntityT entity) {
+		this.getStorage().put(naturalId, entity);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.inmemory.GenericVanillaDao#deleteByNaturalId(java.io.Serializable)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.inmemory.GenericVanillaDao#deleteByNaturalId
+	 * (java.io.Serializable)
 	 */
 	@Override
-	public void deleteByNaturalId(NaturalIdT naturalId) {
-		assert (getStorage().containsKey(naturalId));
-		getStorage().remove(naturalId);
+	public void deleteByNaturalId(final NaturalIdT naturalId) {
+		assert (this.getStorage().containsKey(naturalId));
+		this.getStorage().remove(naturalId);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.inmemory.GenericVanillaDao#existsByNaturalId(java.io.Serializable)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.inmemory.GenericVanillaDao#existsByNaturalId
+	 * (java.io.Serializable)
 	 */
 	@Override
-	public boolean existsByNaturalId(NaturalIdT naturalId) {
-		return getStorage().containsKey(naturalId);
+	public boolean existsByNaturalId(final NaturalIdT naturalId) {
+		return this.getStorage().containsKey(naturalId);
 	}
-
 
 }

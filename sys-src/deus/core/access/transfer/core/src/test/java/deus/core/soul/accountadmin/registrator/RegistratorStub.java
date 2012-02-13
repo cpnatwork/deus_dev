@@ -19,27 +19,36 @@
  *************************************************************************/
 package deus.core.soul.accountadmin.registrator;
 
-import deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems;
-import deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver;
 
 /**
  * The Class RegistratorStub.
  */
 public class RegistratorStub implements RegistratorExportedToSubsystems {
 
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems#addUserRegistrationStateObserver(deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems
+	 * #addUserRegistrationStateObserver
+	 * (deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver)
 	 */
 	@Override
-	public void addUserRegistrationStateObserver(UserRegistrationStateObserver observer) {
+	public void addUserRegistrationStateObserver(
+			final UserRegistrationStateObserver observer) {
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems#removeUserRegistrationStateObserver(deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems
+	 * #removeUserRegistrationStateObserver
+	 * (deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver)
 	 */
 	@Override
-	public void removeUserRegistrationStateObserver(UserRegistrationStateObserver observer) {
+	public void removeUserRegistrationStateObserver(
+			final UserRegistrationStateObserver observer) {
 	}
 
 }

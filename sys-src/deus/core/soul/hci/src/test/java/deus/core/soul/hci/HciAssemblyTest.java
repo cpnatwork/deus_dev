@@ -25,5 +25,5 @@ import deus.common.AbstractSubsystemAssemblyTest;
  * The Class HciAssemblyTest.
  */
 public class HciAssemblyTest extends AbstractSubsystemAssemblyTest {
-	
+
 }

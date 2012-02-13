@@ -33,5 +33,5 @@ public interface MessageReceiver {
 	 *            the command
 	 */
 	public void receive(TransferMessage command);
-	
+
 }

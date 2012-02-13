@@ -32,7 +32,6 @@ public final class TransferProtocolImpl implements TransferProtocol {
 	/** The protocol id. */
 	private String protocolId;
 
-
 	/** The message sender. */
 	private MessageSender messageSender;
 
@@ -45,14 +44,17 @@ public final class TransferProtocolImpl implements TransferProtocol {
 	/** The user id mapper. */
 	private UserIdMapper userIdMapper;
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocol.TransferProtocol#getProtocolId()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.common.protocol.TransferProtocol#getProtocolId
+	 * ()
 	 */
+	@Override
 	public String getProtocolId() {
-		return protocolId;
+		return this.protocolId;
 	}
-
 
 	/**
 	 * Sets the protocol id.
@@ -60,19 +62,21 @@ public final class TransferProtocolImpl implements TransferProtocol {
 	 * @param protocolId
 	 *            the new protocol id
 	 */
-	public void setProtocolId(String protocolId) {
+	public void setProtocolId(final String protocolId) {
 		this.protocolId = protocolId;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocol.TransferProtocol#getMessageSender()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.common.protocol.TransferProtocol#getMessageSender
+	 * ()
 	 */
 	@Override
 	public MessageSender getMessageSender() {
-		return messageSender;
+		return this.messageSender;
 	}
-
 
 	/**
 	 * Sets the message sender.
@@ -80,19 +84,20 @@ public final class TransferProtocolImpl implements TransferProtocol {
 	 * @param messageSender
 	 *            the new message sender
 	 */
-	public void setMessageSender(MessageSender messageSender) {
+	public void setMessageSender(final MessageSender messageSender) {
 		this.messageSender = messageSender;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocol.TransferProtocol#getLoginEventCallback()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.common.protocol.TransferProtocol#
+	 * getLoginEventCallback()
 	 */
 	@Override
 	public LoginEventCallback getLoginEventCallback() {
-		return loginEventCallback;
+		return this.loginEventCallback;
 	}
-
 
 	/**
 	 * Sets the login event callback.
@@ -100,19 +105,21 @@ public final class TransferProtocolImpl implements TransferProtocol {
 	 * @param loginEventCallback
 	 *            the new login event callback
 	 */
-	public void setLoginEventCallback(LoginEventCallback loginEventCallback) {
+	public void setLoginEventCallback(
+			final LoginEventCallback loginEventCallback) {
 		this.loginEventCallback = loginEventCallback;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocol.TransferProtocol#getRegistrationEventCallback()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.common.protocol.TransferProtocol#
+	 * getRegistrationEventCallback()
 	 */
 	@Override
 	public RegistrationEventCallback getRegistrationEventCallback() {
-		return registrationEventCallback;
+		return this.registrationEventCallback;
 	}
-
 
 	/**
 	 * Sets the registration event callback.
@@ -120,19 +127,22 @@ public final class TransferProtocolImpl implements TransferProtocol {
 	 * @param registrationEventCallback
 	 *            the new registration event callback
 	 */
-	public void setRegistrationEventCallback(RegistrationEventCallback registrationEventCallback) {
+	public void setRegistrationEventCallback(
+			final RegistrationEventCallback registrationEventCallback) {
 		this.registrationEventCallback = registrationEventCallback;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocol.TransferProtocol#getUserIdMapper()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.common.protocol.TransferProtocol#getUserIdMapper
+	 * ()
 	 */
 	@Override
 	public UserIdMapper getUserIdMapper() {
-		return userIdMapper;
+		return this.userIdMapper;
 	}
-
 
 	/**
 	 * Sets the user id mapper.
@@ -140,16 +150,18 @@ public final class TransferProtocolImpl implements TransferProtocol {
 	 * @param userIdMapper
 	 *            the new user id mapper
 	 */
-	public void setUserIdMapper(UserIdMapper userIdMapper) {
+	public void setUserIdMapper(final UserIdMapper userIdMapper) {
 		this.userIdMapper = userIdMapper;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
+	@Override
 	public String toString() {
-		return getProtocolId();
+		return this.getProtocolId();
 	}
 
 }

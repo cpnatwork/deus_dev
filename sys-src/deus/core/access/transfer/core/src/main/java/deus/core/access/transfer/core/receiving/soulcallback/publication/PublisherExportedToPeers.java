@@ -19,15 +19,15 @@
  *************************************************************************/
 package deus.core.access.transfer.core.receiving.soulcallback.publication;
 
-
 import deus.model.common.user.UserMetadata;
 import deus.model.common.user.frids.PublisherId;
 import deus.model.common.user.frids.SubscriberId;
 
 /**
- * Groups methods of the interface <code>Publisher</code>, that are called remotely. These methods are e.g. called from
- * an instance of the class <code>XmppPublisherSkeleton</code>, which is the part of the stub-skeleton pair, that
- * resides on the publisher side.
+ * Groups methods of the interface <code>Publisher</code>, that are called
+ * remotely. These methods are e.g. called from an instance of the class
+ * <code>XmppPublisherSkeleton</code>, which is the part of the stub-skeleton
+ * pair, that resides on the publisher side.
  * 
  * @see Publisher
  * 
@@ -37,7 +37,7 @@ import deus.model.common.user.frids.SubscriberId;
 public interface PublisherExportedToPeers {
 
 	// USE CASE: subscriber initiated connection
-	
+
 	/**
 	 * Adds an observer to the set of observers for this object, provided that
 	 * it is not the same as some observer already in the set. The order in
@@ -51,11 +51,11 @@ public interface PublisherExportedToPeers {
 	 * @param subscriberMetadata
 	 *            an observer to be added.
 	 */
-	public abstract void addSubscriber(PublisherId publisherId, SubscriberId subscriberId, UserMetadata subscriberMetadata);
-
+	public abstract void addSubscriber(PublisherId publisherId,
+			SubscriberId subscriberId, UserMetadata subscriberMetadata);
 
 	// USE CASE: subscriber initiated termination
-	
+
 	/**
 	 * Deletes an observer from the set of observers of this object. Passing
 	 * <CODE>null</CODE> to this method will have no effect.
@@ -65,13 +65,11 @@ public interface PublisherExportedToPeers {
 	 * @param subscriberId
 	 *            the subscriber id
 	 */
-	public abstract void deleteSubscriber(PublisherId publisherId, SubscriberId subscriberId);
+	public abstract void deleteSubscriber(PublisherId publisherId,
+			SubscriberId subscriberId);
 
-	
-	
-	
 	// USE CASE: publisher initiated connection
-	
+
 	// FIXME: rename this to subscriptionOfferConfirmed
 	/**
 	 * Subscription confirmed.
@@ -81,8 +79,9 @@ public interface PublisherExportedToPeers {
 	 * @param subscriberId
 	 *            the subscriber id
 	 */
-	public abstract void subscriptionConfirmed(PublisherId publisherId, SubscriberId subscriberId);
-	
+	public abstract void subscriptionConfirmed(PublisherId publisherId,
+			SubscriberId subscriberId);
+
 	// FIXME: rename this to subscriptionOfferRepelled
 	/**
 	 * Subscription abstained.
@@ -92,5 +91,6 @@ public interface PublisherExportedToPeers {
 	 * @param subscriberId
 	 *            the subscriber id
 	 */
-	public abstract void subscriptionAbstained(PublisherId publisherId, SubscriberId subscriberId);
+	public abstract void subscriptionAbstained(PublisherId publisherId,
+			SubscriberId subscriberId);
 }

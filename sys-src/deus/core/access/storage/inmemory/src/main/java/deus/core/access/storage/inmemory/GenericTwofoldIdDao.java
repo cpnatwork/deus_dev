@@ -44,7 +44,8 @@ public interface GenericTwofoldIdDao<EntityT, NaturalIdFirstComponentT extends S
 	 * @param entity
 	 *            the entity
 	 */
-	void addNewEntity(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent, EntityT entity);
+	void addNewEntity(NaturalIdFirstComponentT naturalIdFirstComponent,
+			NaturalIdSecondComponentT naturalIdSecondComponent, EntityT entity);
 
 	/**
 	 * READ of CRUD.
@@ -55,7 +56,8 @@ public interface GenericTwofoldIdDao<EntityT, NaturalIdFirstComponentT extends S
 	 *            the natural id second component
 	 * @return the by natural id
 	 */
-	EntityT getByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent);
+	EntityT getByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent,
+			NaturalIdSecondComponentT naturalIdSecondComponent);
 
 	/**
 	 * UPDATE of CRUD.
@@ -67,7 +69,8 @@ public interface GenericTwofoldIdDao<EntityT, NaturalIdFirstComponentT extends S
 	 * @param entity
 	 *            the entity
 	 */
-	void updateEntity(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent, EntityT entity);
+	void updateEntity(NaturalIdFirstComponentT naturalIdFirstComponent,
+			NaturalIdSecondComponentT naturalIdSecondComponent, EntityT entity);
 
 	/**
 	 * DELETE of CRUD.
@@ -77,9 +80,9 @@ public interface GenericTwofoldIdDao<EntityT, NaturalIdFirstComponentT extends S
 	 * @param naturalIdSecondComponent
 	 *            the natural id second component
 	 */
-	void deleteByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent);
+	void deleteByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent,
+			NaturalIdSecondComponentT naturalIdSecondComponent);
 
-	
 	/**
 	 * Existency Test.
 	 * 
@@ -89,5 +92,6 @@ public interface GenericTwofoldIdDao<EntityT, NaturalIdFirstComponentT extends S
 	 *            the natural id second component
 	 * @return true, if successful
 	 */
-	boolean existsByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent);
+	boolean existsByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent,
+			NaturalIdSecondComponentT naturalIdSecondComponent);
 }

@@ -21,7 +21,6 @@ package deus.core.soul.accountadmin.registrator;
 
 import deus.model.accountadmin.RegistrationInformation;
 
-
 /**
  * The Interface RegistratorExportedToClient.
  */
@@ -33,8 +32,8 @@ public interface RegistratorExportedToClient {
 	 * @param registrationInformation
 	 *            the registration information
 	 */
-	public abstract void register(RegistrationInformation registrationInformation);
-
+	public abstract void register(
+			RegistrationInformation registrationInformation);
 
 	/**
 	 * Unregister.
@@ -43,7 +42,6 @@ public interface RegistratorExportedToClient {
 	 *            the local username
 	 */
 	public abstract void unregister(String localUsername);
-
 
 	/**
 	 * Exists local username.

@@ -29,17 +29,15 @@ public class AppendDigitalCardPatch extends AbstractPatch {
 	/** The digital card to append. */
 	private DigitalCard digitalCardToAppend;
 
-
 	/**
 	 * Instantiates a new append digital card patch.
 	 * 
 	 * @param cpId
 	 *            the cp id
 	 */
-	public AppendDigitalCardPatch(UserId cpId) {
+	public AppendDigitalCardPatch(final UserId cpId) {
 		super(cpId);
 	}
-
 
 	/**
 	 * Gets the digital card to append.
@@ -47,9 +45,8 @@ public class AppendDigitalCardPatch extends AbstractPatch {
 	 * @return the digital card to append
 	 */
 	public DigitalCard getDigitalCardToAppend() {
-		return digitalCardToAppend;
+		return this.digitalCardToAppend;
 	}
-
 
 	/**
 	 * Sets the digital card to append.
@@ -57,7 +54,7 @@ public class AppendDigitalCardPatch extends AbstractPatch {
 	 * @param digitalCardToAppend
 	 *            the new digital card to append
 	 */
-	public void setDigitalCardToAppend(DigitalCard digitalCardToAppend) {
+	public void setDigitalCardToAppend(final DigitalCard digitalCardToAppend) {
 		this.digitalCardToAppend = digitalCardToAppend;
 	}
 

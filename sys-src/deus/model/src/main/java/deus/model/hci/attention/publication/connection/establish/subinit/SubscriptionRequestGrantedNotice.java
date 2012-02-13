@@ -24,7 +24,13 @@ import deus.model.common.user.UserMetadata;
 /**
  * The Class SubscriptionRequestGrantedNotice.
  */
-public class SubscriptionRequestGrantedNotice extends SubscriberInitiatedConnectionNotice {
+public class SubscriptionRequestGrantedNotice extends
+		SubscriberInitiatedConnectionNotice {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6352581629740623385L;
 
 	/**
 	 * Instantiates a new subscription request granted notice.
@@ -32,18 +38,21 @@ public class SubscriptionRequestGrantedNotice extends SubscriberInitiatedConnect
 	 * @param publisherMetadata
 	 *            the publisher metadata
 	 */
-	public SubscriptionRequestGrantedNotice(UserMetadata publisherMetadata) {
+	public SubscriptionRequestGrantedNotice(final UserMetadata publisherMetadata) {
 		super(publisherMetadata);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.hci.attention.AttentionElement#getCatchphare()
 	 */
 	@Override
 	public String getCatchphare() {
-		//I18N
-		return "Your subscription request to "+getPublisherMetadata().getFullName()+" has been established";
+		// I18N
+		return "Your subscription request to "
+				+ this.getPublisherMetadata().getFullName()
+				+ " has been established";
 	}
-
 
 }

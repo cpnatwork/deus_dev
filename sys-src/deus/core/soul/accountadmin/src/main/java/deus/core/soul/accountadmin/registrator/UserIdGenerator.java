@@ -37,5 +37,5 @@ public interface UserIdGenerator {
 	 * @return the user id
 	 */
 	public UserId generateUserId(UserIdType userIdType, String localUserName);
-	
+
 }

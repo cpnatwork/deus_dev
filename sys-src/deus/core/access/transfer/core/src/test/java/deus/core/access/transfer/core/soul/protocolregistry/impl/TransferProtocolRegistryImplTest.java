@@ -19,12 +19,8 @@
  *************************************************************************/
 package deus.core.access.transfer.core.soul.protocolregistry.impl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,12 +41,12 @@ import deus.model.common.user.id.UserId;
  * The Class TransferProtocolRegistryImplTest.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transfer/core/test.xml" })
+@ContextConfiguration(locations = { "/deus/context.xml",
+		"/deus/core/access/transfer/core/test.xml" })
 public class TransferProtocolRegistryImplTest {
-	
+
 	/** The tp. */
 	private TransferProtocolImpl tp;
-
 
 	/** The registry. */
 	@Autowired
@@ -67,39 +63,40 @@ public class TransferProtocolRegistryImplTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		tp = new TransferProtocolImpl();
-		tp.setLoginEventCallback(null); // we don't need login for this test
-		tp.setRegistrationEventCallback(null); // we don't need registration for this test
-				
-		UserIdMapper userIdMapper = new UserIdMapper() {
+		this.tp = new TransferProtocolImpl();
+		this.tp.setLoginEventCallback(null); // we don't need login for this
+												// test
+		this.tp.setRegistrationEventCallback(null); // we don't need
+													// registration for this
+													// test
+
+		final UserIdMapper userIdMapper = new UserIdMapper() {
 
 			@Override
-			public TransferId resolveLocal(UserId userId) {
+			public TransferId resolveLocal(final UserId userId) {
 				return new TestTransferId(userId.toString());
 			}
 
 			@Override
-			public TransferId resolveRemote(UserId userId) {
+			public TransferId resolveRemote(final UserId userId) {
 				return new TestTransferId(userId.toString());
 			}
 
 		};
-		tp.setUserIdMapper(userIdMapper);
-		
-		
-		
-		tp.setMessageSender(new MessageSender() {
+		this.tp.setUserIdMapper(userIdMapper);
+
+		this.tp.setMessageSender(new MessageSender() {
 
 			@Override
-			public void send(@SuppressWarnings("unused") TransferMessage message) {
+			public void send(
+					@SuppressWarnings("unused") final TransferMessage message) {
 				System.out.println("sending");
 			}
 
 		});
-		
-		testProtocolId = tp.getProtocolId();
-	}
 
+		this.testProtocolId = this.tp.getProtocolId();
+	}
 
 	/**
 	 * Tear down.
@@ -111,30 +108,35 @@ public class TransferProtocolRegistryImplTest {
 	public void tearDown() throws Exception {
 	}
 
-
 	/**
 	 * Test register transfer protocol.
 	 */
 	@Test
 	public void testRegisterTransferProtocol() {
-		assertTrue(registry.getAllRegisteredTransferProtocolIds().isEmpty());
-		assertNull(registry.getRegisteredTransferProtocol(testProtocolId));
-		
-		registry.registerTransferProtocol(tp);
-		
-		assertTrue(registry.getAllRegisteredTransferProtocolIds().contains(testProtocolId));
-		assertEquals(tp, registry.getRegisteredTransferProtocol(testProtocolId));
-		
-		registry.unregisterTransferProtocol(testProtocolId);
-		
-		assertTrue(registry.getAllRegisteredTransferProtocolIds().isEmpty());
-		assertNull(registry.getRegisteredTransferProtocol(testProtocolId));
-		
+		Assert.assertTrue(this.registry.getAllRegisteredTransferProtocolIds()
+				.isEmpty());
+		Assert.assertNull(this.registry
+				.getRegisteredTransferProtocol(this.testProtocolId));
+
+		this.registry.registerTransferProtocol(this.tp);
+
+		Assert.assertTrue(this.registry.getAllRegisteredTransferProtocolIds()
+				.contains(this.testProtocolId));
+		Assert.assertEquals(this.tp, this.registry
+				.getRegisteredTransferProtocol(this.testProtocolId));
+
+		this.registry.unregisterTransferProtocol(this.testProtocolId);
+
+		Assert.assertTrue(this.registry.getAllRegisteredTransferProtocolIds()
+				.isEmpty());
+		Assert.assertNull(this.registry
+				.getRegisteredTransferProtocol(this.testProtocolId));
+
 		try {
-			registry.unregisterTransferProtocol("haha");
-			fail("shouldn't be able to unregister non-existing TP");
+			this.registry.unregisterTransferProtocol("haha");
+			Assert.fail("shouldn't be able to unregister non-existing TP");
+		} catch (final IllegalArgumentException e) {
 		}
-		catch(IllegalArgumentException e) {}
 	}
 
 }

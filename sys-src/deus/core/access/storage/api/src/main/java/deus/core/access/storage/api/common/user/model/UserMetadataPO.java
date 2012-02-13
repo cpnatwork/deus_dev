@@ -24,7 +24,6 @@ import java.util.UUID;
 import deus.model.common.user.Gender;
 import deus.model.common.user.UserMetadata;
 
-
 // FIXME: REMOVE HIBERNATE STUFF FROM THIS CLASS
 //@Entity
 /**
@@ -35,7 +34,6 @@ public class UserMetadataPO extends UserMetadata {
 	/** The uuid. */
 	private UUID uuid;
 
-
 	/**
 	 * Instantiates a new user metadata po.
 	 */
@@ -44,19 +42,17 @@ public class UserMetadataPO extends UserMetadata {
 		this.setGender(Gender.unknown);
 	}
 
-
-//	@Id
-//	@GeneratedValue(generator = "system-uuid")
-//	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	// @Id
+	// @GeneratedValue(generator = "system-uuid")
+	// @GenericGenerator(name = "system-uuid", strategy = "uuid")
 	/**
- * Gets the uuid.
- * 
- * @return the uuid
- */
-public UUID getUuid() {
-		return uuid;
+	 * Gets the uuid.
+	 * 
+	 * @return the uuid
+	 */
+	public UUID getUuid() {
+		return this.uuid;
 	}
-
 
 	/**
 	 * Sets the uuid.
@@ -64,10 +60,9 @@ public UUID getUuid() {
 	 * @param uuid
 	 *            the new uuid
 	 */
-	public void setUuid(UUID uuid) {
+	public void setUuid(final UUID uuid) {
 		this.uuid = uuid;
 	}
-
 
 	/**
 	 * Update all attributes by the given value object.
@@ -75,7 +70,7 @@ public UUID getUuid() {
 	 * @param userMetadata
 	 *            the user metadata
 	 */
-	public void update(UserMetadata userMetadata) {
+	public void update(final UserMetadata userMetadata) {
 		this.setFullName(userMetadata.getFullName());
 		this.setGender(userMetadata.getGender());
 	}

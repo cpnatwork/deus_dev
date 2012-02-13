@@ -19,7 +19,6 @@
  *************************************************************************/
 package deus.core.access.storage.api.archive.sub.model;
 
-
 // FIXME: REMOVE
 //@Entity
 /**

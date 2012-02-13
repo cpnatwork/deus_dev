@@ -33,7 +33,7 @@ import java.io.Serializable;
  *            the generic type
  * @author cpn
  */
-public interface TechDao<TechEntityT, TechIdT extends Serializable>{
+public interface TechDao<TechEntityT, TechIdT extends Serializable> {
 
 	/**
 	 * CREATE of CRUD.
@@ -42,7 +42,6 @@ public interface TechDao<TechEntityT, TechIdT extends Serializable>{
 	 *            the entity po
 	 */
 	void addNewEntity(TechEntityT entityPO);
-
 
 	/**
 	 * READ of CRUD.
@@ -53,7 +52,6 @@ public interface TechDao<TechEntityT, TechIdT extends Serializable>{
 	 */
 	TechEntityT getByTechId(TechIdT techId);
 
-
 	/**
 	 * UPDATE of CRUD.
 	 * 
@@ -61,7 +59,6 @@ public interface TechDao<TechEntityT, TechIdT extends Serializable>{
 	 *            the entity po
 	 */
 	void updateEntity(TechEntityT entityPO);
-
 
 	/**
 	 * DELETE of CRUD.

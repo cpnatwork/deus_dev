@@ -43,7 +43,6 @@ public interface Dao<EntityT, NaturalIdT extends Serializable> {
 	 */
 	void addNewEntity(EntityT entity);
 
-
 	/**
 	 * READ of CRUD.
 	 * 
@@ -53,7 +52,6 @@ public interface Dao<EntityT, NaturalIdT extends Serializable> {
 	 */
 	EntityT getByNaturalId(NaturalIdT naturalId);
 
-
 	/**
 	 * UPDATE of CRUD.
 	 * 
@@ -61,7 +59,6 @@ public interface Dao<EntityT, NaturalIdT extends Serializable> {
 	 *            the entity
 	 */
 	void updateEntity(EntityT entity);
-
 
 	/**
 	 * DELETE of CRUD.

@@ -35,14 +35,16 @@ import java.util.HashMap;
  *            the generic type
  * @author cpn
  */
-public class GenericThreefoldIdDaoImpl<EntityT, NaturalIdFirstComponentT extends Serializable, NaturalIdSecondComponentT extends Serializable, NaturalIdThirdComponentT extends Serializable> implements GenericThreefoldIdDao<EntityT, NaturalIdFirstComponentT, NaturalIdSecondComponentT, NaturalIdThirdComponentT>{
+public class GenericThreefoldIdDaoImpl<EntityT, NaturalIdFirstComponentT extends Serializable, NaturalIdSecondComponentT extends Serializable, NaturalIdThirdComponentT extends Serializable>
+		implements
+		GenericThreefoldIdDao<EntityT, NaturalIdFirstComponentT, NaturalIdSecondComponentT, NaturalIdThirdComponentT> {
 
 	/**
 	 * The Class ThreefoldNaturalId.
 	 */
 	@SuppressWarnings("serial")
 	private class ThreefoldNaturalId implements Serializable {
-		
+
 		/**
 		 * Instantiates a new threefold natural id.
 		 * 
@@ -54,80 +56,83 @@ public class GenericThreefoldIdDaoImpl<EntityT, NaturalIdFirstComponentT extends
 		 *            the natural id third component
 		 */
 		public ThreefoldNaturalId(
-				NaturalIdFirstComponentT naturalIdFirstComponent,
-				NaturalIdSecondComponentT naturalIdSecondComponent,
-				NaturalIdThirdComponentT naturalIdThirdComponent) {
+				final NaturalIdFirstComponentT naturalIdFirstComponent,
+				final NaturalIdSecondComponentT naturalIdSecondComponent,
+				final NaturalIdThirdComponentT naturalIdThirdComponent) {
 			super();
 			this.naturalIdFirstComponent = naturalIdFirstComponent;
 			this.naturalIdSecondComponent = naturalIdSecondComponent;
 			this.naturalIdThirdComponent = naturalIdThirdComponent;
 		}
-		
+
 		/** The natural id first component. */
 		NaturalIdFirstComponentT naturalIdFirstComponent = null;
-		
+
 		/** The natural id second component. */
 		NaturalIdSecondComponentT naturalIdSecondComponent = null;
-		
+
 		/** The natural id third component. */
 		NaturalIdThirdComponentT naturalIdThirdComponent = null;
-		/* (non-Javadoc)
+
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see java.lang.Object#hashCode()
 		 */
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + getOuterType().hashCode();
-			result = prime
-					* result
-					+ ((naturalIdFirstComponent == null) ? 0
-							: naturalIdFirstComponent.hashCode());
-			result = prime
-					* result
-					+ ((naturalIdSecondComponent == null) ? 0
-							: naturalIdSecondComponent.hashCode());
-			result = prime
-					* result
-					+ ((naturalIdThirdComponent == null) ? 0
-							: naturalIdThirdComponent.hashCode());
+			result = (prime * result) + this.getOuterType().hashCode();
+			result = (prime * result)
+					+ ((this.naturalIdFirstComponent == null) ? 0
+							: this.naturalIdFirstComponent.hashCode());
+			result = (prime * result)
+					+ ((this.naturalIdSecondComponent == null) ? 0
+							: this.naturalIdSecondComponent.hashCode());
+			result = (prime * result)
+					+ ((this.naturalIdThirdComponent == null) ? 0
+							: this.naturalIdThirdComponent.hashCode());
 			return result;
 		}
-		/* (non-Javadoc)
+
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see java.lang.Object#equals(java.lang.Object)
 		 */
 		@Override
-		public boolean equals(Object obj) {
+		public boolean equals(final Object obj) {
 			if (this == obj)
 				return true;
 			if (obj == null)
 				return false;
-			if (getClass() != obj.getClass())
+			if (this.getClass() != obj.getClass())
 				return false;
-			ThreefoldNaturalId other = (ThreefoldNaturalId) obj;
-			if (!getOuterType().equals(other.getOuterType()))
+			final ThreefoldNaturalId other = (ThreefoldNaturalId) obj;
+			if (!this.getOuterType().equals(other.getOuterType()))
 				return false;
-			if (naturalIdFirstComponent == null) {
+			if (this.naturalIdFirstComponent == null) {
 				if (other.naturalIdFirstComponent != null)
 					return false;
-			} else if (!naturalIdFirstComponent
+			} else if (!this.naturalIdFirstComponent
 					.equals(other.naturalIdFirstComponent))
 				return false;
-			if (naturalIdSecondComponent == null) {
+			if (this.naturalIdSecondComponent == null) {
 				if (other.naturalIdSecondComponent != null)
 					return false;
-			} else if (!naturalIdSecondComponent
+			} else if (!this.naturalIdSecondComponent
 					.equals(other.naturalIdSecondComponent))
 				return false;
-			if (naturalIdThirdComponent == null) {
+			if (this.naturalIdThirdComponent == null) {
 				if (other.naturalIdThirdComponent != null)
 					return false;
-			} else if (!naturalIdThirdComponent
+			} else if (!this.naturalIdThirdComponent
 					.equals(other.naturalIdThirdComponent))
 				return false;
 			return true;
 		}
-		
+
 		/**
 		 * Gets the outer type.
 		 * 
@@ -138,63 +143,112 @@ public class GenericThreefoldIdDaoImpl<EntityT, NaturalIdFirstComponentT extends
 			return GenericThreefoldIdDaoImpl.this;
 		}
 	}
-	
+
 	/** The storage. */
 	protected HashMap<ThreefoldNaturalId, EntityT> storage = new HashMap<ThreefoldNaturalId, EntityT>();
-	
+
 	/**
 	 * Gets the storage.
 	 * 
 	 * @return the storage
 	 */
 	protected HashMap<ThreefoldNaturalId, EntityT> getStorage() {
-		return storage;
+		return this.storage;
 	}
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.inmemory.GenericThreefoldIdDao#addNewEntity(java.io.Serializable, java.io.Serializable, java.io.Serializable, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.inmemory.GenericThreefoldIdDao#addNewEntity(
+	 * java.io.Serializable, java.io.Serializable, java.io.Serializable,
+	 * java.lang.Object)
 	 */
 	@Override
-	public void addNewEntity(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent, NaturalIdThirdComponentT naturalIdThirdComponent, EntityT entity) {
-		ThreefoldNaturalId threefoldNaturalId = new ThreefoldNaturalId(naturalIdFirstComponent,naturalIdSecondComponent, naturalIdThirdComponent);
-		getStorage().put(threefoldNaturalId, entity);
+	public void addNewEntity(
+			final NaturalIdFirstComponentT naturalIdFirstComponent,
+			final NaturalIdSecondComponentT naturalIdSecondComponent,
+			final NaturalIdThirdComponentT naturalIdThirdComponent,
+			final EntityT entity) {
+		final ThreefoldNaturalId threefoldNaturalId = new ThreefoldNaturalId(
+				naturalIdFirstComponent, naturalIdSecondComponent,
+				naturalIdThirdComponent);
+		this.getStorage().put(threefoldNaturalId, entity);
 	}
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.inmemory.GenericThreefoldIdDao#getByNaturalId(java.io.Serializable, java.io.Serializable, java.io.Serializable)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.inmemory.GenericThreefoldIdDao#getByNaturalId
+	 * (java.io.Serializable, java.io.Serializable, java.io.Serializable)
 	 */
 	@Override
-	public EntityT getByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent, NaturalIdThirdComponentT naturalIdThirdComponent) {
-		ThreefoldNaturalId threefoldNaturalId = new ThreefoldNaturalId(naturalIdFirstComponent,naturalIdSecondComponent, naturalIdThirdComponent);
-		return getStorage().get(threefoldNaturalId);
+	public EntityT getByNaturalId(
+			final NaturalIdFirstComponentT naturalIdFirstComponent,
+			final NaturalIdSecondComponentT naturalIdSecondComponent,
+			final NaturalIdThirdComponentT naturalIdThirdComponent) {
+		final ThreefoldNaturalId threefoldNaturalId = new ThreefoldNaturalId(
+				naturalIdFirstComponent, naturalIdSecondComponent,
+				naturalIdThirdComponent);
+		return this.getStorage().get(threefoldNaturalId);
 	}
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.inmemory.GenericThreefoldIdDao#updateEntity(java.io.Serializable, java.io.Serializable, java.io.Serializable, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.inmemory.GenericThreefoldIdDao#updateEntity(
+	 * java.io.Serializable, java.io.Serializable, java.io.Serializable,
+	 * java.lang.Object)
 	 */
 	@Override
-	public void updateEntity(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent, NaturalIdThirdComponentT naturalIdThirdComponent, EntityT entity) {
-		ThreefoldNaturalId threefoldNaturalId = new ThreefoldNaturalId(naturalIdFirstComponent,naturalIdSecondComponent, naturalIdThirdComponent);
-		getStorage().put(threefoldNaturalId, entity);
-	}
-	
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.inmemory.GenericThreefoldIdDao#deleteByNaturalId(java.io.Serializable, java.io.Serializable, java.io.Serializable)
-	 */
-	@Override
-	public void deleteByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent, NaturalIdThirdComponentT naturalIdThirdComponent) {
-		ThreefoldNaturalId threefoldNaturalId = new ThreefoldNaturalId(naturalIdFirstComponent,naturalIdSecondComponent, naturalIdThirdComponent);
-		assert(getStorage().containsKey(threefoldNaturalId));
-		getStorage().remove(threefoldNaturalId);		
+	public void updateEntity(
+			final NaturalIdFirstComponentT naturalIdFirstComponent,
+			final NaturalIdSecondComponentT naturalIdSecondComponent,
+			final NaturalIdThirdComponentT naturalIdThirdComponent,
+			final EntityT entity) {
+		final ThreefoldNaturalId threefoldNaturalId = new ThreefoldNaturalId(
+				naturalIdFirstComponent, naturalIdSecondComponent,
+				naturalIdThirdComponent);
+		this.getStorage().put(threefoldNaturalId, entity);
 	}
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.inmemory.GenericThreefoldIdDao#existsByNaturalId(java.io.Serializable, java.io.Serializable, java.io.Serializable)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.inmemory.GenericThreefoldIdDao#deleteByNaturalId
+	 * (java.io.Serializable, java.io.Serializable, java.io.Serializable)
 	 */
 	@Override
-	public boolean existsByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent, NaturalIdThirdComponentT naturalIdThirdComponent) {
-		ThreefoldNaturalId threefoldNaturalId = new ThreefoldNaturalId(naturalIdFirstComponent,naturalIdSecondComponent, naturalIdThirdComponent);
-		return getStorage().containsKey(threefoldNaturalId);
+	public void deleteByNaturalId(
+			final NaturalIdFirstComponentT naturalIdFirstComponent,
+			final NaturalIdSecondComponentT naturalIdSecondComponent,
+			final NaturalIdThirdComponentT naturalIdThirdComponent) {
+		final ThreefoldNaturalId threefoldNaturalId = new ThreefoldNaturalId(
+				naturalIdFirstComponent, naturalIdSecondComponent,
+				naturalIdThirdComponent);
+		assert (this.getStorage().containsKey(threefoldNaturalId));
+		this.getStorage().remove(threefoldNaturalId);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.inmemory.GenericThreefoldIdDao#existsByNaturalId
+	 * (java.io.Serializable, java.io.Serializable, java.io.Serializable)
+	 */
+	@Override
+	public boolean existsByNaturalId(
+			final NaturalIdFirstComponentT naturalIdFirstComponent,
+			final NaturalIdSecondComponentT naturalIdSecondComponent,
+			final NaturalIdThirdComponentT naturalIdThirdComponent) {
+		final ThreefoldNaturalId threefoldNaturalId = new ThreefoldNaturalId(
+				naturalIdFirstComponent, naturalIdSecondComponent,
+				naturalIdThirdComponent);
+		return this.getStorage().containsKey(threefoldNaturalId);
 	}
 
 }

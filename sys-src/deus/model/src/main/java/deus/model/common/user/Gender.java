@@ -23,10 +23,10 @@ package deus.model.common.user;
  * The Enum Gender.
  */
 public enum Gender {
-	
+
 	/** The male. */
 	male, /** The female. */
- female, /** The unknown. */
- unknown;
+	female, /** The unknown. */
+	unknown;
 
 }

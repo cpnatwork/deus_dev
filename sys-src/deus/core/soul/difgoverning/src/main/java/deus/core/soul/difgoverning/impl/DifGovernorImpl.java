@@ -44,50 +44,69 @@ public class DifGovernorImpl implements DifGovernor {
 	@Inject
 	private PatchStrategy patchStrategy;
 
-
 	/** The fif dao. */
 	@Inject
 	private FifDao fifDao;
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.difgoverning.DifGovernorExportedToSubsystems#applyPatch(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId, deus.model.common.dossier.Patch)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.difgoverning.DifGovernorExportedToSubsystems#applyPatch
+	 * (deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.dossier.Patch)
 	 */
 	@Override
-	public void applyPatch(SubscriberId subscriberId, PublisherId publisherId, Patch patch) {
-		ForeignInformationFile foreignInformationFile = fifDao.getByNaturalId(subscriberId, publisherId);
+	public void applyPatch(final SubscriberId subscriberId,
+			final PublisherId publisherId, final Patch patch) {
+		final ForeignInformationFile foreignInformationFile = this.fifDao
+				.getByNaturalId(subscriberId, publisherId);
 
-		patchStrategy.patch(foreignInformationFile, patch);
+		this.patchStrategy.patch(foreignInformationFile, patch);
 
-		fifDao.updateEntity(subscriberId, publisherId, foreignInformationFile);
+		this.fifDao.updateEntity(subscriberId, publisherId,
+				foreignInformationFile);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.difgoverning.DifGovernorExportedToClient#getPublishersInDif(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.difgoverning.DifGovernorExportedToClient#getPublishersInDif
+	 * (deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public List<UserId> getPublishersInDif(UserId subscriberId) {
+	public List<UserId> getPublishersInDif(final UserId subscriberId) {
 		// FIXME: implement
 		return null;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.difgoverning.DifGovernorExportedToClient#getDigitalCardIdsInFif(deus.model.common.user.id.UserId, deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.soul.difgoverning.DifGovernorExportedToClient#
+	 * getDigitalCardIdsInFif(deus.model.common.user.id.UserId,
+	 * deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public List<DigitalCardId> getDigitalCardIdsInFif(UserId subscriberId, UserId publisherId) {
+	public List<DigitalCardId> getDigitalCardIdsInFif(
+			final UserId subscriberId, final UserId publisherId) {
 		// FIXME: implement
 		return null;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.difgoverning.DifGovernorExportedToClient#getDigitalCardInFif(deus.model.common.user.id.UserId, deus.model.common.dossier.DigitalCardId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.difgoverning.DifGovernorExportedToClient#getDigitalCardInFif
+	 * (deus.model.common.user.id.UserId,
+	 * deus.model.common.dossier.DigitalCardId)
 	 */
 	@Override
-	public DigitalCard getDigitalCardInFif(UserId subscriberId, DigitalCardId digitalCardId) {
+	public DigitalCard getDigitalCardInFif(final UserId subscriberId,
+			final DigitalCardId digitalCardId) {
 		// FIXME: implement
 		return null;
 	}

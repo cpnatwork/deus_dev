@@ -22,11 +22,10 @@ package deus.core.soul.accountadmin.registrator.impl;
 import deus.core.soul.accountadmin.registrator.RegistratorExportedToClient;
 import deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems;
 
-
-
 /**
  * The Interface Registrator.
  */
-public interface Registrator extends RegistratorExportedToSubsystems, RegistratorExportedToClient {
+public interface Registrator extends RegistratorExportedToSubsystems,
+		RegistratorExportedToClient {
 
 }

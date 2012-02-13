@@ -28,8 +28,9 @@ import deus.model.common.user.id.UserId;
 import deus.model.pifgoverning.PersonalInformationFile;
 
 /**
- * The view of a personal information file (PIF), that resides on the informationConsumer side. This file is sent by the
- * publisher to its subscribers.
+ * The view of a personal information file (PIF), that resides on the
+ * informationConsumer side. This file is sent by the publisher to its
+ * subscribers.
  * 
  * Abbreviation: FIF
  * 
@@ -45,7 +46,6 @@ public class ForeignInformationFile extends InformationFile {
 	/** The publisher metadata. */
 	private final UserMetadata publisherMetadata;
 
-
 	/**
 	 * Instantiates a new foreign information file.
 	 * 
@@ -56,12 +56,13 @@ public class ForeignInformationFile extends InformationFile {
 	 * @param digitalCards
 	 *            the digital cards
 	 */
-	public ForeignInformationFile(UserId publisherId, UserMetadata publisherMetadata, Set<DigitalCard> digitalCards) {
+	public ForeignInformationFile(final UserId publisherId,
+			final UserMetadata publisherMetadata,
+			final Set<DigitalCard> digitalCards) {
 		super(digitalCards);
 		this.publisherId = publisherId;
 		this.publisherMetadata = publisherMetadata;
 	}
-
 
 	/**
 	 * Gets the publisher id.
@@ -69,9 +70,8 @@ public class ForeignInformationFile extends InformationFile {
 	 * @return the publisher id
 	 */
 	public UserId getPublisherId() {
-		return publisherId;
+		return this.publisherId;
 	}
-
 
 	/**
 	 * Gets the publisher metadata.
@@ -79,7 +79,7 @@ public class ForeignInformationFile extends InformationFile {
 	 * @return the publisher metadata
 	 */
 	public UserMetadata getPublisherMetadata() {
-		return publisherMetadata;
+		return this.publisherMetadata;
 	}
 
 }

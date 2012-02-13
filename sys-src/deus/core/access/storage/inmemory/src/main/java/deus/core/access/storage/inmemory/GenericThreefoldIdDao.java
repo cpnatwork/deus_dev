@@ -48,7 +48,9 @@ public interface GenericThreefoldIdDao<EntityT, NaturalIdFirstComponentT extends
 	 * @param entity
 	 *            the entity
 	 */
-	void addNewEntity(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent, NaturalIdThirdComponentT naturalIdThirdComponent, EntityT entity);
+	void addNewEntity(NaturalIdFirstComponentT naturalIdFirstComponent,
+			NaturalIdSecondComponentT naturalIdSecondComponent,
+			NaturalIdThirdComponentT naturalIdThirdComponent, EntityT entity);
 
 	/**
 	 * READ of CRUD.
@@ -61,7 +63,9 @@ public interface GenericThreefoldIdDao<EntityT, NaturalIdFirstComponentT extends
 	 *            the natural id third component
 	 * @return the by natural id
 	 */
-	EntityT getByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent, NaturalIdThirdComponentT naturalIdThirdComponent);
+	EntityT getByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent,
+			NaturalIdSecondComponentT naturalIdSecondComponent,
+			NaturalIdThirdComponentT naturalIdThirdComponent);
 
 	/**
 	 * UPDATE of CRUD.
@@ -75,7 +79,9 @@ public interface GenericThreefoldIdDao<EntityT, NaturalIdFirstComponentT extends
 	 * @param entity
 	 *            the entity
 	 */
-	void updateEntity(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent, NaturalIdThirdComponentT naturalIdThirdComponent, EntityT entity);
+	void updateEntity(NaturalIdFirstComponentT naturalIdFirstComponent,
+			NaturalIdSecondComponentT naturalIdSecondComponent,
+			NaturalIdThirdComponentT naturalIdThirdComponent, EntityT entity);
 
 	/**
 	 * DELETE of CRUD.
@@ -87,9 +93,10 @@ public interface GenericThreefoldIdDao<EntityT, NaturalIdFirstComponentT extends
 	 * @param naturalIdThirdComponent
 	 *            the natural id third component
 	 */
-	void deleteByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent, NaturalIdThirdComponentT naturalIdThirdComponent);
+	void deleteByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent,
+			NaturalIdSecondComponentT naturalIdSecondComponent,
+			NaturalIdThirdComponentT naturalIdThirdComponent);
 
-	
 	/**
 	 * Existency Test.
 	 * 
@@ -101,5 +108,7 @@ public interface GenericThreefoldIdDao<EntityT, NaturalIdFirstComponentT extends
 	 *            the natural id third component
 	 * @return true, if successful
 	 */
-	boolean existsByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent, NaturalIdThirdComponentT naturalIdThirdComponent);
+	boolean existsByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent,
+			NaturalIdSecondComponentT naturalIdSecondComponent,
+			NaturalIdThirdComponentT naturalIdThirdComponent);
 }

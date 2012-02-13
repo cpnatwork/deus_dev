@@ -26,4 +26,9 @@ import deus.model.hci.attention.Notice;
  */
 public abstract class ConnectionNotice extends Notice {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6383605397957257854L;
+
 }

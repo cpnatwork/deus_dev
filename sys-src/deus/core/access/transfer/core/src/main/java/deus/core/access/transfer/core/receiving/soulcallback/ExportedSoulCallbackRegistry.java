@@ -50,6 +50,7 @@ public interface ExportedSoulCallbackRegistry {
 	 * @param repatriationHub
 	 *            the repatriation hub
 	 */
-	public void registerRepatriationHub(RepatriationHubExportedToPeers repatriationHub);
+	public void registerRepatriationHub(
+			RepatriationHubExportedToPeers repatriationHub);
 
 }

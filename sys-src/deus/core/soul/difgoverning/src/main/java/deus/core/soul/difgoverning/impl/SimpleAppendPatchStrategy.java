@@ -26,24 +26,31 @@ import deus.model.common.dossier.Patch;
 import deus.model.difgoverning.ForeignInformationFile;
 
 /**
- * This strategy only handles patches of type <code>AppendDigitalCardPatch</code>.
+ * This strategy only handles patches of type
+ * <code>AppendDigitalCardPatch</code>.
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
- *
+ * 
  */
 // TODO: configure this in spring xml
 @Named
 public class SimpleAppendPatchStrategy implements PatchStrategy {
 
-	/* (non-Javadoc)
-	 * @see deus.core.soul.difgoverning.impl.PatchStrategy#patch(deus.model.difgoverning.ForeignInformationFile, deus.model.common.dossier.Patch)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.difgoverning.impl.PatchStrategy#patch(deus.model.difgoverning
+	 * .ForeignInformationFile, deus.model.common.dossier.Patch)
 	 */
 	@Override
-	public void patch(ForeignInformationFile fif, Patch patch) {
-		if(!(patch instanceof AppendDigitalCardPatch))
-			throw new RuntimeException("this patch strategy can only handle patches of type AppendDigitalCardPatch");
-		
-		fif.getDigitalCards().add(((AppendDigitalCardPatch)patch).getDigitalCardToAppend());
+	public void patch(final ForeignInformationFile fif, final Patch patch) {
+		if (!(patch instanceof AppendDigitalCardPatch))
+			throw new RuntimeException(
+					"this patch strategy can only handle patches of type AppendDigitalCardPatch");
+
+		fif.getDigitalCards().add(
+				((AppendDigitalCardPatch) patch).getDigitalCardToAppend());
 	}
 
 }

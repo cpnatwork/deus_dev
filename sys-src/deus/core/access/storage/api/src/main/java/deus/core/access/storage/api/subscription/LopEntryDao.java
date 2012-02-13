@@ -39,7 +39,6 @@ public interface LopEntryDao {
 	 */
 	LopEntry getByNaturalId(SubscriberId subscriberId, PublisherId publisherId);
 
-
 	/**
 	 * Update entity.
 	 * 
@@ -49,7 +48,6 @@ public interface LopEntryDao {
 	 *            the entry
 	 */
 	void updateEntity(SubscriberId subscriberId, LopEntry entry);
-
 
 	/**
 	 * Delete by natural id.
@@ -61,7 +59,6 @@ public interface LopEntryDao {
 	 */
 	void deleteByNaturalId(SubscriberId subscriberId, PublisherId publisherId);
 
-
 	/**
 	 * Exists by natural id.
 	 * 
@@ -72,7 +69,6 @@ public interface LopEntryDao {
 	 * @return true, if successful
 	 */
 	boolean existsByNaturalId(SubscriberId subscriberId, PublisherId publisherId);
-
 
 	/**
 	 * Adds the new entity.

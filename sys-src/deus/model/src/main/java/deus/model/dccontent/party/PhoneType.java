@@ -26,9 +26,9 @@ public enum PhoneType {
 
 	/** The landline. */
 	landline, /** The cell. */
- cell, /** The sip. */
- sip, /** The fax. */
- fax, /** The pager. */
- pager;
-	
+	cell, /** The sip. */
+	sip, /** The fax. */
+	fax, /** The pager. */
+	pager;
+
 }

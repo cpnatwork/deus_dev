@@ -24,7 +24,6 @@ import deus.core.access.transfer.common.protocol.callback.RegistrationEventCallb
 import deus.core.access.transfer.common.protocol.mapper.UserIdMapper;
 import deus.core.access.transfer.common.protocol.messagesender.MessageSender;
 
-
 /**
  * The Interface TransferProtocol.
  */
@@ -37,8 +36,6 @@ public interface TransferProtocol {
 	 */
 	public abstract MessageSender getMessageSender();
 
-
-	
 	/**
 	 * Gets the login event callback.
 	 * 
@@ -53,8 +50,6 @@ public interface TransferProtocol {
 	 */
 	public abstract RegistrationEventCallback getRegistrationEventCallback();
 
-	
-
 	/**
 	 * Gets the user id mapper.
 	 * 
@@ -62,8 +57,6 @@ public interface TransferProtocol {
 	 */
 	public abstract UserIdMapper getUserIdMapper();
 
-
-	
 	/**
 	 * Gets the protocol id.
 	 * 

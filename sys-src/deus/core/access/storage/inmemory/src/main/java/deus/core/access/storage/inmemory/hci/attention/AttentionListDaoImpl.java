@@ -30,22 +30,30 @@ import deus.model.hci.attention.AttentionList;
  * The Class AttentionListDaoImpl.
  */
 @Named("attentionListDao")
-public class AttentionListDaoImpl extends GenericVanillaDaoImpl<AttentionList, UserId> implements AttentionListDao {
+public class AttentionListDaoImpl extends
+		GenericVanillaDaoImpl<AttentionList, UserId> implements
+		AttentionListDao {
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.api.hci.attention.AttentionListDao#getNoticedAttentionList(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.storage.api.hci.attention.AttentionListDao#
+	 * getNoticedAttentionList(deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public AttentionList getNoticedAttentionList(UserId userId) {
+	public AttentionList getNoticedAttentionList(final UserId userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.api.hci.attention.AttentionListDao#getUnnoticedAttentionList(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.storage.api.hci.attention.AttentionListDao#
+	 * getUnnoticedAttentionList(deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public AttentionList getUnnoticedAttentionList(UserId userId) {
+	public AttentionList getUnnoticedAttentionList(final UserId userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

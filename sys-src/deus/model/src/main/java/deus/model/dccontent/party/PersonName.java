@@ -28,35 +28,33 @@ public class PersonName {
 
 	/** The first. */
 	private String first;
-	
+
 	/** The last. */
 	private String last;
-	
+
 	/** The additional. */
 	private List<String> additional;
 
 	/** The prefixes. */
 	private List<String> prefixes;
-	
+
 	/** The suffixes. */
 	private List<String> suffixes;
 
 	/** The maiden. */
 	private String maiden;
-	
+
 	/** The nick. */
 	private String nick;
-	
-	
+
 	/**
 	 * Gets the first.
 	 * 
 	 * @return the first
 	 */
 	public String getFirst() {
-		return first;
+		return this.first;
 	}
-
 
 	/**
 	 * Sets the first.
@@ -64,10 +62,9 @@ public class PersonName {
 	 * @param first
 	 *            the new first
 	 */
-	public void setFirst(String first) {
+	public void setFirst(final String first) {
 		this.first = first;
 	}
-
 
 	/**
 	 * Gets the last.
@@ -75,9 +72,8 @@ public class PersonName {
 	 * @return the last
 	 */
 	public String getLast() {
-		return last;
+		return this.last;
 	}
-
 
 	/**
 	 * Sets the last.
@@ -85,10 +81,9 @@ public class PersonName {
 	 * @param last
 	 *            the new last
 	 */
-	public void setLast(String last) {
+	public void setLast(final String last) {
 		this.last = last;
 	}
-
 
 	/**
 	 * Gets the additional.
@@ -96,9 +91,8 @@ public class PersonName {
 	 * @return the additional
 	 */
 	public List<String> getAdditional() {
-		return additional;
+		return this.additional;
 	}
-
 
 	/**
 	 * Sets the additional.
@@ -106,10 +100,9 @@ public class PersonName {
 	 * @param additional
 	 *            the new additional
 	 */
-	public void setAdditional(List<String> additional) {
+	public void setAdditional(final List<String> additional) {
 		this.additional = additional;
 	}
-
 
 	/**
 	 * Gets the prefixes.
@@ -117,9 +110,8 @@ public class PersonName {
 	 * @return the prefixes
 	 */
 	public List<String> getPrefixes() {
-		return prefixes;
+		return this.prefixes;
 	}
-
 
 	/**
 	 * Sets the prefixes.
@@ -127,10 +119,9 @@ public class PersonName {
 	 * @param prefixes
 	 *            the new prefixes
 	 */
-	public void setPrefixes(List<String> prefixes) {
+	public void setPrefixes(final List<String> prefixes) {
 		this.prefixes = prefixes;
 	}
-
 
 	/**
 	 * Gets the suffixes.
@@ -138,9 +129,8 @@ public class PersonName {
 	 * @return the suffixes
 	 */
 	public List<String> getSuffixes() {
-		return suffixes;
+		return this.suffixes;
 	}
-
 
 	/**
 	 * Sets the suffixes.
@@ -148,10 +138,9 @@ public class PersonName {
 	 * @param suffixes
 	 *            the new suffixes
 	 */
-	public void setSuffixes(List<String> suffixes) {
+	public void setSuffixes(final List<String> suffixes) {
 		this.suffixes = suffixes;
 	}
-
 
 	/**
 	 * Gets the maiden.
@@ -159,9 +148,8 @@ public class PersonName {
 	 * @return the maiden
 	 */
 	public String getMaiden() {
-		return maiden;
+		return this.maiden;
 	}
-
 
 	/**
 	 * Sets the maiden.
@@ -169,10 +157,9 @@ public class PersonName {
 	 * @param maiden
 	 *            the new maiden
 	 */
-	public void setMaiden(String maiden) {
+	public void setMaiden(final String maiden) {
 		this.maiden = maiden;
 	}
-
 
 	/**
 	 * Gets the nick.
@@ -180,9 +167,8 @@ public class PersonName {
 	 * @return the nick
 	 */
 	public String getNick() {
-		return nick;
+		return this.nick;
 	}
-
 
 	/**
 	 * Sets the nick.
@@ -190,7 +176,7 @@ public class PersonName {
 	 * @param nick
 	 *            the new nick
 	 */
-	public void setNick(String nick) {
+	public void setNick(final String nick) {
 		this.nick = nick;
 	}
 

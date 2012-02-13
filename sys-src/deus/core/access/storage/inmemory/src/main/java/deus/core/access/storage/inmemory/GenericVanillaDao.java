@@ -72,7 +72,6 @@ public interface GenericVanillaDao<EntityT, NaturalIdT extends Serializable> {
 	 */
 	void deleteByNaturalId(NaturalIdT naturalId);
 
-	
 	/**
 	 * Existency Test.
 	 * 

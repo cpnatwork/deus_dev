@@ -27,16 +27,14 @@ public class PobAddress extends Address {
 	/** The pob. */
 	private String pob;
 
-	
 	/**
 	 * Gets the pob.
 	 * 
 	 * @return the pob
 	 */
 	public String getPob() {
-		return pob;
+		return this.pob;
 	}
-
 
 	/**
 	 * Sets the pob.
@@ -44,7 +42,7 @@ public class PobAddress extends Address {
 	 * @param pob
 	 *            the new pob
 	 */
-	public void setPob(String pob) {
+	public void setPob(final String pob) {
 		this.pob = pob;
 	}
 

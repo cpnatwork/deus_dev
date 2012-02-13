@@ -29,18 +29,16 @@ public class TestTransferId implements TransferId {
 	/** The username. */
 	private final String username;
 
-
 	/**
 	 * Instantiates a new test transfer id.
 	 * 
 	 * @param username
 	 *            the username
 	 */
-	public TestTransferId(String username) {
+	public TestTransferId(final String username) {
 		super();
 		this.username = username;
 	}
-
 
 	/**
 	 * Gets the username.
@@ -48,60 +46,65 @@ public class TestTransferId implements TransferId {
 	 * @return the username
 	 */
 	public String getUsername() {
-		return username;
+		return this.username;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return getUsername();
+		return this.getUsername();
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		result = (prime * result)
+				+ ((this.username == null) ? 0 : this.username.hashCode());
 		return result;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (this.getClass() != obj.getClass())
 			return false;
-		TestTransferId other = (TestTransferId) obj;
-		if (username == null) {
+		final TestTransferId other = (TestTransferId) obj;
+		if (this.username == null) {
 			if (other.username != null)
 				return false;
-		}
-		else if (!username.equals(other.username))
+		} else if (!this.username.equals(other.username))
 			return false;
 		return true;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocol.TransferId#getTransferProtocolId()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.common.protocol.TransferId#getTransferProtocolId
+	 * ()
 	 */
 	@Override
 	public String getTransferProtocolId() {
 		return "testProtocol";
 	}
-
 
 }

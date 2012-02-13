@@ -29,31 +29,29 @@ import deus.model.common.user.id.UserId;
  */
 @SuppressWarnings("serial")
 // FIXME: REMOVE HIBERNATE STUFF FROM THIS CLASS
-//@Entity
+// @Entity
 public class UserPO implements Serializable {
 
 	/** The uuid. */
 	private UUID uuid;
-	
+
 	/** The user id. */
 	private UserId userId = null;
-	
+
 	/** The user metadata po. */
 	private UserMetadataPO userMetadataPO = null;
 
-
-//	@Id
-//	@GeneratedValue(generator = "system-uuid")
-//	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	// @Id
+	// @GeneratedValue(generator = "system-uuid")
+	// @GenericGenerator(name = "system-uuid", strategy = "uuid")
 	/**
- * Gets the uuid.
- * 
- * @return the uuid
- */
-public UUID getUuid() {
-		return uuid;
+	 * Gets the uuid.
+	 * 
+	 * @return the uuid
+	 */
+	public UUID getUuid() {
+		return this.uuid;
 	}
-
 
 	/**
 	 * Sets the uuid.
@@ -61,33 +59,30 @@ public UUID getUuid() {
 	 * @param uuid
 	 *            the new uuid
 	 */
-	public void setUuid(UUID uuid) {
+	public void setUuid(final UUID uuid) {
 		this.uuid = uuid;
 	}
 
-
-//	@NaturalId
+	// @NaturalId
 	/**
- * Gets the id.
- * 
- * @return the id
- */
-public String getId() {
-		return userId.getId();
+	 * Gets the id.
+	 * 
+	 * @return the id
+	 */
+	public String getId() {
+		return this.userId.getId();
 	}
 
-
-//	@OneToOne
-//	@PrimaryKeyJoinColumn
+	// @OneToOne
+	// @PrimaryKeyJoinColumn
 	/**
- * Gets the user id.
- * 
- * @return the user id
- */
-public UserId getUserId() {
-		return userId;
+	 * Gets the user id.
+	 * 
+	 * @return the user id
+	 */
+	public UserId getUserId() {
+		return this.userId;
 	}
-
 
 	/**
 	 * Sets the user id.
@@ -95,22 +90,20 @@ public UserId getUserId() {
 	 * @param userId
 	 *            the new user id
 	 */
-	public void setUserId(UserId userId) {
+	public void setUserId(final UserId userId) {
 		this.userId = userId;
 	}
 
-
-//	@OneToOne
-//	@PrimaryKeyJoinColumn
+	// @OneToOne
+	// @PrimaryKeyJoinColumn
 	/**
- * Gets the user metadata po.
- * 
- * @return the user metadata po
- */
-public UserMetadataPO getUserMetadataPO() {
-		return userMetadataPO;
+	 * Gets the user metadata po.
+	 * 
+	 * @return the user metadata po
+	 */
+	public UserMetadataPO getUserMetadataPO() {
+		return this.userMetadataPO;
 	}
-
 
 	/**
 	 * Sets the user metadata po.
@@ -118,7 +111,7 @@ public UserMetadataPO getUserMetadataPO() {
 	 * @param userMetadata
 	 *            the new user metadata po
 	 */
-	public void setUserMetadataPO(UserMetadataPO userMetadata) {
+	public void setUserMetadataPO(final UserMetadataPO userMetadata) {
 		this.userMetadataPO = userMetadata;
 	}
 

@@ -51,16 +51,14 @@ public class RegistratorImpl implements Registrator {
 	/** The user metadata dao. */
 	@Inject
 	private UserMetadataDao userMetadataDao;
-	
+
 	/** The distribution role setup. */
 	@Inject
 	private DistributionRoleSetup distributionRoleSetup;
 
-
 	/** The user id generator. */
 	@Inject
 	private UserIdGenerator userIdGenerator;
-
 
 	/**
 	 * Instantiates a new registrator impl.
@@ -68,7 +66,6 @@ public class RegistratorImpl implements Registrator {
 	public RegistratorImpl() {
 		this.observers = new Vector<UserRegistrationStateObserver>();
 	}
-
 
 	/**
 	 * Notify observers.
@@ -78,53 +75,64 @@ public class RegistratorImpl implements Registrator {
 	 * @param registered
 	 *            the registered
 	 */
-	private void notifyObservers(UserId userId, boolean registered) {
+	private void notifyObservers(final UserId userId, final boolean registered) {
 		/*
-		 * a temporary array buffer, used as a snapshot of the state of current Observers.
+		 * a temporary array buffer, used as a snapshot of the state of current
+		 * Observers.
 		 */
 		Object[] arrLocal;
 
 		synchronized (this) {
 			/*
-			 * We don't want the Observer doing callbacks into arbitrary code while holding its own Monitor. The code
-			 * where we extract each Observable from the Vector and store the state of the Observer needs
-			 * synchronization, but notifying observers does not (should not). The worst result of any potential
-			 * race-condition here is that: 1) a newly-added Observer will miss a notification in progress 2) a recently
-			 * unregistered Observer will be wrongly notified when it doesn't care
+			 * We don't want the Observer doing callbacks into arbitrary code
+			 * while holding its own Monitor. The code where we extract each
+			 * Observable from the Vector and store the state of the Observer
+			 * needs synchronization, but notifying observers does not (should
+			 * not). The worst result of any potential race-condition here is
+			 * that: 1) a newly-added Observer will miss a notification in
+			 * progress 2) a recently unregistered Observer will be wrongly
+			 * notified when it doesn't care
 			 */
-			arrLocal = observers.toArray();
+			arrLocal = this.observers.toArray();
 		}
 
 		for (int i = arrLocal.length - 1; i >= 0; i--) {
-			UserRegistrationStateObserver observer = (UserRegistrationStateObserver) arrLocal[i];
+			final UserRegistrationStateObserver observer = (UserRegistrationStateObserver) arrLocal[i];
 
-			if (registered)
+			if (registered) {
 				observer.registered(userId);
-			else
+			} else {
 				observer.unregistered(userId);
+			}
 
 		}
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.registrator.RegistratorExportedToClient#register(deus.model.accountadmin.RegistrationInformation)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.registrator.RegistratorExportedToClient#register
+	 * (deus.model.accountadmin.RegistrationInformation)
 	 */
 	@Override
-	public void register(RegistrationInformation registrationInformation) {
-		UserId userId = userIdGenerator.generateUserId(registrationInformation.getDesiredUserIdType(),
+	public void register(final RegistrationInformation registrationInformation) {
+		final UserId userId = this.userIdGenerator.generateUserId(
+				registrationInformation.getDesiredUserIdType(),
 				registrationInformation.getLocalUsername());
 
-		Account account = new Account(registrationInformation.getLocalUsername(),
-				registrationInformation.getPassword(), userId, registrationInformation.getUserRoles());
+		final Account account = new Account(
+				registrationInformation.getLocalUsername(),
+				registrationInformation.getPassword(), userId,
+				registrationInformation.getUserRoles());
 
-		userMetadataDao.addNewEntity(userId, registrationInformation.getUserMetadata());
-		
-		createAccount(account);
+		this.userMetadataDao.addNewEntity(userId,
+				registrationInformation.getUserMetadata());
 
-		notifyObservers(userId, true);
+		this.createAccount(account);
+
+		this.notifyObservers(userId, true);
 	}
-
 
 	/**
 	 * Creates the account.
@@ -132,28 +140,31 @@ public class RegistratorImpl implements Registrator {
 	 * @param account
 	 *            the account
 	 */
-	private void createAccount(Account account) {
-		accountDao.addNewEntity(account);
+	private void createAccount(final Account account) {
+		this.accountDao.addNewEntity(account);
 		// FUTURE: init data objects in database for subsystem Barker here!
-		
+
 		// INITIALIZING ROLE DATA ELEMENTS
-		for (DistributionRole distributionRole : account.getUserRoles())
-			distributionRoleSetup.setUpRole(distributionRole, account.getUserId());
+		for (final DistributionRole distributionRole : account.getUserRoles()) {
+			this.distributionRoleSetup.setUpRole(distributionRole,
+					account.getUserId());
+		}
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.registrator.RegistratorExportedToClient#unregister(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.soul.accountadmin.registrator.RegistratorExportedToClient#
+	 * unregister(java.lang.String)
 	 */
 	@Override
-	public void unregister(String localUsername) {
-		Account account = accountDao.getByNaturalId(localUsername);
+	public void unregister(final String localUsername) {
+		final Account account = this.accountDao.getByNaturalId(localUsername);
 
-		destroyAccount(account);
+		this.destroyAccount(account);
 
-		notifyObservers(account.getUserId(), false);
+		this.notifyObservers(account.getUserId(), false);
 	}
-
 
 	/**
 	 * Destroy account.
@@ -161,43 +172,56 @@ public class RegistratorImpl implements Registrator {
 	 * @param account
 	 *            the account
 	 */
-	private void destroyAccount(Account account) {
-		UserId userId = account.getUserId();
+	private void destroyAccount(final Account account) {
+		final UserId userId = account.getUserId();
 
-		accountDao.deleteByNaturalId(account.getLocalUsername());
+		this.accountDao.deleteByNaturalId(account.getLocalUsername());
 		// FUTURE: destroy data objects in database for subsystem Barker here!
-		
+
 		// DESTROYING ROLE DATA ELEMENTS
-		for (DistributionRole distributionRole : account.getUserRoles())
-			distributionRoleSetup.tearDownRole(distributionRole, userId);
+		for (final DistributionRole distributionRole : account.getUserRoles()) {
+			this.distributionRoleSetup.tearDownRole(distributionRole, userId);
+		}
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.registrator.RegistratorExportedToClient#existsLocalUsername(java.lang.String)
-	 */
-	public boolean existsLocalUsername(String localUserName) {
-		return accountDao.existsByNaturalId(localUserName);
-	}
-
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems#addUserRegistrationStateObserver(deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.soul.accountadmin.registrator.RegistratorExportedToClient#
+	 * existsLocalUsername(java.lang.String)
 	 */
 	@Override
-	public void addUserRegistrationStateObserver(UserRegistrationStateObserver observer) {
-		observers.add(observer);
+	public boolean existsLocalUsername(final String localUserName) {
+		return this.accountDao.existsByNaturalId(localUserName);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems#removeUserRegistrationStateObserver(deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems
+	 * #addUserRegistrationStateObserver
+	 * (deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver)
 	 */
 	@Override
-	public void removeUserRegistrationStateObserver(UserRegistrationStateObserver observer) {
-		if (observers.remove(observer) == false)
+	public void addUserRegistrationStateObserver(
+			final UserRegistrationStateObserver observer) {
+		this.observers.add(observer);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems
+	 * #removeUserRegistrationStateObserver
+	 * (deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver)
+	 */
+	@Override
+	public void removeUserRegistrationStateObserver(
+			final UserRegistrationStateObserver observer) {
+		if (this.observers.remove(observer) == false)
 			throw new IllegalArgumentException("observer was not added!");
 	}
-
 
 }

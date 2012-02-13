@@ -48,7 +48,6 @@ public class TransferMessageSenderHelper {
 	@Inject
 	private MessageSenderRegistry messageSenderRegistry;
 
-
 	/**
 	 * Send.
 	 * 
@@ -59,22 +58,27 @@ public class TransferMessageSenderHelper {
 	 * @param transferMessage
 	 *            the transfer message
 	 */
-	public void send(UserId receiverId, UserId senderId, TransferMessage transferMessage) {
+	public void send(final UserId receiverId, final UserId senderId,
+			final TransferMessage transferMessage) {
 		// agree on transfer protocol
-		String transferProtocolId = transferProtocolNegotiationStrategy.negotiateTransferProtocol(receiverId);
+		final String transferProtocolId = this.transferProtocolNegotiationStrategy
+				.negotiateTransferProtocol(receiverId);
 
-		UserIdMapper userIdMapper = transferProtocolRegistry.getRegisteredTransferProtocol(transferProtocolId).getUserIdMapper();
-		
+		final UserIdMapper userIdMapper = this.transferProtocolRegistry
+				.getRegisteredTransferProtocol(transferProtocolId)
+				.getUserIdMapper();
+
 		// set IDs of sender and receiver
 		transferMessage.setSenderId(senderId);
 		transferMessage.setReceiverId(receiverId);
-		
+
 		// set TIDs of sender and receiver
 		transferMessage.setReceiverTid(userIdMapper.resolveRemote(receiverId));
 		transferMessage.setSenderTid(userIdMapper.resolveLocal(senderId));
 
 		// send msg
-		MessageSender messageSender = messageSenderRegistry.getMessageSender(transferProtocolId);
+		final MessageSender messageSender = this.messageSenderRegistry
+				.getMessageSender(transferProtocolId);
 		messageSender.send(transferMessage);
 	}
 }

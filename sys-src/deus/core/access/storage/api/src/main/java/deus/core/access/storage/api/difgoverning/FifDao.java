@@ -37,7 +37,8 @@ public interface FifDao {
 	 *            the publisher id
 	 * @return the by natural id
 	 */
-	ForeignInformationFile getByNaturalId(SubscriberId subscriberId, PublisherId publisherId);
+	ForeignInformationFile getByNaturalId(SubscriberId subscriberId,
+			PublisherId publisherId);
 
 	/**
 	 * Update entity.
@@ -49,6 +50,7 @@ public interface FifDao {
 	 * @param foreignInformationFile
 	 *            the foreign information file
 	 */
-	void updateEntity(SubscriberId subscriberId, PublisherId publisherId, ForeignInformationFile foreignInformationFile);
+	void updateEntity(SubscriberId subscriberId, PublisherId publisherId,
+			ForeignInformationFile foreignInformationFile);
 
 }

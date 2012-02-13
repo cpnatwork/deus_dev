@@ -40,8 +40,9 @@ import deus.model.subscription.LopEntry;
  * constructed.
  */
 @Named
-public class IcRoleSetupSubscriberObserver extends AbstractDistributionRoleSetupObserver {
-	
+public class IcRoleSetupSubscriberObserver extends
+		AbstractDistributionRoleSetupObserver {
+
 	/** The lop dao. */
 	@Inject
 	private LopDao lopDao;
@@ -51,32 +52,44 @@ public class IcRoleSetupSubscriberObserver extends AbstractDistributionRoleSetup
 	@Named("targetedSubscriber")
 	private SubscriberExportedToClient subscriber;
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver#setUpRole(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver
+	 * #setUpRole(deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public void setUpRole(UserId userId) {
+	public void setUpRole(final UserId userId) {
 		// FUTURE: init data objects in database for subsystem Subscriber here!
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver#tearDownRole(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver
+	 * #tearDownRole(deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public void tearDownRole(UserId userId) {
-		ListOfPublishers lop = lopDao.getByNaturalId(new SubscriberId(userId));
-		for (Map.Entry<UserId, LopEntry> entry : lop.entrySet()) {
-			subscriber.unsubscribe(new SubscriberId(userId), new PublisherId(entry.getKey()));
+	public void tearDownRole(final UserId userId) {
+		final ListOfPublishers lop = this.lopDao
+				.getByNaturalId(new SubscriberId(userId));
+		for (final Map.Entry<UserId, LopEntry> entry : lop.entrySet()) {
+			this.subscriber.unsubscribe(new SubscriberId(userId),
+					new PublisherId(entry.getKey()));
 		}
-		
-		// FUTURE: destroy data objects in database for subsystem Subscriber here!
+
+		// FUTURE: destroy data objects in database for subsystem Subscriber
+		// here!
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver#getDistributionRole()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver
+	 * #getDistributionRole()
 	 */
 	@Override
 	protected DistributionRole getDistributionRole() {

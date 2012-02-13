@@ -23,7 +23,6 @@ import java.util.Map;
 
 import deus.model.common.user.id.UserId;
 
-
 /**
  * The Interface ListOfSubscribers.
  */
@@ -35,5 +34,5 @@ public interface ListOfSubscribers extends Map<UserId, LosEntry> {
 	 * @return the owner id
 	 */
 	public UserId getOwnerId();
-	
+
 }

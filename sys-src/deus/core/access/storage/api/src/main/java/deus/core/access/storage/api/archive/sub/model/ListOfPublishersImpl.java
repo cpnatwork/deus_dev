@@ -30,25 +30,34 @@ import deus.model.subscription.SubscriberSideSubscriptionState;
 /**
  * The Class ListOfPublishersImpl.
  */
-public class ListOfPublishersImpl extends HashMap<UserId, LopEntry> implements ListOfPublishers {
+public class ListOfPublishersImpl extends HashMap<UserId, LopEntry> implements
+		ListOfPublishers {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -4125982682692931045L;
 
-
-	/* (non-Javadoc)
-	 * @see deus.model.subscription.ListOfPublishers#changeState(deus.model.common.user.id.UserId, deus.model.subscription.SubscriberSideSubscriptionState)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.model.subscription.ListOfPublishers#changeState(deus.model.common
+	 * .user.id.UserId, deus.model.subscription.SubscriberSideSubscriptionState)
 	 */
 	@Override
-	public void changeState(UserId publisherId, SubscriberSideSubscriptionState subscriberSideSubscriptionState) {
-		if (!containsKey(publisherId))
-			throw new IllegalArgumentException("cannot change state of publisher " + publisherId
-					+ ", it is not on the list!");
-		get(publisherId).setSubscriptionState(subscriberSideSubscriptionState);
+	public void changeState(
+			final UserId publisherId,
+			final SubscriberSideSubscriptionState subscriberSideSubscriptionState) {
+		if (!this.containsKey(publisherId))
+			throw new IllegalArgumentException(
+					"cannot change state of publisher " + publisherId
+							+ ", it is not on the list!");
+		this.get(publisherId).setSubscriptionState(
+				subscriberSideSubscriptionState);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.subscription.ListOfPublishers#getOwnerId()
 	 */
 	@Override

@@ -19,7 +19,6 @@
  *************************************************************************/
 package deus.core.soul.accountadmin.rolesetup;
 
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
@@ -32,12 +31,12 @@ import deus.model.common.user.id.UserId;
  * AbstractDistributionRoleSetup information as the
  * AbstractDistributionRoleSetup is constructed.
  */
-public abstract class AbstractDistributionRoleSetupObserver implements DistributionRoleSetupObserver {
+public abstract class AbstractDistributionRoleSetupObserver implements
+		DistributionRoleSetupObserver {
 
 	/** The distribution role setup. */
 	@Inject
 	private DistributionRoleSetup distributionRoleSetup;
-
 
 	/**
 	 * This method is called when information about an
@@ -47,9 +46,9 @@ public abstract class AbstractDistributionRoleSetupObserver implements Distribut
 	@PostConstruct
 	@SuppressWarnings("unused")
 	private void addObserver() {
-		distributionRoleSetup.addRoleSetupObserver(getDistributionRole(), this);
+		this.distributionRoleSetup.addRoleSetupObserver(
+				this.getDistributionRole(), this);
 	}
-
 
 	/**
 	 * This method is called when information about an
@@ -59,21 +58,29 @@ public abstract class AbstractDistributionRoleSetupObserver implements Distribut
 	@PreDestroy
 	@SuppressWarnings("unused")
 	private void removeObserver() {
-		distributionRoleSetup.removeRoleSetupObserver(getDistributionRole(), this);
+		this.distributionRoleSetup.removeRoleSetupObserver(
+				this.getDistributionRole(), this);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.rolesetup.DistributionRoleSetupObserver#setUpRole(deus.model.common.account.DistributionRole, deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.rolesetup.DistributionRoleSetupObserver#setUpRole
+	 * (deus.model.common.account.DistributionRole,
+	 * deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public void setUpRole(DistributionRole distributionRole, UserId userId) {
-		if (!distributionRole.equals(getDistributionRole()))
-			throw new RuntimeException("received notification for set up of user role " + distributionRole
-					+ " while only listening for set up of role " + getDistributionRole());
-		setUpRole(userId);
+	public void setUpRole(final DistributionRole distributionRole,
+			final UserId userId) {
+		if (!distributionRole.equals(this.getDistributionRole()))
+			throw new RuntimeException(
+					"received notification for set up of user role "
+							+ distributionRole
+							+ " while only listening for set up of role "
+							+ this.getDistributionRole());
+		this.setUpRole(userId);
 	}
-
 
 	/**
 	 * This method is called when information about an
@@ -85,19 +92,25 @@ public abstract class AbstractDistributionRoleSetupObserver implements Distribut
 	 */
 	protected abstract void setUpRole(UserId userId);
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.rolesetup.DistributionRoleSetupObserver#tearDownRole(deus.model.common.account.DistributionRole, deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.soul.accountadmin.rolesetup.DistributionRoleSetupObserver#
+	 * tearDownRole(deus.model.common.account.DistributionRole,
+	 * deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public void tearDownRole(DistributionRole distributionRole, UserId userId) {
-		if (!distributionRole.equals(getDistributionRole()))
-			throw new RuntimeException("received notification for tear down of user role " + distributionRole
-					+ " while only listening for tear down of role " + getDistributionRole());
+	public void tearDownRole(final DistributionRole distributionRole,
+			final UserId userId) {
+		if (!distributionRole.equals(this.getDistributionRole()))
+			throw new RuntimeException(
+					"received notification for tear down of user role "
+							+ distributionRole
+							+ " while only listening for tear down of role "
+							+ this.getDistributionRole());
 
-		tearDownRole(userId);
+		this.tearDownRole(userId);
 	}
-
 
 	/**
 	 * This method is called when information about an
@@ -108,7 +121,6 @@ public abstract class AbstractDistributionRoleSetupObserver implements Distribut
 	 *            the user id
 	 */
 	protected abstract void tearDownRole(UserId userId);
-
 
 	/**
 	 * Returns the distribution role, this observer should setup.

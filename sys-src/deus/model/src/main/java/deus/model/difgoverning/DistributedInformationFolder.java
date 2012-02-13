@@ -47,15 +47,14 @@ public interface DistributedInformationFolder {
 	 */
 	public InformationFile getForeignInformationFile(UserId publisherId);
 
-
 	/**
 	 * Update foreign information file.
 	 * 
 	 * @param foreignInformationFile
 	 *            the foreign information file
 	 */
-	public void updateForeignInformationFile(ForeignInformationFile foreignInformationFile);
-
+	public void updateForeignInformationFile(
+			ForeignInformationFile foreignInformationFile);
 
 	/**
 	 * Adds the foreign information file.
@@ -63,6 +62,7 @@ public interface DistributedInformationFolder {
 	 * @param foreignInformationFile
 	 *            the foreign information file
 	 */
-	public void addForeignInformationFile(ForeignInformationFile foreignInformationFile);
+	public void addForeignInformationFile(
+			ForeignInformationFile foreignInformationFile);
 
 }

@@ -30,12 +30,16 @@ import deus.model.hci.attention.publication.connection.ConnectionDecisionToMake;
  */
 public class PublisherOffer extends ConnectionDecisionToMake {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4513904904616456581L;
+
 	/** The publisher id. */
 	private final PublisherId publisherId;
-	
+
 	/** The publisher metadata. */
 	private final UserMetadata publisherMetadata;
-
 
 	/**
 	 * Instantiates a new publisher offer.
@@ -45,11 +49,11 @@ public class PublisherOffer extends ConnectionDecisionToMake {
 	 * @param publisherMetadata
 	 *            the publisher metadata
 	 */
-	public PublisherOffer(PublisherId publisherId, UserMetadata publisherMetadata) {
+	public PublisherOffer(final PublisherId publisherId,
+			final UserMetadata publisherMetadata) {
 		this.publisherId = publisherId;
 		this.publisherMetadata = publisherMetadata;
 	}
-
 
 	/**
 	 * Gets the publisher id.
@@ -57,9 +61,8 @@ public class PublisherOffer extends ConnectionDecisionToMake {
 	 * @return the publisher id
 	 */
 	public PublisherId getPublisherId() {
-		return publisherId;
+		return this.publisherId;
 	}
-
 
 	/**
 	 * Gets the publisher metadata.
@@ -67,11 +70,12 @@ public class PublisherOffer extends ConnectionDecisionToMake {
 	 * @return the publisher metadata
 	 */
 	public UserMetadata getPublisherMetadata() {
-		return publisherMetadata;
+		return this.publisherMetadata;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.hci.attention.BinaryDecisionToMake#getType()
 	 */
 	@Override
@@ -79,14 +83,16 @@ public class PublisherOffer extends ConnectionDecisionToMake {
 		return DecisionType.publisherOffer;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.hci.attention.AttentionElement#getCatchphare()
 	 */
 	@Override
 	public String getCatchphare() {
 		// I18N
-		return "Your Contact " + getPublisherMetadata().getFullName() + " offers subscription";
+		return "Your Contact " + this.getPublisherMetadata().getFullName()
+				+ " offers subscription";
 	}
 
 }

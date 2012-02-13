@@ -27,16 +27,14 @@ public class StreetAddress extends Address {
 	/** The street. */
 	private String street;
 
-
 	/**
 	 * Gets the street.
 	 * 
 	 * @return the street
 	 */
 	public String getStreet() {
-		return street;
+		return this.street;
 	}
-
 
 	/**
 	 * Sets the street.
@@ -44,7 +42,7 @@ public class StreetAddress extends Address {
 	 * @param street
 	 *            the new street
 	 */
-	public void setStreet(String street) {
+	public void setStreet(final String street) {
 		this.street = street;
 	}
 

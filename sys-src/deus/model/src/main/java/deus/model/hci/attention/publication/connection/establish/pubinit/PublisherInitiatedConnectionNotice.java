@@ -25,11 +25,15 @@ import deus.model.hci.attention.publication.connection.ConnectionNotice;
 /**
  * The Class PublisherInitiatedConnectionNotice.
  */
-public abstract class PublisherInitiatedConnectionNotice extends ConnectionNotice {
+public abstract class PublisherInitiatedConnectionNotice extends
+		ConnectionNotice {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8666566185329654255L;
 	/** The subscriber metadata. */
 	private final UserMetadata subscriberMetadata;
-
 
 	/**
 	 * Instantiates a new publisher initiated connection notice.
@@ -37,11 +41,11 @@ public abstract class PublisherInitiatedConnectionNotice extends ConnectionNotic
 	 * @param subscriberMetadata
 	 *            the subscriber metadata
 	 */
-	public PublisherInitiatedConnectionNotice(UserMetadata subscriberMetadata) {
+	public PublisherInitiatedConnectionNotice(
+			final UserMetadata subscriberMetadata) {
 		super();
 		this.subscriberMetadata = subscriberMetadata;
 	}
-
 
 	/**
 	 * Gets the subscriber metadata.
@@ -49,7 +53,7 @@ public abstract class PublisherInitiatedConnectionNotice extends ConnectionNotic
 	 * @return the subscriber metadata
 	 */
 	public UserMetadata getSubscriberMetadata() {
-		return subscriberMetadata;
+		return this.subscriberMetadata;
 	}
 
 }

@@ -40,33 +40,45 @@ public class PifGovernorImpl implements PifGovernor {
 	@Inject
 	private AssimilationStrategy assimilationStrategy;
 
-
 	/** The pif dao. */
 	@Inject
 	private PifDao pifDao;
-	
 
-	/* (non-Javadoc)
-	 * @see deus.core.soul.pifgoverning.PifGovernorExportedToSubsystems#assimilateRepatriatedDigitalCard(deus.model.common.user.frids.RepatriationAuthorityId, deus.model.common.dossier.DigitalCard)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.soul.pifgoverning.PifGovernorExportedToSubsystems#
+	 * assimilateRepatriatedDigitalCard
+	 * (deus.model.common.user.frids.RepatriationAuthorityId,
+	 * deus.model.common.dossier.DigitalCard)
 	 */
 	@Override
-	public Patch assimilateRepatriatedDigitalCard(RepatriationAuthorityId repatriationAuthorityId, DigitalCard digitalCard) {
-		PersonalInformationFile personalInformationFile = pifDao.getByNaturalId(repatriationAuthorityId);
+	public Patch assimilateRepatriatedDigitalCard(
+			final RepatriationAuthorityId repatriationAuthorityId,
+			final DigitalCard digitalCard) {
+		final PersonalInformationFile personalInformationFile = this.pifDao
+				.getByNaturalId(repatriationAuthorityId);
 
-		Patch patch = assimilationStrategy.update(personalInformationFile, digitalCard);
+		final Patch patch = this.assimilationStrategy.update(
+				personalInformationFile, digitalCard);
 
-		pifDao.updateEntity(repatriationAuthorityId, personalInformationFile);
-		
+		this.pifDao.updateEntity(repatriationAuthorityId,
+				personalInformationFile);
+
 		return patch;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.pifgoverning.PifGovernorExportedToClient#getPersonalInformationFile(deus.model.common.user.frids.RepatriationAuthorityId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.soul.pifgoverning.PifGovernorExportedToClient#
+	 * getPersonalInformationFile
+	 * (deus.model.common.user.frids.RepatriationAuthorityId)
 	 */
 	@Override
-	public PersonalInformationFile getPersonalInformationFile(RepatriationAuthorityId repatriationAuthorityId) {
-		return pifDao.getByNaturalId(repatriationAuthorityId);
+	public PersonalInformationFile getPersonalInformationFile(
+			final RepatriationAuthorityId repatriationAuthorityId) {
+		return this.pifDao.getByNaturalId(repatriationAuthorityId);
 	}
 
 }

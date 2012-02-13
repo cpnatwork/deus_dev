@@ -23,7 +23,8 @@ import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.model.common.dossier.DigitalCard;
 
 /**
- * Command, issued by the publisher to inform registered subscribers about an update.
+ * Command, issued by the publisher to inform registered subscribers about an
+ * update.
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
@@ -33,18 +34,16 @@ public class UpdateMessage extends TransferMessage {
 	/** The digital card. */
 	private final DigitalCard digitalCard;
 
-
 	/**
 	 * Instantiates a new update message.
 	 * 
 	 * @param digitalCard
 	 *            the digital card
 	 */
-	public UpdateMessage(DigitalCard digitalCard) {
+	public UpdateMessage(final DigitalCard digitalCard) {
 		super();
 		this.digitalCard = digitalCard;
 	}
-
 
 	/**
 	 * Gets the digital card.
@@ -52,7 +51,7 @@ public class UpdateMessage extends TransferMessage {
 	 * @return the digital card
 	 */
 	public DigitalCard getDigitalCard() {
-		return digitalCard;
+		return this.digitalCard;
 	}
 
 }

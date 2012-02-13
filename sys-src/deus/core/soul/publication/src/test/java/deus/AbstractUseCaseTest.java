@@ -19,31 +19,34 @@
  *************************************************************************/
 package deus;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.Date;
+
+import org.junit.Assert;
 
 /**
  * The Class AbstractUseCaseTest.
  */
 public abstract class AbstractUseCaseTest {
 
-//	protected void testAttentionList(User user, int unnoticedElements, int noticedElements) {
-//		assertEquals("Number of unnoticed attention elements in " + user.getUserId()
-//				+ "'s attentionList is wrong!", unnoticedElements, user.getBarker().getUnnoticedAttentionList(user.getUserId()).size());
-//		assertEquals("Number of noticed attention elements in " + user.getUserId()
-//				+ "'s attentionList is wrong!", noticedElements, user.getBarker().getNoticedAttentionList(user.getUserId()).size());
-//	}
-
-
+	// protected void testAttentionList(User user, int unnoticedElements, int
+	// noticedElements) {
+	// assertEquals("Number of unnoticed attention elements in " +
+	// user.getUserId()
+	// + "'s attentionList is wrong!", unnoticedElements,
+	// user.getBarker().getUnnoticedAttentionList(user.getUserId()).size());
+	// assertEquals("Number of noticed attention elements in " +
+	// user.getUserId()
+	// + "'s attentionList is wrong!", noticedElements,
+	// user.getBarker().getNoticedAttentionList(user.getUserId()).size());
+	// }
 
 	/**
- * Test date now.
- * 
- * @param date
- *            the date
- */
-protected void testDateNow(Date date) {
-		assertEquals((new Date()).getTime(), date.getTime(), 500);
+	 * Test date now.
+	 * 
+	 * @param date
+	 *            the date
+	 */
+	protected void testDateNow(final Date date) {
+		Assert.assertEquals((new Date()).getTime(), date.getTime(), 500);
 	}
 }

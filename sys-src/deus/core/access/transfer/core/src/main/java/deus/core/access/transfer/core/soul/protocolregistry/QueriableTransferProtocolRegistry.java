@@ -27,7 +27,8 @@ import deus.core.access.transfer.common.protocolregistry.TransferProtocolRegistr
 /**
  * The Interface QueriableTransferProtocolRegistry.
  */
-public interface QueriableTransferProtocolRegistry extends TransferProtocolRegistry {
+public interface QueriableTransferProtocolRegistry extends
+		TransferProtocolRegistry {
 
 	/**
 	 * Gets the registered transfer protocol.
@@ -36,8 +37,8 @@ public interface QueriableTransferProtocolRegistry extends TransferProtocolRegis
 	 *            the transfer protocol id
 	 * @return the registered transfer protocol
 	 */
-	public TransferProtocol getRegisteredTransferProtocol(String transferProtocolId);
-
+	public TransferProtocol getRegisteredTransferProtocol(
+			String transferProtocolId);
 
 	/**
 	 * Gets the all registered transfer protocol ids.
@@ -45,5 +46,5 @@ public interface QueriableTransferProtocolRegistry extends TransferProtocolRegis
 	 * @return the all registered transfer protocol ids
 	 */
 	public Collection<String> getAllRegisteredTransferProtocolIds();
-	
+
 }

@@ -25,10 +25,10 @@ import deus.model.gatekeeper.LoginCredentials;
 /**
  * The Class LoginCredentialsValidator.
  */
-public class LoginCredentialsValidator { //implements Validator {
+public class LoginCredentialsValidator { // implements Validator {
 
 	/** The login credentials. */
- LoginCredentials loginCredentials;
+	LoginCredentials loginCredentials;
 
 	/**
 	 * Supports.
@@ -37,22 +37,22 @@ public class LoginCredentialsValidator { //implements Validator {
 	 *            the clazz
 	 * @return true, if successful
 	 */
-	public boolean supports(Class clazz) {
+	public boolean supports(final Class clazz) {
 		return LoginCredentials.class.isAssignableFrom(clazz);
 	}
 
-//	public void validate(Object commandObject, Errors errors) {
-//
-//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName",
-//				"Field is required.");
-//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password",
-//				"Field is required.");
-//
-//		loginCredentials = (LoginCredentials) commandObject;
-//
-//		if ((loginCredentials.getPassword() != "password")
-//				&& (loginCredentials.getLocalUsername() != "partha")) {
-//			errors.reject("Credentials provided are not correct.");
-//		}
-//	}
+	// public void validate(Object commandObject, Errors errors) {
+	//
+	// ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName",
+	// "Field is required.");
+	// ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password",
+	// "Field is required.");
+	//
+	// loginCredentials = (LoginCredentials) commandObject;
+	//
+	// if ((loginCredentials.getPassword() != "password")
+	// && (loginCredentials.getLocalUsername() != "partha")) {
+	// errors.reject("Credentials provided are not correct.");
+	// }
+	// }
 }

@@ -28,13 +28,13 @@ public class Occupation {
 
 	/** The institution. */
 	private String institution;
-	
+
 	/** The department. */
 	private String department;
 
 	/** The title. */
 	private String title;
-	
+
 	/** The role. */
 	private String role;
 
@@ -44,16 +44,14 @@ public class Occupation {
 	/** The logo. */
 	private Image logo;
 
-
 	/**
 	 * Gets the institution.
 	 * 
 	 * @return the institution
 	 */
 	public String getInstitution() {
-		return institution;
+		return this.institution;
 	}
-
 
 	/**
 	 * Sets the institution.
@@ -61,10 +59,9 @@ public class Occupation {
 	 * @param institution
 	 *            the new institution
 	 */
-	public void setInstitution(String institution) {
+	public void setInstitution(final String institution) {
 		this.institution = institution;
 	}
-
 
 	/**
 	 * Gets the department.
@@ -72,9 +69,8 @@ public class Occupation {
 	 * @return the department
 	 */
 	public String getDepartment() {
-		return department;
+		return this.department;
 	}
-
 
 	/**
 	 * Sets the department.
@@ -82,10 +78,9 @@ public class Occupation {
 	 * @param department
 	 *            the new department
 	 */
-	public void setDepartment(String department) {
+	public void setDepartment(final String department) {
 		this.department = department;
 	}
-
 
 	/**
 	 * Gets the title.
@@ -93,9 +88,8 @@ public class Occupation {
 	 * @return the title
 	 */
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
-
 
 	/**
 	 * Sets the title.
@@ -103,10 +97,9 @@ public class Occupation {
 	 * @param title
 	 *            the new title
 	 */
-	public void setTitle(String title) {
+	public void setTitle(final String title) {
 		this.title = title;
 	}
-
 
 	/**
 	 * Gets the role.
@@ -114,9 +107,8 @@ public class Occupation {
 	 * @return the role
 	 */
 	public String getRole() {
-		return role;
+		return this.role;
 	}
-
 
 	/**
 	 * Sets the role.
@@ -124,10 +116,9 @@ public class Occupation {
 	 * @param role
 	 *            the new role
 	 */
-	public void setRole(String role) {
+	public void setRole(final String role) {
 		this.role = role;
 	}
-
 
 	/**
 	 * Gets the office.
@@ -135,9 +126,8 @@ public class Occupation {
 	 * @return the office
 	 */
 	public String getOffice() {
-		return office;
+		return this.office;
 	}
-
 
 	/**
 	 * Sets the office.
@@ -145,10 +135,9 @@ public class Occupation {
 	 * @param office
 	 *            the new office
 	 */
-	public void setOffice(String office) {
+	public void setOffice(final String office) {
 		this.office = office;
 	}
-
 
 	/**
 	 * Gets the logo.
@@ -156,9 +145,8 @@ public class Occupation {
 	 * @return the logo
 	 */
 	public Image getLogo() {
-		return logo;
+		return this.logo;
 	}
-
 
 	/**
 	 * Sets the logo.
@@ -166,7 +154,7 @@ public class Occupation {
 	 * @param logo
 	 *            the new logo
 	 */
-	public void setLogo(Image logo) {
+	public void setLogo(final Image logo) {
 		this.logo = logo;
 	}
 

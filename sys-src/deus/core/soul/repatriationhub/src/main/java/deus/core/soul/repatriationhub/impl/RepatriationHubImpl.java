@@ -43,53 +43,70 @@ public class RepatriationHubImpl implements RepatriationHub {
 	@Inject
 	private PifGovernorExportedToSubsystems pifGovernor;
 
-
 	/** The barker. */
 	@Inject
 	private BarkerExportedToSubsystems barker;
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.repatriationhub.RepatriationHubExportedToPeers#accept(deus.model.common.user.frids.RepatriationAuthorityId, deus.model.common.user.frids.ContributorId, deus.model.common.dossier.DigitalCard)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.core.receiving.soulcallback.repatriationhub
+	 * .RepatriationHubExportedToPeers
+	 * #accept(deus.model.common.user.frids.RepatriationAuthorityId,
+	 * deus.model.common.user.frids.ContributorId,
+	 * deus.model.common.dossier.DigitalCard)
 	 */
 	@Override
-	public void accept(RepatriationAuthorityId repatriationAuthorityId, ContributorId contributorId, DigitalCard repatriatedDigitalCard) {
-		if (!repatriationAuthorityId.equals(repatriatedDigitalCard.getDigitalCardId().getCpId()))
+	public void accept(final RepatriationAuthorityId repatriationAuthorityId,
+			final ContributorId contributorId,
+			final DigitalCard repatriatedDigitalCard) {
+		if (!repatriationAuthorityId.equals(repatriatedDigitalCard
+				.getDigitalCardId().getCpId()))
 			throw new IllegalArgumentException(
 					"ID of the CP is not the ID of the user, that is handled in this repatriation hub");
 
-		if (!contributorId.equals(repatriatedDigitalCard.getDigitalCardId().getContributorId()))
-			throw new IllegalArgumentException("ID of the informationProvider does not match the id in the digital card!");
-
+		if (!contributorId.equals(repatriatedDigitalCard.getDigitalCardId()
+				.getContributorId()))
+			throw new IllegalArgumentException(
+					"ID of the informationProvider does not match the id in the digital card!");
 
 		// IMPORTANT SHORTCUT: always allow myself to contribute changes!
 		if (repatriationAuthorityId.equals(contributorId)) {
 			// if 'I' am the informationProvider
-			pifGovernor.assimilateRepatriatedDigitalCard(repatriationAuthorityId, repatriatedDigitalCard);
-		}
-		else {
+			this.pifGovernor.assimilateRepatriatedDigitalCard(
+					repatriationAuthorityId, repatriatedDigitalCard);
+		} else {
 			// if the informationProvider is another person
-			
+
 			// FIXME: do contributors need to register before contributing????
 			// if not, than a UserMetadata of should be passed to contribute()
-			// otherwise a Map<UserId, UserMetadata> of the contributors should be added
+			// otherwise a Map<UserId, UserMetadata> of the contributors should
+			// be added
 
-			UserMetadata contributorMetadata = null;
+			final UserMetadata contributorMetadata = null;
 
-			BinaryDecisionToMake decision = new Repatriation(contributorMetadata, repatriatedDigitalCard);
-			barker.addUnnoticedAttentionElement(repatriationAuthorityId.getUserId(), decision);
+			final BinaryDecisionToMake decision = new Repatriation(
+					contributorMetadata, repatriatedDigitalCard);
+			this.barker.addUnnoticedAttentionElement(
+					repatriationAuthorityId.getUserId(), decision);
 		}
-		
+
 	}
 
-
-	
-	/* (non-Javadoc)
-	 * @see deus.core.soul.repatriationhub.RepatriationHubExportedToClient#fireAndForgetAccept(deus.model.common.user.id.UserId, deus.model.common.dossier.DigitalCard)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.soul.repatriationhub.RepatriationHubExportedToClient#
+	 * fireAndForgetAccept(deus.model.common.user.id.UserId,
+	 * deus.model.common.dossier.DigitalCard)
 	 */
 	@Override
 	@Deprecated
-	public void fireAndForgetAccept(UserId cpId, DigitalCard repatriatedDigitalCard) {
-		throw new UnsupportedOperationException("fireAndForgetAccept is not implemented yet");
+	public void fireAndForgetAccept(final UserId cpId,
+			final DigitalCard repatriatedDigitalCard) {
+		throw new UnsupportedOperationException(
+				"fireAndForgetAccept is not implemented yet");
 	}
 
 }

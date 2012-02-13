@@ -34,7 +34,8 @@ public interface PifDao {
 	 *            the repatriation authority id
 	 * @return the by natural id
 	 */
-	PersonalInformationFile getByNaturalId(RepatriationAuthorityId repatriationAuthorityId);
+	PersonalInformationFile getByNaturalId(
+			RepatriationAuthorityId repatriationAuthorityId);
 
 	/**
 	 * Update entity.
@@ -44,6 +45,7 @@ public interface PifDao {
 	 * @param personalInformationFile
 	 *            the personal information file
 	 */
-	void updateEntity(RepatriationAuthorityId repatriationAuthorityId, PersonalInformationFile personalInformationFile);
+	void updateEntity(RepatriationAuthorityId repatriationAuthorityId,
+			PersonalInformationFile personalInformationFile);
 
 }

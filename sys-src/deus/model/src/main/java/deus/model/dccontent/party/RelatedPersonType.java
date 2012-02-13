@@ -26,11 +26,11 @@ public enum RelatedPersonType {
 
 	/** The parent. */
 	parent, /** The child. */
- child, /** The sibling. */
- sibling, /** The friend. */
- friend, /** The manager. */
- manager, /** The assistant. */
- assistant, /** The agent. */
- agent;
-	
+	child, /** The sibling. */
+	sibling, /** The friend. */
+	friend, /** The manager. */
+	manager, /** The assistant. */
+	assistant, /** The agent. */
+	agent;
+
 }

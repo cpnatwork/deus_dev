@@ -24,17 +24,17 @@ import deus.model.common.user.frids.PublisherId;
 import deus.model.common.user.frids.SubscriberId;
 
 /**
- * Realizes use case "request subscription", "send cancel subscription use case".
+ * Realizes use case "request subscription",
+ * "send cancel subscription use case".
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
- *
+ * 
  */
-//FIXME: rename to subscriptionCommandSender in order to reflect subsystem
+// FIXME: rename to subscriptionCommandSender in order to reflect subsystem
 public interface SubscriberCommandSender {
 
 	// USE CASE: informationConsumer initiated connection/termination
-	
-	
+
 	// FIXME: rename to requestSubscription, since use case is called like this
 	/**
 	 * Subscribe.
@@ -46,8 +46,8 @@ public interface SubscriberCommandSender {
 	 * @param subscriberMetadata
 	 *            the subscriber metadata
 	 */
-	public void subscribe(SubscriberId subscriberId, PublisherId publisherId, UserMetadata subscriberMetadata);
-
+	public void subscribe(SubscriberId subscriberId, PublisherId publisherId,
+			UserMetadata subscriberMetadata);
 
 	// FIXME: rename to requestSubscription, since use case is called like this
 	/**
@@ -59,12 +59,10 @@ public interface SubscriberCommandSender {
 	 *            the publisher id
 	 */
 	public void unsubscribe(SubscriberId subscriberId, PublisherId publisherId);
-	
-	
-	
 
-	// USE CASE: publisher initiated connection (used, when in role informationConsumer)
-	
+	// USE CASE: publisher initiated connection (used, when in role
+	// informationConsumer)
+
 	/**
 	 * Confirm subscription offer.
 	 * 
@@ -73,8 +71,8 @@ public interface SubscriberCommandSender {
 	 * @param publisherId
 	 *            the publisher id
 	 */
-	public void confirmSubscriptionOffer(SubscriberId subscriberId, PublisherId publisherId);
-
+	public void confirmSubscriptionOffer(SubscriberId subscriberId,
+			PublisherId publisherId);
 
 	/**
 	 * Repel subscription offer.
@@ -84,6 +82,7 @@ public interface SubscriberCommandSender {
 	 * @param publisherId
 	 *            the publisher id
 	 */
-	public void repelSubscriptionOffer(SubscriberId subscriberId, PublisherId publisherId);
-	
+	public void repelSubscriptionOffer(SubscriberId subscriberId,
+			PublisherId publisherId);
+
 }

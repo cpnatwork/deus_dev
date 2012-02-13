@@ -29,12 +29,16 @@ import deus.model.hci.attention.publication.connection.ConnectionDecisionToMake;
  */
 public class SubscriptionRequest extends ConnectionDecisionToMake {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8171263892659303689L;
+
 	/** The subscriber id. */
 	private final SubscriberId subscriberId;
-	
+
 	/** The subscriber metadata. */
 	private final UserMetadata subscriberMetadata;
-
 
 	/**
 	 * Instantiates a new subscription request.
@@ -44,11 +48,11 @@ public class SubscriptionRequest extends ConnectionDecisionToMake {
 	 * @param subscriberMetadata
 	 *            the subscriber metadata
 	 */
-	public SubscriptionRequest(SubscriberId subscriberId, UserMetadata subscriberMetadata) {
+	public SubscriptionRequest(final SubscriberId subscriberId,
+			final UserMetadata subscriberMetadata) {
 		this.subscriberId = subscriberId;
 		this.subscriberMetadata = subscriberMetadata;
 	}
-
 
 	/**
 	 * Gets the subscriber id.
@@ -56,9 +60,8 @@ public class SubscriptionRequest extends ConnectionDecisionToMake {
 	 * @return the subscriber id
 	 */
 	public SubscriberId getSubscriberId() {
-		return subscriberId;
+		return this.subscriberId;
 	}
-
 
 	/**
 	 * Gets the subscriber metadata.
@@ -66,11 +69,12 @@ public class SubscriptionRequest extends ConnectionDecisionToMake {
 	 * @return the subscriber metadata
 	 */
 	public UserMetadata getSubscriberMetadata() {
-		return subscriberMetadata;
+		return this.subscriberMetadata;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.hci.attention.BinaryDecisionToMake#getType()
 	 */
 	@Override
@@ -78,14 +82,16 @@ public class SubscriptionRequest extends ConnectionDecisionToMake {
 		return DecisionType.subscriberRequest;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.hci.attention.AttentionElement#getCatchphare()
 	 */
 	@Override
 	public String getCatchphare() {
 		// I18N
-		return "Your Contact " + getSubscriberMetadata().getFullName() + " requests subscription";
+		return "Your Contact " + this.getSubscriberMetadata().getFullName()
+				+ " requests subscription";
 	}
 
 }

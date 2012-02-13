@@ -37,8 +37,8 @@ public interface LosEntryDao {
 	 *            the subscriber id
 	 * @return the by natural id
 	 */
-	public LosEntry getByNaturalId(PublisherId publisherId, SubscriberId subscriberId);
-
+	public LosEntry getByNaturalId(PublisherId publisherId,
+			SubscriberId subscriberId);
 
 	/**
 	 * Delete by natural id.
@@ -48,8 +48,8 @@ public interface LosEntryDao {
 	 * @param subscriberId
 	 *            the subscriber id
 	 */
-	public void deleteByNaturalId(PublisherId publisherId, SubscriberId subscriberId);
-
+	public void deleteByNaturalId(PublisherId publisherId,
+			SubscriberId subscriberId);
 
 	/**
 	 * Update entity.
@@ -61,7 +61,6 @@ public interface LosEntryDao {
 	 */
 	public void updateEntity(PublisherId publisherId, LosEntry entry);
 
-
 	/**
 	 * Adds the new entity.
 	 * 
@@ -72,7 +71,6 @@ public interface LosEntryDao {
 	 */
 	public void addNewEntity(PublisherId publisherId, LosEntry entry);
 
-
 	/**
 	 * Exists by natural id.
 	 * 
@@ -82,6 +80,7 @@ public interface LosEntryDao {
 	 *            the subscriber id
 	 * @return true, if successful
 	 */
-	public boolean existsByNaturalId(PublisherId publisherId, SubscriberId subscriberId);
+	public boolean existsByNaturalId(PublisherId publisherId,
+			SubscriberId subscriberId);
 
 }

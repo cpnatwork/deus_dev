@@ -29,12 +29,16 @@ import deus.model.hci.attention.DecisionType;
  */
 public class Repatriation extends BinaryDecisionToMake {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6883677745871606146L;
+
 	/** The contributor metadata. */
 	private final UserMetadata contributorMetadata;
 
 	/** The contributed digital card. */
 	private final DigitalCard contributedDigitalCard;
-
 
 	/**
 	 * Instantiates a new repatriation.
@@ -44,12 +48,12 @@ public class Repatriation extends BinaryDecisionToMake {
 	 * @param contributedDigitalCard
 	 *            the contributed digital card
 	 */
-	public Repatriation(UserMetadata contributorMetadata, DigitalCard contributedDigitalCard) {
+	public Repatriation(final UserMetadata contributorMetadata,
+			final DigitalCard contributedDigitalCard) {
 		super();
 		this.contributorMetadata = contributorMetadata;
 		this.contributedDigitalCard = contributedDigitalCard;
 	}
-
 
 	/**
 	 * Gets the contributor metadata.
@@ -57,9 +61,8 @@ public class Repatriation extends BinaryDecisionToMake {
 	 * @return the contributor metadata
 	 */
 	public UserMetadata getContributorMetadata() {
-		return contributorMetadata;
+		return this.contributorMetadata;
 	}
-
 
 	/**
 	 * Gets the contributed digital card.
@@ -67,11 +70,12 @@ public class Repatriation extends BinaryDecisionToMake {
 	 * @return the contributed digital card
 	 */
 	public DigitalCard getContributedDigitalCard() {
-		return contributedDigitalCard;
+		return this.contributedDigitalCard;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.hci.attention.BinaryDecisionToMake#getType()
 	 */
 	@Override
@@ -79,8 +83,9 @@ public class Repatriation extends BinaryDecisionToMake {
 		return DecisionType.contribution;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.hci.attention.AttentionElement#getCatchphare()
 	 */
 	@Override

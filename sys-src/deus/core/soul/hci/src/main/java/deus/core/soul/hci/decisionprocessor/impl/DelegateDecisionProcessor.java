@@ -37,8 +37,7 @@ import deus.model.hci.attention.DecisionType;
 public class DelegateDecisionProcessor implements DecisionProcessor {
 
 	/** The generic decision processors. */
-	private Map<DecisionType, GenericDecisionProcessor<? extends BinaryDecisionToMake>> genericDecisionProcessors;
-
+	private final Map<DecisionType, GenericDecisionProcessor<? extends BinaryDecisionToMake>> genericDecisionProcessors;
 
 	/**
 	 * Instantiates a new delegate decision processor.
@@ -48,17 +47,21 @@ public class DelegateDecisionProcessor implements DecisionProcessor {
 		this.genericDecisionProcessors = new HashMap<DecisionType, GenericDecisionProcessor<? extends BinaryDecisionToMake>>();
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.common.decisionprocessor.impl.DecisionProcessor#process(deus.model.hci.attention.decision.BinaryDecisionToMake)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.common.decisionprocessor.impl.DecisionProcessor#process
+	 * (deus.model.hci.attention.decision.BinaryDecisionToMake)
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T extends BinaryDecisionToMake> void process(UserId userId, T decision) {
-		GenericDecisionProcessor<T> decisionProcessor = (GenericDecisionProcessor<T>)genericDecisionProcessors.get(decision.getType());
+	public <T extends BinaryDecisionToMake> void process(final UserId userId,
+			final T decision) {
+		final GenericDecisionProcessor<T> decisionProcessor = (GenericDecisionProcessor<T>) this.genericDecisionProcessors
+				.get(decision.getType());
 		decisionProcessor.process(userId, decision);
 	}
-
 
 	/**
 	 * Adds the decision processor.
@@ -70,9 +73,10 @@ public class DelegateDecisionProcessor implements DecisionProcessor {
 	 * @param type
 	 *            the type
 	 */
-	public <T extends BinaryDecisionToMake> void addDecisionProcessor(GenericDecisionProcessor<T> decisionProcessor,
-			DecisionType type) {
-		genericDecisionProcessors.put(type, decisionProcessor);
+	public <T extends BinaryDecisionToMake> void addDecisionProcessor(
+			final GenericDecisionProcessor<T> decisionProcessor,
+			final DecisionType type) {
+		this.genericDecisionProcessors.put(type, decisionProcessor);
 	}
 
 }

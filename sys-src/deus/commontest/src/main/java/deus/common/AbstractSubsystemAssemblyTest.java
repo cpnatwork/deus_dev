@@ -38,56 +38,60 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public abstract class AbstractSubsystemAssemblyTest {
 
 	/** The Constant logger. */
-	private final static Logger logger = LoggerFactory.getLogger(AbstractSubsystemAssemblyTest.class);
-	
+	private final static Logger logger = LoggerFactory
+			.getLogger(AbstractSubsystemAssemblyTest.class);
+
 	/** The context. */
 	@Autowired
 	private ApplicationContext context;
 
 	/** The subsystem base package. */
-	private String subsystemBasePackage;
-
+	private final String subsystemBasePackage;
 
 	/**
 	 * Instantiates a new abstract subsystem assembly test.
 	 */
 	public AbstractSubsystemAssemblyTest() {
-		this.subsystemBasePackage = getClass().getPackage().getName().toString();
+		this.subsystemBasePackage = this.getClass().getPackage().getName()
+				.toString();
 	}
-	
+
 	/**
 	 * Instantiates a new abstract subsystem assembly test.
 	 * 
 	 * @param subsystemBasePackage
 	 *            the subsystem base package
 	 */
-	public AbstractSubsystemAssemblyTest(String subsystemBasePackage) {
+	public AbstractSubsystemAssemblyTest(final String subsystemBasePackage) {
 		this.subsystemBasePackage = subsystemBasePackage;
 	}
-
 
 	/**
 	 * Test integration.
 	 */
 	@Test
 	public void testIntegration() {
-		logger.info("loaded Spring beans: " + Arrays.toString(context.getBeanDefinitionNames()));
+		AbstractSubsystemAssemblyTest.logger.info("loaded Spring beans: "
+				+ Arrays.toString(this.context.getBeanDefinitionNames()));
 
+		final StringBuilder loadedDomainBeans = new StringBuilder();
 
-		StringBuilder loadedDomainBeans = new StringBuilder();
-
-		String[] names = context.getBeanDefinitionNames();
-		for (String name : names) {
-			Object bean = context.getBean(name);
-			if (bean.getClass().getPackage() != null
-					&& bean.getClass().getPackage().getName().startsWith(subsystemBasePackage))
+		final String[] names = this.context.getBeanDefinitionNames();
+		for (final String name : names) {
+			final Object bean = this.context.getBean(name);
+			if ((bean.getClass().getPackage() != null)
+					&& bean.getClass().getPackage().getName()
+							.startsWith(this.subsystemBasePackage)) {
 				loadedDomainBeans.append(name + ", ");
+			}
 		}
 
-		int l = loadedDomainBeans.length();
-		if (l > 0)
+		final int l = loadedDomainBeans.length();
+		if (l > 0) {
 			loadedDomainBeans.delete(l - 2, l);
-		logger.info("loaded domain beans: [" + loadedDomainBeans.toString() + "]");
+		}
+		AbstractSubsystemAssemblyTest.logger.info("loaded domain beans: ["
+				+ loadedDomainBeans.toString() + "]");
 	}
 
 }

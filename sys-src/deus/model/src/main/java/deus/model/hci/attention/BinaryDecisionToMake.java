@@ -19,15 +19,17 @@
  *************************************************************************/
 package deus.model.hci.attention;
 
-
 /**
  * The Class BinaryDecisionToMake.
  */
 public abstract class BinaryDecisionToMake extends AttentionElement {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5599768940314917357L;
 	/** The decision. */
 	private Boolean decision = null;
-
 
 	/**
 	 * Checks if is decision made.
@@ -35,34 +37,30 @@ public abstract class BinaryDecisionToMake extends AttentionElement {
 	 * @return true, if is decision made
 	 */
 	public final boolean isDecisionMade() {
-		return decision != null;
+		return this.decision != null;
 	}
-
 
 	/**
 	 * Sets the decision positive.
 	 */
 	public final void setDecisionPositive() {
-		decision = true;
+		this.decision = true;
 	}
-
 
 	/**
 	 * Sets the decision negative.
 	 */
 	public final void setDecisionNegative() {
-		decision = false;
+		this.decision = false;
 	}
-
 
 	/**
 	 * Assert is decision made.
 	 */
 	private final void assertIsDecisionMade() {
-		if (!isDecisionMade())
+		if (!this.isDecisionMade())
 			throw new IllegalStateException("decision is not made yet!");
 	}
-
 
 	/**
 	 * Checks if is decision positive.
@@ -70,10 +68,9 @@ public abstract class BinaryDecisionToMake extends AttentionElement {
 	 * @return true, if is decision positive
 	 */
 	public final boolean isDecisionPositive() {
-		assertIsDecisionMade();
-		return decision == true;
+		this.assertIsDecisionMade();
+		return this.decision == true;
 	}
-
 
 	/**
 	 * Checks if is decision negative.
@@ -81,10 +78,9 @@ public abstract class BinaryDecisionToMake extends AttentionElement {
 	 * @return true, if is decision negative
 	 */
 	public final boolean isDecisionNegative() {
-		assertIsDecisionMade();
-		return decision == false;
+		this.assertIsDecisionMade();
+		return this.decision == false;
 	}
-
 
 	/**
 	 * Gets the type.

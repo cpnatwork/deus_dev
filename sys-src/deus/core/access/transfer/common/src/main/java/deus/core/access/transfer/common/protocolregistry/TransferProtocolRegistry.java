@@ -21,7 +21,6 @@ package deus.core.access.transfer.common.protocolregistry;
 
 import deus.core.access.transfer.common.protocol.TransferProtocol;
 
-
 /**
  * The Interface TransferProtocolRegistry.
  */
@@ -33,8 +32,8 @@ public interface TransferProtocolRegistry {
 	 * @param transferProtocol
 	 *            the transfer protocol
 	 */
-	public abstract void registerTransferProtocol(TransferProtocol transferProtocol);
-
+	public abstract void registerTransferProtocol(
+			TransferProtocol transferProtocol);
 
 	/**
 	 * Unregister transfer protocol.

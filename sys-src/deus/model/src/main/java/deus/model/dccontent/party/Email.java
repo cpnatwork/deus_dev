@@ -35,16 +35,14 @@ public class Email {
 	/** The send html. */
 	private boolean sendHTML;
 
-
 	/**
 	 * Gets the entity tag.
 	 * 
 	 * @return the entity tag
 	 */
 	public EntityTag getEntityTag() {
-		return entityTag;
+		return this.entityTag;
 	}
-
 
 	/**
 	 * Sets the entity tag.
@@ -52,10 +50,9 @@ public class Email {
 	 * @param entityTag
 	 *            the new entity tag
 	 */
-	public void setEntityTag(EntityTag entityTag) {
+	public void setEntityTag(final EntityTag entityTag) {
 		this.entityTag = entityTag;
 	}
-
 
 	/**
 	 * Gets the address.
@@ -63,9 +60,8 @@ public class Email {
 	 * @return the address
 	 */
 	public String getAddress() {
-		return address;
+		return this.address;
 	}
-
 
 	/**
 	 * Sets the address.
@@ -73,10 +69,9 @@ public class Email {
 	 * @param address
 	 *            the new address
 	 */
-	public void setAddress(String address) {
+	public void setAddress(final String address) {
 		this.address = address;
 	}
-
 
 	/**
 	 * Checks if is send html.
@@ -84,9 +79,8 @@ public class Email {
 	 * @return true, if is send html
 	 */
 	public boolean isSendHTML() {
-		return sendHTML;
+		return this.sendHTML;
 	}
-
 
 	/**
 	 * Sets the send html.
@@ -94,7 +88,7 @@ public class Email {
 	 * @param sendHTML
 	 *            the new send html
 	 */
-	public void setSendHTML(boolean sendHTML) {
+	public void setSendHTML(final boolean sendHTML) {
 		this.sendHTML = sendHTML;
 	}
 

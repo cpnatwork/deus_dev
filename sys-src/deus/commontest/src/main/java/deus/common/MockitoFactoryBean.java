@@ -33,7 +33,6 @@ public class MockitoFactoryBean<T> implements FactoryBean<T> {
 	/** The type. */
 	private Class<T> type;// the created object type
 
-
 	/**
 	 * Sets the type.
 	 * 
@@ -44,26 +43,29 @@ public class MockitoFactoryBean<T> implements FactoryBean<T> {
 		this.type = type;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.springframework.beans.factory.FactoryBean#getObject()
 	 */
 	@Override
 	public T getObject() throws Exception {
-		return Mockito.mock(type);
+		return Mockito.mock(this.type);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.springframework.beans.factory.FactoryBean#getObjectType()
 	 */
 	@Override
 	public Class<T> getObjectType() {
-		return type;
+		return this.type;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.springframework.beans.factory.FactoryBean#isSingleton()
 	 */
 	@Override

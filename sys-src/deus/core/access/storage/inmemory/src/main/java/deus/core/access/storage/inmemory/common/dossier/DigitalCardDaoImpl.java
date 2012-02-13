@@ -32,6 +32,8 @@ import deus.model.common.user.id.UserId;
  * @author cpn
  */
 @Named("digitalCardDao")
-public class DigitalCardDaoImpl extends GenericThreefoldIdDaoImpl<Object, ContributorId, UserId, String>implements DigitalCardDao {
+public class DigitalCardDaoImpl extends
+		GenericThreefoldIdDaoImpl<Object, ContributorId, UserId, String>
+		implements DigitalCardDao {
 
 }

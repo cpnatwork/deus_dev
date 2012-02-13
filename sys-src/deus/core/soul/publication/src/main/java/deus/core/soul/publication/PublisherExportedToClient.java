@@ -26,8 +26,9 @@ import deus.model.common.user.frids.SubscriberId;
 import deus.model.publication.ListOfSubscribers;
 
 /**
- * Groups methods of the interface <code>Publisher</code> that trigger remote calls. These methods are implemented using
- * a <code>RemoteCommand</code>, that encapsulates the remote action. The calls are delegated to a
+ * Groups methods of the interface <code>Publisher</code> that trigger remote
+ * calls. These methods are implemented using a <code>RemoteCommand</code>, that
+ * encapsulates the remote action. The calls are delegated to a
  * <code>SubscriberStub</code>, that implements the remote call.
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
@@ -36,7 +37,7 @@ import deus.model.publication.ListOfSubscribers;
 public interface PublisherExportedToClient {
 
 	// USE CASE: update
-	
+
 	/**
 	 * If this object has changed, as indicated by the <code>hasChanged</code>
 	 * method, then notify all of its observers and then call the
@@ -56,7 +57,8 @@ public interface PublisherExportedToClient {
 	 *      java.lang.ForeignInformationFile)
 	 */
 	// FIXME: replace DC parameter by Patch parameter
-	public abstract void notifySubscribers(PublisherId publisherId, DigitalCard digitalCard);
+	public abstract void notifySubscribers(PublisherId publisherId,
+			DigitalCard digitalCard);
 
 	// FIXME: replace DC parameter by Patch parameter
 	/**
@@ -69,12 +71,11 @@ public interface PublisherExportedToClient {
 	 * @param digitalCard
 	 *            the digital card
 	 */
-	public abstract void notifySubscriber(PublisherId publisherId, SubscriberId subscriberId, DigitalCard digitalCard);
-	
-	
-	
+	public abstract void notifySubscriber(PublisherId publisherId,
+			SubscriberId subscriberId, DigitalCard digitalCard);
+
 	// USE CASE: publisher initiated connection/termination
-	
+
 	/**
 	 * Invite subscriber.
 	 * 
@@ -85,8 +86,9 @@ public interface PublisherExportedToClient {
 	 * @param subscriberMetadata
 	 *            the subscriber metadata
 	 */
-	public abstract void inviteSubscriber(PublisherId publisherId, SubscriberId subscriberId, UserMetadata subscriberMetadata);
-	
+	public abstract void inviteSubscriber(PublisherId publisherId,
+			SubscriberId subscriberId, UserMetadata subscriberMetadata);
+
 	/**
 	 * Cancel subscription.
 	 * 
@@ -95,12 +97,11 @@ public interface PublisherExportedToClient {
 	 * @param subscriberId
 	 *            the subscriber id
 	 */
-	public abstract void cancelSubscription(PublisherId publisherId, SubscriberId subscriberId);
-	
+	public abstract void cancelSubscription(PublisherId publisherId,
+			SubscriberId subscriberId);
 
-	
 	// DATA MODEL RETRIEVING
-	
+
 	/**
 	 * Gets the list of subscribers.
 	 * 
@@ -108,6 +109,7 @@ public interface PublisherExportedToClient {
 	 *            the publisher id
 	 * @return the list of subscribers
 	 */
-	public abstract ListOfSubscribers getListOfSubscribers(PublisherId publisherId);
+	public abstract ListOfSubscribers getListOfSubscribers(
+			PublisherId publisherId);
 
 }

@@ -41,22 +41,21 @@ public class RegisterTransferProtocol {
 	@Inject
 	private TransferProtocol loopbackProtocol;
 
-	
 	/**
 	 * Register.
 	 */
 	@PostConstruct
 	public void register() {
-		registry.registerTransferProtocol(loopbackProtocol);
+		this.registry.registerTransferProtocol(this.loopbackProtocol);
 	}
-
 
 	/**
 	 * Unregister.
 	 */
 	@PreDestroy
 	public void unregister() {
-		registry.unregisterTransferProtocol(loopbackProtocol.getProtocolId());
+		this.registry.unregisterTransferProtocol(this.loopbackProtocol
+				.getProtocolId());
 	}
 
 }

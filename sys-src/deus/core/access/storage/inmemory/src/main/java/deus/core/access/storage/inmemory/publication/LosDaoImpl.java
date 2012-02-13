@@ -32,6 +32,7 @@ import deus.model.publication.ListOfSubscribers;
  * @author cpn
  */
 @Named("losDao")
-public class LosDaoImpl extends GenericVanillaDaoImpl<ListOfSubscribers, PublisherId> implements LosDao {
+public class LosDaoImpl extends
+		GenericVanillaDaoImpl<ListOfSubscribers, PublisherId> implements LosDao {
 
 }

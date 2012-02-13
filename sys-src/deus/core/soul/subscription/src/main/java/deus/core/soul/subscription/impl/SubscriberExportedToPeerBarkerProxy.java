@@ -45,10 +45,12 @@ import deus.model.subscription.LopEntry;
  * The Class SubscriberExportedToPeerBarkerProxy.
  */
 @Named("SubscriberProxy")
-public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedToPeers {
+public class SubscriberExportedToPeerBarkerProxy implements
+		SubscriberExportedToPeers {
 
 	/** The logger. */
-	private final Logger logger = LoggerFactory.getLogger(SubscriberExportedToPeerBarkerProxy.class);
+	private final Logger logger = LoggerFactory
+			.getLogger(SubscriberExportedToPeerBarkerProxy.class);
 
 	/** The proxied subscriber. */
 	@Inject
@@ -63,97 +65,140 @@ public class SubscriberExportedToPeerBarkerProxy implements SubscriberExportedTo
 	@Inject
 	private LopEntryDao lopEntryDao;
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers#noticeSubscriptionRequestGranted(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.
+	 * SubscriberExportedToPeers
+	 * #noticeSubscriptionRequestGranted(deus.model.common
+	 * .user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
 	 */
 	@Override
-	public void noticeSubscriptionRequestGranted(SubscriberId subscriberId, PublisherId publisherId) {
-		logger.debug("proxying call to acknowledgeSubscription");
+	public void noticeSubscriptionRequestGranted(
+			final SubscriberId subscriberId, final PublisherId publisherId) {
+		this.logger.debug("proxying call to acknowledgeSubscription");
 
-		LopEntry lopEntry = lopEntryDao.getByNaturalId(subscriberId, publisherId);
+		final LopEntry lopEntry = this.lopEntryDao.getByNaturalId(subscriberId,
+				publisherId);
 
 		// get publisher metadata out of LoP
-		UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
-		Notice notice = new SubscriptionRequestGrantedNotice(publisherMetadata);
-		barker.addUnnoticedAttentionElement(subscriberId.getUserId(), notice);
+		final UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
+		final Notice notice = new SubscriptionRequestGrantedNotice(
+				publisherMetadata);
+		this.barker.addUnnoticedAttentionElement(subscriberId.getUserId(),
+				notice);
 
-		logger.debug("added {} to barker", notice);
-		
-		proxiedSubscriber.noticeSubscriptionRequestGranted(subscriberId, publisherId);
+		this.logger.debug("added {} to barker", notice);
+
+		this.proxiedSubscriber.noticeSubscriptionRequestGranted(subscriberId,
+				publisherId);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers#noticeSubscriptionRequestDenied(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.
+	 * SubscriberExportedToPeers
+	 * #noticeSubscriptionRequestDenied(deus.model.common
+	 * .user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
 	 */
 	@Override
-	public void noticeSubscriptionRequestDenied(SubscriberId subscriberId, PublisherId publisherId) {
-		logger.debug("proxying call to denySubscription");
+	public void noticeSubscriptionRequestDenied(
+			final SubscriberId subscriberId, final PublisherId publisherId) {
+		this.logger.debug("proxying call to denySubscription");
 
-		LopEntry lopEntry = lopEntryDao.getByNaturalId(subscriberId, publisherId);
+		final LopEntry lopEntry = this.lopEntryDao.getByNaturalId(subscriberId,
+				publisherId);
 
 		// get publisher metadata out of LoP
-		UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
-		Notice notice = new SubscriptionRequestDeniedNotice(publisherMetadata);
-		barker.addUnnoticedAttentionElement(subscriberId.getUserId(), notice);
+		final UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
+		final Notice notice = new SubscriptionRequestDeniedNotice(
+				publisherMetadata);
+		this.barker.addUnnoticedAttentionElement(subscriberId.getUserId(),
+				notice);
 
-		logger.debug("added {} to barker", notice);
-		
-		proxiedSubscriber.noticeSubscriptionRequestDenied(subscriberId, publisherId);
+		this.logger.debug("added {} to barker", notice);
+
+		this.proxiedSubscriber.noticeSubscriptionRequestDenied(subscriberId,
+				publisherId);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers#update(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId, deus.model.common.dossier.Patch)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.
+	 * SubscriberExportedToPeers
+	 * #update(deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.dossier.Patch)
 	 */
 	@Override
-	public void update(SubscriberId subscriberId, PublisherId publisherId, Patch patch) {
-		logger.debug("proxying call to update");
+	public void update(final SubscriberId subscriberId,
+			final PublisherId publisherId, final Patch patch) {
+		this.logger.debug("proxying call to update");
 
-		proxiedSubscriber.update(subscriberId, publisherId, patch);
+		this.proxiedSubscriber.update(subscriberId, publisherId, patch);
 
-		LopEntry lopEntry = lopEntryDao.getByNaturalId(subscriberId, publisherId);
-		Notice notice = new UpdateNotice(lopEntry.getPublisherMetadata(), patch);
-		barker.addUnnoticedAttentionElement(subscriberId.getUserId(), notice);
+		final LopEntry lopEntry = this.lopEntryDao.getByNaturalId(subscriberId,
+				publisherId);
+		final Notice notice = new UpdateNotice(lopEntry.getPublisherMetadata(),
+				patch);
+		this.barker.addUnnoticedAttentionElement(subscriberId.getUserId(),
+				notice);
 
-		logger.debug("added {} to barker", notice);
+		this.logger.debug("added {} to barker", notice);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers#addPublisher(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId, deus.model.common.user.UserMetadata)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.
+	 * SubscriberExportedToPeers
+	 * #addPublisher(deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.UserMetadata)
 	 */
 	@Override
-	public void addPublisher(SubscriberId subscriberId, PublisherId publisherId, UserMetadata publisherMetadata) {
-		logger.debug("proxying call to addPublisher");
+	public void addPublisher(final SubscriberId subscriberId,
+			final PublisherId publisherId, final UserMetadata publisherMetadata) {
+		this.logger.debug("proxying call to addPublisher");
 
 		// PLACE PUBLISHER REQUEST
-		BinaryDecisionToMake decision = new PublisherOffer(publisherId, publisherMetadata);
-		barker.addUnnoticedAttentionElement(subscriberId.getUserId(), decision);
-		
-		logger.trace("added {} to barker", decision);
+		final BinaryDecisionToMake decision = new PublisherOffer(publisherId,
+				publisherMetadata);
+		this.barker.addUnnoticedAttentionElement(subscriberId.getUserId(),
+				decision);
+
+		this.logger.trace("added {} to barker", decision);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers#deletePublisher(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.
+	 * SubscriberExportedToPeers
+	 * #deletePublisher(deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId)
 	 */
 	@Override
-	public void deletePublisher(SubscriberId subscriberId, PublisherId publisherId) {
-		logger.debug("proxying call to deletePublisher");
-		
-		// DELETE PUBLISHER
-		proxiedSubscriber.deletePublisher(subscriberId, publisherId);
+	public void deletePublisher(final SubscriberId subscriberId,
+			final PublisherId publisherId) {
+		this.logger.debug("proxying call to deletePublisher");
 
-		LopEntry lopEntry = lopEntryDao.getByNaturalId(subscriberId, publisherId);
-		
+		// DELETE PUBLISHER
+		this.proxiedSubscriber.deletePublisher(subscriberId, publisherId);
+
+		final LopEntry lopEntry = this.lopEntryDao.getByNaturalId(subscriberId,
+				publisherId);
+
 		// PLACE NOTICE
-		UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
-		Notice notice = new PublisherInitiatedTerminationNotice(publisherMetadata);
-		barker.addUnnoticedAttentionElement(subscriberId.getUserId(), notice);
-		
-		logger.trace("added {} to barker", notice);
+		final UserMetadata publisherMetadata = lopEntry.getPublisherMetadata();
+		final Notice notice = new PublisherInitiatedTerminationNotice(
+				publisherMetadata);
+		this.barker.addUnnoticedAttentionElement(subscriberId.getUserId(),
+				notice);
+
+		this.logger.trace("added {} to barker", notice);
 	}
 
 }

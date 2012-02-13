@@ -25,13 +25,17 @@ package deus.core.soul.hci.barker;
 public class BarkerRuntimeException extends RuntimeException {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4948150106684877522L;
+
+	/**
 	 * Instantiates a new barker runtime exception.
 	 */
 	public BarkerRuntimeException() {
 		super();
 	}
 
-
 	/**
 	 * Instantiates a new barker runtime exception.
 	 * 
@@ -40,21 +44,19 @@ public class BarkerRuntimeException extends RuntimeException {
 	 * @param cause
 	 *            the cause
 	 */
-	public BarkerRuntimeException(String message, Throwable cause) {
+	public BarkerRuntimeException(final String message, final Throwable cause) {
 		super(message, cause);
 	}
 
-
 	/**
 	 * Instantiates a new barker runtime exception.
 	 * 
 	 * @param message
 	 *            the message
 	 */
-	public BarkerRuntimeException(String message) {
+	public BarkerRuntimeException(final String message) {
 		super(message);
 	}
-
 
 	/**
 	 * Instantiates a new barker runtime exception.
@@ -62,7 +64,7 @@ public class BarkerRuntimeException extends RuntimeException {
 	 * @param cause
 	 *            the cause
 	 */
-	public BarkerRuntimeException(Throwable cause) {
+	public BarkerRuntimeException(final Throwable cause) {
 		super(cause);
 	}
 

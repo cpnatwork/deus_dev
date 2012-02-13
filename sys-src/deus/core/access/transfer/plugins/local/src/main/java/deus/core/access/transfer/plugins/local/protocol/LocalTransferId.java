@@ -29,18 +29,16 @@ public class LocalTransferId implements TransferId {
 	/** The username. */
 	private final String username;
 
-
 	/**
 	 * Instantiates a new local transfer id.
 	 * 
 	 * @param username
 	 *            the username
 	 */
-	public LocalTransferId(String username) {
+	public LocalTransferId(final String username) {
 		super();
 		this.username = username;
 	}
-
 
 	/**
 	 * Gets the username.
@@ -48,12 +46,15 @@ public class LocalTransferId implements TransferId {
 	 * @return the username
 	 */
 	public String getUsername() {
-		return username;
+		return this.username;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocol.TransferId#getTransferProtocolId()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.common.protocol.TransferId#getTransferProtocolId
+	 * ()
 	 */
 	@Override
 	public String getTransferProtocolId() {

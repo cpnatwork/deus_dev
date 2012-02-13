@@ -29,13 +29,12 @@ public class LopEntry {
 
 	/** The publisher id. */
 	private final PublisherId publisherId;
-	
+
 	/** The publisher metadata. */
 	private UserMetadata publisherMetadata;
 
 	/** The subscriber side subscription state. */
 	private SubscriberSideSubscriptionState subscriberSideSubscriptionState;
-
 
 	/**
 	 * Instantiates a new lop entry.
@@ -43,11 +42,10 @@ public class LopEntry {
 	 * @param publisherId
 	 *            the publisher id
 	 */
-	public LopEntry(PublisherId publisherId) {
+	public LopEntry(final PublisherId publisherId) {
 		super();
 		this.publisherId = publisherId;
 	}
-
 
 	/**
 	 * Gets the publisher id.
@@ -55,10 +53,9 @@ public class LopEntry {
 	 * @return the publisher id
 	 */
 	public PublisherId getPublisherId() {
-		return publisherId;
+		return this.publisherId;
 
 	}
-
 
 	/**
 	 * Gets the publisher metadata.
@@ -66,9 +63,8 @@ public class LopEntry {
 	 * @return the publisher metadata
 	 */
 	public UserMetadata getPublisherMetadata() {
-		return publisherMetadata;
+		return this.publisherMetadata;
 	}
-
 
 	/**
 	 * Sets the publisher metadata.
@@ -76,10 +72,9 @@ public class LopEntry {
 	 * @param publisherMetadata
 	 *            the new publisher metadata
 	 */
-	public void setPublisherMetadata(UserMetadata publisherMetadata) {
+	public void setPublisherMetadata(final UserMetadata publisherMetadata) {
 		this.publisherMetadata = publisherMetadata;
 	}
-
 
 	/**
 	 * Gets the subscription state.
@@ -87,9 +82,8 @@ public class LopEntry {
 	 * @return the subscription state
 	 */
 	public SubscriberSideSubscriptionState getSubscriptionState() {
-		return subscriberSideSubscriptionState;
+		return this.subscriberSideSubscriptionState;
 	}
-
 
 	/**
 	 * Sets the subscription state.
@@ -97,7 +91,8 @@ public class LopEntry {
 	 * @param subscriberSideSubscriptionState
 	 *            the new subscription state
 	 */
-	public void setSubscriptionState(SubscriberSideSubscriptionState subscriberSideSubscriptionState) {
+	public void setSubscriptionState(
+			final SubscriberSideSubscriptionState subscriberSideSubscriptionState) {
 		this.subscriberSideSubscriptionState = subscriberSideSubscriptionState;
 	}
 

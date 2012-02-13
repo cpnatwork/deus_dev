@@ -41,7 +41,9 @@ public class ForeignPartyFile extends ForeignInformationFile {
 	 * @param digitalCards
 	 *            the digital cards
 	 */
-	public ForeignPartyFile(UserId publisherId, UserMetadata publisherMetadata, Set<DigitalCard> digitalCards) {
+	public ForeignPartyFile(final UserId publisherId,
+			final UserMetadata publisherMetadata,
+			final Set<DigitalCard> digitalCards) {
 		super(publisherId, publisherMetadata, digitalCards);
 	}
 

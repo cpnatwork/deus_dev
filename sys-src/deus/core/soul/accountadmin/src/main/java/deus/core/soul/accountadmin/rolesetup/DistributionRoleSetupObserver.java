@@ -42,7 +42,6 @@ public interface DistributionRoleSetupObserver {
 	 */
 	public void setUpRole(DistributionRole distributionRole, UserId userId);
 
-
 	/**
 	 * This method is called when information about an DistributionRoleSetup
 	 * which was previously requested using an asynchronous interface becomes
@@ -54,5 +53,5 @@ public interface DistributionRoleSetupObserver {
 	 *            the user id
 	 */
 	public void tearDownRole(DistributionRole distributionRole, UserId userId);
-	
+
 }

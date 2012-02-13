@@ -30,23 +30,35 @@ import deus.model.hci.attention.AttentionElement;
  * The Class AttentionElementDaoImpl.
  */
 @Named("attentionElementDao")
-public class AttentionElementDaoImpl extends GenericTwofoldIdDaoImpl<AttentionElement, UserId, Integer> implements
+public class AttentionElementDaoImpl extends
+		GenericTwofoldIdDaoImpl<AttentionElement, UserId, Integer> implements
 		AttentionElementDao {
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.api.hci.attention.AttentionElementDao#addNewEntity(deus.model.common.user.id.UserId, deus.model.hci.attention.AttentionElement)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.api.hci.attention.AttentionElementDao#addNewEntity
+	 * (deus.model.common.user.id.UserId,
+	 * deus.model.hci.attention.AttentionElement)
 	 */
 	@Override
-	public void addNewEntity(UserId userId, AttentionElement attentionElement) {
+	public void addNewEntity(final UserId userId,
+			final AttentionElement attentionElement) {
 		super.addNewEntity(userId, attentionElement.getId(), attentionElement);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.api.hci.attention.AttentionElementDao#updateEntity(deus.model.common.user.id.UserId, deus.model.hci.attention.AttentionElement)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.api.hci.attention.AttentionElementDao#updateEntity
+	 * (deus.model.common.user.id.UserId,
+	 * deus.model.hci.attention.AttentionElement)
 	 */
 	@Override
-	public void updateEntity(UserId userId, AttentionElement attentionElement) {
+	public void updateEntity(final UserId userId,
+			final AttentionElement attentionElement) {
 		super.updateEntity(userId, attentionElement.getId(), attentionElement);
 	}
 

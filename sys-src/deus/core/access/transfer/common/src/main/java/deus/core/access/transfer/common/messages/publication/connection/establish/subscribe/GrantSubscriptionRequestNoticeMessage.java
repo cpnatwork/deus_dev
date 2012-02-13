@@ -19,13 +19,13 @@
  *************************************************************************/
 package deus.core.access.transfer.common.messages.publication.connection.establish.subscribe;
 
-
 /**
  * Command, issued by the publisher to accept a subscription request.
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
- *
+ * 
  */
-public final class GrantSubscriptionRequestNoticeMessage extends SubscribeToPublisherMessage {
+public final class GrantSubscriptionRequestNoticeMessage extends
+		SubscribeToPublisherMessage {
 
 }

@@ -36,8 +36,6 @@ public class DistributedInformationFolderImpl implements
 	/** The foreign information files. */
 	protected Map<UserId, ForeignInformationFile> foreignInformationFiles;
 
-	
-	
 	/**
 	 * Instantiates a new distributed information folder impl.
 	 */
@@ -46,44 +44,63 @@ public class DistributedInformationFolderImpl implements
 		this.foreignInformationFiles = new HashMap<UserId, ForeignInformationFile>();
 	}
 
-	/* (non-Javadoc)
-	 * @see deus.model.difgoverning.DistributedInformationFolder#getForeignInformationFile(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.model.difgoverning.DistributedInformationFolder#
+	 * getForeignInformationFile(deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public InformationFile getForeignInformationFile(UserId publisherId) {
-		if (!foreignInformationFiles.containsKey(publisherId))
-			throw new IllegalArgumentException("no FIF for publisher id " + publisherId);
+	public InformationFile getForeignInformationFile(final UserId publisherId) {
+		if (!this.foreignInformationFiles.containsKey(publisherId))
+			throw new IllegalArgumentException("no FIF for publisher id "
+					+ publisherId);
 		else
-			return foreignInformationFiles.get(publisherId);
+			return this.foreignInformationFiles.get(publisherId);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.model.difgoverning.DistributedInformationFolder#updateForeignInformationFile(deus.model.difgoverning.ForeignInformationFile)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.model.difgoverning.DistributedInformationFolder#
+	 * updateForeignInformationFile
+	 * (deus.model.difgoverning.ForeignInformationFile)
 	 */
 	@Override
-	public void updateForeignInformationFile(ForeignInformationFile foreignInformationFile) {
-		if (!foreignInformationFiles.containsKey(foreignInformationFile.getPublisherId()))
-			throw new IllegalArgumentException("cannot update FIF " + foreignInformationFile
+	public void updateForeignInformationFile(
+			final ForeignInformationFile foreignInformationFile) {
+		if (!this.foreignInformationFiles.containsKey(foreignInformationFile
+				.getPublisherId()))
+			throw new IllegalArgumentException("cannot update FIF "
+					+ foreignInformationFile
 					+ ", it is not contained in the DIF yet!");
-		else
-			foreignInformationFiles.put(foreignInformationFile.getPublisherId(),
+		else {
+			this.foreignInformationFiles.put(
+					foreignInformationFile.getPublisherId(),
 					foreignInformationFile);
+		}
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.model.difgoverning.DistributedInformationFolder#addForeignInformationFile(deus.model.difgoverning.ForeignInformationFile)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.model.difgoverning.DistributedInformationFolder#
+	 * addForeignInformationFile(deus.model.difgoverning.ForeignInformationFile)
 	 */
 	@Override
-	public void addForeignInformationFile(ForeignInformationFile foreignInformationFile) {
-		if (foreignInformationFiles.containsKey(foreignInformationFile.getPublisherId()))
-			throw new IllegalArgumentException("cannot add FIF " + foreignInformationFile
-					+ ", there already exists a FIF with the same publisher id!");
-		else
-			foreignInformationFiles.put(foreignInformationFile.getPublisherId(),
+	public void addForeignInformationFile(
+			final ForeignInformationFile foreignInformationFile) {
+		if (this.foreignInformationFiles.containsKey(foreignInformationFile
+				.getPublisherId()))
+			throw new IllegalArgumentException(
+					"cannot add FIF "
+							+ foreignInformationFile
+							+ ", there already exists a FIF with the same publisher id!");
+		else {
+			this.foreignInformationFiles.put(
+					foreignInformationFile.getPublisherId(),
 					foreignInformationFile);
+		}
 	}
-
 
 }

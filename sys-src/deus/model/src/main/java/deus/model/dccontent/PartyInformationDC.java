@@ -30,14 +30,14 @@ public class PartyInformationDC extends DigitalCard {
 
 	/** The party. */
 	private Party party;
-	
+
 	/**
 	 * Instantiates a new party information dc.
 	 * 
 	 * @param digitalCardId
 	 *            the digital card id
 	 */
-	public PartyInformationDC(DigitalCardId digitalCardId) {
+	public PartyInformationDC(final DigitalCardId digitalCardId) {
 		super(digitalCardId);
 	}
 
@@ -47,19 +47,20 @@ public class PartyInformationDC extends DigitalCard {
 	 * @return the party information
 	 */
 	public Party getPartyInformation() {
-		return party;
+		return this.party;
 	}
-	
+
 	/**
 	 * Sets the party information.
 	 * 
 	 * @param partyInformation
 	 *            the new party information
 	 */
-	public void setPartyInformation(Party partyInformation) {
-		if(!partyInformation.getId().equals(getDigitalCardId().getCpId()))
-			throw new IllegalArgumentException("passed a party information with an ID not equal to the ID of the CP of this digital card!");
-		party = partyInformation;
+	public void setPartyInformation(final Party partyInformation) {
+		if (!partyInformation.getId().equals(this.getDigitalCardId().getCpId()))
+			throw new IllegalArgumentException(
+					"passed a party information with an ID not equal to the ID of the CP of this digital card!");
+		this.party = partyInformation;
 	}
 
 }

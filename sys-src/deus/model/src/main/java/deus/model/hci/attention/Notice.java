@@ -19,10 +19,14 @@
  *************************************************************************/
 package deus.model.hci.attention;
 
-
 /**
  * The Class Notice.
  */
 public abstract class Notice extends AttentionElement {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4237088633152461382L;
 
 }

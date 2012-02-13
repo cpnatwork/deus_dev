@@ -29,9 +29,8 @@ import deus.model.common.user.frids.RepatriationAuthorityId;
  */
 public interface RepatriationHubExportedToPeers {
 
-	
 	// TODO: add to javadoc: an acknowledgement is sent
-	
+
 	/**
 	 * This method is used to contribute a digital card to a foreign PIF, i.e.
 	 * the informationProvider is not the owner of the PIF and the contribution
@@ -46,6 +45,8 @@ public interface RepatriationHubExportedToPeers {
 	 * @param repatriatedDigitalCard
 	 *            the digital card to contribute
 	 */
-	public abstract void accept(RepatriationAuthorityId repatriationAuthorityId, ContributorId contributorId, DigitalCard repatriatedDigitalCard);
+	public abstract void accept(
+			RepatriationAuthorityId repatriationAuthorityId,
+			ContributorId contributorId, DigitalCard repatriatedDigitalCard);
 
 }

@@ -36,31 +36,52 @@ public class ContributorImpl implements Contributor {
 	/** The contribution command sender. */
 	@Inject
 	private ContributionCommandSender contributionCommandSender;
-	
-	/* (non-Javadoc)
-	 * @see deus.core.soul.contribution.ContributorExportedToClient#contributeCp(deus.model.common.user.frids.ContributorId, deus.model.common.user.frids.RepatriationAuthorityId, deus.model.common.dossier.DigitalCard)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.contribution.ContributorExportedToClient#contributeCp(
+	 * deus.model.common.user.frids.ContributorId,
+	 * deus.model.common.user.frids.RepatriationAuthorityId,
+	 * deus.model.common.dossier.DigitalCard)
 	 */
 	@Override
-	public void contributeCp(ContributorId contributorId, RepatriationAuthorityId repatriationAuthorityId, DigitalCard digitalCard) {
-		contributionCommandSender.forwardToCp(contributorId, repatriationAuthorityId, digitalCard);
+	public void contributeCp(final ContributorId contributorId,
+			final RepatriationAuthorityId repatriationAuthorityId,
+			final DigitalCard digitalCard) {
+		this.contributionCommandSender.forwardToCp(contributorId,
+				repatriationAuthorityId, digitalCard);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.contribution.ContributorExportedToPeers#contributionAcknowledged(deus.model.common.user.frids.ContributorId, deus.model.common.dossier.DigitalCardId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.contribution.
+	 * ContributorExportedToPeers
+	 * #contributionAcknowledged(deus.model.common.user.frids.ContributorId,
+	 * deus.model.common.dossier.DigitalCardId)
 	 */
 	@Override
-	public void contributionAcknowledged(ContributorId contributorId, DigitalCardId digitalCardId) {
-		// FIXME: implement (is called by transfer to acknowledge the contribution, add a notice to barker)
+	public void contributionAcknowledged(final ContributorId contributorId,
+			final DigitalCardId digitalCardId) {
+		// FIXME: implement (is called by transfer to acknowledge the
+		// contribution, add a notice to barker)
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.contribution.ContributorExportedToPeers#contributionDenied(deus.model.common.user.frids.ContributorId, deus.model.common.dossier.DigitalCardId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.contribution.
+	 * ContributorExportedToPeers
+	 * #contributionDenied(deus.model.common.user.frids.ContributorId,
+	 * deus.model.common.dossier.DigitalCardId)
 	 */
 	@Override
-	public void contributionDenied(ContributorId contributorId, DigitalCardId digitalCardId) {
-		// FIXME: implement (is called by transfer to tell the denial of the contribution, add a notice to barker)
+	public void contributionDenied(final ContributorId contributorId,
+			final DigitalCardId digitalCardId) {
+		// FIXME: implement (is called by transfer to tell the denial of the
+		// contribution, add a notice to barker)
 	}
 
 }

@@ -29,17 +29,15 @@ public class OfferSubscriptionMessage extends InviteSubscriberMessage {
 	/** The publisher metadata. */
 	private final UserMetadata publisherMetadata;
 
-
 	/**
 	 * Instantiates a new offer subscription message.
 	 * 
 	 * @param publisherMetadata
 	 *            the publisher metadata
 	 */
-	public OfferSubscriptionMessage(UserMetadata publisherMetadata) {
+	public OfferSubscriptionMessage(final UserMetadata publisherMetadata) {
 		this.publisherMetadata = publisherMetadata;
 	}
-
 
 	/**
 	 * Gets the publisher metadata.
@@ -47,7 +45,7 @@ public class OfferSubscriptionMessage extends InviteSubscriberMessage {
 	 * @return the publisher metadata
 	 */
 	public UserMetadata getPublisherMetadata() {
-		return publisherMetadata;
+		return this.publisherMetadata;
 	}
 
 }

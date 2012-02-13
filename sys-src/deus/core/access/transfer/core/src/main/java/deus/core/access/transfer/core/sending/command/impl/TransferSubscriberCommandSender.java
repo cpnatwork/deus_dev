@@ -42,45 +42,70 @@ public class TransferSubscriberCommandSender implements SubscriberCommandSender 
 	@Inject
 	private TransferMessageSenderHelper transferMessageSenderHelper;
 
-	
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.sending.command.SubscriberCommandSender#subscribe(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId, deus.model.common.user.UserMetadata)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.core.sending.command.SubscriberCommandSender
+	 * #subscribe(deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.UserMetadata)
 	 */
 	@Override
-	public void subscribe(SubscriberId subscriberId, PublisherId publisherId, UserMetadata subscriberMetadata) {
-		TransferMessage transferMessage = new RequestSubscriptionMessage(subscriberMetadata);
-		transferMessageSenderHelper.send(publisherId.getUserId(), subscriberId.getUserId(), transferMessage);
+	public void subscribe(final SubscriberId subscriberId,
+			final PublisherId publisherId, final UserMetadata subscriberMetadata) {
+		final TransferMessage transferMessage = new RequestSubscriptionMessage(
+				subscriberMetadata);
+		this.transferMessageSenderHelper.send(publisherId.getUserId(),
+				subscriberId.getUserId(), transferMessage);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.sending.command.SubscriberCommandSender#unsubscribe(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.core.sending.command.SubscriberCommandSender
+	 * #unsubscribe(deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId)
 	 */
 	@Override
-	public void unsubscribe(SubscriberId subscriberId, PublisherId publisherId) {
-		TransferMessage transferMessage = new UnsubscribeMessage();
-		transferMessageSenderHelper.send(publisherId.getUserId(), subscriberId.getUserId(), transferMessage);
+	public void unsubscribe(final SubscriberId subscriberId,
+			final PublisherId publisherId) {
+		final TransferMessage transferMessage = new UnsubscribeMessage();
+		this.transferMessageSenderHelper.send(publisherId.getUserId(),
+				subscriberId.getUserId(), transferMessage);
 	}
 
-	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.core.sending.command.SubscriberCommandSender
+	 * #confirmSubscriptionOffer(deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId)
+	 */
+	@Override
+	public void confirmSubscriptionOffer(final SubscriberId subscriberId,
+			final PublisherId publisherId) {
+		final TransferMessage transferMessage = new ConfirmSubscriptionOfferNoticeMessage();
+		this.transferMessageSenderHelper.send(publisherId.getUserId(),
+				subscriberId.getUserId(), transferMessage);
+	}
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.sending.command.SubscriberCommandSender#confirmSubscriptionOffer(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.core.sending.command.SubscriberCommandSender
+	 * #repelSubscriptionOffer(deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId)
 	 */
 	@Override
-	public void confirmSubscriptionOffer(SubscriberId subscriberId, PublisherId publisherId) {
-		TransferMessage transferMessage = new ConfirmSubscriptionOfferNoticeMessage();
-		transferMessageSenderHelper.send(publisherId.getUserId(), subscriberId.getUserId(), transferMessage);
+	public void repelSubscriptionOffer(final SubscriberId subscriberId,
+			final PublisherId publisherId) {
+		final TransferMessage transferMessage = new RepelSubscriptionOfferNoticeMessage();
+		this.transferMessageSenderHelper.send(publisherId.getUserId(),
+				subscriberId.getUserId(), transferMessage);
 	}
-	
-	
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.sending.command.SubscriberCommandSender#repelSubscriptionOffer(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
-	 */
-	@Override
-	public void repelSubscriptionOffer(SubscriberId subscriberId, PublisherId publisherId) {
-		TransferMessage transferMessage = new RepelSubscriptionOfferNoticeMessage();
-		transferMessageSenderHelper.send(publisherId.getUserId(), subscriberId.getUserId(), transferMessage);
-	}
-	
+
 }

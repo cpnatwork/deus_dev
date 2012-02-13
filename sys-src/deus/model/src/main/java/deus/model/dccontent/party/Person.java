@@ -34,50 +34,49 @@ public class Person extends Party {
 
 	/** The name. */
 	protected PersonName name;
-	
+
 	/** The full name. */
-	protected String fullName;	
-	
+	protected String fullName;
+
 	/** The gender. */
 	protected Gender gender;
-	
+
 	/** The birth. */
 	protected DatePlace birth;
-	
+
 	/** The death. */
 	protected DatePlace death;
-	
+
 	/** The photo. */
 	protected Image photo;
-	
+
 	/** The note. */
 	protected String note;
 	// TODO: is it correct to use Clip here?
 	/** The sound. */
 	protected Clip sound;
-	
 
 	/** The languages. */
 	protected List<Language> languages;
-	
+
 	/** The phones. */
 	protected List<? extends Phone> phones;
-	
+
 	/** The emails. */
 	protected List<? extends Email> emails;
-	
+
 	/** The web presences. */
 	protected List<? extends WebPresence> webPresences;
-	
+
 	/** The im accounts. */
 	protected List<? extends ImAccount> imAccounts;
-	
+
 	/** The addresses. */
 	protected List<? extends Address> addresses;
-	
+
 	/** The occupations. */
 	protected List<? extends Occupation> occupations;
-	
+
 	/** The related persons. */
 	protected List<? extends RelatedPerson> relatedPersons;
 
@@ -87,7 +86,7 @@ public class Person extends Party {
 	 * @return the name
 	 */
 	public PersonName getName() {
-		return name;
+		return this.name;
 	}
 
 	/**
@@ -96,7 +95,7 @@ public class Person extends Party {
 	 * @param name
 	 *            the new name
 	 */
-	public void setName(PersonName name) {
+	public void setName(final PersonName name) {
 		this.name = name;
 	}
 
@@ -106,7 +105,7 @@ public class Person extends Party {
 	 * @return the full name
 	 */
 	public String getFullName() {
-		return fullName;
+		return this.fullName;
 	}
 
 	/**
@@ -115,7 +114,7 @@ public class Person extends Party {
 	 * @param fullName
 	 *            the new full name
 	 */
-	public void setFullName(String fullName) {
+	public void setFullName(final String fullName) {
 		this.fullName = fullName;
 	}
 
@@ -125,7 +124,7 @@ public class Person extends Party {
 	 * @return the gender
 	 */
 	public Gender getGender() {
-		return gender;
+		return this.gender;
 	}
 
 	/**
@@ -134,7 +133,7 @@ public class Person extends Party {
 	 * @param gender
 	 *            the new gender
 	 */
-	public void setGender(Gender gender) {
+	public void setGender(final Gender gender) {
 		this.gender = gender;
 	}
 
@@ -144,7 +143,7 @@ public class Person extends Party {
 	 * @return the birth
 	 */
 	public DatePlace getBirth() {
-		return birth;
+		return this.birth;
 	}
 
 	/**
@@ -153,7 +152,7 @@ public class Person extends Party {
 	 * @param birth
 	 *            the new birth
 	 */
-	public void setBirth(DatePlace birth) {
+	public void setBirth(final DatePlace birth) {
 		this.birth = birth;
 	}
 
@@ -163,7 +162,7 @@ public class Person extends Party {
 	 * @return the death
 	 */
 	public DatePlace getDeath() {
-		return death;
+		return this.death;
 	}
 
 	/**
@@ -172,7 +171,7 @@ public class Person extends Party {
 	 * @param death
 	 *            the new death
 	 */
-	public void setDeath(DatePlace death) {
+	public void setDeath(final DatePlace death) {
 		this.death = death;
 	}
 
@@ -182,7 +181,7 @@ public class Person extends Party {
 	 * @return the photo
 	 */
 	public Image getPhoto() {
-		return photo;
+		return this.photo;
 	}
 
 	/**
@@ -191,7 +190,7 @@ public class Person extends Party {
 	 * @param photo
 	 *            the new photo
 	 */
-	public void setPhoto(Image photo) {
+	public void setPhoto(final Image photo) {
 		this.photo = photo;
 	}
 
@@ -201,7 +200,7 @@ public class Person extends Party {
 	 * @return the note
 	 */
 	public String getNote() {
-		return note;
+		return this.note;
 	}
 
 	/**
@@ -210,7 +209,7 @@ public class Person extends Party {
 	 * @param note
 	 *            the new note
 	 */
-	public void setNote(String note) {
+	public void setNote(final String note) {
 		this.note = note;
 	}
 
@@ -220,7 +219,7 @@ public class Person extends Party {
 	 * @return the sound
 	 */
 	public Clip getSound() {
-		return sound;
+		return this.sound;
 	}
 
 	/**
@@ -229,7 +228,7 @@ public class Person extends Party {
 	 * @param sound
 	 *            the new sound
 	 */
-	public void setSound(Clip sound) {
+	public void setSound(final Clip sound) {
 		this.sound = sound;
 	}
 
@@ -239,7 +238,7 @@ public class Person extends Party {
 	 * @return the languages
 	 */
 	public List<Language> getLanguages() {
-		return languages;
+		return this.languages;
 	}
 
 	/**
@@ -248,7 +247,7 @@ public class Person extends Party {
 	 * @param languages
 	 *            the new languages
 	 */
-	public void setLanguages(List<Language> languages) {
+	public void setLanguages(final List<Language> languages) {
 		this.languages = languages;
 	}
 
@@ -258,7 +257,7 @@ public class Person extends Party {
 	 * @return the phones
 	 */
 	public List<? extends Phone> getPhones() {
-		return phones;
+		return this.phones;
 	}
 
 	/**
@@ -267,7 +266,7 @@ public class Person extends Party {
 	 * @param phones
 	 *            the new phones
 	 */
-	public void setPhones(List<? extends Phone> phones) {
+	public void setPhones(final List<? extends Phone> phones) {
 		this.phones = phones;
 	}
 
@@ -277,7 +276,7 @@ public class Person extends Party {
 	 * @return the emails
 	 */
 	public List<? extends Email> getEmails() {
-		return emails;
+		return this.emails;
 	}
 
 	/**
@@ -286,7 +285,7 @@ public class Person extends Party {
 	 * @param emails
 	 *            the new emails
 	 */
-	public void setEmails(List<Email> emails) {
+	public void setEmails(final List<Email> emails) {
 		this.emails = emails;
 	}
 
@@ -296,7 +295,7 @@ public class Person extends Party {
 	 * @return the web presences
 	 */
 	public List<? extends WebPresence> getWebPresences() {
-		return webPresences;
+		return this.webPresences;
 	}
 
 	/**
@@ -305,7 +304,7 @@ public class Person extends Party {
 	 * @param webPresences
 	 *            the new web presences
 	 */
-	public void setWebPresences(List<WebPresence> webPresences) {
+	public void setWebPresences(final List<WebPresence> webPresences) {
 		this.webPresences = webPresences;
 	}
 
@@ -315,7 +314,7 @@ public class Person extends Party {
 	 * @return the im accounts
 	 */
 	public List<? extends ImAccount> getImAccounts() {
-		return imAccounts;
+		return this.imAccounts;
 	}
 
 	/**
@@ -324,7 +323,7 @@ public class Person extends Party {
 	 * @param imAccounts
 	 *            the new im accounts
 	 */
-	public void setImAccounts(List<ImAccount> imAccounts) {
+	public void setImAccounts(final List<ImAccount> imAccounts) {
 		this.imAccounts = imAccounts;
 	}
 
@@ -334,7 +333,7 @@ public class Person extends Party {
 	 * @return the addresses
 	 */
 	public List<? extends Address> getAddresses() {
-		return addresses;
+		return this.addresses;
 	}
 
 	/**
@@ -343,7 +342,7 @@ public class Person extends Party {
 	 * @param addresses
 	 *            the new addresses
 	 */
-	public void setAddresses(List<Address> addresses) {
+	public void setAddresses(final List<Address> addresses) {
 		this.addresses = addresses;
 	}
 
@@ -353,7 +352,7 @@ public class Person extends Party {
 	 * @return the occupations
 	 */
 	public List<? extends Occupation> getOccupations() {
-		return occupations;
+		return this.occupations;
 	}
 
 	/**
@@ -362,7 +361,7 @@ public class Person extends Party {
 	 * @param occupations
 	 *            the new occupations
 	 */
-	public void setOccupations(List<Occupation> occupations) {
+	public void setOccupations(final List<Occupation> occupations) {
 		this.occupations = occupations;
 	}
 
@@ -372,7 +371,7 @@ public class Person extends Party {
 	 * @return the related persons
 	 */
 	public List<? extends RelatedPerson> getRelatedPersons() {
-		return relatedPersons;
+		return this.relatedPersons;
 	}
 
 	/**
@@ -381,8 +380,8 @@ public class Person extends Party {
 	 * @param relatedPersons
 	 *            the new related persons
 	 */
-	public void setRelatedPersons(List<RelatedPerson> relatedPersons) {
+	public void setRelatedPersons(final List<RelatedPerson> relatedPersons) {
 		this.relatedPersons = relatedPersons;
 	}
-	
+
 }

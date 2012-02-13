@@ -32,18 +32,16 @@ public class IllegalUpdateInPlaceException extends RuntimeException {
 	/** The digital card id. */
 	private final DigitalCardId digitalCardId;
 
-
 	/**
 	 * Instantiates a new illegal update in place exception.
 	 * 
 	 * @param digitalCardId
 	 *            the digital card id
 	 */
-	public IllegalUpdateInPlaceException(DigitalCardId digitalCardId) {
+	public IllegalUpdateInPlaceException(final DigitalCardId digitalCardId) {
 		super();
 		this.digitalCardId = digitalCardId;
 	}
-
 
 	/**
 	 * Gets the digital card id.
@@ -51,7 +49,7 @@ public class IllegalUpdateInPlaceException extends RuntimeException {
 	 * @return the digital card id
 	 */
 	public DigitalCardId getDigitalCardId() {
-		return digitalCardId;
+		return this.digitalCardId;
 	}
 
 }

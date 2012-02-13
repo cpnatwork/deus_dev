@@ -30,11 +30,15 @@ import deus.model.gatekeeper.LoginCredentials;
 @Named
 public class LoginCredentialCheckerImpl implements LoginCredentialChecker {
 
-	/* (non-Javadoc)
-	 * @see deus.core.soul.gatekeeper.cerberus.LoginCredentialChecker#isValid(deus.model.gatekeeper.LoginCredentials)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.gatekeeper.cerberus.LoginCredentialChecker#isValid(deus
+	 * .model.gatekeeper.LoginCredentials)
 	 */
 	@Override
-	public boolean isValid(LoginCredentials credentials) {
+	public boolean isValid(final LoginCredentials credentials) {
 		// FIXME: access database or use spring security here
 		return true;
 	}

@@ -38,6 +38,7 @@ public interface DifGovernorExportedToSubsystems {
 	 * @param patch
 	 *            the patch
 	 */
-	public void applyPatch(SubscriberId subscriberId, PublisherId publisherId, Patch patch);
+	public void applyPatch(SubscriberId subscriberId, PublisherId publisherId,
+			Patch patch);
 
 }

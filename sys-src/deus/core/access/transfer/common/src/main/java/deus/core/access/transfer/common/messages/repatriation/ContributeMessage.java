@@ -23,10 +23,11 @@ import deus.core.access.transfer.common.messages.TransferMessage;
 import deus.model.common.dossier.DigitalCard;
 
 /**
- * Message that is sent in the repatriation phase, when a digital card is contributed.
- *  
+ * Message that is sent in the repatriation phase, when a digital card is
+ * contributed.
+ * 
  * @author Florian Rampp (Florian.Rampp@jambit.com)
- *
+ * 
  */
 public class ContributeMessage extends TransferMessage {
 
@@ -39,7 +40,7 @@ public class ContributeMessage extends TransferMessage {
 	 * @param dcToContribute
 	 *            the dc to contribute
 	 */
-	public ContributeMessage(DigitalCard dcToContribute) {
+	public ContributeMessage(final DigitalCard dcToContribute) {
 		super();
 		this.dcToContribute = dcToContribute;
 	}
@@ -50,7 +51,7 @@ public class ContributeMessage extends TransferMessage {
 	 * @return the dc to contribute
 	 */
 	public DigitalCard getDcToContribute() {
-		return dcToContribute;
+		return this.dcToContribute;
 	}
 
 }

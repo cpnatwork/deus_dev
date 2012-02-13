@@ -19,10 +19,10 @@
  *************************************************************************/
 package deus.core.soul.difgoverning;
 
-
 /**
  * The Interface DifGovernor.
  */
-public interface DifGovernor extends DifGovernorExportedToClient, DifGovernorExportedToSubsystems {
-	
+public interface DifGovernor extends DifGovernorExportedToClient,
+		DifGovernorExportedToSubsystems {
+
 }

@@ -21,7 +21,6 @@ package deus.core.access.transfer.common.connectionstate;
 
 import deus.core.access.transfer.common.protocol.TransferId;
 
-
 /**
  * The Interface ConnectionStateRegistry.
  */
@@ -36,7 +35,6 @@ public interface ConnectionStateRegistry {
 	 */
 	public abstract boolean hasConnectionState(TransferId transferId);
 
-
 	/**
 	 * Adds the connection state.
 	 * 
@@ -45,8 +43,8 @@ public interface ConnectionStateRegistry {
 	 * @param ConnectionState
 	 *            the connection state
 	 */
-	public abstract void addConnectionState(TransferId transferId, ConnectionState ConnectionState);
-
+	public abstract void addConnectionState(TransferId transferId,
+			ConnectionState ConnectionState);
 
 	/**
 	 * Gets the connection state.
@@ -56,7 +54,6 @@ public interface ConnectionStateRegistry {
 	 * @return the connection state
 	 */
 	public abstract ConnectionState getConnectionState(TransferId transferId);
-
 
 	/**
 	 * Removes the connection state.

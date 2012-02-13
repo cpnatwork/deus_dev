@@ -34,5 +34,5 @@ public interface AttentionList extends List<AttentionElement> {
 	 * @return the user id
 	 */
 	public UserId getUserId();
-	
+
 }

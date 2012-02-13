@@ -36,12 +36,16 @@ public class LocalMessageSender implements MessageSender {
 	@Inject
 	private LocalMessageForwarder localMessageForwarder;
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocol.messagesender.MessageSender#send(deus.core.access.transfer.common.messages.TransferMessage)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.common.protocol.messagesender.MessageSender
+	 * #send(deus.core.access.transfer.common.messages.TransferMessage)
 	 */
 	@Override
-	public void send(TransferMessage transferMessage) {
-		localMessageForwarder.forward(transferMessage);
+	public void send(final TransferMessage transferMessage) {
+		this.localMessageForwarder.forward(transferMessage);
 	}
 
 }

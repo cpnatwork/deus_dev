@@ -27,18 +27,23 @@ import deus.model.common.user.UserMetadata;
 public class SubscriptionRepelNotice extends PublisherInitiatedConnectionNotice {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8936954177744980313L;
+
+	/**
 	 * Instantiates a new subscription repel notice.
 	 * 
 	 * @param subscriberMetadata
 	 *            the subscriber metadata
 	 */
-	public SubscriptionRepelNotice(UserMetadata subscriberMetadata) {
+	public SubscriptionRepelNotice(final UserMetadata subscriberMetadata) {
 		super(subscriberMetadata);
 	}
-	
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.hci.attention.AttentionElement#getCatchphare()
 	 */
 	@Override

@@ -33,29 +33,27 @@ public abstract class Address {
 
 	/** The country. */
 	private Locale country;
-	
+
 	/** The region. */
 	private String region;
 
 	/** The locality. */
 	private String locality; // city
-	
+
 	/** The zip. */
 	private String zip;
 
 	/** The extension. */
 	private String extension;
 
-	
 	/**
 	 * Gets the entity tag.
 	 * 
 	 * @return the entity tag
 	 */
 	public EntityTag getEntityTag() {
-		return entityTag;
+		return this.entityTag;
 	}
-
 
 	/**
 	 * Sets the entity tag.
@@ -63,10 +61,9 @@ public abstract class Address {
 	 * @param entityTag
 	 *            the new entity tag
 	 */
-	public void setEntityTag(EntityTag entityTag) {
+	public void setEntityTag(final EntityTag entityTag) {
 		this.entityTag = entityTag;
 	}
-
 
 	/**
 	 * Gets the country.
@@ -74,9 +71,8 @@ public abstract class Address {
 	 * @return the country
 	 */
 	public Locale getCountry() {
-		return country;
+		return this.country;
 	}
-
 
 	/**
 	 * Sets the country.
@@ -84,10 +80,9 @@ public abstract class Address {
 	 * @param country
 	 *            the new country
 	 */
-	public void setCountry(Locale country) {
+	public void setCountry(final Locale country) {
 		this.country = country;
 	}
-
 
 	/**
 	 * Gets the region.
@@ -95,9 +90,8 @@ public abstract class Address {
 	 * @return the region
 	 */
 	public String getRegion() {
-		return region;
+		return this.region;
 	}
-
 
 	/**
 	 * Sets the region.
@@ -105,10 +99,9 @@ public abstract class Address {
 	 * @param region
 	 *            the new region
 	 */
-	public void setRegion(String region) {
+	public void setRegion(final String region) {
 		this.region = region;
 	}
-
 
 	/**
 	 * Gets the locality.
@@ -116,9 +109,8 @@ public abstract class Address {
 	 * @return the locality
 	 */
 	public String getLocality() {
-		return locality;
+		return this.locality;
 	}
-
 
 	/**
 	 * Sets the locality.
@@ -126,10 +118,9 @@ public abstract class Address {
 	 * @param locality
 	 *            the new locality
 	 */
-	public void setLocality(String locality) {
+	public void setLocality(final String locality) {
 		this.locality = locality;
 	}
-
 
 	/**
 	 * Gets the zip.
@@ -137,9 +128,8 @@ public abstract class Address {
 	 * @return the zip
 	 */
 	public String getZip() {
-		return zip;
+		return this.zip;
 	}
-
 
 	/**
 	 * Sets the zip.
@@ -147,10 +137,9 @@ public abstract class Address {
 	 * @param zip
 	 *            the new zip
 	 */
-	public void setZip(String zip) {
+	public void setZip(final String zip) {
 		this.zip = zip;
 	}
-
 
 	/**
 	 * Gets the extension.
@@ -158,9 +147,8 @@ public abstract class Address {
 	 * @return the extension
 	 */
 	public String getExtension() {
-		return extension;
+		return this.extension;
 	}
-
 
 	/**
 	 * Sets the extension.
@@ -168,7 +156,7 @@ public abstract class Address {
 	 * @param extension
 	 *            the new extension
 	 */
-	public void setExtension(String extension) {
+	public void setExtension(final String extension) {
 		this.extension = extension;
 	}
 

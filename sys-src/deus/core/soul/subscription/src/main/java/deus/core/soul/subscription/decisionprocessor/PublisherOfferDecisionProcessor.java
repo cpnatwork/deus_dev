@@ -34,36 +34,43 @@ import deus.model.hci.attention.publication.connection.establish.pubinit.Publish
 /**
  * The Class PublisherOfferDecisionProcessor.
  */
-public class PublisherOfferDecisionProcessor extends AbstractGenericDecisionProcessor<PublisherOffer> {
-
+public class PublisherOfferDecisionProcessor extends
+		AbstractGenericDecisionProcessor<PublisherOffer> {
 
 	/** The subscriber. */
 	@Inject
 	@Named("targetedPublisher")
 	private SubscriberExportedToPeers subscriber;
 
-	
 	/** The subscriber command sender. */
 	@Inject
 	private SubscriberCommandSender subscriberCommandSender;
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.hci.decisionprocessor.AbstractGenericDecisionProcessor#processImpl(deus.model.common.user.id.UserId, deus.model.hci.attention.BinaryDecisionToMake)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.hci.decisionprocessor.AbstractGenericDecisionProcessor
+	 * #processImpl(deus.model.common.user.id.UserId,
+	 * deus.model.hci.attention.BinaryDecisionToMake)
 	 */
 	@Override
-	protected void processImpl(UserId userId, PublisherOffer publisherOffer) {
-		UserMetadata publisherMetadata = publisherOffer.getPublisherMetadata();
+	protected void processImpl(final UserId userId,
+			final PublisherOffer publisherOffer) {
+		final UserMetadata publisherMetadata = publisherOffer
+				.getPublisherMetadata();
 
 		if (publisherOffer.isDecisionPositive()) {
-			subscriber.addPublisher(new SubscriberId(userId), publisherOffer.getPublisherId(), publisherMetadata);
+			this.subscriber.addPublisher(new SubscriberId(userId),
+					publisherOffer.getPublisherId(), publisherMetadata);
 
-			subscriberCommandSender.confirmSubscriptionOffer(new SubscriberId(userId), publisherOffer.getPublisherId());
-		}
-		else {
+			this.subscriberCommandSender.confirmSubscriptionOffer(
+					new SubscriberId(userId), publisherOffer.getPublisherId());
+		} else {
 			// do not add observer
 
-			subscriberCommandSender.repelSubscriptionOffer(new SubscriberId(userId), publisherOffer.getPublisherId());
+			this.subscriberCommandSender.repelSubscriptionOffer(
+					new SubscriberId(userId), publisherOffer.getPublisherId());
 		}
 	}
 

@@ -26,4 +26,9 @@ import deus.model.hci.attention.BinaryDecisionToMake;
  */
 public abstract class ConnectionDecisionToMake extends BinaryDecisionToMake {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6033705888743774492L;
+
 }

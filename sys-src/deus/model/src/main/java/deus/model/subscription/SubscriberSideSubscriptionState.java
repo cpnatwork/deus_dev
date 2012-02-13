@@ -26,6 +26,6 @@ public enum SubscriberSideSubscriptionState {
 
 	/** The requested. */
 	requested, /** The established. */
- established;
-	
+	established;
+
 }

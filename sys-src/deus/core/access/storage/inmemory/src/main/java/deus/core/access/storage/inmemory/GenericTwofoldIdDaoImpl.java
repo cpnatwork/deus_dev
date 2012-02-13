@@ -33,14 +33,16 @@ import java.util.HashMap;
  *            the generic type
  * @author cpn
  */
-public class GenericTwofoldIdDaoImpl<EntityT, NaturalIdFirstComponentT extends Serializable, NaturalIdSecondComponentT extends Serializable> implements GenericTwofoldIdDao<EntityT, NaturalIdFirstComponentT, NaturalIdSecondComponentT>{
+public class GenericTwofoldIdDaoImpl<EntityT, NaturalIdFirstComponentT extends Serializable, NaturalIdSecondComponentT extends Serializable>
+		implements
+		GenericTwofoldIdDao<EntityT, NaturalIdFirstComponentT, NaturalIdSecondComponentT> {
 
 	/**
 	 * The Class TwofoldNaturalId.
 	 */
 	@SuppressWarnings("serial")
 	private class TwofoldNaturalId implements Serializable {
-		
+
 		/**
 		 * Instantiates a new twofold natural id.
 		 * 
@@ -50,65 +52,69 @@ public class GenericTwofoldIdDaoImpl<EntityT, NaturalIdFirstComponentT extends S
 		 *            the natural id second component
 		 */
 		public TwofoldNaturalId(
-				NaturalIdFirstComponentT naturalIdFirstComponent,
-				NaturalIdSecondComponentT naturalIdSecondComponent) {
+				final NaturalIdFirstComponentT naturalIdFirstComponent,
+				final NaturalIdSecondComponentT naturalIdSecondComponent) {
 			super();
 			this.naturalIdFirstComponent = naturalIdFirstComponent;
 			this.naturalIdSecondComponent = naturalIdSecondComponent;
 		}
-		
+
 		/** The natural id first component. */
 		NaturalIdFirstComponentT naturalIdFirstComponent = null;
-		
+
 		/** The natural id second component. */
 		NaturalIdSecondComponentT naturalIdSecondComponent = null;
-		/* (non-Javadoc)
+
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see java.lang.Object#hashCode()
 		 */
 		@Override
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + getOuterType().hashCode();
-			result = prime
-					* result
-					+ ((naturalIdFirstComponent == null) ? 0
-							: naturalIdFirstComponent.hashCode());
-			result = prime
-					* result
-					+ ((naturalIdSecondComponent == null) ? 0
-							: naturalIdSecondComponent.hashCode());
+			result = (prime * result) + this.getOuterType().hashCode();
+			result = (prime * result)
+					+ ((this.naturalIdFirstComponent == null) ? 0
+							: this.naturalIdFirstComponent.hashCode());
+			result = (prime * result)
+					+ ((this.naturalIdSecondComponent == null) ? 0
+							: this.naturalIdSecondComponent.hashCode());
 			return result;
 		}
-		/* (non-Javadoc)
+
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see java.lang.Object#equals(java.lang.Object)
 		 */
 		@Override
-		public boolean equals(Object obj) {
+		public boolean equals(final Object obj) {
 			if (this == obj)
 				return true;
 			if (obj == null)
 				return false;
-			if (getClass() != obj.getClass())
+			if (this.getClass() != obj.getClass())
 				return false;
-			TwofoldNaturalId other = (TwofoldNaturalId) obj;
-			if (!getOuterType().equals(other.getOuterType()))
+			final TwofoldNaturalId other = (TwofoldNaturalId) obj;
+			if (!this.getOuterType().equals(other.getOuterType()))
 				return false;
-			if (naturalIdFirstComponent == null) {
+			if (this.naturalIdFirstComponent == null) {
 				if (other.naturalIdFirstComponent != null)
 					return false;
-			} else if (!naturalIdFirstComponent
+			} else if (!this.naturalIdFirstComponent
 					.equals(other.naturalIdFirstComponent))
 				return false;
-			if (naturalIdSecondComponent == null) {
+			if (this.naturalIdSecondComponent == null) {
 				if (other.naturalIdSecondComponent != null)
 					return false;
-			} else if (!naturalIdSecondComponent
+			} else if (!this.naturalIdSecondComponent
 					.equals(other.naturalIdSecondComponent))
 				return false;
 			return true;
 		}
-		
+
 		/**
 		 * Gets the outer type.
 		 * 
@@ -118,63 +124,100 @@ public class GenericTwofoldIdDaoImpl<EntityT, NaturalIdFirstComponentT extends S
 			return GenericTwofoldIdDaoImpl.this;
 		}
 	}
-	
+
 	/** The storage. */
 	protected HashMap<TwofoldNaturalId, EntityT> storage = new HashMap<TwofoldNaturalId, EntityT>();
-	
+
 	/**
 	 * Gets the storage.
 	 * 
 	 * @return the storage
 	 */
 	protected HashMap<TwofoldNaturalId, EntityT> getStorage() {
-		return storage;
+		return this.storage;
 	}
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.inmemory.GenericTwofoldIdDao#addNewEntity(java.io.Serializable, java.io.Serializable, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.inmemory.GenericTwofoldIdDao#addNewEntity(java
+	 * .io.Serializable, java.io.Serializable, java.lang.Object)
 	 */
 	@Override
-	public void addNewEntity(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent, EntityT entity) {
-		TwofoldNaturalId twofoldNaturalId = new TwofoldNaturalId(naturalIdFirstComponent,naturalIdSecondComponent);
-		getStorage().put(twofoldNaturalId, entity);
+	public void addNewEntity(
+			final NaturalIdFirstComponentT naturalIdFirstComponent,
+			final NaturalIdSecondComponentT naturalIdSecondComponent,
+			final EntityT entity) {
+		final TwofoldNaturalId twofoldNaturalId = new TwofoldNaturalId(
+				naturalIdFirstComponent, naturalIdSecondComponent);
+		this.getStorage().put(twofoldNaturalId, entity);
 	}
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.inmemory.GenericTwofoldIdDao#getByNaturalId(java.io.Serializable, java.io.Serializable)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.inmemory.GenericTwofoldIdDao#getByNaturalId(
+	 * java.io.Serializable, java.io.Serializable)
 	 */
 	@Override
-	public EntityT getByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent) {
-		TwofoldNaturalId twofoldNaturalId = new TwofoldNaturalId(naturalIdFirstComponent,naturalIdSecondComponent);
-		return getStorage().get(twofoldNaturalId);
+	public EntityT getByNaturalId(
+			final NaturalIdFirstComponentT naturalIdFirstComponent,
+			final NaturalIdSecondComponentT naturalIdSecondComponent) {
+		final TwofoldNaturalId twofoldNaturalId = new TwofoldNaturalId(
+				naturalIdFirstComponent, naturalIdSecondComponent);
+		return this.getStorage().get(twofoldNaturalId);
 	}
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.inmemory.GenericTwofoldIdDao#updateEntity(java.io.Serializable, java.io.Serializable, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.inmemory.GenericTwofoldIdDao#updateEntity(java
+	 * .io.Serializable, java.io.Serializable, java.lang.Object)
 	 */
 	@Override
-	public void updateEntity(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent, EntityT entity) {
-		TwofoldNaturalId twofoldNaturalId = new TwofoldNaturalId(naturalIdFirstComponent,naturalIdSecondComponent);
-		getStorage().put(twofoldNaturalId, entity);
-	}
-	
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.inmemory.GenericTwofoldIdDao#deleteByNaturalId(java.io.Serializable, java.io.Serializable)
-	 */
-	@Override
-	public void deleteByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent) {
-		TwofoldNaturalId twofoldNaturalId = new TwofoldNaturalId(naturalIdFirstComponent,naturalIdSecondComponent);
-		assert(getStorage().containsKey(twofoldNaturalId));
-		getStorage().remove(twofoldNaturalId);		
+	public void updateEntity(
+			final NaturalIdFirstComponentT naturalIdFirstComponent,
+			final NaturalIdSecondComponentT naturalIdSecondComponent,
+			final EntityT entity) {
+		final TwofoldNaturalId twofoldNaturalId = new TwofoldNaturalId(
+				naturalIdFirstComponent, naturalIdSecondComponent);
+		this.getStorage().put(twofoldNaturalId, entity);
 	}
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.storage.inmemory.GenericTwofoldIdDao#existsByNaturalId(java.io.Serializable, java.io.Serializable)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.inmemory.GenericTwofoldIdDao#deleteByNaturalId
+	 * (java.io.Serializable, java.io.Serializable)
 	 */
 	@Override
-	public boolean existsByNaturalId(NaturalIdFirstComponentT naturalIdFirstComponent, NaturalIdSecondComponentT naturalIdSecondComponent) {
-		TwofoldNaturalId twofoldNaturalId = new TwofoldNaturalId(naturalIdFirstComponent,naturalIdSecondComponent);
-		return getStorage().containsKey(twofoldNaturalId);
+	public void deleteByNaturalId(
+			final NaturalIdFirstComponentT naturalIdFirstComponent,
+			final NaturalIdSecondComponentT naturalIdSecondComponent) {
+		final TwofoldNaturalId twofoldNaturalId = new TwofoldNaturalId(
+				naturalIdFirstComponent, naturalIdSecondComponent);
+		assert (this.getStorage().containsKey(twofoldNaturalId));
+		this.getStorage().remove(twofoldNaturalId);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.storage.inmemory.GenericTwofoldIdDao#existsByNaturalId
+	 * (java.io.Serializable, java.io.Serializable)
+	 */
+	@Override
+	public boolean existsByNaturalId(
+			final NaturalIdFirstComponentT naturalIdFirstComponent,
+			final NaturalIdSecondComponentT naturalIdSecondComponent) {
+		final TwofoldNaturalId twofoldNaturalId = new TwofoldNaturalId(
+				naturalIdFirstComponent, naturalIdSecondComponent);
+		return this.getStorage().containsKey(twofoldNaturalId);
 	}
 
 }

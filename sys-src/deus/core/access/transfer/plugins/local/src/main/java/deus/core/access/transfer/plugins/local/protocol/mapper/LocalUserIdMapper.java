@@ -28,27 +28,35 @@ import deus.model.common.user.id.UserId;
  * Returns local transfer IDs, where the username is just taken from the UserId.
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
- *
+ * 
  */
 public class LocalUserIdMapper implements UserIdMapper {
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocol.mapper.UserIdMapper#resolveLocal(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.common.protocol.mapper.UserIdMapper#resolveLocal
+	 * (deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public TransferId resolveLocal(UserId userId) {
+	public TransferId resolveLocal(final UserId userId) {
 		return new LocalTransferId(userId.getUsername() + "/local");
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocol.mapper.UserIdMapper#resolveRemote(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.common.protocol.mapper.UserIdMapper#resolveRemote
+	 * (deus.model.common.user.id.UserId)
 	 */
 	@Override
-	public TransferId resolveRemote(UserId userId) {
+	public TransferId resolveRemote(final UserId userId) {
 		// FIXME: Implement this by using discovery
-		// it should stay here, but maybe use discovery helper classes from transfer-core
-		
+		// it should stay here, but maybe use discovery helper classes from
+		// transfer-core
+
 		return new LocalTransferId(userId.getUsername() + "/local");
 	}
 

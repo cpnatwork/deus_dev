@@ -22,7 +22,6 @@ package deus.core.soul.gatekeeper.cerberus;
 import deus.model.common.user.id.UserId;
 import deus.model.gatekeeper.LoginCredentials;
 
-
 /**
  * The Interface CerberusExportedToClient.
  */
@@ -36,7 +35,6 @@ public interface CerberusExportedToClient {
 	 * @return the user id
 	 */
 	public abstract UserId login(LoginCredentials credentials);
-
 
 	/**
 	 * Logout.

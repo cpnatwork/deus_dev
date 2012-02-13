@@ -19,11 +19,8 @@
  *************************************************************************/
 package deus.core.soul.hci.barker;
 
-import static org.easymock.EasyMock.expect;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 import org.easymock.classextension.EasyMock;
+import org.junit.Assert;
 import org.junit.Test;
 
 import deus.model.hci.attention.AttentionList;
@@ -38,67 +35,74 @@ public class BarkerExportedToClientTest extends AbstractBarkerTest {
 	 */
 	@Test
 	public void testNoticeAttentionElement_HappyPath() {
-		attentionElementFix.setNoticed(true);
-		attentionElementDaoMock.updateEntity(userIdFix, attentionElementFix);
-		replayAllMocks();
+		this.attentionElementFix.setNoticed(true);
+		this.attentionElementDaoMock.updateEntity(this.userIdFix,
+				this.attentionElementFix);
+		this.replayAllMocks();
 
-		barkerSUT.noticeAttentionElement(userIdFix, attentionElementFix);
+		this.barkerSUT.noticeAttentionElement(this.userIdFix,
+				this.attentionElementFix);
 
-		verifyAllMocks();
+		this.verifyAllMocks();
 	}
-
 
 	/**
 	 * Test notice attention element_ attention element already noticed.
 	 */
 	@Test
 	public void testNoticeAttentionElement_AttentionElementAlreadyNoticed() {
-		expect(attentionElementFix.isNoticed()).andReturn(true);
-		replayAllMocks();
+		EasyMock.expect(this.attentionElementFix.isNoticed()).andReturn(true);
+		this.replayAllMocks();
 
 		try {
-			barkerSUT.noticeAttentionElement(userIdFix, attentionElementFix);
-			fail("attention element already noticed");
-		}
-		catch (BarkerRuntimeException e) {
+			this.barkerSUT.noticeAttentionElement(this.userIdFix,
+					this.attentionElementFix);
+			Assert.fail("attention element already noticed");
+		} catch (final BarkerRuntimeException e) {
 			// expected
 		}
 
-		verifyAllMocks();
+		this.verifyAllMocks();
 	}
-
 
 	/**
 	 * Test get unnoticed attention list.
 	 */
 	@Test
 	public void testGetUnnoticedAttentionList() {
-		AttentionList expectedRetVal = null;
-		expect(attentionListDaoMock.getUnnoticedAttentionList(userIdFix)).andReturn(expectedRetVal);
-		replayAllMocks();
+		final AttentionList expectedRetVal = null;
+		EasyMock.expect(
+				this.attentionListDaoMock
+						.getUnnoticedAttentionList(this.userIdFix)).andReturn(
+				expectedRetVal);
+		this.replayAllMocks();
 
-		AttentionList sutRetVal = barkerSUT.getUnnoticedAttentionList(userIdFix);
-		assertEquals(expectedRetVal, sutRetVal);
+		final AttentionList sutRetVal = this.barkerSUT
+				.getUnnoticedAttentionList(this.userIdFix);
+		Assert.assertEquals(expectedRetVal, sutRetVal);
 
-		verifyAllMocks();
+		this.verifyAllMocks();
 	}
-
 
 	/**
 	 * Test get noticed attention list.
 	 */
 	@Test
 	public void testGetNoticedAttentionList() {
-		AttentionList expectedRetVal = EasyMock.createNiceMock(AttentionList.class);
+		final AttentionList expectedRetVal = EasyMock
+				.createNiceMock(AttentionList.class);
 
-		expect(attentionListDaoMock.getNoticedAttentionList(userIdFix)).andReturn(expectedRetVal);
-		replayAllMocks();
+		EasyMock.expect(
+				this.attentionListDaoMock
+						.getNoticedAttentionList(this.userIdFix)).andReturn(
+				expectedRetVal);
+		this.replayAllMocks();
 
-		AttentionList sutRetVal = barkerSUT.getNoticedAttentionList(userIdFix);
-		assertEquals(expectedRetVal, sutRetVal);
+		final AttentionList sutRetVal = this.barkerSUT
+				.getNoticedAttentionList(this.userIdFix);
+		Assert.assertEquals(expectedRetVal, sutRetVal);
 
-		verifyAllMocks();
+		this.verifyAllMocks();
 	}
-
 
 }

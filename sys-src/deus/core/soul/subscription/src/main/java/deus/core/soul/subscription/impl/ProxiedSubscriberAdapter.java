@@ -32,9 +32,10 @@ import deus.model.common.user.frids.SubscriberId;
 import deus.model.subscription.ListOfPublishers;
 
 /**
- * Delegates all methods of <code>SubscriberExportedToPeers</code> to a delegate of type
- * <code>SubscriberExportedToPeers</code>, the rest of the methods of <code>Subscriber</code> are delegated to the second
- * delegate, which is of type <code>Subscriber</code>.
+ * Delegates all methods of <code>SubscriberExportedToPeers</code> to a delegate
+ * of type <code>SubscriberExportedToPeers</code>, the rest of the methods of
+ * <code>Subscriber</code> are delegated to the second delegate, which is of
+ * type <code>Subscriber</code>.
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
@@ -46,88 +47,134 @@ public class ProxiedSubscriberAdapter implements Subscriber {
 	@Inject
 	private SubscriberExportedToClient subscriberExportedToClient;
 
-
 	/** The subscriber exported to peers. */
 	@Inject
 	@Named("proxy")
 	private SubscriberExportedToPeers subscriberExportedToPeers;
 
+	// +++ METHODS SUBSCRIBER EXPORTED TO PEER
+	// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-	// +++ METHODS SUBSCRIBER EXPORTED TO PEER ++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers#noticeSubscriptionRequestGranted(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.
+	 * SubscriberExportedToPeers
+	 * #noticeSubscriptionRequestGranted(deus.model.common
+	 * .user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
 	 */
 	@Override
-	public void noticeSubscriptionRequestGranted(SubscriberId subscriberId, PublisherId publisherId) {
-		subscriberExportedToPeers.noticeSubscriptionRequestGranted(subscriberId, publisherId);
+	public void noticeSubscriptionRequestGranted(
+			final SubscriberId subscriberId, final PublisherId publisherId) {
+		this.subscriberExportedToPeers.noticeSubscriptionRequestGranted(
+				subscriberId, publisherId);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers#noticeSubscriptionRequestDenied(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.
+	 * SubscriberExportedToPeers
+	 * #noticeSubscriptionRequestDenied(deus.model.common
+	 * .user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
 	 */
 	@Override
-	public void noticeSubscriptionRequestDenied(SubscriberId subscriberId, PublisherId publisherId) {
-		subscriberExportedToPeers.noticeSubscriptionRequestDenied(subscriberId, publisherId);
+	public void noticeSubscriptionRequestDenied(
+			final SubscriberId subscriberId, final PublisherId publisherId) {
+		this.subscriberExportedToPeers.noticeSubscriptionRequestDenied(
+				subscriberId, publisherId);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers#update(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId, deus.model.common.dossier.Patch)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.
+	 * SubscriberExportedToPeers
+	 * #update(deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.dossier.Patch)
 	 */
 	@Override
-	public void update(SubscriberId subscriberId, PublisherId publisherId, Patch patch) {
-		subscriberExportedToPeers.update(subscriberId, publisherId, patch);
+	public void update(final SubscriberId subscriberId,
+			final PublisherId publisherId, final Patch patch) {
+		this.subscriberExportedToPeers.update(subscriberId, publisherId, patch);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers#addPublisher(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId, deus.model.common.user.UserMetadata)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.
+	 * SubscriberExportedToPeers
+	 * #addPublisher(deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.UserMetadata)
 	 */
 	@Override
-	public void addPublisher(SubscriberId subscriberId, PublisherId publisherId, UserMetadata publisherMetadata) {
-		subscriberExportedToPeers.addPublisher(subscriberId, publisherId, publisherMetadata);
+	public void addPublisher(final SubscriberId subscriberId,
+			final PublisherId publisherId, final UserMetadata publisherMetadata) {
+		this.subscriberExportedToPeers.addPublisher(subscriberId, publisherId,
+				publisherMetadata);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers#deletePublisher(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.
+	 * SubscriberExportedToPeers
+	 * #deletePublisher(deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId)
 	 */
 	@Override
-	public void deletePublisher(SubscriberId subscriberId, PublisherId publisherId) {
-		subscriberExportedToPeers.deletePublisher(subscriberId, publisherId);
+	public void deletePublisher(final SubscriberId subscriberId,
+			final PublisherId publisherId) {
+		this.subscriberExportedToPeers.deletePublisher(subscriberId,
+				publisherId);
 	}
 
+	// +++ METHODS OF SUBSCRIBER EXPORTED TO CLIENT
+	// +++++++++++++++++++++++++++++++++++++++++++++++++
 
-	// +++ METHODS OF SUBSCRIBER EXPORTED TO CLIENT +++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.subscription.SubscriberExportedToClient#subscribeToPublisher(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId, deus.model.common.user.UserMetadata)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.subscription.SubscriberExportedToClient#subscribeToPublisher
+	 * (deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.UserMetadata)
 	 */
 	@Override
-	public void subscribeToPublisher(SubscriberId subscriberId, PublisherId publisherId, UserMetadata publisherMetadata) {
-		subscriberExportedToClient.subscribeToPublisher(subscriberId, publisherId, publisherMetadata);
+	public void subscribeToPublisher(final SubscriberId subscriberId,
+			final PublisherId publisherId, final UserMetadata publisherMetadata) {
+		this.subscriberExportedToClient.subscribeToPublisher(subscriberId,
+				publisherId, publisherMetadata);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.subscription.SubscriberExportedToClient#unsubscribe(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.subscription.SubscriberExportedToClient#unsubscribe(deus
+	 * .model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId)
 	 */
 	@Override
-	public void unsubscribe(SubscriberId subscriberId, PublisherId publisherId) {
-		subscriberExportedToClient.unsubscribe(subscriberId, publisherId);
+	public void unsubscribe(final SubscriberId subscriberId,
+			final PublisherId publisherId) {
+		this.subscriberExportedToClient.unsubscribe(subscriberId, publisherId);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.subscription.SubscriberExportedToClient#getListOfPublishers(deus.model.common.user.frids.SubscriberId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.subscription.SubscriberExportedToClient#getListOfPublishers
+	 * (deus.model.common.user.frids.SubscriberId)
 	 */
 	@Override
-	public ListOfPublishers getListOfPublishers(SubscriberId subscriberId) {
-		return subscriberExportedToClient.getListOfPublishers(subscriberId);
+	public ListOfPublishers getListOfPublishers(final SubscriberId subscriberId) {
+		return this.subscriberExportedToClient
+				.getListOfPublishers(subscriberId);
 	}
-
 
 }

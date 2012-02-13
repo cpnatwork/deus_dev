@@ -19,10 +19,10 @@
  *************************************************************************/
 package deus.core.soul.pifgoverning;
 
-
 /**
  * The Interface PifGovernor.
  */
-public interface PifGovernor extends PifGovernorExportedToClient, PifGovernorExportedToSubsystems {
-	
+public interface PifGovernor extends PifGovernorExportedToClient,
+		PifGovernorExportedToSubsystems {
+
 }

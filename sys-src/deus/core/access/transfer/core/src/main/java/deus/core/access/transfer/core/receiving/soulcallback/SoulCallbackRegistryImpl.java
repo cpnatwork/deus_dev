@@ -25,7 +25,6 @@ import deus.core.access.transfer.core.receiving.soulcallback.publication.Publish
 import deus.core.access.transfer.core.receiving.soulcallback.repatriationhub.RepatriationHubExportedToPeers;
 import deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers;
 
-
 /**
  * The Class SoulCallbackRegistryImpl.
  */
@@ -41,56 +40,81 @@ public class SoulCallbackRegistryImpl implements SoulCallbackRegistry {
 	/** The repatriation hub. */
 	private RepatriationHubExportedToPeers repatriationHub;
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.SoulCallbackRegistry#getPublisher()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.core.receiving.soulcallback.SoulCallbackRegistry
+	 * #getPublisher()
 	 */
 	@Override
 	public PublisherExportedToPeers getPublisher() {
-		return publisher;
+		return this.publisher;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.SoulCallbackRegistry#getSubscriber()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.core.receiving.soulcallback.SoulCallbackRegistry
+	 * #getSubscriber()
 	 */
 	@Override
 	public SubscriberExportedToPeers getSubscriber() {
-		return subscriber;
+		return this.subscriber;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.ExportedSoulCallbackRegistry#registerPublisher(deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.
+	 * ExportedSoulCallbackRegistry
+	 * #registerPublisher(deus.core.access.transfer.core
+	 * .receiving.soulcallback.publication.PublisherExportedToPeers)
 	 */
 	@Override
-	public void registerPublisher(PublisherExportedToPeers publisher) {
+	public void registerPublisher(final PublisherExportedToPeers publisher) {
 		this.publisher = publisher;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.ExportedSoulCallbackRegistry#registerSubscriber(deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.
+	 * ExportedSoulCallbackRegistry
+	 * #registerSubscriber(deus.core.access.transfer.
+	 * core.receiving.soulcallback.subscription.SubscriberExportedToPeers)
 	 */
 	@Override
-	public void registerSubscriber(SubscriberExportedToPeers subscriber) {
+	public void registerSubscriber(final SubscriberExportedToPeers subscriber) {
 		this.subscriber = subscriber;
 	}
 
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.ExportedSoulCallbackRegistry#registerRepatriationHub(deus.core.access.transfer.core.receiving.soulcallback.repatriationhub.RepatriationHubExportedToPeers)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.
+	 * ExportedSoulCallbackRegistry
+	 * #registerRepatriationHub(deus.core.access.transfer
+	 * .core.receiving.soulcallback
+	 * .repatriationhub.RepatriationHubExportedToPeers)
 	 */
 	@Override
-	public void registerRepatriationHub(RepatriationHubExportedToPeers repatriationHub) {
+	public void registerRepatriationHub(
+			final RepatriationHubExportedToPeers repatriationHub) {
 		this.repatriationHub = repatriationHub;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.SoulCallbackRegistry#getRepatriationHub()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.core.receiving.soulcallback.SoulCallbackRegistry
+	 * #getRepatriationHub()
 	 */
 	@Override
 	public RepatriationHubExportedToPeers getRepatriationHub() {
-		return repatriationHub;
+		return this.repatriationHub;
 	}
-	
+
 }

@@ -22,7 +22,6 @@ package deus.core.soul.pifgoverning;
 import deus.model.common.user.frids.RepatriationAuthorityId;
 import deus.model.pifgoverning.PersonalInformationFile;
 
-
 /**
  * The Interface PifGovernorExportedToClient.
  */
@@ -36,6 +35,7 @@ public interface PifGovernorExportedToClient {
 	 *            the repatriation authority id
 	 * @return the personal information file
 	 */
-	public abstract PersonalInformationFile getPersonalInformationFile(RepatriationAuthorityId repatriationAuthorityId);
+	public abstract PersonalInformationFile getPersonalInformationFile(
+			RepatriationAuthorityId repatriationAuthorityId);
 
 }

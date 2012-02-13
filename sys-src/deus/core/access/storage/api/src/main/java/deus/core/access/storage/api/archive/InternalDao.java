@@ -35,6 +35,7 @@ import java.io.Serializable;
  *            the generic type
  * @author cpn
  */
-public interface InternalDao<TechEntityT, TechIdT extends Serializable, NaturalIdT extends Serializable> extends Dao<TechEntityT, NaturalIdT>, TechDao<TechEntityT, TechIdT> { 
+public interface InternalDao<TechEntityT, TechIdT extends Serializable, NaturalIdT extends Serializable>
+		extends Dao<TechEntityT, NaturalIdT>, TechDao<TechEntityT, TechIdT> {
 
 }

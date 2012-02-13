@@ -35,7 +35,7 @@ public class PersonalPartyFile extends PersonalInformationFile {
 	 * @param digitalCards
 	 *            the digital cards
 	 */
-	public PersonalPartyFile(Set<DigitalCard> digitalCards) {
+	public PersonalPartyFile(final Set<DigitalCard> digitalCards) {
 		super(digitalCards);
 	}
 

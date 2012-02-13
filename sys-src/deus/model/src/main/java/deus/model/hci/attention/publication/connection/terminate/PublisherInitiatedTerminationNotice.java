@@ -26,9 +26,12 @@ import deus.model.common.user.UserMetadata;
  */
 public class PublisherInitiatedTerminationNotice extends TerminationNotice {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6022719966833043342L;
 	/** The publisher metadata. */
 	private final UserMetadata publisherMetadata;
-
 
 	/**
 	 * Instantiates a new publisher initiated termination notice.
@@ -36,10 +39,10 @@ public class PublisherInitiatedTerminationNotice extends TerminationNotice {
 	 * @param publisherMetadata
 	 *            the publisher metadata
 	 */
-	public PublisherInitiatedTerminationNotice(UserMetadata publisherMetadata) {
+	public PublisherInitiatedTerminationNotice(
+			final UserMetadata publisherMetadata) {
 		this.publisherMetadata = publisherMetadata;
 	}
-
 
 	/**
 	 * Gets the publisher metadata.
@@ -47,11 +50,12 @@ public class PublisherInitiatedTerminationNotice extends TerminationNotice {
 	 * @return the publisher metadata
 	 */
 	public UserMetadata getPublisherMetadata() {
-		return publisherMetadata;
+		return this.publisherMetadata;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.hci.attention.AttentionElement#getCatchphare()
 	 */
 	@Override

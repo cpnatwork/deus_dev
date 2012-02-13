@@ -35,40 +35,49 @@ import deus.model.hci.attention.publication.connection.establish.subinit.Subscri
  * The Class SubscriberRequestDecisionProcessor.
  */
 @Named
-public class SubscriberRequestDecisionProcessor extends AbstractGenericDecisionProcessor<SubscriptionRequest> {
+public class SubscriberRequestDecisionProcessor extends
+		AbstractGenericDecisionProcessor<SubscriptionRequest> {
 
 	/** The publisher. */
 	@Inject
 	@Named("targetedPublisher")
 	private PublisherExportedToPeers publisher;
-	
+
 	/** The publisher command sender. */
 	@Inject
 	private PublisherCommandSender publisherCommandSender;
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.hci.decisionprocessor.AbstractGenericDecisionProcessor#processImpl(deus.model.common.user.id.UserId, deus.model.hci.attention.BinaryDecisionToMake)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.hci.decisionprocessor.AbstractGenericDecisionProcessor
+	 * #processImpl(deus.model.common.user.id.UserId,
+	 * deus.model.hci.attention.BinaryDecisionToMake)
 	 */
 	@Override
-	protected void processImpl(UserId userId, SubscriptionRequest subscriptionRequest) {
-		UserMetadata subscriberMetadata = subscriptionRequest.getSubscriberMetadata();
-		
-		PublisherId publisherId = new PublisherId(userId);
-		
+	protected void processImpl(final UserId userId,
+			final SubscriptionRequest subscriptionRequest) {
+		final UserMetadata subscriberMetadata = subscriptionRequest
+				.getSubscriberMetadata();
+
+		final PublisherId publisherId = new PublisherId(userId);
+
 		if (subscriptionRequest.isDecisionPositive()) {
 			// FIXME: add this as method to PublisherExportedToDecisionProcessor
-			
-			publisher.addSubscriber(publisherId, subscriptionRequest.getSubscriberId(), subscriberMetadata);
-	
-			publisherCommandSender.grantSubscriptionRequest(publisherId, subscriptionRequest.getSubscriberId());
-		}
-		else {
+
+			this.publisher.addSubscriber(publisherId,
+					subscriptionRequest.getSubscriberId(), subscriberMetadata);
+
+			this.publisherCommandSender.grantSubscriptionRequest(publisherId,
+					subscriptionRequest.getSubscriberId());
+		} else {
 			// FIXME: add this as method to PublisherExportedToDecisionProcessor
-			
+
 			// do not add observer
-			
-			publisherCommandSender.denySubscriptionRequest(publisherId, subscriptionRequest.getSubscriberId());
+
+			this.publisherCommandSender.denySubscriptionRequest(publisherId,
+					subscriptionRequest.getSubscriberId());
 		}
 	}
 

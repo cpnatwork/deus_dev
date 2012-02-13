@@ -22,16 +22,17 @@ package deus.core.access.transfer.common.messages.publication.connection.establi
 import deus.model.common.user.UserMetadata;
 
 /**
- * Command, issued by the informationConsumer to initiate a request for a subscription.
+ * Command, issued by the informationConsumer to initiate a request for a
+ * subscription.
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
  * 
  */
-public final class RequestSubscriptionMessage extends SubscribeToPublisherMessage {
+public final class RequestSubscriptionMessage extends
+		SubscribeToPublisherMessage {
 
 	/** The subscriber metadata. */
 	private final UserMetadata subscriberMetadata;
-
 
 	/**
 	 * Instantiates a new request subscription message.
@@ -39,11 +40,10 @@ public final class RequestSubscriptionMessage extends SubscribeToPublisherMessag
 	 * @param subscriberMetadata
 	 *            the subscriber metadata
 	 */
-	public RequestSubscriptionMessage(UserMetadata subscriberMetadata) {
+	public RequestSubscriptionMessage(final UserMetadata subscriberMetadata) {
 		super();
 		this.subscriberMetadata = subscriberMetadata;
 	}
-
 
 	/**
 	 * Gets the subscriber metadata.
@@ -51,7 +51,7 @@ public final class RequestSubscriptionMessage extends SubscribeToPublisherMessag
 	 * @return the subscriber metadata
 	 */
 	public UserMetadata getSubscriberMetadata() {
-		return subscriberMetadata;
+		return this.subscriberMetadata;
 	}
 
 }

@@ -32,6 +32,8 @@ import deus.model.pifgoverning.PersonalInformationFile;
  * @author cpn
  */
 @Named("pifDao")
-public class PifDaoImpl extends GenericVanillaDaoImpl<PersonalInformationFile, RepatriationAuthorityId> implements PifDao {
+public class PifDaoImpl extends
+		GenericVanillaDaoImpl<PersonalInformationFile, RepatriationAuthorityId>
+		implements PifDao {
 
 }

@@ -38,28 +38,27 @@ import deus.model.common.user.id.UserId;
  * TransferProtocolLoginUserLoginState is constructed.
  */
 @Named
-public class TransferProtocolLoginUserLoginStateObserver implements UserLoginStateObserver {
+public class TransferProtocolLoginUserLoginStateObserver implements
+		UserLoginStateObserver {
 
 	/** The transfer protocol registry. */
 	@Inject
 	private QueriableTransferProtocolRegistry transferProtocolRegistry;
-	
+
 	/** The cerberus. */
 	@Inject
 	private CerberusExportedToSubsystems cerberus;
-	
-	
+
 	/**
 	 * This method is called when information about an
 	 * TransferProtocolLoginUserLoginState which was previously requested using
 	 * an asynchronous interface becomes available.
 	 */
-	@PostConstruct	
+	@PostConstruct
 	@SuppressWarnings("unused")
 	private void addObserver() {
-		cerberus.addUserLoginStateObserver(this);
+		this.cerberus.addUserLoginStateObserver(this);
 	}
-	
 
 	/**
 	 * This method is called when information about an
@@ -69,33 +68,43 @@ public class TransferProtocolLoginUserLoginStateObserver implements UserLoginSta
 	@PreDestroy
 	@SuppressWarnings("unused")
 	private void removeObserver() {
-		cerberus.removeUserLoginStateObserver(this);
+		this.cerberus.removeUserLoginStateObserver(this);
 	}
-	
-	
-	/* (non-Javadoc)
-	 * @see deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver#loggedIn(deus.model.common.user.id.UserId)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver#loggedIn(deus
+	 * .model.common.user.id.UserId)
 	 */
 	@Override
-	public void loggedIn(UserId userId) {
-		for (String transferProtocolId : transferProtocolRegistry.getAllRegisteredTransferProtocolIds()) {
-			TransferProtocol tp = transferProtocolRegistry.getRegisteredTransferProtocol(transferProtocolId);
-			UserIdMapper userIdMapper = tp.getUserIdMapper();
-			TransferId transferId = userIdMapper.resolveLocal(userId);
+	public void loggedIn(final UserId userId) {
+		for (final String transferProtocolId : this.transferProtocolRegistry
+				.getAllRegisteredTransferProtocolIds()) {
+			final TransferProtocol tp = this.transferProtocolRegistry
+					.getRegisteredTransferProtocol(transferProtocolId);
+			final UserIdMapper userIdMapper = tp.getUserIdMapper();
+			final TransferId transferId = userIdMapper.resolveLocal(userId);
 			tp.getLoginEventCallback().loggedIn(transferId);
 		}
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver#loggedOut(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.gatekeeper.cerberus.UserLoginStateObserver#loggedOut(deus
+	 * .model.common.user.id.UserId)
 	 */
 	@Override
-	public void loggedOut(UserId userId) {
-		for (String transferProtocolId : transferProtocolRegistry.getAllRegisteredTransferProtocolIds()) {
-			TransferProtocol tp = transferProtocolRegistry.getRegisteredTransferProtocol(transferProtocolId);
-			UserIdMapper userIdMapper = tp.getUserIdMapper();
-			TransferId transferId = userIdMapper.resolveLocal(userId);
+	public void loggedOut(final UserId userId) {
+		for (final String transferProtocolId : this.transferProtocolRegistry
+				.getAllRegisteredTransferProtocolIds()) {
+			final TransferProtocol tp = this.transferProtocolRegistry
+					.getRegisteredTransferProtocol(transferProtocolId);
+			final UserIdMapper userIdMapper = tp.getUserIdMapper();
+			final TransferId transferId = userIdMapper.resolveLocal(userId);
 			tp.getLoginEventCallback().loggedOut(transferId);
 		}
 	}

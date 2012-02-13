@@ -24,7 +24,13 @@ import deus.model.common.user.UserMetadata;
 /**
  * The Class SubscriptionConfirmedNotice.
  */
-public class SubscriptionConfirmedNotice extends PublisherInitiatedConnectionNotice {
+public class SubscriptionConfirmedNotice extends
+		PublisherInitiatedConnectionNotice {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3151688636889099918L;
 
 	/**
 	 * Instantiates a new subscription confirmed notice.
@@ -32,12 +38,13 @@ public class SubscriptionConfirmedNotice extends PublisherInitiatedConnectionNot
 	 * @param subscriberMetadata
 	 *            the subscriber metadata
 	 */
-	public SubscriptionConfirmedNotice(UserMetadata subscriberMetadata) {
+	public SubscriptionConfirmedNotice(final UserMetadata subscriberMetadata) {
 		super(subscriberMetadata);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.hci.attention.AttentionElement#getCatchphare()
 	 */
 	@Override

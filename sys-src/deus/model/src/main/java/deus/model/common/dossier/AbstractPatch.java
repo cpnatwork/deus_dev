@@ -29,24 +29,24 @@ abstract class AbstractPatch implements Patch {
 	/** The cp id. */
 	private final UserId cpId;
 
-
 	/**
 	 * Instantiates a new abstract patch.
 	 * 
 	 * @param cpId
 	 *            the cp id
 	 */
-	public AbstractPatch(UserId cpId) {
+	public AbstractPatch(final UserId cpId) {
 		this.cpId = cpId;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.common.dossier.Patch#getCpId()
 	 */
 	@Override
 	public UserId getCpId() {
-		return cpId;
+		return this.cpId;
 	}
 
 }

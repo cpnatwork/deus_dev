@@ -29,12 +29,15 @@ import deus.model.publication.LosEntry;
 /**
  * The Class ListOfSubscribersImpl.
  */
-public class ListOfSubscribersImpl extends HashMap<UserId, LosEntry> implements ListOfSubscribers {
+public class ListOfSubscribersImpl extends HashMap<UserId, LosEntry> implements
+		ListOfSubscribers {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 8207701628832549782L;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.publication.ListOfSubscribers#getOwnerId()
 	 */
 	@Override

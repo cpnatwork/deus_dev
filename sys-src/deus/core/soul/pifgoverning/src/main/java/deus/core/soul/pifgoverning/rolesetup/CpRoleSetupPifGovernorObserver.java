@@ -31,32 +31,44 @@ import deus.model.common.user.id.UserId;
  * constructed.
  */
 @Named
-public class CpRoleSetupPifGovernorObserver extends AbstractDistributionRoleSetupObserver {
-	
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver#getDistributionRole()
+public class CpRoleSetupPifGovernorObserver extends
+		AbstractDistributionRoleSetupObserver {
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver
+	 * #getDistributionRole()
 	 */
 	@Override
 	protected DistributionRole getDistributionRole() {
 		return DistributionRole.concernedPerson;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver#setUpRole(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver
+	 * #setUpRole(deus.model.common.user.id.UserId)
 	 */
 	@Override
-	protected void setUpRole(UserId userId) {
+	protected void setUpRole(final UserId userId) {
 		// FUTURE: init data objects in database for subsystem Subscriber here!
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver#tearDownRole(deus.model.common.user.id.UserId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.accountadmin.rolesetup.AbstractDistributionRoleSetupObserver
+	 * #tearDownRole(deus.model.common.user.id.UserId)
 	 */
 	@Override
-	protected void tearDownRole(UserId userId) {
-		// FUTURE: destroy data objects in database for subsystem Subscriber here!
+	protected void tearDownRole(final UserId userId) {
+		// FUTURE: destroy data objects in database for subsystem Subscriber
+		// here!
 	}
 
 }

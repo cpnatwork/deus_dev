@@ -27,7 +27,8 @@ import deus.model.common.user.id.UserId;
  */
 public interface RepatriationHubExportedToClient {
 
-	// TODO: remove this method (since a deus user id is required, a subsystem at contr
+	// TODO: remove this method (since a deus user id is required, a subsystem
+	// at contr
 	// FIXME: edit javadoc
 	/**
 	 * This method is used to contribute a digital card to a foreign PIF, i.e.
@@ -42,7 +43,7 @@ public interface RepatriationHubExportedToClient {
 	 *            the digital card to contribute
 	 */
 	@Deprecated
-	public abstract void fireAndForgetAccept(UserId cpId, DigitalCard repatriatedDigitalCard);
+	public abstract void fireAndForgetAccept(UserId cpId,
+			DigitalCard repatriatedDigitalCard);
 
-	
 }

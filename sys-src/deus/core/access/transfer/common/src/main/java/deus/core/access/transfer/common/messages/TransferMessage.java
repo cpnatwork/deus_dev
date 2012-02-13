@@ -29,16 +29,15 @@ public abstract class TransferMessage {
 
 	/** The sender id. */
 	private UserId senderId;
-	
+
 	/** The receiver id. */
 	private UserId receiverId;
 
 	/** The sender tid. */
 	private TransferId senderTid;
-	
+
 	/** The receiver tid. */
 	private TransferId receiverTid;
-
 
 	/**
 	 * Instantiates a new transfer message.
@@ -47,16 +46,14 @@ public abstract class TransferMessage {
 		super();
 	}
 
-
 	/**
 	 * Gets the sender id.
 	 * 
 	 * @return the sender id
 	 */
 	public UserId getSenderId() {
-		return senderId;
+		return this.senderId;
 	}
-
 
 	/**
 	 * Sets the sender id.
@@ -64,10 +61,9 @@ public abstract class TransferMessage {
 	 * @param senderId
 	 *            the new sender id
 	 */
-	public void setSenderId(UserId senderId) {
+	public void setSenderId(final UserId senderId) {
 		this.senderId = senderId;
 	}
-
 
 	/**
 	 * Gets the receiver id.
@@ -75,9 +71,8 @@ public abstract class TransferMessage {
 	 * @return the receiver id
 	 */
 	public UserId getReceiverId() {
-		return receiverId;
+		return this.receiverId;
 	}
-
 
 	/**
 	 * Sets the receiver id.
@@ -85,10 +80,9 @@ public abstract class TransferMessage {
 	 * @param receiverId
 	 *            the new receiver id
 	 */
-	public void setReceiverId(UserId receiverId) {
+	public void setReceiverId(final UserId receiverId) {
 		this.receiverId = receiverId;
 	}
-
 
 	/**
 	 * Gets the sender tid.
@@ -96,9 +90,8 @@ public abstract class TransferMessage {
 	 * @return the sender tid
 	 */
 	public TransferId getSenderTid() {
-		return senderTid;
+		return this.senderTid;
 	}
-
 
 	/**
 	 * Sets the sender tid.
@@ -106,10 +99,9 @@ public abstract class TransferMessage {
 	 * @param senderTid
 	 *            the new sender tid
 	 */
-	public void setSenderTid(TransferId senderTid) {
+	public void setSenderTid(final TransferId senderTid) {
 		this.senderTid = senderTid;
 	}
-
 
 	/**
 	 * Gets the receiver tid.
@@ -117,9 +109,8 @@ public abstract class TransferMessage {
 	 * @return the receiver tid
 	 */
 	public TransferId getReceiverTid() {
-		return receiverTid;
+		return this.receiverTid;
 	}
-
 
 	/**
 	 * Sets the receiver tid.
@@ -127,7 +118,7 @@ public abstract class TransferMessage {
 	 * @param receiverTid
 	 *            the new receiver tid
 	 */
-	public void setReceiverTid(TransferId receiverTid) {
+	public void setReceiverTid(final TransferId receiverTid) {
 		this.receiverTid = receiverTid;
 	}
 

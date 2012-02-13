@@ -19,10 +19,10 @@
  *************************************************************************/
 package deus.core.access.transfer.common.messages.publication.connection.establish.invite;
 
-
 /**
  * The Class ConfirmSubscriptionOfferNoticeMessage.
  */
-public class ConfirmSubscriptionOfferNoticeMessage extends InviteSubscriberMessage {
+public class ConfirmSubscriptionOfferNoticeMessage extends
+		InviteSubscriberMessage {
 
 }

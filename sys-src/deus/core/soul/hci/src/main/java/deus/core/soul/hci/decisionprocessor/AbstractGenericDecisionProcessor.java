@@ -28,20 +28,25 @@ import deus.model.hci.attention.BinaryDecisionToMake;
  * @param <DecisionT>
  *            the generic type
  */
-public abstract class AbstractGenericDecisionProcessor<DecisionT extends BinaryDecisionToMake> implements
-		GenericDecisionProcessor<DecisionT> {
+public abstract class AbstractGenericDecisionProcessor<DecisionT extends BinaryDecisionToMake>
+		implements GenericDecisionProcessor<DecisionT> {
 
-	/* (non-Javadoc)
-	 * @see deus.core.soul.hci.decisionprocessor.GenericDecisionProcessor#process(deus.model.common.user.id.UserId, deus.model.hci.attention.BinaryDecisionToMake)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.hci.decisionprocessor.GenericDecisionProcessor#process
+	 * (deus.model.common.user.id.UserId,
+	 * deus.model.hci.attention.BinaryDecisionToMake)
 	 */
 	@Override
-	public final void process(UserId userId, DecisionT decision) {
+	public final void process(final UserId userId, final DecisionT decision) {
 		if (!decision.isDecisionMade())
-			throw new IllegalStateException("decision (" + decision + ") is not made yet");
+			throw new IllegalStateException("decision (" + decision
+					+ ") is not made yet");
 
-		processImpl(userId, decision);
+		this.processImpl(userId, decision);
 	}
-
 
 	/**
 	 * Process impl.

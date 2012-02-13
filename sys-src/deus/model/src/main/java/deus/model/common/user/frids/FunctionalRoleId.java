@@ -22,7 +22,8 @@ package deus.model.common.user.frids;
 import deus.model.common.user.id.UserId;
 
 /**
- * ID, which identifies a functional role (Functional Role ID = FRID). It contains a UserID.
+ * ID, which identifies a functional role (Functional Role ID = FRID). It
+ * contains a UserID.
  * 
  * 
  * @author Florian Rampp (Florian.Rampp@informatik.stud.uni-erlangen.de)
@@ -33,18 +34,16 @@ abstract class FunctionalRoleId {
 	/** The user id. */
 	private final UserId userId;
 
-
 	/**
 	 * Instantiates a new functional role id.
 	 * 
 	 * @param userId
 	 *            the user id
 	 */
-	public FunctionalRoleId(UserId userId) {
+	public FunctionalRoleId(final UserId userId) {
 		super();
 		this.userId = userId;
 	}
-
 
 	/**
 	 * Gets the user id.
@@ -52,7 +51,7 @@ abstract class FunctionalRoleId {
 	 * @return the user id
 	 */
 	public UserId getUserId() {
-		return userId;
+		return this.userId;
 	}
 
 }

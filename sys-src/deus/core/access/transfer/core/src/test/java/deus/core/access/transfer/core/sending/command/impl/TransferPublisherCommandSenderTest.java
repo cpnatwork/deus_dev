@@ -19,8 +19,7 @@
  *************************************************************************/
 package deus.core.access.transfer.core.sending.command.impl;
 
-import static org.junit.Assert.assertEquals;
-
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,30 +38,36 @@ import deus.model.dccontent.PartyInformationDC;
  * The Class TransferPublisherCommandSenderTest.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transfer/core/test.xml" })
-public class TransferPublisherCommandSenderTest extends AbstractCommandSenderTest {
+@ContextConfiguration(locations = { "/deus/context.xml",
+		"/deus/core/access/transfer/core/test.xml" })
+public class TransferPublisherCommandSenderTest extends
+		AbstractCommandSenderTest {
 
 	/** The transfer publisher command sender. */
 	@Autowired
 	private PublisherCommandSender transferPublisherCommandSender;
-
 
 	/**
 	 * Test update.
 	 */
 	@Test
 	public void testUpdate() {
-		DigitalCard digitalCard = new PartyInformationDC(new DigitalCardId(new UserUrl("higgins", "http://www.deus.org"),
-				new UserUrl("alice", "http://www.deus.org"), "surgery1"));
+		final DigitalCard digitalCard = new PartyInformationDC(
+				new DigitalCardId(
+						new UserUrl("higgins", "http://www.deus.org"),
+						new UserUrl("alice", "http://www.deus.org"), "surgery1"));
 
-		transferPublisherCommandSender.update(publisherId, subscriberId, digitalCard);
+		this.transferPublisherCommandSender.update(this.publisherId,
+				this.subscriberId, digitalCard);
 
-		TransferMessage expectedMessage = new UpdateMessage(digitalCard);
-		setTids(expectedMessage, publisherId.getUserId(), subscriberId.getUserId());
+		final TransferMessage expectedMessage = new UpdateMessage(digitalCard);
+		this.setTids(expectedMessage, this.publisherId.getUserId(),
+				this.subscriberId.getUserId());
 
-		testEqualsMessage(expectedMessage, lastSentTransferMessage);
+		this.testEqualsMessage(expectedMessage, this.lastSentTransferMessage);
 
-		assertEquals(digitalCard, ((UpdateMessage) lastSentTransferMessage).getDigitalCard());
+		Assert.assertEquals(digitalCard,
+				((UpdateMessage) this.lastSentTransferMessage).getDigitalCard());
 	}
 
 }

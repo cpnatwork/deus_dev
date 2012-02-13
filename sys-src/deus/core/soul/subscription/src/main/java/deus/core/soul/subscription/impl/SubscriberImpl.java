@@ -68,129 +68,190 @@ public class SubscriberImpl implements Subscriber {
 	@Inject
 	private SubscriberCommandSender subscriberCommandSender;
 
+	// +++ exported to PEER
+	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-	// +++ exported to PEER +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers#noticeSubscriptionRequestGranted(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.
+	 * SubscriberExportedToPeers
+	 * #noticeSubscriptionRequestGranted(deus.model.common
+	 * .user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
 	 */
 	@Override
-	public void noticeSubscriptionRequestGranted(SubscriberId subscriberId, PublisherId publisherId) {
-		logger.trace("in informationConsumer of {}: publisher {} acknowledged subscription", subscriberId, publisherId);
+	public void noticeSubscriptionRequestGranted(
+			final SubscriberId subscriberId, final PublisherId publisherId) {
+		this.logger
+				.trace("in informationConsumer of {}: publisher {} acknowledged subscription",
+						subscriberId, publisherId);
 
-		LopEntry entry = lopEntryDao.getByNaturalId(subscriberId, publisherId);
+		final LopEntry entry = this.lopEntryDao.getByNaturalId(subscriberId,
+				publisherId);
 		entry.setSubscriptionState(SubscriberSideSubscriptionState.established);
 
-		lopEntryDao.updateEntity(subscriberId, entry);
+		this.lopEntryDao.updateEntity(subscriberId, entry);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers#noticeSubscriptionRequestDenied(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.
+	 * SubscriberExportedToPeers
+	 * #noticeSubscriptionRequestDenied(deus.model.common
+	 * .user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
 	 */
 	@Override
-	public void noticeSubscriptionRequestDenied(SubscriberId subscriberId, PublisherId publisherId) {
-		logger.trace("in informationConsumer of {}: publisher {} denied subscription", subscriberId, publisherId);
+	public void noticeSubscriptionRequestDenied(
+			final SubscriberId subscriberId, final PublisherId publisherId) {
+		this.logger
+				.trace("in informationConsumer of {}: publisher {} denied subscription",
+						subscriberId, publisherId);
 
-		lopEntryDao.deleteByNaturalId(subscriberId, publisherId);
+		this.lopEntryDao.deleteByNaturalId(subscriberId, publisherId);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers#update(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId, deus.model.common.dossier.Patch)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.
+	 * SubscriberExportedToPeers
+	 * #update(deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.dossier.Patch)
 	 */
 	@Override
-	public void update(SubscriberId subscriberId, PublisherId publisherId, Patch patch) {
+	public void update(final SubscriberId subscriberId,
+			final PublisherId publisherId, final Patch patch) {
 		if (!patch.getCpId().equals(publisherId))
-			throw new IllegalArgumentException("ID of publisher does not match CP ID in passed digital card");
+			throw new IllegalArgumentException(
+					"ID of publisher does not match CP ID in passed digital card");
 
-		logger.trace("in informationConsumer {}: updating the DIF for publisher {}", subscriberId, publisherId);
+		this.logger.trace(
+				"in informationConsumer {}: updating the DIF for publisher {}",
+				subscriberId, publisherId);
 
-		if (!lopEntryDao.existsByNaturalId(subscriberId, publisherId))
+		if (!this.lopEntryDao.existsByNaturalId(subscriberId, publisherId)) {
 			// FIXME: how to handle this Exception??
 			;
+		}
 
-		difGovernor.applyPatch(subscriberId, publisherId, patch);
+		this.difGovernor.applyPatch(subscriberId, publisherId, patch);
 	}
-	
-	
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers#addPublisher(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId, deus.model.common.user.UserMetadata)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.
+	 * SubscriberExportedToPeers
+	 * #addPublisher(deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.UserMetadata)
 	 */
 	@Override
-	public void addPublisher(SubscriberId subscriberId, PublisherId publisherId, UserMetadata publisherMetadata) {
-		logger.trace("in informationConsumer of {}: publisher {} added", subscriberId, publisherId);
+	public void addPublisher(final SubscriberId subscriberId,
+			final PublisherId publisherId, final UserMetadata publisherMetadata) {
+		this.logger.trace("in informationConsumer of {}: publisher {} added",
+				subscriberId, publisherId);
 
-		LopEntry entry = new LopEntry(publisherId);
+		final LopEntry entry = new LopEntry(publisherId);
 		entry.setPublisherMetadata(publisherMetadata);
 		entry.setSubscriptionState(SubscriberSideSubscriptionState.established);
 
-		lopEntryDao.addNewEntity(subscriberId, entry);
+		this.lopEntryDao.addNewEntity(subscriberId, entry);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.SubscriberExportedToPeers#deletePublisher(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.subscription.
+	 * SubscriberExportedToPeers
+	 * #deletePublisher(deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId)
 	 */
 	@Override
-	public void deletePublisher(SubscriberId subscriberId, PublisherId publisherId) {
-		logger.trace("in informationConsumer of {}: publisher {} deleted", subscriberId, publisherId);
+	public void deletePublisher(final SubscriberId subscriberId,
+			final PublisherId publisherId) {
+		this.logger.trace("in informationConsumer of {}: publisher {} deleted",
+				subscriberId, publisherId);
 
-		lopEntryDao.deleteByNaturalId(subscriberId, publisherId);
+		this.lopEntryDao.deleteByNaturalId(subscriberId, publisherId);
 	}
 
-	
-
-	// +++ exported to CLIENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+	// +++ exported to CLIENT
+	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 	// FIXME: think about returning a DTO to the frontend here
-	/* (non-Javadoc)
-	 * @see deus.core.soul.subscription.SubscriberExportedToClient#getListOfPublishers(deus.model.common.user.frids.SubscriberId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.subscription.SubscriberExportedToClient#getListOfPublishers
+	 * (deus.model.common.user.frids.SubscriberId)
 	 */
 	@Override
-	public ListOfPublishers getListOfPublishers(SubscriberId subscriberId) {
-		ListOfPublishers listOfPublishers = lopDao.getByNaturalId(subscriberId);
+	public ListOfPublishers getListOfPublishers(final SubscriberId subscriberId) {
+		final ListOfPublishers listOfPublishers = this.lopDao
+				.getByNaturalId(subscriberId);
 		return listOfPublishers;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.subscription.SubscriberExportedToClient#subscribeToPublisher(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId, deus.model.common.user.UserMetadata)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.subscription.SubscriberExportedToClient#subscribeToPublisher
+	 * (deus.model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId,
+	 * deus.model.common.user.UserMetadata)
 	 */
 	@Override
-	public void subscribeToPublisher(SubscriberId subscriberId, PublisherId publisherId, UserMetadata publisherMetadata) {
-		if (lopEntryDao.existsByNaturalId(subscriberId, publisherId))
-			throw new IllegalArgumentException("cannot subscribe to publisher (" + publisherId + ") again!");
+	public void subscribeToPublisher(final SubscriberId subscriberId,
+			final PublisherId publisherId, final UserMetadata publisherMetadata) {
+		if (this.lopEntryDao.existsByNaturalId(subscriberId, publisherId))
+			throw new IllegalArgumentException(
+					"cannot subscribe to publisher (" + publisherId
+							+ ") again!");
 
-		logger.trace("in informationConsumer {}: subscribing to publisher {}", subscriberId, publisherId);
+		this.logger.trace(
+				"in informationConsumer {}: subscribing to publisher {}",
+				subscriberId, publisherId);
 
-		LopEntry entry = new LopEntry(publisherId);
+		final LopEntry entry = new LopEntry(publisherId);
 		entry.setPublisherMetadata(publisherMetadata);
 		entry.setSubscriptionState(SubscriberSideSubscriptionState.requested);
-		lopEntryDao.addNewEntity(subscriberId, entry);
+		this.lopEntryDao.addNewEntity(subscriberId, entry);
 
-		UserMetadata subscriberMetadata = userMetadataDao.getByNaturalId(subscriberId.getUserId());
+		final UserMetadata subscriberMetadata = this.userMetadataDao
+				.getByNaturalId(subscriberId.getUserId());
 
-		subscriberCommandSender.subscribe(subscriberId, publisherId, subscriberMetadata);
+		this.subscriberCommandSender.subscribe(subscriberId, publisherId,
+				subscriberMetadata);
 	}
 
-
-	/* (non-Javadoc)
-	 * @see deus.core.soul.subscription.SubscriberExportedToClient#unsubscribe(deus.model.common.user.frids.SubscriberId, deus.model.common.user.frids.PublisherId)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.soul.subscription.SubscriberExportedToClient#unsubscribe(deus
+	 * .model.common.user.frids.SubscriberId,
+	 * deus.model.common.user.frids.PublisherId)
 	 */
 	@Override
-	public void unsubscribe(SubscriberId subscriberId, PublisherId publisherId) {
-		if (!lopEntryDao.existsByNaturalId(subscriberId, publisherId))
-			throw new IllegalArgumentException("cannot unsubscribe from publisher (" + publisherId
-					+ "), that has not been added yet!");
+	public void unsubscribe(final SubscriberId subscriberId,
+			final PublisherId publisherId) {
+		if (!this.lopEntryDao.existsByNaturalId(subscriberId, publisherId))
+			throw new IllegalArgumentException(
+					"cannot unsubscribe from publisher (" + publisherId
+							+ "), that has not been added yet!");
 
-		logger.trace("in informationConsumer {}: unsubscribing from publisher {}", subscriberId, publisherId);
+		this.logger.trace(
+				"in informationConsumer {}: unsubscribing from publisher {}",
+				subscriberId, publisherId);
 
-		lopEntryDao.deleteByNaturalId(subscriberId, publisherId);
+		this.lopEntryDao.deleteByNaturalId(subscriberId, publisherId);
 
-		subscriberCommandSender.unsubscribe(subscriberId, publisherId);
+		this.subscriberCommandSender.unsubscribe(subscriberId, publisherId);
 	}
 
 }

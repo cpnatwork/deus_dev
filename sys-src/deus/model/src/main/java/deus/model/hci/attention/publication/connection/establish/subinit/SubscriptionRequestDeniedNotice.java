@@ -24,7 +24,13 @@ import deus.model.common.user.UserMetadata;
 /**
  * The Class SubscriptionRequestDeniedNotice.
  */
-public class SubscriptionRequestDeniedNotice extends SubscriberInitiatedConnectionNotice {
+public class SubscriptionRequestDeniedNotice extends
+		SubscriberInitiatedConnectionNotice {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8520274557666365600L;
 
 	/**
 	 * Instantiates a new subscription request denied notice.
@@ -32,17 +38,21 @@ public class SubscriptionRequestDeniedNotice extends SubscriberInitiatedConnecti
 	 * @param publisherMetadata
 	 *            the publisher metadata
 	 */
-	public SubscriptionRequestDeniedNotice(UserMetadata publisherMetadata) {
+	public SubscriptionRequestDeniedNotice(final UserMetadata publisherMetadata) {
 		super(publisherMetadata);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see deus.model.hci.attention.AttentionElement#getCatchphare()
 	 */
 	@Override
 	public String getCatchphare() {
-		//I18N
-		return "Your subscription request to "+getPublisherMetadata().getFullName()+" has been denied";
+		// I18N
+		return "Your subscription request to "
+				+ this.getPublisherMetadata().getFullName()
+				+ " has been denied";
 	}
 
 }

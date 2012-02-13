@@ -57,71 +57,83 @@ public class CallbackToSoulMessageReceiver implements MessageReceiver {
 	private SoulCallbackRegistry registry;
 
 	// TODO: refactor (introduce more receive methods and dispatch in this one)
-	/* (non-Javadoc)
-	 * @see deus.core.access.transfer.common.protocol.messagereceiver.MessageReceiver#receive(deus.core.access.transfer.common.messages.TransferMessage)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * deus.core.access.transfer.common.protocol.messagereceiver.MessageReceiver
+	 * #receive(deus.core.access.transfer.common.messages.TransferMessage)
 	 */
 	@Override
-	public void receive(TransferMessage message) {
-		UserId senderId = message.getSenderId();
-		UserId receiverId = message.getReceiverId();
+	public void receive(final TransferMessage message) {
+		final UserId senderId = message.getSenderId();
+		final UserId receiverId = message.getReceiverId();
 
-		PublisherExportedToPeers publisher = registry.getPublisher();
-		SubscriberExportedToPeers subscriber = registry.getSubscriber();
-		
-		RepatriationHubExportedToPeers repatriationHub = registry.getRepatriationHub();
+		final PublisherExportedToPeers publisher = this.registry.getPublisher();
+		final SubscriberExportedToPeers subscriber = this.registry
+				.getSubscriber();
+
+		final RepatriationHubExportedToPeers repatriationHub = this.registry
+				.getRepatriationHub();
 
 		// +++ PUBLICATION COMM. +++
-		
+
 		// USE CASE: SUBSCRIBE
 		if (message instanceof SubscribeToPublisherMessage) {
 			// here: role publisher
 			if (message instanceof RequestSubscriptionMessage) {
-				UserMetadata senderMetadata = ((RequestSubscriptionMessage) message).getSubscriberMetadata();
+				final UserMetadata senderMetadata = ((RequestSubscriptionMessage) message)
+						.getSubscriberMetadata();
 				// USE CASE: accept subscription
-				publisher.addSubscriber(new PublisherId(receiverId), new SubscriberId(senderId), senderMetadata);
+				publisher.addSubscriber(new PublisherId(receiverId),
+						new SubscriberId(senderId), senderMetadata);
 			}
 			// here: role informationConsumer
-			else if (message instanceof GrantSubscriptionRequestNoticeMessage)
-				subscriber.noticeSubscriptionRequestGranted(new SubscriberId(receiverId), new PublisherId(senderId));
-			else if (message instanceof DenySubscriptionRequestNoticeMessage)
-				subscriber.noticeSubscriptionRequestDenied(new SubscriberId(receiverId), new PublisherId(senderId));
-			else
-				throw new IllegalArgumentException("cannot handle command " + message);
+			else if (message instanceof GrantSubscriptionRequestNoticeMessage) {
+				subscriber.noticeSubscriptionRequestGranted(new SubscriberId(
+						receiverId), new PublisherId(senderId));
+			} else if (message instanceof DenySubscriptionRequestNoticeMessage) {
+				subscriber.noticeSubscriptionRequestDenied(new SubscriberId(
+						receiverId), new PublisherId(senderId));
+			} else
+				throw new IllegalArgumentException("cannot handle command "
+						+ message);
 		}
 		// USE CASE: INVITE SUBSCRIBER
-		else if(message instanceof InviteSubscriberMessage) {
+		else if (message instanceof InviteSubscriberMessage) {
 			// here: role informationConsumer
 			if (message instanceof OfferSubscriptionMessage) {
-				UserMetadata senderMetadata = ((OfferSubscriptionMessage) message).getPublisherMetadata();
+				final UserMetadata senderMetadata = ((OfferSubscriptionMessage) message)
+						.getPublisherMetadata();
 				// USE CASE: confirm subscription
-				subscriber.addPublisher(new SubscriberId(receiverId), new PublisherId(senderId), senderMetadata);
+				subscriber.addPublisher(new SubscriberId(receiverId),
+						new PublisherId(senderId), senderMetadata);
 			}
 			// here: role publisher
-			else if (message instanceof ConfirmSubscriptionOfferNoticeMessage)
-				publisher.subscriptionConfirmed(new PublisherId(receiverId), new SubscriberId(senderId));
-			else if (message instanceof RepelSubscriptionOfferNoticeMessage)
-				publisher.subscriptionAbstained(new PublisherId(receiverId), new SubscriberId(senderId));
-			else
-				throw new IllegalArgumentException("cannot handle command " + message);
+			else if (message instanceof ConfirmSubscriptionOfferNoticeMessage) {
+				publisher.subscriptionConfirmed(new PublisherId(receiverId),
+						new SubscriberId(senderId));
+			} else if (message instanceof RepelSubscriptionOfferNoticeMessage) {
+				publisher.subscriptionAbstained(new PublisherId(receiverId),
+						new SubscriberId(senderId));
+			} else
+				throw new IllegalArgumentException("cannot handle command "
+						+ message);
 		}
 		// USE CASE: UNSUBSCRIBE
 		// here: role publisher
-		else if (message instanceof UnsubscribeMessage)
-			publisher.deleteSubscriber(new PublisherId(receiverId), new SubscriberId(senderId));
-		// USE CASE: CANCEL SUBSCRIPTION
-		else if (message instanceof CancelSubscriptionMessage)
+		else if (message instanceof UnsubscribeMessage) {
+			publisher.deleteSubscriber(new PublisherId(receiverId),
+					new SubscriberId(senderId));
+		} else if (message instanceof CancelSubscriptionMessage) {
 			// FIXME: implement
 			;
-		
-		// +++ REPATRIATION COMM. +++
-		
-		// USE CASE: CONTRIBUTE
-		else if (message instanceof ContributeMessage) {
-			repatriationHub.accept(
-					new RepatriationAuthorityId(receiverId), new ContributorId(senderId),
+		} else if (message instanceof ContributeMessage) {
+			repatriationHub.accept(new RepatriationAuthorityId(receiverId),
+					new ContributorId(senderId),
 					((ContributeMessage) message).getDcToContribute());
-		}
-		else
-			throw new IllegalArgumentException("cannot handle command " + message);
+		} else
+			throw new IllegalArgumentException("cannot handle command "
+					+ message);
 	}
 }

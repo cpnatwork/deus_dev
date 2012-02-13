@@ -37,6 +37,7 @@ public interface DecisionProcessor {
 	 * @param decision
 	 *            the decision
 	 */
-	public <T extends BinaryDecisionToMake> void process(UserId userId, T decision);
+	public <T extends BinaryDecisionToMake> void process(UserId userId,
+			T decision);
 
 }

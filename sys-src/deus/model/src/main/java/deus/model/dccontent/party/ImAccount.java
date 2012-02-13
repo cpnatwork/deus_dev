@@ -31,10 +31,9 @@ public class ImAccount {
 
 	/** The type. */
 	private ImAccountType type;
-	
+
 	/** The account. */
 	private String account;
-
 
 	/**
 	 * Gets the entity tag.
@@ -42,9 +41,8 @@ public class ImAccount {
 	 * @return the entity tag
 	 */
 	public EntityTag getEntityTag() {
-		return entityTag;
+		return this.entityTag;
 	}
-
 
 	/**
 	 * Sets the entity tag.
@@ -52,10 +50,9 @@ public class ImAccount {
 	 * @param entityTag
 	 *            the new entity tag
 	 */
-	public void setEntityTag(EntityTag entityTag) {
+	public void setEntityTag(final EntityTag entityTag) {
 		this.entityTag = entityTag;
 	}
-
 
 	/**
 	 * Gets the type.
@@ -63,9 +60,8 @@ public class ImAccount {
 	 * @return the type
 	 */
 	public ImAccountType getType() {
-		return type;
+		return this.type;
 	}
-
 
 	/**
 	 * Sets the type.
@@ -73,10 +69,9 @@ public class ImAccount {
 	 * @param type
 	 *            the new type
 	 */
-	public void setType(ImAccountType type) {
+	public void setType(final ImAccountType type) {
 		this.type = type;
 	}
-
 
 	/**
 	 * Gets the account.
@@ -84,9 +79,8 @@ public class ImAccount {
 	 * @return the account
 	 */
 	public String getAccount() {
-		return account;
+		return this.account;
 	}
-
 
 	/**
 	 * Sets the account.
@@ -94,7 +88,7 @@ public class ImAccount {
 	 * @param account
 	 *            the new account
 	 */
-	public void setAccount(String account) {
+	public void setAccount(final String account) {
 		this.account = account;
 	}
 

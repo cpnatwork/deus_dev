@@ -36,7 +36,6 @@ public interface UserLoginStateObserver {
 	 */
 	public void loggedIn(UserId userId);
 
-
 	/**
 	 * This method is called when information about an UserLoginState which was
 	 * previously requested using an asynchronous interface becomes available.

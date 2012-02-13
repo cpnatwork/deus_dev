@@ -19,9 +19,7 @@
  *************************************************************************/
 package deus.core.soul.hci.barker;
 
-import static org.junit.Assert.fail;
-
-import org.easymock.classextension.EasyMock;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -34,33 +32,34 @@ public class BarkerExportedToSubsystemsTest extends AbstractBarkerTest {
 	 */
 	@Test
 	public void testAddUnnoticedAttentionElement_HappyPath() {
-		attentionElementDaoMock.addNewEntity(userIdFix, attentionElementFix);
-		replayAllMocks();
+		this.attentionElementDaoMock.addNewEntity(this.userIdFix,
+				this.attentionElementFix);
+		this.replayAllMocks();
 
-		barkerSUT.addUnnoticedAttentionElement(userIdFix, attentionElementFix);
+		this.barkerSUT.addUnnoticedAttentionElement(this.userIdFix,
+				this.attentionElementFix);
 
-		verifyAllMocks();
+		this.verifyAllMocks();
 	}
-
 
 	/**
 	 * Test add unnoticed attention element_ attention element already noticed.
 	 */
 	@Test
 	public void testAddUnnoticedAttentionElement_AttentionElementAlreadyNoticed() {
-		EasyMock.expect(attentionElementFix.isNoticed()).andReturn(true);
-		replayAllMocks();
+		org.easymock.EasyMock.expect(this.attentionElementFix.isNoticed())
+				.andReturn(true);
+		this.replayAllMocks();
 
 		try {
-			barkerSUT.addUnnoticedAttentionElement(userIdFix, attentionElementFix);
-			fail("attentionElement is already noticed!");
-		}
-		catch (BarkerRuntimeException e) {
+			this.barkerSUT.addUnnoticedAttentionElement(this.userIdFix,
+					this.attentionElementFix);
+			Assert.fail("attentionElement is already noticed!");
+		} catch (final BarkerRuntimeException e) {
 			// expected
 		}
-	
-		verifyAllMocks();
-	}
 
+		this.verifyAllMocks();
+	}
 
 }

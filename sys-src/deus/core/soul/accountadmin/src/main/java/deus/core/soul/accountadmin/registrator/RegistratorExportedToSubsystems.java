@@ -19,7 +19,6 @@
  *************************************************************************/
 package deus.core.soul.accountadmin.registrator;
 
-
 /**
  * The Interface RegistratorExportedToSubsystems.
  */
@@ -31,8 +30,8 @@ public interface RegistratorExportedToSubsystems {
 	 * @param observer
 	 *            the observer
 	 */
-	public abstract void addUserRegistrationStateObserver(UserRegistrationStateObserver observer);
-
+	public abstract void addUserRegistrationStateObserver(
+			UserRegistrationStateObserver observer);
 
 	/**
 	 * Removes the user registration state observer.
@@ -40,6 +39,7 @@ public interface RegistratorExportedToSubsystems {
 	 * @param observer
 	 *            the observer
 	 */
-	public abstract void removeUserRegistrationStateObserver(UserRegistrationStateObserver observer);
+	public abstract void removeUserRegistrationStateObserver(
+			UserRegistrationStateObserver observer);
 
 }

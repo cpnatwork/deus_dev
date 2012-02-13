@@ -19,7 +19,6 @@
  *************************************************************************/
 package deus.model.common.user;
 
-
 // TODO: what if userFullName changes??? or gender??? (unknown -> male/female)
 
 /**
@@ -33,15 +32,13 @@ public class UserMetadata {
 	/** The gender. */
 	private Gender gender;
 
-
 	/**
 	 * Instantiates a new user metadata.
 	 */
 	public UserMetadata() {
-		userFullName = "";
-		gender = Gender.unknown;
+		this.userFullName = "";
+		this.gender = Gender.unknown;
 	}
-
 
 	/**
 	 * Instantiates a new user metadata.
@@ -51,12 +48,11 @@ public class UserMetadata {
 	 * @param gender
 	 *            the gender
 	 */
-	public UserMetadata(String userFullName, Gender gender) {
+	public UserMetadata(final String userFullName, final Gender gender) {
 		super();
 		this.userFullName = userFullName;
 		this.gender = gender;
 	}
-
 
 	/**
 	 * Gets the full name.
@@ -64,9 +60,8 @@ public class UserMetadata {
 	 * @return the full name
 	 */
 	public String getFullName() {
-		return userFullName;
+		return this.userFullName;
 	}
-
 
 	/**
 	 * Sets the full name.
@@ -74,10 +69,9 @@ public class UserMetadata {
 	 * @param userFullName
 	 *            the new full name
 	 */
-	public void setFullName(String userFullName) {
+	public void setFullName(final String userFullName) {
 		this.userFullName = userFullName;
 	}
-
 
 	/**
 	 * Gets the gender.
@@ -85,9 +79,8 @@ public class UserMetadata {
 	 * @return the gender
 	 */
 	public Gender getGender() {
-		return gender;
+		return this.gender;
 	}
-
 
 	/**
 	 * Sets the gender.
@@ -95,56 +88,60 @@ public class UserMetadata {
 	 * @param gender
 	 *            the new gender
 	 */
-	public void setGender(Gender gender) {
+	public void setGender(final Gender gender) {
 		this.gender = gender;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "full name: " + userFullName;
+		return "full name: " + this.userFullName;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
-		result = prime * result + ((userFullName == null) ? 0 : userFullName.hashCode());
+		result = (prime * result)
+				+ ((this.gender == null) ? 0 : this.gender.hashCode());
+		result = (prime * result)
+				+ ((this.userFullName == null) ? 0 : this.userFullName
+						.hashCode());
 		return result;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (this.getClass() != obj.getClass())
 			return false;
-		UserMetadata other = (UserMetadata) obj;
-		if (gender == null) {
+		final UserMetadata other = (UserMetadata) obj;
+		if (this.gender == null) {
 			if (other.gender != null)
 				return false;
-		}
-		else if (!gender.equals(other.gender))
+		} else if (!this.gender.equals(other.gender))
 			return false;
-		if (userFullName == null) {
+		if (this.userFullName == null) {
 			if (other.userFullName != null)
 				return false;
-		}
-		else if (!userFullName.equals(other.userFullName))
+		} else if (!this.userFullName.equals(other.userFullName))
 			return false;
 		return true;
 	}

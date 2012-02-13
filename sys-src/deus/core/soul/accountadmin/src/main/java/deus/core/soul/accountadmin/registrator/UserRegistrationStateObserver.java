@@ -27,7 +27,7 @@ import deus.model.common.user.id.UserId;
  * constructed.
  */
 public interface UserRegistrationStateObserver {
-	
+
 	/**
 	 * This method is called when information about an UserRegistrationState
 	 * which was previously requested using an asynchronous interface becomes
@@ -37,7 +37,7 @@ public interface UserRegistrationStateObserver {
 	 *            the user id
 	 */
 	public void registered(UserId userId);
-	
+
 	/**
 	 * This method is called when information about an UserRegistrationState
 	 * which was previously requested using an asynchronous interface becomes

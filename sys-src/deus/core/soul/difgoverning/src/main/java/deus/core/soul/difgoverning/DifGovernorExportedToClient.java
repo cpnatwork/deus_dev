@@ -29,7 +29,7 @@ import deus.model.common.user.id.UserId;
  * The Interface DifGovernorExportedToClient.
  */
 public interface DifGovernorExportedToClient {
-	
+
 	/**
 	 * Gets the publishers in dif.
 	 * 
@@ -38,7 +38,6 @@ public interface DifGovernorExportedToClient {
 	 * @return the publishers in dif
 	 */
 	public List<UserId> getPublishersInDif(UserId subscriberId);
-	
 
 	/**
 	 * Gets the digital card ids in fif.
@@ -49,9 +48,9 @@ public interface DifGovernorExportedToClient {
 	 *            the publisher id
 	 * @return the digital card ids in fif
 	 */
-	public List<DigitalCardId> getDigitalCardIdsInFif(UserId subscriberId, UserId publisherId);
+	public List<DigitalCardId> getDigitalCardIdsInFif(UserId subscriberId,
+			UserId publisherId);
 
-	
 	/**
 	 * Gets the digital card in fif.
 	 * 
@@ -61,6 +60,7 @@ public interface DifGovernorExportedToClient {
 	 *            the digital card id
 	 * @return the digital card in fif
 	 */
-	public DigitalCard getDigitalCardInFif(UserId subscriberId, DigitalCardId digitalCardId);
+	public DigitalCard getDigitalCardInFif(UserId subscriberId,
+			DigitalCardId digitalCardId);
 
 }

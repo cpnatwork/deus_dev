@@ -32,7 +32,7 @@ public class RegistrationInformation {
 
 	/** The local username. */
 	private final String localUsername;
-	
+
 	/** The password. */
 	private final String password;
 
@@ -44,7 +44,6 @@ public class RegistrationInformation {
 
 	/** The distribution roles. */
 	private final Set<DistributionRole> distributionRoles;
-
 
 	/**
 	 * Instantiates a new registration information.
@@ -60,8 +59,10 @@ public class RegistrationInformation {
 	 * @param distributionRoles
 	 *            the distribution roles
 	 */
-	public RegistrationInformation(String localUsername, String password, UserMetadata userMetadata,
-			UserIdType desiredUserIdType, Set<DistributionRole> distributionRoles) {
+	public RegistrationInformation(final String localUsername,
+			final String password, final UserMetadata userMetadata,
+			final UserIdType desiredUserIdType,
+			final Set<DistributionRole> distributionRoles) {
 		super();
 		this.localUsername = localUsername;
 		this.password = password;
@@ -70,16 +71,14 @@ public class RegistrationInformation {
 		this.distributionRoles = distributionRoles;
 	}
 
-
 	/**
 	 * Gets the local username.
 	 * 
 	 * @return the local username
 	 */
 	public String getLocalUsername() {
-		return localUsername;
+		return this.localUsername;
 	}
-
 
 	/**
 	 * Gets the password.
@@ -87,9 +86,8 @@ public class RegistrationInformation {
 	 * @return the password
 	 */
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
-
 
 	/**
 	 * Gets the user metadata.
@@ -97,9 +95,8 @@ public class RegistrationInformation {
 	 * @return the user metadata
 	 */
 	public UserMetadata getUserMetadata() {
-		return userMetadata;
+		return this.userMetadata;
 	}
-
 
 	/**
 	 * Gets the desired user id type.
@@ -107,9 +104,8 @@ public class RegistrationInformation {
 	 * @return the desired user id type
 	 */
 	public UserIdType getDesiredUserIdType() {
-		return desiredUserIdType;
+		return this.desiredUserIdType;
 	}
-
 
 	/**
 	 * Gets the user roles.
@@ -117,7 +113,7 @@ public class RegistrationInformation {
 	 * @return the user roles
 	 */
 	public Set<DistributionRole> getUserRoles() {
-		return distributionRoles;
+		return this.distributionRoles;
 	}
 
 }

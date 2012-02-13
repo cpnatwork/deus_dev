@@ -34,7 +34,7 @@ public interface ListOfPublishers extends Map<UserId, LopEntry> {
 	 * @return the owner id
 	 */
 	public UserId getOwnerId();
-	
+
 	/**
 	 * Change state.
 	 * 
@@ -43,6 +43,7 @@ public interface ListOfPublishers extends Map<UserId, LopEntry> {
 	 * @param subscriberSideSubscriptionState
 	 *            the subscriber side subscription state
 	 */
-	public void changeState(UserId publisherId, SubscriberSideSubscriptionState subscriberSideSubscriptionState);
+	public void changeState(UserId publisherId,
+			SubscriberSideSubscriptionState subscriberSideSubscriptionState);
 
 }

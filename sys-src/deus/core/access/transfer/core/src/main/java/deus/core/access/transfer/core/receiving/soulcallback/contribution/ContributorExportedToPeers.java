@@ -22,7 +22,6 @@ package deus.core.access.transfer.core.receiving.soulcallback.contribution;
 import deus.model.common.dossier.DigitalCardId;
 import deus.model.common.user.frids.ContributorId;
 
-
 /**
  * The Interface ContributorExportedToPeers.
  */
@@ -36,8 +35,9 @@ public interface ContributorExportedToPeers {
 	 * @param digitalCardId
 	 *            the digital card id
 	 */
-	public void contributionAcknowledged(ContributorId contributorId, DigitalCardId digitalCardId);
-	
+	public void contributionAcknowledged(ContributorId contributorId,
+			DigitalCardId digitalCardId);
+
 	/**
 	 * Contribution denied.
 	 * 
@@ -46,6 +46,7 @@ public interface ContributorExportedToPeers {
 	 * @param digitalCardId
 	 *            the digital card id
 	 */
-	public void contributionDenied(ContributorId contributorId, DigitalCardId digitalCardId);
-	
+	public void contributionDenied(ContributorId contributorId,
+			DigitalCardId digitalCardId);
+
 }

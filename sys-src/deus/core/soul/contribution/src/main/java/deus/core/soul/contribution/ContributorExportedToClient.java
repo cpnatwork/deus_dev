@@ -38,6 +38,8 @@ public interface ContributorExportedToClient {
 	 * @param digitalCard
 	 *            the digital card
 	 */
-	public void contributeCp(ContributorId contributorId, RepatriationAuthorityId repatriationAuthorityId, DigitalCard digitalCard);
-	
+	public void contributeCp(ContributorId contributorId,
+			RepatriationAuthorityId repatriationAuthorityId,
+			DigitalCard digitalCard);
+
 }

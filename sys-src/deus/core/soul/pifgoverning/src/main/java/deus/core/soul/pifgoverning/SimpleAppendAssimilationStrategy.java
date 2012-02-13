@@ -31,7 +31,6 @@ import deus.model.common.dossier.Patch;
  */
 public class SimpleAppendAssimilationStrategy implements AssimilationStrategy {
 
-	
 	/**
 	 * Update.
 	 * 
@@ -42,46 +41,45 @@ public class SimpleAppendAssimilationStrategy implements AssimilationStrategy {
 	 * @return the patch
 	 */
 	@Override
-	public Patch update(InformationFile fif, DigitalCard digitalCard) {
-		Set<DigitalCard> digitalCards = fif.getDigitalCards();
+	public Patch update(final InformationFile fif, final DigitalCard digitalCard) {
+		final Set<DigitalCard> digitalCards = fif.getDigitalCards();
 
 		if (digitalCards.contains(digitalCard))
-			throw new IllegalUpdateInPlaceException(digitalCard.getDigitalCardId());
+			throw new IllegalUpdateInPlaceException(
+					digitalCard.getDigitalCardId());
 		else
-			return append(fif, digitalCard);
+			return this.append(fif, digitalCard);
 	}
-	
 
-/*	private Patch replace(InformationFile fif, DigitalCard digitalCard) {
-		Set<DigitalCard> digitalCards = fif.getDigitalCards();
-
-		// remove old one
-		boolean containedDC = digitalCards.remove(digitalCard);
-		assert (containedDC == true);
-
-		// add new one
-		digitalCards.add(digitalCard);
-	}*/
-	
-	
+	/*
+	 * private Patch replace(InformationFile fif, DigitalCard digitalCard) {
+	 * Set<DigitalCard> digitalCards = fif.getDigitalCards();
+	 * 
+	 * // remove old one boolean containedDC = digitalCards.remove(digitalCard);
+	 * assert (containedDC == true);
+	 * 
+	 * // add new one digitalCards.add(digitalCard); }
+	 */
 
 	/**
- * Append.
- * 
- * @param fif
- *            the fif
- * @param digitalCard
- *            the digital card
- * @return the patch
- */
-private Patch append(InformationFile fif, DigitalCard digitalCard) {
-		Set<DigitalCard> digitalCards = fif.getDigitalCards();
+	 * Append.
+	 * 
+	 * @param fif
+	 *            the fif
+	 * @param digitalCard
+	 *            the digital card
+	 * @return the patch
+	 */
+	private Patch append(final InformationFile fif,
+			final DigitalCard digitalCard) {
+		final Set<DigitalCard> digitalCards = fif.getDigitalCards();
 		digitalCards.add(digitalCard);
 
 		// create patch
-		AppendDigitalCardPatch patch = new AppendDigitalCardPatch(digitalCard.getDigitalCardId().getCpId());
+		final AppendDigitalCardPatch patch = new AppendDigitalCardPatch(
+				digitalCard.getDigitalCardId().getCpId());
 		patch.setDigitalCardToAppend(digitalCard);
 		return patch;
 	}
-	
+
 }

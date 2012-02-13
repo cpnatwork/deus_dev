@@ -33,6 +33,6 @@ public interface LoginCredentialChecker {
 	 *            the credentials
 	 * @return true, if is valid
 	 */
-	public boolean isValid(LoginCredentials credentials);	
+	public boolean isValid(LoginCredentials credentials);
 
 }

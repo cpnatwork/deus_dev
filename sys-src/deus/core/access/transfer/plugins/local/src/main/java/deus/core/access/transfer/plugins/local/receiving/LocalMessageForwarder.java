@@ -35,15 +35,14 @@ public class LocalMessageForwarder {
 	@Inject
 	private MessageReceiver messageReceiver;
 
-
 	/**
 	 * Forward.
 	 * 
 	 * @param transferMessage
 	 *            the transfer message
 	 */
-	public void forward(TransferMessage transferMessage) {
-		messageReceiver.receive(transferMessage);
+	public void forward(final TransferMessage transferMessage) {
+		this.messageReceiver.receive(transferMessage);
 	}
 
 }

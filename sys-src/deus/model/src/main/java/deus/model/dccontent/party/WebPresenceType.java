@@ -26,6 +26,6 @@ public enum WebPresenceType {
 
 	/** The blog. */
 	blog, /** The home. */
- home;
-	
+	home;
+
 }
