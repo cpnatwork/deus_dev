@@ -50,6 +50,19 @@
 
                 
 	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+
+			<!-- this formerly was spring-agent.jar! -->
+			<!-- this is only a test scoped dependency, since Spring DM server provides 
+				spring-instrument.jar! -->
+			<!-- Additionally, the surefire plugin needs to be configured to pass 
+				-javaagent:<PATH-TO-spring-instrument.jar> as command line argument to java.exe -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>org.springframework.instrument</artifactId>
+				<version>${spring.instrument.version}</version>
+				<scope>test</scope>
+			</dependency>
 		
 	</dependencies>
 	

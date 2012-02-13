@@ -23,4 +23,81 @@
 	    <!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	</dependencies>
 	
+	<build>
+	<plugins>
+	
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<archive>
+						<!-- add the generated manifest to the war -->
+						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<!-- BUNDLE MANIFEST GENERATION -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.3.6</version>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<id>bundle-manifest</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>manifest</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<supportedProjectTypes>
+						<supportedProjectType>bundle</supportedProjectType>
+						<supportedProjectType>war</supportedProjectType>
+					</supportedProjectTypes>
+
+					<!-- The following instructions are delegated to the BND tool of Peter 
+						Kriens - Options with capital letter are directly inserted into Manifest 
+						as Headers - options starting with _ ...? -->
+					<instructions>
+
+						<!-- remove the BND internal header, that just states, which packages 
+							are ignored by BND -->
+						<_removeheaders>Ignore-Package</_removeheaders>
+
+						<!-- add additional package imports -->
+						<Import-Package>${osgi.additionalPackageImports},*</Import-Package>
+
+					</instructions>
+				</configuration>
+			</plugin>
+			
+			<!-- COMPILING -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<debug>true</debug>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12</version>
+				<configuration>
+					<includes>
+						<include>**/*Test.java</include>
+						<include>**/*TestCase.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+	</plugins>
+	</build>
+	
 </project>

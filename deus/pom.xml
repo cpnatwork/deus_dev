@@ -21,25 +21,25 @@
 	<!-- don't remove properties, even if they are empty!!! -->
 	<properties>
 		<spring.version>3.0.2.RELEASE</spring.version>
-		<!--<spring.version>[3.0, 3.1)</spring.version>-->
+		<!--<spring.version>[3.0, 3.1)</spring.version> -->
 		<aspectj.version>1.6.1</aspectj.version>
 		<spring.instrument.version>3.0.1.RELEASE-A</spring.instrument.version>
-		<!-- <spring.osgi.version>1.2.1</spring.osgi.version>-->
+		<!-- <spring.osgi.version>1.2.1</spring.osgi.version> -->
 		<spring.osgi.version>[1.2, 1.3)</spring.osgi.version>
-		
-		<slf4j.version>[1.5, 1.6)</slf4j.version>
-				
+
+		<slf4j.version>1.5.6</slf4j.version>
+		<!-- <slf4j.version>[1.5, 1.6)</slf4j.version> -->
+
 		<junit.version>4.7</junit.version>
 		<application.traceLevels>*=warn,deus.*=verbose,dacus.*=verbose</application.traceLevels>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		
-		
-		<!--
-			org.springframework.orm.jpa.support: this is needed for <context:component-scan />. This BeanPostProcessor requires
-			PersistantAnnotationBeanPostProcessor which is in the given package.
-		-->
-		<osgi.additionalPackageImports />		
+
+
+		<!-- org.springframework.orm.jpa.support: this is needed for <context:component-scan 
+			/>. This BeanPostProcessor requires PersistantAnnotationBeanPostProcessor 
+			which is in the given package. -->
+		<osgi.additionalPackageImports />
 	</properties>
 
 
@@ -67,8 +67,8 @@
 	</scm>
 
 	<issueManagement>
-		<system>Redmine</system>
-		<url>faui6p15.informatik.uni-erlangen.de:3000</url>
+		<system>Origo</system>
+		<url>http://dacus.origo.ethz.ch/issues</url>
 	</issueManagement>
 
 	<reporting>
@@ -83,14 +83,14 @@
 
 
 
-	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-	<!--+++ DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<!--+++ DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 	<dependencyManagement>
 
 		<dependencies>
 
-			<!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+			<!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 			<dependency>
 				<groupId>${project.groupId}</groupId>
@@ -199,14 +199,16 @@
 			</dependency>
 
 
-			<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+			<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-			<!--+++ SPRING +++-->
+			<!-- http://mvnrepository.com/ | http://ebr.springsource.com/repository/app/ -->
+
+			<!--+++ SPRING +++ -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>org.springframework.context</artifactId>
 				<version>${spring.version}</version>
-<!--				<scope>provided</scope>-->
+				<!-- <scope>provided</scope> -->
 			</dependency>
 
 
@@ -224,11 +226,10 @@
 			</dependency>
 
 			<!-- this formerly was spring-agent.jar! -->
-			<!-- this is only a test scoped dependency, since Spring DM server provides spring-instrument.jar! -->
-			<!--
-				Additionally, the surefire plugin needs to be configured to pass -javaagent:<PATH-TO-spring-instrument.jar> as
-				command line argument to java.exe
-			-->
+			<!-- this is only a test scoped dependency, since Spring DM server provides 
+				spring-instrument.jar! -->
+			<!-- Additionally, the surefire plugin needs to be configured to pass 
+				-javaagent:<PATH-TO-spring-instrument.jar> as command line argument to java.exe -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>org.springframework.instrument</artifactId>
@@ -237,7 +238,7 @@
 			</dependency>
 
 
-			<!--+++ ASPECTJ +++-->
+			<!--+++ ASPECTJ +++ -->
 			<dependency>
 				<groupId>org.aspectj</groupId>
 				<artifactId>com.springsource.org.aspectj.weaver</artifactId>
@@ -251,9 +252,9 @@
 
 
 	<dependencies>
-		<!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+		<!--+++ INTRA-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-		<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+		<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -262,7 +263,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!--+++ JUNIT +++-->
+		<!--+++ JUNIT +++ -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -271,7 +272,7 @@
 		</dependency>
 
 
-		<!--+++ EASY MOCK +++-->
+		<!--+++ EASY MOCK +++ -->
 		<dependency>
 			<groupId>org.easymock</groupId>
 			<artifactId>easymock</artifactId>
@@ -288,14 +289,14 @@
 		</dependency>
 
 
-		<!--+++ LOGGING +++-->
+		<!--+++ LOGGING +++ -->
 		<!-- Logback ist used as logging backend! -->
-<!--		<dependency>-->
-<!--			<groupId>ch.qos.logback</groupId>-->
-<!--			<artifactId>com.springsource.ch.qos.logback.classic</artifactId>-->
-<!--			<version>0.9.9</version>-->
-<!--			<scope>runtime</scope>-->
-<!--		</dependency>-->
+		<!-- <dependency> -->
+		<!-- <groupId>ch.qos.logback</groupId> -->
+		<!-- <artifactId>com.springsource.ch.qos.logback.classic</artifactId> -->
+		<!-- <version>0.9.9</version> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
 
 		<!-- Use slf4j simple for testing -->
 		<dependency>
@@ -312,26 +313,29 @@
 			<artifactId>com.springsource.slf4j.api</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-		
-		<!-- for libraries using apache commons logging: make loggers use the slf4j api -->
+
+		<!-- for libraries using apache commons logging: make loggers use the slf4j 
+			api -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>com.springsource.slf4j.org.apache.commons.logging</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-		<!-- for libraries using java.util.logging: make JUL loggers use the slf4j api ("JUL to SLF4J bridge")-->
-		<!--		<dependency>-->
-		<!--			<groupId>org.slf4j</groupId>-->
-		<!--			<artifactId>com.springsource.slf4j.bridge</artifactId>-->
-		<!--			<version>${slf4j.version}</version>-->
-		<!--		</dependency>-->
-		<!-- for libraries using log4j directly: make loggers use the slf4j api	("SLF4J Log4j Over SLF4J Binding") -->
-		<!--		<dependency>-->
-		<!--			<groupId>org.slf4j</groupId>-->
-		<!--			<artifactId>com.springsource.slf4j.org.apache.log4j</artifactId>-->
-		<!--			<version>${slf4j.version}</version>-->
-		<!--			<scope>provided</scope>-->
-		<!--		</dependency>-->
+		<!-- for libraries using java.util.logging: make JUL loggers use the slf4j 
+			api ("JUL to SLF4J bridge") -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.slf4j</groupId> -->
+		<!-- <artifactId>com.springsource.slf4j.bridge</artifactId> -->
+		<!-- <version>${slf4j.version}</version> -->
+		<!-- </dependency> -->
+		<!-- for libraries using log4j directly: make loggers use the slf4j api 
+			("SLF4J Log4j Over SLF4J Binding") -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.slf4j</groupId> -->
+		<!-- <artifactId>com.springsource.slf4j.org.apache.log4j</artifactId> -->
+		<!-- <version>${slf4j.version}</version> -->
+		<!-- <scope>provided</scope> -->
+		<!-- </dependency> -->
 
 
 		<dependency>
@@ -339,36 +343,38 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-		
+
 
 	</dependencies>
 
 
-	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-	<!--+++ BUILD +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<!--+++ BUILD +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 	<build>
 
-		<!--+++ PLUGINS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+		<!--+++ PLUGINS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 		<plugins>
 
 			<!-- SPRING BUNDLOR FOR TRANSFORMATION OF JAR FILE TO OSGi BUNDLE -->
-			<!--
-				<plugin> <groupId>com.springsource.bundlor</groupId> <artifactId>com.springsource.bundlor.maven</artifactId>
-				<version>1.0.0.M2</version> <executions> <execution> <id>bundlor</id> <goals> <goal>transform</goal> </goals>
-				<configuration> <failOnWarnings>true</failOnWarnings> fail if Bundlor generates warnings. Default: true
-				<manifestHeaders> <![CDATA[ Bundle-ManifestVersion: 2 Bundle-SymbolicName: ${project.groupId}.${project.artifactId}
-				Bundle-Version: ${version} Bundle-Name: ${project.name} Application-TraceLevels: ${application.traceLevels}
-				Import-Template: javax.*;version="0" ]]> </manifestHeaders> </configuration> </execution> </executions> </plugin>
-			-->
+			<!-- <plugin> <groupId>com.springsource.bundlor</groupId> <artifactId>com.springsource.bundlor.maven</artifactId> 
+				<version>1.0.0.M2</version> <executions> <execution> <id>bundlor</id> <goals> 
+				<goal>transform</goal> </goals> <configuration> <failOnWarnings>true</failOnWarnings> 
+				fail if Bundlor generates warnings. Default: true <manifestHeaders> <![CDATA[ 
+				Bundle-ManifestVersion: 2 Bundle-SymbolicName: ${project.groupId}.${project.artifactId} 
+				Bundle-Version: ${version} Bundle-Name: ${project.name} Application-TraceLevels: 
+				${application.traceLevels} Import-Template: javax.*;version="0" ]]> </manifestHeaders> 
+				</configuration> </execution> </executions> </plugin> -->
 
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
+				<version>2.2</version>
 				<configuration>
 					<archive>
-						<!--						 add the generated manifest to the war -->
+						<!-- add the generated manifest to the war -->
 						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
 					</archive>
 				</configuration>
@@ -378,6 +384,7 @@
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.3.6</version>
 				<extensions>true</extensions>
 				<executions>
 					<execution>
@@ -394,13 +401,13 @@
 						<supportedProjectType>war</supportedProjectType>
 					</supportedProjectTypes>
 
-					<!--
-						The following instructions are delegated to the BND tool of Peter Kriens - Options with capital letter are
-						directly inserted into Manifest as Headers - options starting with _ ...?
-					-->
+					<!-- The following instructions are delegated to the BND tool of Peter 
+						Kriens - Options with capital letter are directly inserted into Manifest 
+						as Headers - options starting with _ ...? -->
 					<instructions>
 
-						<!-- remove the BND internal header, that just states, which packages are ignored by BND -->
+						<!-- remove the BND internal header, that just states, which packages 
+							are ignored by BND -->
 						<_removeheaders>Ignore-Package</_removeheaders>
 
 						<!-- add additional package imports -->
@@ -417,13 +424,13 @@
 				<artifactId>maven-dependency-plugin</artifactId>
 				<version>2.1</version>
 				<configuration>
-					<!--	<outputDirectory>${springdmserver.location}/repository/bundles/usr</outputDirectory>-->
+					<!-- <outputDirectory>${springdmserver.location}/repository/bundles/usr</outputDirectory> -->
 					<outputDirectory>${project.build.directory}/dependencies</outputDirectory>
 					<overWriteReleases>false</overWriteReleases>
 					<overWriteSnapshots>false</overWriteSnapshots>
 					<overWriteIfNewer>true</overWriteIfNewer>
 					<includeScope>runtime</includeScope>
-					<!--	<includeTypes>jar</includeTypes>-->
+					<!-- <includeTypes>jar</includeTypes> -->
 				</configuration>
 			</plugin>
 
@@ -432,6 +439,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
@@ -443,6 +451,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12</version>
 				<configuration>
 					<includes>
 						<include>**/*Test.java</include>
@@ -453,13 +462,14 @@
 
 		</plugins>
 
-		<!--+++ RESOURCES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+		<!--+++ RESOURCES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 		<resources>
 			<resource>
 				<directory>${basedir}/src/main/resources</directory>
 			</resource>
-			<!-- puts the spring configuration files from the normal configuration into /META-INF/spring -->
+			<!-- puts the spring configuration files from the normal configuration 
+				into /META-INF/spring -->
 			<resource>
 				<targetPath>META-INF/spring</targetPath>
 				<directory>${basedir}/src/main/spring</directory>
@@ -470,11 +480,11 @@
 			</resource>
 		</resources>
 		<testResources>
-			<!--<testResource>
-				<directory>${basedir}/src/test/resources</directory>
-			</testResource>-->
+			<!--<testResource> <directory>${basedir}/src/test/resources</directory> 
+				</testResource> -->
 
-			<!-- puts the spring configuration files from the normal configuration into the root classpath folder -->
+			<!-- puts the spring configuration files from the normal configuration 
+				into the root classpath folder -->
 			<testResource>
 				<directory>${basedir}/src/main/spring</directory>
 				<filtering>true</filtering>
@@ -483,10 +493,8 @@
 				</includes>
 			</testResource>
 
-			<!--
-				puts the spring configuration files from the test configuration into the root classpath folder, overwrites the ones
-				from the normal configuration!!!
-			-->
+			<!-- puts the spring configuration files from the test configuration into 
+				the root classpath folder, overwrites the ones from the normal configuration!!! -->
 			<testResource>
 				<directory>${basedir}/src/test/spring</directory>
 				<filtering>true</filtering>
@@ -497,5 +505,33 @@
 		</testResources>
 
 	</build>
+
+	<repositories>
+		<repository>
+			<id>maven2</id>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+		<repository>
+			<id>com.springsource.repository.bundles.release</id>
+			<name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
+			<url>http://repository.springsource.com/maven/bundles/release</url>
+		</repository>
+		<repository>
+			<id>com.springsource.repository.bundles.external</id>
+			<name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+			<url>http://repository.springsource.com/maven/bundles/external</url>
+		</repository>
+		<repository>
+    <id>com.springsource.repository.libraries.release</id>
+    <name>SpringSource Enterprise Bundle Repository - SpringSource Library Releases</name>
+    <url>http://repository.springsource.com/maven/libraries/release</url>
+</repository>
+
+<repository>
+    <id>com.springsource.repository.libraries.external</id>
+    <name>SpringSource Enterprise Bundle Repository - External Library Releases</name>
+    <url>http://repository.springsource.com/maven/libraries/external</url>
+</repository>
+	</repositories>
 
 </project>

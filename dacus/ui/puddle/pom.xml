@@ -64,10 +64,10 @@
         
 		<!--+++ INTER-PROJECT DEPENDENCIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 		<dependency>
-			<groupId>org.springframework.webflow</groupId>
-			<artifactId>org.springframework.webflow-library</artifactId>
-			<type>libd</type>
-			<version>2.0.5.RELEASE</version>
+    <groupId>org.springframework.webflow</groupId>
+    <artifactId>org.springframework.webflow-library</artifactId>
+    <type>libd</type>
+    <version>2.0.5.RELEASE</version>
 		</dependency>
 		
 		
@@ -89,6 +89,7 @@
 		<dependency>
 			<groupId>org.springframework.osgi</groupId>
 			<artifactId>org.springframework.osgi-library</artifactId>
+			<version>1.1.2.A</version>
 			<type>libd</type>
 		</dependency>
 		
