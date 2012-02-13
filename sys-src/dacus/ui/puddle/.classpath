@@ -1,0 +1,48 @@
+<classpath>
+  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
+  <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
+  <classpathentry kind="src" path="src/main/spring" including="**/*.xml" excluding="**/*.java"/>
+  <classpathentry kind="src" path="src/main/flows" including="**/*" excluding="**/*.java"/>
+  <classpathentry kind="src" path="src/main/webapp" including="**/*" excluding="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="var" path="M2_REPO/javax/servlet/com.springsource.javax.servlet.jsp.jstl/1.1.2/com.springsource.javax.servlet.jsp.jstl-1.1.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/ch/qos/logback/com.springsource.ch.qos.logback.classic/0.9.9/com.springsource.ch.qos.logback.classic-0.9.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/ch/qos/logback/com.springsource.ch.qos.logback.core/0.9.9/com.springsource.ch.qos.logback.core-0.9.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/aopalliance/com.springsource.org.aopalliance/1.0.0/com.springsource.org.aopalliance-1.0.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/commons/com.springsource.org.apache.commons.logging/1.1.1/com.springsource.org.apache.commons.logging-1.1.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/taglibs/com.springsource.org.apache.taglibs.standard/1.1.2/com.springsource.org.apache.taglibs.standard-1.1.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jboss/el/com.springsource.org.jboss.el/2.0.0.GA/com.springsource.org.jboss.el-2.0.0.GA.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/com.springsource.slf4j.api/1.5.0/com.springsource.slf4j.api-1.5.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/com.springsource.slf4j.org.apache.commons.logging/1.5.0/com.springsource.slf4j.org.apache.commons.logging-1.5.0.jar"/>
+  <classpathentry kind="src" path="/deus-core-access-storage-api"/>
+  <classpathentry kind="src" path="/deus-core-access-transfer-common"/>
+  <classpathentry kind="src" path="/deus-core-access-transfer-core"/>
+  <classpathentry kind="src" path="/deus-core-soul-accountadmin"/>
+  <classpathentry kind="src" path="/deus-core-soul-contribution"/>
+  <classpathentry kind="src" path="/deus-core-soul-gatekeeper"/>
+  <classpathentry kind="src" path="/deus-model"/>
+  <classpathentry kind="var" path="M2_REPO/org/easymock/easymock/2.4/easymock-2.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/easymock/easymockclassextension/2.4/easymockclassextension-2.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/junit/junit/4.7/junit-4.7.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/org.springframework.aop/3.0.2.RELEASE/org.springframework.aop-3.0.2.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/org.springframework.asm/3.0.2.RELEASE/org.springframework.asm-3.0.2.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/org.springframework.beans/2.5.5.A/org.springframework.beans-2.5.5.A.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/webflow/org.springframework.binding/2.0.5.RELEASE/org.springframework.binding-2.0.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/org.springframework.context/3.0.2.RELEASE/org.springframework.context-3.0.2.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/org.springframework.core/2.5.5.A/org.springframework.core-2.5.5.A.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/org.springframework.expression/3.0.2.RELEASE/org.springframework.expression-3.0.2.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/webflow/org.springframework.faces/2.0.5.RELEASE/org.springframework.faces-2.0.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/webflow/org.springframework.js/2.0.5.RELEASE/org.springframework.js-2.0.5.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/osgi/org.springframework.osgi.core/1.1.2.A/org.springframework.osgi.core-1.1.2.A.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/osgi/org.springframework.osgi.extender/1.1.2.A/org.springframework.osgi.extender-1.1.2.A.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/osgi/org.springframework.osgi.io/1.1.2.A/org.springframework.osgi.io-1.1.2.A.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/osgi/org.springframework.osgi.web/1.2.1/org.springframework.osgi.web-1.2.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/org.springframework.test/3.0.2.RELEASE/org.springframework.test-3.0.2.RELEASE.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/org.springframework.web/2.5.6.A/org.springframework.web-2.5.6.A.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/org.springframework.web.servlet/2.5.6.A/org.springframework.web.servlet-2.5.6.A.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/springframework/webflow/org.springframework.webflow/2.0.5.RELEASE/org.springframework.webflow-2.0.5.RELEASE.jar"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="con" path="com.springsource.server.ide.jdt.core.MANIFEST_CLASSPATH_CONTAINER"/>
+</classpath>

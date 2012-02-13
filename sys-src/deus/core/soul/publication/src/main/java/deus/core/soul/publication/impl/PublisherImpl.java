@@ -1,3 +1,22 @@
+/**************************************************************************
+ * DACUS: Distributed Address Card Update System
+ * ==============================================
+ * Copyright (C) 2008-2012 by 
+ *   - Christoph P. Neumann (http://www.chr15t0ph.de)
+ *   - Florian Rampp
+ **************************************************************************
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and 
+ * limitations under the License.
+ **************************************************************************
+ * $Id$
+ *************************************************************************/
 package deus.core.soul.publication.impl;
 
 import javax.inject.Inject;
@@ -19,26 +38,37 @@ import deus.model.publication.ListOfSubscribers;
 import deus.model.publication.LosEntry;
 import deus.model.publication.PublisherSideSubscriptionState;
 
+/**
+ * The Class PublisherImpl.
+ */
 @Named("targetedPublisher")
 public class PublisherImpl implements Publisher {
 
+	/** The logger. */
 	private final Logger logger = LoggerFactory.getLogger(PublisherImpl.class);
 
 	
+	/** The publisher command sender. */
 	@Inject
 	private PublisherCommandSender publisherCommandSender;
 
+	/** The user metadata dao. */
 	@Inject
 	private UserMetadataDao userMetadataDao;
 
+	/** The los entry dao. */
 	@Inject
 	private LosEntryDao losEntryDao;
 
+	/** The los dao. */
 	@Inject
 	private LosDao losDao;
 
 
 	// FIXME: think about returning a DTO to the frontend here
+	/* (non-Javadoc)
+	 * @see deus.core.soul.publication.PublisherExportedToClient#getListOfSubscribers(deus.model.common.user.frids.PublisherId)
+	 */
 	@Override
 	public ListOfSubscribers getListOfSubscribers(PublisherId publisherId) {
 		return losDao.getByNaturalId(publisherId);
@@ -47,6 +77,9 @@ public class PublisherImpl implements Publisher {
 
 	// +++ exported to PEER +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+	/* (non-Javadoc)
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#addSubscriber(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId, deus.model.common.user.UserMetadata)
+	 */
 	@Override
 	public synchronized void addSubscriber(PublisherId publisherId, SubscriberId subscriberId,
 			UserMetadata subscriberMetadata) {
@@ -63,6 +96,9 @@ public class PublisherImpl implements Publisher {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#deleteSubscriber(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	 */
 	@Override
 	public synchronized void deleteSubscriber(PublisherId publisherId, SubscriberId subscriberId) {
 		logger.trace("removing informationConsumer {}", subscriberId);
@@ -74,6 +110,9 @@ public class PublisherImpl implements Publisher {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#subscriptionConfirmed(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	 */
 	@Override
 	public void subscriptionConfirmed(PublisherId publisherId, SubscriberId subscriberId) {
 		logger.trace("in publisher of {}: informationConsumer {} confirmed subscription", subscriberId, publisherId);
@@ -85,6 +124,9 @@ public class PublisherImpl implements Publisher {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#subscriptionAbstained(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	 */
 	@Override
 	public void subscriptionAbstained(PublisherId publisherId, SubscriberId subscriberId) {
 		logger.trace("in publisher of {}: informationConsumer {} abstained subscription", subscriberId, publisherId);
@@ -95,6 +137,9 @@ public class PublisherImpl implements Publisher {
 
 	// +++ exported to CLIENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+	/* (non-Javadoc)
+	 * @see deus.core.soul.publication.PublisherExportedToClient#notifySubscriber(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId, deus.model.common.dossier.DigitalCard)
+	 */
 	@Override
 	public synchronized void notifySubscriber(PublisherId publisherId, SubscriberId subscriberId, DigitalCard digitalCard) {
 		logger.trace("notifying subscribers of change {}", digitalCard);
@@ -105,6 +150,9 @@ public class PublisherImpl implements Publisher {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.soul.publication.PublisherExportedToClient#notifySubscribers(deus.model.common.user.frids.PublisherId, deus.model.common.dossier.DigitalCard)
+	 */
 	@Override
 	public void notifySubscribers(PublisherId publisherId, DigitalCard digitalCard) {
 		logger.trace("notifying subscribers of change {}", digitalCard);
@@ -136,6 +184,9 @@ public class PublisherImpl implements Publisher {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.soul.publication.PublisherExportedToClient#inviteSubscriber(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId, deus.model.common.user.UserMetadata)
+	 */
 	@Override
 	public void inviteSubscriber(PublisherId publisherId, SubscriberId subscriberId, UserMetadata subscriberMetadata) {
 		if (losEntryDao.existsByNaturalId(publisherId, subscriberId))
@@ -155,6 +206,9 @@ public class PublisherImpl implements Publisher {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.soul.publication.PublisherExportedToClient#cancelSubscription(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	 */
 	@Override
 	public void cancelSubscription(PublisherId publisherId, SubscriberId subscriberId) {
 		if (losEntryDao.existsByNaturalId(publisherId, subscriberId))

@@ -1,3 +1,22 @@
+/**************************************************************************
+ * DACUS: Distributed Address Card Update System
+ * ==============================================
+ * Copyright (C) 2008-2012 by 
+ *   - Christoph P. Neumann (http://www.chr15t0ph.de)
+ *   - Florian Rampp
+ **************************************************************************
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and 
+ * limitations under the License.
+ **************************************************************************
+ * $Id$
+ *************************************************************************/
 package deus.core.soul.publication.impl;
 
 import javax.inject.Inject;
@@ -20,22 +39,32 @@ import deus.model.hci.attention.publication.connection.establish.subinit.Subscri
 import deus.model.hci.attention.publication.connection.terminate.SubscriberInitiatedTerminationNotice;
 import deus.model.publication.LosEntry;
 
+/**
+ * The Class PublisherExportedToPeerBarkerProxy.
+ */
 @Named("publisherProxy")
 public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPeers {
 
+	/** The logger. */
 	private final Logger logger = LoggerFactory.getLogger(PublisherExportedToPeerBarkerProxy.class);
 	
+	/** The proxied publisher. */
 	@Inject
 	@Named("targetedPublisher")
 	private PublisherExportedToPeers proxiedPublisher;
 	
+	/** The barker. */
 	@Inject
 	private BarkerExportedToSubsystems barker;
 	
+	/** The los entry dao. */
 	@Inject
 	private LosEntryDao losEntryDao;
 
 	
+	/* (non-Javadoc)
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#addSubscriber(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId, deus.model.common.user.UserMetadata)
+	 */
 	@Override
 	public void addSubscriber(PublisherId publisherId, SubscriberId subscriberId, UserMetadata subscriberMetadata) {
 		logger.trace("proxying call to addObserver");
@@ -48,6 +77,9 @@ public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPe
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#deleteSubscriber(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	 */
 	@Override
 	public void deleteSubscriber(PublisherId publisherId, SubscriberId subscriberId) {
 		logger.trace("proxying call to deleteObserver");
@@ -66,6 +98,9 @@ public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPe
 	}
 
 	
+	/* (non-Javadoc)
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#subscriptionConfirmed(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	 */
 	@Override
 	public void subscriptionConfirmed(PublisherId publisherId, SubscriberId subscriberId) {
 		logger.debug("proxying call to subscriptionConfirmed");
@@ -83,6 +118,9 @@ public class PublisherExportedToPeerBarkerProxy implements PublisherExportedToPe
 	}
 	
 
+	/* (non-Javadoc)
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#subscriptionAbstained(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	 */
 	@Override
 	public void subscriptionAbstained(PublisherId publisherId, SubscriberId subscriberId) {
 		logger.debug("proxying call to subscriptionAbstained");

@@ -1,3 +1,22 @@
+/**************************************************************************
+ * DACUS: Distributed Address Card Update System
+ * ==============================================
+ * Copyright (C) 2008-2012 by 
+ *   - Christoph P. Neumann (http://www.chr15t0ph.de)
+ *   - Florian Rampp
+ **************************************************************************
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and 
+ * limitations under the License.
+ **************************************************************************
+ * $Id$
+ *************************************************************************/
 package deus.core.soul.accountadmin.registrator.impl;
 
 import java.util.List;
@@ -16,30 +35,49 @@ import deus.model.common.account.Account;
 import deus.model.common.account.DistributionRole;
 import deus.model.common.user.id.UserId;
 
+/**
+ * The Class RegistratorImpl.
+ */
 @Named("registrator")
 public class RegistratorImpl implements Registrator {
 
+	/** The observers. */
 	private final List<UserRegistrationStateObserver> observers;
 
+	/** The account dao. */
 	@Inject
 	private AccountDao accountDao;
 
+	/** The user metadata dao. */
 	@Inject
 	private UserMetadataDao userMetadataDao;
 	
+	/** The distribution role setup. */
 	@Inject
 	private DistributionRoleSetup distributionRoleSetup;
 
 
+	/** The user id generator. */
 	@Inject
 	private UserIdGenerator userIdGenerator;
 
 
+	/**
+	 * Instantiates a new registrator impl.
+	 */
 	public RegistratorImpl() {
 		this.observers = new Vector<UserRegistrationStateObserver>();
 	}
 
 
+	/**
+	 * Notify observers.
+	 * 
+	 * @param userId
+	 *            the user id
+	 * @param registered
+	 *            the registered
+	 */
 	private void notifyObservers(UserId userId, boolean registered) {
 		/*
 		 * a temporary array buffer, used as a snapshot of the state of current Observers.
@@ -69,6 +107,9 @@ public class RegistratorImpl implements Registrator {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.soul.accountadmin.registrator.RegistratorExportedToClient#register(deus.model.accountadmin.RegistrationInformation)
+	 */
 	@Override
 	public void register(RegistrationInformation registrationInformation) {
 		UserId userId = userIdGenerator.generateUserId(registrationInformation.getDesiredUserIdType(),
@@ -85,6 +126,12 @@ public class RegistratorImpl implements Registrator {
 	}
 
 
+	/**
+	 * Creates the account.
+	 * 
+	 * @param account
+	 *            the account
+	 */
 	private void createAccount(Account account) {
 		accountDao.addNewEntity(account);
 		// FUTURE: init data objects in database for subsystem Barker here!
@@ -95,6 +142,9 @@ public class RegistratorImpl implements Registrator {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.soul.accountadmin.registrator.RegistratorExportedToClient#unregister(java.lang.String)
+	 */
 	@Override
 	public void unregister(String localUsername) {
 		Account account = accountDao.getByNaturalId(localUsername);
@@ -105,6 +155,12 @@ public class RegistratorImpl implements Registrator {
 	}
 
 
+	/**
+	 * Destroy account.
+	 * 
+	 * @param account
+	 *            the account
+	 */
 	private void destroyAccount(Account account) {
 		UserId userId = account.getUserId();
 
@@ -117,17 +173,26 @@ public class RegistratorImpl implements Registrator {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.soul.accountadmin.registrator.RegistratorExportedToClient#existsLocalUsername(java.lang.String)
+	 */
 	public boolean existsLocalUsername(String localUserName) {
 		return accountDao.existsByNaturalId(localUserName);
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems#addUserRegistrationStateObserver(deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver)
+	 */
 	@Override
 	public void addUserRegistrationStateObserver(UserRegistrationStateObserver observer) {
 		observers.add(observer);
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.soul.accountadmin.registrator.RegistratorExportedToSubsystems#removeUserRegistrationStateObserver(deus.core.soul.accountadmin.registrator.UserRegistrationStateObserver)
+	 */
 	@Override
 	public void removeUserRegistrationStateObserver(UserRegistrationStateObserver observer) {
 		if (observers.remove(observer) == false)

@@ -1,3 +1,22 @@
+/**************************************************************************
+ * DACUS: Distributed Address Card Update System
+ * ==============================================
+ * Copyright (C) 2008-2012 by 
+ *   - Christoph P. Neumann (http://www.chr15t0ph.de)
+ *   - Florian Rampp
+ **************************************************************************
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and 
+ * limitations under the License.
+ **************************************************************************
+ * $Id$
+ *************************************************************************/
 package deus.core.soul.publication.impl;
 
 import javax.inject.Inject;
@@ -23,9 +42,11 @@ import deus.model.publication.ListOfSubscribers;
 @Named("publisher")
 public class ProxiedPublisherAdapter implements Publisher {
 
+	/** The publisher exported to client. */
 	@Inject
 	private PublisherExportedToClient publisherExportedToClient;
 
+	/** The publisher exported to peers. */
 	@Inject
 	@Named("publisherProxy")
 	private PublisherExportedToPeers publisherExportedToPeers;
@@ -33,24 +54,36 @@ public class ProxiedPublisherAdapter implements Publisher {
 
 	// +++ exported to PEER +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+	/* (non-Javadoc)
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#addSubscriber(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId, deus.model.common.user.UserMetadata)
+	 */
 	@Override
 	public void addSubscriber(PublisherId publisherId, SubscriberId subscriberId, UserMetadata subscriberMetadata) {
 		publisherExportedToPeers.addSubscriber(publisherId, subscriberId, subscriberMetadata);
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#deleteSubscriber(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	 */
 	@Override
 	public void deleteSubscriber(PublisherId publisherId, SubscriberId subscriberId) {
 		publisherExportedToPeers.deleteSubscriber(publisherId, subscriberId);
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#subscriptionAbstained(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	 */
 	@Override
 	public void subscriptionAbstained(PublisherId publisherId, SubscriberId subscriberId) {
 		publisherExportedToPeers.subscriptionAbstained(publisherId, subscriberId);
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.access.transfer.core.receiving.soulcallback.publication.PublisherExportedToPeers#subscriptionConfirmed(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	 */
 	@Override
 	public void subscriptionConfirmed(PublisherId publisherId, SubscriberId subscriberId) {
 		publisherExportedToPeers.subscriptionConfirmed(publisherId, subscriberId);
@@ -60,30 +93,45 @@ public class ProxiedPublisherAdapter implements Publisher {
 	// +++ exported to CLIENT +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.soul.publication.PublisherExportedToClient#getListOfSubscribers(deus.model.common.user.frids.PublisherId)
+	 */
 	@Override
 	public ListOfSubscribers getListOfSubscribers(PublisherId publisherId) {
 		return publisherExportedToClient.getListOfSubscribers(publisherId);
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.soul.publication.PublisherExportedToClient#notifySubscriber(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId, deus.model.common.dossier.DigitalCard)
+	 */
 	@Override
 	public void notifySubscriber(PublisherId publisherId, SubscriberId subscriberId, DigitalCard digitalCard) {
 		publisherExportedToClient.notifySubscriber(publisherId, subscriberId, digitalCard);
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.soul.publication.PublisherExportedToClient#notifySubscribers(deus.model.common.user.frids.PublisherId, deus.model.common.dossier.DigitalCard)
+	 */
 	@Override
 	public void notifySubscribers(PublisherId publisherId, DigitalCard digitalCard) {
 		publisherExportedToClient.notifySubscribers(publisherId, digitalCard);
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.soul.publication.PublisherExportedToClient#cancelSubscription(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId)
+	 */
 	@Override
 	public void cancelSubscription(PublisherId publisherId, SubscriberId subscriberId) {
 		publisherExportedToClient.cancelSubscription(publisherId, subscriberId);
 	}
 
 
+	/* (non-Javadoc)
+	 * @see deus.core.soul.publication.PublisherExportedToClient#inviteSubscriber(deus.model.common.user.frids.PublisherId, deus.model.common.user.frids.SubscriberId, deus.model.common.user.UserMetadata)
+	 */
 	@Override
 	public void inviteSubscriber(PublisherId publisherId, SubscriberId subscriberId, UserMetadata subscriberMetadata) {
 		publisherExportedToClient.inviteSubscriber(publisherId, subscriberId, subscriberMetadata);

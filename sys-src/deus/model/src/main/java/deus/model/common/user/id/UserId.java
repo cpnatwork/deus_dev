@@ -1,13 +1,42 @@
+/**************************************************************************
+ * DACUS: Distributed Address Card Update System
+ * ==============================================
+ * Copyright (C) 2008-2012 by 
+ *   - Christoph P. Neumann (http://www.chr15t0ph.de)
+ *   - Florian Rampp
+ **************************************************************************
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and 
+ * limitations under the License.
+ **************************************************************************
+ * $Id$
+ *************************************************************************/
 package deus.model.common.user.id;
 
 import java.io.Serializable;
 
+/**
+ * The Class UserId.
+ */
 @SuppressWarnings("serial")
 abstract public class UserId implements Serializable {
 
+	/** The username. */
 	private String username = null;
 
 
+	/**
+	 * Instantiates a new user id.
+	 * 
+	 * @param username
+	 *            the username
+	 */
 	public UserId(String username) {
 		super();
 		this.username = username;
@@ -17,7 +46,7 @@ abstract public class UserId implements Serializable {
 	/**
 	 * The essential user name.
 	 * 
-	 * @return
+	 * @return the username
 	 */
 	public String getUsername() {
 		return username;
@@ -26,6 +55,9 @@ abstract public class UserId implements Serializable {
 
 
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -35,6 +67,9 @@ abstract public class UserId implements Serializable {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -57,15 +92,15 @@ abstract public class UserId implements Serializable {
 	/**
 	 * The type of the User ID.
 	 * 
-	 * @return
+	 * @return the type
 	 */
 	abstract public UserIdType getType();
 
 
 	/**
-	 * The full-fledged String representation of the User ID
+	 * The full-fledged String representation of the User ID.
 	 * 
-	 * @return
+	 * @return the id
 	 */
 	abstract public String getId();
 

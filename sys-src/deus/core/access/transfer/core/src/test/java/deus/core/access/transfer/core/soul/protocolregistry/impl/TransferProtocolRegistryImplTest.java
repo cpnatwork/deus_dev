@@ -1,3 +1,22 @@
+/**************************************************************************
+ * DACUS: Distributed Address Card Update System
+ * ==============================================
+ * Copyright (C) 2008-2012 by 
+ *   - Christoph P. Neumann (http://www.chr15t0ph.de)
+ *   - Florian Rampp
+ **************************************************************************
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and 
+ * limitations under the License.
+ **************************************************************************
+ * $Id$
+ *************************************************************************/
 package deus.core.access.transfer.core.soul.protocolregistry.impl;
 
 import static org.junit.Assert.assertEquals;
@@ -22,18 +41,30 @@ import deus.core.access.transfer.core.soul.protocolregistry.QueriableTransferPro
 import deus.core.access.transfer.plugins.testTP.protocol.TestTransferId;
 import deus.model.common.user.id.UserId;
 
+/**
+ * The Class TransferProtocolRegistryImplTest.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/deus/context.xml", "/deus/core/access/transfer/core/test.xml" })
 public class TransferProtocolRegistryImplTest {
 	
+	/** The tp. */
 	private TransferProtocolImpl tp;
 
 
+	/** The registry. */
 	@Autowired
 	private QueriableTransferProtocolRegistry registry;
 
+	/** The test protocol id. */
 	private String testProtocolId;
 
+	/**
+	 * Sets the up.
+	 * 
+	 * @throws Exception
+	 *             the exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		tp = new TransferProtocolImpl();
@@ -70,11 +101,20 @@ public class TransferProtocolRegistryImplTest {
 	}
 
 
+	/**
+	 * Tear down.
+	 * 
+	 * @throws Exception
+	 *             the exception
+	 */
 	@After
 	public void tearDown() throws Exception {
 	}
 
 
+	/**
+	 * Test register transfer protocol.
+	 */
 	@Test
 	public void testRegisterTransferProtocol() {
 		assertTrue(registry.getAllRegisteredTransferProtocolIds().isEmpty());
