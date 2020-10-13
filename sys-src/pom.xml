@@ -19,7 +19,7 @@
 		<aspectj.version>1.6.1</aspectj.version>
 		<spring.instrument.version>3.0.1.RELEASE-A</spring.instrument.version>
 		<spring.osgi.version>1.2.1</spring.osgi.version>
-		<junit.version>4.7</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<application.traceLevels>*=warn,deus.*=verbose,dacus.*=verbose</application.traceLevels>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
